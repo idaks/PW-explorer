@@ -17,13 +17,13 @@ models: 'Models' (SPACE)+ ':' (SPACE)* NUM_MODELS ;
 
 optium: (SPACE)+ 'Optium' (SPACE)+ OPTIUM_FOUND_OR_NOT ; 
 
-OPTIUM_FOUND_OR_NOT: 'yes' | 'no'
+OPTIUM_FOUND_OR_NOT: 'yes' | 'no' ;
 
-optimization: 'Optimization' (SPACE)+ ':' (SPACE)* OPTIMAL_SOLN
+optimization: 'Optimization' (SPACE)+ ':' (SPACE)* OPTIMAL_SOLN ;
 
-OPTIMAL_SOLN: [0-9]+
+OPTIMAL_SOLN: [0-9]+ ;
 
-calls: 'Calls' (SPACE)+ ':' (SPACE)* NUM_CALLS
+calls: 'Calls' (SPACE)+ ':' (SPACE)* NUM_CALLS ;
 
 NUM_CALLS: [0-9]+ ;
 
@@ -49,4 +49,6 @@ CURR_SOLN: [0-9]+ ;
 
 //might have to come from the input file??
 
-actual_soln: 
+actual_soln: STUFF ;
+
+STUFF: TEXT ;
