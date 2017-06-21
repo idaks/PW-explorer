@@ -24,29 +24,29 @@ def serializedATN():
         buf.write("\2\2\16d\3\2\2\2\20f\3\2\2\2\22h\3\2\2\2\24w\3\2\2\2\26")
         buf.write("~\3\2\2\2\30\32\5\22\n\2\31\30\3\2\2\2\32\35\3\2\2\2\33")
         buf.write("\31\3\2\2\2\33\34\3\2\2\2\34\37\3\2\2\2\35\33\3\2\2\2")
-        buf.write("\36 \7\r\2\2\37\36\3\2\2\2\37 \3\2\2\2 !\3\2\2\2!\"\5")
+        buf.write("\36 \7\31\2\2\37\36\3\2\2\2\37 \3\2\2\2 !\3\2\2\2!\"\5")
         buf.write("\4\3\2\"\3\3\2\2\2#$\5\6\4\2$%\5\b\5\2%&\5\n\6\2&\'\5")
         buf.write("\f\7\2\'(\5\16\b\2()\5\20\t\2)\5\3\2\2\2*,\7\3\2\2+-\7")
-        buf.write("\23\2\2,+\3\2\2\2-.\3\2\2\2.,\3\2\2\2./\3\2\2\2/\60\3")
-        buf.write("\2\2\2\60\64\7\4\2\2\61\63\7\23\2\2\62\61\3\2\2\2\63\66")
+        buf.write("\22\2\2,+\3\2\2\2-.\3\2\2\2.,\3\2\2\2./\3\2\2\2/\60\3")
+        buf.write("\2\2\2\60\64\7\4\2\2\61\63\7\22\2\2\62\61\3\2\2\2\63\66")
         buf.write("\3\2\2\2\64\62\3\2\2\2\64\65\3\2\2\2\65\67\3\2\2\2\66")
-        buf.write("\64\3\2\2\2\678\7\16\2\28\7\3\2\2\29;\7\23\2\2:9\3\2\2")
+        buf.write("\64\3\2\2\2\678\7\r\2\28\7\3\2\2\29;\7\22\2\2:9\3\2\2")
         buf.write("\2;<\3\2\2\2<:\3\2\2\2<=\3\2\2\2=>\3\2\2\2>@\7\5\2\2?")
-        buf.write("A\7\23\2\2@?\3\2\2\2AB\3\2\2\2B@\3\2\2\2BC\3\2\2\2CD\3")
-        buf.write("\2\2\2DE\7\17\2\2E\t\3\2\2\2FH\7\6\2\2GI\7\23\2\2HG\3")
+        buf.write("A\7\22\2\2@?\3\2\2\2AB\3\2\2\2B@\3\2\2\2BC\3\2\2\2CD\3")
+        buf.write("\2\2\2DE\7\16\2\2E\t\3\2\2\2FH\7\6\2\2GI\7\22\2\2HG\3")
         buf.write("\2\2\2IJ\3\2\2\2JH\3\2\2\2JK\3\2\2\2KL\3\2\2\2LP\7\4\2")
-        buf.write("\2MO\7\23\2\2NM\3\2\2\2OR\3\2\2\2PN\3\2\2\2PQ\3\2\2\2")
-        buf.write("QS\3\2\2\2RP\3\2\2\2ST\7\20\2\2T\13\3\2\2\2UW\7\7\2\2")
-        buf.write("VX\7\23\2\2WV\3\2\2\2XY\3\2\2\2YW\3\2\2\2YZ\3\2\2\2Z[")
-        buf.write("\3\2\2\2[_\7\4\2\2\\^\7\23\2\2]\\\3\2\2\2^a\3\2\2\2_]")
-        buf.write("\3\2\2\2_`\3\2\2\2`b\3\2\2\2a_\3\2\2\2bc\7\21\2\2c\r\3")
-        buf.write("\2\2\2de\7\22\2\2e\17\3\2\2\2fg\7\22\2\2g\21\3\2\2\2h")
-        buf.write("i\7\b\2\2ij\7\27\2\2jk\7\24\2\2kl\5\24\13\2lm\7\24\2\2")
-        buf.write("mn\7\t\2\2no\7\30\2\2o\23\3\2\2\2pq\7\31\2\2qr\7\n\2\2")
+        buf.write("\2MO\7\22\2\2NM\3\2\2\2OR\3\2\2\2PN\3\2\2\2PQ\3\2\2\2")
+        buf.write("QS\3\2\2\2RP\3\2\2\2ST\7\17\2\2T\13\3\2\2\2UW\7\7\2\2")
+        buf.write("VX\7\22\2\2WV\3\2\2\2XY\3\2\2\2YW\3\2\2\2YZ\3\2\2\2Z[")
+        buf.write("\3\2\2\2[_\7\4\2\2\\^\7\22\2\2]\\\3\2\2\2^a\3\2\2\2_]")
+        buf.write("\3\2\2\2_`\3\2\2\2`b\3\2\2\2a_\3\2\2\2bc\7\20\2\2c\r\3")
+        buf.write("\2\2\2de\7\21\2\2e\17\3\2\2\2fg\7\21\2\2g\21\3\2\2\2h")
+        buf.write("i\7\b\2\2ij\7\26\2\2jk\7\23\2\2kl\5\24\13\2lm\7\23\2\2")
+        buf.write("mn\7\t\2\2no\7\27\2\2o\23\3\2\2\2pq\7\30\2\2qr\7\n\2\2")
         buf.write("rs\5\26\f\2st\7\13\2\2tv\3\2\2\2up\3\2\2\2vy\3\2\2\2w")
-        buf.write("u\3\2\2\2wx\3\2\2\2x\25\3\2\2\2yw\3\2\2\2z{\7\25\2\2{")
+        buf.write("u\3\2\2\2wx\3\2\2\2x\25\3\2\2\2yw\3\2\2\2z{\7\24\2\2{")
         buf.write("}\7\f\2\2|z\3\2\2\2}\u0080\3\2\2\2~|\3\2\2\2~\177\3\2")
-        buf.write("\2\2\177\u0081\3\2\2\2\u0080~\3\2\2\2\u0081\u0082\7\25")
+        buf.write("\2\2\177\u0081\3\2\2\2\u0080~\3\2\2\2\u0081\u0082\7\24")
         buf.write("\2\2\u0082\27\3\2\2\2\16\33\37.\64<BJPY_w~")
         return buf.getvalue()
 
@@ -63,14 +63,17 @@ class ClingoParser ( Parser ):
 
     literalNames = [ "<INVALID>", "'Models'", "':'", "'Optium'", "'Optimization'", 
                      "'Calls'", "'Answer:'", "'Optimization:'", "'('", "')'", 
-                     "','", "'OPTIUM FOUND'" ]
+                     "','", "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
+                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
+                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
+                     "'OPTIUM FOUND'" ]
 
     symbolicNames = [ "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "<INVALID>", "<INVALID>", "<INVALID>", "OPTIUM_FOUND", 
-                      "NUM_MODELS", "OPTIUM_FOUND_OR_NOT", "OPTIMAL_SOLN", 
-                      "NUM_CALLS", "TEXT", "SPACE", "NEWLINE", "Word", "WHITESPACE", 
-                      "ANS_NUM", "CURR_SOLN", "KEYWORD" ]
+                      "<INVALID>", "<INVALID>", "<INVALID>", "NUM_MODELS", 
+                      "OPTIUM_FOUND_OR_NOT", "OPTIMAL_SOLN", "NUM_CALLS", 
+                      "TEXT", "SPACE", "NEWLINE", "Word", "WHITESPACE", 
+                      "ANS_NUM", "CURR_SOLN", "RELATION_NAME", "OPTIUM_FOUND" ]
 
     RULE_clingoOutput = 0
     RULE_summary = 1
@@ -99,19 +102,19 @@ class ClingoParser ( Parser ):
     T__7=8
     T__8=9
     T__9=10
-    OPTIUM_FOUND=11
-    NUM_MODELS=12
-    OPTIUM_FOUND_OR_NOT=13
-    OPTIMAL_SOLN=14
-    NUM_CALLS=15
-    TEXT=16
-    SPACE=17
-    NEWLINE=18
-    Word=19
-    WHITESPACE=20
-    ANS_NUM=21
-    CURR_SOLN=22
-    KEYWORD=23
+    NUM_MODELS=11
+    OPTIUM_FOUND_OR_NOT=12
+    OPTIMAL_SOLN=13
+    NUM_CALLS=14
+    TEXT=15
+    SPACE=16
+    NEWLINE=17
+    Word=18
+    WHITESPACE=19
+    ANS_NUM=20
+    CURR_SOLN=21
+    RELATION_NAME=22
+    OPTIUM_FOUND=23
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
@@ -698,11 +701,11 @@ class ClingoParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def KEYWORD(self, i:int=None):
+        def RELATION_NAME(self, i:int=None):
             if i is None:
-                return self.getTokens(ClingoParser.KEYWORD)
+                return self.getTokens(ClingoParser.RELATION_NAME)
             else:
-                return self.getToken(ClingoParser.KEYWORD, i)
+                return self.getToken(ClingoParser.RELATION_NAME, i)
 
         def custom_representation_soln(self, i:int=None):
             if i is None:
@@ -735,9 +738,9 @@ class ClingoParser ( Parser ):
             self.state = 117
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==ClingoParser.KEYWORD:
+            while _la==ClingoParser.RELATION_NAME:
                 self.state = 110
-                self.match(ClingoParser.KEYWORD)
+                self.match(ClingoParser.RELATION_NAME)
                 self.state = 111
                 self.match(ClingoParser.T__7)
                 self.state = 112
