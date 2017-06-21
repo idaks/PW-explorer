@@ -51,4 +51,4 @@ CURR_SOLN: [0-9]+ ;
 
 actual_soln: STUFF ;
 
-STUFF: TEXT ;
+STUFF: (TEXT)+ ;
