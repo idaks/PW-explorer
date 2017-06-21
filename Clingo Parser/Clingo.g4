@@ -9,31 +9,40 @@ options {
 
 clingoOutput: (solution)* OPTIUM_FOUND? summary ;
 
-OPTIUM_FOUND: 'OPTIUM FOUND' ;
-
 summary: models optium optimization calls time cpuTime ;
 
 models: 'Models' (SPACE)+ ':' (SPACE)* NUM_MODELS ;
 
-NUM_MODELS: [0-9]+ ;
-
-optium: (SPACE)+ 'Optium' (SPACE)+ OPTIUM_FOUND_OR_NOT ; 
-
-OPTIUM_FOUND_OR_NOT: 'yes' | 'no' ;
+optium: (SPACE)+ 'Optium' (SPACE)+ OPTIUM_FOUND_OR_NOT ;
 
 optimization: 'Optimization' (SPACE)+ ':' (SPACE)* OPTIMAL_SOLN ;
 
-OPTIMAL_SOLN: [0-9]+ ;
-
 calls: 'Calls' (SPACE)+ ':' (SPACE)* NUM_CALLS ;
-
-NUM_CALLS: [0-9]+ ;
 
 time: TEXT ;
 
 cpuTime: TEXT ;
 
+//might have to come from the input file??
+solution: 'Answer:' ANS_NUM (NEWLINE) actual_soln (NEWLINE) 'Optimization:' CURR_SOLN ;
+
+actual_soln: (RELATION_NAME '(' custom_representation_soln ')')* ;
+
+custom_representation_soln: (Word ',')* Word ;
+
+//LEXER RULES
+
+NUM_MODELS: NUMBER ;
+
+OPTIUM_FOUND_OR_NOT: 'yes' | 'no' ;
+
+OPTIMAL_SOLN: NUMBER ;
+
+NUM_CALLS: NUMBER ;
+
 TEXT: [a-zA-Z0-9\\_]+ ;
+
+fragment NUMBER: [0-9]+ ;
 
 SPACE: [ \t] ;
 
@@ -43,18 +52,12 @@ Word: [a-zA-Z0-9\\_]+ ;
 
 WHITESPACE : ( '\t' | ' ' | '\r' | '\n'| '\u000C' )+ -> skip ;
 
-solution: 'Answer:' ANS_NUM (NEWLINE) actual_soln (NEWLINE) 'Optimization:' CURR_SOLN ;
+ANS_NUM: NUMBER ;
 
-ANS_NUM: [0-9]+ ;
+CURR_SOLN: NUMBER ;
 
-CURR_SOLN: [0-9]+ ;
+RELATION_NAME: Word ;
 
-//might have to come from the input file??
-
-actual_soln: (KEYWORD '(' custom_representation_soln ')')* ;
-
-KEYWORD: Word ;
-
-custom_representation_soln: (Word ',')* Word ;
+OPTIUM_FOUND: 'OPTIUM FOUND' ;
 
 //STUFF: (TEXT)+ ;
