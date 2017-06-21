@@ -15,6 +15,8 @@ summary: models optium optimization calls time cpuTime ;
 
 models: 'Models' (SPACE)+ ':' (SPACE)* NUM_MODELS ;
 
+NUM_MODELS: [0-9]+ ;
+
 optium: (SPACE)+ 'Optium' (SPACE)+ OPTIUM_FOUND_OR_NOT ; 
 
 OPTIUM_FOUND_OR_NOT: 'yes' | 'no' ;
@@ -49,6 +51,10 @@ CURR_SOLN: [0-9]+ ;
 
 //might have to come from the input file??
 
-actual_soln: STUFF ;
+actual_soln: (KEYWORD '(' custom_representation_soln ')')* ;
 
-STUFF: (TEXT)+ ;
+KEYWORD: Word ;
+
+custom_representation_soln: (Word ',')* Word ;
+
+//STUFF: (TEXT)+ ;

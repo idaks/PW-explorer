@@ -1,4 +1,4 @@
-# Generated from Desktop/SPIN/ANTLR/Clingo.g4 by ANTLR 4.7
+# Generated from PW-explorer/Clingo Parser/Clingo.g4 by ANTLR 4.7
 from antlr4 import *
 if __name__ is not None and "." in __name__:
     from .ClingoParser import ClingoParser
@@ -95,6 +95,15 @@ class ClingoListener(ParseTreeListener):
 
     # Exit a parse tree produced by ClingoParser#actual_soln.
     def exitActual_soln(self, ctx:ClingoParser.Actual_solnContext):
+        pass
+
+
+    # Enter a parse tree produced by ClingoParser#custom_representation_soln.
+    def enterCustom_representation_soln(self, ctx:ClingoParser.Custom_representation_solnContext):
+        pass
+
+    # Exit a parse tree produced by ClingoParser#custom_representation_soln.
+    def exitCustom_representation_soln(self, ctx:ClingoParser.Custom_representation_solnContext):
         pass
 
 
