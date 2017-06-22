@@ -4,14 +4,20 @@ from ClingoLexer import ClingoLexer
 from ClingoParser import ClingoParser
 from ClingoListener import ClingoListener
 
-class AntlrClingoListener(DrinkListener):
-	
+class AntlrClingoListener(ClingoListener):
+
+	def enterModels(self, ctx):
+		num_models = ctx.NUM_MODELS.getText()
+		num_models = int(num_models)
+		print ("Number of Models: ", num_models)
 
 
 
 
-def main(argv):
-	lexer = ClingoLexer(StdinStream())
+def main(fname):
+	input_file = open(fname)
+	#lexer = ClingoLexer(StdinStream())
+	lexer = ClingoLexer(input_file)
 	stream = CommonTokenStream(lexer)
 	parser = ClingoParser(stream)
 	tree = parser.hi()
@@ -19,5 +25,5 @@ def main(argv):
 	walker = ParseTreeWalker()
 	walker.walk(pw_analyzer, tree)
 
-if __name__ == '__main__':
-    main(sys.argv)
+script, fname = argv
+main(fname)
