@@ -31,12 +31,12 @@ class ClingoListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by ClingoParser#optium.
-    def enterOptium(self, ctx):
+    # Enter a parse tree produced by ClingoParser#optimum.
+    def enterOptimum(self, ctx):
         pass
 
-    # Exit a parse tree produced by ClingoParser#optium.
-    def exitOptium(self, ctx):
+    # Exit a parse tree produced by ClingoParser#optimum.
+    def exitOptimum(self, ctx):
         pass
 
 

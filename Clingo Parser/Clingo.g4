@@ -7,15 +7,15 @@ options {
 }
 
 
-clingoOutput: (solution)* OPTIUM_FOUND? summary ;
+clingoOutput: (solution)* OPTIMUM_FOUND? summary ;
 
-summary: models optium optimization calls time cpuTime ;
+summary: models optimum optimization calls time cpuTime ;
 
 //models: 'Models' (SPACE)+ ':' (SPACE)* NUM_MODELS ;
 models: 'Models' ':' NUM_MODELS ;
 
 //optium: (SPACE)+ 'Optium' (SPACE)+ OPTIUM_FOUND_OR_NOT ;
-optium: 'Optium' OPTIUM_FOUND_OR_NOT ;
+optimum: 'Optimum' ':' OPTIMUM_FOUND_OR_NOT ;
 
 //optimization: 'Optimization' (SPACE)+ ':' (SPACE)* OPTIMAL_SOLN ;
 optimization: 'Optimization' ':' OPTIMAL_SOLN ;
@@ -39,15 +39,15 @@ custom_representation_soln: (Word ',')* Word ;
 
 NUM_MODELS: NUMBER ;
 
-OPTIUM_FOUND_OR_NOT: 'yes' | 'no' ;
+OPTIMUM_FOUND_OR_NOT: 'yes' | 'no' ;
 
 OPTIMAL_SOLN: NUMBER ;
 
 NUM_CALLS: NUMBER ;
 
-TEXT: [a-zA-Z0-9\\_.]+ ;
+TEXT: [a-zA-Z0-9\\_.,:]+ ;
 
-fragment NUMBER: [0-9]+ ;
+NUMBER: [0-9]+ ;
 
 //SPACE: [ \t] ;
 
@@ -63,6 +63,6 @@ CURR_SOLN: NUMBER ;
 
 RELATION_NAME: Word ;
 
-OPTIUM_FOUND: 'OPTIUM FOUND' ;
+OPTIMUM_FOUND: 'OPTIMUM FOUND' ;
 
 //STUFF: (TEXT)+ ;
