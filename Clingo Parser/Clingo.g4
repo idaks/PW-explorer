@@ -33,7 +33,7 @@ solution: 'Answer:' ANS_NUM actual_soln 'Optimization:' CURR_SOLN ;
 
 actual_soln: (RELATION_NAME '(' custom_representation_soln ')')* ;
 
-custom_representation_soln: (Word ',')* Word ;
+custom_representation_soln: (TEXT ',')* TEXT ;
 
 //LEXER RULES
 
@@ -44,16 +44,17 @@ OPTIMUM_FOUND_OR_NOT: 'yes' | 'no' ;
 OPTIMAL_SOLN: NUMBER ;
 
 NUM_CALLS: NUMBER ;
-
 TEXT: [a-zA-Z0-9\\_.,:]+ ;
+//TEXT: ('A'..'Z'|'a'..'z'|'0'..'9'|':'|'\\'|'/'|'-'|'_'|'.')+ ;
 
 NUMBER: [0-9]+ ;
+//NUMBER: ('0'..'9')+ ;
 
 //SPACE: [ \t] ;
 
 //NEWLINE: '\r'? '\n' ;
 
-Word: [a-zA-Z0-9\\_]+ ;
+//TEXT: [a-zA-Z0-9\\_]+ ;
 
 WHITESPACE : ( '\t' | ' ' | '\r' | '\n'| '\u000C' )+ -> skip ;
 
@@ -61,7 +62,7 @@ ANS_NUM: NUMBER ;
 
 CURR_SOLN: NUMBER ;
 
-RELATION_NAME: Word ;
+RELATION_NAME: TEXT ;
 
 OPTIMUM_FOUND: 'OPTIMUM FOUND' ;
 

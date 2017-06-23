@@ -8,7 +8,7 @@ import sys
 def serializedATN():
     with StringIO() as buf:
         buf.write(u"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3")
-        buf.write(u"\30X\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
+        buf.write(u"\27X\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
         buf.write(u"\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4\f\t\f\3\2\7\2\32")
         buf.write(u"\n\2\f\2\16\2\35\13\2\3\2\5\2 \n\2\3\2\3\2\3\3\3\3\3")
         buf.write(u"\3\3\3\3\3\3\3\3\3\3\4\3\4\3\4\3\4\3\5\3\5\3\5\3\5\3")
@@ -20,7 +20,7 @@ def serializedATN():
         buf.write(u"\2\2\f\66\3\2\2\2\16:\3\2\2\2\20<\3\2\2\2\22>\3\2\2\2")
         buf.write(u"\24K\3\2\2\2\26R\3\2\2\2\30\32\5\22\n\2\31\30\3\2\2\2")
         buf.write(u"\32\35\3\2\2\2\33\31\3\2\2\2\33\34\3\2\2\2\34\37\3\2")
-        buf.write(u"\2\2\35\33\3\2\2\2\36 \7\30\2\2\37\36\3\2\2\2\37 \3\2")
+        buf.write(u"\2\2\35\33\3\2\2\2\36 \7\27\2\2\37\36\3\2\2\2\37 \3\2")
         buf.write(u"\2\2 !\3\2\2\2!\"\5\4\3\2\"\3\3\2\2\2#$\5\6\4\2$%\5\b")
         buf.write(u"\5\2%&\5\n\6\2&\'\5\f\7\2\'(\5\16\b\2()\5\20\t\2)\5\3")
         buf.write(u"\2\2\2*+\7\3\2\2+,\7\4\2\2,-\7\r\2\2-\7\3\2\2\2./\7\5")
@@ -28,11 +28,11 @@ def serializedATN():
         buf.write(u"\6\2\2\63\64\7\4\2\2\64\65\7\17\2\2\65\13\3\2\2\2\66")
         buf.write(u"\67\7\7\2\2\678\7\4\2\289\7\20\2\29\r\3\2\2\2:;\7\21")
         buf.write(u"\2\2;\17\3\2\2\2<=\7\21\2\2=\21\3\2\2\2>?\7\b\2\2?@\7")
-        buf.write(u"\25\2\2@A\5\24\13\2AB\7\t\2\2BC\7\26\2\2C\23\3\2\2\2")
-        buf.write(u"DE\7\27\2\2EF\7\n\2\2FG\5\26\f\2GH\7\13\2\2HJ\3\2\2\2")
+        buf.write(u"\24\2\2@A\5\24\13\2AB\7\t\2\2BC\7\25\2\2C\23\3\2\2\2")
+        buf.write(u"DE\7\26\2\2EF\7\n\2\2FG\5\26\f\2GH\7\13\2\2HJ\3\2\2\2")
         buf.write(u"ID\3\2\2\2JM\3\2\2\2KI\3\2\2\2KL\3\2\2\2L\25\3\2\2\2")
-        buf.write(u"MK\3\2\2\2NO\7\23\2\2OQ\7\f\2\2PN\3\2\2\2QT\3\2\2\2R")
-        buf.write(u"P\3\2\2\2RS\3\2\2\2SU\3\2\2\2TR\3\2\2\2UV\7\23\2\2V\27")
+        buf.write(u"MK\3\2\2\2NO\7\21\2\2OQ\7\f\2\2PN\3\2\2\2QT\3\2\2\2R")
+        buf.write(u"P\3\2\2\2RS\3\2\2\2SU\3\2\2\2TR\3\2\2\2UV\7\21\2\2V\27")
         buf.write(u"\3\2\2\2\6\33\37KR")
         return buf.getvalue()
 
@@ -51,15 +51,14 @@ class ClingoParser ( Parser ):
                      u"'Calls'", u"'Answer:'", u"'Optimization:'", u"'('", 
                      u"')'", u"','", u"<INVALID>", u"<INVALID>", u"<INVALID>", 
                      u"<INVALID>", u"<INVALID>", u"<INVALID>", u"<INVALID>", 
-                     u"<INVALID>", u"<INVALID>", u"<INVALID>", u"<INVALID>", 
-                     u"'OPTIMUM FOUND'" ]
+                     u"<INVALID>", u"<INVALID>", u"<INVALID>", u"'OPTIMUM FOUND'" ]
 
     symbolicNames = [ u"<INVALID>", u"<INVALID>", u"<INVALID>", u"<INVALID>", 
                       u"<INVALID>", u"<INVALID>", u"<INVALID>", u"<INVALID>", 
                       u"<INVALID>", u"<INVALID>", u"<INVALID>", u"NUM_MODELS", 
                       u"OPTIMUM_FOUND_OR_NOT", u"OPTIMAL_SOLN", u"NUM_CALLS", 
-                      u"TEXT", u"NUMBER", u"Word", u"WHITESPACE", u"ANS_NUM", 
-                      u"CURR_SOLN", u"RELATION_NAME", u"OPTIMUM_FOUND" ]
+                      u"TEXT", u"NUMBER", u"WHITESPACE", u"ANS_NUM", u"CURR_SOLN", 
+                      u"RELATION_NAME", u"OPTIMUM_FOUND" ]
 
     RULE_clingoOutput = 0
     RULE_summary = 1
@@ -94,12 +93,11 @@ class ClingoParser ( Parser ):
     NUM_CALLS=14
     TEXT=15
     NUMBER=16
-    Word=17
-    WHITESPACE=18
-    ANS_NUM=19
-    CURR_SOLN=20
-    RELATION_NAME=21
-    OPTIMUM_FOUND=22
+    WHITESPACE=17
+    ANS_NUM=18
+    CURR_SOLN=19
+    RELATION_NAME=20
+    OPTIMUM_FOUND=21
 
     def __init__(self, input, output=sys.stdout):
         super(ClingoParser, self).__init__(input, output=output)
@@ -622,11 +620,11 @@ class ClingoParser ( Parser ):
             super(ClingoParser.Custom_representation_solnContext, self).__init__(parent, invokingState)
             self.parser = parser
 
-        def Word(self, i=None):
+        def TEXT(self, i=None):
             if i is None:
-                return self.getTokens(ClingoParser.Word)
+                return self.getTokens(ClingoParser.TEXT)
             else:
-                return self.getToken(ClingoParser.Word, i)
+                return self.getToken(ClingoParser.TEXT, i)
 
         def getRuleIndex(self):
             return ClingoParser.RULE_custom_representation_soln
@@ -654,7 +652,7 @@ class ClingoParser ( Parser ):
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
                     self.state = 76
-                    self.match(ClingoParser.Word)
+                    self.match(ClingoParser.TEXT)
                     self.state = 77
                     self.match(ClingoParser.T__9) 
                 self.state = 82
@@ -662,7 +660,7 @@ class ClingoParser ( Parser ):
                 _alt = self._interp.adaptivePredict(self._input,3,self._ctx)
 
             self.state = 83
-            self.match(ClingoParser.Word)
+            self.match(ClingoParser.TEXT)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
