@@ -7,9 +7,9 @@ from ClingoListener import ClingoListener
 class AntlrClingoListener(ClingoListener):
 
 	def enterModels(self, ctx):
-		num_models = ctx.NUM_MODELS().getText()
+		num_models = ctx.TEXT().getText()
 		num_models = int(num_models)
-		print "Number of Models: ", num_models
+		print "Number of Models:", num_models
 
 
 
