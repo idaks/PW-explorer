@@ -13,6 +13,33 @@ class ClingoListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by ClingoParser#solution.
+    def enterSolution(self, ctx):
+        pass
+
+    # Exit a parse tree produced by ClingoParser#solution.
+    def exitSolution(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by ClingoParser#actual_soln.
+    def enterActual_soln(self, ctx):
+        pass
+
+    # Exit a parse tree produced by ClingoParser#actual_soln.
+    def exitActual_soln(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by ClingoParser#custom_representation_soln.
+    def enterCustom_representation_soln(self, ctx):
+        pass
+
+    # Exit a parse tree produced by ClingoParser#custom_representation_soln.
+    def exitCustom_representation_soln(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by ClingoParser#summary.
     def enterSummary(self, ctx):
         pass
@@ -73,33 +100,6 @@ class ClingoListener(ParseTreeListener):
 
     # Exit a parse tree produced by ClingoParser#cpuTime.
     def exitCpuTime(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by ClingoParser#solution.
-    def enterSolution(self, ctx):
-        pass
-
-    # Exit a parse tree produced by ClingoParser#solution.
-    def exitSolution(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by ClingoParser#actual_soln.
-    def enterActual_soln(self, ctx):
-        pass
-
-    # Exit a parse tree produced by ClingoParser#actual_soln.
-    def exitActual_soln(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by ClingoParser#custom_representation_soln.
-    def enterCustom_representation_soln(self, ctx):
-        pass
-
-    # Exit a parse tree produced by ClingoParser#custom_representation_soln.
-    def exitCustom_representation_soln(self, ctx):
         pass
 
 
