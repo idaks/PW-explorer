@@ -8,11 +8,10 @@ options {
 
 clingoOutput: (solution)* OPTIMUM_FOUND? summary ;
 
-solution: 'Answer:' TEXT actual_soln 'Optimization:' TEXT ;
+solution: 'Answer:' TEXT (actual_soln)* 'Optimization:' TEXT ;
 
-actual_soln: (TEXT '(' custom_representation_soln ')')* ;
+actual_soln: TEXT '(' custom_representation_soln ')' ;
 
-//custom_representation_soln: (TEXT ',')* TEXT ;
 custom_representation_soln: TEXT ;
 
 summary: models optimum optimization calls time cpuTime ;
@@ -32,7 +31,8 @@ cpuTime: (TEXT | '(' | ')' | ':')+ ;
 
 						//LEXER RULES
 
-OPTIMUM_FOUND: 'OPTIMUM FOUND' ;
+OPTIMUM_FOUND: 'OPTIMUM FOUND' ; 
+// NOTE: need to check what happens when no optimum soln
 
 TEXT: [a-zA-Z0-9\\_.,:]+ ;
 
@@ -70,6 +70,8 @@ WHITESPACE : ( '\t' | ' ' | '\r' | '\n'| '\u000C' )+ -> skip ;
 
 //might have to come from the input file??
 //solution: 'Answer:' ANS_NUM (NEWLINE) actual_soln (NEWLINE) 'Optimization:' CURR_SOLN ;
+
+//custom_representation_soln: (TEXT ',')* TEXT ;
 
 //NUM_MODELS: NUMBER ;
 

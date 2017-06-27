@@ -11,29 +11,29 @@ def serializedATN():
         buf.write(u"\16W\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
         buf.write(u"\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4\f\t\f\3\2\7\2\32")
         buf.write(u"\n\2\f\2\16\2\35\13\2\3\2\5\2 \n\2\3\2\3\2\3\3\3\3\3")
-        buf.write(u"\3\3\3\3\3\3\3\3\4\3\4\3\4\3\4\3\4\7\4/\n\4\f\4\16\4")
-        buf.write(u"\62\13\4\3\5\3\5\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\7\3\7")
-        buf.write(u"\3\7\3\7\3\b\3\b\3\b\3\b\3\t\3\t\3\t\3\t\3\n\3\n\3\n")
-        buf.write(u"\3\n\3\13\6\13N\n\13\r\13\16\13O\3\f\6\fS\n\f\r\f\16")
-        buf.write(u"\fT\3\f\2\2\r\2\4\6\b\n\f\16\20\22\24\26\2\3\5\2\5\6")
-        buf.write(u"\b\b\r\r\2P\2\33\3\2\2\2\4#\3\2\2\2\6\60\3\2\2\2\b\63")
-        buf.write(u"\3\2\2\2\n\65\3\2\2\2\f<\3\2\2\2\16@\3\2\2\2\20D\3\2")
-        buf.write(u"\2\2\22H\3\2\2\2\24M\3\2\2\2\26R\3\2\2\2\30\32\5\4\3")
-        buf.write(u"\2\31\30\3\2\2\2\32\35\3\2\2\2\33\31\3\2\2\2\33\34\3")
-        buf.write(u"\2\2\2\34\37\3\2\2\2\35\33\3\2\2\2\36 \7\f\2\2\37\36")
-        buf.write(u"\3\2\2\2\37 \3\2\2\2 !\3\2\2\2!\"\5\n\6\2\"\3\3\2\2\2")
-        buf.write(u"#$\7\3\2\2$%\7\r\2\2%&\5\6\4\2&\'\7\4\2\2\'(\7\r\2\2")
-        buf.write(u"(\5\3\2\2\2)*\7\r\2\2*+\7\5\2\2+,\5\b\5\2,-\7\6\2\2-")
-        buf.write(u"/\3\2\2\2.)\3\2\2\2/\62\3\2\2\2\60.\3\2\2\2\60\61\3\2")
-        buf.write(u"\2\2\61\7\3\2\2\2\62\60\3\2\2\2\63\64\7\r\2\2\64\t\3")
-        buf.write(u"\2\2\2\65\66\5\f\7\2\66\67\5\16\b\2\678\5\20\t\289\5")
-        buf.write(u"\22\n\29:\5\24\13\2:;\5\26\f\2;\13\3\2\2\2<=\7\7\2\2")
-        buf.write(u"=>\7\b\2\2>?\7\r\2\2?\r\3\2\2\2@A\7\t\2\2AB\7\b\2\2B")
-        buf.write(u"C\7\r\2\2C\17\3\2\2\2DE\7\n\2\2EF\7\b\2\2FG\7\r\2\2G")
-        buf.write(u"\21\3\2\2\2HI\7\13\2\2IJ\7\b\2\2JK\7\r\2\2K\23\3\2\2")
-        buf.write(u"\2LN\t\2\2\2ML\3\2\2\2NO\3\2\2\2OM\3\2\2\2OP\3\2\2\2")
-        buf.write(u"P\25\3\2\2\2QS\t\2\2\2RQ\3\2\2\2ST\3\2\2\2TR\3\2\2\2")
-        buf.write(u"TU\3\2\2\2U\27\3\2\2\2\7\33\37\60OT")
+        buf.write(u"\3\7\3\'\n\3\f\3\16\3*\13\3\3\3\3\3\3\3\3\4\3\4\3\4\3")
+        buf.write(u"\4\3\4\3\5\3\5\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\7\3\7\3")
+        buf.write(u"\7\3\7\3\b\3\b\3\b\3\b\3\t\3\t\3\t\3\t\3\n\3\n\3\n\3")
+        buf.write(u"\n\3\13\6\13N\n\13\r\13\16\13O\3\f\6\fS\n\f\r\f\16\f")
+        buf.write(u"T\3\f\2\2\r\2\4\6\b\n\f\16\20\22\24\26\2\3\5\2\5\6\b")
+        buf.write(u"\b\r\r\2P\2\33\3\2\2\2\4#\3\2\2\2\6.\3\2\2\2\b\63\3\2")
+        buf.write(u"\2\2\n\65\3\2\2\2\f<\3\2\2\2\16@\3\2\2\2\20D\3\2\2\2")
+        buf.write(u"\22H\3\2\2\2\24M\3\2\2\2\26R\3\2\2\2\30\32\5\4\3\2\31")
+        buf.write(u"\30\3\2\2\2\32\35\3\2\2\2\33\31\3\2\2\2\33\34\3\2\2\2")
+        buf.write(u"\34\37\3\2\2\2\35\33\3\2\2\2\36 \7\f\2\2\37\36\3\2\2")
+        buf.write(u"\2\37 \3\2\2\2 !\3\2\2\2!\"\5\n\6\2\"\3\3\2\2\2#$\7\3")
+        buf.write(u"\2\2$(\7\r\2\2%\'\5\6\4\2&%\3\2\2\2\'*\3\2\2\2(&\3\2")
+        buf.write(u"\2\2()\3\2\2\2)+\3\2\2\2*(\3\2\2\2+,\7\4\2\2,-\7\r\2")
+        buf.write(u"\2-\5\3\2\2\2./\7\r\2\2/\60\7\5\2\2\60\61\5\b\5\2\61")
+        buf.write(u"\62\7\6\2\2\62\7\3\2\2\2\63\64\7\r\2\2\64\t\3\2\2\2\65")
+        buf.write(u"\66\5\f\7\2\66\67\5\16\b\2\678\5\20\t\289\5\22\n\29:")
+        buf.write(u"\5\24\13\2:;\5\26\f\2;\13\3\2\2\2<=\7\7\2\2=>\7\b\2\2")
+        buf.write(u">?\7\r\2\2?\r\3\2\2\2@A\7\t\2\2AB\7\b\2\2BC\7\r\2\2C")
+        buf.write(u"\17\3\2\2\2DE\7\n\2\2EF\7\b\2\2FG\7\r\2\2G\21\3\2\2\2")
+        buf.write(u"HI\7\13\2\2IJ\7\b\2\2JK\7\r\2\2K\23\3\2\2\2LN\t\2\2\2")
+        buf.write(u"ML\3\2\2\2NO\3\2\2\2OM\3\2\2\2OP\3\2\2\2P\25\3\2\2\2")
+        buf.write(u"QS\t\2\2\2RQ\3\2\2\2ST\3\2\2\2TR\3\2\2\2TU\3\2\2\2U\27")
+        buf.write(u"\3\2\2\2\7\33\37(OT")
         return buf.getvalue()
 
 
@@ -175,8 +175,11 @@ class ClingoParser ( Parser ):
             else:
                 return self.getToken(ClingoParser.TEXT, i)
 
-        def actual_soln(self):
-            return self.getTypedRuleContext(ClingoParser.Actual_solnContext,0)
+        def actual_soln(self, i=None):
+            if i is None:
+                return self.getTypedRuleContexts(ClingoParser.Actual_solnContext)
+            else:
+                return self.getTypedRuleContext(ClingoParser.Actual_solnContext,i)
 
 
         def getRuleIndex(self):
@@ -197,17 +200,26 @@ class ClingoParser ( Parser ):
 
         localctx = ClingoParser.SolutionContext(self, self._ctx, self.state)
         self.enterRule(localctx, 2, self.RULE_solution)
+        self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 33
             self.match(ClingoParser.T__0)
             self.state = 34
             self.match(ClingoParser.TEXT)
-            self.state = 35
-            self.actual_soln()
-            self.state = 36
+            self.state = 38
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            while _la==ClingoParser.TEXT:
+                self.state = 35
+                self.actual_soln()
+                self.state = 40
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+
+            self.state = 41
             self.match(ClingoParser.T__1)
-            self.state = 37
+            self.state = 42
             self.match(ClingoParser.TEXT)
         except RecognitionException as re:
             localctx.exception = re
@@ -223,17 +235,11 @@ class ClingoParser ( Parser ):
             super(ClingoParser.Actual_solnContext, self).__init__(parent, invokingState)
             self.parser = parser
 
-        def TEXT(self, i=None):
-            if i is None:
-                return self.getTokens(ClingoParser.TEXT)
-            else:
-                return self.getToken(ClingoParser.TEXT, i)
+        def TEXT(self):
+            return self.getToken(ClingoParser.TEXT, 0)
 
-        def custom_representation_soln(self, i=None):
-            if i is None:
-                return self.getTypedRuleContexts(ClingoParser.Custom_representation_solnContext)
-            else:
-                return self.getTypedRuleContext(ClingoParser.Custom_representation_solnContext,i)
+        def custom_representation_soln(self):
+            return self.getTypedRuleContext(ClingoParser.Custom_representation_solnContext,0)
 
 
         def getRuleIndex(self):
@@ -254,25 +260,16 @@ class ClingoParser ( Parser ):
 
         localctx = ClingoParser.Actual_solnContext(self, self._ctx, self.state)
         self.enterRule(localctx, 4, self.RULE_actual_soln)
-        self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
+            self.state = 44
+            self.match(ClingoParser.TEXT)
+            self.state = 45
+            self.match(ClingoParser.T__2)
             self.state = 46
-            self._errHandler.sync(self)
-            _la = self._input.LA(1)
-            while _la==ClingoParser.TEXT:
-                self.state = 39
-                self.match(ClingoParser.TEXT)
-                self.state = 40
-                self.match(ClingoParser.T__2)
-                self.state = 41
-                self.custom_representation_soln()
-                self.state = 42
-                self.match(ClingoParser.T__3)
-                self.state = 48
-                self._errHandler.sync(self)
-                _la = self._input.LA(1)
-
+            self.custom_representation_soln()
+            self.state = 47
+            self.match(ClingoParser.T__3)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
