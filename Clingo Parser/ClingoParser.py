@@ -8,7 +8,7 @@ import sys
 def serializedATN():
     with StringIO() as buf:
         buf.write(u"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3")
-        buf.write(u"\20^\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
+        buf.write(u"\17^\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
         buf.write(u"\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4\f\t\f\3\2\7\2\32")
         buf.write(u"\n\2\f\2\16\2\35\13\2\3\2\5\2 \n\2\3\2\3\2\3\3\3\3\3")
         buf.write(u"\3\3\3\3\3\3\3\3\3\3\4\3\4\3\4\3\4\3\5\3\5\3\5\3\5\3")
@@ -16,26 +16,26 @@ def serializedATN():
         buf.write(u"=\3\t\6\tA\n\t\r\t\16\tB\3\n\3\n\3\n\3\n\3\n\3\n\3\13")
         buf.write(u"\3\13\3\13\3\13\3\13\7\13P\n\13\f\13\16\13S\13\13\3\f")
         buf.write(u"\3\f\7\fW\n\f\f\f\16\fZ\13\f\3\f\3\f\3\f\2\2\r\2\4\6")
-        buf.write(u"\b\n\f\16\20\22\24\26\2\3\5\2\4\4\b\t\17\17\2X\2\33\3")
+        buf.write(u"\b\n\f\16\20\22\24\26\2\3\5\2\4\4\b\t\16\16\2X\2\33\3")
         buf.write(u"\2\2\2\4#\3\2\2\2\6*\3\2\2\2\b.\3\2\2\2\n\62\3\2\2\2")
         buf.write(u"\f\66\3\2\2\2\16;\3\2\2\2\20@\3\2\2\2\22D\3\2\2\2\24")
         buf.write(u"Q\3\2\2\2\26X\3\2\2\2\30\32\5\22\n\2\31\30\3\2\2\2\32")
         buf.write(u"\35\3\2\2\2\33\31\3\2\2\2\33\34\3\2\2\2\34\37\3\2\2\2")
-        buf.write(u"\35\33\3\2\2\2\36 \7\16\2\2\37\36\3\2\2\2\37 \3\2\2\2")
+        buf.write(u"\35\33\3\2\2\2\36 \7\r\2\2\37\36\3\2\2\2\37 \3\2\2\2")
         buf.write(u" !\3\2\2\2!\"\5\4\3\2\"\3\3\2\2\2#$\5\6\4\2$%\5\b\5\2")
         buf.write(u"%&\5\n\6\2&\'\5\f\7\2\'(\5\16\b\2()\5\20\t\2)\5\3\2\2")
-        buf.write(u"\2*+\7\3\2\2+,\7\4\2\2,-\7\17\2\2-\7\3\2\2\2./\7\5\2")
-        buf.write(u"\2/\60\7\4\2\2\60\61\7\r\2\2\61\t\3\2\2\2\62\63\7\6\2")
-        buf.write(u"\2\63\64\7\4\2\2\64\65\7\17\2\2\65\13\3\2\2\2\66\67\7")
-        buf.write(u"\7\2\2\678\7\4\2\289\7\17\2\29\r\3\2\2\2:<\t\2\2\2;:")
-        buf.write(u"\3\2\2\2<=\3\2\2\2=;\3\2\2\2=>\3\2\2\2>\17\3\2\2\2?A")
-        buf.write(u"\t\2\2\2@?\3\2\2\2AB\3\2\2\2B@\3\2\2\2BC\3\2\2\2C\21")
-        buf.write(u"\3\2\2\2DE\7\n\2\2EF\7\17\2\2FG\5\24\13\2GH\7\13\2\2")
-        buf.write(u"HI\7\17\2\2I\23\3\2\2\2JK\7\17\2\2KL\7\b\2\2LM\5\26\f")
+        buf.write(u"\2*+\7\3\2\2+,\7\4\2\2,-\7\16\2\2-\7\3\2\2\2./\7\5\2")
+        buf.write(u"\2/\60\7\4\2\2\60\61\7\16\2\2\61\t\3\2\2\2\62\63\7\6")
+        buf.write(u"\2\2\63\64\7\4\2\2\64\65\7\16\2\2\65\13\3\2\2\2\66\67")
+        buf.write(u"\7\7\2\2\678\7\4\2\289\7\16\2\29\r\3\2\2\2:<\t\2\2\2")
+        buf.write(u";:\3\2\2\2<=\3\2\2\2=;\3\2\2\2=>\3\2\2\2>\17\3\2\2\2")
+        buf.write(u"?A\t\2\2\2@?\3\2\2\2AB\3\2\2\2B@\3\2\2\2BC\3\2\2\2C\21")
+        buf.write(u"\3\2\2\2DE\7\n\2\2EF\7\16\2\2FG\5\24\13\2GH\7\13\2\2")
+        buf.write(u"HI\7\16\2\2I\23\3\2\2\2JK\7\16\2\2KL\7\b\2\2LM\5\26\f")
         buf.write(u"\2MN\7\t\2\2NP\3\2\2\2OJ\3\2\2\2PS\3\2\2\2QO\3\2\2\2")
-        buf.write(u"QR\3\2\2\2R\25\3\2\2\2SQ\3\2\2\2TU\7\17\2\2UW\7\f\2\2")
+        buf.write(u"QR\3\2\2\2R\25\3\2\2\2SQ\3\2\2\2TU\7\16\2\2UW\7\f\2\2")
         buf.write(u"VT\3\2\2\2WZ\3\2\2\2XV\3\2\2\2XY\3\2\2\2Y[\3\2\2\2ZX")
-        buf.write(u"\3\2\2\2[\\\7\17\2\2\\\27\3\2\2\2\b\33\37=BQX")
+        buf.write(u"\3\2\2\2[\\\7\16\2\2\\\27\3\2\2\2\b\33\37=BQX")
         return buf.getvalue()
 
 
@@ -51,12 +51,12 @@ class ClingoParser ( Parser ):
 
     literalNames = [ u"<INVALID>", u"'Models'", u"':'", u"'Optimum'", u"'Optimization'", 
                      u"'Calls'", u"'('", u"')'", u"'Answer:'", u"'Optimization:'", 
-                     u"','", u"<INVALID>", u"'OPTIMUM FOUND'" ]
+                     u"','", u"'OPTIMUM FOUND'" ]
 
     symbolicNames = [ u"<INVALID>", u"<INVALID>", u"<INVALID>", u"<INVALID>", 
                       u"<INVALID>", u"<INVALID>", u"<INVALID>", u"<INVALID>", 
-                      u"<INVALID>", u"<INVALID>", u"<INVALID>", u"OPTIMUM_FOUND_OR_NOT", 
-                      u"OPTIMUM_FOUND", u"TEXT", u"WHITESPACE" ]
+                      u"<INVALID>", u"<INVALID>", u"<INVALID>", u"OPTIMUM_FOUND", 
+                      u"TEXT", u"WHITESPACE" ]
 
     RULE_clingoOutput = 0
     RULE_summary = 1
@@ -85,10 +85,9 @@ class ClingoParser ( Parser ):
     T__7=8
     T__8=9
     T__9=10
-    OPTIMUM_FOUND_OR_NOT=11
-    OPTIMUM_FOUND=12
-    TEXT=13
-    WHITESPACE=14
+    OPTIMUM_FOUND=11
+    TEXT=12
+    WHITESPACE=13
 
     def __init__(self, input, output=sys.stdout):
         super(ClingoParser, self).__init__(input, output=output)
@@ -286,8 +285,8 @@ class ClingoParser ( Parser ):
             super(ClingoParser.OptimumContext, self).__init__(parent, invokingState)
             self.parser = parser
 
-        def OPTIMUM_FOUND_OR_NOT(self):
-            return self.getToken(ClingoParser.OPTIMUM_FOUND_OR_NOT, 0)
+        def TEXT(self):
+            return self.getToken(ClingoParser.TEXT, 0)
 
         def getRuleIndex(self):
             return ClingoParser.RULE_optimum
@@ -314,7 +313,7 @@ class ClingoParser ( Parser ):
             self.state = 45
             self.match(ClingoParser.T__1)
             self.state = 46
-            self.match(ClingoParser.OPTIMUM_FOUND_OR_NOT)
+            self.match(ClingoParser.TEXT)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
