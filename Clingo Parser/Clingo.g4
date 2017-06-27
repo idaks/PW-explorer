@@ -1,40 +1,26 @@
 grammar Clingo;
 
-//Parser Rules:
-
 options {
     language = Python2;
 }
 
-
+							//Parser Rules:
+							
 clingoOutput: (solution)* OPTIMUM_FOUND? summary ;
 
 summary: models optimum optimization calls time cpuTime ;
 
-//models: 'Models' (SPACE)+ ':' (SPACE)* NUM_MODELS ;
-
 models: 'Models' ':' TEXT ;
 
-//optium: (SPACE)+ 'Optium' (SPACE)+ OPTIUM_FOUND_OR_NOT ;
-
-optimum: 'Optimum' ':' OPTIMUM_FOUND_OR_NOT ;
-
-//optimization: 'Optimization' (SPACE)+ ':' (SPACE)* OPTIMAL_SOLN ;
+optimum: 'Optimum' ':' TEXT ;
 
 optimization: 'Optimization' ':' TEXT ;
 
-//calls: 'Calls' (SPACE)+ ':' (SPACE)* NUM_CALLS ;
-
 calls: 'Calls' ':' TEXT ;
 
-//time: 'Time' ':' TEXT '(' TEXT ')' ;
 time: (TEXT | '(' | ')' | ':')+ ;
 
-//cpuTime: 'CPU Time' ':' TEXT ;
 cpuTime: (TEXT | '(' | ')' | ':')+ ;
-
-//might have to come from the input file??
-//solution: 'Answer:' ANS_NUM (NEWLINE) actual_soln (NEWLINE) 'Optimization:' CURR_SOLN ;
 
 solution: 'Answer:' TEXT actual_soln 'Optimization:' TEXT ;
 
@@ -42,31 +28,21 @@ actual_soln: (TEXT '(' custom_representation_soln ')')* ;
 
 custom_representation_soln: (TEXT ',')* TEXT ;
 
-//LEXER RULES
-
-//NUM_MODELS: NUMBER ;
-
-OPTIMUM_FOUND_OR_NOT: 'yes' | 'no' ;
-
-//OPTIMAL_SOLN: NUMBER ;
-
-//NUM_CALLS: NUMBER ;
-
-//ANS_NUM: NUMBER ;
-
-//CURR_SOLN: NUMBER ;
+						//LEXER RULES
 
 OPTIMUM_FOUND: 'OPTIMUM FOUND' ;
-
-//NUMBER: [0-9]+ ;
-
-//NUMBER: ('0'..'9')+ ;
-
-//RELATION_NAME: TEXT ;
 
 TEXT: [a-zA-Z0-9\\_.,:]+ ;
 
 WHITESPACE : ( '\t' | ' ' | '\r' | '\n'| '\u000C' )+ -> skip ;
+
+
+
+
+
+				//Unused Variable from past versions:
+
+//OPTIMUM_FOUND_OR_NOT: 'yes' | 'no' ;
 
 //SPACE: [ \t] ;
 
@@ -77,3 +53,34 @@ WHITESPACE : ( '\t' | ' ' | '\r' | '\n'| '\u000C' )+ -> skip ;
 //TEXT: ('A'..'Z'|'a'..'z'|'0'..'9'|':'|'\\'|'/'|'-'|'_'|'.')+ ;
 
 //STUFF: (TEXT)+ ;
+
+//models: 'Models' (SPACE)+ ':' (SPACE)* NUM_MODELS ;
+
+//optium: (SPACE)+ 'Optium' (SPACE)+ OPTIUM_FOUND_OR_NOT ;
+
+//optimization: 'Optimization' (SPACE)+ ':' (SPACE)* OPTIMAL_SOLN ;
+
+//calls: 'Calls' (SPACE)+ ':' (SPACE)* NUM_CALLS ;
+
+//time: 'Time' ':' TEXT '(' TEXT ')' ;
+
+//cpuTime: 'CPU Time' ':' TEXT ;
+
+//might have to come from the input file??
+//solution: 'Answer:' ANS_NUM (NEWLINE) actual_soln (NEWLINE) 'Optimization:' CURR_SOLN ;
+
+//NUM_MODELS: NUMBER ;
+
+//OPTIMAL_SOLN: NUMBER ;
+
+//NUM_CALLS: NUMBER ;
+
+//ANS_NUM: NUMBER ;
+
+//CURR_SOLN: NUMBER ;
+
+//NUMBER: [0-9]+ ;
+
+//NUMBER: ('0'..'9')+ ;
+
+//RELATION_NAME: TEXT ;
