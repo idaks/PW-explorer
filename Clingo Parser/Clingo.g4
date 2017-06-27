@@ -5,8 +5,15 @@ options {
 }
 
 							//Parser Rules:
-							
+
 clingoOutput: (solution)* OPTIMUM_FOUND? summary ;
+
+solution: 'Answer:' TEXT actual_soln 'Optimization:' TEXT ;
+
+actual_soln: (TEXT '(' custom_representation_soln ')')* ;
+
+//custom_representation_soln: (TEXT ',')* TEXT ;
+custom_representation_soln: TEXT ;
 
 summary: models optimum optimization calls time cpuTime ;
 
@@ -22,11 +29,6 @@ time: (TEXT | '(' | ')' | ':')+ ;
 
 cpuTime: (TEXT | '(' | ')' | ':')+ ;
 
-solution: 'Answer:' TEXT actual_soln 'Optimization:' TEXT ;
-
-actual_soln: (TEXT '(' custom_representation_soln ')')* ;
-
-custom_representation_soln: (TEXT ',')* TEXT ;
 
 						//LEXER RULES
 
