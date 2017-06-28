@@ -312,7 +312,8 @@ walker.walk(pw_analyzer, tree)
 
 ######################################################################
 
-for df in dfs:
+for i, df in enumerate(dfs):
+	print relations[i].relation_name
 	print df
 
 
