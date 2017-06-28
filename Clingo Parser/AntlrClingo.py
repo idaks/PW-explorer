@@ -5,7 +5,15 @@ from ClingoParser import ClingoParser
 from ClingoListener import ClingoListener
 import pandas as pd
 import numpy as np
+import inspect
+from antlr4.tree.Trees import Trees
 
+#######################################################
+#to help debug
+def lineno():
+    """Returns the current line number in our program."""
+    return inspect.currentframe().f_back.f_lineno
+#######################################################
 
 #######################################################
 #helper func
@@ -17,36 +25,6 @@ def isfloat(value):
     return False
 #######################################################
 
-
-#######################################################
-
-class PossibleWorld:
-
-	n_pws = 1
-	def _init__(self, num_relations):
-		rls = [[] for i in range(num_relations)]
-		pw_id = n_pws
-		n_pws += 1
-		pw_soln = 0
-
-
-	def add_relation(self, relation_id, relation_data):
-		if relation_id >= len(rls):
-			rls.append([])
-		rls[relation_id].append(relation_data)
-
-#######################################################
-
-#######################################################
-class Relation:
-
-
-	def __init__(self, relation_name):
-		self.relation_name = relation_name
-		self.arrity = 0
-		r_id = 0
-#######################################################
-
 pws = []
 relations = []
 expected_pws = 0
@@ -54,35 +32,153 @@ curr_pw = None
 curr_rl = None
 curr_rl_data = None
 n_rls = 0
+dfs = []
+
+# global pws 
+# global relations 
+# global expected_pws 
+# global curr_pw
+# global curr_rl 
+# global curr_rl_data 
+# global n_rls
+# global dfs 
+
+#######################################################
+
+class PossibleWorld:
+	n_pws = 1
+	def __init__(self, num_relations):
+		self.rls = [[] for i in range(num_relations)]
+		self.pw_id = PossibleWorld.n_pws
+		PossibleWorld.n_pws += 1
+		self.pw_soln = 0
+
+
+	def add_relation(self, relation_id, relation_data):
+		if relation_id >= len(self.rls):
+			self.rls.append([])
+		self.rls[relation_id].append(relation_data)
+
+#######################################################
+
+#######################################################
+class Relation:
+
+	def __init__(self, relation_name):
+		self.relation_name = relation_name
+		self.arrity = 0
+		self.r_id = 0
+#######################################################
+
+########################################################################
+
+def rearrangePWSandRLS():
+
+	global pws 
+	global relations 
+	global expected_pws 
+	global curr_pw
+	global curr_rl 
+	global curr_rl_data 
+	global n_rls
+	global dfs
+	#sort PWs and Rls by their ids
+	#print lineno()
+	relations.sort(key = lambda x: x.r_id)
+	pws.sort(key = lambda x: x.pw_id)
+
+
+def loadIntoPandas():
+
+	global pws 
+	global relations 
+	global expected_pws 
+	global curr_pw
+	global curr_rl 
+	global curr_rl_data 
+	global n_rls
+	global dfs
+
+	#print lineno()
+	for n, rl in enumerate(relations):
+		cls = ['pw']
+		cls.extend([str('x' + str(i)) for i in range(1, rl.arrity + 1)])
+
+		rws = [] #could convert into numpy if sure it's all float/int
+		for m, pw in enumerate(pws):
+			rl_data_pw = pw.rls[rl.r_id]
+			for i in range(len(rl_data_pw)):
+				rl_data_pw[i].insert(0, pw.pw_id)
+			rws.extend(rl_data_pw)
+
+		df = pd.DataFrame(rws, columns = cls)
+		dfs.append(df)
+
+####################################################################
 
 ###################################################################
 
 class AntlrClingoListener(ClingoListener):
 
-
-	def enterClingoOutput(self, ctx):
-		pass 
-
 	def enterSolution(self, ctx):
 
+		global pws 
+		global relations 
+		global expected_pws 
+		global curr_pw
+		global curr_rl 
+		global curr_rl_data 
+		global n_rls
+		global dfs 
+				
 		curr_pw = PossibleWorld(n_rls)
-		assert curr_pw.pw_id == int(ctx.TEXT(0).getText())
+		#assert curr_pw.pw_id == int(ctx.TEXT(0).getText())
 		curr_pw.pw_soln = float(ctx.TEXT(1).getText()) if isfloat(ctx.TEXT(1).getText()) else ctx.TEXT(1).getText()
+		#print lineno()
 
-	def enterActual_soln(self, ctx): #NOTE: need to modify this, will only work for last relation
+	def enterActual_soln(self, ctx): 
 		
+		global pws 
+		global relations 
+		global expected_pws 
+		global curr_pw
+		global curr_rl 
+		global curr_rl_data 
+		global n_rls
+		global dfs
+
 		curr_rl = Relation(ctx.TEXT().getText())
+		#print lineno()
 
 	def enterCustom_representation_soln(self, ctx):
 
+		global pws 
+		global relations 
+		global expected_pws 
+		global curr_pw
+		global curr_rl 
+		global curr_rl_data 
+		global n_rls
+		global dfs
+
 		sol = ctx.TEXT().getText();
 		curr_rl_data = sol.split(',')
-		curr_rl.arrity = len(rl_data)
+		curr_rl.arrity = len(curr_rl_data)
 		rl_name_mod = str(curr_rl.relation_name + '_' + str(curr_rl.arrity))
 		curr_rl.relation_name = rl_name_mod
+		#print lineno()
 
 	def exitCustom_representation_soln(self, ctx):
 
+		global pws 
+		global relations 
+		global expected_pws 
+		global curr_pw
+		global curr_rl 
+		global curr_rl_data 
+		global n_rls
+		global dfs
+		
 		foundMatch = False
 		for rl in relations:
 			if curr_rl.relation_name == rl.relation_name and curr_rl.arrity == rl.arrity:
@@ -101,19 +197,50 @@ class AntlrClingoListener(ClingoListener):
 		curr_pw.add_relation(curr_rl.r_id, curr_rl_data)
 		curr_rl = None #could introduce bugs if passed by pointer in the upper statement, so be careful, use copy() if needed
 		curr_rl_data = None 
+		#print lineno()
 
 	def exitActual_soln(self, ctx):
 
+		global pws 
+		global relations 
+		global expected_pws 
+		global curr_pw
+		global curr_rl 
+		global curr_rl_data 
+		global n_rls
+		global dfs
+
+		#print lineno()
 		curr_rl = None
 		curr_rl_data = None
 
 	def exitSolution(self, ctx):
 
+		global pws 
+		global relations 
+		global expected_pws 
+		global curr_pw
+		global curr_rl 
+		global curr_rl_data 
+		global n_rls
+		global dfs
+
+		#print lineno()
 		pws.append(curr_pw) #again be wary, else use .copy()
 		curr_pw = None 
 
 	def enterOptimum(self, ctx):
 
+		global pws 
+		global relations 
+		global expected_pws 
+		global curr_pw
+		global curr_rl 
+		global curr_rl_data 
+		global n_rls
+		global dfs
+
+		#print lineno()
 		optimum_found = ctx.TEXT().getText()
 		if optimum_found == 'yes':
 			print 'Optimum Solution was found'
@@ -124,16 +251,48 @@ class AntlrClingoListener(ClingoListener):
 
 	def enterOptimization(self, ctx):
 
+		global pws 
+		global relations 
+		global expected_pws 
+		global curr_pw
+		global curr_rl 
+		global curr_rl_data 
+		global n_rls
+		global dfs
+
+		#print lineno()
 		opt_soln = ctx.TEXT().getText()
 		print 'Optimized Solution is', opt_soln
 
 	def enterModels(self, ctx):
+
+		global pws 
+		global relations 
+		global expected_pws 
+		global curr_pw
+		global curr_rl 
+		global curr_rl_data 
+		global n_rls
+		global dfs
+
+		#print lineno()
 		num_models = ctx.TEXT().getText()
 		num_models = int(num_models)
 		print "Number of Models:", num_models
 		expected_pws = num_models
 
 	def exitClingoOutput(self,ctx):
+
+		global pws 
+		global relations 
+		global expected_pws 
+		global curr_pw
+		global curr_rl 
+		global curr_rl_data 
+		global n_rls
+		global dfs
+
+		#print lineno()
 		# loading into pandas DF
 		rearrangePWSandRLS()
 		loadIntoPandas()
@@ -145,52 +304,22 @@ lexer = ClingoLexer(StdinStream())
 stream = CommonTokenStream(lexer)
 parser = ClingoParser(stream)
 tree = parser.clingoOutput()
+#print Trees.toStringTree(tree, None, parser)
 pw_analyzer = AntlrClingoListener()
 walker = ParseTreeWalker()
 walker.walk(pw_analyzer, tree)
-
-
-######################################################################
-
-dfs = []
-
-def rearrangePWSandRLS():
-	#sort PWs and Rls by their ids
-	relations.sort(key = lambda x: x.r_id)
-	pws.sort(key = lambda x: x.pw_id)
-
-
-def loadIntoPandas():
-	for n, rl in enumerate(relations):
-		cls = ['pw']
-		cls.extend([str('x' + str(i)) for i in range(1, rl.arrity + 1)])
-
-		rws = []
-		for m, pw in enumerate(pws):
-			rl_data_pw = pw.rls[rl.r_id]
-			for i in range(len(rl_data_pw)):
-				rl_data_pw[i].insert(0, pw.pw_id)
-			rws.extend(rl_data_pw)
-
-		df = pd.DataFrame(rws, columns = cls)
-		dfs.append(df)
-
+#print lineno()
 
 ######################################################################
 
+for df in dfs:
+	print df
 
 
 
-
-
-
-
-
-
-
-
-
+######################################################################
 #creating schemas for SQLite
+
 
 
 
