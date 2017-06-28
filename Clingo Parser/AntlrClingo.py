@@ -135,9 +135,10 @@ class AntlrClingoListener(ClingoListener):
 
 	def exitClingoOutput(self,ctx):
 		# loading into pandas DF
-		pass
+		rearrangePWSandRLS()
+		loadIntoPandas()
 
-###################################################################
+######################################################################
 
 
 lexer = ClingoLexer(StdinStream())
@@ -150,6 +151,43 @@ walker.walk(pw_analyzer, tree)
 
 
 ######################################################################
+
+dfs = []
+
+def rearrangePWSandRLS():
+	#sort PWs and Rls by their ids
+	relations.sort(key = lambda x: x.r_id)
+	pws.sort(key = lambda x: x.pw_id)
+
+
+def loadIntoPandas():
+	for n, rl in enumerate(relations):
+		cls = ['pw']
+		cls.extend([str('x' + str(i)) for i in range(1, rl.arrity + 1)])
+
+		rws = []
+		for m, pw in enumerate(pws):
+			rl_data_pw = pw.rls[rl.r_id]
+			for i in range(len(rl_data_pw)):
+				rl_data_pw[i].insert(0, pw.pw_id)
+			rws.extend(rl_data_pw)
+
+		df = pd.DataFrame(rws, columns = cls)
+		dfs.append(df)
+
+
+######################################################################
+
+
+
+
+
+
+
+
+
+
+
 
 
 #creating schemas for SQLite
