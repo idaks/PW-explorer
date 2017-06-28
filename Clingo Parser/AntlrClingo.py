@@ -106,10 +106,12 @@ def loadIntoPandas():
 
 		rws = [] #could convert into numpy if sure it's all float/int
 		for m, pw in enumerate(pws):
-			rl_data_pw = pw.rls[rl.r_id]
-			for i in range(len(rl_data_pw)):
-				rl_data_pw[i].insert(0, pw.pw_id)
-			rws.extend(rl_data_pw)
+			#print rl.r_id
+			if rl.r_id < len(pw.rls):
+				rl_data_pw = pw.rls[rl.r_id]
+				for i in range(len(rl_data_pw)):
+					rl_data_pw[i].insert(0, pw.pw_id)
+				rws.extend(rl_data_pw)
 
 		df = pd.DataFrame(rws, columns = cls)
 		dfs.append(df)
@@ -183,6 +185,7 @@ class AntlrClingoListener(ClingoListener):
 		for rl in relations:
 			if curr_rl.relation_name == rl.relation_name and curr_rl.arrity == rl.arrity:
 				curr_rl.r_id = rl.r_id
+				#print rl.r_id, lineno() ##for debugging purposes
 				foundMatch = True
 				break
 		
@@ -190,6 +193,7 @@ class AntlrClingoListener(ClingoListener):
 			newRl = Relation(curr_rl.relation_name)
 			newRl.arrity = curr_rl.arrity
 			newRl.r_id = n_rls
+			#print n_rls, lineno()
 			n_rls += 1
 			relations.append(newRl)
 			curr_rl.r_id = newRl.r_id

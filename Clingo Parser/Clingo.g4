@@ -34,7 +34,7 @@ cpuTime: (TEXT | '(' | ')' | ':')+ ;
 OPTIMUM_FOUND: 'OPTIMUM FOUND' ; 
 // NOTE: need to check what happens when no optimum soln
 
-TEXT: [a-zA-Z0-9\\_.,:]+ ;
+TEXT: [a-zA-Z0-9\\_.,:-]+ ;
 
 WHITESPACE : ( '\t' | ' ' | '\r' | '\n'| '\u000C' )+ -> skip ;
 
