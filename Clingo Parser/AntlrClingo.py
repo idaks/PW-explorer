@@ -10,22 +10,25 @@ import inspect
 from antlr4.tree.Trees import Trees
 import sqlite3
 
-#######################################################
+###################################################################
 #to help debug
 def lineno():
     """Returns the current line number in our program."""
     return inspect.currentframe().f_back.f_lineno
-#######################################################
+###################################################################
 
-#######################################################
+###################################################################
 #helper func
+#returns true if a value can be typecasted as a float, else false
 def isfloat(value):
   try:
     float(value)
     return True
   except ValueError:
     return False
-#######################################################
+###################################################################
+
+#global variables to use throughout the parsing process and further
 
 pws = []
 relations = []
@@ -45,7 +48,9 @@ dfs = []
 # global n_rls
 # global dfs 
 
-#######################################################
+###################################################################
+
+#Class to store details and solution relating to every possible world
 
 class PossibleWorld:
 	n_pws = 1
@@ -61,18 +66,18 @@ class PossibleWorld:
 			self.rls.append([])
 		self.rls[relation_id].append(relation_data)
 
-#######################################################
+###################################################################
 
-#######################################################
+###################################################################
+
 class Relation:
-
 	def __init__(self, relation_name):
 		self.relation_name = relation_name
 		self.arrity = 0
 		self.r_id = 0
-#######################################################
+###################################################################
 
-########################################################################
+######################################################################################
 
 def rearrangePWSandRLS():
 
@@ -120,9 +125,9 @@ def loadIntoPandas():
 
 		#schema = 
 
-####################################################################
+######################################################################################
 
-###################################################################
+######################################################################################
 
 class AntlrClingoListener(ClingoListener):
 
@@ -309,7 +314,7 @@ class AntlrClingoListener(ClingoListener):
 		rearrangePWSandRLS()
 		loadIntoPandas()
 
-######################################################################
+######################################################################################
 
 #use these 3 lines if input is coming from a .txt file 
 # script, fname = argv
@@ -318,17 +323,18 @@ class AntlrClingoListener(ClingoListener):
 
 #use this line to take input from the cmd line
 lexer = ClingoLexer(StdinStream())
+
 stream = CommonTokenStream(lexer)
 parser = ClingoParser(stream)
 tree = parser.clingoOutput()
+#Use (uncomment) the line below to see the parse tree of the given input
 #print Trees.toStringTree(tree, None, parser)
 pw_analyzer = AntlrClingoListener()
 walker = ParseTreeWalker()
 walker.walk(pw_analyzer, tree)
 #print lineno()
 
-######################################################################
-
+#########################################################################################################
 #conn = sqlite3.connect("export_in_other_formats/clingo_parser.db")
 
 for i, df in enumerate(dfs):
@@ -341,6 +347,7 @@ for i, df in enumerate(dfs):
 	#df.to_msgpack(str(o_fname + '.msg'))
 	#df.to_pickle(str(o_fname + '.pkl'))
 
+#creating schemas for SQLite
 #code to print schema of the tables created
 # schemas = []
 # schema_q = conn.execute("SELECT * FROM sqlite_master WHERE type='table' ORDER BY name;")
@@ -352,8 +359,8 @@ for i, df in enumerate(dfs):
 # conn.close()
 #print schemas
 
-######################################################################
-#creating schemas for SQLite
+#########################################################################################################
+
 
 
 
