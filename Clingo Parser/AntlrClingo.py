@@ -8,6 +8,7 @@ import pandas as pd
 import numpy as np
 import inspect
 from antlr4.tree.Trees import Trees
+import sqlite3
 
 #######################################################
 #to help debug
@@ -328,12 +329,15 @@ walker.walk(pw_analyzer, tree)
 
 ######################################################################
 
+#conn = sqlite3.connect("export_in_other_formats/clingo_parser.db")
+
 for i, df in enumerate(dfs):
 	print relations[i].relation_name
 	print df
 	o_fname = 'export_in_other_formats/' + str(relations[i].relation_name)
 	#df.to_csv(str(o_fname  + '.csv'))
 	#df.to_hdf(str(o_fname + '.h5'), 'table', mode = 'w')
+
 
 
 
