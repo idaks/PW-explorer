@@ -337,7 +337,7 @@ for i, df in enumerate(dfs):
 	o_fname = 'export_in_other_formats/' + str(relations[i].relation_name)
 	#df.to_csv(str(o_fname  + '.csv'))
 	#df.to_hdf(str(o_fname + '.h5'), 'table', mode = 'w')
-
+	#df.to_sql(str(relations[i].relation_name), conn, flavor = 'sqlite', if_exists = 'replace')
 
 
 
