@@ -331,6 +331,9 @@ walker.walk(pw_analyzer, tree)
 for i, df in enumerate(dfs):
 	print relations[i].relation_name
 	print df
+	o_fname = 'export_in_other_formats/' + str(relations[i].relation_name)
+	#df.to_csv(str(o_fname  + '.csv'))
+	#df.to_hdf(str(o_fname + '.h5'), 'table', mode = 'w')
 
 
 
