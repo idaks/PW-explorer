@@ -1,4 +1,5 @@
 import sys
+from sys import argv
 from antlr4 import *
 from ClingoLexer import ClingoLexer
 from ClingoParser import ClingoParser
@@ -116,11 +117,17 @@ def loadIntoPandas():
 		df = pd.DataFrame(rws, columns = cls)
 		dfs.append(df)
 
+		#schema = 
+
 ####################################################################
 
 ###################################################################
 
 class AntlrClingoListener(ClingoListener):
+
+	def enterClingoOutput(self, ctx):
+		if ctx.OPTIMUM_FOUND().getText() == 'UNSATISFIABLE':
+			print "The problem is unsatisfiable"
 
 	def enterSolution(self, ctx):
 
@@ -303,7 +310,12 @@ class AntlrClingoListener(ClingoListener):
 
 ######################################################################
 
+#use these 3 lines if input is coming from a .txt file 
+# script, fname = argv
+# input = FileStream(fname)
+# lexer = ClingoLexer(input)
 
+#use this line to take input from the cmd line
 lexer = ClingoLexer(StdinStream())
 stream = CommonTokenStream(lexer)
 parser = ClingoParser(stream)

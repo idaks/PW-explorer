@@ -14,7 +14,7 @@ actual_soln: TEXT '(' custom_representation_soln ')' ;
 
 custom_representation_soln: TEXT ;
 
-summary: models optimum optimization calls time cpuTime ;
+summary: models optimum? optimization? calls time cpuTime ;
 
 models: 'Models' ':' TEXT ;
 
@@ -31,8 +31,7 @@ cpuTime: (TEXT | '(' | ')' | ':')+ ;
 
 						//LEXER RULES
 
-OPTIMUM_FOUND: 'OPTIMUM FOUND' ; 
-// NOTE: need to check what happens when no optimum soln
+OPTIMUM_FOUND: 'OPTIMUM FOUND' | 'UNSATISFIABLE' ; 
 
 TEXT: [a-zA-Z0-9\\_.,:-]+ ;
 

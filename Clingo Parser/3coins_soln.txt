@@ -1,0 +1,14 @@
+clingo version 5.2.0
+Reading from 3coins.lp4
+Solving...
+Answer: 1
+x(5,1) x(25,1) x(50,1) x(10,2) x(1,3) total(8)
+Optimization: 8
+OPTIMUM FOUND
+
+Models       : 1
+  Optimum    : yes
+Optimization : 8
+Calls        : 1
+Time         : 0.053s (Solving: 0.01s 1st Model: 0.00s Unsat: 0.00s)
+CPU Time     : 0.048s
