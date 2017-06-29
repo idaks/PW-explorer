@@ -340,6 +340,16 @@ for i, df in enumerate(dfs):
 	#df.to_sql(str(relations[i].relation_name), conn, flavor = 'sqlite', if_exists = 'replace')
 
 
+#code to print schema of the tables created
+# schemas = []
+# schema_q = conn.execute("SELECT * FROM sqlite_master WHERE type='table' ORDER BY name;")
+# for row in schema_q.fetchall():
+# 	print row[4]
+# 	schemas.append(row[4])
+
+# conn.commit()
+# conn.close()
+#print schemas
 
 ######################################################################
 #creating schemas for SQLite
