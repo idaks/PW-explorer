@@ -1,0 +1,13 @@
+Number of Models: 2
+Optimum Solution was found
+Optimized Solution is 90
+food_price_amount_3
+   pw                    x1  x2 x3
+0   1   chocolate_ice_cream  20  5
+1   1        chocolate_cake  50  0
+2   1                  cola  30  0
+3   1  pineapple_cheesecake  80  0
+4   2   chocolate_ice_cream  20  3
+5   2                  cola  30  1
+6   2        chocolate_cake  50  0
+7   2  pineapple_cheesecake  80  0
