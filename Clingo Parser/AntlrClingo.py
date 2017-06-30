@@ -401,8 +401,10 @@ for i, df in enumerate(dfs):
 # query += ';'
 
 #do this for each table as well
+#note: if the result of any of these is == num of models, that means it must have been an asnwer in query#1
 
 #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#
+
 
 
 
