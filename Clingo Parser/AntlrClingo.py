@@ -403,8 +403,8 @@ for i, df in enumerate(dfs):
 # s2 = df[df.pw==1]
 # for i in range(1, num_models):
 # 	s2 = df.merge(s2, df[df.pw == i+1], how = 'outer', on = list(df)[1:])
-# k = list(df)[1:]
-# s2 = s2[k]
+# k = list(df)[1:] #same as headers actually
+# s2 = s2[k] # or s2[headers]
 #something like this could also be used to find intersection of a particular set of PWs
 #both in pandas and SQLite
 
@@ -422,6 +422,18 @@ for i, df in enumerate(dfs):
 
 #do this for each table as well
 #note: if the result of any of these is == num of models, that means it must have been an asnwer in query#1
+
+#doing the same in pandas:
+#let the row from query#2 be rl
+# rl = s2.ix[i]
+# expr = '' 
+# for i in range(len(headers) - 1):
+# 	expr += str(headers[0]) + ' == ' + str(rl[i]) + ' and '
+# expr += str(headers[-1]) + ' == ' + str(rl[-1])
+# s3 = df.query(expr)
+
+# ans = len(s3) #number of PWs for each tuple
+
 
 #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#
 
