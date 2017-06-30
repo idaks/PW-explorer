@@ -362,7 +362,47 @@ for i, df in enumerate(dfs):
 #########################################################################################################
 
 
+#some possible queries:
 
+#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#
+
+#1: does a relation occur in all the PWs:
+
+# headers = list(df)[1:]
+# query = ''
+# for i in range(1, num_models):
+# 	query += 'select' + *headers + 'from' relation_name 'where pw = ' + i + 'intersect '
+# query += 'select' + *headers + 'from' relation_name 'where pw = ' + num_models + ';'
+
+#do this for all relations/tables
+
+#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#
+
+#2: list of unique relations across all the PWs:
+
+# headers = list(df)[1:]
+# query = ''
+# for i in range(1, num_models):
+# 	query += 'select' + *headers + 'from' relation_name 'where pw = ' + i + 'union '
+# query += 'select' + *headers + 'from' relation_name 'where pw = ' + num_models + ';'
+
+#do this for all relations/tables
+
+#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#
+
+#3: found out how many worlds a particluar relation occurs:
+
+#for each unique relation found from query #2 (lets call it rl), do the following:
+
+# headers = list(df)[1:]
+# query = 'select count(*) from' + relation_name + 'where'
+# for i in range(len(headers));
+# 	query += headers[i] + '=' + rl[i] + ' and '
+# query += ';'
+
+#do this for each table as well
+
+#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#
 
 
 
