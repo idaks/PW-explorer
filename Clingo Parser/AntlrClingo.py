@@ -376,6 +376,16 @@ for i, df in enumerate(dfs):
 
 #do this for all relations/tables
 
+#doing the same in pandas:
+# s1 = df[df.pw==1]
+# for i in range(1, num_models):
+# 	s1 = df.merge(s1, df[df.pw == i+1], how = 'inner', on = list(df)[1:])
+# k = list(df)[1:]
+# s1 = s1[k]
+
+#something like this could also be used to find intersection of a particular set of PWs
+#both in pandas and SQLite
+
 #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#
 
 #2: list of unique relations across all the PWs:
@@ -387,6 +397,16 @@ for i, df in enumerate(dfs):
 # query += 'select' + *headers + 'from' relation_name 'where pw = ' + num_models + ';'
 
 #do this for all relations/tables
+
+#doing the same in pandas:
+
+# s2 = df[df.pw==1]
+# for i in range(1, num_models):
+# 	s2 = df.merge(s2, df[df.pw == i+1], how = 'outer', on = list(df)[1:])
+# k = list(df)[1:]
+# s2 = s2[k]
+#something like this could also be used to find intersection of a particular set of PWs
+#both in pandas and SQLite
 
 #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#
 
