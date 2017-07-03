@@ -351,6 +351,7 @@ for i, df in enumerate(dfs):
 
 #creating schemas for SQLite
 #code to print schema of the tables created
+
 # schemas = []
 # schema_q = conn.execute("SELECT * FROM sqlite_master WHERE type='table' ORDER BY name;")
 # for row in schema_q.fetchall():
@@ -360,6 +361,22 @@ for i, df in enumerate(dfs):
 # conn.commit()
 # conn.close()
 #print schemas
+
+#could also do the following:
+conn_t = sqlite3.connect("test.db")
+schemas = []
+for i, df in enumerate(dfs):
+	t = df.ix[0:0]
+	t.to_sql(str(relations[i].relation_name), conn_t, if_exists = 'replace')
+schema_q = conn_t.execute("SELECT * FROM sqlite_master WHERE type='table' ORDER BY name;")
+for row in schema_q.fetchall():
+ 	print row[4]
+ 	schemas.append(row[4])
+for i, df in enumerate(dfs):
+	conn_t.execute('DROP TABLE ' + str(relations[i].relation_name))
+conn_t.commit()
+conn_t.close()
+#this approach will take constant time since there is just one row in the exported database.
 
 #########################################################################################################
 
