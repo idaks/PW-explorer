@@ -132,8 +132,9 @@ def loadIntoPandas():
 class AntlrClingoListener(ClingoListener):
 
 	def enterClingoOutput(self, ctx):
-		if ctx.OPTIMUM_FOUND().getText() == 'UNSATISFIABLE':
-			print "The problem is unsatisfiable"
+		if ctx.OPTIMUM_FOUND() is not None:
+			if ctx.OPTIMUM_FOUND().getText() == 'UNSATISFIABLE':
+				print "The problem is unsatisfiable"
 
 	def enterSolution(self, ctx):
 
@@ -148,7 +149,8 @@ class AntlrClingoListener(ClingoListener):
 				
 		curr_pw = PossibleWorld(n_rls)
 		#assert curr_pw.pw_id == int(ctx.TEXT(0).getText())
-		curr_pw.pw_soln = float(ctx.TEXT(1).getText()) if isfloat(ctx.TEXT(1).getText()) else ctx.TEXT(1).getText()
+		if ctx.TEXT(1) is not None:
+			curr_pw.pw_soln = float(ctx.TEXT(1).getText()) if isfloat(ctx.TEXT(1).getText()) else ctx.TEXT(1).getText()
 		#print lineno()
 
 	def enterActual_soln(self, ctx): 

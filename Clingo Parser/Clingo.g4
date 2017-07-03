@@ -8,7 +8,7 @@ options {
 
 clingoOutput: (solution)* OPTIMUM_FOUND? summary ;
 
-solution: 'Answer:' TEXT (actual_soln)* 'Optimization:' TEXT ;
+solution: 'Answer:' TEXT (actual_soln)* 'Optimization:'? TEXT? ;
 
 actual_soln: TEXT '(' custom_representation_soln ')' ;
 
@@ -16,7 +16,7 @@ custom_representation_soln: TEXT ;
 
 summary: models optimum? optimization? calls time cpuTime ;
 
-models: 'Models' ':' TEXT ;
+models: 'Models' ':' TEXT '+'?;
 
 optimum: 'Optimum' ':' TEXT ;
 
@@ -31,9 +31,9 @@ cpuTime: (TEXT | '(' | ')' | ':')+ ;
 
 						//LEXER RULES
 
-OPTIMUM_FOUND: 'OPTIMUM FOUND' | 'UNSATISFIABLE' ; 
+OPTIMUM_FOUND: 'OPTIMUM FOUND' | 'UNSATISFIABLE' | 'SATISFIABLE' ; 
 
-TEXT: [a-zA-Z0-9\\_.,:-]+ ;
+TEXT: [a-zA-Z0-9\\_.,:\-]+ ;
 
 WHITESPACE : ( '\t' | ' ' | '\r' | '\n'| '\u000C' )+ -> skip ;
 

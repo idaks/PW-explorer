@@ -8,34 +8,36 @@ import sys
 def serializedATN():
     with StringIO() as buf:
         buf.write(u"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3")
-        buf.write(u"\16[\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
+        buf.write(u"\17`\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
         buf.write(u"\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4\f\t\f\3\2\7\2\32")
         buf.write(u"\n\2\f\2\16\2\35\13\2\3\2\5\2 \n\2\3\2\3\2\3\3\3\3\3")
-        buf.write(u"\3\7\3\'\n\3\f\3\16\3*\13\3\3\3\3\3\3\3\3\4\3\4\3\4\3")
-        buf.write(u"\4\3\4\3\5\3\5\3\6\3\6\5\68\n\6\3\6\5\6;\n\6\3\6\3\6")
-        buf.write(u"\3\6\3\6\3\7\3\7\3\7\3\7\3\b\3\b\3\b\3\b\3\t\3\t\3\t")
-        buf.write(u"\3\t\3\n\3\n\3\n\3\n\3\13\6\13R\n\13\r\13\16\13S\3\f")
-        buf.write(u"\6\fW\n\f\r\f\16\fX\3\f\2\2\r\2\4\6\b\n\f\16\20\22\24")
-        buf.write(u"\26\2\3\5\2\5\6\b\b\r\r\2V\2\33\3\2\2\2\4#\3\2\2\2\6")
-        buf.write(u".\3\2\2\2\b\63\3\2\2\2\n\65\3\2\2\2\f@\3\2\2\2\16D\3")
-        buf.write(u"\2\2\2\20H\3\2\2\2\22L\3\2\2\2\24Q\3\2\2\2\26V\3\2\2")
-        buf.write(u"\2\30\32\5\4\3\2\31\30\3\2\2\2\32\35\3\2\2\2\33\31\3")
-        buf.write(u"\2\2\2\33\34\3\2\2\2\34\37\3\2\2\2\35\33\3\2\2\2\36 ")
-        buf.write(u"\7\f\2\2\37\36\3\2\2\2\37 \3\2\2\2 !\3\2\2\2!\"\5\n\6")
-        buf.write(u"\2\"\3\3\2\2\2#$\7\3\2\2$(\7\r\2\2%\'\5\6\4\2&%\3\2\2")
-        buf.write(u"\2\'*\3\2\2\2(&\3\2\2\2()\3\2\2\2)+\3\2\2\2*(\3\2\2\2")
-        buf.write(u"+,\7\4\2\2,-\7\r\2\2-\5\3\2\2\2./\7\r\2\2/\60\7\5\2\2")
-        buf.write(u"\60\61\5\b\5\2\61\62\7\6\2\2\62\7\3\2\2\2\63\64\7\r\2")
-        buf.write(u"\2\64\t\3\2\2\2\65\67\5\f\7\2\668\5\16\b\2\67\66\3\2")
-        buf.write(u"\2\2\678\3\2\2\28:\3\2\2\29;\5\20\t\2:9\3\2\2\2:;\3\2")
-        buf.write(u"\2\2;<\3\2\2\2<=\5\22\n\2=>\5\24\13\2>?\5\26\f\2?\13")
-        buf.write(u"\3\2\2\2@A\7\7\2\2AB\7\b\2\2BC\7\r\2\2C\r\3\2\2\2DE\7")
-        buf.write(u"\t\2\2EF\7\b\2\2FG\7\r\2\2G\17\3\2\2\2HI\7\n\2\2IJ\7")
-        buf.write(u"\b\2\2JK\7\r\2\2K\21\3\2\2\2LM\7\13\2\2MN\7\b\2\2NO\7")
-        buf.write(u"\r\2\2O\23\3\2\2\2PR\t\2\2\2QP\3\2\2\2RS\3\2\2\2SQ\3")
-        buf.write(u"\2\2\2ST\3\2\2\2T\25\3\2\2\2UW\t\2\2\2VU\3\2\2\2WX\3")
-        buf.write(u"\2\2\2XV\3\2\2\2XY\3\2\2\2Y\27\3\2\2\2\t\33\37(\67:S")
-        buf.write(u"X")
+        buf.write(u"\3\7\3\'\n\3\f\3\16\3*\13\3\3\3\5\3-\n\3\3\3\5\3\60\n")
+        buf.write(u"\3\3\4\3\4\3\4\3\4\3\4\3\5\3\5\3\6\3\6\5\6;\n\6\3\6\5")
+        buf.write(u"\6>\n\6\3\6\3\6\3\6\3\6\3\7\3\7\3\7\3\7\5\7H\n\7\3\b")
+        buf.write(u"\3\b\3\b\3\b\3\t\3\t\3\t\3\t\3\n\3\n\3\n\3\n\3\13\6\13")
+        buf.write(u"W\n\13\r\13\16\13X\3\f\6\f\\\n\f\r\f\16\f]\3\f\2\2\r")
+        buf.write(u"\2\4\6\b\n\f\16\20\22\24\26\2\3\5\2\5\6\b\b\16\16\2^")
+        buf.write(u"\2\33\3\2\2\2\4#\3\2\2\2\6\61\3\2\2\2\b\66\3\2\2\2\n")
+        buf.write(u"8\3\2\2\2\fC\3\2\2\2\16I\3\2\2\2\20M\3\2\2\2\22Q\3\2")
+        buf.write(u"\2\2\24V\3\2\2\2\26[\3\2\2\2\30\32\5\4\3\2\31\30\3\2")
+        buf.write(u"\2\2\32\35\3\2\2\2\33\31\3\2\2\2\33\34\3\2\2\2\34\37")
+        buf.write(u"\3\2\2\2\35\33\3\2\2\2\36 \7\r\2\2\37\36\3\2\2\2\37 ")
+        buf.write(u"\3\2\2\2 !\3\2\2\2!\"\5\n\6\2\"\3\3\2\2\2#$\7\3\2\2$")
+        buf.write(u"(\7\16\2\2%\'\5\6\4\2&%\3\2\2\2\'*\3\2\2\2(&\3\2\2\2")
+        buf.write(u"()\3\2\2\2),\3\2\2\2*(\3\2\2\2+-\7\4\2\2,+\3\2\2\2,-")
+        buf.write(u"\3\2\2\2-/\3\2\2\2.\60\7\16\2\2/.\3\2\2\2/\60\3\2\2\2")
+        buf.write(u"\60\5\3\2\2\2\61\62\7\16\2\2\62\63\7\5\2\2\63\64\5\b")
+        buf.write(u"\5\2\64\65\7\6\2\2\65\7\3\2\2\2\66\67\7\16\2\2\67\t\3")
+        buf.write(u"\2\2\28:\5\f\7\29;\5\16\b\2:9\3\2\2\2:;\3\2\2\2;=\3\2")
+        buf.write(u"\2\2<>\5\20\t\2=<\3\2\2\2=>\3\2\2\2>?\3\2\2\2?@\5\22")
+        buf.write(u"\n\2@A\5\24\13\2AB\5\26\f\2B\13\3\2\2\2CD\7\7\2\2DE\7")
+        buf.write(u"\b\2\2EG\7\16\2\2FH\7\t\2\2GF\3\2\2\2GH\3\2\2\2H\r\3")
+        buf.write(u"\2\2\2IJ\7\n\2\2JK\7\b\2\2KL\7\16\2\2L\17\3\2\2\2MN\7")
+        buf.write(u"\13\2\2NO\7\b\2\2OP\7\16\2\2P\21\3\2\2\2QR\7\f\2\2RS")
+        buf.write(u"\7\b\2\2ST\7\16\2\2T\23\3\2\2\2UW\t\2\2\2VU\3\2\2\2W")
+        buf.write(u"X\3\2\2\2XV\3\2\2\2XY\3\2\2\2Y\25\3\2\2\2Z\\\t\2\2\2")
+        buf.write(u"[Z\3\2\2\2\\]\3\2\2\2][\3\2\2\2]^\3\2\2\2^\27\3\2\2\2")
+        buf.write(u"\f\33\37(,/:=GX]")
         return buf.getvalue()
 
 
@@ -50,13 +52,13 @@ class ClingoParser ( Parser ):
     sharedContextCache = PredictionContextCache()
 
     literalNames = [ u"<INVALID>", u"'Answer:'", u"'Optimization:'", u"'('", 
-                     u"')'", u"'Models'", u"':'", u"'Optimum'", u"'Optimization'", 
-                     u"'Calls'" ]
+                     u"')'", u"'Models'", u"':'", u"'+'", u"'Optimum'", 
+                     u"'Optimization'", u"'Calls'" ]
 
     symbolicNames = [ u"<INVALID>", u"<INVALID>", u"<INVALID>", u"<INVALID>", 
                       u"<INVALID>", u"<INVALID>", u"<INVALID>", u"<INVALID>", 
-                      u"<INVALID>", u"<INVALID>", u"OPTIMUM_FOUND", u"TEXT", 
-                      u"WHITESPACE" ]
+                      u"<INVALID>", u"<INVALID>", u"<INVALID>", u"OPTIMUM_FOUND", 
+                      u"TEXT", u"WHITESPACE" ]
 
     RULE_clingoOutput = 0
     RULE_solution = 1
@@ -84,9 +86,10 @@ class ClingoParser ( Parser ):
     T__6=7
     T__7=8
     T__8=9
-    OPTIMUM_FOUND=10
-    TEXT=11
-    WHITESPACE=12
+    T__9=10
+    OPTIMUM_FOUND=11
+    TEXT=12
+    WHITESPACE=13
 
     def __init__(self, input, output=sys.stdout):
         super(ClingoParser, self).__init__(input, output=output)
@@ -211,18 +214,31 @@ class ClingoParser ( Parser ):
             self.match(ClingoParser.TEXT)
             self.state = 38
             self._errHandler.sync(self)
-            _la = self._input.LA(1)
-            while _la==ClingoParser.TEXT:
-                self.state = 35
-                self.actual_soln()
+            _alt = self._interp.adaptivePredict(self._input,2,self._ctx)
+            while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
+                if _alt==1:
+                    self.state = 35
+                    self.actual_soln() 
                 self.state = 40
                 self._errHandler.sync(self)
-                _la = self._input.LA(1)
+                _alt = self._interp.adaptivePredict(self._input,2,self._ctx)
 
-            self.state = 41
-            self.match(ClingoParser.T__1)
             self.state = 42
-            self.match(ClingoParser.TEXT)
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            if _la==ClingoParser.T__1:
+                self.state = 41
+                self.match(ClingoParser.T__1)
+
+
+            self.state = 45
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            if _la==ClingoParser.TEXT:
+                self.state = 44
+                self.match(ClingoParser.TEXT)
+
+
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -264,13 +280,13 @@ class ClingoParser ( Parser ):
         self.enterRule(localctx, 4, self.RULE_actual_soln)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 44
-            self.match(ClingoParser.TEXT)
-            self.state = 45
-            self.match(ClingoParser.T__2)
-            self.state = 46
-            self.custom_representation_soln()
             self.state = 47
+            self.match(ClingoParser.TEXT)
+            self.state = 48
+            self.match(ClingoParser.T__2)
+            self.state = 49
+            self.custom_representation_soln()
+            self.state = 50
             self.match(ClingoParser.T__3)
         except RecognitionException as re:
             localctx.exception = re
@@ -309,7 +325,7 @@ class ClingoParser ( Parser ):
         self.enterRule(localctx, 6, self.RULE_custom_representation_soln)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 49
+            self.state = 52
             self.match(ClingoParser.TEXT)
         except RecognitionException as re:
             localctx.exception = re
@@ -370,29 +386,29 @@ class ClingoParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 51
+            self.state = 54
             self.models()
-            self.state = 53
-            self._errHandler.sync(self)
-            _la = self._input.LA(1)
-            if _la==ClingoParser.T__6:
-                self.state = 52
-                self.optimum()
-
-
             self.state = 56
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==ClingoParser.T__7:
                 self.state = 55
+                self.optimum()
+
+
+            self.state = 59
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            if _la==ClingoParser.T__8:
+                self.state = 58
                 self.optimization()
 
 
-            self.state = 58
+            self.state = 61
             self.calls()
-            self.state = 59
+            self.state = 62
             self.time()
-            self.state = 60
+            self.state = 63
             self.cpuTime()
         except RecognitionException as re:
             localctx.exception = re
@@ -429,14 +445,23 @@ class ClingoParser ( Parser ):
 
         localctx = ClingoParser.ModelsContext(self, self._ctx, self.state)
         self.enterRule(localctx, 10, self.RULE_models)
+        self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 62
+            self.state = 65
             self.match(ClingoParser.T__4)
-            self.state = 63
+            self.state = 66
             self.match(ClingoParser.T__5)
-            self.state = 64
+            self.state = 67
             self.match(ClingoParser.TEXT)
+            self.state = 69
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            if _la==ClingoParser.T__6:
+                self.state = 68
+                self.match(ClingoParser.T__6)
+
+
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -474,11 +499,11 @@ class ClingoParser ( Parser ):
         self.enterRule(localctx, 12, self.RULE_optimum)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 66
-            self.match(ClingoParser.T__6)
-            self.state = 67
+            self.state = 71
+            self.match(ClingoParser.T__7)
+            self.state = 72
             self.match(ClingoParser.T__5)
-            self.state = 68
+            self.state = 73
             self.match(ClingoParser.TEXT)
         except RecognitionException as re:
             localctx.exception = re
@@ -517,11 +542,11 @@ class ClingoParser ( Parser ):
         self.enterRule(localctx, 14, self.RULE_optimization)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 70
-            self.match(ClingoParser.T__7)
-            self.state = 71
+            self.state = 75
+            self.match(ClingoParser.T__8)
+            self.state = 76
             self.match(ClingoParser.T__5)
-            self.state = 72
+            self.state = 77
             self.match(ClingoParser.TEXT)
         except RecognitionException as re:
             localctx.exception = re
@@ -560,11 +585,11 @@ class ClingoParser ( Parser ):
         self.enterRule(localctx, 16, self.RULE_calls)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 74
-            self.match(ClingoParser.T__8)
-            self.state = 75
+            self.state = 79
+            self.match(ClingoParser.T__9)
+            self.state = 80
             self.match(ClingoParser.T__5)
-            self.state = 76
+            self.state = 81
             self.match(ClingoParser.TEXT)
         except RecognitionException as re:
             localctx.exception = re
@@ -607,12 +632,12 @@ class ClingoParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 79 
+            self.state = 84 
             self._errHandler.sync(self)
             _alt = 1
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt == 1:
-                    self.state = 78
+                    self.state = 83
                     _la = self._input.LA(1)
                     if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ClingoParser.T__2) | (1 << ClingoParser.T__3) | (1 << ClingoParser.T__5) | (1 << ClingoParser.TEXT))) != 0)):
                         self._errHandler.recoverInline(self)
@@ -622,9 +647,9 @@ class ClingoParser ( Parser ):
 
                 else:
                     raise NoViableAltException(self)
-                self.state = 81 
+                self.state = 86 
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,5,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input,8,self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -667,18 +692,18 @@ class ClingoParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 84 
+            self.state = 89 
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
-                self.state = 83
+                self.state = 88
                 _la = self._input.LA(1)
                 if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ClingoParser.T__2) | (1 << ClingoParser.T__3) | (1 << ClingoParser.T__5) | (1 << ClingoParser.TEXT))) != 0)):
                     self._errHandler.recoverInline(self)
                 else:
                     self._errHandler.reportMatch(self)
                     self.consume()
-                self.state = 86 
+                self.state = 91 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ClingoParser.T__2) | (1 << ClingoParser.T__3) | (1 << ClingoParser.T__5) | (1 << ClingoParser.TEXT))) != 0)):
