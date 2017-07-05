@@ -1,0 +1,3 @@
+The problem is unsatisfiable
+Number of Models: 0
+Sqlite Schema:
