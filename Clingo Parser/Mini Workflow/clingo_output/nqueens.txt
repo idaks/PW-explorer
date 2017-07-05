@@ -1,6 +1,3 @@
-clingo version 5.2.0
-Reading from nqueens.lp4
-Solving...
 Answer: 1
 q(4,1) q(6,2) q(8,3) q(2,4) q(7,5) q(1,6) q(3,7) q(5,8)
 Answer: 2
@@ -189,5 +186,5 @@ SATISFIABLE
 
 Models       : 92
 Calls        : 1
-Time         : 0.021s (Solving: 0.00s 1st Model: 0.00s Unsat: 0.00s)
-CPU Time     : 0.015s
+Time         : 0.011s (Solving: 0.00s 1st Model: 0.00s Unsat: 0.00s)
+CPU Time     : 0.011s

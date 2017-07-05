@@ -33,7 +33,7 @@ cpuTime: (TEXT | '(' | ')' | ':')+ ;
 
 OPTIMUM_FOUND: 'OPTIMUM FOUND' | 'UNSATISFIABLE' | 'SATISFIABLE' ; 
 
-TEXT: [a-zA-Z0-9\\_.,:\-]+ ;
+TEXT: [a-zA-Z0-9\\_.,/:\-]+ ;
 
 WHITESPACE : ( '\t' | ' ' | '\r' | '\n'| '\u000C' )+ -> skip ;
 
@@ -42,6 +42,8 @@ WHITESPACE : ( '\t' | ' ' | '\r' | '\n'| '\u000C' )+ -> skip ;
 
 
 				//Unused Variable from past versions:
+
+//clingoOutput: ('clingo version' TEXT 'Reading from' TEXT 'Solving...')? (solution)* OPTIMUM_FOUND? summary ;
 
 //OPTIMUM_FOUND_OR_NOT: 'yes' | 'no' ;
 

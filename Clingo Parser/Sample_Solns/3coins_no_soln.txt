@@ -1,3 +1,6 @@
+clingo version 5.2.0
+Reading from 3coins.lp4
+Solving...
 UNSATISFIABLE
 
 Models       : 0
