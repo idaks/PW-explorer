@@ -14,7 +14,7 @@ echo "Copying Done"
 # 	clingo -n 0 /Users/sahil1105/PW-explorer/Clingo\ Parser/Mini\ Workflow/clingo_input/$2.lp4 > /Users/sahil1105/PW-explorer/Clingo\ Parser/Mini\ Workflow/clingo_output/$2.txt
 # fi
 
-clingo -n ${3:-0} /Users/sahil1105/PW-explorer/Clingo\ Parser/Mini\ Workflow/clingo_input/$2.lp4 > /Users/sahil1105/PW-explorer/Clingo\ Parser/Mini\ Workflow/clingo_output/$2.txt
+clingo -n ${3:-0} -W none /Users/sahil1105/PW-explorer/Clingo\ Parser/Mini\ Workflow/clingo_input/$2.lp4 > /Users/sahil1105/PW-explorer/Clingo\ Parser/Mini\ Workflow/clingo_output/$2.txt
 
 echo "Clingo Ouput Done"
 
