@@ -1,0 +1,1950 @@
+Answer: 1
+color(belgium,red) color(netherlands,blue) color(france,white) color(luxembourg,red) color(germany,green) color(denmark,red)
+Answer: 2
+color(belgium,red) color(netherlands,blue) color(france,white) color(luxembourg,red) color(germany,green) color(denmark,blue)
+Answer: 3
+color(belgium,red) color(netherlands,blue) color(france,white) color(luxembourg,red) color(germany,green) color(denmark,green)
+Answer: 4
+color(belgium,red) color(netherlands,blue) color(france,white) color(luxembourg,red) color(germany,green) color(denmark,white)
+Answer: 5
+color(belgium,red) color(netherlands,blue) color(france,blue) color(luxembourg,red) color(germany,green) color(denmark,blue)
+Answer: 6
+color(belgium,red) color(netherlands,blue) color(france,blue) color(luxembourg,red) color(germany,green) color(denmark,green)
+Answer: 7
+color(belgium,red) color(netherlands,blue) color(france,blue) color(luxembourg,red) color(germany,green) color(denmark,white)
+Answer: 8
+color(belgium,red) color(netherlands,blue) color(france,blue) color(luxembourg,red) color(germany,green) color(denmark,red)
+Answer: 9
+color(belgium,red) color(netherlands,blue) color(france,green) color(luxembourg,red) color(germany,green) color(denmark,white)
+Answer: 10
+color(belgium,red) color(netherlands,blue) color(france,green) color(luxembourg,red) color(germany,green) color(denmark,green)
+Answer: 11
+color(belgium,red) color(netherlands,blue) color(france,green) color(luxembourg,red) color(germany,green) color(denmark,red)
+Answer: 12
+color(belgium,red) color(netherlands,blue) color(france,green) color(luxembourg,red) color(germany,green) color(denmark,blue)
+Answer: 13
+color(belgium,red) color(netherlands,blue) color(france,green) color(germany,green) color(luxembourg,blue) color(denmark,blue)
+Answer: 14
+color(belgium,red) color(netherlands,blue) color(france,green) color(germany,green) color(luxembourg,blue) color(denmark,red)
+Answer: 15
+color(belgium,red) color(netherlands,blue) color(france,green) color(germany,green) color(luxembourg,blue) color(denmark,green)
+Answer: 16
+color(belgium,red) color(netherlands,blue) color(france,green) color(germany,green) color(luxembourg,blue) color(denmark,white)
+Answer: 17
+color(belgium,red) color(netherlands,blue) color(france,white) color(germany,green) color(luxembourg,blue) color(denmark,red)
+Answer: 18
+color(belgium,red) color(netherlands,blue) color(france,white) color(germany,green) color(luxembourg,blue) color(denmark,green)
+Answer: 19
+color(belgium,red) color(netherlands,blue) color(france,white) color(germany,green) color(luxembourg,blue) color(denmark,white)
+Answer: 20
+color(belgium,red) color(netherlands,blue) color(france,white) color(germany,green) color(luxembourg,blue) color(denmark,blue)
+Answer: 21
+color(belgium,red) color(netherlands,blue) color(france,blue) color(germany,green) color(luxembourg,blue) color(denmark,green)
+Answer: 22
+color(belgium,red) color(netherlands,blue) color(france,blue) color(germany,green) color(luxembourg,blue) color(denmark,white)
+Answer: 23
+color(belgium,red) color(netherlands,blue) color(france,blue) color(germany,green) color(luxembourg,blue) color(denmark,blue)
+Answer: 24
+color(belgium,red) color(netherlands,blue) color(france,blue) color(germany,green) color(luxembourg,blue) color(denmark,red)
+Answer: 25
+color(belgium,red) color(netherlands,blue) color(france,white) color(luxembourg,red) color(germany,blue) color(denmark,green)
+Answer: 26
+color(belgium,red) color(netherlands,blue) color(france,white) color(luxembourg,red) color(germany,blue) color(denmark,red)
+Answer: 27
+color(belgium,red) color(netherlands,blue) color(france,white) color(luxembourg,red) color(germany,blue) color(denmark,white)
+Answer: 28
+color(belgium,red) color(netherlands,blue) color(france,white) color(luxembourg,red) color(germany,blue) color(denmark,blue)
+Answer: 29
+color(belgium,red) color(netherlands,blue) color(france,white) color(luxembourg,green) color(germany,blue) color(denmark,red)
+Answer: 30
+color(belgium,red) color(netherlands,blue) color(france,white) color(luxembourg,green) color(germany,blue) color(denmark,white)
+Answer: 31
+color(belgium,red) color(netherlands,blue) color(france,white) color(luxembourg,green) color(germany,blue) color(denmark,blue)
+Answer: 32
+color(belgium,red) color(netherlands,blue) color(france,white) color(luxembourg,green) color(germany,blue) color(denmark,green)
+Answer: 33
+color(belgium,red) color(netherlands,blue) color(france,green) color(luxembourg,red) color(germany,blue) color(denmark,white)
+Answer: 34
+color(belgium,red) color(netherlands,blue) color(france,green) color(luxembourg,red) color(germany,blue) color(denmark,green)
+Answer: 35
+color(belgium,red) color(netherlands,blue) color(france,green) color(luxembourg,red) color(germany,blue) color(denmark,red)
+Answer: 36
+color(belgium,red) color(netherlands,blue) color(france,green) color(luxembourg,red) color(germany,blue) color(denmark,blue)
+Answer: 37
+color(belgium,red) color(netherlands,blue) color(france,green) color(luxembourg,green) color(germany,blue) color(denmark,white)
+Answer: 38
+color(belgium,red) color(netherlands,blue) color(france,green) color(luxembourg,green) color(germany,blue) color(denmark,green)
+Answer: 39
+color(belgium,red) color(netherlands,blue) color(france,green) color(luxembourg,green) color(germany,blue) color(denmark,red)
+Answer: 40
+color(belgium,red) color(netherlands,blue) color(france,green) color(luxembourg,green) color(germany,blue) color(denmark,blue)
+Answer: 41
+color(belgium,red) color(netherlands,blue) color(france,blue) color(luxembourg,red) color(germany,blue) color(denmark,blue)
+Answer: 42
+color(belgium,red) color(netherlands,blue) color(france,blue) color(luxembourg,red) color(germany,blue) color(denmark,green)
+Answer: 43
+color(belgium,red) color(netherlands,blue) color(france,blue) color(luxembourg,red) color(germany,blue) color(denmark,white)
+Answer: 44
+color(belgium,red) color(netherlands,blue) color(france,blue) color(luxembourg,red) color(germany,blue) color(denmark,red)
+Answer: 45
+color(belgium,red) color(netherlands,blue) color(france,blue) color(luxembourg,green) color(germany,blue) color(denmark,green)
+Answer: 46
+color(belgium,red) color(netherlands,blue) color(france,blue) color(luxembourg,green) color(germany,blue) color(denmark,white)
+Answer: 47
+color(belgium,red) color(netherlands,blue) color(france,blue) color(luxembourg,green) color(germany,blue) color(denmark,red)
+Answer: 48
+color(belgium,red) color(netherlands,blue) color(france,blue) color(luxembourg,green) color(germany,blue) color(denmark,blue)
+Answer: 49
+color(belgium,red) color(netherlands,white) color(france,green) color(luxembourg,red) color(germany,green) color(denmark,blue)
+Answer: 50
+color(belgium,red) color(netherlands,white) color(france,green) color(luxembourg,red) color(germany,green) color(denmark,red)
+Answer: 51
+color(belgium,red) color(netherlands,white) color(france,green) color(luxembourg,red) color(germany,green) color(denmark,white)
+Answer: 52
+color(belgium,red) color(netherlands,white) color(france,green) color(luxembourg,red) color(germany,green) color(denmark,green)
+Answer: 53
+color(belgium,red) color(netherlands,white) color(france,blue) color(luxembourg,red) color(germany,green) color(denmark,red)
+Answer: 54
+color(belgium,red) color(netherlands,white) color(france,blue) color(luxembourg,red) color(germany,green) color(denmark,white)
+Answer: 55
+color(belgium,red) color(netherlands,white) color(france,blue) color(luxembourg,red) color(germany,green) color(denmark,green)
+Answer: 56
+color(belgium,red) color(netherlands,white) color(france,blue) color(luxembourg,red) color(germany,green) color(denmark,blue)
+Answer: 57
+color(belgium,red) color(netherlands,white) color(france,blue) color(germany,green) color(luxembourg,blue) color(denmark,blue)
+Answer: 58
+color(belgium,red) color(netherlands,white) color(france,blue) color(germany,green) color(luxembourg,blue) color(denmark,green)
+Answer: 59
+color(belgium,red) color(netherlands,white) color(france,blue) color(germany,green) color(luxembourg,blue) color(denmark,white)
+Answer: 60
+color(belgium,red) color(netherlands,white) color(france,blue) color(germany,green) color(luxembourg,blue) color(denmark,red)
+Answer: 61
+color(belgium,red) color(netherlands,white) color(france,green) color(germany,green) color(luxembourg,blue) color(denmark,green)
+Answer: 62
+color(belgium,red) color(netherlands,white) color(france,green) color(germany,green) color(luxembourg,blue) color(denmark,white)
+Answer: 63
+color(belgium,red) color(netherlands,white) color(france,green) color(germany,green) color(luxembourg,blue) color(denmark,red)
+Answer: 64
+color(belgium,red) color(netherlands,white) color(france,green) color(germany,green) color(luxembourg,blue) color(denmark,blue)
+Answer: 65
+color(belgium,red) color(netherlands,white) color(france,white) color(luxembourg,red) color(germany,green) color(denmark,blue)
+Answer: 66
+color(belgium,red) color(netherlands,white) color(france,white) color(luxembourg,red) color(germany,green) color(denmark,white)
+Answer: 67
+color(belgium,red) color(netherlands,white) color(france,white) color(luxembourg,red) color(germany,green) color(denmark,green)
+Answer: 68
+color(belgium,red) color(netherlands,white) color(france,white) color(luxembourg,red) color(germany,green) color(denmark,red)
+Answer: 69
+color(belgium,red) color(netherlands,white) color(france,white) color(germany,green) color(luxembourg,blue) color(denmark,blue)
+Answer: 70
+color(belgium,red) color(netherlands,white) color(france,white) color(germany,green) color(luxembourg,blue) color(denmark,white)
+Answer: 71
+color(belgium,red) color(netherlands,white) color(france,white) color(germany,green) color(luxembourg,blue) color(denmark,green)
+Answer: 72
+color(belgium,red) color(netherlands,white) color(france,white) color(germany,green) color(luxembourg,blue) color(denmark,red)
+Answer: 73
+color(belgium,red) color(netherlands,white) color(france,blue) color(luxembourg,red) color(germany,blue) color(denmark,white)
+Answer: 74
+color(belgium,red) color(netherlands,white) color(france,blue) color(luxembourg,red) color(germany,blue) color(denmark,red)
+Answer: 75
+color(belgium,red) color(netherlands,white) color(france,blue) color(luxembourg,red) color(germany,blue) color(denmark,blue)
+Answer: 76
+color(belgium,red) color(netherlands,white) color(france,blue) color(luxembourg,red) color(germany,blue) color(denmark,green)
+Answer: 77
+color(belgium,red) color(netherlands,white) color(france,blue) color(luxembourg,green) color(germany,blue) color(denmark,red)
+Answer: 78
+color(belgium,red) color(netherlands,white) color(france,blue) color(luxembourg,green) color(germany,blue) color(denmark,blue)
+Answer: 79
+color(belgium,red) color(netherlands,white) color(france,blue) color(luxembourg,green) color(germany,blue) color(denmark,green)
+Answer: 80
+color(belgium,red) color(netherlands,white) color(france,blue) color(luxembourg,green) color(germany,blue) color(denmark,white)
+Answer: 81
+color(belgium,red) color(netherlands,white) color(france,green) color(luxembourg,red) color(germany,blue) color(denmark,blue)
+Answer: 82
+color(belgium,red) color(netherlands,white) color(france,green) color(luxembourg,red) color(germany,blue) color(denmark,white)
+Answer: 83
+color(belgium,red) color(netherlands,white) color(france,green) color(luxembourg,red) color(germany,blue) color(denmark,red)
+Answer: 84
+color(belgium,red) color(netherlands,white) color(france,green) color(luxembourg,red) color(germany,blue) color(denmark,green)
+Answer: 85
+color(belgium,red) color(netherlands,white) color(france,green) color(luxembourg,green) color(germany,blue) color(denmark,blue)
+Answer: 86
+color(belgium,red) color(netherlands,white) color(france,green) color(luxembourg,green) color(germany,blue) color(denmark,white)
+Answer: 87
+color(belgium,red) color(netherlands,white) color(france,green) color(luxembourg,green) color(germany,blue) color(denmark,red)
+Answer: 88
+color(belgium,red) color(netherlands,white) color(france,green) color(luxembourg,green) color(germany,blue) color(denmark,green)
+Answer: 89
+color(belgium,red) color(netherlands,white) color(france,white) color(luxembourg,red) color(germany,blue) color(denmark,green)
+Answer: 90
+color(belgium,red) color(netherlands,white) color(france,white) color(luxembourg,red) color(germany,blue) color(denmark,white)
+Answer: 91
+color(belgium,red) color(netherlands,white) color(france,white) color(luxembourg,red) color(germany,blue) color(denmark,blue)
+Answer: 92
+color(belgium,red) color(netherlands,white) color(france,white) color(luxembourg,red) color(germany,blue) color(denmark,red)
+Answer: 93
+color(belgium,red) color(netherlands,white) color(france,white) color(luxembourg,green) color(germany,blue) color(denmark,white)
+Answer: 94
+color(belgium,red) color(netherlands,white) color(france,white) color(luxembourg,green) color(germany,blue) color(denmark,blue)
+Answer: 95
+color(belgium,red) color(netherlands,white) color(france,white) color(luxembourg,green) color(germany,blue) color(denmark,red)
+Answer: 96
+color(belgium,red) color(netherlands,white) color(france,white) color(luxembourg,green) color(germany,blue) color(denmark,green)
+Answer: 97
+color(belgium,red) color(netherlands,white) color(france,blue) color(luxembourg,red) color(germany,white) color(denmark,green)
+Answer: 98
+color(belgium,red) color(netherlands,white) color(france,blue) color(luxembourg,red) color(germany,white) color(denmark,red)
+Answer: 99
+color(belgium,red) color(netherlands,white) color(france,blue) color(luxembourg,red) color(germany,white) color(denmark,blue)
+Answer: 100
+color(belgium,red) color(netherlands,white) color(france,blue) color(luxembourg,red) color(germany,white) color(denmark,white)
+Answer: 101
+color(belgium,red) color(netherlands,white) color(france,white) color(luxembourg,red) color(germany,white) color(denmark,red)
+Answer: 102
+color(belgium,red) color(netherlands,white) color(france,white) color(luxembourg,red) color(germany,white) color(denmark,blue)
+Answer: 103
+color(belgium,red) color(netherlands,white) color(france,white) color(luxembourg,red) color(germany,white) color(denmark,white)
+Answer: 104
+color(belgium,red) color(netherlands,white) color(france,white) color(luxembourg,red) color(germany,white) color(denmark,green)
+Answer: 105
+color(belgium,red) color(netherlands,white) color(france,white) color(luxembourg,blue) color(germany,white) color(denmark,green)
+Answer: 106
+color(belgium,red) color(netherlands,white) color(france,white) color(luxembourg,blue) color(germany,white) color(denmark,white)
+Answer: 107
+color(belgium,red) color(netherlands,white) color(france,white) color(luxembourg,blue) color(germany,white) color(denmark,blue)
+Answer: 108
+color(belgium,red) color(netherlands,white) color(france,white) color(luxembourg,blue) color(germany,white) color(denmark,red)
+Answer: 109
+color(belgium,red) color(netherlands,white) color(france,blue) color(luxembourg,blue) color(germany,white) color(denmark,white)
+Answer: 110
+color(belgium,red) color(netherlands,white) color(france,blue) color(luxembourg,blue) color(germany,white) color(denmark,blue)
+Answer: 111
+color(belgium,red) color(netherlands,white) color(france,blue) color(luxembourg,blue) color(germany,white) color(denmark,red)
+Answer: 112
+color(belgium,red) color(netherlands,white) color(france,blue) color(luxembourg,blue) color(germany,white) color(denmark,green)
+Answer: 113
+color(belgium,red) color(netherlands,white) color(france,green) color(luxembourg,red) color(germany,white) color(denmark,green)
+Answer: 114
+color(belgium,red) color(netherlands,white) color(france,green) color(luxembourg,red) color(germany,white) color(denmark,blue)
+Answer: 115
+color(belgium,red) color(netherlands,white) color(france,green) color(luxembourg,red) color(germany,white) color(denmark,white)
+Answer: 116
+color(belgium,red) color(netherlands,white) color(france,green) color(luxembourg,red) color(germany,white) color(denmark,red)
+Answer: 117
+color(belgium,red) color(netherlands,white) color(france,green) color(luxembourg,blue) color(germany,white) color(denmark,green)
+Answer: 118
+color(belgium,red) color(netherlands,white) color(france,green) color(luxembourg,blue) color(germany,white) color(denmark,blue)
+Answer: 119
+color(belgium,red) color(netherlands,white) color(france,green) color(luxembourg,blue) color(germany,white) color(denmark,white)
+Answer: 120
+color(belgium,red) color(netherlands,white) color(france,green) color(luxembourg,blue) color(germany,white) color(denmark,red)
+Answer: 121
+color(belgium,red) color(netherlands,blue) color(france,green) color(luxembourg,red) color(germany,white) color(denmark,blue)
+Answer: 122
+color(belgium,red) color(netherlands,blue) color(france,green) color(luxembourg,red) color(germany,white) color(denmark,red)
+Answer: 123
+color(belgium,red) color(netherlands,blue) color(france,green) color(luxembourg,red) color(germany,white) color(denmark,green)
+Answer: 124
+color(belgium,red) color(netherlands,blue) color(france,green) color(luxembourg,red) color(germany,white) color(denmark,white)
+Answer: 125
+color(belgium,red) color(netherlands,blue) color(france,green) color(luxembourg,blue) color(germany,white) color(denmark,red)
+Answer: 126
+color(belgium,red) color(netherlands,blue) color(france,green) color(luxembourg,blue) color(germany,white) color(denmark,green)
+Answer: 127
+color(belgium,red) color(netherlands,blue) color(france,green) color(luxembourg,blue) color(germany,white) color(denmark,white)
+Answer: 128
+color(belgium,red) color(netherlands,blue) color(france,green) color(luxembourg,blue) color(germany,white) color(denmark,blue)
+Answer: 129
+color(belgium,red) color(netherlands,blue) color(france,white) color(luxembourg,red) color(germany,white) color(denmark,green)
+Answer: 130
+color(belgium,red) color(netherlands,blue) color(france,white) color(luxembourg,red) color(germany,white) color(denmark,blue)
+Answer: 131
+color(belgium,red) color(netherlands,blue) color(france,white) color(luxembourg,red) color(germany,white) color(denmark,red)
+Answer: 132
+color(belgium,red) color(netherlands,blue) color(france,white) color(luxembourg,red) color(germany,white) color(denmark,white)
+Answer: 133
+color(belgium,red) color(netherlands,blue) color(france,white) color(luxembourg,blue) color(germany,white) color(denmark,green)
+Answer: 134
+color(belgium,red) color(netherlands,blue) color(france,white) color(luxembourg,blue) color(germany,white) color(denmark,blue)
+Answer: 135
+color(belgium,red) color(netherlands,blue) color(france,white) color(luxembourg,blue) color(germany,white) color(denmark,red)
+Answer: 136
+color(belgium,red) color(netherlands,blue) color(france,white) color(luxembourg,blue) color(germany,white) color(denmark,white)
+Answer: 137
+color(belgium,red) color(netherlands,blue) color(france,blue) color(luxembourg,red) color(germany,white) color(denmark,white)
+Answer: 138
+color(belgium,red) color(netherlands,blue) color(france,blue) color(luxembourg,red) color(germany,white) color(denmark,blue)
+Answer: 139
+color(belgium,red) color(netherlands,blue) color(france,blue) color(luxembourg,red) color(germany,white) color(denmark,green)
+Answer: 140
+color(belgium,red) color(netherlands,blue) color(france,blue) color(luxembourg,red) color(germany,white) color(denmark,red)
+Answer: 141
+color(belgium,red) color(netherlands,blue) color(france,blue) color(luxembourg,blue) color(germany,white) color(denmark,blue)
+Answer: 142
+color(belgium,red) color(netherlands,blue) color(france,blue) color(luxembourg,blue) color(germany,white) color(denmark,green)
+Answer: 143
+color(belgium,red) color(netherlands,blue) color(france,blue) color(luxembourg,blue) color(germany,white) color(denmark,red)
+Answer: 144
+color(belgium,red) color(netherlands,blue) color(france,blue) color(luxembourg,blue) color(germany,white) color(denmark,white)
+Answer: 145
+color(belgium,red) color(netherlands,blue) color(france,green) color(luxembourg,green) color(germany,white) color(denmark,green)
+Answer: 146
+color(belgium,red) color(netherlands,blue) color(france,green) color(luxembourg,green) color(germany,white) color(denmark,blue)
+Answer: 147
+color(belgium,red) color(netherlands,blue) color(france,green) color(luxembourg,green) color(germany,white) color(denmark,white)
+Answer: 148
+color(belgium,red) color(netherlands,blue) color(france,green) color(luxembourg,green) color(germany,white) color(denmark,red)
+Answer: 149
+color(belgium,red) color(netherlands,blue) color(france,blue) color(luxembourg,green) color(germany,white) color(denmark,blue)
+Answer: 150
+color(belgium,red) color(netherlands,blue) color(france,blue) color(luxembourg,green) color(germany,white) color(denmark,white)
+Answer: 151
+color(belgium,red) color(netherlands,blue) color(france,blue) color(luxembourg,green) color(germany,white) color(denmark,red)
+Answer: 152
+color(belgium,red) color(netherlands,blue) color(france,blue) color(luxembourg,green) color(germany,white) color(denmark,green)
+Answer: 153
+color(belgium,red) color(netherlands,blue) color(france,white) color(luxembourg,green) color(germany,white) color(denmark,red)
+Answer: 154
+color(belgium,red) color(netherlands,blue) color(france,white) color(luxembourg,green) color(germany,white) color(denmark,white)
+Answer: 155
+color(belgium,red) color(netherlands,blue) color(france,white) color(luxembourg,green) color(germany,white) color(denmark,green)
+Answer: 156
+color(belgium,red) color(netherlands,blue) color(france,white) color(luxembourg,green) color(germany,white) color(denmark,blue)
+Answer: 157
+color(belgium,red) color(netherlands,white) color(france,white) color(luxembourg,green) color(germany,white) color(denmark,blue)
+Answer: 158
+color(belgium,red) color(netherlands,white) color(france,white) color(luxembourg,green) color(germany,white) color(denmark,green)
+Answer: 159
+color(belgium,red) color(netherlands,white) color(france,white) color(luxembourg,green) color(germany,white) color(denmark,white)
+Answer: 160
+color(belgium,red) color(netherlands,white) color(france,white) color(luxembourg,green) color(germany,white) color(denmark,red)
+Answer: 161
+color(belgium,red) color(netherlands,white) color(france,blue) color(luxembourg,green) color(germany,white) color(denmark,green)
+Answer: 162
+color(belgium,red) color(netherlands,white) color(france,blue) color(luxembourg,green) color(germany,white) color(denmark,white)
+Answer: 163
+color(belgium,red) color(netherlands,white) color(france,blue) color(luxembourg,green) color(germany,white) color(denmark,red)
+Answer: 164
+color(belgium,red) color(netherlands,white) color(france,blue) color(luxembourg,green) color(germany,white) color(denmark,blue)
+Answer: 165
+color(belgium,red) color(netherlands,white) color(france,green) color(luxembourg,green) color(germany,white) color(denmark,white)
+Answer: 166
+color(belgium,red) color(netherlands,white) color(france,green) color(luxembourg,green) color(germany,white) color(denmark,red)
+Answer: 167
+color(belgium,red) color(netherlands,white) color(france,green) color(luxembourg,green) color(germany,white) color(denmark,blue)
+Answer: 168
+color(belgium,red) color(netherlands,white) color(france,green) color(luxembourg,green) color(germany,white) color(denmark,green)
+Answer: 169
+color(belgium,red) color(netherlands,white) color(france,white) color(germany,green) color(luxembourg,white) color(denmark,green)
+Answer: 170
+color(belgium,red) color(netherlands,white) color(france,white) color(germany,green) color(luxembourg,white) color(denmark,blue)
+Answer: 171
+color(belgium,red) color(netherlands,white) color(france,white) color(germany,green) color(luxembourg,white) color(denmark,white)
+Answer: 172
+color(belgium,red) color(netherlands,white) color(france,white) color(germany,green) color(luxembourg,white) color(denmark,red)
+Answer: 173
+color(belgium,red) color(netherlands,blue) color(france,white) color(germany,green) color(luxembourg,white) color(denmark,blue)
+Answer: 174
+color(belgium,red) color(netherlands,blue) color(france,white) color(germany,green) color(luxembourg,white) color(denmark,white)
+Answer: 175
+color(belgium,red) color(netherlands,blue) color(france,white) color(germany,green) color(luxembourg,white) color(denmark,red)
+Answer: 176
+color(belgium,red) color(netherlands,blue) color(france,white) color(germany,green) color(luxembourg,white) color(denmark,green)
+Answer: 177
+color(belgium,red) color(netherlands,white) color(france,green) color(germany,green) color(luxembourg,white) color(denmark,red)
+Answer: 178
+color(belgium,red) color(netherlands,white) color(france,green) color(germany,green) color(luxembourg,white) color(denmark,white)
+Answer: 179
+color(belgium,red) color(netherlands,white) color(france,green) color(germany,green) color(luxembourg,white) color(denmark,green)
+Answer: 180
+color(belgium,red) color(netherlands,white) color(france,green) color(germany,green) color(luxembourg,white) color(denmark,blue)
+Answer: 181
+color(belgium,red) color(netherlands,blue) color(france,green) color(germany,green) color(luxembourg,white) color(denmark,white)
+Answer: 182
+color(belgium,red) color(netherlands,blue) color(france,green) color(germany,green) color(luxembourg,white) color(denmark,green)
+Answer: 183
+color(belgium,red) color(netherlands,blue) color(france,green) color(germany,green) color(luxembourg,white) color(denmark,blue)
+Answer: 184
+color(belgium,red) color(netherlands,blue) color(france,green) color(germany,green) color(luxembourg,white) color(denmark,red)
+Answer: 185
+color(belgium,red) color(netherlands,white) color(france,blue) color(germany,green) color(luxembourg,white) color(denmark,red)
+Answer: 186
+color(belgium,red) color(netherlands,white) color(france,blue) color(germany,green) color(luxembourg,white) color(denmark,blue)
+Answer: 187
+color(belgium,red) color(netherlands,white) color(france,blue) color(germany,green) color(luxembourg,white) color(denmark,green)
+Answer: 188
+color(belgium,red) color(netherlands,white) color(france,blue) color(germany,green) color(luxembourg,white) color(denmark,white)
+Answer: 189
+color(belgium,red) color(netherlands,blue) color(france,blue) color(germany,green) color(luxembourg,white) color(denmark,blue)
+Answer: 190
+color(belgium,red) color(netherlands,blue) color(france,blue) color(germany,green) color(luxembourg,white) color(denmark,green)
+Answer: 191
+color(belgium,red) color(netherlands,blue) color(france,blue) color(germany,green) color(luxembourg,white) color(denmark,white)
+Answer: 192
+color(belgium,red) color(netherlands,blue) color(france,blue) color(germany,green) color(luxembourg,white) color(denmark,red)
+Answer: 193
+color(belgium,red) color(netherlands,blue) color(france,blue) color(germany,blue) color(luxembourg,white) color(denmark,red)
+Answer: 194
+color(belgium,red) color(netherlands,blue) color(france,blue) color(germany,blue) color(luxembourg,white) color(denmark,white)
+Answer: 195
+color(belgium,red) color(netherlands,blue) color(france,blue) color(germany,blue) color(luxembourg,white) color(denmark,blue)
+Answer: 196
+color(belgium,red) color(netherlands,blue) color(france,blue) color(germany,blue) color(luxembourg,white) color(denmark,green)
+Answer: 197
+color(belgium,red) color(netherlands,blue) color(france,white) color(germany,blue) color(luxembourg,white) color(denmark,white)
+Answer: 198
+color(belgium,red) color(netherlands,blue) color(france,white) color(germany,blue) color(luxembourg,white) color(denmark,blue)
+Answer: 199
+color(belgium,red) color(netherlands,blue) color(france,white) color(germany,blue) color(luxembourg,white) color(denmark,green)
+Answer: 200
+color(belgium,red) color(netherlands,blue) color(france,white) color(germany,blue) color(luxembourg,white) color(denmark,red)
+Answer: 201
+color(belgium,red) color(netherlands,blue) color(france,green) color(germany,blue) color(luxembourg,white) color(denmark,blue)
+Answer: 202
+color(belgium,red) color(netherlands,blue) color(france,green) color(germany,blue) color(luxembourg,white) color(denmark,green)
+Answer: 203
+color(belgium,red) color(netherlands,blue) color(france,green) color(germany,blue) color(luxembourg,white) color(denmark,red)
+Answer: 204
+color(belgium,red) color(netherlands,blue) color(france,green) color(germany,blue) color(luxembourg,white) color(denmark,white)
+Answer: 205
+color(belgium,red) color(netherlands,white) color(france,green) color(germany,blue) color(luxembourg,white) color(denmark,white)
+Answer: 206
+color(belgium,red) color(netherlands,white) color(france,green) color(germany,blue) color(luxembourg,white) color(denmark,red)
+Answer: 207
+color(belgium,red) color(netherlands,white) color(france,green) color(germany,blue) color(luxembourg,white) color(denmark,green)
+Answer: 208
+color(belgium,red) color(netherlands,white) color(france,green) color(germany,blue) color(luxembourg,white) color(denmark,blue)
+Answer: 209
+color(belgium,red) color(netherlands,white) color(france,white) color(germany,blue) color(luxembourg,white) color(denmark,red)
+Answer: 210
+color(belgium,red) color(netherlands,white) color(france,white) color(germany,blue) color(luxembourg,white) color(denmark,green)
+Answer: 211
+color(belgium,red) color(netherlands,white) color(france,white) color(germany,blue) color(luxembourg,white) color(denmark,blue)
+Answer: 212
+color(belgium,red) color(netherlands,white) color(france,white) color(germany,blue) color(luxembourg,white) color(denmark,white)
+Answer: 213
+color(belgium,red) color(netherlands,white) color(france,blue) color(germany,blue) color(luxembourg,white) color(denmark,green)
+Answer: 214
+color(belgium,red) color(netherlands,white) color(france,blue) color(germany,blue) color(luxembourg,white) color(denmark,blue)
+Answer: 215
+color(belgium,red) color(netherlands,white) color(france,blue) color(germany,blue) color(luxembourg,white) color(denmark,white)
+Answer: 216
+color(belgium,red) color(netherlands,white) color(france,blue) color(germany,blue) color(luxembourg,white) color(denmark,red)
+Answer: 217
+color(belgium,red) color(netherlands,green) color(france,white) color(luxembourg,red) color(germany,white) color(denmark,green)
+Answer: 218
+color(belgium,red) color(netherlands,green) color(france,white) color(luxembourg,red) color(germany,white) color(denmark,blue)
+Answer: 219
+color(belgium,red) color(netherlands,green) color(france,white) color(luxembourg,red) color(germany,white) color(denmark,white)
+Answer: 220
+color(belgium,red) color(netherlands,green) color(france,white) color(luxembourg,red) color(germany,white) color(denmark,red)
+Answer: 221
+color(belgium,red) color(netherlands,green) color(france,white) color(luxembourg,red) color(germany,green) color(denmark,blue)
+Answer: 222
+color(belgium,red) color(netherlands,green) color(france,white) color(luxembourg,red) color(germany,green) color(denmark,white)
+Answer: 223
+color(belgium,red) color(netherlands,green) color(france,white) color(luxembourg,red) color(germany,green) color(denmark,red)
+Answer: 224
+color(belgium,red) color(netherlands,green) color(france,white) color(luxembourg,red) color(germany,green) color(denmark,green)
+Answer: 225
+color(belgium,red) color(netherlands,green) color(france,white) color(germany,green) color(luxembourg,white) color(denmark,green)
+Answer: 226
+color(belgium,red) color(netherlands,green) color(france,white) color(germany,green) color(luxembourg,white) color(denmark,red)
+Answer: 227
+color(belgium,red) color(netherlands,green) color(france,white) color(germany,green) color(luxembourg,white) color(denmark,white)
+Answer: 228
+color(belgium,red) color(netherlands,green) color(france,white) color(germany,green) color(luxembourg,white) color(denmark,blue)
+Answer: 229
+color(belgium,red) color(netherlands,green) color(france,white) color(luxembourg,red) color(germany,blue) color(denmark,blue)
+Answer: 230
+color(belgium,red) color(netherlands,green) color(france,white) color(luxembourg,red) color(germany,blue) color(denmark,red)
+Answer: 231
+color(belgium,red) color(netherlands,green) color(france,white) color(luxembourg,red) color(germany,blue) color(denmark,green)
+Answer: 232
+color(belgium,red) color(netherlands,green) color(france,white) color(luxembourg,red) color(germany,blue) color(denmark,white)
+Answer: 233
+color(belgium,red) color(netherlands,green) color(france,white) color(germany,blue) color(luxembourg,white) color(denmark,blue)
+Answer: 234
+color(belgium,red) color(netherlands,green) color(france,white) color(germany,blue) color(luxembourg,white) color(denmark,red)
+Answer: 235
+color(belgium,red) color(netherlands,green) color(france,white) color(germany,blue) color(luxembourg,white) color(denmark,green)
+Answer: 236
+color(belgium,red) color(netherlands,green) color(france,white) color(germany,blue) color(luxembourg,white) color(denmark,white)
+Answer: 237
+color(belgium,red) color(netherlands,green) color(france,white) color(germany,green) color(luxembourg,blue) color(denmark,red)
+Answer: 238
+color(belgium,red) color(netherlands,green) color(france,white) color(germany,green) color(luxembourg,blue) color(denmark,white)
+Answer: 239
+color(belgium,red) color(netherlands,green) color(france,white) color(germany,green) color(luxembourg,blue) color(denmark,blue)
+Answer: 240
+color(belgium,red) color(netherlands,green) color(france,white) color(germany,green) color(luxembourg,blue) color(denmark,green)
+Answer: 241
+color(belgium,red) color(netherlands,green) color(france,white) color(luxembourg,blue) color(germany,white) color(denmark,white)
+Answer: 242
+color(belgium,red) color(netherlands,green) color(france,white) color(luxembourg,blue) color(germany,white) color(denmark,blue)
+Answer: 243
+color(belgium,red) color(netherlands,green) color(france,white) color(luxembourg,blue) color(germany,white) color(denmark,green)
+Answer: 244
+color(belgium,red) color(netherlands,green) color(france,white) color(luxembourg,blue) color(germany,white) color(denmark,red)
+Answer: 245
+color(belgium,red) color(netherlands,green) color(france,blue) color(luxembourg,red) color(germany,green) color(denmark,white)
+Answer: 246
+color(belgium,red) color(netherlands,green) color(france,blue) color(luxembourg,red) color(germany,green) color(denmark,red)
+Answer: 247
+color(belgium,red) color(netherlands,green) color(france,blue) color(luxembourg,red) color(germany,green) color(denmark,blue)
+Answer: 248
+color(belgium,red) color(netherlands,green) color(france,blue) color(luxembourg,red) color(germany,green) color(denmark,green)
+Answer: 249
+color(belgium,red) color(netherlands,green) color(france,blue) color(germany,green) color(luxembourg,blue) color(denmark,red)
+Answer: 250
+color(belgium,red) color(netherlands,green) color(france,blue) color(germany,green) color(luxembourg,blue) color(denmark,blue)
+Answer: 251
+color(belgium,red) color(netherlands,green) color(france,blue) color(germany,green) color(luxembourg,blue) color(denmark,green)
+Answer: 252
+color(belgium,red) color(netherlands,green) color(france,blue) color(germany,green) color(luxembourg,blue) color(denmark,white)
+Answer: 253
+color(belgium,red) color(netherlands,green) color(france,blue) color(luxembourg,red) color(germany,white) color(denmark,blue)
+Answer: 254
+color(belgium,red) color(netherlands,green) color(france,blue) color(luxembourg,red) color(germany,white) color(denmark,white)
+Answer: 255
+color(belgium,red) color(netherlands,green) color(france,blue) color(luxembourg,red) color(germany,white) color(denmark,red)
+Answer: 256
+color(belgium,red) color(netherlands,green) color(france,blue) color(luxembourg,red) color(germany,white) color(denmark,green)
+Answer: 257
+color(belgium,red) color(netherlands,green) color(france,blue) color(luxembourg,blue) color(germany,white) color(denmark,blue)
+Answer: 258
+color(belgium,red) color(netherlands,green) color(france,blue) color(luxembourg,blue) color(germany,white) color(denmark,white)
+Answer: 259
+color(belgium,red) color(netherlands,green) color(france,blue) color(luxembourg,blue) color(germany,white) color(denmark,red)
+Answer: 260
+color(belgium,red) color(netherlands,green) color(france,blue) color(luxembourg,blue) color(germany,white) color(denmark,green)
+Answer: 261
+color(belgium,red) color(netherlands,green) color(france,blue) color(germany,green) color(luxembourg,white) color(denmark,green)
+Answer: 262
+color(belgium,red) color(netherlands,green) color(france,blue) color(germany,green) color(luxembourg,white) color(denmark,white)
+Answer: 263
+color(belgium,red) color(netherlands,green) color(france,blue) color(germany,green) color(luxembourg,white) color(denmark,blue)
+Answer: 264
+color(belgium,red) color(netherlands,green) color(france,blue) color(germany,green) color(luxembourg,white) color(denmark,red)
+Answer: 265
+color(belgium,red) color(netherlands,green) color(france,blue) color(luxembourg,red) color(germany,blue) color(denmark,blue)
+Answer: 266
+color(belgium,red) color(netherlands,green) color(france,blue) color(luxembourg,red) color(germany,blue) color(denmark,white)
+Answer: 267
+color(belgium,red) color(netherlands,green) color(france,blue) color(luxembourg,red) color(germany,blue) color(denmark,red)
+Answer: 268
+color(belgium,red) color(netherlands,green) color(france,blue) color(luxembourg,red) color(germany,blue) color(denmark,green)
+Answer: 269
+color(belgium,red) color(netherlands,green) color(france,blue) color(germany,blue) color(luxembourg,white) color(denmark,white)
+Answer: 270
+color(belgium,red) color(netherlands,green) color(france,blue) color(germany,blue) color(luxembourg,white) color(denmark,red)
+Answer: 271
+color(belgium,red) color(netherlands,green) color(france,blue) color(germany,blue) color(luxembourg,white) color(denmark,green)
+Answer: 272
+color(belgium,red) color(netherlands,green) color(france,blue) color(germany,blue) color(luxembourg,white) color(denmark,blue)
+Answer: 273
+color(belgium,red) color(netherlands,green) color(france,green) color(luxembourg,red) color(germany,white) color(denmark,white)
+Answer: 274
+color(belgium,red) color(netherlands,green) color(france,green) color(luxembourg,red) color(germany,white) color(denmark,blue)
+Answer: 275
+color(belgium,red) color(netherlands,green) color(france,green) color(luxembourg,red) color(germany,white) color(denmark,green)
+Answer: 276
+color(belgium,red) color(netherlands,green) color(france,green) color(luxembourg,red) color(germany,white) color(denmark,red)
+Answer: 277
+color(belgium,red) color(netherlands,green) color(france,green) color(luxembourg,red) color(germany,green) color(denmark,blue)
+Answer: 278
+color(belgium,red) color(netherlands,green) color(france,green) color(luxembourg,red) color(germany,green) color(denmark,red)
+Answer: 279
+color(belgium,red) color(netherlands,green) color(france,green) color(luxembourg,red) color(germany,green) color(denmark,white)
+Answer: 280
+color(belgium,red) color(netherlands,green) color(france,green) color(luxembourg,red) color(germany,green) color(denmark,green)
+Answer: 281
+color(belgium,red) color(netherlands,green) color(france,green) color(germany,green) color(luxembourg,white) color(denmark,blue)
+Answer: 282
+color(belgium,red) color(netherlands,green) color(france,green) color(germany,green) color(luxembourg,white) color(denmark,red)
+Answer: 283
+color(belgium,red) color(netherlands,green) color(france,green) color(germany,green) color(luxembourg,white) color(denmark,white)
+Answer: 284
+color(belgium,red) color(netherlands,green) color(france,green) color(germany,green) color(luxembourg,white) color(denmark,green)
+Answer: 285
+color(belgium,red) color(netherlands,green) color(france,green) color(luxembourg,blue) color(germany,white) color(denmark,green)
+Answer: 286
+color(belgium,red) color(netherlands,green) color(france,green) color(luxembourg,blue) color(germany,white) color(denmark,red)
+Answer: 287
+color(belgium,red) color(netherlands,green) color(france,green) color(luxembourg,blue) color(germany,white) color(denmark,blue)
+Answer: 288
+color(belgium,red) color(netherlands,green) color(france,green) color(luxembourg,blue) color(germany,white) color(denmark,white)
+Answer: 289
+color(belgium,red) color(netherlands,green) color(france,green) color(germany,green) color(luxembourg,blue) color(denmark,red)
+Answer: 290
+color(belgium,red) color(netherlands,green) color(france,green) color(germany,green) color(luxembourg,blue) color(denmark,blue)
+Answer: 291
+color(belgium,red) color(netherlands,green) color(france,green) color(germany,green) color(luxembourg,blue) color(denmark,white)
+Answer: 292
+color(belgium,red) color(netherlands,green) color(france,green) color(germany,green) color(luxembourg,blue) color(denmark,green)
+Answer: 293
+color(belgium,red) color(netherlands,green) color(france,green) color(luxembourg,red) color(germany,blue) color(denmark,white)
+Answer: 294
+color(belgium,red) color(netherlands,green) color(france,green) color(luxembourg,red) color(germany,blue) color(denmark,blue)
+Answer: 295
+color(belgium,red) color(netherlands,green) color(france,green) color(luxembourg,red) color(germany,blue) color(denmark,green)
+Answer: 296
+color(belgium,red) color(netherlands,green) color(france,green) color(luxembourg,red) color(germany,blue) color(denmark,red)
+Answer: 297
+color(belgium,red) color(netherlands,green) color(france,green) color(germany,blue) color(luxembourg,white) color(denmark,blue)
+Answer: 298
+color(belgium,red) color(netherlands,green) color(france,green) color(germany,blue) color(luxembourg,white) color(denmark,green)
+Answer: 299
+color(belgium,red) color(netherlands,green) color(france,green) color(germany,blue) color(luxembourg,white) color(denmark,red)
+Answer: 300
+color(belgium,red) color(netherlands,green) color(france,green) color(germany,blue) color(luxembourg,white) color(denmark,white)
+Answer: 301
+color(belgium,red) color(netherlands,green) color(france,blue) color(luxembourg,green) color(germany,white) color(denmark,blue)
+Answer: 302
+color(belgium,red) color(netherlands,green) color(france,blue) color(luxembourg,green) color(germany,white) color(denmark,white)
+Answer: 303
+color(belgium,red) color(netherlands,green) color(france,blue) color(luxembourg,green) color(germany,white) color(denmark,red)
+Answer: 304
+color(belgium,red) color(netherlands,green) color(france,blue) color(luxembourg,green) color(germany,white) color(denmark,green)
+Answer: 305
+color(belgium,red) color(netherlands,green) color(france,green) color(luxembourg,green) color(germany,white) color(denmark,white)
+Answer: 306
+color(belgium,red) color(netherlands,green) color(france,green) color(luxembourg,green) color(germany,white) color(denmark,red)
+Answer: 307
+color(belgium,red) color(netherlands,green) color(france,green) color(luxembourg,green) color(germany,white) color(denmark,green)
+Answer: 308
+color(belgium,red) color(netherlands,green) color(france,green) color(luxembourg,green) color(germany,white) color(denmark,blue)
+Answer: 309
+color(belgium,red) color(netherlands,green) color(france,green) color(luxembourg,green) color(germany,blue) color(denmark,blue)
+Answer: 310
+color(belgium,red) color(netherlands,green) color(france,green) color(luxembourg,green) color(germany,blue) color(denmark,green)
+Answer: 311
+color(belgium,red) color(netherlands,green) color(france,green) color(luxembourg,green) color(germany,blue) color(denmark,red)
+Answer: 312
+color(belgium,red) color(netherlands,green) color(france,green) color(luxembourg,green) color(germany,blue) color(denmark,white)
+Answer: 313
+color(belgium,red) color(netherlands,green) color(france,blue) color(luxembourg,green) color(germany,blue) color(denmark,green)
+Answer: 314
+color(belgium,red) color(netherlands,green) color(france,blue) color(luxembourg,green) color(germany,blue) color(denmark,red)
+Answer: 315
+color(belgium,red) color(netherlands,green) color(france,blue) color(luxembourg,green) color(germany,blue) color(denmark,white)
+Answer: 316
+color(belgium,red) color(netherlands,green) color(france,blue) color(luxembourg,green) color(germany,blue) color(denmark,blue)
+Answer: 317
+color(belgium,red) color(netherlands,green) color(france,white) color(luxembourg,green) color(germany,blue) color(denmark,blue)
+Answer: 318
+color(belgium,red) color(netherlands,green) color(france,white) color(luxembourg,green) color(germany,blue) color(denmark,white)
+Answer: 319
+color(belgium,red) color(netherlands,green) color(france,white) color(luxembourg,green) color(germany,blue) color(denmark,red)
+Answer: 320
+color(belgium,red) color(netherlands,green) color(france,white) color(luxembourg,green) color(germany,blue) color(denmark,green)
+Answer: 321
+color(belgium,red) color(netherlands,green) color(france,white) color(luxembourg,green) color(germany,white) color(denmark,white)
+Answer: 322
+color(belgium,red) color(netherlands,green) color(france,white) color(luxembourg,green) color(germany,white) color(denmark,red)
+Answer: 323
+color(belgium,red) color(netherlands,green) color(france,white) color(luxembourg,green) color(germany,white) color(denmark,green)
+Answer: 324
+color(belgium,red) color(netherlands,green) color(france,white) color(luxembourg,green) color(germany,white) color(denmark,blue)
+Answer: 325
+color(netherlands,red) color(belgium,white) color(france,green) color(luxembourg,red) color(germany,blue) color(denmark,red)
+Answer: 326
+color(netherlands,red) color(belgium,white) color(france,green) color(luxembourg,red) color(germany,blue) color(denmark,blue)
+Answer: 327
+color(netherlands,red) color(belgium,white) color(france,green) color(luxembourg,red) color(germany,blue) color(denmark,green)
+Answer: 328
+color(netherlands,red) color(belgium,white) color(france,green) color(luxembourg,red) color(germany,blue) color(denmark,white)
+Answer: 329
+color(netherlands,red) color(belgium,white) color(france,green) color(luxembourg,green) color(germany,blue) color(denmark,blue)
+Answer: 330
+color(netherlands,red) color(belgium,white) color(france,green) color(luxembourg,green) color(germany,blue) color(denmark,green)
+Answer: 331
+color(netherlands,red) color(belgium,white) color(france,green) color(luxembourg,green) color(germany,blue) color(denmark,white)
+Answer: 332
+color(netherlands,red) color(belgium,white) color(france,green) color(luxembourg,green) color(germany,blue) color(denmark,red)
+Answer: 333
+color(netherlands,blue) color(belgium,white) color(france,green) color(luxembourg,red) color(germany,blue) color(denmark,white)
+Answer: 334
+color(netherlands,blue) color(belgium,white) color(france,green) color(luxembourg,red) color(germany,blue) color(denmark,green)
+Answer: 335
+color(netherlands,blue) color(belgium,white) color(france,green) color(luxembourg,red) color(germany,blue) color(denmark,red)
+Answer: 336
+color(netherlands,blue) color(belgium,white) color(france,green) color(luxembourg,red) color(germany,blue) color(denmark,blue)
+Answer: 337
+color(netherlands,blue) color(belgium,white) color(france,green) color(luxembourg,green) color(germany,blue) color(denmark,green)
+Answer: 338
+color(netherlands,blue) color(belgium,white) color(france,green) color(luxembourg,green) color(germany,blue) color(denmark,red)
+Answer: 339
+color(netherlands,blue) color(belgium,white) color(france,green) color(luxembourg,green) color(germany,blue) color(denmark,blue)
+Answer: 340
+color(netherlands,blue) color(belgium,white) color(france,green) color(luxembourg,green) color(germany,blue) color(denmark,white)
+Answer: 341
+color(netherlands,blue) color(belgium,white) color(france,green) color(luxembourg,red) color(germany,green) color(denmark,red)
+Answer: 342
+color(netherlands,blue) color(belgium,white) color(france,green) color(luxembourg,red) color(germany,green) color(denmark,white)
+Answer: 343
+color(netherlands,blue) color(belgium,white) color(france,green) color(luxembourg,red) color(germany,green) color(denmark,green)
+Answer: 344
+color(netherlands,blue) color(belgium,white) color(france,green) color(luxembourg,red) color(germany,green) color(denmark,blue)
+Answer: 345
+color(netherlands,red) color(belgium,white) color(france,green) color(luxembourg,red) color(germany,green) color(denmark,white)
+Answer: 346
+color(netherlands,red) color(belgium,white) color(france,green) color(luxembourg,red) color(germany,green) color(denmark,green)
+Answer: 347
+color(netherlands,red) color(belgium,white) color(france,green) color(luxembourg,red) color(germany,green) color(denmark,blue)
+Answer: 348
+color(netherlands,red) color(belgium,white) color(france,green) color(luxembourg,red) color(germany,green) color(denmark,red)
+Answer: 349
+color(netherlands,red) color(belgium,white) color(france,green) color(germany,green) color(luxembourg,blue) color(denmark,red)
+Answer: 350
+color(netherlands,red) color(belgium,white) color(france,green) color(germany,green) color(luxembourg,blue) color(denmark,green)
+Answer: 351
+color(netherlands,red) color(belgium,white) color(france,green) color(germany,green) color(luxembourg,blue) color(denmark,white)
+Answer: 352
+color(netherlands,red) color(belgium,white) color(france,green) color(germany,green) color(luxembourg,blue) color(denmark,blue)
+Answer: 353
+color(netherlands,blue) color(belgium,white) color(france,green) color(germany,green) color(luxembourg,blue) color(denmark,green)
+Answer: 354
+color(netherlands,blue) color(belgium,white) color(france,green) color(germany,green) color(luxembourg,blue) color(denmark,white)
+Answer: 355
+color(netherlands,blue) color(belgium,white) color(france,green) color(germany,green) color(luxembourg,blue) color(denmark,blue)
+Answer: 356
+color(netherlands,blue) color(belgium,white) color(france,green) color(germany,green) color(luxembourg,blue) color(denmark,red)
+Answer: 357
+color(netherlands,red) color(belgium,white) color(france,green) color(germany,green) color(luxembourg,white) color(denmark,white)
+Answer: 358
+color(netherlands,red) color(belgium,white) color(france,green) color(germany,green) color(luxembourg,white) color(denmark,green)
+Answer: 359
+color(netherlands,red) color(belgium,white) color(france,green) color(germany,green) color(luxembourg,white) color(denmark,red)
+Answer: 360
+color(netherlands,red) color(belgium,white) color(france,green) color(germany,green) color(luxembourg,white) color(denmark,blue)
+Answer: 361
+color(netherlands,blue) color(belgium,white) color(france,green) color(germany,green) color(luxembourg,white) color(denmark,green)
+Answer: 362
+color(netherlands,blue) color(belgium,white) color(france,green) color(germany,green) color(luxembourg,white) color(denmark,red)
+Answer: 363
+color(netherlands,blue) color(belgium,white) color(france,green) color(germany,green) color(luxembourg,white) color(denmark,blue)
+Answer: 364
+color(netherlands,blue) color(belgium,white) color(france,green) color(germany,green) color(luxembourg,white) color(denmark,white)
+Answer: 365
+color(netherlands,red) color(belgium,white) color(france,green) color(germany,blue) color(luxembourg,white) color(denmark,blue)
+Answer: 366
+color(netherlands,red) color(belgium,white) color(france,green) color(germany,blue) color(luxembourg,white) color(denmark,red)
+Answer: 367
+color(netherlands,red) color(belgium,white) color(france,green) color(germany,blue) color(luxembourg,white) color(denmark,white)
+Answer: 368
+color(netherlands,red) color(belgium,white) color(france,green) color(germany,blue) color(luxembourg,white) color(denmark,green)
+Answer: 369
+color(netherlands,blue) color(belgium,white) color(france,green) color(germany,blue) color(luxembourg,white) color(denmark,red)
+Answer: 370
+color(netherlands,blue) color(belgium,white) color(france,green) color(germany,blue) color(luxembourg,white) color(denmark,white)
+Answer: 371
+color(netherlands,blue) color(belgium,white) color(france,green) color(germany,blue) color(luxembourg,white) color(denmark,green)
+Answer: 372
+color(netherlands,blue) color(belgium,white) color(france,green) color(germany,blue) color(luxembourg,white) color(denmark,blue)
+Answer: 373
+color(netherlands,green) color(belgium,white) color(france,green) color(luxembourg,red) color(germany,blue) color(denmark,white)
+Answer: 374
+color(netherlands,green) color(belgium,white) color(france,green) color(luxembourg,red) color(germany,blue) color(denmark,green)
+Answer: 375
+color(netherlands,green) color(belgium,white) color(france,green) color(luxembourg,red) color(germany,blue) color(denmark,red)
+Answer: 376
+color(netherlands,green) color(belgium,white) color(france,green) color(luxembourg,red) color(germany,blue) color(denmark,blue)
+Answer: 377
+color(netherlands,green) color(belgium,white) color(france,green) color(germany,blue) color(luxembourg,white) color(denmark,white)
+Answer: 378
+color(netherlands,green) color(belgium,white) color(france,green) color(germany,blue) color(luxembourg,white) color(denmark,green)
+Answer: 379
+color(netherlands,green) color(belgium,white) color(france,green) color(germany,blue) color(luxembourg,white) color(denmark,red)
+Answer: 380
+color(netherlands,green) color(belgium,white) color(france,green) color(germany,blue) color(luxembourg,white) color(denmark,blue)
+Answer: 381
+color(netherlands,green) color(belgium,white) color(france,green) color(luxembourg,red) color(germany,green) color(denmark,blue)
+Answer: 382
+color(netherlands,green) color(belgium,white) color(france,green) color(luxembourg,red) color(germany,green) color(denmark,green)
+Answer: 383
+color(netherlands,green) color(belgium,white) color(france,green) color(luxembourg,red) color(germany,green) color(denmark,white)
+Answer: 384
+color(netherlands,green) color(belgium,white) color(france,green) color(luxembourg,red) color(germany,green) color(denmark,red)
+Answer: 385
+color(netherlands,green) color(belgium,white) color(france,green) color(germany,green) color(luxembourg,blue) color(denmark,green)
+Answer: 386
+color(netherlands,green) color(belgium,white) color(france,green) color(germany,green) color(luxembourg,blue) color(denmark,white)
+Answer: 387
+color(netherlands,green) color(belgium,white) color(france,green) color(germany,green) color(luxembourg,blue) color(denmark,red)
+Answer: 388
+color(netherlands,green) color(belgium,white) color(france,green) color(germany,green) color(luxembourg,blue) color(denmark,blue)
+Answer: 389
+color(netherlands,green) color(belgium,white) color(france,green) color(germany,green) color(luxembourg,white) color(denmark,white)
+Answer: 390
+color(netherlands,green) color(belgium,white) color(france,green) color(germany,green) color(luxembourg,white) color(denmark,red)
+Answer: 391
+color(netherlands,green) color(belgium,white) color(france,green) color(germany,green) color(luxembourg,white) color(denmark,blue)
+Answer: 392
+color(netherlands,green) color(belgium,white) color(france,green) color(germany,green) color(luxembourg,white) color(denmark,green)
+Answer: 393
+color(netherlands,green) color(belgium,white) color(france,green) color(luxembourg,green) color(germany,blue) color(denmark,blue)
+Answer: 394
+color(netherlands,green) color(belgium,white) color(france,green) color(luxembourg,green) color(germany,blue) color(denmark,red)
+Answer: 395
+color(netherlands,green) color(belgium,white) color(france,green) color(luxembourg,green) color(germany,blue) color(denmark,green)
+Answer: 396
+color(netherlands,green) color(belgium,white) color(france,green) color(luxembourg,green) color(germany,blue) color(denmark,white)
+Answer: 397
+color(netherlands,green) color(belgium,white) color(france,blue) color(luxembourg,red) color(germany,green) color(denmark,blue)
+Answer: 398
+color(netherlands,green) color(belgium,white) color(france,blue) color(luxembourg,red) color(germany,green) color(denmark,white)
+Answer: 399
+color(netherlands,green) color(belgium,white) color(france,blue) color(luxembourg,red) color(germany,green) color(denmark,green)
+Answer: 400
+color(netherlands,green) color(belgium,white) color(france,blue) color(luxembourg,red) color(germany,green) color(denmark,red)
+Answer: 401
+color(netherlands,green) color(belgium,white) color(france,blue) color(germany,green) color(luxembourg,blue) color(denmark,white)
+Answer: 402
+color(netherlands,green) color(belgium,white) color(france,blue) color(germany,green) color(luxembourg,blue) color(denmark,green)
+Answer: 403
+color(netherlands,green) color(belgium,white) color(france,blue) color(germany,green) color(luxembourg,blue) color(denmark,red)
+Answer: 404
+color(netherlands,green) color(belgium,white) color(france,blue) color(germany,green) color(luxembourg,blue) color(denmark,blue)
+Answer: 405
+color(netherlands,blue) color(belgium,white) color(france,blue) color(luxembourg,red) color(germany,green) color(denmark,green)
+Answer: 406
+color(netherlands,blue) color(belgium,white) color(france,blue) color(luxembourg,red) color(germany,green) color(denmark,blue)
+Answer: 407
+color(netherlands,blue) color(belgium,white) color(france,blue) color(luxembourg,red) color(germany,green) color(denmark,white)
+Answer: 408
+color(netherlands,blue) color(belgium,white) color(france,blue) color(luxembourg,red) color(germany,green) color(denmark,red)
+Answer: 409
+color(netherlands,blue) color(belgium,white) color(france,blue) color(germany,green) color(luxembourg,blue) color(denmark,green)
+Answer: 410
+color(netherlands,blue) color(belgium,white) color(france,blue) color(germany,green) color(luxembourg,blue) color(denmark,blue)
+Answer: 411
+color(netherlands,blue) color(belgium,white) color(france,blue) color(germany,green) color(luxembourg,blue) color(denmark,white)
+Answer: 412
+color(netherlands,blue) color(belgium,white) color(france,blue) color(germany,green) color(luxembourg,blue) color(denmark,red)
+Answer: 413
+color(netherlands,red) color(belgium,white) color(france,blue) color(luxembourg,red) color(germany,green) color(denmark,red)
+Answer: 414
+color(netherlands,red) color(belgium,white) color(france,blue) color(luxembourg,red) color(germany,green) color(denmark,blue)
+Answer: 415
+color(netherlands,red) color(belgium,white) color(france,blue) color(luxembourg,red) color(germany,green) color(denmark,green)
+Answer: 416
+color(netherlands,red) color(belgium,white) color(france,blue) color(luxembourg,red) color(germany,green) color(denmark,white)
+Answer: 417
+color(netherlands,red) color(belgium,white) color(france,blue) color(germany,green) color(luxembourg,blue) color(denmark,blue)
+Answer: 418
+color(netherlands,red) color(belgium,white) color(france,blue) color(germany,green) color(luxembourg,blue) color(denmark,green)
+Answer: 419
+color(netherlands,red) color(belgium,white) color(france,blue) color(germany,green) color(luxembourg,blue) color(denmark,white)
+Answer: 420
+color(netherlands,red) color(belgium,white) color(france,blue) color(germany,green) color(luxembourg,blue) color(denmark,red)
+Answer: 421
+color(netherlands,red) color(belgium,white) color(france,blue) color(germany,green) color(luxembourg,white) color(denmark,white)
+Answer: 422
+color(netherlands,red) color(belgium,white) color(france,blue) color(germany,green) color(luxembourg,white) color(denmark,green)
+Answer: 423
+color(netherlands,red) color(belgium,white) color(france,blue) color(germany,green) color(luxembourg,white) color(denmark,red)
+Answer: 424
+color(netherlands,red) color(belgium,white) color(france,blue) color(germany,green) color(luxembourg,white) color(denmark,blue)
+Answer: 425
+color(netherlands,blue) color(belgium,white) color(france,blue) color(germany,green) color(luxembourg,white) color(denmark,green)
+Answer: 426
+color(netherlands,blue) color(belgium,white) color(france,blue) color(germany,green) color(luxembourg,white) color(denmark,red)
+Answer: 427
+color(netherlands,blue) color(belgium,white) color(france,blue) color(germany,green) color(luxembourg,white) color(denmark,blue)
+Answer: 428
+color(netherlands,blue) color(belgium,white) color(france,blue) color(germany,green) color(luxembourg,white) color(denmark,white)
+Answer: 429
+color(netherlands,green) color(belgium,white) color(france,blue) color(germany,green) color(luxembourg,white) color(denmark,red)
+Answer: 430
+color(netherlands,green) color(belgium,white) color(france,blue) color(germany,green) color(luxembourg,white) color(denmark,blue)
+Answer: 431
+color(netherlands,green) color(belgium,white) color(france,blue) color(germany,green) color(luxembourg,white) color(denmark,white)
+Answer: 432
+color(netherlands,green) color(belgium,white) color(france,blue) color(germany,green) color(luxembourg,white) color(denmark,green)
+Answer: 433
+color(netherlands,red) color(belgium,white) color(france,blue) color(luxembourg,red) color(germany,blue) color(denmark,red)
+Answer: 434
+color(netherlands,red) color(belgium,white) color(france,blue) color(luxembourg,red) color(germany,blue) color(denmark,green)
+Answer: 435
+color(netherlands,red) color(belgium,white) color(france,blue) color(luxembourg,red) color(germany,blue) color(denmark,blue)
+Answer: 436
+color(netherlands,red) color(belgium,white) color(france,blue) color(luxembourg,red) color(germany,blue) color(denmark,white)
+Answer: 437
+color(netherlands,red) color(belgium,white) color(france,blue) color(luxembourg,green) color(germany,blue) color(denmark,green)
+Answer: 438
+color(netherlands,red) color(belgium,white) color(france,blue) color(luxembourg,green) color(germany,blue) color(denmark,blue)
+Answer: 439
+color(netherlands,red) color(belgium,white) color(france,blue) color(luxembourg,green) color(germany,blue) color(denmark,white)
+Answer: 440
+color(netherlands,red) color(belgium,white) color(france,blue) color(luxembourg,green) color(germany,blue) color(denmark,red)
+Answer: 441
+color(netherlands,green) color(belgium,white) color(france,blue) color(luxembourg,red) color(germany,blue) color(denmark,blue)
+Answer: 442
+color(netherlands,green) color(belgium,white) color(france,blue) color(luxembourg,red) color(germany,blue) color(denmark,red)
+Answer: 443
+color(netherlands,green) color(belgium,white) color(france,blue) color(luxembourg,red) color(germany,blue) color(denmark,green)
+Answer: 444
+color(netherlands,green) color(belgium,white) color(france,blue) color(luxembourg,red) color(germany,blue) color(denmark,white)
+Answer: 445
+color(netherlands,green) color(belgium,white) color(france,blue) color(luxembourg,green) color(germany,blue) color(denmark,blue)
+Answer: 446
+color(netherlands,green) color(belgium,white) color(france,blue) color(luxembourg,green) color(germany,blue) color(denmark,red)
+Answer: 447
+color(netherlands,green) color(belgium,white) color(france,blue) color(luxembourg,green) color(germany,blue) color(denmark,green)
+Answer: 448
+color(netherlands,green) color(belgium,white) color(france,blue) color(luxembourg,green) color(germany,blue) color(denmark,white)
+Answer: 449
+color(netherlands,red) color(belgium,white) color(france,blue) color(germany,blue) color(luxembourg,white) color(denmark,white)
+Answer: 450
+color(netherlands,red) color(belgium,white) color(france,blue) color(germany,blue) color(luxembourg,white) color(denmark,red)
+Answer: 451
+color(netherlands,red) color(belgium,white) color(france,blue) color(germany,blue) color(luxembourg,white) color(denmark,blue)
+Answer: 452
+color(netherlands,red) color(belgium,white) color(france,blue) color(germany,blue) color(luxembourg,white) color(denmark,green)
+Answer: 453
+color(netherlands,green) color(belgium,white) color(france,blue) color(germany,blue) color(luxembourg,white) color(denmark,red)
+Answer: 454
+color(netherlands,green) color(belgium,white) color(france,blue) color(germany,blue) color(luxembourg,white) color(denmark,blue)
+Answer: 455
+color(netherlands,green) color(belgium,white) color(france,blue) color(germany,blue) color(luxembourg,white) color(denmark,green)
+Answer: 456
+color(netherlands,green) color(belgium,white) color(france,blue) color(germany,blue) color(luxembourg,white) color(denmark,white)
+Answer: 457
+color(netherlands,blue) color(belgium,white) color(france,blue) color(luxembourg,red) color(germany,blue) color(denmark,green)
+Answer: 458
+color(netherlands,blue) color(belgium,white) color(france,blue) color(luxembourg,red) color(germany,blue) color(denmark,blue)
+Answer: 459
+color(netherlands,blue) color(belgium,white) color(france,blue) color(luxembourg,red) color(germany,blue) color(denmark,white)
+Answer: 460
+color(netherlands,blue) color(belgium,white) color(france,blue) color(luxembourg,red) color(germany,blue) color(denmark,red)
+Answer: 461
+color(netherlands,blue) color(belgium,white) color(france,blue) color(germany,blue) color(luxembourg,white) color(denmark,blue)
+Answer: 462
+color(netherlands,blue) color(belgium,white) color(france,blue) color(germany,blue) color(luxembourg,white) color(denmark,white)
+Answer: 463
+color(netherlands,blue) color(belgium,white) color(france,blue) color(germany,blue) color(luxembourg,white) color(denmark,red)
+Answer: 464
+color(netherlands,blue) color(belgium,white) color(france,blue) color(germany,blue) color(luxembourg,white) color(denmark,green)
+Answer: 465
+color(netherlands,blue) color(belgium,white) color(france,blue) color(luxembourg,green) color(germany,blue) color(denmark,white)
+Answer: 466
+color(netherlands,blue) color(belgium,white) color(france,blue) color(luxembourg,green) color(germany,blue) color(denmark,green)
+Answer: 467
+color(netherlands,blue) color(belgium,white) color(france,blue) color(luxembourg,green) color(germany,blue) color(denmark,blue)
+Answer: 468
+color(netherlands,blue) color(belgium,white) color(france,blue) color(luxembourg,green) color(germany,blue) color(denmark,red)
+Answer: 469
+color(netherlands,green) color(belgium,white) color(france,red) color(luxembourg,red) color(germany,green) color(denmark,red)
+Answer: 470
+color(netherlands,green) color(belgium,white) color(france,red) color(luxembourg,red) color(germany,green) color(denmark,blue)
+Answer: 471
+color(netherlands,green) color(belgium,white) color(france,red) color(luxembourg,red) color(germany,green) color(denmark,green)
+Answer: 472
+color(netherlands,green) color(belgium,white) color(france,red) color(luxembourg,red) color(germany,green) color(denmark,white)
+Answer: 473
+color(netherlands,blue) color(belgium,white) color(france,red) color(luxembourg,red) color(germany,green) color(denmark,blue)
+Answer: 474
+color(netherlands,blue) color(belgium,white) color(france,red) color(luxembourg,red) color(germany,green) color(denmark,green)
+Answer: 475
+color(netherlands,blue) color(belgium,white) color(france,red) color(luxembourg,red) color(germany,green) color(denmark,white)
+Answer: 476
+color(netherlands,blue) color(belgium,white) color(france,red) color(luxembourg,red) color(germany,green) color(denmark,red)
+Answer: 477
+color(netherlands,blue) color(belgium,white) color(france,red) color(germany,green) color(luxembourg,blue) color(denmark,red)
+Answer: 478
+color(netherlands,blue) color(belgium,white) color(france,red) color(germany,green) color(luxembourg,blue) color(denmark,white)
+Answer: 479
+color(netherlands,blue) color(belgium,white) color(france,red) color(germany,green) color(luxembourg,blue) color(denmark,green)
+Answer: 480
+color(netherlands,blue) color(belgium,white) color(france,red) color(germany,green) color(luxembourg,blue) color(denmark,blue)
+Answer: 481
+color(netherlands,green) color(belgium,white) color(france,red) color(germany,green) color(luxembourg,blue) color(denmark,white)
+Answer: 482
+color(netherlands,green) color(belgium,white) color(france,red) color(germany,green) color(luxembourg,blue) color(denmark,green)
+Answer: 483
+color(netherlands,green) color(belgium,white) color(france,red) color(germany,green) color(luxembourg,blue) color(denmark,blue)
+Answer: 484
+color(netherlands,green) color(belgium,white) color(france,red) color(germany,green) color(luxembourg,blue) color(denmark,red)
+Answer: 485
+color(netherlands,blue) color(belgium,white) color(france,red) color(germany,green) color(luxembourg,white) color(denmark,red)
+Answer: 486
+color(netherlands,blue) color(belgium,white) color(france,red) color(germany,green) color(luxembourg,white) color(denmark,green)
+Answer: 487
+color(netherlands,blue) color(belgium,white) color(france,red) color(germany,green) color(luxembourg,white) color(denmark,white)
+Answer: 488
+color(netherlands,blue) color(belgium,white) color(france,red) color(germany,green) color(luxembourg,white) color(denmark,blue)
+Answer: 489
+color(netherlands,green) color(belgium,white) color(france,red) color(germany,green) color(luxembourg,white) color(denmark,red)
+Answer: 490
+color(netherlands,green) color(belgium,white) color(france,red) color(germany,green) color(luxembourg,white) color(denmark,green)
+Answer: 491
+color(netherlands,green) color(belgium,white) color(france,red) color(germany,green) color(luxembourg,white) color(denmark,white)
+Answer: 492
+color(netherlands,green) color(belgium,white) color(france,red) color(germany,green) color(luxembourg,white) color(denmark,blue)
+Answer: 493
+color(netherlands,red) color(belgium,white) color(france,red) color(luxembourg,red) color(germany,green) color(denmark,blue)
+Answer: 494
+color(netherlands,red) color(belgium,white) color(france,red) color(luxembourg,red) color(germany,green) color(denmark,red)
+Answer: 495
+color(netherlands,red) color(belgium,white) color(france,red) color(luxembourg,red) color(germany,green) color(denmark,green)
+Answer: 496
+color(netherlands,red) color(belgium,white) color(france,red) color(luxembourg,red) color(germany,green) color(denmark,white)
+Answer: 497
+color(netherlands,red) color(belgium,white) color(france,red) color(germany,green) color(luxembourg,white) color(denmark,blue)
+Answer: 498
+color(netherlands,red) color(belgium,white) color(france,red) color(germany,green) color(luxembourg,white) color(denmark,red)
+Answer: 499
+color(netherlands,red) color(belgium,white) color(france,red) color(germany,green) color(luxembourg,white) color(denmark,green)
+Answer: 500
+color(netherlands,red) color(belgium,white) color(france,red) color(germany,green) color(luxembourg,white) color(denmark,white)
+Answer: 501
+color(netherlands,red) color(belgium,white) color(france,red) color(germany,green) color(luxembourg,blue) color(denmark,red)
+Answer: 502
+color(netherlands,red) color(belgium,white) color(france,red) color(germany,green) color(luxembourg,blue) color(denmark,white)
+Answer: 503
+color(netherlands,red) color(belgium,white) color(france,red) color(germany,green) color(luxembourg,blue) color(denmark,blue)
+Answer: 504
+color(netherlands,red) color(belgium,white) color(france,red) color(germany,green) color(luxembourg,blue) color(denmark,green)
+Answer: 505
+color(netherlands,blue) color(belgium,white) color(france,red) color(luxembourg,red) color(germany,blue) color(denmark,red)
+Answer: 506
+color(netherlands,blue) color(belgium,white) color(france,red) color(luxembourg,red) color(germany,blue) color(denmark,white)
+Answer: 507
+color(netherlands,blue) color(belgium,white) color(france,red) color(luxembourg,red) color(germany,blue) color(denmark,green)
+Answer: 508
+color(netherlands,blue) color(belgium,white) color(france,red) color(luxembourg,red) color(germany,blue) color(denmark,blue)
+Answer: 509
+color(netherlands,blue) color(belgium,white) color(france,red) color(germany,blue) color(luxembourg,white) color(denmark,white)
+Answer: 510
+color(netherlands,blue) color(belgium,white) color(france,red) color(germany,blue) color(luxembourg,white) color(denmark,green)
+Answer: 511
+color(netherlands,blue) color(belgium,white) color(france,red) color(germany,blue) color(luxembourg,white) color(denmark,blue)
+Answer: 512
+color(netherlands,blue) color(belgium,white) color(france,red) color(germany,blue) color(luxembourg,white) color(denmark,red)
+Answer: 513
+color(netherlands,green) color(belgium,white) color(france,red) color(luxembourg,red) color(germany,blue) color(denmark,green)
+Answer: 514
+color(netherlands,green) color(belgium,white) color(france,red) color(luxembourg,red) color(germany,blue) color(denmark,red)
+Answer: 515
+color(netherlands,green) color(belgium,white) color(france,red) color(luxembourg,red) color(germany,blue) color(denmark,white)
+Answer: 516
+color(netherlands,green) color(belgium,white) color(france,red) color(luxembourg,red) color(germany,blue) color(denmark,blue)
+Answer: 517
+color(netherlands,green) color(belgium,white) color(france,red) color(germany,blue) color(luxembourg,white) color(denmark,green)
+Answer: 518
+color(netherlands,green) color(belgium,white) color(france,red) color(germany,blue) color(luxembourg,white) color(denmark,red)
+Answer: 519
+color(netherlands,green) color(belgium,white) color(france,red) color(germany,blue) color(luxembourg,white) color(denmark,white)
+Answer: 520
+color(netherlands,green) color(belgium,white) color(france,red) color(germany,blue) color(luxembourg,white) color(denmark,blue)
+Answer: 521
+color(netherlands,red) color(belgium,white) color(france,red) color(luxembourg,red) color(germany,blue) color(denmark,blue)
+Answer: 522
+color(netherlands,red) color(belgium,white) color(france,red) color(luxembourg,red) color(germany,blue) color(denmark,red)
+Answer: 523
+color(netherlands,red) color(belgium,white) color(france,red) color(luxembourg,red) color(germany,blue) color(denmark,green)
+Answer: 524
+color(netherlands,red) color(belgium,white) color(france,red) color(luxembourg,red) color(germany,blue) color(denmark,white)
+Answer: 525
+color(netherlands,red) color(belgium,white) color(france,red) color(germany,blue) color(luxembourg,white) color(denmark,red)
+Answer: 526
+color(netherlands,red) color(belgium,white) color(france,red) color(germany,blue) color(luxembourg,white) color(denmark,green)
+Answer: 527
+color(netherlands,red) color(belgium,white) color(france,red) color(germany,blue) color(luxembourg,white) color(denmark,white)
+Answer: 528
+color(netherlands,red) color(belgium,white) color(france,red) color(germany,blue) color(luxembourg,white) color(denmark,blue)
+Answer: 529
+color(netherlands,blue) color(belgium,white) color(france,red) color(luxembourg,green) color(germany,blue) color(denmark,green)
+Answer: 530
+color(netherlands,blue) color(belgium,white) color(france,red) color(luxembourg,green) color(germany,blue) color(denmark,red)
+Answer: 531
+color(netherlands,blue) color(belgium,white) color(france,red) color(luxembourg,green) color(germany,blue) color(denmark,blue)
+Answer: 532
+color(netherlands,blue) color(belgium,white) color(france,red) color(luxembourg,green) color(germany,blue) color(denmark,white)
+Answer: 533
+color(netherlands,red) color(belgium,white) color(france,red) color(luxembourg,green) color(germany,blue) color(denmark,red)
+Answer: 534
+color(netherlands,red) color(belgium,white) color(france,red) color(luxembourg,green) color(germany,blue) color(denmark,blue)
+Answer: 535
+color(netherlands,red) color(belgium,white) color(france,red) color(luxembourg,green) color(germany,blue) color(denmark,white)
+Answer: 536
+color(netherlands,red) color(belgium,white) color(france,red) color(luxembourg,green) color(germany,blue) color(denmark,green)
+Answer: 537
+color(netherlands,green) color(belgium,white) color(france,red) color(luxembourg,green) color(germany,blue) color(denmark,white)
+Answer: 538
+color(netherlands,green) color(belgium,white) color(france,red) color(luxembourg,green) color(germany,blue) color(denmark,blue)
+Answer: 539
+color(netherlands,green) color(belgium,white) color(france,red) color(luxembourg,green) color(germany,blue) color(denmark,green)
+Answer: 540
+color(netherlands,green) color(belgium,white) color(france,red) color(luxembourg,green) color(germany,blue) color(denmark,red)
+Answer: 541
+color(belgium,blue) color(netherlands,white) color(france,green) color(luxembourg,red) color(germany,green) color(denmark,white)
+Answer: 542
+color(belgium,blue) color(netherlands,white) color(france,green) color(luxembourg,red) color(germany,green) color(denmark,red)
+Answer: 543
+color(belgium,blue) color(netherlands,white) color(france,green) color(luxembourg,red) color(germany,green) color(denmark,green)
+Answer: 544
+color(belgium,blue) color(netherlands,white) color(france,green) color(luxembourg,red) color(germany,green) color(denmark,blue)
+Answer: 545
+color(belgium,blue) color(netherlands,white) color(france,red) color(luxembourg,red) color(germany,green) color(denmark,red)
+Answer: 546
+color(belgium,blue) color(netherlands,white) color(france,red) color(luxembourg,red) color(germany,green) color(denmark,green)
+Answer: 547
+color(belgium,blue) color(netherlands,white) color(france,red) color(luxembourg,red) color(germany,green) color(denmark,blue)
+Answer: 548
+color(belgium,blue) color(netherlands,white) color(france,red) color(luxembourg,red) color(germany,green) color(denmark,white)
+Answer: 549
+color(netherlands,green) color(belgium,blue) color(france,green) color(luxembourg,red) color(germany,green) color(denmark,blue)
+Answer: 550
+color(netherlands,green) color(belgium,blue) color(france,green) color(luxembourg,red) color(germany,green) color(denmark,green)
+Answer: 551
+color(netherlands,green) color(belgium,blue) color(france,green) color(luxembourg,red) color(germany,green) color(denmark,white)
+Answer: 552
+color(netherlands,green) color(belgium,blue) color(france,green) color(luxembourg,red) color(germany,green) color(denmark,red)
+Answer: 553
+color(netherlands,green) color(belgium,blue) color(france,red) color(luxembourg,red) color(germany,green) color(denmark,green)
+Answer: 554
+color(netherlands,green) color(belgium,blue) color(france,red) color(luxembourg,red) color(germany,green) color(denmark,white)
+Answer: 555
+color(netherlands,green) color(belgium,blue) color(france,red) color(luxembourg,red) color(germany,green) color(denmark,red)
+Answer: 556
+color(netherlands,green) color(belgium,blue) color(france,red) color(luxembourg,red) color(germany,green) color(denmark,blue)
+Answer: 557
+color(netherlands,green) color(belgium,blue) color(france,white) color(luxembourg,red) color(germany,green) color(denmark,blue)
+Answer: 558
+color(netherlands,green) color(belgium,blue) color(france,white) color(luxembourg,red) color(germany,green) color(denmark,red)
+Answer: 559
+color(netherlands,green) color(belgium,blue) color(france,white) color(luxembourg,red) color(germany,green) color(denmark,white)
+Answer: 560
+color(netherlands,green) color(belgium,blue) color(france,white) color(luxembourg,red) color(germany,green) color(denmark,green)
+Answer: 561
+color(belgium,blue) color(netherlands,white) color(france,white) color(luxembourg,red) color(germany,green) color(denmark,red)
+Answer: 562
+color(belgium,blue) color(netherlands,white) color(france,white) color(luxembourg,red) color(germany,green) color(denmark,white)
+Answer: 563
+color(belgium,blue) color(netherlands,white) color(france,white) color(luxembourg,red) color(germany,green) color(denmark,green)
+Answer: 564
+color(belgium,blue) color(netherlands,white) color(france,white) color(luxembourg,red) color(germany,green) color(denmark,blue)
+Answer: 565
+color(belgium,blue) color(netherlands,white) color(france,white) color(germany,green) color(luxembourg,white) color(denmark,blue)
+Answer: 566
+color(belgium,blue) color(netherlands,white) color(france,white) color(germany,green) color(luxembourg,white) color(denmark,green)
+Answer: 567
+color(belgium,blue) color(netherlands,white) color(france,white) color(germany,green) color(luxembourg,white) color(denmark,red)
+Answer: 568
+color(belgium,blue) color(netherlands,white) color(france,white) color(germany,green) color(luxembourg,white) color(denmark,white)
+Answer: 569
+color(belgium,blue) color(netherlands,white) color(france,green) color(germany,green) color(luxembourg,white) color(denmark,green)
+Answer: 570
+color(belgium,blue) color(netherlands,white) color(france,green) color(germany,green) color(luxembourg,white) color(denmark,red)
+Answer: 571
+color(belgium,blue) color(netherlands,white) color(france,green) color(germany,green) color(luxembourg,white) color(denmark,white)
+Answer: 572
+color(belgium,blue) color(netherlands,white) color(france,green) color(germany,green) color(luxembourg,white) color(denmark,blue)
+Answer: 573
+color(belgium,blue) color(netherlands,white) color(france,red) color(germany,green) color(luxembourg,white) color(denmark,red)
+Answer: 574
+color(belgium,blue) color(netherlands,white) color(france,red) color(germany,green) color(luxembourg,white) color(denmark,white)
+Answer: 575
+color(belgium,blue) color(netherlands,white) color(france,red) color(germany,green) color(luxembourg,white) color(denmark,blue)
+Answer: 576
+color(belgium,blue) color(netherlands,white) color(france,red) color(germany,green) color(luxembourg,white) color(denmark,green)
+Answer: 577
+color(netherlands,green) color(belgium,blue) color(france,red) color(germany,green) color(luxembourg,white) color(denmark,green)
+Answer: 578
+color(netherlands,green) color(belgium,blue) color(france,red) color(germany,green) color(luxembourg,white) color(denmark,blue)
+Answer: 579
+color(netherlands,green) color(belgium,blue) color(france,red) color(germany,green) color(luxembourg,white) color(denmark,white)
+Answer: 580
+color(netherlands,green) color(belgium,blue) color(france,red) color(germany,green) color(luxembourg,white) color(denmark,red)
+Answer: 581
+color(netherlands,green) color(belgium,blue) color(france,white) color(germany,green) color(luxembourg,white) color(denmark,blue)
+Answer: 582
+color(netherlands,green) color(belgium,blue) color(france,white) color(germany,green) color(luxembourg,white) color(denmark,white)
+Answer: 583
+color(netherlands,green) color(belgium,blue) color(france,white) color(germany,green) color(luxembourg,white) color(denmark,red)
+Answer: 584
+color(netherlands,green) color(belgium,blue) color(france,white) color(germany,green) color(luxembourg,white) color(denmark,green)
+Answer: 585
+color(netherlands,green) color(belgium,blue) color(france,green) color(germany,green) color(luxembourg,white) color(denmark,white)
+Answer: 586
+color(netherlands,green) color(belgium,blue) color(france,green) color(germany,green) color(luxembourg,white) color(denmark,red)
+Answer: 587
+color(netherlands,green) color(belgium,blue) color(france,green) color(germany,green) color(luxembourg,white) color(denmark,green)
+Answer: 588
+color(netherlands,green) color(belgium,blue) color(france,green) color(germany,green) color(luxembourg,white) color(denmark,blue)
+Answer: 589
+color(belgium,blue) color(netherlands,white) color(france,white) color(germany,green) color(luxembourg,blue) color(denmark,red)
+Answer: 590
+color(belgium,blue) color(netherlands,white) color(france,white) color(germany,green) color(luxembourg,blue) color(denmark,green)
+Answer: 591
+color(belgium,blue) color(netherlands,white) color(france,white) color(germany,green) color(luxembourg,blue) color(denmark,white)
+Answer: 592
+color(belgium,blue) color(netherlands,white) color(france,white) color(germany,green) color(luxembourg,blue) color(denmark,blue)
+Answer: 593
+color(belgium,blue) color(netherlands,white) color(france,green) color(germany,green) color(luxembourg,blue) color(denmark,red)
+Answer: 594
+color(belgium,blue) color(netherlands,white) color(france,green) color(germany,green) color(luxembourg,blue) color(denmark,green)
+Answer: 595
+color(belgium,blue) color(netherlands,white) color(france,green) color(germany,green) color(luxembourg,blue) color(denmark,white)
+Answer: 596
+color(belgium,blue) color(netherlands,white) color(france,green) color(germany,green) color(luxembourg,blue) color(denmark,blue)
+Answer: 597
+color(belgium,blue) color(netherlands,white) color(france,red) color(germany,green) color(luxembourg,blue) color(denmark,green)
+Answer: 598
+color(belgium,blue) color(netherlands,white) color(france,red) color(germany,green) color(luxembourg,blue) color(denmark,white)
+Answer: 599
+color(belgium,blue) color(netherlands,white) color(france,red) color(germany,green) color(luxembourg,blue) color(denmark,blue)
+Answer: 600
+color(belgium,blue) color(netherlands,white) color(france,red) color(germany,green) color(luxembourg,blue) color(denmark,red)
+Answer: 601
+color(netherlands,green) color(belgium,blue) color(france,red) color(germany,green) color(luxembourg,blue) color(denmark,red)
+Answer: 602
+color(netherlands,green) color(belgium,blue) color(france,red) color(germany,green) color(luxembourg,blue) color(denmark,blue)
+Answer: 603
+color(netherlands,green) color(belgium,blue) color(france,red) color(germany,green) color(luxembourg,blue) color(denmark,white)
+Answer: 604
+color(netherlands,green) color(belgium,blue) color(france,red) color(germany,green) color(luxembourg,blue) color(denmark,green)
+Answer: 605
+color(netherlands,green) color(belgium,blue) color(france,white) color(germany,green) color(luxembourg,blue) color(denmark,blue)
+Answer: 606
+color(netherlands,green) color(belgium,blue) color(france,white) color(germany,green) color(luxembourg,blue) color(denmark,white)
+Answer: 607
+color(netherlands,green) color(belgium,blue) color(france,white) color(germany,green) color(luxembourg,blue) color(denmark,green)
+Answer: 608
+color(netherlands,green) color(belgium,blue) color(france,white) color(germany,green) color(luxembourg,blue) color(denmark,red)
+Answer: 609
+color(netherlands,green) color(belgium,blue) color(france,green) color(germany,green) color(luxembourg,blue) color(denmark,white)
+Answer: 610
+color(netherlands,green) color(belgium,blue) color(france,green) color(germany,green) color(luxembourg,blue) color(denmark,green)
+Answer: 611
+color(netherlands,green) color(belgium,blue) color(france,green) color(germany,green) color(luxembourg,blue) color(denmark,red)
+Answer: 612
+color(netherlands,green) color(belgium,blue) color(france,green) color(germany,green) color(luxembourg,blue) color(denmark,blue)
+Answer: 613
+color(belgium,blue) color(netherlands,white) color(france,green) color(luxembourg,red) color(germany,white) color(denmark,white)
+Answer: 614
+color(belgium,blue) color(netherlands,white) color(france,green) color(luxembourg,red) color(germany,white) color(denmark,blue)
+Answer: 615
+color(belgium,blue) color(netherlands,white) color(france,green) color(luxembourg,red) color(germany,white) color(denmark,green)
+Answer: 616
+color(belgium,blue) color(netherlands,white) color(france,green) color(luxembourg,red) color(germany,white) color(denmark,red)
+Answer: 617
+color(belgium,blue) color(netherlands,white) color(france,green) color(luxembourg,green) color(germany,white) color(denmark,blue)
+Answer: 618
+color(belgium,blue) color(netherlands,white) color(france,green) color(luxembourg,green) color(germany,white) color(denmark,green)
+Answer: 619
+color(belgium,blue) color(netherlands,white) color(france,green) color(luxembourg,green) color(germany,white) color(denmark,red)
+Answer: 620
+color(belgium,blue) color(netherlands,white) color(france,green) color(luxembourg,green) color(germany,white) color(denmark,white)
+Answer: 621
+color(netherlands,green) color(belgium,blue) color(france,green) color(luxembourg,red) color(germany,white) color(denmark,green)
+Answer: 622
+color(netherlands,green) color(belgium,blue) color(france,green) color(luxembourg,red) color(germany,white) color(denmark,white)
+Answer: 623
+color(netherlands,green) color(belgium,blue) color(france,green) color(luxembourg,red) color(germany,white) color(denmark,blue)
+Answer: 624
+color(netherlands,green) color(belgium,blue) color(france,green) color(luxembourg,red) color(germany,white) color(denmark,red)
+Answer: 625
+color(netherlands,green) color(belgium,blue) color(france,green) color(luxembourg,green) color(germany,white) color(denmark,green)
+Answer: 626
+color(netherlands,green) color(belgium,blue) color(france,green) color(luxembourg,green) color(germany,white) color(denmark,white)
+Answer: 627
+color(netherlands,green) color(belgium,blue) color(france,green) color(luxembourg,green) color(germany,white) color(denmark,blue)
+Answer: 628
+color(netherlands,green) color(belgium,blue) color(france,green) color(luxembourg,green) color(germany,white) color(denmark,red)
+Answer: 629
+color(belgium,blue) color(netherlands,white) color(france,green) color(luxembourg,blue) color(germany,white) color(denmark,red)
+Answer: 630
+color(belgium,blue) color(netherlands,white) color(france,green) color(luxembourg,blue) color(germany,white) color(denmark,white)
+Answer: 631
+color(belgium,blue) color(netherlands,white) color(france,green) color(luxembourg,blue) color(germany,white) color(denmark,green)
+Answer: 632
+color(belgium,blue) color(netherlands,white) color(france,green) color(luxembourg,blue) color(germany,white) color(denmark,blue)
+Answer: 633
+color(netherlands,green) color(belgium,blue) color(france,green) color(luxembourg,blue) color(germany,white) color(denmark,white)
+Answer: 634
+color(netherlands,green) color(belgium,blue) color(france,green) color(luxembourg,blue) color(germany,white) color(denmark,green)
+Answer: 635
+color(netherlands,green) color(belgium,blue) color(france,green) color(luxembourg,blue) color(germany,white) color(denmark,blue)
+Answer: 636
+color(netherlands,green) color(belgium,blue) color(france,green) color(luxembourg,blue) color(germany,white) color(denmark,red)
+Answer: 637
+color(netherlands,green) color(belgium,blue) color(france,red) color(luxembourg,red) color(germany,white) color(denmark,blue)
+Answer: 638
+color(netherlands,green) color(belgium,blue) color(france,red) color(luxembourg,red) color(germany,white) color(denmark,green)
+Answer: 639
+color(netherlands,green) color(belgium,blue) color(france,red) color(luxembourg,red) color(germany,white) color(denmark,red)
+Answer: 640
+color(netherlands,green) color(belgium,blue) color(france,red) color(luxembourg,red) color(germany,white) color(denmark,white)
+Answer: 641
+color(netherlands,green) color(belgium,blue) color(france,red) color(luxembourg,green) color(germany,white) color(denmark,green)
+Answer: 642
+color(netherlands,green) color(belgium,blue) color(france,red) color(luxembourg,green) color(germany,white) color(denmark,red)
+Answer: 643
+color(netherlands,green) color(belgium,blue) color(france,red) color(luxembourg,green) color(germany,white) color(denmark,white)
+Answer: 644
+color(netherlands,green) color(belgium,blue) color(france,red) color(luxembourg,green) color(germany,white) color(denmark,blue)
+Answer: 645
+color(netherlands,green) color(belgium,blue) color(france,red) color(luxembourg,blue) color(germany,white) color(denmark,red)
+Answer: 646
+color(netherlands,green) color(belgium,blue) color(france,red) color(luxembourg,blue) color(germany,white) color(denmark,blue)
+Answer: 647
+color(netherlands,green) color(belgium,blue) color(france,red) color(luxembourg,blue) color(germany,white) color(denmark,green)
+Answer: 648
+color(netherlands,green) color(belgium,blue) color(france,red) color(luxembourg,blue) color(germany,white) color(denmark,white)
+Answer: 649
+color(belgium,blue) color(netherlands,white) color(france,red) color(luxembourg,red) color(germany,white) color(denmark,green)
+Answer: 650
+color(belgium,blue) color(netherlands,white) color(france,red) color(luxembourg,red) color(germany,white) color(denmark,blue)
+Answer: 651
+color(belgium,blue) color(netherlands,white) color(france,red) color(luxembourg,red) color(germany,white) color(denmark,red)
+Answer: 652
+color(belgium,blue) color(netherlands,white) color(france,red) color(luxembourg,red) color(germany,white) color(denmark,white)
+Answer: 653
+color(belgium,blue) color(netherlands,white) color(france,red) color(luxembourg,green) color(germany,white) color(denmark,blue)
+Answer: 654
+color(belgium,blue) color(netherlands,white) color(france,red) color(luxembourg,green) color(germany,white) color(denmark,red)
+Answer: 655
+color(belgium,blue) color(netherlands,white) color(france,red) color(luxembourg,green) color(germany,white) color(denmark,white)
+Answer: 656
+color(belgium,blue) color(netherlands,white) color(france,red) color(luxembourg,green) color(germany,white) color(denmark,green)
+Answer: 657
+color(belgium,blue) color(netherlands,white) color(france,red) color(luxembourg,blue) color(germany,white) color(denmark,red)
+Answer: 658
+color(belgium,blue) color(netherlands,white) color(france,red) color(luxembourg,blue) color(germany,white) color(denmark,green)
+Answer: 659
+color(belgium,blue) color(netherlands,white) color(france,red) color(luxembourg,blue) color(germany,white) color(denmark,blue)
+Answer: 660
+color(belgium,blue) color(netherlands,white) color(france,red) color(luxembourg,blue) color(germany,white) color(denmark,white)
+Answer: 661
+color(netherlands,green) color(belgium,blue) color(france,white) color(luxembourg,red) color(germany,white) color(denmark,red)
+Answer: 662
+color(netherlands,green) color(belgium,blue) color(france,white) color(luxembourg,red) color(germany,white) color(denmark,green)
+Answer: 663
+color(netherlands,green) color(belgium,blue) color(france,white) color(luxembourg,red) color(germany,white) color(denmark,white)
+Answer: 664
+color(netherlands,green) color(belgium,blue) color(france,white) color(luxembourg,red) color(germany,white) color(denmark,blue)
+Answer: 665
+color(netherlands,green) color(belgium,blue) color(france,white) color(luxembourg,green) color(germany,white) color(denmark,green)
+Answer: 666
+color(netherlands,green) color(belgium,blue) color(france,white) color(luxembourg,green) color(germany,white) color(denmark,white)
+Answer: 667
+color(netherlands,green) color(belgium,blue) color(france,white) color(luxembourg,green) color(germany,white) color(denmark,blue)
+Answer: 668
+color(netherlands,green) color(belgium,blue) color(france,white) color(luxembourg,green) color(germany,white) color(denmark,red)
+Answer: 669
+color(belgium,blue) color(netherlands,white) color(france,white) color(luxembourg,red) color(germany,white) color(denmark,white)
+Answer: 670
+color(belgium,blue) color(netherlands,white) color(france,white) color(luxembourg,red) color(germany,white) color(denmark,red)
+Answer: 671
+color(belgium,blue) color(netherlands,white) color(france,white) color(luxembourg,red) color(germany,white) color(denmark,green)
+Answer: 672
+color(belgium,blue) color(netherlands,white) color(france,white) color(luxembourg,red) color(germany,white) color(denmark,blue)
+Answer: 673
+color(belgium,blue) color(netherlands,white) color(france,white) color(luxembourg,green) color(germany,white) color(denmark,white)
+Answer: 674
+color(belgium,blue) color(netherlands,white) color(france,white) color(luxembourg,green) color(germany,white) color(denmark,red)
+Answer: 675
+color(belgium,blue) color(netherlands,white) color(france,white) color(luxembourg,green) color(germany,white) color(denmark,green)
+Answer: 676
+color(belgium,blue) color(netherlands,white) color(france,white) color(luxembourg,green) color(germany,white) color(denmark,blue)
+Answer: 677
+color(netherlands,green) color(belgium,blue) color(france,white) color(luxembourg,blue) color(germany,white) color(denmark,blue)
+Answer: 678
+color(netherlands,green) color(belgium,blue) color(france,white) color(luxembourg,blue) color(germany,white) color(denmark,red)
+Answer: 679
+color(netherlands,green) color(belgium,blue) color(france,white) color(luxembourg,blue) color(germany,white) color(denmark,white)
+Answer: 680
+color(netherlands,green) color(belgium,blue) color(france,white) color(luxembourg,blue) color(germany,white) color(denmark,green)
+Answer: 681
+color(belgium,blue) color(netherlands,white) color(france,white) color(luxembourg,blue) color(germany,white) color(denmark,red)
+Answer: 682
+color(belgium,blue) color(netherlands,white) color(france,white) color(luxembourg,blue) color(germany,white) color(denmark,white)
+Answer: 683
+color(belgium,blue) color(netherlands,white) color(france,white) color(luxembourg,blue) color(germany,white) color(denmark,green)
+Answer: 684
+color(belgium,blue) color(netherlands,white) color(france,white) color(luxembourg,blue) color(germany,white) color(denmark,blue)
+Answer: 685
+color(netherlands,red) color(belgium,blue) color(france,green) color(luxembourg,red) color(germany,white) color(denmark,blue)
+Answer: 686
+color(netherlands,red) color(belgium,blue) color(france,green) color(luxembourg,red) color(germany,white) color(denmark,green)
+Answer: 687
+color(netherlands,red) color(belgium,blue) color(france,green) color(luxembourg,red) color(germany,white) color(denmark,white)
+Answer: 688
+color(netherlands,red) color(belgium,blue) color(france,green) color(luxembourg,red) color(germany,white) color(denmark,red)
+Answer: 689
+color(netherlands,red) color(belgium,blue) color(france,green) color(luxembourg,green) color(germany,white) color(denmark,green)
+Answer: 690
+color(netherlands,red) color(belgium,blue) color(france,green) color(luxembourg,green) color(germany,white) color(denmark,white)
+Answer: 691
+color(netherlands,red) color(belgium,blue) color(france,green) color(luxembourg,green) color(germany,white) color(denmark,red)
+Answer: 692
+color(netherlands,red) color(belgium,blue) color(france,green) color(luxembourg,green) color(germany,white) color(denmark,blue)
+Answer: 693
+color(netherlands,red) color(belgium,blue) color(france,red) color(luxembourg,red) color(germany,white) color(denmark,white)
+Answer: 694
+color(netherlands,red) color(belgium,blue) color(france,red) color(luxembourg,red) color(germany,white) color(denmark,blue)
+Answer: 695
+color(netherlands,red) color(belgium,blue) color(france,red) color(luxembourg,red) color(germany,white) color(denmark,green)
+Answer: 696
+color(netherlands,red) color(belgium,blue) color(france,red) color(luxembourg,red) color(germany,white) color(denmark,red)
+Answer: 697
+color(netherlands,red) color(belgium,blue) color(france,red) color(luxembourg,green) color(germany,white) color(denmark,white)
+Answer: 698
+color(netherlands,red) color(belgium,blue) color(france,red) color(luxembourg,green) color(germany,white) color(denmark,blue)
+Answer: 699
+color(netherlands,red) color(belgium,blue) color(france,red) color(luxembourg,green) color(germany,white) color(denmark,green)
+Answer: 700
+color(netherlands,red) color(belgium,blue) color(france,red) color(luxembourg,green) color(germany,white) color(denmark,red)
+Answer: 701
+color(netherlands,red) color(belgium,blue) color(france,white) color(luxembourg,red) color(germany,white) color(denmark,red)
+Answer: 702
+color(netherlands,red) color(belgium,blue) color(france,white) color(luxembourg,red) color(germany,white) color(denmark,blue)
+Answer: 703
+color(netherlands,red) color(belgium,blue) color(france,white) color(luxembourg,red) color(germany,white) color(denmark,white)
+Answer: 704
+color(netherlands,red) color(belgium,blue) color(france,white) color(luxembourg,red) color(germany,white) color(denmark,green)
+Answer: 705
+color(netherlands,red) color(belgium,blue) color(france,white) color(luxembourg,green) color(germany,white) color(denmark,blue)
+Answer: 706
+color(netherlands,red) color(belgium,blue) color(france,white) color(luxembourg,green) color(germany,white) color(denmark,white)
+Answer: 707
+color(netherlands,red) color(belgium,blue) color(france,white) color(luxembourg,green) color(germany,white) color(denmark,green)
+Answer: 708
+color(netherlands,red) color(belgium,blue) color(france,white) color(luxembourg,green) color(germany,white) color(denmark,red)
+Answer: 709
+color(netherlands,red) color(belgium,blue) color(france,white) color(luxembourg,blue) color(germany,white) color(denmark,green)
+Answer: 710
+color(netherlands,red) color(belgium,blue) color(france,white) color(luxembourg,blue) color(germany,white) color(denmark,white)
+Answer: 711
+color(netherlands,red) color(belgium,blue) color(france,white) color(luxembourg,blue) color(germany,white) color(denmark,red)
+Answer: 712
+color(netherlands,red) color(belgium,blue) color(france,white) color(luxembourg,blue) color(germany,white) color(denmark,blue)
+Answer: 713
+color(netherlands,red) color(belgium,blue) color(france,green) color(luxembourg,blue) color(germany,white) color(denmark,white)
+Answer: 714
+color(netherlands,red) color(belgium,blue) color(france,green) color(luxembourg,blue) color(germany,white) color(denmark,red)
+Answer: 715
+color(netherlands,red) color(belgium,blue) color(france,green) color(luxembourg,blue) color(germany,white) color(denmark,blue)
+Answer: 716
+color(netherlands,red) color(belgium,blue) color(france,green) color(luxembourg,blue) color(germany,white) color(denmark,green)
+Answer: 717
+color(netherlands,red) color(belgium,blue) color(france,red) color(luxembourg,blue) color(germany,white) color(denmark,red)
+Answer: 718
+color(netherlands,red) color(belgium,blue) color(france,red) color(luxembourg,blue) color(germany,white) color(denmark,blue)
+Answer: 719
+color(netherlands,red) color(belgium,blue) color(france,red) color(luxembourg,blue) color(germany,white) color(denmark,green)
+Answer: 720
+color(netherlands,red) color(belgium,blue) color(france,red) color(luxembourg,blue) color(germany,white) color(denmark,white)
+Answer: 721
+color(netherlands,red) color(belgium,blue) color(france,white) color(luxembourg,red) color(germany,green) color(denmark,red)
+Answer: 722
+color(netherlands,red) color(belgium,blue) color(france,white) color(luxembourg,red) color(germany,green) color(denmark,blue)
+Answer: 723
+color(netherlands,red) color(belgium,blue) color(france,white) color(luxembourg,red) color(germany,green) color(denmark,green)
+Answer: 724
+color(netherlands,red) color(belgium,blue) color(france,white) color(luxembourg,red) color(germany,green) color(denmark,white)
+Answer: 725
+color(netherlands,red) color(belgium,blue) color(france,white) color(germany,green) color(luxembourg,blue) color(denmark,red)
+Answer: 726
+color(netherlands,red) color(belgium,blue) color(france,white) color(germany,green) color(luxembourg,blue) color(denmark,blue)
+Answer: 727
+color(netherlands,red) color(belgium,blue) color(france,white) color(germany,green) color(luxembourg,blue) color(denmark,green)
+Answer: 728
+color(netherlands,red) color(belgium,blue) color(france,white) color(germany,green) color(luxembourg,blue) color(denmark,white)
+Answer: 729
+color(netherlands,red) color(belgium,blue) color(france,green) color(luxembourg,red) color(germany,green) color(denmark,blue)
+Answer: 730
+color(netherlands,red) color(belgium,blue) color(france,green) color(luxembourg,red) color(germany,green) color(denmark,white)
+Answer: 731
+color(netherlands,red) color(belgium,blue) color(france,green) color(luxembourg,red) color(germany,green) color(denmark,red)
+Answer: 732
+color(netherlands,red) color(belgium,blue) color(france,green) color(luxembourg,red) color(germany,green) color(denmark,green)
+Answer: 733
+color(netherlands,red) color(belgium,blue) color(france,green) color(germany,green) color(luxembourg,blue) color(denmark,blue)
+Answer: 734
+color(netherlands,red) color(belgium,blue) color(france,green) color(germany,green) color(luxembourg,blue) color(denmark,white)
+Answer: 735
+color(netherlands,red) color(belgium,blue) color(france,green) color(germany,green) color(luxembourg,blue) color(denmark,red)
+Answer: 736
+color(netherlands,red) color(belgium,blue) color(france,green) color(germany,green) color(luxembourg,blue) color(denmark,green)
+Answer: 737
+color(netherlands,red) color(belgium,blue) color(france,red) color(luxembourg,red) color(germany,green) color(denmark,green)
+Answer: 738
+color(netherlands,red) color(belgium,blue) color(france,red) color(luxembourg,red) color(germany,green) color(denmark,white)
+Answer: 739
+color(netherlands,red) color(belgium,blue) color(france,red) color(luxembourg,red) color(germany,green) color(denmark,blue)
+Answer: 740
+color(netherlands,red) color(belgium,blue) color(france,red) color(luxembourg,red) color(germany,green) color(denmark,red)
+Answer: 741
+color(netherlands,red) color(belgium,blue) color(france,red) color(germany,green) color(luxembourg,blue) color(denmark,white)
+Answer: 742
+color(netherlands,red) color(belgium,blue) color(france,red) color(germany,green) color(luxembourg,blue) color(denmark,blue)
+Answer: 743
+color(netherlands,red) color(belgium,blue) color(france,red) color(germany,green) color(luxembourg,blue) color(denmark,red)
+Answer: 744
+color(netherlands,red) color(belgium,blue) color(france,red) color(germany,green) color(luxembourg,blue) color(denmark,green)
+Answer: 745
+color(netherlands,red) color(belgium,blue) color(france,white) color(germany,green) color(luxembourg,white) color(denmark,blue)
+Answer: 746
+color(netherlands,red) color(belgium,blue) color(france,white) color(germany,green) color(luxembourg,white) color(denmark,white)
+Answer: 747
+color(netherlands,red) color(belgium,blue) color(france,white) color(germany,green) color(luxembourg,white) color(denmark,green)
+Answer: 748
+color(netherlands,red) color(belgium,blue) color(france,white) color(germany,green) color(luxembourg,white) color(denmark,red)
+Answer: 749
+color(netherlands,red) color(belgium,blue) color(france,red) color(germany,green) color(luxembourg,white) color(denmark,white)
+Answer: 750
+color(netherlands,red) color(belgium,blue) color(france,red) color(germany,green) color(luxembourg,white) color(denmark,green)
+Answer: 751
+color(netherlands,red) color(belgium,blue) color(france,red) color(germany,green) color(luxembourg,white) color(denmark,red)
+Answer: 752
+color(netherlands,red) color(belgium,blue) color(france,red) color(germany,green) color(luxembourg,white) color(denmark,blue)
+Answer: 753
+color(netherlands,red) color(belgium,blue) color(france,green) color(germany,green) color(luxembourg,white) color(denmark,red)
+Answer: 754
+color(netherlands,red) color(belgium,blue) color(france,green) color(germany,green) color(luxembourg,white) color(denmark,green)
+Answer: 755
+color(netherlands,red) color(belgium,blue) color(france,green) color(germany,green) color(luxembourg,white) color(denmark,blue)
+Answer: 756
+color(netherlands,red) color(belgium,blue) color(france,green) color(germany,green) color(luxembourg,white) color(denmark,white)
+Answer: 757
+color(belgium,green) color(netherlands,blue) color(france,red) color(luxembourg,red) color(germany,white) color(denmark,red)
+Answer: 758
+color(belgium,green) color(netherlands,blue) color(france,red) color(luxembourg,red) color(germany,white) color(denmark,green)
+Answer: 759
+color(belgium,green) color(netherlands,blue) color(france,red) color(luxembourg,red) color(germany,white) color(denmark,blue)
+Answer: 760
+color(belgium,green) color(netherlands,blue) color(france,red) color(luxembourg,red) color(germany,white) color(denmark,white)
+Answer: 761
+color(netherlands,red) color(belgium,green) color(france,red) color(luxembourg,red) color(germany,white) color(denmark,red)
+Answer: 762
+color(netherlands,red) color(belgium,green) color(france,red) color(luxembourg,red) color(germany,white) color(denmark,green)
+Answer: 763
+color(netherlands,red) color(belgium,green) color(france,red) color(luxembourg,red) color(germany,white) color(denmark,blue)
+Answer: 764
+color(netherlands,red) color(belgium,green) color(france,red) color(luxembourg,red) color(germany,white) color(denmark,white)
+Answer: 765
+color(netherlands,red) color(belgium,green) color(france,blue) color(luxembourg,red) color(germany,white) color(denmark,white)
+Answer: 766
+color(netherlands,red) color(belgium,green) color(france,blue) color(luxembourg,red) color(germany,white) color(denmark,blue)
+Answer: 767
+color(netherlands,red) color(belgium,green) color(france,blue) color(luxembourg,red) color(germany,white) color(denmark,green)
+Answer: 768
+color(netherlands,red) color(belgium,green) color(france,blue) color(luxembourg,red) color(germany,white) color(denmark,red)
+Answer: 769
+color(belgium,green) color(netherlands,blue) color(france,blue) color(luxembourg,red) color(germany,white) color(denmark,blue)
+Answer: 770
+color(belgium,green) color(netherlands,blue) color(france,blue) color(luxembourg,red) color(germany,white) color(denmark,green)
+Answer: 771
+color(belgium,green) color(netherlands,blue) color(france,blue) color(luxembourg,red) color(germany,white) color(denmark,red)
+Answer: 772
+color(belgium,green) color(netherlands,blue) color(france,blue) color(luxembourg,red) color(germany,white) color(denmark,white)
+Answer: 773
+color(netherlands,red) color(belgium,green) color(france,white) color(luxembourg,red) color(germany,white) color(denmark,white)
+Answer: 774
+color(netherlands,red) color(belgium,green) color(france,white) color(luxembourg,red) color(germany,white) color(denmark,red)
+Answer: 775
+color(netherlands,red) color(belgium,green) color(france,white) color(luxembourg,red) color(germany,white) color(denmark,green)
+Answer: 776
+color(netherlands,red) color(belgium,green) color(france,white) color(luxembourg,red) color(germany,white) color(denmark,blue)
+Answer: 777
+color(belgium,green) color(netherlands,blue) color(france,white) color(luxembourg,red) color(germany,white) color(denmark,red)
+Answer: 778
+color(belgium,green) color(netherlands,blue) color(france,white) color(luxembourg,red) color(germany,white) color(denmark,green)
+Answer: 779
+color(belgium,green) color(netherlands,blue) color(france,white) color(luxembourg,red) color(germany,white) color(denmark,blue)
+Answer: 780
+color(belgium,green) color(netherlands,blue) color(france,white) color(luxembourg,red) color(germany,white) color(denmark,white)
+Answer: 781
+color(belgium,green) color(netherlands,blue) color(france,white) color(luxembourg,green) color(germany,white) color(denmark,white)
+Answer: 782
+color(belgium,green) color(netherlands,blue) color(france,white) color(luxembourg,green) color(germany,white) color(denmark,blue)
+Answer: 783
+color(belgium,green) color(netherlands,blue) color(france,white) color(luxembourg,green) color(germany,white) color(denmark,red)
+Answer: 784
+color(belgium,green) color(netherlands,blue) color(france,white) color(luxembourg,green) color(germany,white) color(denmark,green)
+Answer: 785
+color(belgium,green) color(netherlands,blue) color(france,red) color(luxembourg,green) color(germany,white) color(denmark,blue)
+Answer: 786
+color(belgium,green) color(netherlands,blue) color(france,red) color(luxembourg,green) color(germany,white) color(denmark,red)
+Answer: 787
+color(belgium,green) color(netherlands,blue) color(france,red) color(luxembourg,green) color(germany,white) color(denmark,green)
+Answer: 788
+color(belgium,green) color(netherlands,blue) color(france,red) color(luxembourg,green) color(germany,white) color(denmark,white)
+Answer: 789
+color(belgium,green) color(netherlands,blue) color(france,blue) color(luxembourg,green) color(germany,white) color(denmark,red)
+Answer: 790
+color(belgium,green) color(netherlands,blue) color(france,blue) color(luxembourg,green) color(germany,white) color(denmark,green)
+Answer: 791
+color(belgium,green) color(netherlands,blue) color(france,blue) color(luxembourg,green) color(germany,white) color(denmark,white)
+Answer: 792
+color(belgium,green) color(netherlands,blue) color(france,blue) color(luxembourg,green) color(germany,white) color(denmark,blue)
+Answer: 793
+color(netherlands,red) color(belgium,green) color(france,blue) color(luxembourg,green) color(germany,white) color(denmark,blue)
+Answer: 794
+color(netherlands,red) color(belgium,green) color(france,blue) color(luxembourg,green) color(germany,white) color(denmark,white)
+Answer: 795
+color(netherlands,red) color(belgium,green) color(france,blue) color(luxembourg,green) color(germany,white) color(denmark,green)
+Answer: 796
+color(netherlands,red) color(belgium,green) color(france,blue) color(luxembourg,green) color(germany,white) color(denmark,red)
+Answer: 797
+color(netherlands,red) color(belgium,green) color(france,red) color(luxembourg,green) color(germany,white) color(denmark,white)
+Answer: 798
+color(netherlands,red) color(belgium,green) color(france,red) color(luxembourg,green) color(germany,white) color(denmark,green)
+Answer: 799
+color(netherlands,red) color(belgium,green) color(france,red) color(luxembourg,green) color(germany,white) color(denmark,red)
+Answer: 800
+color(netherlands,red) color(belgium,green) color(france,red) color(luxembourg,green) color(germany,white) color(denmark,blue)
+Answer: 801
+color(netherlands,red) color(belgium,green) color(france,white) color(luxembourg,green) color(germany,white) color(denmark,green)
+Answer: 802
+color(netherlands,red) color(belgium,green) color(france,white) color(luxembourg,green) color(germany,white) color(denmark,red)
+Answer: 803
+color(netherlands,red) color(belgium,green) color(france,white) color(luxembourg,green) color(germany,white) color(denmark,blue)
+Answer: 804
+color(netherlands,red) color(belgium,green) color(france,white) color(luxembourg,green) color(germany,white) color(denmark,white)
+Answer: 805
+color(belgium,green) color(netherlands,white) color(france,red) color(luxembourg,red) color(germany,white) color(denmark,red)
+Answer: 806
+color(belgium,green) color(netherlands,white) color(france,red) color(luxembourg,red) color(germany,white) color(denmark,blue)
+Answer: 807
+color(belgium,green) color(netherlands,white) color(france,red) color(luxembourg,red) color(germany,white) color(denmark,green)
+Answer: 808
+color(belgium,green) color(netherlands,white) color(france,red) color(luxembourg,red) color(germany,white) color(denmark,white)
+Answer: 809
+color(belgium,green) color(netherlands,white) color(france,red) color(luxembourg,green) color(germany,white) color(denmark,red)
+Answer: 810
+color(belgium,green) color(netherlands,white) color(france,red) color(luxembourg,green) color(germany,white) color(denmark,blue)
+Answer: 811
+color(belgium,green) color(netherlands,white) color(france,red) color(luxembourg,green) color(germany,white) color(denmark,green)
+Answer: 812
+color(belgium,green) color(netherlands,white) color(france,red) color(luxembourg,green) color(germany,white) color(denmark,white)
+Answer: 813
+color(belgium,green) color(netherlands,white) color(france,white) color(luxembourg,red) color(germany,white) color(denmark,blue)
+Answer: 814
+color(belgium,green) color(netherlands,white) color(france,white) color(luxembourg,red) color(germany,white) color(denmark,white)
+Answer: 815
+color(belgium,green) color(netherlands,white) color(france,white) color(luxembourg,red) color(germany,white) color(denmark,red)
+Answer: 816
+color(belgium,green) color(netherlands,white) color(france,white) color(luxembourg,red) color(germany,white) color(denmark,green)
+Answer: 817
+color(belgium,green) color(netherlands,white) color(france,white) color(luxembourg,green) color(germany,white) color(denmark,blue)
+Answer: 818
+color(belgium,green) color(netherlands,white) color(france,white) color(luxembourg,green) color(germany,white) color(denmark,white)
+Answer: 819
+color(belgium,green) color(netherlands,white) color(france,white) color(luxembourg,green) color(germany,white) color(denmark,red)
+Answer: 820
+color(belgium,green) color(netherlands,white) color(france,white) color(luxembourg,green) color(germany,white) color(denmark,green)
+Answer: 821
+color(belgium,green) color(netherlands,white) color(france,blue) color(luxembourg,red) color(germany,white) color(denmark,green)
+Answer: 822
+color(belgium,green) color(netherlands,white) color(france,blue) color(luxembourg,red) color(germany,white) color(denmark,white)
+Answer: 823
+color(belgium,green) color(netherlands,white) color(france,blue) color(luxembourg,red) color(germany,white) color(denmark,blue)
+Answer: 824
+color(belgium,green) color(netherlands,white) color(france,blue) color(luxembourg,red) color(germany,white) color(denmark,red)
+Answer: 825
+color(belgium,green) color(netherlands,white) color(france,blue) color(luxembourg,green) color(germany,white) color(denmark,white)
+Answer: 826
+color(belgium,green) color(netherlands,white) color(france,blue) color(luxembourg,green) color(germany,white) color(denmark,blue)
+Answer: 827
+color(belgium,green) color(netherlands,white) color(france,blue) color(luxembourg,green) color(germany,white) color(denmark,red)
+Answer: 828
+color(belgium,green) color(netherlands,white) color(france,blue) color(luxembourg,green) color(germany,white) color(denmark,green)
+Answer: 829
+color(netherlands,red) color(belgium,green) color(france,red) color(luxembourg,red) color(germany,blue) color(denmark,green)
+Answer: 830
+color(netherlands,red) color(belgium,green) color(france,red) color(luxembourg,red) color(germany,blue) color(denmark,red)
+Answer: 831
+color(netherlands,red) color(belgium,green) color(france,red) color(luxembourg,red) color(germany,blue) color(denmark,blue)
+Answer: 832
+color(netherlands,red) color(belgium,green) color(france,red) color(luxembourg,red) color(germany,blue) color(denmark,white)
+Answer: 833
+color(netherlands,red) color(belgium,green) color(france,blue) color(luxembourg,red) color(germany,blue) color(denmark,red)
+Answer: 834
+color(netherlands,red) color(belgium,green) color(france,blue) color(luxembourg,red) color(germany,blue) color(denmark,blue)
+Answer: 835
+color(netherlands,red) color(belgium,green) color(france,blue) color(luxembourg,red) color(germany,blue) color(denmark,white)
+Answer: 836
+color(netherlands,red) color(belgium,green) color(france,blue) color(luxembourg,red) color(germany,blue) color(denmark,green)
+Answer: 837
+color(belgium,green) color(netherlands,blue) color(france,blue) color(luxembourg,red) color(germany,blue) color(denmark,green)
+Answer: 838
+color(belgium,green) color(netherlands,blue) color(france,blue) color(luxembourg,red) color(germany,blue) color(denmark,white)
+Answer: 839
+color(belgium,green) color(netherlands,blue) color(france,blue) color(luxembourg,red) color(germany,blue) color(denmark,blue)
+Answer: 840
+color(belgium,green) color(netherlands,blue) color(france,blue) color(luxembourg,red) color(germany,blue) color(denmark,red)
+Answer: 841
+color(belgium,green) color(netherlands,blue) color(france,red) color(luxembourg,red) color(germany,blue) color(denmark,white)
+Answer: 842
+color(belgium,green) color(netherlands,blue) color(france,red) color(luxembourg,red) color(germany,blue) color(denmark,blue)
+Answer: 843
+color(belgium,green) color(netherlands,blue) color(france,red) color(luxembourg,red) color(germany,blue) color(denmark,red)
+Answer: 844
+color(belgium,green) color(netherlands,blue) color(france,red) color(luxembourg,red) color(germany,blue) color(denmark,green)
+Answer: 845
+color(belgium,green) color(netherlands,white) color(france,blue) color(luxembourg,red) color(germany,blue) color(denmark,green)
+Answer: 846
+color(belgium,green) color(netherlands,white) color(france,blue) color(luxembourg,red) color(germany,blue) color(denmark,red)
+Answer: 847
+color(belgium,green) color(netherlands,white) color(france,blue) color(luxembourg,red) color(germany,blue) color(denmark,blue)
+Answer: 848
+color(belgium,green) color(netherlands,white) color(france,blue) color(luxembourg,red) color(germany,blue) color(denmark,white)
+Answer: 849
+color(belgium,green) color(netherlands,white) color(france,red) color(luxembourg,red) color(germany,blue) color(denmark,red)
+Answer: 850
+color(belgium,green) color(netherlands,white) color(france,red) color(luxembourg,red) color(germany,blue) color(denmark,blue)
+Answer: 851
+color(belgium,green) color(netherlands,white) color(france,red) color(luxembourg,red) color(germany,blue) color(denmark,white)
+Answer: 852
+color(belgium,green) color(netherlands,white) color(france,red) color(luxembourg,red) color(germany,blue) color(denmark,green)
+Answer: 853
+color(belgium,green) color(netherlands,white) color(france,white) color(luxembourg,red) color(germany,blue) color(denmark,green)
+Answer: 854
+color(belgium,green) color(netherlands,white) color(france,white) color(luxembourg,red) color(germany,blue) color(denmark,white)
+Answer: 855
+color(belgium,green) color(netherlands,white) color(france,white) color(luxembourg,red) color(germany,blue) color(denmark,red)
+Answer: 856
+color(belgium,green) color(netherlands,white) color(france,white) color(luxembourg,red) color(germany,blue) color(denmark,blue)
+Answer: 857
+color(belgium,green) color(netherlands,blue) color(france,white) color(luxembourg,red) color(germany,blue) color(denmark,white)
+Answer: 858
+color(belgium,green) color(netherlands,blue) color(france,white) color(luxembourg,red) color(germany,blue) color(denmark,red)
+Answer: 859
+color(belgium,green) color(netherlands,blue) color(france,white) color(luxembourg,red) color(germany,blue) color(denmark,blue)
+Answer: 860
+color(belgium,green) color(netherlands,blue) color(france,white) color(luxembourg,red) color(germany,blue) color(denmark,green)
+Answer: 861
+color(netherlands,red) color(belgium,green) color(france,white) color(luxembourg,red) color(germany,blue) color(denmark,red)
+Answer: 862
+color(netherlands,red) color(belgium,green) color(france,white) color(luxembourg,red) color(germany,blue) color(denmark,blue)
+Answer: 863
+color(netherlands,red) color(belgium,green) color(france,white) color(luxembourg,red) color(germany,blue) color(denmark,green)
+Answer: 864
+color(netherlands,red) color(belgium,green) color(france,white) color(luxembourg,red) color(germany,blue) color(denmark,white)
+Answer: 865
+color(belgium,green) color(netherlands,white) color(france,white) color(germany,blue) color(luxembourg,white) color(denmark,blue)
+Answer: 866
+color(belgium,green) color(netherlands,white) color(france,white) color(germany,blue) color(luxembourg,white) color(denmark,green)
+Answer: 867
+color(belgium,green) color(netherlands,white) color(france,white) color(germany,blue) color(luxembourg,white) color(denmark,red)
+Answer: 868
+color(belgium,green) color(netherlands,white) color(france,white) color(germany,blue) color(luxembourg,white) color(denmark,white)
+Answer: 869
+color(netherlands,red) color(belgium,green) color(france,white) color(germany,blue) color(luxembourg,white) color(denmark,green)
+Answer: 870
+color(netherlands,red) color(belgium,green) color(france,white) color(germany,blue) color(luxembourg,white) color(denmark,red)
+Answer: 871
+color(netherlands,red) color(belgium,green) color(france,white) color(germany,blue) color(luxembourg,white) color(denmark,white)
+Answer: 872
+color(netherlands,red) color(belgium,green) color(france,white) color(germany,blue) color(luxembourg,white) color(denmark,blue)
+Answer: 873
+color(netherlands,red) color(belgium,green) color(france,red) color(germany,blue) color(luxembourg,white) color(denmark,blue)
+Answer: 874
+color(netherlands,red) color(belgium,green) color(france,red) color(germany,blue) color(luxembourg,white) color(denmark,white)
+Answer: 875
+color(netherlands,red) color(belgium,green) color(france,red) color(germany,blue) color(luxembourg,white) color(denmark,red)
+Answer: 876
+color(netherlands,red) color(belgium,green) color(france,red) color(germany,blue) color(luxembourg,white) color(denmark,green)
+Answer: 877
+color(belgium,green) color(netherlands,white) color(france,red) color(germany,blue) color(luxembourg,white) color(denmark,white)
+Answer: 878
+color(belgium,green) color(netherlands,white) color(france,red) color(germany,blue) color(luxembourg,white) color(denmark,red)
+Answer: 879
+color(belgium,green) color(netherlands,white) color(france,red) color(germany,blue) color(luxembourg,white) color(denmark,green)
+Answer: 880
+color(belgium,green) color(netherlands,white) color(france,red) color(germany,blue) color(luxembourg,white) color(denmark,blue)
+Answer: 881
+color(belgium,green) color(netherlands,blue) color(france,red) color(germany,blue) color(luxembourg,white) color(denmark,blue)
+Answer: 882
+color(belgium,green) color(netherlands,blue) color(france,red) color(germany,blue) color(luxembourg,white) color(denmark,green)
+Answer: 883
+color(belgium,green) color(netherlands,blue) color(france,red) color(germany,blue) color(luxembourg,white) color(denmark,red)
+Answer: 884
+color(belgium,green) color(netherlands,blue) color(france,red) color(germany,blue) color(luxembourg,white) color(denmark,white)
+Answer: 885
+color(belgium,green) color(netherlands,blue) color(france,white) color(germany,blue) color(luxembourg,white) color(denmark,green)
+Answer: 886
+color(belgium,green) color(netherlands,blue) color(france,white) color(germany,blue) color(luxembourg,white) color(denmark,red)
+Answer: 887
+color(belgium,green) color(netherlands,blue) color(france,white) color(germany,blue) color(luxembourg,white) color(denmark,white)
+Answer: 888
+color(belgium,green) color(netherlands,blue) color(france,white) color(germany,blue) color(luxembourg,white) color(denmark,blue)
+Answer: 889
+color(belgium,green) color(netherlands,blue) color(france,blue) color(germany,blue) color(luxembourg,white) color(denmark,blue)
+Answer: 890
+color(belgium,green) color(netherlands,blue) color(france,blue) color(germany,blue) color(luxembourg,white) color(denmark,white)
+Answer: 891
+color(belgium,green) color(netherlands,blue) color(france,blue) color(germany,blue) color(luxembourg,white) color(denmark,green)
+Answer: 892
+color(belgium,green) color(netherlands,blue) color(france,blue) color(germany,blue) color(luxembourg,white) color(denmark,red)
+Answer: 893
+color(belgium,green) color(netherlands,white) color(france,blue) color(germany,blue) color(luxembourg,white) color(denmark,white)
+Answer: 894
+color(belgium,green) color(netherlands,white) color(france,blue) color(germany,blue) color(luxembourg,white) color(denmark,green)
+Answer: 895
+color(belgium,green) color(netherlands,white) color(france,blue) color(germany,blue) color(luxembourg,white) color(denmark,red)
+Answer: 896
+color(belgium,green) color(netherlands,white) color(france,blue) color(germany,blue) color(luxembourg,white) color(denmark,blue)
+Answer: 897
+color(netherlands,red) color(belgium,green) color(france,blue) color(germany,blue) color(luxembourg,white) color(denmark,green)
+Answer: 898
+color(netherlands,red) color(belgium,green) color(france,blue) color(germany,blue) color(luxembourg,white) color(denmark,red)
+Answer: 899
+color(netherlands,red) color(belgium,green) color(france,blue) color(germany,blue) color(luxembourg,white) color(denmark,blue)
+Answer: 900
+color(netherlands,red) color(belgium,green) color(france,blue) color(germany,blue) color(luxembourg,white) color(denmark,white)
+Answer: 901
+color(belgium,green) color(netherlands,blue) color(france,red) color(luxembourg,green) color(germany,blue) color(denmark,red)
+Answer: 902
+color(belgium,green) color(netherlands,blue) color(france,red) color(luxembourg,green) color(germany,blue) color(denmark,blue)
+Answer: 903
+color(belgium,green) color(netherlands,blue) color(france,red) color(luxembourg,green) color(germany,blue) color(denmark,green)
+Answer: 904
+color(belgium,green) color(netherlands,blue) color(france,red) color(luxembourg,green) color(germany,blue) color(denmark,white)
+Answer: 905
+color(belgium,green) color(netherlands,blue) color(france,white) color(luxembourg,green) color(germany,blue) color(denmark,red)
+Answer: 906
+color(belgium,green) color(netherlands,blue) color(france,white) color(luxembourg,green) color(germany,blue) color(denmark,blue)
+Answer: 907
+color(belgium,green) color(netherlands,blue) color(france,white) color(luxembourg,green) color(germany,blue) color(denmark,green)
+Answer: 908
+color(belgium,green) color(netherlands,blue) color(france,white) color(luxembourg,green) color(germany,blue) color(denmark,white)
+Answer: 909
+color(netherlands,red) color(belgium,green) color(france,white) color(luxembourg,green) color(germany,blue) color(denmark,white)
+Answer: 910
+color(netherlands,red) color(belgium,green) color(france,white) color(luxembourg,green) color(germany,blue) color(denmark,green)
+Answer: 911
+color(netherlands,red) color(belgium,green) color(france,white) color(luxembourg,green) color(germany,blue) color(denmark,blue)
+Answer: 912
+color(netherlands,red) color(belgium,green) color(france,white) color(luxembourg,green) color(germany,blue) color(denmark,red)
+Answer: 913
+color(netherlands,red) color(belgium,green) color(france,red) color(luxembourg,green) color(germany,blue) color(denmark,green)
+Answer: 914
+color(netherlands,red) color(belgium,green) color(france,red) color(luxembourg,green) color(germany,blue) color(denmark,blue)
+Answer: 915
+color(netherlands,red) color(belgium,green) color(france,red) color(luxembourg,green) color(germany,blue) color(denmark,red)
+Answer: 916
+color(netherlands,red) color(belgium,green) color(france,red) color(luxembourg,green) color(germany,blue) color(denmark,white)
+Answer: 917
+color(netherlands,red) color(belgium,green) color(france,blue) color(luxembourg,green) color(germany,blue) color(denmark,white)
+Answer: 918
+color(netherlands,red) color(belgium,green) color(france,blue) color(luxembourg,green) color(germany,blue) color(denmark,red)
+Answer: 919
+color(netherlands,red) color(belgium,green) color(france,blue) color(luxembourg,green) color(germany,blue) color(denmark,blue)
+Answer: 920
+color(netherlands,red) color(belgium,green) color(france,blue) color(luxembourg,green) color(germany,blue) color(denmark,green)
+Answer: 921
+color(belgium,green) color(netherlands,blue) color(france,blue) color(luxembourg,green) color(germany,blue) color(denmark,red)
+Answer: 922
+color(belgium,green) color(netherlands,blue) color(france,blue) color(luxembourg,green) color(germany,blue) color(denmark,blue)
+Answer: 923
+color(belgium,green) color(netherlands,blue) color(france,blue) color(luxembourg,green) color(germany,blue) color(denmark,green)
+Answer: 924
+color(belgium,green) color(netherlands,blue) color(france,blue) color(luxembourg,green) color(germany,blue) color(denmark,white)
+Answer: 925
+color(belgium,green) color(netherlands,white) color(france,blue) color(luxembourg,green) color(germany,blue) color(denmark,white)
+Answer: 926
+color(belgium,green) color(netherlands,white) color(france,blue) color(luxembourg,green) color(germany,blue) color(denmark,green)
+Answer: 927
+color(belgium,green) color(netherlands,white) color(france,blue) color(luxembourg,green) color(germany,blue) color(denmark,red)
+Answer: 928
+color(belgium,green) color(netherlands,white) color(france,blue) color(luxembourg,green) color(germany,blue) color(denmark,blue)
+Answer: 929
+color(belgium,green) color(netherlands,white) color(france,white) color(luxembourg,green) color(germany,blue) color(denmark,green)
+Answer: 930
+color(belgium,green) color(netherlands,white) color(france,white) color(luxembourg,green) color(germany,blue) color(denmark,red)
+Answer: 931
+color(belgium,green) color(netherlands,white) color(france,white) color(luxembourg,green) color(germany,blue) color(denmark,blue)
+Answer: 932
+color(belgium,green) color(netherlands,white) color(france,white) color(luxembourg,green) color(germany,blue) color(denmark,white)
+Answer: 933
+color(belgium,green) color(netherlands,white) color(france,red) color(luxembourg,green) color(germany,blue) color(denmark,red)
+Answer: 934
+color(belgium,green) color(netherlands,white) color(france,red) color(luxembourg,green) color(germany,blue) color(denmark,blue)
+Answer: 935
+color(belgium,green) color(netherlands,white) color(france,red) color(luxembourg,green) color(germany,blue) color(denmark,white)
+Answer: 936
+color(belgium,green) color(netherlands,white) color(france,red) color(luxembourg,green) color(germany,blue) color(denmark,green)
+Answer: 937
+color(belgium,green) color(netherlands,blue) color(france,blue) color(luxembourg,blue) color(germany,white) color(denmark,green)
+Answer: 938
+color(belgium,green) color(netherlands,blue) color(france,blue) color(luxembourg,blue) color(germany,white) color(denmark,red)
+Answer: 939
+color(belgium,green) color(netherlands,blue) color(france,blue) color(luxembourg,blue) color(germany,white) color(denmark,white)
+Answer: 940
+color(belgium,green) color(netherlands,blue) color(france,blue) color(luxembourg,blue) color(germany,white) color(denmark,blue)
+Answer: 941
+color(belgium,green) color(netherlands,white) color(france,blue) color(luxembourg,blue) color(germany,white) color(denmark,red)
+Answer: 942
+color(belgium,green) color(netherlands,white) color(france,blue) color(luxembourg,blue) color(germany,white) color(denmark,white)
+Answer: 943
+color(belgium,green) color(netherlands,white) color(france,blue) color(luxembourg,blue) color(germany,white) color(denmark,blue)
+Answer: 944
+color(belgium,green) color(netherlands,white) color(france,blue) color(luxembourg,blue) color(germany,white) color(denmark,green)
+Answer: 945
+color(belgium,green) color(netherlands,white) color(france,white) color(luxembourg,blue) color(germany,white) color(denmark,green)
+Answer: 946
+color(belgium,green) color(netherlands,white) color(france,white) color(luxembourg,blue) color(germany,white) color(denmark,blue)
+Answer: 947
+color(belgium,green) color(netherlands,white) color(france,white) color(luxembourg,blue) color(germany,white) color(denmark,white)
+Answer: 948
+color(belgium,green) color(netherlands,white) color(france,white) color(luxembourg,blue) color(germany,white) color(denmark,red)
+Answer: 949
+color(belgium,green) color(netherlands,blue) color(france,white) color(luxembourg,blue) color(germany,white) color(denmark,blue)
+Answer: 950
+color(belgium,green) color(netherlands,blue) color(france,white) color(luxembourg,blue) color(germany,white) color(denmark,white)
+Answer: 951
+color(belgium,green) color(netherlands,blue) color(france,white) color(luxembourg,blue) color(germany,white) color(denmark,red)
+Answer: 952
+color(belgium,green) color(netherlands,blue) color(france,white) color(luxembourg,blue) color(germany,white) color(denmark,green)
+Answer: 953
+color(belgium,green) color(netherlands,white) color(france,red) color(luxembourg,blue) color(germany,white) color(denmark,green)
+Answer: 954
+color(belgium,green) color(netherlands,white) color(france,red) color(luxembourg,blue) color(germany,white) color(denmark,red)
+Answer: 955
+color(belgium,green) color(netherlands,white) color(france,red) color(luxembourg,blue) color(germany,white) color(denmark,white)
+Answer: 956
+color(belgium,green) color(netherlands,white) color(france,red) color(luxembourg,blue) color(germany,white) color(denmark,blue)
+Answer: 957
+color(belgium,green) color(netherlands,blue) color(france,red) color(luxembourg,blue) color(germany,white) color(denmark,red)
+Answer: 958
+color(belgium,green) color(netherlands,blue) color(france,red) color(luxembourg,blue) color(germany,white) color(denmark,white)
+Answer: 959
+color(belgium,green) color(netherlands,blue) color(france,red) color(luxembourg,blue) color(germany,white) color(denmark,blue)
+Answer: 960
+color(belgium,green) color(netherlands,blue) color(france,red) color(luxembourg,blue) color(germany,white) color(denmark,green)
+Answer: 961
+color(netherlands,red) color(belgium,green) color(france,red) color(luxembourg,blue) color(germany,white) color(denmark,green)
+Answer: 962
+color(netherlands,red) color(belgium,green) color(france,red) color(luxembourg,blue) color(germany,white) color(denmark,blue)
+Answer: 963
+color(netherlands,red) color(belgium,green) color(france,red) color(luxembourg,blue) color(germany,white) color(denmark,red)
+Answer: 964
+color(netherlands,red) color(belgium,green) color(france,red) color(luxembourg,blue) color(germany,white) color(denmark,white)
+Answer: 965
+color(netherlands,red) color(belgium,green) color(france,blue) color(luxembourg,blue) color(germany,white) color(denmark,blue)
+Answer: 966
+color(netherlands,red) color(belgium,green) color(france,blue) color(luxembourg,blue) color(germany,white) color(denmark,red)
+Answer: 967
+color(netherlands,red) color(belgium,green) color(france,blue) color(luxembourg,blue) color(germany,white) color(denmark,white)
+Answer: 968
+color(netherlands,red) color(belgium,green) color(france,blue) color(luxembourg,blue) color(germany,white) color(denmark,green)
+Answer: 969
+color(netherlands,red) color(belgium,green) color(france,white) color(luxembourg,blue) color(germany,white) color(denmark,red)
+Answer: 970
+color(netherlands,red) color(belgium,green) color(france,white) color(luxembourg,blue) color(germany,white) color(denmark,white)
+Answer: 971
+color(netherlands,red) color(belgium,green) color(france,white) color(luxembourg,blue) color(germany,white) color(denmark,green)
+Answer: 972
+color(netherlands,red) color(belgium,green) color(france,white) color(luxembourg,blue) color(germany,white) color(denmark,blue)
+SATISFIABLE
+
+Models       : 972
+Calls        : 1
+Time         : 0.006s (Solving: 0.00s 1st Model: 0.00s Unsat: 0.00s)
+CPU Time     : 0.006s

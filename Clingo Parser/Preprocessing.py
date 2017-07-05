@@ -5,7 +5,8 @@ script, fname = argv
 
 orig_data = open(fname).readlines()
 
-#preprocssing such as removing warnings
+#also check if the first 3 lines have already been removed
+#preprocessing such as removing warnings
 
 
 
