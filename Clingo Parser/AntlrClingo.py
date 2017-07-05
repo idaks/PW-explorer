@@ -319,12 +319,12 @@ class AntlrClingoListener(ClingoListener):
 ######################################################################################
 
 #use these 3 lines if input is coming from a .txt file 
-# script, fname = argv
-# input = FileStream(fname)
-# lexer = ClingoLexer(input)
+script, fname, project_name = argv
+input = FileStream(fname)
+lexer = ClingoLexer(input)
 
 #use this line to take input from the cmd line
-lexer = ClingoLexer(StdinStream())
+#lexer = ClingoLexer(StdinStream())
 
 stream = CommonTokenStream(lexer)
 parser = ClingoParser(stream)
@@ -369,6 +369,7 @@ for i, df in enumerate(dfs):
 	t = df.ix[0:0]
 	t.to_sql(str(relations[i].relation_name), conn_t, if_exists = 'replace')
 schema_q = conn_t.execute("SELECT * FROM sqlite_master WHERE type='table' ORDER BY name;")
+print 'Sqlite Schema:'
 for row in schema_q.fetchall():
  	print row[4]
  	schemas.append(row[4])
@@ -387,11 +388,14 @@ conn_t.close()
 
 #1: does a relation occur in all the PWs:
 
+
+
 # headers = list(df)[1:]
+# headers = ', '.join(map(str,headers))
 # query = ''
 # for i in range(1, num_models):
-# 	query += 'select' + *headers + 'from' relation_name 'where pw = ' + i + 'intersect '
-# query += 'select' + *headers + 'from' relation_name 'where pw = ' + num_models + ';'
+# 	query += 'select' + headers + 'from' relation_name 'where pw = ' + i + 'intersect '
+# query += 'select' + headers + 'from' relation_name 'where pw = ' + num_models + ';'
 
 #do this for all relations/tables
 
@@ -410,10 +414,11 @@ conn_t.close()
 #2: list of unique relations across all the PWs:
 
 # headers = list(df)[1:]
+# headers = ', '.join(map(str,headers))
 # query = ''
 # for i in range(1, num_models):
-# 	query += 'select' + *headers + 'from' relation_name 'where pw = ' + i + 'union '
-# query += 'select' + *headers + 'from' relation_name 'where pw = ' + num_models + ';'
+# 	query += 'select' + headers + 'from' relation_name 'where pw = ' + i + 'union '
+# query += 'select' + headers + 'from' relation_name 'where pw = ' + num_models + ';'
 
 #do this for all relations/tables
 
