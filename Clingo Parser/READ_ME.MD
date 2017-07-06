@@ -2,6 +2,7 @@ Instructions:
 
 To run the Parser for a single file:
 1. sh ./run_file.sh [clingo_input_file_location] [project_name] [number_of_PWs, optional, 0 by default i.e. all PWs]
+
 To export in any combination of sql, msg_pack (msg), pickle (pkl), hdf (h5) and csv, just enter the keywords (in brackets), in a comma separated list.
 eg. sql, pkl
 would export in sql and pkl formats in their respective exports folders inside a folder the same as the project name. 
