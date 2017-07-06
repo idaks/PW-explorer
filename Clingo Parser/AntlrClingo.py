@@ -13,13 +13,16 @@ import errno
 import os
 
 ###################################################################
+
 #to help debug
 def lineno():
     """Returns the current line number in our program."""
     return inspect.currentframe().f_back.f_lineno
+
 ###################################################################
 
 ###################################################################
+
 #helper funcs
 #returns true if a value can be typecasted as a float, else false
 def isfloat(value):
@@ -38,6 +41,7 @@ def mkdir_p(path):
             pass
         else:
             raise
+
 ###################################################################
 
 #global variables to use throughout the parsing process and further
@@ -87,6 +91,7 @@ class Relation:
 		self.relation_name = relation_name
 		self.arrity = 0
 		self.r_id = 0
+
 ###################################################################
 
 ######################################################################################
@@ -134,8 +139,6 @@ def loadIntoPandas():
 
 		df = pd.DataFrame(rws, columns = cls)
 		dfs.append(df)
-
-		#schema = 
 
 ######################################################################################
 
@@ -324,7 +327,7 @@ class AntlrClingoListener(ClingoListener):
 		global dfs
 
 		#print lineno()
-		# loading into pandas DF
+		#loading into pandas DF
 		rearrangePWSandRLS()
 		loadIntoPandas()
 
@@ -349,6 +352,7 @@ walker.walk(pw_analyzer, tree)
 #print lineno()
 
 #########################################################################################################
+
 exp_formats = raw_input()
 exp_formats = exp_formats.split(',')
 for i in range(len(exp_formats)):
@@ -360,7 +364,10 @@ export_to_hdf = True if 'h5' in exp_formats else False
 export_to_msg = True if 'msg' in exp_formats else False
 export_to_pkl = True if 'pkl' in exp_formats else False
 
+export_to_sql = True #making it true for querying purposes
+
 o_fname = 'Mini Workflow/parser_output/'
+conn = None
 
 if export_to_sql:
 	conn = sqlite3.connect("Mini Workflow/parser_output/sql_exports/" + str(project_name) + ".db")
@@ -401,7 +408,7 @@ if export_to_hdf:
 if export_to_pkl:
 	print "Successfully exported to pkl"	
 
-
+############################################################################################################
 
 #creating schemas for SQLite
 #code to print schema of the tables created
@@ -413,8 +420,6 @@ if export_to_sql:
 	for row in schema_q.fetchall():
 		print row[4]
 		schemas.append(row[4])
-	conn.commit()
-	conn.close()
 else:
 	conn_t = sqlite3.connect("test.db")
 	for i, df in enumerate(dfs):
@@ -440,15 +445,18 @@ else:
 
 #1: does a relation occur in all the PWs:
 
-
-
-# headers = list(df)[1:]
-# headers = ', '.join(map(str,headers))
-# query = ''
-# for i in range(1, num_models):
-# 	query += 'select' + headers + 'from' relation_name 'where pw = ' + i + 'intersect '
-# query += 'select' + headers + 'from' relation_name 'where pw = ' + num_models + ';'
-
+for i, df in enumerate(dfs):
+	query_intersection = ''
+	col_names = list(df)[1:]
+	col_names = ', '.join(map(str,col_names))
+	for j in range(1, expected_pws):
+		query_intersection += 'select ' + col_names + ' from ' + str(relations[i].relation_name) + ' where pw = ' + str(j) + ' intersect '
+	query_intersection += 'select ' + col_names + ' from ' + str(relations[i].relation_name) + ' where pw = ' + str(expected_pws) + ';'
+	
+	ik = pd.read_sql_query(query_intersection, conn)
+	if len(ik) > 0:
+		print "Intersection of all the PWs for the relation", str(relations[i].relation_name)
+		print ik
 #do this for all relations/tables
 
 #doing the same in pandas:
@@ -465,12 +473,19 @@ else:
 
 #2: list of unique relations across all the PWs:
 
-# headers = list(df)[1:]
-# headers = ', '.join(map(str,headers))
-# query = ''
-# for i in range(1, num_models):
-# 	query += 'select' + headers + 'from' relation_name 'where pw = ' + i + 'union '
-# query += 'select' + headers + 'from' relation_name 'where pw = ' + num_models + ';'
+for i, df in enumerate(dfs):
+	query_union = ''
+	col_names = list(df)[1:]
+	col_names = ', '.join(map(str,col_names))
+	for j in range(1, expected_pws):
+		query_union += 'select ' + col_names + ' from ' + str(relations[i].relation_name) + ' where pw = ' + str(j) + ' union '
+	query_union += 'select ' + col_names + ' from ' + str(relations[i].relation_name) + ' where pw = ' + str(expected_pws) + ';'
+	
+	ik = pd.read_sql_query(query_union, conn)
+	if len(ik) > 0:
+		print "Union of all the PWs for the relation", str(relations[i].relation_name)
+		print ik
+
 
 #do this for all relations/tables
 
@@ -513,6 +528,12 @@ else:
 #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#
 
 
+###########################################################################################
+
+#closing SQLite Connection
+if export_to_sql:
+	conn.commit()
+	conn.close()
 
 
 
