@@ -364,7 +364,7 @@ export_to_hdf = True if 'h5' in exp_formats else False
 export_to_msg = True if 'msg' in exp_formats else False
 export_to_pkl = True if 'pkl' in exp_formats else False
 
-export_to_sql = True #making it true for querying purposes
+#export_to_sql = True #making it true for querying purposes
 
 o_fname = 'Mini Workflow/parser_output/'
 conn = None
@@ -445,26 +445,31 @@ else:
 
 #1: does a relation occur in all the PWs:
 
-for i, df in enumerate(dfs):
-	query_intersection = ''
-	col_names = list(df)[1:]
-	col_names = ', '.join(map(str,col_names))
-	for j in range(1, expected_pws):
-		query_intersection += 'select ' + col_names + ' from ' + str(relations[i].relation_name) + ' where pw = ' + str(j) + ' intersect '
-	query_intersection += 'select ' + col_names + ' from ' + str(relations[i].relation_name) + ' where pw = ' + str(expected_pws) + ';'
+#SQLite Version:
+# for i, df in enumerate(dfs):
+# 	query_intersection = ''
+# 	col_names = list(df)[1:]
+# 	col_names = ', '.join(map(str,col_names))
+# 	for j in range(1, expected_pws):
+# 		query_intersection += 'select ' + col_names + ' from ' + str(relations[i].relation_name) + ' where pw = ' + str(j) + ' intersect '
+# 	query_intersection += 'select ' + col_names + ' from ' + str(relations[i].relation_name) + ' where pw = ' + str(expected_pws) + ';'
 	
-	ik = pd.read_sql_query(query_intersection, conn)
-	if len(ik) > 0:
-		print "Intersection of all the PWs for the relation", str(relations[i].relation_name)
-		print ik
-#do this for all relations/tables
+# 	ik = pd.read_sql_query(query_intersection, conn)
+# 	if len(ik) > 0:
+# 		print "Intersection of all the PWs for the relation", str(relations[i].relation_name)
+# 		print ik
 
-#doing the same in pandas:
-# s1 = df[df.pw==1]
-# for i in range(1, num_models):
-# 	s1 = df.merge(s1, df[df.pw == i+1], how = 'inner', on = list(df)[1:])
-# k = list(df)[1:]
-# s1 = s1[k]
+
+#Panda Version:
+# for i, df in enumerate(dfs):
+# 	s1 = df[df.pw==1]
+# 	for j in range(1, expected_pws):
+# 		s1 = pd.merge(s1, df[df.pw == j+1], how = 'inner', on = list(df)[1:])
+# 	k = list(df)[1:]
+# 	s1 = s1[k]
+# 	if len(s1) > 0:
+# 		print "Intersection of all the PWs for the relation", str(relations[i].relation_name)
+# 		print s1
 
 #something like this could also be used to find intersection of a particular set of PWs
 #both in pandas and SQLite
@@ -473,29 +478,31 @@ for i, df in enumerate(dfs):
 
 #2: list of unique relations across all the PWs:
 
-for i, df in enumerate(dfs):
-	query_union = ''
-	col_names = list(df)[1:]
-	col_names = ', '.join(map(str,col_names))
-	for j in range(1, expected_pws):
-		query_union += 'select ' + col_names + ' from ' + str(relations[i].relation_name) + ' where pw = ' + str(j) + ' union '
-	query_union += 'select ' + col_names + ' from ' + str(relations[i].relation_name) + ' where pw = ' + str(expected_pws) + ';'
+#SQLite Version:
+# for i, df in enumerate(dfs):
+# 	query_union = ''
+# 	col_names = list(df)[1:]
+# 	col_names = ', '.join(map(str,col_names))
+# 	for j in range(1, expected_pws):
+# 		query_union += 'select ' + col_names + ' from ' + str(relations[i].relation_name) + ' where pw = ' + str(j) + ' union '
+# 	query_union += 'select ' + col_names + ' from ' + str(relations[i].relation_name) + ' where pw = ' + str(expected_pws) + ';'
 	
-	ik = pd.read_sql_query(query_union, conn)
-	if len(ik) > 0:
-		print "Union of all the PWs for the relation", str(relations[i].relation_name)
-		print ik
+# 	ik = pd.read_sql_query(query_union, conn)
+# 	if len(ik) > 0:
+# 		print "Union of all the PWs for the relation", str(relations[i].relation_name)
+# 		print ik
 
+#Panda Version:
+# for i, df in enumerate(dfs):
+# 	s1 = df[df.pw==1]
+# 	for j in range(1, expected_pws):
+# 		s1 = pd.merge(s1, df[df.pw == j+1], how = 'outer', on = list(df)[1:])
+# 	k = list(df)[1:]
+# 	s1 = s1[k]
+# 	if len(s1) > 0:
+# 		print "Union of all the PWs for the relation", str(relations[i].relation_name)
+# 		print s1
 
-#do this for all relations/tables
-
-#doing the same in pandas:
-
-# s2 = df[df.pw==1]
-# for i in range(1, num_models):
-# 	s2 = df.merge(s2, df[df.pw == i+1], how = 'outer', on = list(df)[1:])
-# k = list(df)[1:] #same as headers actually
-# s2 = s2[k] # or s2[headers]
 #something like this could also be used to find intersection of a particular set of PWs
 #both in pandas and SQLite
 
