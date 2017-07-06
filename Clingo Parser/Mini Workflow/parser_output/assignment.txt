@@ -31,7 +31,6 @@ total_cost_1
 3   4  13
 4   5  11
 Successfully exported to csv
-Successfully exported to sql
 Sqlite Schema:
 CREATE TABLE "total_cost_1" (
 "index" INTEGER,

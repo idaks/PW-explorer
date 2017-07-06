@@ -439,7 +439,7 @@ else:
 #########################################################################################################
 
 
-#some possible queries:
+#Some Possible Queries:
 
 #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#
 
@@ -492,6 +492,7 @@ else:
 # 		print "Union of all the PWs for the relation", str(relations[i].relation_name)
 # 		print ik
 
+all_tuples = []
 #Panda Version:
 # for i, df in enumerate(dfs):
 # 	s1 = df[df.pw==1]
@@ -499,6 +500,7 @@ else:
 # 		s1 = pd.merge(s1, df[df.pw == j+1], how = 'outer', on = list(df)[1:])
 # 	k = list(df)[1:]
 # 	s1 = s1[k]
+# 	all_tuples.append(s1)
 # 	if len(s1) > 0:
 # 		print "Union of all the PWs for the relation", str(relations[i].relation_name)
 # 		print s1
@@ -510,23 +512,24 @@ else:
 
 #3: found out how many worlds a particluar relation occurs:
 
-#for each unique relation found from query #2 (lets call it rl), do the following:
+#SQLite Version:
+# for i, df in enumerate(dfs):
+# 	headers = list(df)[1:]
+# 	for j in range(len(all_tuples[i])):
+# 		query = 'select count(*) from' + str(relations[i].relation_name) + 'where'
+# 		for k in range(len(headers) - 1):
+# 			query += headers[k] + '=' + all_tuples[i].ix[j][k] + ' and '
+# 		query += headers[-1] + '=' + all_tuples[i].ix[j][-1] + ';'
+# 		ik = pd.read_sql_query(query, conn)
+# 		print "Frequency of tuple", str(tuple(all_tuples[i].ix[j])), "is:", str(int(ik))
 
-# headers = list(df)[1:]
-# query = 'select count(*) from' + relation_name + 'where'
-# for i in range(len(headers));
-# 	query += headers[i] + '=' + rl[i] + ' and '
-# query += ';'
 
-#do this for each table as well
-#note: if the result of any of these is == num of models, that means it must have been an asnwer in query#1
-
-#doing the same in pandas:
+#Panda Version:
 #let the row from query#2 be rl
 # rl = s2.ix[i]
 # expr = '' 
 # for i in range(len(headers) - 1):
-# 	expr += str(headers[0]) + ' == ' + str(rl[i]) + ' and '
+# 	expr += str(headers[i]) + ' == ' + str(rl[i]) + ' and '
 # expr += str(headers[-1]) + ' == ' + str(rl[-1])
 # s3 = df.query(expr)
 
