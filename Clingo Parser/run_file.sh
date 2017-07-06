@@ -15,5 +15,7 @@ python Preprocessing.py Mini\ Workflow/clingo_output/$2.txt
 
 echo "Preprocessing Done"
 
-python AntlrClingo.py Mini\ Workflow/clingo_output/$2.txt 2 > Mini\ Workflow/parser_output/$2.txt
+echo "Enter a comma-separated list of formats you want to export in. Options: sql, csv, h5, msg, pkl"
+
+python AntlrClingo.py Mini\ Workflow/clingo_output/$2.txt $2 > Mini\ Workflow/parser_output/$2.txt
 

@@ -9,6 +9,8 @@ import numpy as np
 import inspect
 from antlr4.tree.Trees import Trees
 import sqlite3
+import errno    
+import os
 
 ###################################################################
 #to help debug
@@ -18,7 +20,7 @@ def lineno():
 ###################################################################
 
 ###################################################################
-#helper func
+#helper funcs
 #returns true if a value can be typecasted as a float, else false
 def isfloat(value):
   try:
@@ -26,6 +28,16 @@ def isfloat(value):
     return True
   except ValueError:
     return False
+
+#make a directory if it doesn't already exist
+def mkdir_p(path):
+    try:
+        os.makedirs(path)
+    except OSError as exc:  # Python >2.5
+        if exc.errno == errno.EEXIST and os.path.isdir(path):
+            pass
+        else:
+            raise
 ###################################################################
 
 #global variables to use throughout the parsing process and further
@@ -337,46 +349,86 @@ walker.walk(pw_analyzer, tree)
 #print lineno()
 
 #########################################################################################################
-#conn = sqlite3.connect("export_in_other_formats/clingo_parser.db")
+exp_formats = raw_input()
+exp_formats = exp_formats.split(',')
+for i in range(len(exp_formats)):
+	exp_formats[i] = exp_formats[i].strip()
+
+export_to_sql = True if 'sql' in exp_formats else False
+export_to_csv = True if 'csv' in exp_formats else False
+export_to_hdf = True if 'h5' in exp_formats else False
+export_to_msg = True if 'msg' in exp_formats else False
+export_to_pkl = True if 'pkl' in exp_formats else False
+
+o_fname = 'Mini Workflow/parser_output/'
+
+if export_to_sql:
+	conn = sqlite3.connect("Mini Workflow/parser_output/sql_exports/" + str(project_name) + ".db")
+if export_to_csv:
+	mkdir_p(str(o_fname  + 'csv_exports/' + str(project_name)))
+if export_to_hdf:
+	mkdir_p(str(o_fname  + 'hdf_exports/' + str(project_name)))
+if export_to_msg:
+	mkdir_p(str(o_fname  + 'msg_exports/' + str(project_name)))
+if export_to_pkl:
+	mkdir_p(str(o_fname  + 'pkl_exports/' + str(project_name)))
+
 
 for i, df in enumerate(dfs):
+	
 	print relations[i].relation_name
 	print df
-	o_fname = 'export_in_other_formats/' + str(relations[i].relation_name)
-	#df.to_csv(str(o_fname  + '.csv'))
-	#df.to_hdf(str(o_fname + '.h5'), 'table', mode = 'w')
-	#df.to_sql(str(relations[i].relation_name), conn, flavor = 'sqlite', if_exists = 'replace')
-	#df.to_msgpack(str(o_fname + '.msg'))
-	#df.to_pickle(str(o_fname + '.pkl'))
+	
+	if export_to_csv:
+		df.to_csv(str(o_fname  + 'csv_exports/' + str(project_name) + '/' + str(relations[i].relation_name) + '.csv'))
+	if export_to_hdf:
+		df.to_hdf(str(o_fname  + 'hdf_exports/' + str(project_name) + '/' + str(relations[i].relation_name) + '.h5'), str(relations[i].relation_name), mode = 'w')
+	if export_to_sql:
+		df.to_sql(str(relations[i].relation_name), conn, if_exists = 'replace')
+	if export_to_msg:
+		df.to_msgpack(str(o_fname  + 'msg_exports/' + str(project_name) + '/' + str(relations[i].relation_name) + '.msg'))
+	if export_to_pkl:
+		df.to_pickle(str(o_fname  + 'pkl_exports/' + str(project_name) + '/' + str(relations[i].relation_name) + '.pkl'))
+
+if export_to_csv:
+	print "Successfully exported to csv"
+if export_to_sql:
+	print "Successfully exported to sql"
+if export_to_msg:
+	print "Successfully exported to msg"
+if export_to_hdf:
+	print "Successfully exported to hdf"
+if export_to_pkl:
+	print "Successfully exported to pkl"	
+
+
 
 #creating schemas for SQLite
 #code to print schema of the tables created
 
-# schemas = []
-# schema_q = conn.execute("SELECT * FROM sqlite_master WHERE type='table' ORDER BY name;")
-# for row in schema_q.fetchall():
-# 	print row[4]
-# 	schemas.append(row[4])
-
-# conn.commit()
-# conn.close()
-#print schemas
-
-#could also do the following:
-conn_t = sqlite3.connect("test.db")
 schemas = []
-for i, df in enumerate(dfs):
-	t = df.ix[0:0]
-	t.to_sql(str(relations[i].relation_name), conn_t, if_exists = 'replace')
-schema_q = conn_t.execute("SELECT * FROM sqlite_master WHERE type='table' ORDER BY name;")
-print 'Sqlite Schema:'
-for row in schema_q.fetchall():
- 	print row[4]
- 	schemas.append(row[4])
-for i, df in enumerate(dfs):
-	conn_t.execute('DROP TABLE ' + str(relations[i].relation_name))
-conn_t.commit()
-conn_t.close()
+if export_to_sql:
+	schema_q = conn.execute("SELECT * FROM sqlite_master WHERE type='table' ORDER BY name;")
+	print 'Sqlite Schema:'
+	for row in schema_q.fetchall():
+		print row[4]
+		schemas.append(row[4])
+	conn.commit()
+	conn.close()
+else:
+	conn_t = sqlite3.connect("test.db")
+	for i, df in enumerate(dfs):
+		t = df.ix[0:0]
+		t.to_sql(str(relations[i].relation_name), conn_t, if_exists = 'replace')
+	schema_q = conn_t.execute("SELECT * FROM sqlite_master WHERE type='table' ORDER BY name;")
+	print 'Sqlite Schema:'
+	for row in schema_q.fetchall():
+	 	print row[4]
+	 	schemas.append(row[4])
+	for i, df in enumerate(dfs):
+		conn_t.execute('DROP TABLE ' + str(relations[i].relation_name))
+	conn_t.commit()
+	conn_t.close()
 #this approach will take constant time since there is just one row in the exported database.
 
 #########################################################################################################
