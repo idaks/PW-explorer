@@ -364,7 +364,7 @@ export_to_hdf = True if 'h5' in exp_formats else False
 export_to_msg = True if 'msg' in exp_formats else False
 export_to_pkl = True if 'pkl' in exp_formats else False
 
-export_to_sql = True #making it true for querying purposes
+#export_to_sql = True #making it true for querying purposes
 
 o_fname = 'Mini Workflow/parser_output/'
 conn = None
@@ -527,15 +527,19 @@ all_tuples = []
 
 
 #Panda Version:
-#let the row from query#2 be rl
-# rl = s2.ix[i]
-# expr = '' 
-# for i in range(len(headers) - 1):
-# 	expr += str(headers[i]) + ' == ' + str(rl[i]) + ' and '
-# expr += str(headers[-1]) + ' == ' + str(rl[-1])
-# s3 = df.query(expr)
-
-# ans = len(s3) #number of PWs for each tuple
+#Pandas version of query #2 must be run before this to be able to run this query
+# for i, df in enumerate(dfs):
+# 	headers = list(df)[1:]
+# 	for j in range(len(all_tuples[i])):
+# 		expr = ''
+# 		for k in range(len(headers) - 1):
+# 			expr +=  str(headers[k]) + ' == ' + "'" + str(all_tuples[i].ix[j][k]) + "'" + ' and '
+# 		expr +=  str(headers[-1]) + ' == ' + "'" + str(all_tuples[i].ix[j][-1]) + "'"
+# 		#print expr
+# 		s3 = df.query(expr)
+# 		tmp = len(s3)
+# 		#print s3
+# 		print "Frequency of tuple", tuple(all_tuples[i].ix[j]), "of the relation", str(relations[i].relation_name), "is:", tmp
 
 #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#
 
