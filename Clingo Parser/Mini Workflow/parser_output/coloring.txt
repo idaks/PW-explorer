@@ -64,7 +64,7 @@ color_2
 5831  972      denmark   blue
 
 [5832 rows x 3 columns]
-Successfully exported to csv
+Successfully exported to sql
 Sqlite Schema:
 CREATE TABLE "color_2" (
 "index" INTEGER,
@@ -72,3 +72,74 @@ CREATE TABLE "color_2" (
   "x1" TEXT,
   "x2" TEXT
 )
+Union of all the PWs for the relation color_2
+             x1     x2
+0       belgium    red
+1   netherlands   blue
+2        france  white
+3    luxembourg    red
+4       germany  green
+5       denmark    red
+6       denmark   blue
+7       denmark  green
+8       denmark  white
+9        france   blue
+10       france  green
+11   luxembourg   blue
+12      germany   blue
+13   luxembourg  green
+14  netherlands  white
+15      germany  white
+16   luxembourg  white
+17  netherlands  green
+18  netherlands    red
+19      belgium  white
+20       france    red
+21      belgium   blue
+22      belgium  green
+Frequency of tuple (u'belgium', u'red') of the relation color_2 is:    count(*)
+0       324
+Frequency of tuple (u'netherlands', u'blue') of the relation color_2 is:    count(*)
+0       252
+Frequency of tuple (u'france', u'white') of the relation color_2 is:    count(*)
+0       252
+Frequency of tuple (u'luxembourg', u'red') of the relation color_2 is:    count(*)
+0       324
+Frequency of tuple (u'germany', u'green') of the relation color_2 is:    count(*)
+0       324
+Frequency of tuple (u'denmark', u'red') of the relation color_2 is:    count(*)
+0       243
+Frequency of tuple (u'denmark', u'blue') of the relation color_2 is:    count(*)
+0       243
+Frequency of tuple (u'denmark', u'green') of the relation color_2 is:    count(*)
+0       243
+Frequency of tuple (u'denmark', u'white') of the relation color_2 is:    count(*)
+0       243
+Frequency of tuple (u'france', u'blue') of the relation color_2 is:    count(*)
+0       252
+Frequency of tuple (u'france', u'green') of the relation color_2 is:    count(*)
+0       252
+Frequency of tuple (u'luxembourg', u'blue') of the relation color_2 is:    count(*)
+0       216
+Frequency of tuple (u'germany', u'blue') of the relation color_2 is:    count(*)
+0       324
+Frequency of tuple (u'luxembourg', u'green') of the relation color_2 is:    count(*)
+0       216
+Frequency of tuple (u'netherlands', u'white') of the relation color_2 is:    count(*)
+0       252
+Frequency of tuple (u'germany', u'white') of the relation color_2 is:    count(*)
+0       324
+Frequency of tuple (u'luxembourg', u'white') of the relation color_2 is:    count(*)
+0       216
+Frequency of tuple (u'netherlands', u'green') of the relation color_2 is:    count(*)
+0       252
+Frequency of tuple (u'netherlands', u'red') of the relation color_2 is:    count(*)
+0       216
+Frequency of tuple (u'belgium', u'white') of the relation color_2 is:    count(*)
+0       216
+Frequency of tuple (u'france', u'red') of the relation color_2 is:    count(*)
+0       216
+Frequency of tuple (u'belgium', u'blue') of the relation color_2 is:    count(*)
+0       216
+Frequency of tuple (u'belgium', u'green') of the relation color_2 is:    count(*)
+0       216
