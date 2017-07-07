@@ -364,7 +364,7 @@ export_to_hdf = True if 'h5' in exp_formats else False
 export_to_msg = True if 'msg' in exp_formats else False
 export_to_pkl = True if 'pkl' in exp_formats else False
 
-#export_to_sql = True #making it true for querying purposes
+export_to_sql = True #making it true for querying purposes
 
 o_fname = 'Mini Workflow/parser_output/'
 conn = None
@@ -513,15 +513,17 @@ all_tuples = []
 #3: found out how many worlds a particluar relation occurs:
 
 #SQLite Version:
+#Pandas version of query #2 must be run before this to be able to run this query
 # for i, df in enumerate(dfs):
 # 	headers = list(df)[1:]
 # 	for j in range(len(all_tuples[i])):
-# 		query = 'select count(*) from' + str(relations[i].relation_name) + 'where'
+# 		query = 'select count(*) from ' + str(relations[i].relation_name) + ' where '
 # 		for k in range(len(headers) - 1):
 # 			query += headers[k] + '=' + all_tuples[i].ix[j][k] + ' and '
 # 		query += headers[-1] + '=' + all_tuples[i].ix[j][-1] + ';'
+# 		#print query
 # 		ik = pd.read_sql_query(query, conn)
-# 		print "Frequency of tuple", str(tuple(all_tuples[i].ix[j])), "is:", str(int(ik))
+# 		print "Frequency of tuple", tuple(all_tuples[i].ix[j]), "of the relation", str(relations[i].relation_name), "is:", ik
 
 
 #Panda Version:
