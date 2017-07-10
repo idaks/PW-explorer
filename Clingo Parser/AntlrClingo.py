@@ -86,6 +86,8 @@ class PossibleWorld:
 
 ###################################################################
 
+#Class to store description of each relation found in the clingo output
+
 class Relation:
 	def __init__(self, relation_name):
 		self.relation_name = relation_name
@@ -96,6 +98,8 @@ class Relation:
 
 ######################################################################################
 
+
+#Sort the possible worlds and relations by their ids
 def rearrangePWSandRLS():
 
 	global pws 
@@ -111,7 +115,7 @@ def rearrangePWSandRLS():
 	relations.sort(key = lambda x: x.r_id)
 	pws.sort(key = lambda x: x.pw_id)
 
-
+#Populate the Pandas DF, one for each relation
 def loadIntoPandas():
 
 	global pws 
@@ -553,7 +557,7 @@ def union_panda():
 #something like this could also be used to find intersection of a particular set of PWs
 #both in pandas and SQLite
 
-#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#
+#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#
 
 #3: found out how many worlds a particluar relation occurs:
 
@@ -610,7 +614,7 @@ def freq_panda():
 			#print s3
 			print "Frequency of tuple", tuple(all_tuples[i].ix[j]), "of the relation", str(relations[i].relation_name), "is:", tmp
 
-#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#
+#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#
 
 
 ###########################################################################################
