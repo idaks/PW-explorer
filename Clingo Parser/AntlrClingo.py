@@ -450,7 +450,7 @@ else:
 #1: does a relation occur in all the PWs:
 
 #SQLite Version:
-def intersection_sqlite():
+def intersection_sqlite(rl_id = 0, col_names = [], pws_to_consider = [j for j in range(1, expected_pws+1)]):
 
 	global pws 
 	global relations 
@@ -459,19 +459,35 @@ def intersection_sqlite():
 	global curr_rl 
 	global curr_rl_data 
 	global n_rls
-	global dfs 
+	global dfs
+	global conn 
 
-	for i, df in enumerate(dfs):
-		query_intersection = ''
-		col_names = list(df)[1:]
-		col_names = ', '.join(map(str,col_names))
-		for j in range(1, expected_pws):
-			query_intersection += 'select ' + col_names + ' from ' + str(relations[i].relation_name) + ' where pw = ' + str(j) + ' intersect '
-		query_intersection += 'select ' + col_names + ' from ' + str(relations[i].relation_name) + ' where pw = ' + str(expected_pws) + ';'
-		ik = pd.read_sql_query(query_intersection, conn)
-		if len(ik) > 0:
-			print "Intersection of all the PWs for the relation", str(relations[i].relation_name)
-			print ik
+	# for i, df in enumerate(dfs):
+	# 	query_intersection = ''
+	# 	col_names = list(df)[1:]
+	# 	col_names = ', '.join(map(str,col_names))
+	# 	for j in range(1, expected_pws):
+	# 		query_intersection += 'select ' + col_names + ' from ' + str(relations[i].relation_name) + ' where pw = ' + str(j) + ' intersect '
+	# 	query_intersection += 'select ' + col_names + ' from ' + str(relations[i].relation_name) + ' where pw = ' + str(expected_pws) + ';'
+	# 	ik = pd.read_sql_query(query_intersection, conn)
+	# 	if len(ik) > 0:
+	# 		print "Intersection of all the PWs for the relation", str(relations[i].relation_name)
+	# 		print ik
+
+	if col_names == []:
+		col_names = list(dfs[rl_id])[1:]
+	query_intersection = ''
+	
+	col_names = ', '.join(map(str,col_names))
+	for j in pws_to_consider[:-1]:
+		query_intersection += 'select ' + col_names + ' from ' + str(relations[rl_id].relation_name) + ' where pw = ' + str(j) + ' intersect '
+	query_intersection += 'select ' + col_names + ' from ' + str(relations[rl_id].relation_name) + ' where pw = ' + str(pws_to_consider[-1]) + ';'
+	ik = pd.read_sql_query(query_intersection, conn)
+	print "Intersection for the relation", str(relations[rl_id].relation_name), "on features", col_names, "for PWs", str(', '.join(map(str, pws_to_consider)))
+	if len(ik) > 0:
+		print ik
+	else:
+		print "NULL"
 
 
 #Panda Version:
@@ -485,6 +501,7 @@ def intersection_panda():
 	global curr_rl_data 
 	global n_rls
 	global dfs 
+
 
 	for i, df in enumerate(dfs):
 		s1 = df[df.pw==1]
@@ -514,7 +531,7 @@ def union_sqlite():
 	global curr_rl_data 
 	global n_rls
 	global dfs 
-
+	global conn 
 	for i, df in enumerate(dfs):
 		query_union = ''
 		col_names = list(df)[1:]
@@ -574,6 +591,7 @@ def freq_sqlite():
 	global n_rls
 	global dfs 
 	global all_tuples
+	global conn 
 
 	for i, df in enumerate(dfs):
 		headers = list(df)[1:]
@@ -619,7 +637,7 @@ def freq_panda():
 
 ###########################################################################################
 
-#intersection_sqlite()
+intersection_sqlite()#(0, ['x1', 'x2'], [1,5])
 #intersection_panda()
 #union_sqlite()
 #union_panda()
