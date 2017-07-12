@@ -44,5 +44,4 @@ CREATE TABLE "x_3" (
   "x2" TEXT,
   "x3" TEXT
 )
-Intersection for the relation x_3 on features x1, x2, x3 for PWs 1, 2, 3, 4, 5
-NULL
+Frequency of tuple ('30',) of the relation total_cost_1 for attributes x1 in PWs 1, 2 is: 1
