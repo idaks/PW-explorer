@@ -462,18 +462,6 @@ def intersection_sqlite(rl_id = 0, col_names = [], pws_to_consider = [j for j in
 	global dfs
 	global conn 
 
-	# for i, df in enumerate(dfs):
-	# 	query_intersection = ''
-	# 	col_names = list(df)[1:]
-	# 	col_names = ', '.join(map(str,col_names))
-	# 	for j in range(1, expected_pws):
-	# 		query_intersection += 'select ' + col_names + ' from ' + str(relations[i].relation_name) + ' where pw = ' + str(j) + ' intersect '
-	# 	query_intersection += 'select ' + col_names + ' from ' + str(relations[i].relation_name) + ' where pw = ' + str(expected_pws) + ';'
-	# 	ik = pd.read_sql_query(query_intersection, conn)
-	# 	if len(ik) > 0:
-	# 		print "Intersection of all the PWs for the relation", str(relations[i].relation_name)
-	# 		print ik
-
 	if col_names == []:
 		col_names = list(dfs[rl_id])[1:]
 	query_intersection = ''
@@ -492,6 +480,19 @@ def intersection_sqlite(rl_id = 0, col_names = [], pws_to_consider = [j for j in
 
 	return ik
 
+	#old way:
+	# for i, df in enumerate(dfs):
+	# 	query_intersection = ''
+	# 	col_names = list(df)[1:]
+	# 	col_names = ', '.join(map(str,col_names))
+	# 	for j in range(1, expected_pws):
+	# 		query_intersection += 'select ' + col_names + ' from ' + str(relations[i].relation_name) + ' where pw = ' + str(j) + ' intersect '
+	# 	query_intersection += 'select ' + col_names + ' from ' + str(relations[i].relation_name) + ' where pw = ' + str(expected_pws) + ';'
+	# 	ik = pd.read_sql_query(query_intersection, conn)
+	# 	if len(ik) > 0:
+	# 		print "Intersection of all the PWs for the relation", str(relations[i].relation_name)
+	# 		print ik
+
 
 #Panda Version:
 def intersection_panda(rl_id = 0, col_names = [], pws_to_consider = [j for j in range(1, expected_pws+1)], do_print = True):
@@ -504,17 +505,6 @@ def intersection_panda(rl_id = 0, col_names = [], pws_to_consider = [j for j in 
 	global curr_rl_data 
 	global n_rls
 	global dfs 
-
-
-	# for i, df in enumerate(dfs):
-	# 	s1 = df[df.pw==1]
-	# 	for j in range(1, expected_pws):
-	# 		s1 = pd.merge(s1, df[df.pw == j+1], how = 'inner', on = list(df)[1:])
-	# 	k = list(df)[1:]
-	# 	s1 = s1[k]
-	# 	if len(s1) > 0:
-	# 		print "Intersection of all the PWs for the relation", str(relations[i].relation_name)
-	# 		print s1
 
 	if col_names == []:
 		col_names = list(dfs[rl_id])[1:]
@@ -533,8 +523,17 @@ def intersection_panda(rl_id = 0, col_names = [], pws_to_consider = [j for j in 
 
 	return s1
 
-#something like this could also be used to find intersection of a particular set of PWs
-#both in pandas and SQLite
+	#old way:
+	# for i, df in enumerate(dfs):
+	# 	s1 = df[df.pw==1]
+	# 	for j in range(1, expected_pws):
+	# 		s1 = pd.merge(s1, df[df.pw == j+1], how = 'inner', on = list(df)[1:])
+	# 	k = list(df)[1:]
+	# 	s1 = s1[k]
+	# 	if len(s1) > 0:
+	# 		print "Intersection of all the PWs for the relation", str(relations[i].relation_name)
+	# 		print s1
+
 
 #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#
 
@@ -552,19 +551,6 @@ def union_sqlite(rl_id = 0, col_names = [], pws_to_consider = [j for j in range(
 	global n_rls
 	global dfs 
 	global conn 
-
-	# for i, df in enumerate(dfs):
-	# 	query_union = ''
-	# 	col_names = list(df)[1:]
-	# 	col_names = ', '.join(map(str,col_names))
-	# 	for j in range(1, expected_pws):
-	# 		query_union += 'select ' + col_names + ' from ' + str(relations[i].relation_name) + ' where pw = ' + str(j) + ' union '
-	# 	query_union += 'select ' + col_names + ' from ' + str(relations[i].relation_name) + ' where pw = ' + str(expected_pws) + ';'
-		
-	# 	ik = pd.read_sql_query(query_union, conn)
-	# 	if len(ik) > 0:
-	# 		print "Union of all the PWs for the relation", str(relations[i].relation_name)
-	# 		print ik
 
 	if col_names == []:
 		col_names = list(dfs[rl_id])[1:]
@@ -584,6 +570,20 @@ def union_sqlite(rl_id = 0, col_names = [], pws_to_consider = [j for j in range(
 
 	return ik
 
+	#old way:
+	# for i, df in enumerate(dfs):
+	# 	query_union = ''
+	# 	col_names = list(df)[1:]
+	# 	col_names = ', '.join(map(str,col_names))
+	# 	for j in range(1, expected_pws):
+	# 		query_union += 'select ' + col_names + ' from ' + str(relations[i].relation_name) + ' where pw = ' + str(j) + ' union '
+	# 	query_union += 'select ' + col_names + ' from ' + str(relations[i].relation_name) + ' where pw = ' + str(expected_pws) + ';'
+		
+	# 	ik = pd.read_sql_query(query_union, conn)
+	# 	if len(ik) > 0:
+	# 		print "Union of all the PWs for the relation", str(relations[i].relation_name)
+	# 		print ik
+
 
 #Panda Version:
 def union_panda(rl_id = 0, col_names = [], pws_to_consider = [j for j in range(1, expected_pws+1)], do_print = True):
@@ -596,17 +596,6 @@ def union_panda(rl_id = 0, col_names = [], pws_to_consider = [j for j in range(1
 	global curr_rl_data 
 	global n_rls
 	global dfs 
-
-	# for i, df in enumerate(dfs):
-	# 	s1 = df[df.pw==1]
-	# 	for j in range(1, expected_pws):
-	# 		s1 = pd.merge(s1, df[df.pw == j+1], how = 'outer', on = list(df)[1:])
-	# 	k = list(df)[1:]
-	# 	s1 = s1[k]
-	# 	all_tuples.append(s1)
-	# 	if len(s1) > 0:
-	# 		print "Union of all the PWs for the relation", str(relations[i].relation_name)
-	# 		print s1
 
 	if col_names == []:
 		col_names = list(dfs[rl_id])[1:]
@@ -626,9 +615,17 @@ def union_panda(rl_id = 0, col_names = [], pws_to_consider = [j for j in range(1
 
 	return s1
 
-
-#something like this could also be used to find intersection of a particular set of PWs
-#both in pandas and SQLite
+	#old way
+	# for i, df in enumerate(dfs):
+	# 	s1 = df[df.pw==1]
+	# 	for j in range(1, expected_pws):
+	# 		s1 = pd.merge(s1, df[df.pw == j+1], how = 'outer', on = list(df)[1:])
+	# 	k = list(df)[1:]
+	# 	s1 = s1[k]
+	# 	all_tuples.append(s1)
+	# 	if len(s1) > 0:
+	# 		print "Union of all the PWs for the relation", str(relations[i].relation_name)
+	# 		print s1
 
 #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#
 
@@ -648,6 +645,7 @@ def freq_sqlite(rl_id = 0, col_names = [], values = [], pws_to_consider = [j for
 	global conn 
 
 	all_tuples = None
+	freqs = []
 
 	if col_names != [] and values != [] and len(col_names) != len(values):
 		print 'Lengths of col_names and values don\'t match.'
@@ -663,7 +661,21 @@ def freq_sqlite(rl_id = 0, col_names = [], values = [], pws_to_consider = [j for
 		k.append(values)
 		all_tuples = pd.DataFrame(k, columns = col_names)
 
+	for j in range(len(all_tuples)):
+		query = 'select count(*) from ' + str(relations[rl_id].relation_name) + ' where '
+		for k in range(len(col_names)):
+			query += col_names[k] + '=' + "'" + all_tuples.ix[j][k] + "'" + ' and '
 
+		query += 'pw in (' + str(', '.join(map(str,pws_to_consider))) + ');'
+		#print query
+		ik = pd.read_sql_query(query, conn)
+		if do_print:
+			print "Frequency of tuple", tuple(all_tuples.ix[j]), 'of the relation', str(relations[rl_id].relation_name), 'for attributes', str(', '.join(map(str,col_names))), 'in PWs', str(', '.join(map(str,pws_to_consider))), "is:", ik
+		freqs.append(ik)
+
+	return freqs
+
+	#old way:
 	# for i, df in enumerate(dfs):
 	# 	headers = list(df)[1:]
 	# 	for j in range(len(all_tuples[i])):
@@ -676,22 +688,7 @@ def freq_sqlite(rl_id = 0, col_names = [], values = [], pws_to_consider = [j for
 	# 		print "Frequency of tuple", tuple(all_tuples[i].ix[j]), "of the relation", str(relations[i].relation_name), "is:", ik
 
 
-	for j in range(len(all_tuples)):
-		query = 'select count(*) from ' + str(relations[rl_id].relation_name) + ' where '
-		for k in range(len(col_names)):
-			query += col_names[k] + '=' + "'" + all_tuples.ix[j][k] + "'" + ' and '
-
-		query += 'pw in (' + str(', '.join(map(str,pws_to_consider))) + ');'
-		#print query
-		ik = pd.read_sql_query(query, conn)
-		print "Frequency of tuple", tuple(all_tuples.ix[j]), 'of the relation', str(relations[rl_id].relation_name), 'for attributes', str(', '.join(map(str,col_names))), 'in PWs', str(', '.join(map(str,pws_to_consider))), "is:", ik
-
-
-
-
-
 #Panda Version:
-#Pandas version of union query must be run before this to be able to run this query
 def freq_panda(rl_id = 0, col_names = [], values = [], pws_to_consider = [j for j in range(1, expected_pws+1)], do_print = True):
 
 	global pws 
@@ -704,6 +701,7 @@ def freq_panda(rl_id = 0, col_names = [], values = [], pws_to_consider = [j for 
 	global dfs 
 
 	all_tuples = None
+	freqs = []
 
 	if col_names != [] and values != [] and len(col_names) != len(values):
 		print 'Lengths of col_names and values don\'t match.'
@@ -729,10 +727,13 @@ def freq_panda(rl_id = 0, col_names = [], values = [], pws_to_consider = [j for 
 		expr +=  ' and pw in [' + str(', '.join(map(str,pws_to_consider))) + ']'
 		s3 = df.query(expr)
 		tmp = len(s3)
-		print "Frequency of tuple", tuple(all_tuples.ix[j]), 'of the relation', str(relations[rl_id].relation_name), 'for attributes', str(', '.join(map(str,col_names))), 'in PWs', str(', '.join(map(str,pws_to_consider))), "is:", tmp
+		if do_print:
+			print "Frequency of tuple", tuple(all_tuples.ix[j]), 'of the relation', str(relations[rl_id].relation_name), 'for attributes', str(', '.join(map(str,col_names))), 'in PWs', str(', '.join(map(str,pws_to_consider))), "is:", tmp
+		freqs.append(tmp)
 
+	return freqs
 
-
+	#old way:
 	# for i, df in enumerate(dfs):
 	# 	headers = list(df)[1:]
 	# 	for j in range(len(all_tuples[i])):
