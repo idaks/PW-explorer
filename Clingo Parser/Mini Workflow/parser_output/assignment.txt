@@ -44,4 +44,4 @@ CREATE TABLE "x_3" (
   "x2" TEXT,
   "x3" TEXT
 )
-Frequency of tuple ('30',) of the relation total_cost_1 for attributes x1 in PWs 1, 2 is: 1
+There exist 4 tuples of relation x_3 in PW 3

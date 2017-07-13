@@ -447,7 +447,7 @@ else:
 
 #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#
 
-#1: does a relation occur in all the PWs:
+#1: Intersection
 
 #SQLite Version:
 def intersection_sqlite(rl_id = 0, col_names = [], pws_to_consider = [j for j in range(1, expected_pws+1)], do_print = True):
@@ -537,7 +537,7 @@ def intersection_panda(rl_id = 0, col_names = [], pws_to_consider = [j for j in 
 
 #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#
 
-#2: list of unique relations across all the PWs:
+#2: Union
 
 #SQLite Version:
 def union_sqlite(rl_id = 0, col_names = [], pws_to_consider = [j for j in range(1, expected_pws+1)], do_print = True):
@@ -629,7 +629,7 @@ def union_panda(rl_id = 0, col_names = [], pws_to_consider = [j for j in range(1
 
 #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#
 
-#3: found out how many worlds a particluar relation occurs:
+#3: Frequency of a tuple
 
 #SQLite Version:
 def freq_sqlite(rl_id = 0, col_names = [], values = [], pws_to_consider = [j for j in range(1, expected_pws+1)], do_print = True):
@@ -670,8 +670,8 @@ def freq_sqlite(rl_id = 0, col_names = [], values = [], pws_to_consider = [j for
 		#print query
 		ik = pd.read_sql_query(query, conn)
 		if do_print:
-			print "Frequency of tuple", tuple(all_tuples.ix[j]), 'of the relation', str(relations[rl_id].relation_name), 'for attributes', str(', '.join(map(str,col_names))), 'in PWs', str(', '.join(map(str,pws_to_consider))), "is:", ik
-		freqs.append(ik)
+			print "Frequency of tuple", tuple(all_tuples.ix[j]), 'of the relation', str(relations[rl_id].relation_name), 'for attributes', str(', '.join(map(str,col_names))), 'in PWs', str(', '.join(map(str,pws_to_consider))), "is:", ik.ix[0][0]
+		freqs.append(ik.ix[0][0])
 
 	return freqs
 
@@ -748,10 +748,58 @@ def freq_panda(rl_id = 0, col_names = [], values = [], pws_to_consider = [j for 
 	# 		print "Frequency of tuple", tuple(all_tuples[i].ix[j]), "of the relation", str(relations[i].relation_name), "is:", tmp
 
 
-
-
-
 #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#
+
+#4: Number of tuples of a relation in a PW
+
+#SQLite Version:
+def num_tuples_sqlite(rl_id, pw_id, do_print = True):
+
+	global pws 
+	global relations 
+	global expected_pws 
+	global curr_pw
+	global curr_rl 
+	global curr_rl_data 
+	global n_rls
+	global dfs 
+	global conn 
+
+	query = 'select count(*) from ' + str(relations[rl_id].relation_name) + ' where pw = ' + str(pw_id) + ';'
+	c = pd.read_sql_query(query, conn)
+
+	if do_print:
+		print "There exist", str(c.ix[0][0]), "tuples of relation", str(relations[rl_id].relation_name), "in PW", str(pw_id)
+	return c.ix[0][0]
+
+#Panda Version:
+def num_tuples_panda(rl_id, pw_id, do_print = True):
+
+	global pws 
+	global relations 
+	global expected_pws 
+	global curr_pw
+	global curr_rl 
+	global curr_rl_data 
+	global n_rls
+	global dfs 
+	global conn
+
+	df = dfs[rl_id]
+	c = len(df[df.pw == pw_id])
+	if do_print:
+		print "There exist", str(c), "tuples of relation", str(relations[rl_id].relation_name), "in PW", str(pw_id)
+	return c
+
+
+###########################################################################################
+
+#prototype dist function:
+
+#def dist(pw_id_1, pw_id_2):
+
+
+
 
 
 ###########################################################################################
@@ -760,8 +808,10 @@ def freq_panda(rl_id = 0, col_names = [], values = [], pws_to_consider = [j for 
 #intersection_panda()#(0, ['x1', 'x2'], [1,5])
 #union_sqlite(0, ['x1', 'x2'], [1,5])
 #union_panda(0, ['x1', 'x2'], [1,5])
-#freq_sqlite(rl_id = 0, col_names = ['x1', 'x2'], values = ['4','5']) pws_to_consider = [1,4,5])
+#freq_sqlite(rl_id = 0, col_names = ['x1', 'x2'], values = ['4','5'], pws_to_consider = [1,4,5])
 #freq_panda(rl_id = 1, col_names = ['x1'], values = ['30'], pws_to_consider = [1,2])
+#num_tuples_sqlite(0, 3)
+#num_tuples_panda(0, 3)
 
 ###########################################################################################
 
