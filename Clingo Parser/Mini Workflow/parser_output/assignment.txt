@@ -45,6 +45,8 @@ CREATE TABLE "x_3" (
   "x3" TEXT
 )
 Column x3 is redundant in relation x_3 in PW 1
-Column x3 is redundant in relation x_3 in PW 4
+Column x3 is redundant in relation x_3 in PW 2
 Column x3 is redundant in relation x_3 in PW 3
-Column x3 is redundant in relation x_3 for PWs 1, 4, 3
+Column x3 is redundant in relation x_3 in PW 4
+Column x3 is redundant in relation x_3 in PW 5
+Column x3 is redundant in relation x_3 for PWs 1, 2, 3, 4, 5
