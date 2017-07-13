@@ -898,6 +898,50 @@ def difference_both_ways_panda(rl_id, pw_id_1, pw_id_2, col_names = [], do_print
 	return diff
 
 
+#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#
+
+
+#6: Redundant Column Query
+
+def redundant_column_sqlite(rl_id = 0, col_names = [], pws_to_consider = [j for j in range(1, expected_pws + 1)], do_print = True):
+
+	global pws 
+	global relations 
+	global expected_pws 
+	global curr_pw
+	global curr_rl 
+	global curr_rl_data 
+	global n_rls
+	global dfs 
+	global conn
+
+	if col_names == []:
+		col_names = list(dfs[rl_id])[1:]
+
+	#PW specific:
+
+	for i in pws_to_consider:
+		for ft in col_names:
+			query = 'select count(distinct ' + str(ft) + ') from (select * from ' + str(relations[rl_id].relation_name) + ' where pw = ' + str(i) + ');'
+			k = pd.read_sql_query(query, conn)
+			if int(k.ix[0][0]) <= 1:
+				if do_print:
+					print 'Column', str(ft), 'is redundant in relation', str(relations[rl_id].relation_name), 'in PW', str(i)
+
+	#Across all PWs:
+
+	for ft in col_names:
+		query = 'select count(distinct ' + str(ft) + ') from (select * from ' + str(relations[rl_id].relation_name) + ' where pw in (' + str(', '.join(map(str,pws_to_consider))) + '));'
+		k = pd.read_sql_query(query, conn)
+		if int(k.ix[0][0]) <= 1:
+			if do_print:
+				print 'Column', str(ft), 'is redundant in relation', str(relations[rl_id].relation_name), 'for PWs', str(', '.join(map(str,pws_to_consider)))
+
+
+
+
+
+
 ###########################################################################################
 
 #prototype dist function:
@@ -922,6 +966,7 @@ def difference_both_ways_panda(rl_id, pw_id_1, pw_id_2, col_names = [], do_print
 #difference_both_ways_sqlite(0, 1, 2, ['x2'])
 #difference_panda(0, 1, 2, ['x2'])
 #difference_both_ways_panda(0, 1, 2, ['x2'])
+#redundant_column_sqlite(0, ['x1','x3'], [1,4,3])
 
 ###########################################################################################
 

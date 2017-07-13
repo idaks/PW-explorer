@@ -44,17 +44,7 @@ CREATE TABLE "x_3" (
   "x2" TEXT,
   "x3" TEXT
 )
-Following is the difference between PWs 1 and 2 in features x2 of relation x_3
-  x2
-0  4
-Following tuples are in one of PW 1 or 2, but not both, for relation x_3 and features x2
-  x2
-0  4
-1  1
-Following is the difference between PWs 1 and 2 in features x2 of relation x_3
-  x2
-2  4
-Following tuples are in one of PW 1 or 2, but not both, for relation x_3 and features x2
-  x2
-0  4
-1  1
+Column x3 is redundant in relation x_3 in PW 1
+Column x3 is redundant in relation x_3 in PW 4
+Column x3 is redundant in relation x_3 in PW 3
+Column x3 is redundant in relation x_3 for PWs 1, 4, 3
