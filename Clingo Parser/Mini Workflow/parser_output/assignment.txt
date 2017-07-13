@@ -44,4 +44,17 @@ CREATE TABLE "x_3" (
   "x2" TEXT,
   "x3" TEXT
 )
-There exist 4 tuples of relation x_3 in PW 3
+Following is the difference between PWs 1 and 2 in features x2 of relation x_3
+  x2
+0  4
+Following tuples are in one of PW 1 or 2, but not both, for relation x_3 and features x2
+  x2
+0  4
+1  1
+Following is the difference between PWs 1 and 2 in features x2 of relation x_3
+  x2
+2  4
+Following tuples are in one of PW 1 or 2, but not both, for relation x_3 and features x2
+  x2
+0  4
+1  1

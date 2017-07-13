@@ -783,13 +783,119 @@ def num_tuples_panda(rl_id, pw_id, do_print = True):
 	global curr_rl_data 
 	global n_rls
 	global dfs 
-	global conn
 
 	df = dfs[rl_id]
 	c = len(df[df.pw == pw_id])
 	if do_print:
 		print "There exist", str(c), "tuples of relation", str(relations[rl_id].relation_name), "in PW", str(pw_id)
 	return c
+
+
+#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#
+
+#5: Difference Query
+
+#SQLite Version:
+def difference_sqlite(rl_id, pw_id_1, pw_id_2, col_names = [], do_print = True):
+
+	global pws 
+	global relations 
+	global expected_pws 
+	global curr_pw
+	global curr_rl 
+	global curr_rl_data 
+	global n_rls
+	global dfs 
+	global conn 
+
+	if col_names == []:
+		col_names = list(dfs[rl_id])[1:]
+
+	col_names = str(', '.join(map(str,col_names)))
+
+	query = 'select * from (select ' + col_names + ' from ' + str(relations[rl_id].relation_name) + ' where pw =  ' + str(pw_id_1) + ') except select * from (select ' + col_names + ' from ' + str(relations[rl_id].relation_name) + ' where pw = ' + str(pw_id_2) + ');'
+	diff = pd.read_sql_query(query, conn)
+
+	if do_print:
+		print "Following is the difference between PWs {} and {} in features {} of relation {}".format(pw_id_1, pw_id_2, col_names, str(relations[rl_id].relation_name))
+		print diff
+	return diff
+
+def difference_both_ways_sqlite(rl_id, pw_id_1, pw_id_2, col_names = [], do_print = True):
+
+	global pws 
+	global relations 
+	global expected_pws 
+	global curr_pw
+	global curr_rl 
+	global curr_rl_data 
+	global n_rls
+	global dfs 
+	global conn
+
+	if col_names == []:
+		col_names = list(dfs[rl_id])[1:]
+
+	x1 = difference_sqlite(rl_id, pw_id_1, pw_id_2, col_names, False)
+	x2 = difference_sqlite(rl_id, pw_id_2, pw_id_1, col_names, False)
+
+	diff = x1.append(x2, ignore_index = True)
+
+	if do_print:
+		print "Following tuples are in one of PW {} or {}, but not both, for relation {} and features {}".format(pw_id_1, pw_id_2, str(relations[rl_id].relation_name), str(', '.join(map(str,col_names))))
+		print diff
+	return diff
+
+	#could also be implemented using union\intersection, but pretty sure that's what it does under the hood anyway
+
+#Panda Version:
+def difference_panda(rl_id, pw_id_1, pw_id_2, col_names = [], do_print = True):
+
+	global pws 
+	global relations 
+	global expected_pws 
+	global curr_pw
+	global curr_rl 
+	global curr_rl_data 
+	global n_rls
+	global dfs 
+
+	if col_names == []:
+		col_names = list(dfs[rl_id])[1:]
+
+	df = dfs[rl_id]
+	x1 = df[df.pw == pw_id_1][col_names]
+	x2 = df[df.pw == pw_id_2][col_names]
+
+	diff = pd.concat([x1, x2, x2]).drop_duplicates(keep=False)
+	if do_print:
+		print "Following is the difference between PWs {} and {} in features {} of relation {}".format(pw_id_1, pw_id_2, str(', '.join(map(str,col_names))), str(relations[rl_id].relation_name))
+		print diff
+	return diff
+
+def difference_both_ways_panda(rl_id, pw_id_1, pw_id_2, col_names = [], do_print = True):
+
+	global pws 
+	global relations 
+	global expected_pws 
+	global curr_pw
+	global curr_rl 
+	global curr_rl_data 
+	global n_rls
+	global dfs
+
+	if col_names == []:
+		col_names = list(dfs[rl_id])[1:]
+
+	x1 = difference_panda(rl_id, pw_id_1, pw_id_2, col_names, False)
+	x2 = difference_panda(rl_id, pw_id_2, pw_id_1, col_names, False)
+
+	diff = x1.append(x2, ignore_index = True)
+
+	if do_print:
+		print "Following tuples are in one of PW {} or {}, but not both, for relation {} and features {}".format(pw_id_1, pw_id_2, str(relations[rl_id].relation_name), str(', '.join(map(str,col_names))))
+		print diff
+	return diff
 
 
 ###########################################################################################
@@ -812,6 +918,10 @@ def num_tuples_panda(rl_id, pw_id, do_print = True):
 #freq_panda(rl_id = 1, col_names = ['x1'], values = ['30'], pws_to_consider = [1,2])
 #num_tuples_sqlite(0, 3)
 #num_tuples_panda(0, 3)
+#difference_sqlite(0, 1, 2, ['x2'])
+#difference_both_ways_sqlite(0, 1, 2, ['x2'])
+#difference_panda(0, 1, 2, ['x2'])
+#difference_both_ways_panda(0, 1, 2, ['x2'])
 
 ###########################################################################################
 
