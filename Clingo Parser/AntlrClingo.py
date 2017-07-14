@@ -920,24 +920,27 @@ def redundant_column_sqlite(rl_id = 0, col_names = [], pws_to_consider = [j for 
 		col_names = list(dfs[rl_id])[1:]
 
 	#PW specific:
-
+	redundant_pw_specific = []
 	for i in pws_to_consider:
 		for ft in col_names:
 			query = 'select count(distinct ' + str(ft) + ') from (select * from ' + str(relations[rl_id].relation_name) + ' where pw = ' + str(i) + ');'
 			k = pd.read_sql_query(query, conn)
 			if int(k.ix[0][0]) <= 1:
+				redundant_pw_specific.append((i, rl_id, ft))
 				if do_print:
 					print 'Column', str(ft), 'is redundant in relation', str(relations[rl_id].relation_name), 'in PW', str(i)
 
 	#Across all PWs:
-
+	redundant_across_pws = []
 	for ft in col_names:
 		query = 'select count(distinct ' + str(ft) + ') from (select * from ' + str(relations[rl_id].relation_name) + ' where pw in (' + str(', '.join(map(str,pws_to_consider))) + '));'
 		k = pd.read_sql_query(query, conn)
 		if int(k.ix[0][0]) <= 1:
+			redundant_across_pws.append((pws_to_consider, rl_id, ft))
 			if do_print:
 				print 'Column', str(ft), 'is redundant in relation', str(relations[rl_id].relation_name), 'for PWs', str(', '.join(map(str,pws_to_consider)))
 
+	return redundant_pw_specific, redundant_across_pws
 
 #Panda Version:
 def redundant_column_panda(rl_id = 0, col_names = [], pws_to_consider = [j for j in range(1, expected_pws + 1)], do_print = True):
@@ -955,6 +958,7 @@ def redundant_column_panda(rl_id = 0, col_names = [], pws_to_consider = [j for j
 		col_names = list(dfs[rl_id])[1:]
 
 	#PW specific:
+	redundant_pw_specific = []
 
 	df = dfs[rl_id]
 
@@ -962,15 +966,20 @@ def redundant_column_panda(rl_id = 0, col_names = [], pws_to_consider = [j for j
 		x1 = df.groupby('pw')[ft].nunique()
 		for i in pws_to_consider:
 			if x1.ix[i] <= 1:
-				print 'Column', str(ft), 'is redundant in relation', str(relations[rl_id].relation_name), 'in PW', str(i)
+				redundant_pw_specific.append((i, rl_id, ft))
+				if do_print:
+					print 'Column', str(ft), 'is redundant in relation', str(relations[rl_id].relation_name), 'in PW', str(i)
 
 	#Across all PWs:
-
+	redundant_across_pws = []
 	x1 = df[df.pw.isin(pws_to_consider)]
 	for ft in col_names:
 		if x1[ft].nunique() <= 1:
-			print 'Column', str(ft), 'is redundant in relation', str(relations[rl_id].relation_name), 'for PWs', str(', '.join(map(str,pws_to_consider)))
+			redundant_across_pws.append((pws_to_consider, rl_id, ft))
+			if do_print:
+				print 'Column', str(ft), 'is redundant in relation', str(relations[rl_id].relation_name), 'for PWs', str(', '.join(map(str,pws_to_consider)))
 
+	return redundant_pw_specific, redundant_across_pws
 
 #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#
 
@@ -980,6 +989,7 @@ def redundant_column_panda(rl_id = 0, col_names = [], pws_to_consider = [j for j
 #prototype dist function:
 
 #def dist(pw_id_1, pw_id_2):
+
 
 
 
