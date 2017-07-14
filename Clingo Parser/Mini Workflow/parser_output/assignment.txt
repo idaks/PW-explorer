@@ -44,9 +44,13 @@ CREATE TABLE "x_3" (
   "x2" TEXT,
   "x3" TEXT
 )
-Column x3 is redundant in relation x_3 in PW 1
-Column x3 is redundant in relation x_3 in PW 2
-Column x3 is redundant in relation x_3 in PW 3
-Column x3 is redundant in relation x_3 in PW 4
-Column x3 is redundant in relation x_3 in PW 5
-Column x3 is redundant in relation x_3 for PWs 1, 2, 3, 4, 5
+Distance between PWs 1 and 2 is 4.36666666667
+Distance between PWs 1 and 3 is 10.5
+Distance between PWs 1 and 4 is 7.56666666667
+Distance between PWs 1 and 5 is 7.63333333333
+Distance between PWs 2 and 3 is 10.1333333333
+Distance between PWs 2 and 4 is 4.2
+Distance between PWs 2 and 5 is 4.26666666667
+Distance between PWs 3 and 4 is 4.06666666667
+Distance between PWs 3 and 5 is 7.13333333333
+Distance between PWs 4 and 5 is 1.06666666667
