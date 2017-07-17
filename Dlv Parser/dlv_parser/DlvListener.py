@@ -4,6 +4,15 @@ from antlr4 import *
 # This class defines a complete listener for a parse tree produced by DlvParser.
 class DlvListener(ParseTreeListener):
 
+    # Enter a parse tree produced by DlvParser#dlvOutput.
+    def enterDlvOutput(self, ctx):
+        pass
+
+    # Exit a parse tree produced by DlvParser#dlvOutput.
+    def exitDlvOutput(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by DlvParser#solution.
     def enterSolution(self, ctx):
         pass

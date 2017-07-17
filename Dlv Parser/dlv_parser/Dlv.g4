@@ -4,10 +4,10 @@ options {
     language = Python2;
 }
                             //Parser Rules:
-//solution : ( '{' atoms '}' )+ ; 
-solution : '{' atoms (',' atoms)* '}' ;
+dlvOutput : solution* ;
+solution : '{' atoms '}' ;
 
-atoms : atom atom_vals ;
+atoms : ( atom atom_vals (',' atom atom_vals)* ) ;
 
 atom_vals : '(' val (',' val)* ')' ;
 
