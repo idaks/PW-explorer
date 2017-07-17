@@ -44,11 +44,9 @@ CREATE TABLE "x_3" (
   "x2" TEXT,
   "x3" TEXT
 )
-The unique tuple (u'1', u'3') occurs only in PW 1
-The unique tuple (u'2', u'2') occurs only in PW 1
-The unique tuple (u'3', u'4') occurs only in PW 1
-The unique tuple (u'1', u'4') occurs only in PW 3
-The unique tuple (u'2', u'5') occurs only in PW 3
-The unique tuple (u'4', u'1') occurs only in PW 3
-The unique tuple (u'1', u'2') occurs only in PW 5
-The unique tuple (u'2', u'1') occurs only in PW 5
+[[ 0.          0.41587302  1.          0.72063492  0.72698413]
+ [ 0.41587302  0.          0.96507937  0.4         0.40634921]
+ [ 1.          0.96507937  0.          0.38730159  0.67936508]
+ [ 0.72063492  0.4         0.38730159  0.          0.1015873 ]
+ [ 0.72698413  0.40634921  0.67936508  0.1015873   0.        ]]
+[0 1 2 3 3]
