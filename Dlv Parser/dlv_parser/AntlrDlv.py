@@ -133,20 +133,24 @@ def parseDlvToPws():
     printer = DlvPrintListener()
     walker = ParseTreeWalker()
     walker.walk(printer, tree)
-
+def getProjectName(fileName):
+    filePath = args.fileName.split("/")
+    fileCoreName = filePath[len(filePath)-1].split(".")[0]
+    return fileCoreName
 def pandasToOutputFiles():
     #TODO: change project name to project folder/file
-    project_name = args.fileName
+    project_name = getProjectName(args.fileName)
     output_dir = os.path.dirname(os.path.realpath(__file__)) + '/../Mini Workflow/parser_output/'
     conn = None
 
     if args.sql:
         output_folder = str(output_dir + 'sql_exports/' + str(project_name))
         mkdir_p(output_folder)
+        print(output_folder)
         conn = sqlite3.connect(output_folder + '/' + str(project_name) + ".db")
         for rsl_type, df in dfs.iteritems():
             df.to_sql(str(rsl_type[0]), conn, if_exists = 'replace')
-        #TODO
+        conn.close()
     if args.csv:
         output_folder = str(output_dir + 'csv_exports/' + str(project_name))
         mkdir_p(output_folder)
