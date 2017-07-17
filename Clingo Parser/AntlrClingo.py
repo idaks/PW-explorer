@@ -985,6 +985,7 @@ def redundant_column_panda(rl_id = 0, col_names = [], pws_to_consider = [j for j
 
 #7: Tuples occuring in exactly one PW:
 
+#SQLite Version:
 def unique_tuples_sqlite(rl_id = 0, col_names = [], pws_to_consider = [j for j in range(1, expected_pws+1)], do_print = True):
 
 	global pws 
@@ -1013,6 +1014,43 @@ def unique_tuples_sqlite(rl_id = 0, col_names = [], pws_to_consider = [j for j i
 
 			unique_pw = pd.read_sql_query(query, conn)
 			unique_pw = unique_pw.ix[0][0]
+
+			unique_tuples.append((relevant_tuples.ix[i], unique_pw))
+
+			if do_print:
+				print 'The unique tuple', tuple(relevant_tuples.ix[i]), 'occurs only in PW', unique_pw
+
+	return unique_tuples
+
+#Panda Version:
+def unique_tuples_panda(rl_id = 0, col_names = [], pws_to_consider = [j for j in range(1, expected_pws+1)], do_print = True):
+
+	global pws 
+	global relations 
+	global expected_pws 
+	global curr_pw
+	global curr_rl 
+	global curr_rl_data 
+	global n_rls
+	global dfs 
+
+	if col_names == []:
+		col_names = list(dfs[rl_id])[1:]
+
+	relevant_tuples, freqs = freq_panda(rl_id, col_names, [], pws_to_consider, False)
+	unique_tuples = []
+	df = dfs[rl_id]
+
+	for i, f in enumerate(freqs):
+		if f == 1:
+			expr = ''
+			for k in range(len(col_names) - 1):
+				expr += str(col_names[k]) + ' == ' + "'" + str(relevant_tuples.ix[i][k]) + "'" + ' and '
+			expr += str(col_names[-1]) + ' == ' + "'" + str(relevant_tuples.ix[i][-1]) + "'"
+			expr +=  ' and pw in [' + str(', '.join(map(str,pws_to_consider))) + ']'
+			s3 = df.query(expr)
+			s3 = s3.reset_index(drop = True)
+			unique_pw = s3.ix[0]['pw']
 
 			unique_tuples.append((relevant_tuples.ix[i], unique_pw))
 
@@ -1105,8 +1143,8 @@ def dist(pw_id_1, pw_id_2):
 #difference_both_ways_panda(0, 1, 2, ['x2'])
 #redundant_column_sqlite(0, ['x1','x3'], [1,4,3])
 #redundant_column_panda()
-unique_tuples_sqlite(0, ['x1', 'x2'], [1,3,5])
-
+#unique_tuples_sqlite(0, ['x1', 'x2'], [1,3,5])
+#unique_tuples_panda(0, ['x1', 'x2'], [1,3,5])
 
 ###########################################################################################
 
