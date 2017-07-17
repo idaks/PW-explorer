@@ -1151,7 +1151,7 @@ def dist(pw_id_1, pw_id_2):
 ###########################################################################################
 
 def clustering(dist_matrix):
-	db = DBSCAN(metric = 'precomputed')#, eps = 0.3, min_samples = 1)
+	db = DBSCAN(metric = 'precomputed', eps = 0.4, min_samples = 1)
 	labels = db.fit_predict(dist_matrix)
 	print labels
 
