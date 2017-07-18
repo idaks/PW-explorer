@@ -381,7 +381,7 @@ walker.walk(pw_analyzer, tree)
 
 #########################################################################################################
 
-exp_formats = raw_input("Enter a comma-separated list of formats you want to export the project {} in. Options: sql, csv, h5, msg, pkl. Hit return to not export in any format.".format(project_name))
+exp_formats = raw_input("Enter a comma-separated list of formats you want to export the project {} in. Options: sql, csv, h5, msg, pkl. Hit return to not export in any format.\n".format(project_name))
 exp_formats = exp_formats.split(',')
 for i in range(len(exp_formats)):
 	exp_formats[i] = exp_formats[i].strip()
@@ -1224,7 +1224,9 @@ def clustering(dist_matrix):
 	             markeredgecolor='k', markersize=6)
 
 	plt.title('Estimated number of clusters: %d' % n_clusters_)
-	plt.show()
+	#plt.show()
+	mkdir_p('Mini Workflow/parser_output/clustering_output/' + str(project_name))
+	plt.savefig('Mini Workflow/parser_output/clustering_output/' + str(project_name) + '/' + str(project_name) + '.png')
 
 
 dist_matrix = np.zeros((len(pws),len(pws)))
