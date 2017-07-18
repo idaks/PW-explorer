@@ -11,6 +11,9 @@ from antlr4.tree.Trees import Trees
 import sqlite3
 import errno    
 import os
+from sklearn.cluster import DBSCAN
+import matplotlib.pyplot as plt
+
 
 ###################################################################
 
@@ -673,7 +676,7 @@ def freq_sqlite(rl_id = 0, col_names = [], values = [], pws_to_consider = [j for
 			print "Frequency of tuple", tuple(all_tuples.ix[j]), 'of the relation', str(relations[rl_id].relation_name), 'for attributes', str(', '.join(map(str,col_names))), 'in PWs', str(', '.join(map(str,pws_to_consider))), "is:", ik.ix[0][0]
 		freqs.append(ik.ix[0][0])
 
-	return freqs
+	return all_tuples, freqs
 
 	#old way:
 	# for i, df in enumerate(dfs):
@@ -731,7 +734,7 @@ def freq_panda(rl_id = 0, col_names = [], values = [], pws_to_consider = [j for 
 			print "Frequency of tuple", tuple(all_tuples.ix[j]), 'of the relation', str(relations[rl_id].relation_name), 'for attributes', str(', '.join(map(str,col_names))), 'in PWs', str(', '.join(map(str,pws_to_consider))), "is:", tmp
 		freqs.append(tmp)
 
-	return freqs
+	return all_tuples, freqs
 
 	#old way:
 	# for i, df in enumerate(dfs):
@@ -983,6 +986,82 @@ def redundant_column_panda(rl_id = 0, col_names = [], pws_to_consider = [j for j
 
 #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#
 
+#7: Tuples occuring in exactly one PW:
+
+#SQLite Version:
+def unique_tuples_sqlite(rl_id = 0, col_names = [], pws_to_consider = [j for j in range(1, expected_pws+1)], do_print = True):
+
+	global pws 
+	global relations 
+	global expected_pws 
+	global curr_pw
+	global curr_rl 
+	global curr_rl_data 
+	global n_rls
+	global dfs 
+	global conn 
+
+	if col_names == []:
+		col_names = list(dfs[rl_id])[1:]
+
+	relevant_tuples, freqs = freq_sqlite(rl_id, col_names, [], pws_to_consider, False)
+	unique_tuples = []
+
+	for i, f in enumerate(freqs):
+		if f == 1:
+			query = 'select pw from ' + str(relations[rl_id].relation_name) + ' where '
+			for k in range(len(col_names)):
+				query += col_names[k] + '=' + "'" + relevant_tuples.ix[i][k] + "'" + ' and '
+
+			query += 'pw in (' + str(', '.join(map(str,pws_to_consider))) + ');'
+
+			unique_pw = pd.read_sql_query(query, conn)
+			unique_pw = unique_pw.ix[0][0]
+
+			unique_tuples.append((relevant_tuples.ix[i], unique_pw))
+
+			if do_print:
+				print 'The unique tuple', tuple(relevant_tuples.ix[i]), 'occurs only in PW', unique_pw
+
+	return unique_tuples
+
+#Panda Version:
+def unique_tuples_panda(rl_id = 0, col_names = [], pws_to_consider = [j for j in range(1, expected_pws+1)], do_print = True):
+
+	global pws 
+	global relations 
+	global expected_pws 
+	global curr_pw
+	global curr_rl 
+	global curr_rl_data 
+	global n_rls
+	global dfs 
+
+	if col_names == []:
+		col_names = list(dfs[rl_id])[1:]
+
+	relevant_tuples, freqs = freq_panda(rl_id, col_names, [], pws_to_consider, False)
+	unique_tuples = []
+	df = dfs[rl_id]
+
+	for i, f in enumerate(freqs):
+		if f == 1:
+			expr = ''
+			for k in range(len(col_names) - 1):
+				expr += str(col_names[k]) + ' == ' + "'" + str(relevant_tuples.ix[i][k]) + "'" + ' and '
+			expr += str(col_names[-1]) + ' == ' + "'" + str(relevant_tuples.ix[i][-1]) + "'"
+			expr +=  ' and pw in [' + str(', '.join(map(str,pws_to_consider))) + ']'
+			s3 = df.query(expr)
+			s3 = s3.reset_index(drop = True)
+			unique_pw = s3.ix[0]['pw']
+
+			unique_tuples.append((relevant_tuples.ix[i], unique_pw))
+
+			if do_print:
+				print 'The unique tuple', tuple(relevant_tuples.ix[i]), 'occurs only in PW', unique_pw
+
+	return unique_tuples
+
 
 ###########################################################################################
 
@@ -995,7 +1074,7 @@ def dist(pw_id_1, pw_id_2):
 
 	dist = 0
 
-	#based on number of tuples (complexity of soln)
+	#based on number of tuples (complexity of soln):
 	for i, rl in enumerate(relations):
 
 		k = 1 #TBD
@@ -1003,7 +1082,7 @@ def dist(pw_id_1, pw_id_2):
 		dist += wt * abs(num_tuples_sqlite(i, pw_id_1, False) - num_tuples_sqlite(i, pw_id_2, False))**k 
 
 
-	#based on difference in optimization value
+	#based on difference in optimization value:
 	soln_range = 1
 	#find the max and min optimization value if it exists using a for loop across all pws
 	curr_max = 0
@@ -1025,7 +1104,7 @@ def dist(pw_id_1, pw_id_2):
 
 
 
-	#based on number of similar and unique tuples
+	#based on number of similar and unique tuples:
 	for i, rl in enumerate(relations):
 
 		max_num_tuples = max(num_tuples_sqlite(i, pw_id_1, False), num_tuples_sqlite(i, pw_id_2, False))
@@ -1050,11 +1129,6 @@ def dist(pw_id_1, pw_id_2):
 	return dist
 
 
-
-
-
-
-
 ###########################################################################################
 
 #intersection_sqlite()#(0, ['x1', 'x2'], [1,5])
@@ -1071,10 +1145,62 @@ def dist(pw_id_1, pw_id_2):
 #difference_both_ways_panda(0, 1, 2, ['x2'])
 #redundant_column_sqlite(0, ['x1','x3'], [1,4,3])
 #redundant_column_panda()
+#unique_tuples_sqlite(0, ['x1', 'x2'], [1,3,5])
+#unique_tuples_panda(0, ['x1', 'x2'], [1,3,5])
 
-# for i in range(1, len(pws)+1):
-# 	for j in range(i+1, len(pws)+1):
-# 		print 'Distance between PWs', i, 'and', j, 'is', dist(i,j)
+###########################################################################################
+
+def clustering(dist_matrix):
+	db = DBSCAN(metric = 'precomputed', eps = 0.4, min_samples = 1)
+	labels = db.fit_predict(dist_matrix)
+	print labels
+
+
+	core_samples_mask = np.zeros_like(db.labels_, dtype=bool)
+	core_samples_mask[db.core_sample_indices_] = True
+	labels = db.labels_
+
+	# Number of clusters in labels, ignoring noise if present.
+	n_clusters_ = len(set(labels)) - (1 if -1 in labels else 0)
+	unique_labels = set(labels)
+	colors = [plt.cm.Spectral(each)
+	          for each in np.linspace(0, 1, len(unique_labels))]
+	for k, col in zip(unique_labels, colors):
+	    if k == -1:
+	        # Black used for noise.
+	        col = [0, 0, 0, 1]
+
+	    class_member_mask = (labels == k)
+
+	    xy = dist_matrix[class_member_mask & core_samples_mask]
+	    plt.plot(xy[:, 0], xy[:, 1], 'o', markerfacecolor=tuple(col),
+	             markeredgecolor='k', markersize=14)
+
+	    xy = dist_matrix[class_member_mask & ~core_samples_mask]
+	    plt.plot(xy[:, 0], xy[:, 1], 'o', markerfacecolor=tuple(col),
+	             markeredgecolor='k', markersize=6)
+
+	plt.title('Estimated number of clusters: %d' % n_clusters_)
+	plt.show()
+
+
+dist_matrix = np.zeros((len(pws),len(pws)))
+for i in range(1, len(pws)+1):
+	for j in range(i+1, len(pws)+1):
+		dist_matrix[i-1, j-1] = dist_matrix[j-1,i-1] = dist(i,j)
+		#print 'Distance between PWs', i, 'and', j, 'is', dist_matrix[i-1,j-1]
+
+dist_matrix = (dist_matrix - np.min(dist_matrix))/(np.max(dist_matrix) - np.min(dist_matrix))
+print dist_matrix
+
+clustering(dist_matrix)
+
+
+
+
+
+
+
 
 ###########################################################################################
 

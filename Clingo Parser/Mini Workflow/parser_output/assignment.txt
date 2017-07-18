@@ -44,13 +44,9 @@ CREATE TABLE "x_3" (
   "x2" TEXT,
   "x3" TEXT
 )
-Distance between PWs 1 and 2 is 4.36666666667
-Distance between PWs 1 and 3 is 10.5
-Distance between PWs 1 and 4 is 7.56666666667
-Distance between PWs 1 and 5 is 7.63333333333
-Distance between PWs 2 and 3 is 10.1333333333
-Distance between PWs 2 and 4 is 4.2
-Distance between PWs 2 and 5 is 4.26666666667
-Distance between PWs 3 and 4 is 4.06666666667
-Distance between PWs 3 and 5 is 7.13333333333
-Distance between PWs 4 and 5 is 1.06666666667
+[[ 0.          0.41587302  1.          0.72063492  0.72698413]
+ [ 0.41587302  0.          0.96507937  0.4         0.40634921]
+ [ 1.          0.96507937  0.          0.38730159  0.67936508]
+ [ 0.72063492  0.4         0.38730159  0.          0.1015873 ]
+ [ 0.72698413  0.40634921  0.67936508  0.1015873   0.        ]]
+[0 1 2 3 3]
