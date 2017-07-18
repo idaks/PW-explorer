@@ -383,8 +383,9 @@ walker.walk(pw_analyzer, tree)
 
 exp_formats = raw_input("Enter a comma-separated list of formats you want to export the project {} in. Options: sql, csv, h5, msg, pkl. Hit return to not export in any format.\n".format(project_name))
 exp_formats = exp_formats.split(',')
-for i in range(len(exp_formats)):
-	exp_formats[i] = exp_formats[i].strip()
+# for i in range(len(exp_formats)):
+# 	exp_formats[i] = exp_formats[i].strip()
+exp_formats = map(str.strip, exp_formats)
 
 export_to_sql = True if 'sql' in exp_formats else False
 export_to_csv = True if 'csv' in exp_formats else False
@@ -503,7 +504,7 @@ def intersection_sqlite(rl_id = 0, col_names = [], pws_to_consider = [j for j in
 	query_intersection += 'select ' + col_names + ' from ' + str(relations[rl_id].relation_name) + ' where pw = ' + str(pws_to_consider[-1]) + ';'
 	ik = pd.read_sql_query(query_intersection, conn)
 	if do_print:
-		print "Intersection for the relation", str(relations[rl_id].relation_name), "on features", col_names, "for PWs", str(', '.join(map(str, pws_to_consider)))
+		out_file.write("Intersection for the relation" + str(relations[rl_id].relation_name) + "on features" + col_names + "for PWs" + str(', '.join(map(str, pws_to_consider))) + '\n')
 		if len(ik) > 0:
 			out_file.write(str(ik) + '\n')
 		else:
@@ -1173,6 +1174,38 @@ def dist(pw_id_1, pw_id_2):
 
 
 ###########################################################################################
+
+# query_db = raw_input('Do you want to query the database?\n')
+
+# while query_db in ['y', 'yes', '1', 1]:
+
+# 	print 'Following Queries are available:'
+# 	print '1. Intersection\n 2. Union\n 3. Frequency\n 4. Number of Tuples\n 5. Difference\n 6. Redundant Column\n 7. Tuples occuring in exactly one PW\n 8. Show All Table Schemas'
+# 	query_id = raw_input('Input the query id\n')
+# 	sqlite_or_panda = raw_input("Do you want to use 'sqlite' or 'panda' to query?\n")
+# 	if int(query_id) == 1:
+# 		rl_id = raw_input('Enter the relation id\n')
+# 		rl_id = 0 if rl_id.strip() == '' else int(rl_id)
+# 		col_names = raw_input('Enter the columns you want to consider (comma separated). Press return to consider all columns.\n')
+# 		col_names = col_names.split(',')
+# 		col_names = map(str.strip, col_names)
+# 		pws_to_consider = raw_input('Enter the PWs to consider (comma separated). Press return to consider all columns\n')
+# 		pws_to_consider = pws_to_consider.split(',')
+# 		pws_to_consider = map(str.strip, pws_to_consider)
+# 		pws_to_consider = map(int, pws_to_consider)
+
+# 		if sqlite_or_panda.strip() == 'sqlite':
+# 			intersection_sqlite(rl_id, col_names, pws_to_consider)
+# 		elif sqlite_or_panda.strip() == 'panda':
+# 			intersection_panda(rl_id, col_names, pws_to_consider)
+
+
+
+# 	query_db = raw_input('Do you want to query the database?\n')
+
+
+
+
 
 #intersection_sqlite()#(0, ['x1', 'x2'], [1,5])
 #intersection_panda()#(0, ['x1', 'x2'], [1,5])
