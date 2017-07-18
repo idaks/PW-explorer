@@ -65,7 +65,8 @@ dfs = []
 # global curr_rl 
 # global curr_rl_data 
 # global n_rls
-# global dfs 
+# global dfs
+# global out_file
 
 ###################################################################
 
@@ -113,6 +114,7 @@ def rearrangePWSandRLS():
 	global curr_rl_data 
 	global n_rls
 	global dfs
+	global out_file
 	#sort PWs and Rls by their ids
 	#print lineno()
 	relations.sort(key = lambda x: x.r_id)
@@ -129,6 +131,7 @@ def loadIntoPandas():
 	global curr_rl_data 
 	global n_rls
 	global dfs
+	global out_file
 
 	#print lineno()
 	for n, rl in enumerate(relations):
@@ -157,6 +160,7 @@ class AntlrClingoListener(ClingoListener):
 		if ctx.OPTIMUM_FOUND() is not None:
 			if ctx.OPTIMUM_FOUND().getText() == 'UNSATISFIABLE':
 				print "The problem is unsatisfiable"
+				out_file.write("The problem is unsatisfiable\n")
 
 	def enterSolution(self, ctx):
 
@@ -167,7 +171,8 @@ class AntlrClingoListener(ClingoListener):
 		global curr_rl 
 		global curr_rl_data 
 		global n_rls
-		global dfs 
+		global dfs
+		global out_file 
 				
 		curr_pw = PossibleWorld(n_rls)
 		#assert curr_pw.pw_id == int(ctx.TEXT(0).getText())
@@ -185,6 +190,7 @@ class AntlrClingoListener(ClingoListener):
 		global curr_rl_data 
 		global n_rls
 		global dfs
+		global out_file
 
 		curr_rl = Relation(ctx.TEXT().getText())
 		#print lineno()
@@ -199,6 +205,7 @@ class AntlrClingoListener(ClingoListener):
 		global curr_rl_data 
 		global n_rls
 		global dfs
+		global out_file
 
 		sol = ctx.TEXT().getText();
 		curr_rl_data = sol.split(',')
@@ -217,6 +224,7 @@ class AntlrClingoListener(ClingoListener):
 		global curr_rl_data 
 		global n_rls
 		global dfs
+		global out_file
 		
 		foundMatch = False
 		for rl in relations:
@@ -250,6 +258,7 @@ class AntlrClingoListener(ClingoListener):
 		global curr_rl_data 
 		global n_rls
 		global dfs
+		global out_file
 
 		#print lineno()
 		curr_rl = None
@@ -265,6 +274,7 @@ class AntlrClingoListener(ClingoListener):
 		global curr_rl_data 
 		global n_rls
 		global dfs
+		global out_file
 
 		#print lineno()
 		pws.append(curr_pw) #again be wary, else use .copy()
@@ -280,15 +290,19 @@ class AntlrClingoListener(ClingoListener):
 		global curr_rl_data 
 		global n_rls
 		global dfs
+		global out_file
 
 		#print lineno()
 		optimum_found = ctx.TEXT().getText()
 		if optimum_found == 'yes':
 			print 'Optimum Solution was found'
+			out_file.write('Optimum Solution was found\n')
 		elif optimum_found == 'no':
 			print 'Optimum Solution was not found'
+			out_file.write('Optimum Solution was not found\n')
 		else:
 			print 'Unexpected Output:', optimum_found
+			out_file.write(str('Unexpected Output: ' +  str(optimum_found) + '\n'))
 
 	def enterOptimization(self, ctx):
 
@@ -300,10 +314,12 @@ class AntlrClingoListener(ClingoListener):
 		global curr_rl_data 
 		global n_rls
 		global dfs
+		global out_file
 
 		#print lineno()
 		opt_soln = ctx.TEXT().getText()
 		print 'Optimized Solution is', opt_soln
+		out_file.write('Optimized Solution is ' + str(opt_soln) + '\n')
 
 	def enterModels(self, ctx):
 
@@ -315,11 +331,13 @@ class AntlrClingoListener(ClingoListener):
 		global curr_rl_data 
 		global n_rls
 		global dfs
+		global out_file
 
 		#print lineno()
 		num_models = ctx.TEXT().getText()
 		num_models = int(num_models)
 		print "Number of Models:", num_models
+		out_file.write("Number of Models: " + str(num_models) + '\n')
 		expected_pws = num_models
 
 	def exitClingoOutput(self,ctx):
@@ -332,6 +350,7 @@ class AntlrClingoListener(ClingoListener):
 		global curr_rl_data 
 		global n_rls
 		global dfs
+		global out_file
 
 		#print lineno()
 		#loading into pandas DF
@@ -342,6 +361,7 @@ class AntlrClingoListener(ClingoListener):
 
 #use these 3 lines if input is coming from a .txt file 
 script, fname, project_name = argv
+out_file = open('Mini Workflow/parser_output/{}.txt'.format(project_name), 'w')
 input = FileStream(fname)
 lexer = ClingoLexer(input)
 
@@ -358,9 +378,10 @@ walker = ParseTreeWalker()
 walker.walk(pw_analyzer, tree)
 #print lineno()
 
+
 #########################################################################################################
 
-exp_formats = raw_input()
+exp_formats = raw_input("Enter a comma-separated list of formats you want to export the project {} in. Options: sql, csv, h5, msg, pkl. Hit return to not export in any format.".format(project_name))
 exp_formats = exp_formats.split(',')
 for i in range(len(exp_formats)):
 	exp_formats[i] = exp_formats[i].strip()
@@ -390,8 +411,9 @@ if export_to_pkl:
 
 for i, df in enumerate(dfs):
 	
-	print relations[i].relation_name
-	print df
+	out_file.write(relations[i].relation_name + '\n')
+	out_file.write(str(df))
+	out_file.write('\n\n')
 	
 	if export_to_csv:
 		df.to_csv(str(o_fname  + 'csv_exports/' + str(project_name) + '/' + str(relations[i].relation_name) + '.csv'))
@@ -406,14 +428,19 @@ for i, df in enumerate(dfs):
 
 if export_to_csv:
 	print "Successfully exported to csv"
+	out_file.write("Successfully exported to csv\n")
 if export_to_sql:
 	print "Successfully exported to sql"
+	out_file.write("Successfully exported to sql\n")
 if export_to_msg:
 	print "Successfully exported to msg"
+	out_file.write("Successfully exported to msg\n")
 if export_to_hdf:
 	print "Successfully exported to hdf"
+	out_file.write("Successfully exported to hdf\n")
 if export_to_pkl:
-	print "Successfully exported to pkl"	
+	print "Successfully exported to pkl"
+	out_file.write("Successfully exported to pkl\n")	
 
 ############################################################################################################
 
@@ -423,9 +450,9 @@ if export_to_pkl:
 schemas = []
 if export_to_sql:
 	schema_q = conn.execute("SELECT * FROM sqlite_master WHERE type='table' ORDER BY name;")
-	print 'Sqlite Schema:'
+	out_file.write('Sqlite Schema:\n')
 	for row in schema_q.fetchall():
-		print row[4]
+		out_file.write(str(row[4]) + '\n')
 		schemas.append(row[4])
 else:
 	conn_t = sqlite3.connect("test.db")
@@ -433,9 +460,9 @@ else:
 		t = df.ix[0:0]
 		t.to_sql(str(relations[i].relation_name), conn_t, if_exists = 'replace')
 	schema_q = conn_t.execute("SELECT * FROM sqlite_master WHERE type='table' ORDER BY name;")
-	print 'Sqlite Schema:'
+	out_file.write('Sqlite Schema:\n')
 	for row in schema_q.fetchall():
-	 	print row[4]
+	 	out_file.write(str(row[4]) + '\n')
 	 	schemas.append(row[4])
 	for i, df in enumerate(dfs):
 		conn_t.execute('DROP TABLE ' + str(relations[i].relation_name))
@@ -463,6 +490,7 @@ def intersection_sqlite(rl_id = 0, col_names = [], pws_to_consider = [j for j in
 	global curr_rl_data 
 	global n_rls
 	global dfs
+	global out_file
 	global conn 
 
 	if col_names == []:
@@ -477,9 +505,9 @@ def intersection_sqlite(rl_id = 0, col_names = [], pws_to_consider = [j for j in
 	if do_print:
 		print "Intersection for the relation", str(relations[rl_id].relation_name), "on features", col_names, "for PWs", str(', '.join(map(str, pws_to_consider)))
 		if len(ik) > 0:
-			print ik
+			out_file.write(str(ik) + '\n')
 		else:
-			print "NULL"
+			out_file.write("NULL\n")
 
 	return ik
 
@@ -507,7 +535,8 @@ def intersection_panda(rl_id = 0, col_names = [], pws_to_consider = [j for j in 
 	global curr_rl 
 	global curr_rl_data 
 	global n_rls
-	global dfs 
+	global dfs
+	global out_file 
 
 	if col_names == []:
 		col_names = list(dfs[rl_id])[1:]
@@ -520,9 +549,9 @@ def intersection_panda(rl_id = 0, col_names = [], pws_to_consider = [j for j in 
 	if do_print:
 		print "Intersection for the relation", str(relations[rl_id].relation_name), "on features", str(', '.join(map(str,col_names))), "for PWs", str(', '.join(map(str, pws_to_consider)))
 		if len(s1) > 0:
-			print s1
+			out_file.write(str(s1) + '\n')
 		else:
-			print "NULL"
+			out_file.write("NULL\n")
 
 	return s1
 
@@ -552,7 +581,8 @@ def union_sqlite(rl_id = 0, col_names = [], pws_to_consider = [j for j in range(
 	global curr_rl 
 	global curr_rl_data 
 	global n_rls
-	global dfs 
+	global dfs
+	global out_file 
 	global conn 
 
 	if col_names == []:
@@ -567,9 +597,9 @@ def union_sqlite(rl_id = 0, col_names = [], pws_to_consider = [j for j in range(
 	if do_print:
 		print "Union for the relation", str(relations[rl_id].relation_name), "on features", col_names, "for PWs", str(', '.join(map(str, pws_to_consider)))
 		if len(ik) > 0:
-			print ik
+			out_file.write(str(ik) + '\n')
 		else:
-			print "NULL"
+			out_file.write("NULL\n")
 
 	return ik
 
@@ -598,7 +628,8 @@ def union_panda(rl_id = 0, col_names = [], pws_to_consider = [j for j in range(1
 	global curr_rl 
 	global curr_rl_data 
 	global n_rls
-	global dfs 
+	global dfs
+	global out_file 
 
 	if col_names == []:
 		col_names = list(dfs[rl_id])[1:]
@@ -612,9 +643,9 @@ def union_panda(rl_id = 0, col_names = [], pws_to_consider = [j for j in range(1
 	if do_print:
 		print "Intersection for the relation", str(relations[rl_id].relation_name), "on features", str(', '.join(map(str,col_names))), "for PWs", str(', '.join(map(str, pws_to_consider)))
 		if len(s1) > 0:
-			print s1
+			out_file.write(str(s1) + '\n')
 		else:
-			print "NULL"
+			out_file.write("NULL\n")
 
 	return s1
 
@@ -644,7 +675,8 @@ def freq_sqlite(rl_id = 0, col_names = [], values = [], pws_to_consider = [j for
 	global curr_rl 
 	global curr_rl_data 
 	global n_rls
-	global dfs 
+	global dfs
+	global out_file 
 	global conn 
 
 	all_tuples = None
@@ -673,7 +705,7 @@ def freq_sqlite(rl_id = 0, col_names = [], values = [], pws_to_consider = [j for
 		#print query
 		ik = pd.read_sql_query(query, conn)
 		if do_print:
-			print "Frequency of tuple", tuple(all_tuples.ix[j]), 'of the relation', str(relations[rl_id].relation_name), 'for attributes', str(', '.join(map(str,col_names))), 'in PWs', str(', '.join(map(str,pws_to_consider))), "is:", ik.ix[0][0]
+			out_file.write("Frequency of tuple" + str(tuple(all_tuples.ix[j])) + 'of the relation' + str(relations[rl_id].relation_name) + 'for attributes' + str(', '.join(map(str,col_names))) + 'in PWs' + str(', '.join(map(str,pws_to_consider))) + "is:" + str(ik.ix[0][0]) + '\n')
 		freqs.append(ik.ix[0][0])
 
 	return all_tuples, freqs
@@ -701,7 +733,8 @@ def freq_panda(rl_id = 0, col_names = [], values = [], pws_to_consider = [j for 
 	global curr_rl 
 	global curr_rl_data 
 	global n_rls
-	global dfs 
+	global dfs
+	global out_file 
 
 	all_tuples = None
 	freqs = []
@@ -731,7 +764,7 @@ def freq_panda(rl_id = 0, col_names = [], values = [], pws_to_consider = [j for 
 		s3 = df.query(expr)
 		tmp = len(s3)
 		if do_print:
-			print "Frequency of tuple", tuple(all_tuples.ix[j]), 'of the relation', str(relations[rl_id].relation_name), 'for attributes', str(', '.join(map(str,col_names))), 'in PWs', str(', '.join(map(str,pws_to_consider))), "is:", tmp
+			out_file.write("Frequency of tuple" + str(tuple(all_tuples.ix[j])) + 'of the relation' + str(relations[rl_id].relation_name) + 'for attributes' + str(', '.join(map(str,col_names))) + 'in PWs' + str(', '.join(map(str,pws_to_consider))) + "is:" + str(tmp) + '\n')
 		freqs.append(tmp)
 
 	return all_tuples, freqs
@@ -765,14 +798,15 @@ def num_tuples_sqlite(rl_id, pw_id, do_print = True):
 	global curr_rl 
 	global curr_rl_data 
 	global n_rls
-	global dfs 
+	global dfs
+	global out_file 
 	global conn 
 
 	query = 'select count(*) from ' + str(relations[rl_id].relation_name) + ' where pw = ' + str(pw_id) + ';'
 	c = pd.read_sql_query(query, conn)
 
 	if do_print:
-		print "There exist", str(c.ix[0][0]), "tuples of relation", str(relations[rl_id].relation_name), "in PW", str(pw_id)
+		out_file.write("There exist" + str(c.ix[0][0]) + "tuples of relation" + str(relations[rl_id].relation_name) + "in PW" + str(pw_id) + '\n')
 	return c.ix[0][0]
 
 #Panda Version:
@@ -785,12 +819,13 @@ def num_tuples_panda(rl_id, pw_id, do_print = True):
 	global curr_rl 
 	global curr_rl_data 
 	global n_rls
-	global dfs 
+	global dfs
+	global out_file 
 
 	df = dfs[rl_id]
 	c = len(df[df.pw == pw_id])
 	if do_print:
-		print "There exist", str(c), "tuples of relation", str(relations[rl_id].relation_name), "in PW", str(pw_id)
+		out_file.write("There exist" + str(c) + "tuples of relation" + str(relations[rl_id].relation_name) + "in PW" + str(pw_id) + '\n')
 	return c
 
 
@@ -808,7 +843,8 @@ def difference_sqlite(rl_id, pw_id_1, pw_id_2, col_names = [], do_print = True):
 	global curr_rl 
 	global curr_rl_data 
 	global n_rls
-	global dfs 
+	global dfs
+	global out_file 
 	global conn 
 
 	if col_names == []:
@@ -820,8 +856,8 @@ def difference_sqlite(rl_id, pw_id_1, pw_id_2, col_names = [], do_print = True):
 	diff = pd.read_sql_query(query, conn)
 
 	if do_print:
-		print "Following is the difference between PWs {} and {} in features {} of relation {}".format(pw_id_1, pw_id_2, col_names, str(relations[rl_id].relation_name))
-		print diff
+		out_file.write("Following is the difference between PWs {} and {} in features {} of relation {}\n".format(pw_id_1, pw_id_2, col_names, str(relations[rl_id].relation_name)))
+		out_file.write(str(diff) + '\n')
 	return diff
 
 def difference_both_ways_sqlite(rl_id, pw_id_1, pw_id_2, col_names = [], do_print = True):
@@ -833,7 +869,8 @@ def difference_both_ways_sqlite(rl_id, pw_id_1, pw_id_2, col_names = [], do_prin
 	global curr_rl 
 	global curr_rl_data 
 	global n_rls
-	global dfs 
+	global dfs
+	global out_file 
 	global conn
 
 	if col_names == []:
@@ -845,8 +882,8 @@ def difference_both_ways_sqlite(rl_id, pw_id_1, pw_id_2, col_names = [], do_prin
 	diff = x1.append(x2, ignore_index = True)
 
 	if do_print:
-		print "Following tuples are in one of PW {} or {}, but not both, for relation {} and features {}".format(pw_id_1, pw_id_2, str(relations[rl_id].relation_name), str(', '.join(map(str,col_names))))
-		print diff
+		out_file.write("Following tuples are in one of PW {} or {}, but not both, for relation {} and features {}\n".format(pw_id_1, pw_id_2, str(relations[rl_id].relation_name), str(', '.join(map(str,col_names)))))
+		out_file.write(str(diff) + '\n')
 	return diff
 
 	#could also be implemented using union\intersection, but pretty sure that's what it does under the hood anyway
@@ -861,7 +898,8 @@ def difference_panda(rl_id, pw_id_1, pw_id_2, col_names = [], do_print = True):
 	global curr_rl 
 	global curr_rl_data 
 	global n_rls
-	global dfs 
+	global dfs
+	global out_file 
 
 	if col_names == []:
 		col_names = list(dfs[rl_id])[1:]
@@ -872,8 +910,8 @@ def difference_panda(rl_id, pw_id_1, pw_id_2, col_names = [], do_print = True):
 
 	diff = pd.concat([x1, x2, x2]).drop_duplicates(keep=False)
 	if do_print:
-		print "Following is the difference between PWs {} and {} in features {} of relation {}".format(pw_id_1, pw_id_2, str(', '.join(map(str,col_names))), str(relations[rl_id].relation_name))
-		print diff
+		out_file.write("Following is the difference between PWs {} and {} in features {} of relation {}\n".format(pw_id_1, pw_id_2, str(', '.join(map(str,col_names))), str(relations[rl_id].relation_name)))
+		out_file.write(str(diff) + '\n')
 	return diff
 
 def difference_both_ways_panda(rl_id, pw_id_1, pw_id_2, col_names = [], do_print = True):
@@ -886,6 +924,7 @@ def difference_both_ways_panda(rl_id, pw_id_1, pw_id_2, col_names = [], do_print
 	global curr_rl_data 
 	global n_rls
 	global dfs
+	global out_file
 
 	if col_names == []:
 		col_names = list(dfs[rl_id])[1:]
@@ -896,8 +935,8 @@ def difference_both_ways_panda(rl_id, pw_id_1, pw_id_2, col_names = [], do_print
 	diff = x1.append(x2, ignore_index = True)
 
 	if do_print:
-		print "Following tuples are in one of PW {} or {}, but not both, for relation {} and features {}".format(pw_id_1, pw_id_2, str(relations[rl_id].relation_name), str(', '.join(map(str,col_names))))
-		print diff
+		out_file.write("Following tuples are in one of PW {} or {}, but not both, for relation {} and features {}\n".format(pw_id_1, pw_id_2, str(relations[rl_id].relation_name), str(', '.join(map(str,col_names)))))
+		out_file.write(str(diff) + '\n')
 	return diff
 
 
@@ -916,7 +955,8 @@ def redundant_column_sqlite(rl_id = 0, col_names = [], pws_to_consider = [j for 
 	global curr_rl 
 	global curr_rl_data 
 	global n_rls
-	global dfs 
+	global dfs
+	global out_file 
 	global conn
 
 	if col_names == []:
@@ -931,7 +971,7 @@ def redundant_column_sqlite(rl_id = 0, col_names = [], pws_to_consider = [j for 
 			if int(k.ix[0][0]) <= 1:
 				redundant_pw_specific.append((i, rl_id, ft))
 				if do_print:
-					print 'Column', str(ft), 'is redundant in relation', str(relations[rl_id].relation_name), 'in PW', str(i)
+					out_file.write('Column' + str(ft) + 'is redundant in relation' + str(relations[rl_id].relation_name) + 'in PW' + str(i) + '\n')
 
 	#Across all PWs:
 	redundant_across_pws = []
@@ -941,7 +981,7 @@ def redundant_column_sqlite(rl_id = 0, col_names = [], pws_to_consider = [j for 
 		if int(k.ix[0][0]) <= 1:
 			redundant_across_pws.append((pws_to_consider, rl_id, ft))
 			if do_print:
-				print 'Column', str(ft), 'is redundant in relation', str(relations[rl_id].relation_name), 'for PWs', str(', '.join(map(str,pws_to_consider)))
+				out_file.write('Column' + str(ft) + 'is redundant in relation' + str(relations[rl_id].relation_name) + 'for PWs' + str(', '.join(map(str,pws_to_consider))) + '\n')
 
 	return redundant_pw_specific, redundant_across_pws
 
@@ -956,6 +996,7 @@ def redundant_column_panda(rl_id = 0, col_names = [], pws_to_consider = [j for j
 	global curr_rl_data 
 	global n_rls
 	global dfs
+	global out_file
 
 	if col_names == []:
 		col_names = list(dfs[rl_id])[1:]
@@ -971,7 +1012,7 @@ def redundant_column_panda(rl_id = 0, col_names = [], pws_to_consider = [j for j
 			if x1.ix[i] <= 1:
 				redundant_pw_specific.append((i, rl_id, ft))
 				if do_print:
-					print 'Column', str(ft), 'is redundant in relation', str(relations[rl_id].relation_name), 'in PW', str(i)
+					out_file.write('Column' + str(ft) + 'is redundant in relation' + str(relations[rl_id].relation_name) + 'in PW' + str(i) + '\n')
 
 	#Across all PWs:
 	redundant_across_pws = []
@@ -980,7 +1021,7 @@ def redundant_column_panda(rl_id = 0, col_names = [], pws_to_consider = [j for j
 		if x1[ft].nunique() <= 1:
 			redundant_across_pws.append((pws_to_consider, rl_id, ft))
 			if do_print:
-				print 'Column', str(ft), 'is redundant in relation', str(relations[rl_id].relation_name), 'for PWs', str(', '.join(map(str,pws_to_consider)))
+				out_file.write('Column' + str(ft) + 'is redundant in relation' + str(relations[rl_id].relation_name) + 'for PWs' + str(', '.join(map(str,pws_to_consider))) + '\n')
 
 	return redundant_pw_specific, redundant_across_pws
 
@@ -998,7 +1039,8 @@ def unique_tuples_sqlite(rl_id = 0, col_names = [], pws_to_consider = [j for j i
 	global curr_rl 
 	global curr_rl_data 
 	global n_rls
-	global dfs 
+	global dfs
+	global out_file 
 	global conn 
 
 	if col_names == []:
@@ -1021,7 +1063,7 @@ def unique_tuples_sqlite(rl_id = 0, col_names = [], pws_to_consider = [j for j i
 			unique_tuples.append((relevant_tuples.ix[i], unique_pw))
 
 			if do_print:
-				print 'The unique tuple', tuple(relevant_tuples.ix[i]), 'occurs only in PW', unique_pw
+				out_file.write('The unique tuple' + str(tuple(relevant_tuples.ix[i])) + 'occurs only in PW' + unique_pw + '\n')
 
 	return unique_tuples
 
@@ -1035,7 +1077,8 @@ def unique_tuples_panda(rl_id = 0, col_names = [], pws_to_consider = [j for j in
 	global curr_rl 
 	global curr_rl_data 
 	global n_rls
-	global dfs 
+	global dfs
+	global out_file 
 
 	if col_names == []:
 		col_names = list(dfs[rl_id])[1:]
@@ -1058,7 +1101,7 @@ def unique_tuples_panda(rl_id = 0, col_names = [], pws_to_consider = [j for j in
 			unique_tuples.append((relevant_tuples.ix[i], unique_pw))
 
 			if do_print:
-				print 'The unique tuple', tuple(relevant_tuples.ix[i]), 'occurs only in PW', unique_pw
+				out_file.write('The unique tuple' + tuple(relevant_tuples.ix[i]) + 'occurs only in PW' + unique_pw + '\n')
 
 	return unique_tuples
 
@@ -1153,7 +1196,7 @@ def dist(pw_id_1, pw_id_2):
 def clustering(dist_matrix):
 	db = DBSCAN(metric = 'precomputed', eps = 0.4, min_samples = 1)
 	labels = db.fit_predict(dist_matrix)
-	print labels
+	out_file.write('Cluster Labels: ' + str(labels) + '\n')
 
 
 	core_samples_mask = np.zeros_like(db.labels_, dtype=bool)
@@ -1191,7 +1234,8 @@ for i in range(1, len(pws)+1):
 		#print 'Distance between PWs', i, 'and', j, 'is', dist_matrix[i-1,j-1]
 
 dist_matrix = (dist_matrix - np.min(dist_matrix))/(np.max(dist_matrix) - np.min(dist_matrix))
-print dist_matrix
+out_file.write(str(dist_matrix))
+out_file.write('\n')
 
 clustering(dist_matrix)
 
@@ -1202,6 +1246,9 @@ clustering(dist_matrix)
 if export_to_sql:
 	conn.commit()
 	conn.close()
+
+#closing output file
+out_file.close()
 
 
 

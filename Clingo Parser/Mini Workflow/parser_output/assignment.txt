@@ -23,6 +23,7 @@ x_3
 17   5  2  1  1
 18   5  3  3  1
 19   5  4  5  1
+
 total_cost_1
    pw  x1
 0   1  30
@@ -30,6 +31,7 @@ total_cost_1
 2   3  15
 3   4  13
 4   5  11
+
 Successfully exported to sql
 Sqlite Schema:
 CREATE TABLE "total_cost_1" (
@@ -49,4 +51,4 @@ CREATE TABLE "x_3" (
  [ 1.          0.96507937  0.          0.38730159  0.67936508]
  [ 0.72063492  0.4         0.38730159  0.          0.1015873 ]
  [ 0.72698413  0.40634921  0.67936508  0.1015873   0.        ]]
-[0 1 2 3 3]
+Cluster Labels: [0 1 1 1 1]
