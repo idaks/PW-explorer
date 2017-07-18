@@ -1196,12 +1196,6 @@ print dist_matrix
 clustering(dist_matrix)
 
 
-
-
-
-
-
-
 ###########################################################################################
 
 #closing SQLite Connection
