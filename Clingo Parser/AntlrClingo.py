@@ -1210,56 +1210,57 @@ def dist(pw_id_1, pw_id_2):
 
 query_db = raw_input('Do you want to query the database?\n')
 
+def get_rl_id():
+	rl_id = raw_input('Enter the relation id\n')
+	rl_id = 0 if rl_id.strip() == '' else int(rl_id)
+	return rl_id
+
+def get_col_names():
+	col_names = raw_input('Enter the columns you want to consider (comma separated). Press return to consider all columns.\n')
+	col_names = [] if col_names.strip() == '' else col_names.split(',')
+	col_names = map(str.strip, col_names)
+	return col_names
+
+def get_pws_to_consider():
+	pws_to_consider = raw_input('Enter the PWs to consider (comma separated). Press return to consider all columns\n')
+	pws_to_consider = [] if pws_to_consider.strip() == '' else pws_to_consider.split(',')
+	pws_to_consider = map(str.strip, pws_to_consider)
+	pws_to_consider = map(int, pws_to_consider)
+	return pws_to_consider
+
 while query_db in ['y', 'yes', '1', 1]:
 
 	print 'Following are the parsed relation IDs and relation names:'
 	for i, rl in enumerate(relations):
-		print str(i) + ':', str(rl.relation_name), '\n'
+		print str(i) + ':', str(rl.relation_name)
+	print '\n'
 	print 'Following Queries are available:'
 	print '1. Intersection\n 2. Union\n 3. Frequency\n 4. Number of Tuples\n 5. Difference\n 6. Redundant Column\n 7. Tuples occuring in exactly one PW\n 8. Show All Table Schemas\n 9. Show Table for a Relation\n'
 	query_id = raw_input('Input the query id\n')
 	sqlite_or_panda = raw_input("Do you want to use 'sqlite' or 'panda' to query?\n")
 	query_id = int(query_id.strip())
 	if query_id == 1:
-		rl_id = raw_input('Enter the relation id\n')
-		rl_id = 0 if rl_id.strip() == '' else int(rl_id)
-		col_names = raw_input('Enter the columns you want to consider (comma separated). Press return to consider all columns.\n')
-		col_names = [] if col_names.strip() == '' else col_names.split(',')
-		col_names = map(str.strip, col_names)
-		pws_to_consider = raw_input('Enter the PWs to consider (comma separated). Press return to consider all columns\n')
-		pws_to_consider = [] if pws_to_consider.strip() == '' else pws_to_consider.split(',')
-		pws_to_consider = map(str.strip, pws_to_consider)
-		pws_to_consider = map(int, pws_to_consider)
+		rl_id = get_rl_id()
+		col_names = get_col_names()
+		pws_to_consider = get_pws_to_consider()
 
 		if sqlite_or_panda.strip() == 'sqlite':
 			print intersection_sqlite(rl_id, col_names, pws_to_consider, False)
 		elif sqlite_or_panda.strip() == 'panda':
 			print intersection_panda(rl_id, col_names, pws_to_consider, False)
 	elif query_id == 2:
-		rl_id = raw_input('Enter the relation id\n')
-		rl_id = 0 if rl_id.strip() == '' else int(rl_id)
-		col_names = raw_input('Enter the columns you want to consider (comma separated). Press return to consider all columns.\n')
-		col_names = [] if col_names.strip() == '' else col_names.split(',')
-		col_names = map(str.strip, col_names)
-		pws_to_consider = raw_input('Enter the PWs to consider (comma separated). Press return to consider all columns\n')
-		pws_to_consider = [] if pws_to_consider.strip() == '' else pws_to_consider.split(',')
-		pws_to_consider = map(str.strip, pws_to_consider)
-		pws_to_consider = map(int, pws_to_consider)
+		rl_id = get_rl_id()
+		col_names = get_col_names()
+		pws_to_consider = get_pws_to_consider()
 
 		if sqlite_or_panda.strip() == 'sqlite':
 			print union_sqlite(rl_id, col_names, pws_to_consider, False)
 		elif sqlite_or_panda.strip() == 'panda':
 			print union_panda(rl_id, col_names, pws_to_consider, False)
 	elif query_id == 3:
-		rl_id = raw_input('Enter the relation id\n')
-		rl_id = 0 if rl_id.strip() == '' else int(rl_id)
-		col_names = raw_input('Enter the columns you want to consider (comma separated). Press return to consider all columns.\n')
-		col_names = [] if col_names.strip() == '' else col_names.split(',')
-		col_names = map(str.strip, col_names)
-		pws_to_consider = raw_input('Enter the PWs to consider (comma separated). Press return to consider all columns\n')
-		pws_to_consider = [] if pws_to_consider.strip() == '' else pws_to_consider.split(',')
-		pws_to_consider = map(str.strip, pws_to_consider)
-		pws_to_consider = map(int, pws_to_consider)
+		rl_id = get_rl_id()
+		col_names = get_col_names()
+		pws_to_consider = get_pws_to_consider()
 		vals = raw_input('Enter the specific values for the columns. Hit return to query frequency of all possible value combinations.\n')
 		vals = [] if vals.strip() == '' else vals.split(',')
 		vals = map(str.strip, vals)
@@ -1277,15 +1278,12 @@ while query_db in ['y', 'yes', '1', 1]:
 		elif sqlite_or_panda.strip() == 'panda':
 			print num_tuples_panda(rl_id, pw_id, False)
 	elif query_id == 5:
-		rl_id = raw_input('Enter the relation id\n')
-		rl_id = 0 if rl_id.strip() == '' else int(rl_id)
+		rl_id = get_rl_id()
+		col_names = get_col_names()
 		pw_id_1 = raw_input('Enter the PW ID of the first PW\n')
 		pw_id_1 = 0 if pw_id_1.strip() == '' else int(pw_id_1)
 		pw_id_2 = raw_input('Enter the PW ID of the second PW\n')
 		pw_id_2 = 0 if pw_id_2.strip() == '' else int(pw_id_2)
-		col_names = raw_input('Enter the columns you want to consider (comma separated). Press return to consider all columns.\n')
-		col_names = [] if col_names.strip() == '' else col_names.split(',')
-		col_names = map(str.strip, col_names)
 		one_way_or_both = raw_input('Enter 1 for one-way difference and 2 for two-way difference.\n')
 		one_way_or_both = 1 if one_way_or_both.strip() == '' else int(one_way_or_both)
 		if sqlite_or_panda.strip() == 'sqlite':
@@ -1299,29 +1297,17 @@ while query_db in ['y', 'yes', '1', 1]:
 			elif one_way_or_both == 2:
 				print difference_both_ways_panda(rl_id, pw_id_1, pw_id_2, col_names, False)
 	elif query_id == 6:
-		rl_id = raw_input('Enter the relation id\n')
-		rl_id = 0 if rl_id.strip() == '' else int(rl_id)
-		col_names = raw_input('Enter the columns you want to consider (comma separated). Press return to consider all columns.\n')
-		col_names = [] if col_names.strip() == '' else col_names.split(',')
-		col_names = map(str.strip, col_names)
-		pws_to_consider = raw_input('Enter the PWs to consider (comma separated). Press return to consider all columns\n')
-		pws_to_consider = [] if pws_to_consider.strip() == '' else pws_to_consider.split(',')
-		pws_to_consider = map(str.strip, pws_to_consider)
-		pws_to_consider = map(int, pws_to_consider)
+		rl_id = get_rl_id()
+		col_names = get_col_names()
+		pws_to_consider = get_pws_to_consider()
 		if sqlite_or_panda.strip() == 'sqlite':
 			print redundant_column_sqlite(rl_id, col_names, pws_to_consider, False)
 		elif sqlite_or_panda.strip() == 'panda':
 			print redundant_column_panda(rl_id, col_names, pws_to_consider, False)
 	elif query_id == 7:
-		rl_id = raw_input('Enter the relation id\n')
-		rl_id = 0 if rl_id.strip() == '' else int(rl_id)
-		col_names = raw_input('Enter the columns you want to consider (comma separated). Press return to consider all columns.\n')
-		col_names = [] if col_names.strip() == '' else col_names.split(',')
-		col_names = map(str.strip, col_names)
-		pws_to_consider = raw_input('Enter the PWs to consider (comma separated). Press return to consider all columns\n')
-		pws_to_consider = [] if pws_to_consider.strip() == '' else pws_to_consider.split(',')
-		pws_to_consider = map(str.strip, pws_to_consider)
-		pws_to_consider = map(int, pws_to_consider)
+		rl_id = get_rl_id()
+		col_names = get_col_names()
+		pws_to_consider = get_pws_to_consider()
 		if sqlite_or_panda.strip() == 'sqlite':
 			print unique_tuples_sqlite(rl_id, col_names, pws_to_consider, False)
 		elif sqlite_or_panda.strip() == 'panda':
