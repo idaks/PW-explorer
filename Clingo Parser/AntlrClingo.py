@@ -1392,6 +1392,14 @@ out_file.write('\n')
 
 clustering(dist_matrix)
 
+# from scipy.cluster.hierarchy import dendrogram, linkage
+# from scipy.spatial.distance import squareform
+
+# dists = squareform(dist_matrix)
+# linkage_matrix = linkage(dists, "single")
+# dendrogram(linkage_matrix, labels=[str(i) for i in range(len(dist_matrix))])
+# plt.title("test")
+# plt.show()
 
 ###########################################################################################
 
