@@ -13,6 +13,8 @@ import errno
 import os
 from sklearn.cluster import DBSCAN
 import matplotlib.pyplot as plt
+from scipy.cluster.hierarchy import dendrogram, linkage
+from scipy.spatial.distance import squareform
 
 
 ###################################################################
@@ -1142,10 +1144,10 @@ def unique_tuples_panda(rl_id = 0, col_names = [], pws_to_consider = [j for j in
 
 #prototype dist function:
 
-def dist(pw_id_1, pw_id_2):
+def dist_sqlite(pw_id_1, pw_id_2):
 
-	if pw_id_1 == pw_id_2:
-		return 0
+	# if pw_id_1 == pw_id_2:
+	# 	return 0
 
 	dist = 0
 
@@ -1196,6 +1198,68 @@ def dist(pw_id_1, pw_id_2):
 
 		x1 = difference_both_ways_sqlite(i, pw_id_1, pw_id_2, cols_to_consider, False)
 		x2 = intersection_sqlite(i, cols_to_consider, [pw_id_1, pw_id_2], False)
+
+		dist += wt1 * len(x1)**k1 if x1 is not None else 0
+		dist -= wt2 * len(x2)**k2 if x2 is not None else 0
+
+
+	return dist
+
+def dist_panda(pw_id_1, pw_id_2):
+
+	# if pw_id_1 == pw_id_2:
+	# 	return 0
+
+	dist = 0
+
+	#based on number of tuples (complexity of soln):
+	for i, rl in enumerate(relations):
+
+		k = 1 #TBD
+		wt = 1 #TBD
+		dist += wt * abs(num_tuples_panda(i, pw_id_1, False) - num_tuples_panda(i, pw_id_2, False))**k 
+
+
+	#based on difference in optimization value:
+	soln_range = 1
+	#find the max and min optimization value if it exists using a for loop across all pws
+	curr_max = 0
+	curr_min = 0
+	for i, pw in enumerate(pws):
+		if isfloat(pws[i].pw_soln):
+			if pws[i].pw_soln > curr_max:
+				curr_max = pws[i].pw_soln
+			if pws[i].pw_soln < curr_min:
+				curr_min = pws[i].pw_soln
+
+	soln_range = curr_max - curr_min if curr_max - curr_min != 0 else 1
+
+
+	if isfloat(pws[pw_id_1-1].pw_soln) and isfloat(pws[pw_id_2-1].pw_soln):
+		wt = 1 #TBD
+		k = 1 #TBD
+		dist += wt * (abs(pws[pw_id_1-1].pw_soln - pws[pw_id_2-1].pw_soln)**k)/soln_range
+
+
+
+	#based on number of similar and unique tuples:
+	for i, rl in enumerate(relations):
+
+		max_num_tuples = max(num_tuples_panda(i, pw_id_1, False), num_tuples_panda(i, pw_id_2, False))
+		redundant_cols = redundant_column_panda(rl_id = i, pws_to_consider = [pw_id_1,pw_id_2], do_print = False)[0]
+		cols_to_consider = set(list(dfs[i])[1:])
+		for t in redundant_cols:
+			if t in cols_to_consider:
+				cols_to_consider.remove(t[2])
+		cols_to_consider = list(cols_to_consider)
+
+		k1 = 1 #TBD
+		wt1 = 1 #TBD
+		k2 = 1 #TBD
+		wt2 = 1 #TBD
+
+		x1 = difference_both_ways_panda(i, pw_id_1, pw_id_2, cols_to_consider, False)
+		x2 = intersection_panda(i, cols_to_consider, [pw_id_1, pw_id_2], False)
 
 		dist += wt1 * len(x1)**k1 if x1 is not None else 0
 		dist -= wt2 * len(x2)**k2 if x2 is not None else 0
@@ -1378,22 +1442,38 @@ def clustering(dist_matrix):
 	#plt.show()
 	mkdir_p('Mini Workflow/parser_output/clustering_output/' + str(project_name))
 	plt.savefig('Mini Workflow/parser_output/clustering_output/' + str(project_name) + '/' + str(project_name) + '.png')
+	plt.figure()
+
+	# dists = squareform(dist_matrix)
+	# linkage_matrix = linkage(dists, "single")
+	# dendrogram(linkage_matrix, labels=[str(i) for i in range(len(dist_matrix))])
+	# plt.title("Dendrogram")
+	# plt.savefig('Mini Workflow/parser_output/clustering_output/' + str(project_name) + '/' + str(project_name) + '_dendrogram.png')
 
 
 dist_matrix = np.zeros((len(pws),len(pws)))
 for i in range(1, len(pws)+1):
-	for j in range(i+1, len(pws)+1):
-		dist_matrix[i-1, j-1] = dist_matrix[j-1,i-1] = dist(i,j)
+	for j in range(i, len(pws)+1):
+		dist_matrix[i-1, j-1] = dist_matrix[j-1,i-1] = dist_sqlite(i,j)
+		#dist_matrix[i-1, j-1] = dist_matrix[j-1,i-1] = dist_panda(i,j)
 		#print 'Distance between PWs', i, 'and', j, 'is', dist_matrix[i-1,j-1]
 
-dist_matrix = (dist_matrix - np.min(dist_matrix))/(np.max(dist_matrix) - np.min(dist_matrix))
-out_file.write(str(dist_matrix))
-out_file.write('\n')
 
-clustering(dist_matrix)
 
-# from scipy.cluster.hierarchy import dendrogram, linkage
-# from scipy.spatial.distance import squareform
+if len(pws) > 1:
+	if np.max(dist_matrix) != np.min(dist_matrix):
+		dist_matrix = (dist_matrix - np.min(dist_matrix))/(np.max(dist_matrix) - np.min(dist_matrix))
+	# for i in range(len(pws)): #NOTE: Need to fix a bug within Dist where dist(i,i) is not min
+	# 	dist_matrix[i][i] = 0
+	out_file.write(str(dist_matrix))
+	out_file.write('\n')
+	clustering(dist_matrix)
+
+
+
+
+
+
 
 # dists = squareform(dist_matrix)
 # linkage_matrix = linkage(dists, "single")
