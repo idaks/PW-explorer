@@ -1447,23 +1447,21 @@ def dbscan_clustering(dist_matrix):
 	plt.savefig('Mini Workflow/parser_output/clustering_output/' + str(project_name) + '/' + str(project_name) + '.png')
 	plt.figure()
 
-	dists = squareform(dist_matrix)
-	linkage_matrix = linkage(dists, "single")
-	dendrogram(linkage_matrix, labels=[str(i) for i in range(len(dist_matrix))])
-	plt.title("Dendrogram")
-	plt.savefig('Mini Workflow/parser_output/clustering_output/' + str(project_name) + '/' + str(project_name) + '_dendrogram.png')
-
 
 def linkage_dendrogram(dist_matrix):
 	X = squareform(dist_matrix)
 	Z = linkage(X, 'ward')
 	#c, coph_dists = cophenet(Z, pdist(X))
-	plt.title('Hierarchical Clustering Dendrogram')
+	plt.title('Hierarchical Clustering Dendrogram (Ward)')
 	plt.xlabel('sample index')
 	plt.ylabel('distance')
 	dendrogram(Z, leaf_rotation=90., leaf_font_size=8.)
-	plt.savefig('Mini Workflow/parser_output/clustering_output/' + str(project_name) + '/' + str(project_name) + '_linkage_dendrogram.png')
-
+	plt.savefig('Mini Workflow/parser_output/clustering_output/' + str(project_name) + '/' + str(project_name) + '_ward_dendrogram.png')
+	plt.figure()
+	linkage_matrix = linkage(X, "single")
+	dendrogram(linkage_matrix, labels=[str(i) for i in range(len(dist_matrix))])
+	plt.title("Dendrogram (Single)")
+	plt.savefig('Mini Workflow/parser_output/clustering_output/' + str(project_name) + '/' + str(project_name) + '_single_dendrogram.png')
 
 
 
