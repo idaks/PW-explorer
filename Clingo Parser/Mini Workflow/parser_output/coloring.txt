@@ -1,69 +1,70 @@
-Number of Models: 972
+Number of Models: 40
 color_2
-       pw           x1     x2
-0       1      belgium    red
-1       1  netherlands   blue
-2       1       france  white
-3       1   luxembourg    red
-4       1      germany  green
-5       1      denmark    red
-6       2      belgium    red
-7       2  netherlands   blue
-8       2       france  white
-9       2   luxembourg    red
-10      2      germany  green
-11      2      denmark   blue
-12      3      belgium    red
-13      3  netherlands   blue
-14      3       france  white
-15      3   luxembourg    red
-16      3      germany  green
-17      3      denmark  green
-18      4      belgium    red
-19      4  netherlands   blue
-20      4       france  white
-21      4   luxembourg    red
-22      4      germany  green
-23      4      denmark  white
-24      5      belgium    red
-25      5  netherlands   blue
-26      5       france   blue
-27      5   luxembourg    red
-28      5      germany  green
-29      5      denmark   blue
-...   ...          ...    ...
-5802  968  netherlands    red
-5803  968      belgium  green
-5804  968       france   blue
-5805  968   luxembourg   blue
-5806  968      germany  white
-5807  968      denmark  green
-5808  969  netherlands    red
-5809  969      belgium  green
-5810  969       france  white
-5811  969   luxembourg   blue
-5812  969      germany  white
-5813  969      denmark    red
-5814  970  netherlands    red
-5815  970      belgium  green
-5816  970       france  white
-5817  970   luxembourg   blue
-5818  970      germany  white
-5819  970      denmark  white
-5820  971  netherlands    red
-5821  971      belgium  green
-5822  971       france  white
-5823  971   luxembourg   blue
-5824  971      germany  white
-5825  971      denmark  green
-5826  972  netherlands    red
-5827  972      belgium  green
-5828  972       france  white
-5829  972   luxembourg   blue
-5830  972      germany  white
-5831  972      denmark   blue
+     pw           x1     x2
+0     1      belgium    red
+1     1  netherlands   blue
+2     1       france  white
+3     1   luxembourg    red
+4     1      germany  green
+5     1      denmark    red
+6     2      belgium    red
+7     2  netherlands   blue
+8     2       france  white
+9     2   luxembourg    red
+10    2      germany  green
+11    2      denmark   blue
+12    3      belgium    red
+13    3  netherlands   blue
+14    3       france  white
+15    3   luxembourg    red
+16    3      germany  green
+17    3      denmark  green
+18    4      belgium    red
+19    4  netherlands   blue
+20    4       france  white
+21    4   luxembourg    red
+22    4      germany  green
+23    4      denmark  white
+24    5      belgium    red
+25    5  netherlands   blue
+26    5       france   blue
+27    5   luxembourg    red
+28    5      germany  green
+29    5      denmark   blue
+..   ..          ...    ...
+210  36      belgium    red
+211  36  netherlands   blue
+212  36       france  green
+213  36   luxembourg    red
+214  36      germany   blue
+215  36      denmark   blue
+216  37      belgium    red
+217  37  netherlands   blue
+218  37       france  green
+219  37   luxembourg  green
+220  37      germany   blue
+221  37      denmark  white
+222  38      belgium    red
+223  38  netherlands   blue
+224  38       france  green
+225  38   luxembourg  green
+226  38      germany   blue
+227  38      denmark  green
+228  39      belgium    red
+229  39  netherlands   blue
+230  39       france  green
+231  39   luxembourg  green
+232  39      germany   blue
+233  39      denmark    red
+234  40      belgium    red
+235  40  netherlands   blue
+236  40       france  green
+237  40   luxembourg  green
+238  40      germany   blue
+239  40      denmark   blue
 
-[5832 rows x 3 columns]
+[240 rows x 3 columns]
+
 Successfully exported to sql
 Sqlite Schema:
 CREATE TABLE "color_2" (
@@ -72,74 +73,12 @@ CREATE TABLE "color_2" (
   "x1" TEXT,
   "x2" TEXT
 )
-Union of all the PWs for the relation color_2
-             x1     x2
-0       belgium    red
-1   netherlands   blue
-2        france  white
-3    luxembourg    red
-4       germany  green
-5       denmark    red
-6       denmark   blue
-7       denmark  green
-8       denmark  white
-9        france   blue
-10       france  green
-11   luxembourg   blue
-12      germany   blue
-13   luxembourg  green
-14  netherlands  white
-15      germany  white
-16   luxembourg  white
-17  netherlands  green
-18  netherlands    red
-19      belgium  white
-20       france    red
-21      belgium   blue
-22      belgium  green
-Frequency of tuple (u'belgium', u'red') of the relation color_2 is:    count(*)
-0       324
-Frequency of tuple (u'netherlands', u'blue') of the relation color_2 is:    count(*)
-0       252
-Frequency of tuple (u'france', u'white') of the relation color_2 is:    count(*)
-0       252
-Frequency of tuple (u'luxembourg', u'red') of the relation color_2 is:    count(*)
-0       324
-Frequency of tuple (u'germany', u'green') of the relation color_2 is:    count(*)
-0       324
-Frequency of tuple (u'denmark', u'red') of the relation color_2 is:    count(*)
-0       243
-Frequency of tuple (u'denmark', u'blue') of the relation color_2 is:    count(*)
-0       243
-Frequency of tuple (u'denmark', u'green') of the relation color_2 is:    count(*)
-0       243
-Frequency of tuple (u'denmark', u'white') of the relation color_2 is:    count(*)
-0       243
-Frequency of tuple (u'france', u'blue') of the relation color_2 is:    count(*)
-0       252
-Frequency of tuple (u'france', u'green') of the relation color_2 is:    count(*)
-0       252
-Frequency of tuple (u'luxembourg', u'blue') of the relation color_2 is:    count(*)
-0       216
-Frequency of tuple (u'germany', u'blue') of the relation color_2 is:    count(*)
-0       324
-Frequency of tuple (u'luxembourg', u'green') of the relation color_2 is:    count(*)
-0       216
-Frequency of tuple (u'netherlands', u'white') of the relation color_2 is:    count(*)
-0       252
-Frequency of tuple (u'germany', u'white') of the relation color_2 is:    count(*)
-0       324
-Frequency of tuple (u'luxembourg', u'white') of the relation color_2 is:    count(*)
-0       216
-Frequency of tuple (u'netherlands', u'green') of the relation color_2 is:    count(*)
-0       252
-Frequency of tuple (u'netherlands', u'red') of the relation color_2 is:    count(*)
-0       216
-Frequency of tuple (u'belgium', u'white') of the relation color_2 is:    count(*)
-0       216
-Frequency of tuple (u'france', u'red') of the relation color_2 is:    count(*)
-0       216
-Frequency of tuple (u'belgium', u'blue') of the relation color_2 is:    count(*)
-0       216
-Frequency of tuple (u'belgium', u'green') of the relation color_2 is:    count(*)
-0       216
+[[ 0.    0.25  0.25 ...,  1.    0.75  1.  ]
+ [ 0.25  0.    0.25 ...,  1.    1.    0.75]
+ [ 0.25  0.25  0.   ...,  0.75  1.    1.  ]
+ ..., 
+ [ 1.    1.    0.75 ...,  0.    0.25  0.25]
+ [ 0.75  1.    1.   ...,  0.25  0.    0.25]
+ [ 1.    0.75  1.   ...,  0.25  0.25  0.  ]]
+Cluster Labels: [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0]
