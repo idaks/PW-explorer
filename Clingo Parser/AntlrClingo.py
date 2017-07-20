@@ -15,6 +15,9 @@ from sklearn.cluster import DBSCAN
 import matplotlib.pyplot as plt
 from scipy.cluster.hierarchy import dendrogram, linkage
 from scipy.spatial.distance import squareform
+from scipy.cluster.hierarchy import cophenet
+from scipy.spatial.distance import pdist
+
 
 
 ###################################################################
@@ -1408,7 +1411,7 @@ while query_db in ['y', 'yes', '1', 1]:
 
 ###########################################################################################
 
-def clustering(dist_matrix):
+def dbscan_clustering(dist_matrix):
 	db = DBSCAN(metric = 'precomputed')#, eps = 0.4, min_samples = 1)
 	labels = db.fit_predict(dist_matrix)
 	out_file.write('Cluster Labels: ' + str(labels) + '\n')
@@ -1444,11 +1447,24 @@ def clustering(dist_matrix):
 	plt.savefig('Mini Workflow/parser_output/clustering_output/' + str(project_name) + '/' + str(project_name) + '.png')
 	plt.figure()
 
-	# dists = squareform(dist_matrix)
-	# linkage_matrix = linkage(dists, "single")
-	# dendrogram(linkage_matrix, labels=[str(i) for i in range(len(dist_matrix))])
-	# plt.title("Dendrogram")
-	# plt.savefig('Mini Workflow/parser_output/clustering_output/' + str(project_name) + '/' + str(project_name) + '_dendrogram.png')
+	dists = squareform(dist_matrix)
+	linkage_matrix = linkage(dists, "single")
+	dendrogram(linkage_matrix, labels=[str(i) for i in range(len(dist_matrix))])
+	plt.title("Dendrogram")
+	plt.savefig('Mini Workflow/parser_output/clustering_output/' + str(project_name) + '/' + str(project_name) + '_dendrogram.png')
+
+
+def linkage_dendrogram(dist_matrix):
+	X = squareform(dist_matrix)
+	Z = linkage(X, 'ward')
+	#c, coph_dists = cophenet(Z, pdist(X))
+	plt.title('Hierarchical Clustering Dendrogram')
+	plt.xlabel('sample index')
+	plt.ylabel('distance')
+	dendrogram(Z, leaf_rotation=90., leaf_font_size=8.)
+	plt.savefig('Mini Workflow/parser_output/clustering_output/' + str(project_name) + '/' + str(project_name) + '_linkage_dendrogram.png')
+
+
 
 
 dist_matrix = np.zeros((len(pws),len(pws)))
@@ -1463,11 +1479,10 @@ for i in range(1, len(pws)+1):
 if len(pws) > 1:
 	if np.max(dist_matrix) != np.min(dist_matrix):
 		dist_matrix = (dist_matrix - np.min(dist_matrix))/(np.max(dist_matrix) - np.min(dist_matrix))
-	# for i in range(len(pws)): #NOTE: Need to fix a bug within Dist where dist(i,i) is not min
-	# 	dist_matrix[i][i] = 0
 	out_file.write(str(dist_matrix))
 	out_file.write('\n')
-	clustering(dist_matrix)
+	dbscan_clustering(dist_matrix)
+	linkage_dendrogram(dist_matrix)
 
 
 
