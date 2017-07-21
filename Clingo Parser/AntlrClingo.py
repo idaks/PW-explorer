@@ -1149,6 +1149,17 @@ def unique_tuples_panda(rl_id = 0, col_names = [], pws_to_consider = [j for j in
 
 def dist_sqlite(pw_id_1, pw_id_2):
 
+	global pws 
+	global relations 
+	global expected_pws 
+	global curr_pw
+	global curr_rl 
+	global curr_rl_data 
+	global n_rls
+	global dfs
+	global out_file 
+	global conn
+
 	# if pw_id_1 == pw_id_2:
 	# 	return 0
 
@@ -1210,6 +1221,17 @@ def dist_sqlite(pw_id_1, pw_id_2):
 
 def dist_panda(pw_id_1, pw_id_2):
 
+	global pws 
+	global relations 
+	global expected_pws 
+	global curr_pw
+	global curr_rl 
+	global curr_rl_data 
+	global n_rls
+	global dfs
+	global out_file 
+	global conn
+
 	# if pw_id_1 == pw_id_2:
 	# 	return 0
 
@@ -1269,6 +1291,46 @@ def dist_panda(pw_id_1, pw_id_2):
 
 
 	return dist
+
+def sym_diff_dist_sqlite(pw_id_1, pw_id_2, rls_to_use = []):
+
+	global pws 
+	global relations 
+	global expected_pws 
+	global curr_pw
+	global curr_rl 
+	global curr_rl_data 
+	global n_rls
+	global dfs
+	global out_file 
+	global conn
+
+	if pw_id_1 == pw_id_2:
+		return 0
+
+	if rls_to_use == []:
+		rls_to_use = [i for i in range(len(relations))]
+
+	dist = 0
+	for rl_id in rls_to_use:
+
+		rl = relations[rl_id]
+		max_num_tuples = max(num_tuples_sqlite(rl_id, pw_id_1, False), num_tuples_sqlite(rl_id, pw_id_2, False))
+		redundant_cols = redundant_column_sqlite(rl_id = rl_id, pws_to_consider = [pw_id_1,pw_id_2], do_print = False)[0]
+		cols_to_consider = set(list(dfs[i])[1:])
+		for t in redundant_cols:
+			if t in cols_to_consider:
+				cols_to_consider.remove(t[2])
+		cols_to_consider = list(cols_to_consider)
+
+		wt1 = 1 #TBD
+		k1 = 1 #TBD
+
+		x1 = difference_both_ways_sqlite(rl_id, pw_id_1, pw_id_2, cols_to_consider, False)
+		dist += wt1 * len(x1)**k1 if x1 is not None else 0
+		
+	return dist
+
 
 
 ###########################################################################################
@@ -1412,7 +1474,7 @@ while query_db in ['y', 'yes', '1', 1]:
 ###########################################################################################
 
 def dbscan_clustering(dist_matrix):
-	db = DBSCAN(metric = 'precomputed')#, eps = 0.4, min_samples = 1)
+	db = DBSCAN(metric = 'precomputed', eps = 0.5, min_samples = 1)
 	labels = db.fit_predict(dist_matrix)
 	out_file.write('Cluster Labels: ' + str(labels) + '\n')
 
@@ -1468,8 +1530,9 @@ def linkage_dendrogram(dist_matrix):
 dist_matrix = np.zeros((len(pws),len(pws)))
 for i in range(1, len(pws)+1):
 	for j in range(i, len(pws)+1):
-		dist_matrix[i-1, j-1] = dist_matrix[j-1,i-1] = dist_sqlite(i,j)
+		#dist_matrix[i-1, j-1] = dist_matrix[j-1,i-1] = dist_sqlite(i,j)
 		#dist_matrix[i-1, j-1] = dist_matrix[j-1,i-1] = dist_panda(i,j)
+		dist_matrix[i-1, j-1] = dist_matrix[j-1,i-1] = sym_diff_dist_sqlite(i,j)
 		#print 'Distance between PWs', i, 'and', j, 'is', dist_matrix[i-1,j-1]
 
 
