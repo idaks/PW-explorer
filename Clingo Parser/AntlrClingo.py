@@ -21,6 +21,7 @@ import mpld3
 import plotly.plotly as py
 import plotly.graph_objs as go
 import plotly.figure_factory as ff
+import networkx as nx
 
 
 
@@ -1497,6 +1498,8 @@ def compute_dist_matrix(X):
 			#dist_matrix[i-1, j-1] = dist_matrix[j-1,i-1] = dist_panda(i,j)
 			dist_matrix[i-1, j-1] = dist_matrix[j-1,i-1] = sym_diff_dist_sqlite(i,j)
 			#print 'Distance between PWs', i, 'and', j, 'is', dist_matrix[i-1,j-1]
+	if np.max(dist_matrix) != np.min(dist_matrix):
+		dist_matrix = (dist_matrix - np.min(dist_matrix))/(np.max(dist_matrix) - np.min(dist_matrix))
 	return dist_matrix
 
 
@@ -1707,23 +1710,45 @@ def dendrogram_plotly(dist_matrix):
 	dendro['layout'].update({'width':800, 'height':500})
 	py.plot(dendro, filename='dendrogram')
 
+def mds_graph(D):
+
+	global pws 
+	global relations 
+	global expected_pws 
+	global curr_pw
+	global curr_rl 
+	global curr_rl_data 
+	global n_rls
+	global dfs
+	global out_file
+
+	G = nx.Graph()
+	labels = {}
+	for n in range(len(D)):
+	    for m in range(len(D)-(n+1)):
+	        G.add_edge(n,n+m+1)
+	        labels[ (n,n+m+1) ] = str(D[n][n+m+1])
+	pos=nx.spring_layout(G)
+
+	nx.draw(G, pos)
+	nx.draw_networkx_edge_labels(G,pos,edge_labels=labels,font_size=30)
+	mpld3.show()
+	#plt.show()
 
 
 
 dist_matrix = compute_dist_matrix(None)
-
+#mds_graph(dist_matrix)
 
 
 
 if len(pws) > 1:
-	if np.max(dist_matrix) != np.min(dist_matrix):
-		dist_matrix = (dist_matrix - np.min(dist_matrix))/(np.max(dist_matrix) - np.min(dist_matrix))
 	out_file.write(str(dist_matrix))
 	out_file.write('\n')
 	#dbscan_clustering(dist_matrix)
 	#dbscan_clustering_plotly(dist_matrix)
 	#linkage_dendrogram(dist_matrix)
-	dendrogram_plotly(np.array([i for i in range(len(pws))]))
+	#dendrogram_plotly(np.array([i for i in range(len(pws))]))
 
 
 
