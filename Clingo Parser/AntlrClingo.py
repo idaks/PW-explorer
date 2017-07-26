@@ -17,6 +17,11 @@ from scipy.cluster.hierarchy import dendrogram, linkage
 from scipy.spatial.distance import squareform
 from scipy.cluster.hierarchy import cophenet
 from scipy.spatial.distance import pdist
+import mpld3
+import plotly.plotly as py
+import plotly.graph_objs as go
+import plotly.figure_factory as ff
+
 
 
 
@@ -1473,8 +1478,23 @@ while query_db in ['y', 'yes', '1', 1]:
 
 ###########################################################################################
 
+def matplotlib_to_plotly(cmap, pl_entries):
+    h = 1.0/(pl_entries-1)
+    pl_colorscale = []
+    
+    for k in range(pl_entries):
+        C = map(np.uint8, np.array(cmap(k*h)[:3])*255)
+        pl_colorscale.append([k*h, 'rgb'+str((C[0], C[1], C[2]))])
+        
+    return pl_colorscale
+
+
+
 def dbscan_clustering(dist_matrix):
-	db = DBSCAN(metric = 'precomputed')#, eps = 0.5, min_samples = 1)
+
+	global expected_pws
+
+	db = DBSCAN(metric = 'precomputed', eps = 0.5, min_samples = 1)
 	labels = db.fit_predict(dist_matrix)
 	out_file.write('Cluster Labels: ' + str(labels) + '\n')
 
@@ -1488,6 +1508,10 @@ def dbscan_clustering(dist_matrix):
 	unique_labels = set(labels)
 	colors = [plt.cm.Spectral(each)
 	          for each in np.linspace(0, 1, len(unique_labels))]
+	
+
+	#fig, ax = plt.subplots()
+
 	for k, col in zip(unique_labels, colors):
 	    if k == -1:
 	        # Black used for noise.
@@ -1503,27 +1527,85 @@ def dbscan_clustering(dist_matrix):
 	    plt.plot(xy[:, 0], xy[:, 1], 'o', markerfacecolor=tuple(col),
 	             markeredgecolor='k', markersize=6)
 
+	#labels = ['point {0}'.format(i + 1) for i in range(expected_pws)]
+	#fig.plugins = [mpld3.plugins.PointLabelTooltip(labels)]
 	plt.title('Estimated number of clusters: %d' % n_clusters_)
+	#mpld3.show()
 	#plt.show()
 	mkdir_p('Mini Workflow/parser_output/clustering_output/' + str(project_name))
 	plt.savefig('Mini Workflow/parser_output/clustering_output/' + str(project_name) + '/' + str(project_name) + '.png')
 	plt.figure()
 
 
+
+def dbscan_clustering_plotly(dist_matrix):
+
+	global expected_pws
+
+	db = DBSCAN(metric = 'precomputed', eps = 0.5, min_samples = 1)
+	labels = db.fit_predict(dist_matrix)
+	out_file.write('Cluster Labels: ' + str(labels) + '\n')
+
+
+	core_samples_mask = np.zeros_like(db.labels_, dtype=bool)
+	core_samples_mask[db.core_sample_indices_] = True
+	labels = db.labels_
+
+	# Number of clusters in labels, ignoring noise if present.
+	n_clusters_ = len(set(labels)) - (1 if -1 in labels else 0)
+	unique_labels = set(labels)
+
+	colors = matplotlib_to_plotly(plt.cm.Spectral, len(unique_labels))
+	data = []
+
+	for k, col in zip(unique_labels, colors):
+    
+	    if k == -1:
+	        # Black used for noise.
+	        col = 'black'
+	    else:
+	        col = col[1]
+	    
+	    class_member_mask = (labels == k)
+	   
+	    xy = dist_matrix[class_member_mask & core_samples_mask]
+	    trace1 = go.Scatter(x=xy[:, 0], y=xy[:, 1], mode='markers', 
+	                        marker=dict(color=col, size=14,
+	                                    line=dict(color='black', width=1)))
+
+	    xy = dist_matrix[class_member_mask & ~core_samples_mask]
+	    trace2 = go.Scatter(x=xy[:, 0], y=xy[:, 1], mode='markers', 
+	                        marker=dict(color=col, size=14,
+	                                    line=dict(color='black', width=1)))
+	    data.append(trace1)
+	    data.append(trace2)
+
+	layout = go.Layout(showlegend=False,
+	                   title='Estimated number of clusters: %d' % n_clusters_,
+	                   xaxis=dict(showgrid=False, zeroline=False),
+	                   yaxis=dict(showgrid=False, zeroline=False))
+	fig = go.Figure(data=data, layout=layout)
+
+	py.plot(fig)
+
+
+
 def linkage_dendrogram(dist_matrix):
 	X = squareform(dist_matrix)
 	Z = linkage(X, 'ward')
-	#c, coph_dists = cophenet(Z, pdist(X))
+	
 	plt.title('Hierarchical Clustering Dendrogram (Ward)')
 	plt.xlabel('sample index')
 	plt.ylabel('distance')
 	dendrogram(Z, leaf_rotation=90., leaf_font_size=8.)
+	#mpld3.show()
 	plt.savefig('Mini Workflow/parser_output/clustering_output/' + str(project_name) + '/' + str(project_name) + '_ward_dendrogram.png')
 	plt.figure()
 	
 	linkage_matrix = linkage(X, "single")
 	dendrogram(linkage_matrix, labels=[str(i) for i in range(len(dist_matrix))])
 	plt.title("Dendrogram (Single)")
+	#mpld3.show()
 	plt.savefig('Mini Workflow/parser_output/clustering_output/' + str(project_name) + '/' + str(project_name) + '_single_dendrogram.png')
 	plt.figure()
 
@@ -1558,6 +1640,15 @@ def linkage_dendrogram(dist_matrix):
 	plt.figure()
 
 
+def dendrogram_plotly(dist_matrix):
+
+	pw_ids = [i for i in range(len(dist_matrix))]
+	dendro = ff.create_dendrogram(dist_matrix, labels = pw_ids)
+	dendro['layout'].update({'width':800, 'height':500})
+	py.plot(dendro, filename='dendrogram')
+
+
+
 
 dist_matrix = np.zeros((len(pws),len(pws)))
 for i in range(1, len(pws)+1):
@@ -1574,8 +1665,10 @@ if len(pws) > 1:
 		dist_matrix = (dist_matrix - np.min(dist_matrix))/(np.max(dist_matrix) - np.min(dist_matrix))
 	out_file.write(str(dist_matrix))
 	out_file.write('\n')
-	dbscan_clustering(dist_matrix)
-	linkage_dendrogram(dist_matrix)
+	#dbscan_clustering(dist_matrix)
+	#dbscan_clustering_plotly(dist_matrix)
+	#linkage_dendrogram(dist_matrix)
+	dendrogram_plotly(dist_matrix)
 
 
 
