@@ -1478,7 +1478,31 @@ while query_db in ['y', 'yes', '1', 1]:
 
 ###########################################################################################
 
+def compute_dist_matrix(X):
+
+	global pws 
+	global relations 
+	global expected_pws 
+	global curr_pw
+	global curr_rl 
+	global curr_rl_data 
+	global n_rls
+	global dfs
+	global out_file
+
+	dist_matrix = np.zeros((len(pws),len(pws)))
+	for i in range(1, len(pws)+1):
+		for j in range(i, len(pws)+1):
+			#dist_matrix[i-1, j-1] = dist_matrix[j-1,i-1] = dist_sqlite(i,j)
+			#dist_matrix[i-1, j-1] = dist_matrix[j-1,i-1] = dist_panda(i,j)
+			dist_matrix[i-1, j-1] = dist_matrix[j-1,i-1] = sym_diff_dist_sqlite(i,j)
+			#print 'Distance between PWs', i, 'and', j, 'is', dist_matrix[i-1,j-1]
+	return dist_matrix
+
+
+
 def matplotlib_to_plotly(cmap, pl_entries):
+
     h = 1.0/(pl_entries-1)
     pl_colorscale = []
     
@@ -1489,10 +1513,17 @@ def matplotlib_to_plotly(cmap, pl_entries):
     return pl_colorscale
 
 
-
 def dbscan_clustering(dist_matrix):
 
-	global expected_pws
+	global pws 
+	global relations 
+	global expected_pws 
+	global curr_pw
+	global curr_rl 
+	global curr_rl_data 
+	global n_rls
+	global dfs
+	global out_file
 
 	db = DBSCAN(metric = 'precomputed', eps = 0.5, min_samples = 1)
 	labels = db.fit_predict(dist_matrix)
@@ -1540,7 +1571,15 @@ def dbscan_clustering(dist_matrix):
 
 def dbscan_clustering_plotly(dist_matrix):
 
-	global expected_pws
+	global pws 
+	global relations 
+	global expected_pws 
+	global curr_pw
+	global curr_rl 
+	global curr_rl_data 
+	global n_rls
+	global dfs
+	global out_file
 
 	db = DBSCAN(metric = 'precomputed', eps = 0.5, min_samples = 1)
 	labels = db.fit_predict(dist_matrix)
@@ -1591,6 +1630,17 @@ def dbscan_clustering_plotly(dist_matrix):
 
 
 def linkage_dendrogram(dist_matrix):
+	
+	global pws 
+	global relations 
+	global expected_pws 
+	global curr_pw
+	global curr_rl 
+	global curr_rl_data 
+	global n_rls
+	global dfs
+	global out_file
+
 	X = squareform(dist_matrix)
 	Z = linkage(X, 'ward')
 	
@@ -1642,21 +1692,26 @@ def linkage_dendrogram(dist_matrix):
 
 def dendrogram_plotly(dist_matrix):
 
+	global pws 
+	global relations 
+	global expected_pws 
+	global curr_pw
+	global curr_rl 
+	global curr_rl_data 
+	global n_rls
+	global dfs
+	global out_file
+
 	pw_ids = [i for i in range(len(dist_matrix))]
-	dendro = ff.create_dendrogram(dist_matrix, labels = pw_ids)
+	dendro = ff.create_dendrogram(dist_matrix, labels = pw_ids, distfun = compute_dist_matrix)
 	dendro['layout'].update({'width':800, 'height':500})
 	py.plot(dendro, filename='dendrogram')
 
 
 
 
-dist_matrix = np.zeros((len(pws),len(pws)))
-for i in range(1, len(pws)+1):
-	for j in range(i, len(pws)+1):
-		#dist_matrix[i-1, j-1] = dist_matrix[j-1,i-1] = dist_sqlite(i,j)
-		#dist_matrix[i-1, j-1] = dist_matrix[j-1,i-1] = dist_panda(i,j)
-		dist_matrix[i-1, j-1] = dist_matrix[j-1,i-1] = sym_diff_dist_sqlite(i,j)
-		#print 'Distance between PWs', i, 'and', j, 'is', dist_matrix[i-1,j-1]
+dist_matrix = compute_dist_matrix(None)
+
 
 
 
@@ -1668,7 +1723,7 @@ if len(pws) > 1:
 	#dbscan_clustering(dist_matrix)
 	#dbscan_clustering_plotly(dist_matrix)
 	#linkage_dendrogram(dist_matrix)
-	dendrogram_plotly(dist_matrix)
+	dendrogram_plotly(np.array([i for i in range(len(pws))]))
 
 
 
