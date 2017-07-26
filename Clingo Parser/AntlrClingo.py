@@ -22,6 +22,7 @@ import plotly.plotly as py
 import plotly.graph_objs as go
 import plotly.figure_factory as ff
 import networkx as nx
+import string
 
 
 
@@ -1735,10 +1736,39 @@ def mds_graph(D):
 	mpld3.show()
 	#plt.show()
 
+def mds_graph_2(A):
+
+	global pws 
+	global relations 
+	global expected_pws 
+	global curr_pw
+	global curr_rl 
+	global curr_rl_data 
+	global n_rls
+	global dfs
+	global out_file
+
+	dt = [('len', float)]
+	A = A.view(dt)
+	G = nx.from_numpy_matrix(A)
+	#G = nx.relabel_nodes(G, dict(zip(range(len(G.nodes())),string.ascii_uppercase)))
+	G = nx.relabel_nodes(G, dict(zip(range(len(G.nodes())),['pw-{}'.format(i) for i in range(len(pws))])))     
+
+	G = nx.drawing.nx_agraph.to_agraph(G)
+
+	G.node_attr.update(color="red", style="filled")
+	G.edge_attr.update(color="blue", width="0.1")
+
+	mkdir_p('Mini Workflow/parser_output/clustering_output/' + str(project_name))
+	G.draw('Mini Workflow/parser_output/clustering_output/' + str(project_name) + '/' + str(project_name) + '_networkx_out.png', format='png', prog='neato')
+
+	
+
 
 
 dist_matrix = compute_dist_matrix(None)
 #mds_graph(dist_matrix)
+mds_graph_2(dist_matrix)
 
 
 
