@@ -17,6 +17,13 @@ from scipy.cluster.hierarchy import dendrogram, linkage
 from scipy.spatial.distance import squareform
 from scipy.cluster.hierarchy import cophenet
 from scipy.spatial.distance import pdist
+import mpld3
+import plotly.plotly as py
+import plotly.graph_objs as go
+import plotly.figure_factory as ff
+import networkx as nx
+import string
+
 
 
 
@@ -1149,6 +1156,17 @@ def unique_tuples_panda(rl_id = 0, col_names = [], pws_to_consider = [j for j in
 
 def dist_sqlite(pw_id_1, pw_id_2):
 
+	global pws 
+	global relations 
+	global expected_pws 
+	global curr_pw
+	global curr_rl 
+	global curr_rl_data 
+	global n_rls
+	global dfs
+	global out_file 
+	global conn
+
 	# if pw_id_1 == pw_id_2:
 	# 	return 0
 
@@ -1210,6 +1228,17 @@ def dist_sqlite(pw_id_1, pw_id_2):
 
 def dist_panda(pw_id_1, pw_id_2):
 
+	global pws 
+	global relations 
+	global expected_pws 
+	global curr_pw
+	global curr_rl 
+	global curr_rl_data 
+	global n_rls
+	global dfs
+	global out_file 
+	global conn
+
 	# if pw_id_1 == pw_id_2:
 	# 	return 0
 
@@ -1269,6 +1298,46 @@ def dist_panda(pw_id_1, pw_id_2):
 
 
 	return dist
+
+def sym_diff_dist_sqlite(pw_id_1, pw_id_2, rls_to_use = []):
+
+	global pws 
+	global relations 
+	global expected_pws 
+	global curr_pw
+	global curr_rl 
+	global curr_rl_data 
+	global n_rls
+	global dfs
+	global out_file 
+	global conn
+
+	if pw_id_1 == pw_id_2:
+		return 0
+
+	if rls_to_use == []:
+		rls_to_use = [i for i in range(len(relations))]
+
+	dist = 0
+	for rl_id in rls_to_use:
+
+		rl = relations[rl_id]
+		max_num_tuples = max(num_tuples_sqlite(rl_id, pw_id_1, False), num_tuples_sqlite(rl_id, pw_id_2, False))
+		redundant_cols = redundant_column_sqlite(rl_id = rl_id, pws_to_consider = [pw_id_1,pw_id_2], do_print = False)[0]
+		cols_to_consider = set(list(dfs[i])[1:])
+		for t in redundant_cols:
+			if t in cols_to_consider:
+				cols_to_consider.remove(t[2])
+		cols_to_consider = list(cols_to_consider)
+
+		wt1 = 1 #TBD
+		k1 = 1 #TBD
+
+		x1 = difference_both_ways_sqlite(rl_id, pw_id_1, pw_id_2, cols_to_consider, False)
+		dist += wt1 * len(x1)**k1 if x1 is not None else 0
+		
+	return dist
+
 
 
 ###########################################################################################
@@ -1411,8 +1480,56 @@ while query_db in ['y', 'yes', '1', 1]:
 
 ###########################################################################################
 
+def compute_dist_matrix(X):
+
+	global pws 
+	global relations 
+	global expected_pws 
+	global curr_pw
+	global curr_rl 
+	global curr_rl_data 
+	global n_rls
+	global dfs
+	global out_file
+
+	dist_matrix = np.zeros((len(pws),len(pws)))
+	for i in range(1, len(pws)+1):
+		for j in range(i, len(pws)+1):
+			#dist_matrix[i-1, j-1] = dist_matrix[j-1,i-1] = dist_sqlite(i,j)
+			#dist_matrix[i-1, j-1] = dist_matrix[j-1,i-1] = dist_panda(i,j)
+			dist_matrix[i-1, j-1] = dist_matrix[j-1,i-1] = sym_diff_dist_sqlite(i,j)
+			#print 'Distance between PWs', i, 'and', j, 'is', dist_matrix[i-1,j-1]
+	if np.max(dist_matrix) != np.min(dist_matrix):
+		dist_matrix = (dist_matrix - np.min(dist_matrix))/(np.max(dist_matrix) - np.min(dist_matrix))
+	return dist_matrix
+
+
+
+def matplotlib_to_plotly(cmap, pl_entries):
+
+    h = 1.0/(pl_entries-1)
+    pl_colorscale = []
+    
+    for k in range(pl_entries):
+        C = map(np.uint8, np.array(cmap(k*h)[:3])*255)
+        pl_colorscale.append([k*h, 'rgb'+str((C[0], C[1], C[2]))])
+        
+    return pl_colorscale
+
+
 def dbscan_clustering(dist_matrix):
-	db = DBSCAN(metric = 'precomputed')#, eps = 0.4, min_samples = 1)
+
+	global pws 
+	global relations 
+	global expected_pws 
+	global curr_pw
+	global curr_rl 
+	global curr_rl_data 
+	global n_rls
+	global dfs
+	global out_file
+
+	db = DBSCAN(metric = 'precomputed', eps = 0.5, min_samples = 1)
 	labels = db.fit_predict(dist_matrix)
 	out_file.write('Cluster Labels: ' + str(labels) + '\n')
 
@@ -1426,6 +1543,10 @@ def dbscan_clustering(dist_matrix):
 	unique_labels = set(labels)
 	colors = [plt.cm.Spectral(each)
 	          for each in np.linspace(0, 1, len(unique_labels))]
+	
+
+	#fig, ax = plt.subplots()
+
 	for k, col in zip(unique_labels, colors):
 	    if k == -1:
 	        # Black used for noise.
@@ -1441,46 +1562,223 @@ def dbscan_clustering(dist_matrix):
 	    plt.plot(xy[:, 0], xy[:, 1], 'o', markerfacecolor=tuple(col),
 	             markeredgecolor='k', markersize=6)
 
+	#labels = ['point {0}'.format(i + 1) for i in range(expected_pws)]
+	#fig.plugins = [mpld3.plugins.PointLabelTooltip(labels)]
 	plt.title('Estimated number of clusters: %d' % n_clusters_)
+	#mpld3.show()
 	#plt.show()
 	mkdir_p('Mini Workflow/parser_output/clustering_output/' + str(project_name))
 	plt.savefig('Mini Workflow/parser_output/clustering_output/' + str(project_name) + '/' + str(project_name) + '.png')
 	plt.figure()
 
 
+
+def dbscan_clustering_plotly(dist_matrix):
+
+	global pws 
+	global relations 
+	global expected_pws 
+	global curr_pw
+	global curr_rl 
+	global curr_rl_data 
+	global n_rls
+	global dfs
+	global out_file
+
+	db = DBSCAN(metric = 'precomputed', eps = 0.5, min_samples = 1)
+	labels = db.fit_predict(dist_matrix)
+	out_file.write('Cluster Labels: ' + str(labels) + '\n')
+
+
+	core_samples_mask = np.zeros_like(db.labels_, dtype=bool)
+	core_samples_mask[db.core_sample_indices_] = True
+	labels = db.labels_
+
+	# Number of clusters in labels, ignoring noise if present.
+	n_clusters_ = len(set(labels)) - (1 if -1 in labels else 0)
+	unique_labels = set(labels)
+
+	colors = matplotlib_to_plotly(plt.cm.Spectral, len(unique_labels))
+	data = []
+
+	for k, col in zip(unique_labels, colors):
+    
+	    if k == -1:
+	        # Black used for noise.
+	        col = 'black'
+	    else:
+	        col = col[1]
+	    
+	    class_member_mask = (labels == k)
+	   
+	    xy = dist_matrix[class_member_mask & core_samples_mask]
+	    trace1 = go.Scatter(x=xy[:, 0], y=xy[:, 1], mode='markers', 
+	                        marker=dict(color=col, size=14,
+	                                    line=dict(color='black', width=1)))
+
+	    xy = dist_matrix[class_member_mask & ~core_samples_mask]
+	    trace2 = go.Scatter(x=xy[:, 0], y=xy[:, 1], mode='markers', 
+	                        marker=dict(color=col, size=14,
+	                                    line=dict(color='black', width=1)))
+	    data.append(trace1)
+	    data.append(trace2)
+
+	layout = go.Layout(showlegend=False,
+	                   title='Estimated number of clusters: %d' % n_clusters_,
+	                   xaxis=dict(showgrid=False, zeroline=False),
+	                   yaxis=dict(showgrid=False, zeroline=False))
+	fig = go.Figure(data=data, layout=layout)
+
+	py.plot(fig)
+
+
+
 def linkage_dendrogram(dist_matrix):
+	
+	global pws 
+	global relations 
+	global expected_pws 
+	global curr_pw
+	global curr_rl 
+	global curr_rl_data 
+	global n_rls
+	global dfs
+	global out_file
+
 	X = squareform(dist_matrix)
 	Z = linkage(X, 'ward')
-	#c, coph_dists = cophenet(Z, pdist(X))
+	
 	plt.title('Hierarchical Clustering Dendrogram (Ward)')
 	plt.xlabel('sample index')
 	plt.ylabel('distance')
 	dendrogram(Z, leaf_rotation=90., leaf_font_size=8.)
+	#mpld3.show()
 	plt.savefig('Mini Workflow/parser_output/clustering_output/' + str(project_name) + '/' + str(project_name) + '_ward_dendrogram.png')
 	plt.figure()
+	
 	linkage_matrix = linkage(X, "single")
 	dendrogram(linkage_matrix, labels=[str(i) for i in range(len(dist_matrix))])
 	plt.title("Dendrogram (Single)")
+	#mpld3.show()
 	plt.savefig('Mini Workflow/parser_output/clustering_output/' + str(project_name) + '/' + str(project_name) + '_single_dendrogram.png')
+	plt.figure()
+
+	linkage_matrix = linkage(X, "complete")
+	dendrogram(linkage_matrix, labels=[str(i) for i in range(len(dist_matrix))])
+	plt.title("Dendrogram (Complete)")
+	plt.savefig('Mini Workflow/parser_output/clustering_output/' + str(project_name) + '/' + str(project_name) + '_complete_dendrogram.png')
+	plt.figure()
+
+	linkage_matrix = linkage(X, "average")
+	dendrogram(linkage_matrix, labels=[str(i) for i in range(len(dist_matrix))])
+	plt.title("Dendrogram (Average)")
+	plt.savefig('Mini Workflow/parser_output/clustering_output/' + str(project_name) + '/' + str(project_name) + '_average_dendrogram.png')
+	plt.figure()
+
+	linkage_matrix = linkage(X, "weighted")
+	dendrogram(linkage_matrix, labels=[str(i) for i in range(len(dist_matrix))])
+	plt.title("Dendrogram (Weighted)")
+	plt.savefig('Mini Workflow/parser_output/clustering_output/' + str(project_name) + '/' + str(project_name) + '_weighted_dendrogram.png')
+	plt.figure()
+
+	linkage_matrix = linkage(X, "centroid")
+	dendrogram(linkage_matrix, labels=[str(i) for i in range(len(dist_matrix))])
+	plt.title("Dendrogram (Centroid)")
+	plt.savefig('Mini Workflow/parser_output/clustering_output/' + str(project_name) + '/' + str(project_name) + '_centroid_dendrogram.png')
+	plt.figure()
+
+	linkage_matrix = linkage(X, "median")
+	dendrogram(linkage_matrix, labels=[str(i) for i in range(len(dist_matrix))])
+	plt.title("Dendrogram (Median)")
+	plt.savefig('Mini Workflow/parser_output/clustering_output/' + str(project_name) + '/' + str(project_name) + '_median_dendrogram.png')
+	plt.figure()
+
+
+def dendrogram_plotly(dist_matrix):
+
+	global pws 
+	global relations 
+	global expected_pws 
+	global curr_pw
+	global curr_rl 
+	global curr_rl_data 
+	global n_rls
+	global dfs
+	global out_file
+
+	pw_ids = [i for i in range(len(dist_matrix))]
+	dendro = ff.create_dendrogram(dist_matrix, labels = pw_ids, distfun = compute_dist_matrix)
+	dendro['layout'].update({'width':800, 'height':500})
+	py.plot(dendro, filename='dendrogram')
+
+def mds_graph(D):
+
+	global pws 
+	global relations 
+	global expected_pws 
+	global curr_pw
+	global curr_rl 
+	global curr_rl_data 
+	global n_rls
+	global dfs
+	global out_file
+
+	G = nx.Graph()
+	labels = {}
+	for n in range(len(D)):
+	    for m in range(len(D)-(n+1)):
+	        G.add_edge(n,n+m+1)
+	        labels[ (n,n+m+1) ] = str(D[n][n+m+1])
+	pos=nx.spring_layout(G)
+
+	nx.draw(G, pos)
+	nx.draw_networkx_edge_labels(G,pos,edge_labels=labels,font_size=30)
+	mpld3.show()
+	#plt.show()
+
+def mds_graph_2(A):
+
+	global pws 
+	global relations 
+	global expected_pws 
+	global curr_pw
+	global curr_rl 
+	global curr_rl_data 
+	global n_rls
+	global dfs
+	global out_file
+
+	dt = [('len', float)]
+	A = A.view(dt)
+	G = nx.from_numpy_matrix(A)
+	#G = nx.relabel_nodes(G, dict(zip(range(len(G.nodes())),string.ascii_uppercase)))
+	G = nx.relabel_nodes(G, dict(zip(range(len(G.nodes())),['pw-{}'.format(i) for i in range(len(pws))])))     
+
+	G = nx.drawing.nx_agraph.to_agraph(G)
+
+	G.node_attr.update(color="red", style="filled")
+	G.edge_attr.update(color="blue", width="0.1")
+
+	mkdir_p('Mini Workflow/parser_output/clustering_output/' + str(project_name))
+	G.draw('Mini Workflow/parser_output/clustering_output/' + str(project_name) + '/' + str(project_name) + '_networkx_out.png', format='png', prog='neato')
+
+	
 
 
 
-dist_matrix = np.zeros((len(pws),len(pws)))
-for i in range(1, len(pws)+1):
-	for j in range(i, len(pws)+1):
-		dist_matrix[i-1, j-1] = dist_matrix[j-1,i-1] = dist_sqlite(i,j)
-		#dist_matrix[i-1, j-1] = dist_matrix[j-1,i-1] = dist_panda(i,j)
-		#print 'Distance between PWs', i, 'and', j, 'is', dist_matrix[i-1,j-1]
+dist_matrix = compute_dist_matrix(None)
+#mds_graph(dist_matrix)
+mds_graph_2(dist_matrix)
 
 
 
 if len(pws) > 1:
-	if np.max(dist_matrix) != np.min(dist_matrix):
-		dist_matrix = (dist_matrix - np.min(dist_matrix))/(np.max(dist_matrix) - np.min(dist_matrix))
 	out_file.write(str(dist_matrix))
 	out_file.write('\n')
-	dbscan_clustering(dist_matrix)
-	linkage_dendrogram(dist_matrix)
+	#dbscan_clustering(dist_matrix)
+	#dbscan_clustering_plotly(dist_matrix)
+	#linkage_dendrogram(dist_matrix)
+	#dendrogram_plotly(np.array([i for i in range(len(pws))]))
 
 
 

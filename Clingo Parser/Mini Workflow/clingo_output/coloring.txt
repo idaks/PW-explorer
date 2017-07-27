@@ -58,29 +58,9 @@ Answer: 29
 color(belgium,red) color(netherlands,blue) color(france,white) color(luxembourg,green) color(germany,blue) color(denmark,red)
 Answer: 30
 color(belgium,red) color(netherlands,blue) color(france,white) color(luxembourg,green) color(germany,blue) color(denmark,white)
-Answer: 31
-color(belgium,red) color(netherlands,blue) color(france,white) color(luxembourg,green) color(germany,blue) color(denmark,blue)
-Answer: 32
-color(belgium,red) color(netherlands,blue) color(france,white) color(luxembourg,green) color(germany,blue) color(denmark,green)
-Answer: 33
-color(belgium,red) color(netherlands,blue) color(france,green) color(luxembourg,red) color(germany,blue) color(denmark,white)
-Answer: 34
-color(belgium,red) color(netherlands,blue) color(france,green) color(luxembourg,red) color(germany,blue) color(denmark,green)
-Answer: 35
-color(belgium,red) color(netherlands,blue) color(france,green) color(luxembourg,red) color(germany,blue) color(denmark,red)
-Answer: 36
-color(belgium,red) color(netherlands,blue) color(france,green) color(luxembourg,red) color(germany,blue) color(denmark,blue)
-Answer: 37
-color(belgium,red) color(netherlands,blue) color(france,green) color(luxembourg,green) color(germany,blue) color(denmark,white)
-Answer: 38
-color(belgium,red) color(netherlands,blue) color(france,green) color(luxembourg,green) color(germany,blue) color(denmark,green)
-Answer: 39
-color(belgium,red) color(netherlands,blue) color(france,green) color(luxembourg,green) color(germany,blue) color(denmark,red)
-Answer: 40
-color(belgium,red) color(netherlands,blue) color(france,green) color(luxembourg,green) color(germany,blue) color(denmark,blue)
 SATISFIABLE
 
-Models       : 40+
+Models       : 30+
 Calls        : 1
-Time         : 0.002s (Solving: 0.00s 1st Model: 0.00s Unsat: 0.00s)
-CPU Time     : 0.002s
+Time         : 0.008s (Solving: 0.00s 1st Model: 0.00s Unsat: 0.00s)
+CPU Time     : 0.004s
