@@ -1749,6 +1749,7 @@ def mds_graph_2(A):
 	global out_file
 
 	dt = [('len', float)]
+	A = A*len(A)
 	A = A.view(dt)
 	G = nx.from_numpy_matrix(A)
 	#G = nx.relabel_nodes(G, dict(zip(range(len(G.nodes())),string.ascii_uppercase)))
