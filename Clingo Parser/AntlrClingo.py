@@ -1758,7 +1758,7 @@ def mds_graph_2(A):
 	G = nx.drawing.nx_agraph.to_agraph(G)
 
 	G.node_attr.update(color="red", style="filled")
-	G.edge_attr.update(color="blue", width="0.1")
+	G.edge_attr.update(color=None, width="0.1")
 
 	mkdir_p('Mini Workflow/parser_output/clustering_output/' + str(project_name))
 	G.draw('Mini Workflow/parser_output/clustering_output/' + str(project_name) + '/' + str(project_name) + '_networkx_out.png', format='png', prog='neato')
