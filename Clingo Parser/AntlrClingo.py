@@ -1749,7 +1749,10 @@ def mds_graph_2(A):
 	global out_file
 
 	dt = [('len', float)]
+<<<<<<< HEAD
 	A = A*len(A)/5
+=======
+>>>>>>> 206234eeff51681e5c03eb56cb18fd425b3116b8
 	A = A.view(dt)
 	G = nx.from_numpy_matrix(A)
 	#G = nx.relabel_nodes(G, dict(zip(range(len(G.nodes())),string.ascii_uppercase)))
@@ -1758,7 +1761,11 @@ def mds_graph_2(A):
 	G = nx.drawing.nx_agraph.to_agraph(G)
 
 	G.node_attr.update(color="red", style="filled")
+<<<<<<< HEAD
 	G.edge_attr.update(color=None, width="0.1")
+=======
+	G.edge_attr.update(color="blue", width="0.1")
+>>>>>>> 206234eeff51681e5c03eb56cb18fd425b3116b8
 
 	mkdir_p('Mini Workflow/parser_output/clustering_output/' + str(project_name))
 	G.draw('Mini Workflow/parser_output/clustering_output/' + str(project_name) + '/' + str(project_name) + '_networkx_out.png', format='png', prog='neato')
