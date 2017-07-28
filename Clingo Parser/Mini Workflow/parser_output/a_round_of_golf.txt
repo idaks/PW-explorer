@@ -5,18 +5,22 @@ score_2
 1   1  frank  75
 2   1   paul  78
 3   1   jack  85
+
 last_name_2
    pw     x1      x2
 0   1   jack   clubb
 1   1   bill   sands
 2   1   paul  carter
 3   1  frank   green
+
 job_2
    pw     x1               x2
 0   1  frank            clerk
 1   1   paul            caddy
 2   1   jack  maintenance_man
 3   1   bill             cook
+
+Successfully exported to sql
 Sqlite Schema:
 CREATE TABLE "job_2" (
 "index" INTEGER,

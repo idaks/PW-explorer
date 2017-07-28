@@ -10,7 +10,7 @@ clingoOutput: (solution)* OPTIMUM_FOUND? summary ;
 
 solution: 'Answer:' TEXT (actual_soln)* 'Optimization:'? TEXT? ;
 
-actual_soln: TEXT '(' custom_representation_soln ')' ;
+actual_soln: TEXT+ '(' custom_representation_soln ')' ;
 
 custom_representation_soln: TEXT ;
 
@@ -33,7 +33,7 @@ cpuTime: (TEXT | '(' | ')' | ':')+ ;
 
 OPTIMUM_FOUND: 'OPTIMUM FOUND' | 'UNSATISFIABLE' | 'SATISFIABLE' ; 
 
-TEXT: [a-zA-Z0-9\\_.,/:\-]+ ;
+TEXT: [a-zA-Z0-9\\_.,/:\-<>"!=]+ ;
 
 WHITESPACE : ( '\t' | ' ' | '\r' | '\n'| '\u000C' )+ -> skip ;
 

@@ -204,7 +204,11 @@ class AntlrClingoListener(ClingoListener):
 		global dfs
 		global out_file
 
-		curr_rl = Relation(ctx.TEXT().getText())
+		i = 0
+		tmp = ''
+		while ctx.TEXT(i) is not None:
+			i += 1
+		curr_rl = Relation(ctx.TEXT(i-1).getText())
 		#print lineno()
 
 	def enterCustom_representation_soln(self, ctx):
@@ -368,6 +372,8 @@ class AntlrClingoListener(ClingoListener):
 		#loading into pandas DF
 		rearrangePWSandRLS()
 		loadIntoPandas()
+		#for rl in relations: print rl.relation_name, rl.r_id, '\n'
+		#for df in dfs: print df.head(5), '\n', list(df), '\n'
 
 ######################################################################################
 
@@ -1324,7 +1330,7 @@ def sym_diff_dist_sqlite(pw_id_1, pw_id_2, rls_to_use = []):
 		rl = relations[rl_id]
 		max_num_tuples = max(num_tuples_sqlite(rl_id, pw_id_1, False), num_tuples_sqlite(rl_id, pw_id_2, False))
 		redundant_cols = redundant_column_sqlite(rl_id = rl_id, pws_to_consider = [pw_id_1,pw_id_2], do_print = False)[0]
-		cols_to_consider = set(list(dfs[i])[1:])
+		cols_to_consider = set(list(dfs[rl_id])[1:])
 		for t in redundant_cols:
 			if t in cols_to_consider:
 				cols_to_consider.remove(t[2])
