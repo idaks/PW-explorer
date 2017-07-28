@@ -1,0 +1,147 @@
+T1.SUV:
+  concept: SUV
+  group: T1
+T1.Sedan:
+  concept: Sedan
+  group: T1
+T1.Sedan_Audi:
+  concept: Sedan_Audi
+  group: T1
+T1.Wagon:
+  concept: Wagon
+  group: T1
+T1.Wagon_BMW:
+  concept: Wagon_BMW
+  group: T1
+T2.Audi:
+  concept: Audi
+  group: T2
+T2.BMW:
+  concept: BMW
+  group: T2
+T2.SUV_Audi:
+  concept: SUV_Audi
+  group: T2
+T2.SUV_BMW:
+  concept: SUV_BMW
+  group: T2
+T2.Sedan_Audi:
+  concept: Sedan_Audi
+  group: T2
+congruent.T1.Automobile\nT2.Automobile:
+  concept: T1.Automobile\nT2.Automobile
+  group: congruent
+congruent.T1.Sedan_BMW\nT2.Sedan_BMW:
+  concept: T1.Sedan_BMW\nT2.Sedan_BMW
+  group: congruent
+congruent.T1.Wagon_Audi\nT2.Wagon_Audi:
+  concept: T1.Wagon_Audi\nT2.Wagon_Audi
+  group: congruent
+T1.SUV_T2.Audi:
+  label: is_a (inferred)
+  s: T1.SUV
+  t: T2.Audi
+T1.Sedan_Audi_T1.Sedan:
+  label: is_a (input)
+  s: T1.Sedan_Audi
+  t: T1.Sedan
+T1.Sedan_BMW\nT2.Sedan_BMW_T1.Sedan:
+  label: is_a (input)
+  s: T1.Sedan_BMW\nT2.Sedan_BMW
+  t: T1.Sedan
+T1.Sedan_BMW\nT2.Sedan_BMW_T2.BMW:
+  label: is_a (input)
+  s: T1.Sedan_BMW\nT2.Sedan_BMW
+  t: T2.BMW
+T1.Sedan_T1.Automobile\nT2.Automobile:
+  label: is_a (input)
+  s: T1.Sedan
+  t: T1.Automobile\nT2.Automobile
+T1.Wagon_Audi\nT2.Wagon_Audi_T1.Wagon:
+  label: is_a (input)
+  s: T1.Wagon_Audi\nT2.Wagon_Audi
+  t: T1.Wagon
+T1.Wagon_Audi\nT2.Wagon_Audi_T2.Audi:
+  label: is_a (input)
+  s: T1.Wagon_Audi\nT2.Wagon_Audi
+  t: T2.Audi
+T1.Wagon_BMW_T1.Wagon:
+  label: is_a (input)
+  s: T1.Wagon_BMW
+  t: T1.Wagon
+T1.Wagon_BMW_T2.SUV_BMW:
+  label: is_a (inferred)
+  s: T1.Wagon_BMW
+  t: T2.SUV_BMW
+T1.Wagon_T1.Automobile\nT2.Automobile:
+  label: is_a (input)
+  s: T1.Wagon
+  t: T1.Automobile\nT2.Automobile
+T2.Audi_T1.Automobile\nT2.Automobile:
+  label: is_a (input)
+  s: T2.Audi
+  t: T1.Automobile\nT2.Automobile
+T2.Audi_T1.Sedan:
+  label: overlaps (inferred)
+  s: T2.Audi
+  t: T1.Sedan
+T2.Audi_T1.Sedan_Audi:
+  label: overlaps (inferred)
+  s: T2.Audi
+  t: T1.Sedan_Audi
+T2.Audi_T1.Wagon:
+  label: overlaps (inferred)
+  s: T2.Audi
+  t: T1.Wagon
+T2.BMW_T1.Automobile\nT2.Automobile:
+  label: is_a (input)
+  s: T2.BMW
+  t: T1.Automobile\nT2.Automobile
+T2.BMW_T1.Sedan:
+  label: overlaps (inferred)
+  s: T2.BMW
+  t: T1.Sedan
+T2.BMW_T1.Sedan_Audi:
+  label: overlaps (inferred)
+  s: T2.BMW
+  t: T1.Sedan_Audi
+T2.BMW_T1.Wagon:
+  label: overlaps (inferred)
+  s: T2.BMW
+  t: T1.Wagon
+T2.SUV_Audi_T1.SUV:
+  label: is_a (inferred)
+  s: T2.SUV_Audi
+  t: T1.SUV
+T2.SUV_BMW_T1.Sedan:
+  label: overlaps (inferred)
+  s: T2.SUV_BMW
+  t: T1.Sedan
+T2.SUV_BMW_T1.Sedan_Audi:
+  label: overlaps (inferred)
+  s: T2.SUV_BMW
+  t: T1.Sedan_Audi
+T2.SUV_BMW_T1.Wagon:
+  label: overlaps (inferred)
+  s: T2.SUV_BMW
+  t: T1.Wagon
+T2.SUV_BMW_T2.BMW:
+  label: is_a (input)
+  s: T2.SUV_BMW
+  t: T2.BMW
+T2.Sedan_Audi_T1.SUV:
+  label: overlaps (inferred)
+  s: T2.Sedan_Audi
+  t: T1.SUV
+T2.Sedan_Audi_T1.Sedan:
+  label: overlaps (inferred)
+  s: T2.Sedan_Audi
+  t: T1.Sedan
+T2.Sedan_Audi_T1.Sedan_Audi:
+  label: overlaps (inferred)
+  s: T2.Sedan_Audi
+  t: T1.Sedan_Audi
+T2.Sedan_Audi_T2.Audi:
+  label: is_a (input)
+  s: T2.Sedan_Audi
+  t: T2.Audi

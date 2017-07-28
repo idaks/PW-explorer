@@ -1,0 +1,491 @@
+%%% Euler regions
+r(1..35).
+
+%%% Concepts
+tax(tT2,0).
+concept2(A, B) :- concept(A,B,_).
+concept(cT2_SUV_BMW,0,0).
+concept2(cT2_Automobile,0).
+concept2(cT2_BMW,0).
+concept(cT2_Sedan_BMW,0,1).
+concept(cT2_Sedan_Audi,0,2).
+concept(cT2_Wagon_Audi,0,3).
+concept(cT2_SUV_Audi,0,4).
+concept2(cT2_Audi,0).
+tax(tT1,1).
+concept2(A, B) :- concept(A,B,_).
+concept2(cT1_Wagon,1).
+concept2(cT1_Automobile,1).
+concept(cT1_Wagon_BMW,1,0).
+concept(cT1_SUV,1,1).
+concept(cT1_Sedan_BMW,1,2).
+concept2(cT1_Sedan,1).
+concept(cT1_Sedan_Audi,1,3).
+concept(cT1_Wagon_Audi,1,4).
+%%% Euler Bit
+bit(M, 0, V):-r(M),M1=M/1, V = M1 \ 6.
+bit(M, 1, V):-r(M),M1=M/6, V = M1 \ 6.
+
+
+%%% Meaning of regions
+in(X, M) :- r(M),concept(X,T,N),N1=N+1,bit(M,T,N1).
+out(X, M) :- r(M),concept(X,T,N),N1=N+1,not bit(M,T,N1).
+in(X, M) :- r(M),concept2(X,_),not out(X, M).
+out(X, M) :- out3(X, M, _), ix.
+irs(M) :- in(X, M), out(X, M), r(M), concept2(X,_).
+
+%%% Constraints of regions.
+irs(X) :- ir(X, _).
+vrs(X) :- vr(X, _).
+vr(X, X) :- not irs(X), r(X).
+ir(X, X) :- not vrs(X), r(X), pw.
+ie(prod(A,B)) :- vr(X, A), ir(X, B), ix.
+:- vrs(X), irs(X), pw.
+
+%%% Inconsistency Explanation.
+ie(s(R, A, Y)) :- pie(R, A, Y), not cc(R, Y), ix.
+cc(R, Y) :- c(R, _, Y), ix.
+
+%%% Parent-Child relations
+%% ISA
+% cT2_Audi isa cT2_Automobile
+ir(X, r0) :- in(cT2_Audi, X), out(cT2_Automobile, X), pw.
+ir(X, prod(r0,R)) :- in(cT2_Audi,X), out3(cT2_Automobile, X, R), ix.
+:- #count {X : vrs(X), in(cT2_Audi,X), in(cT2_Automobile,X)} <= 0, pw.
+pie(r0, A, 1) :- ir(X, A), in(cT2_Audi, X), in(cT2_Automobile, X), ix.
+c(r0, A, 1) :- vr(X, A), in(cT2_Audi, X), in(cT2_Automobile, X), ix.
+
+% cT2_BMW isa cT2_Automobile
+ir(X, r1) :- in(cT2_BMW, X), out(cT2_Automobile, X), pw.
+ir(X, prod(r1,R)) :- in(cT2_BMW,X), out3(cT2_Automobile, X, R), ix.
+:- #count {X : vrs(X), in(cT2_BMW,X), in(cT2_Automobile,X)} <= 0, pw.
+pie(r1, A, 1) :- ir(X, A), in(cT2_BMW, X), in(cT2_Automobile, X), ix.
+c(r1, A, 1) :- vr(X, A), in(cT2_BMW, X), in(cT2_Automobile, X), ix.
+
+%% coverage
+out3(cT2_Automobile, X, r2) :- out(cT2_Audi, X), out(cT2_BMW, X), ix.
+out(cT2_Automobile, X) :- out(cT2_Audi, X), out(cT2_BMW, X), pw.
+%% sibling disjointness
+% cT2_Audi ! cT2_BMW
+ir(X, r3) :- in(cT2_Audi, X), in(cT2_BMW, X).
+:- #count {X : vrs(X), in(cT2_Audi,X), out(cT2_BMW,X)} <= 0, pw.
+:- #count {X : vrs(X), out(cT2_Audi,X), in(cT2_BMW,X)} <= 0, pw.
+pie(r3, A, 1) :- ir(X, A), in(cT2_Audi, X), out(cT2_BMW, X), ix.
+c(r3, A, 1) :- vr(X, A), in(cT2_Audi, X), out(cT2_BMW, X), ix.
+pie(r3, A, 2) :- ir(X, A), out(cT2_Audi, X), in(cT2_BMW, X), ix.
+c(r3, A, 2) :- vr(X, A), out(cT2_Audi, X), in(cT2_BMW, X), ix.
+
+%% ISA
+% cT2_Sedan_Audi isa cT2_Audi
+ir(X, r4) :- in(cT2_Sedan_Audi, X), out(cT2_Audi, X), pw.
+ir(X, prod(r4,R)) :- in(cT2_Sedan_Audi,X), out3(cT2_Audi, X, R), ix.
+:- #count {X : vrs(X), in(cT2_Sedan_Audi,X), in(cT2_Audi,X)} <= 0, pw.
+pie(r4, A, 1) :- ir(X, A), in(cT2_Sedan_Audi, X), in(cT2_Audi, X), ix.
+c(r4, A, 1) :- vr(X, A), in(cT2_Sedan_Audi, X), in(cT2_Audi, X), ix.
+
+% cT2_Wagon_Audi isa cT2_Audi
+ir(X, r5) :- in(cT2_Wagon_Audi, X), out(cT2_Audi, X), pw.
+ir(X, prod(r5,R)) :- in(cT2_Wagon_Audi,X), out3(cT2_Audi, X, R), ix.
+:- #count {X : vrs(X), in(cT2_Wagon_Audi,X), in(cT2_Audi,X)} <= 0, pw.
+pie(r5, A, 1) :- ir(X, A), in(cT2_Wagon_Audi, X), in(cT2_Audi, X), ix.
+c(r5, A, 1) :- vr(X, A), in(cT2_Wagon_Audi, X), in(cT2_Audi, X), ix.
+
+% cT2_SUV_Audi isa cT2_Audi
+ir(X, r6) :- in(cT2_SUV_Audi, X), out(cT2_Audi, X), pw.
+ir(X, prod(r6,R)) :- in(cT2_SUV_Audi,X), out3(cT2_Audi, X, R), ix.
+:- #count {X : vrs(X), in(cT2_SUV_Audi,X), in(cT2_Audi,X)} <= 0, pw.
+pie(r6, A, 1) :- ir(X, A), in(cT2_SUV_Audi, X), in(cT2_Audi, X), ix.
+c(r6, A, 1) :- vr(X, A), in(cT2_SUV_Audi, X), in(cT2_Audi, X), ix.
+
+%% coverage
+out3(cT2_Audi, X, r7) :- out(cT2_Sedan_Audi, X), out(cT2_Wagon_Audi, X), out(cT2_SUV_Audi, X), ix.
+out(cT2_Audi, X) :- out(cT2_Sedan_Audi, X), out(cT2_Wagon_Audi, X), out(cT2_SUV_Audi, X), pw.
+%% sibling disjointness
+% cT2_Sedan_Audi ! cT2_Wagon_Audi
+ir(X, r8) :- in(cT2_Sedan_Audi, X), in(cT2_Wagon_Audi, X).
+:- #count {X : vrs(X), in(cT2_Sedan_Audi,X), out(cT2_Wagon_Audi,X)} <= 0, pw.
+:- #count {X : vrs(X), out(cT2_Sedan_Audi,X), in(cT2_Wagon_Audi,X)} <= 0, pw.
+pie(r8, A, 1) :- ir(X, A), in(cT2_Sedan_Audi, X), out(cT2_Wagon_Audi, X), ix.
+c(r8, A, 1) :- vr(X, A), in(cT2_Sedan_Audi, X), out(cT2_Wagon_Audi, X), ix.
+pie(r8, A, 2) :- ir(X, A), out(cT2_Sedan_Audi, X), in(cT2_Wagon_Audi, X), ix.
+c(r8, A, 2) :- vr(X, A), out(cT2_Sedan_Audi, X), in(cT2_Wagon_Audi, X), ix.
+
+% cT2_Sedan_Audi ! cT2_SUV_Audi
+ir(X, r9) :- in(cT2_Sedan_Audi, X), in(cT2_SUV_Audi, X).
+:- #count {X : vrs(X), in(cT2_Sedan_Audi,X), out(cT2_SUV_Audi,X)} <= 0, pw.
+:- #count {X : vrs(X), out(cT2_Sedan_Audi,X), in(cT2_SUV_Audi,X)} <= 0, pw.
+pie(r9, A, 1) :- ir(X, A), in(cT2_Sedan_Audi, X), out(cT2_SUV_Audi, X), ix.
+c(r9, A, 1) :- vr(X, A), in(cT2_Sedan_Audi, X), out(cT2_SUV_Audi, X), ix.
+pie(r9, A, 2) :- ir(X, A), out(cT2_Sedan_Audi, X), in(cT2_SUV_Audi, X), ix.
+c(r9, A, 2) :- vr(X, A), out(cT2_Sedan_Audi, X), in(cT2_SUV_Audi, X), ix.
+
+% cT2_Wagon_Audi ! cT2_SUV_Audi
+ir(X, r10) :- in(cT2_Wagon_Audi, X), in(cT2_SUV_Audi, X).
+:- #count {X : vrs(X), in(cT2_Wagon_Audi,X), out(cT2_SUV_Audi,X)} <= 0, pw.
+:- #count {X : vrs(X), out(cT2_Wagon_Audi,X), in(cT2_SUV_Audi,X)} <= 0, pw.
+pie(r10, A, 1) :- ir(X, A), in(cT2_Wagon_Audi, X), out(cT2_SUV_Audi, X), ix.
+c(r10, A, 1) :- vr(X, A), in(cT2_Wagon_Audi, X), out(cT2_SUV_Audi, X), ix.
+pie(r10, A, 2) :- ir(X, A), out(cT2_Wagon_Audi, X), in(cT2_SUV_Audi, X), ix.
+c(r10, A, 2) :- vr(X, A), out(cT2_Wagon_Audi, X), in(cT2_SUV_Audi, X), ix.
+
+%% ISA
+% cT2_Sedan_BMW isa cT2_BMW
+ir(X, r11) :- in(cT2_Sedan_BMW, X), out(cT2_BMW, X), pw.
+ir(X, prod(r11,R)) :- in(cT2_Sedan_BMW,X), out3(cT2_BMW, X, R), ix.
+:- #count {X : vrs(X), in(cT2_Sedan_BMW,X), in(cT2_BMW,X)} <= 0, pw.
+pie(r11, A, 1) :- ir(X, A), in(cT2_Sedan_BMW, X), in(cT2_BMW, X), ix.
+c(r11, A, 1) :- vr(X, A), in(cT2_Sedan_BMW, X), in(cT2_BMW, X), ix.
+
+% cT2_SUV_BMW isa cT2_BMW
+ir(X, r12) :- in(cT2_SUV_BMW, X), out(cT2_BMW, X), pw.
+ir(X, prod(r12,R)) :- in(cT2_SUV_BMW,X), out3(cT2_BMW, X, R), ix.
+:- #count {X : vrs(X), in(cT2_SUV_BMW,X), in(cT2_BMW,X)} <= 0, pw.
+pie(r12, A, 1) :- ir(X, A), in(cT2_SUV_BMW, X), in(cT2_BMW, X), ix.
+c(r12, A, 1) :- vr(X, A), in(cT2_SUV_BMW, X), in(cT2_BMW, X), ix.
+
+%% coverage
+out3(cT2_BMW, X, r13) :- out(cT2_Sedan_BMW, X), out(cT2_SUV_BMW, X), ix.
+out(cT2_BMW, X) :- out(cT2_Sedan_BMW, X), out(cT2_SUV_BMW, X), pw.
+%% sibling disjointness
+% cT2_Sedan_BMW ! cT2_SUV_BMW
+ir(X, r14) :- in(cT2_Sedan_BMW, X), in(cT2_SUV_BMW, X).
+:- #count {X : vrs(X), in(cT2_Sedan_BMW,X), out(cT2_SUV_BMW,X)} <= 0, pw.
+:- #count {X : vrs(X), out(cT2_Sedan_BMW,X), in(cT2_SUV_BMW,X)} <= 0, pw.
+pie(r14, A, 1) :- ir(X, A), in(cT2_Sedan_BMW, X), out(cT2_SUV_BMW, X), ix.
+c(r14, A, 1) :- vr(X, A), in(cT2_Sedan_BMW, X), out(cT2_SUV_BMW, X), ix.
+pie(r14, A, 2) :- ir(X, A), out(cT2_Sedan_BMW, X), in(cT2_SUV_BMW, X), ix.
+c(r14, A, 2) :- vr(X, A), out(cT2_Sedan_BMW, X), in(cT2_SUV_BMW, X), ix.
+
+%% ISA
+% cT1_Sedan isa cT1_Automobile
+ir(X, r15) :- in(cT1_Sedan, X), out(cT1_Automobile, X), pw.
+ir(X, prod(r15,R)) :- in(cT1_Sedan,X), out3(cT1_Automobile, X, R), ix.
+:- #count {X : vrs(X), in(cT1_Sedan,X), in(cT1_Automobile,X)} <= 0, pw.
+pie(r15, A, 1) :- ir(X, A), in(cT1_Sedan, X), in(cT1_Automobile, X), ix.
+c(r15, A, 1) :- vr(X, A), in(cT1_Sedan, X), in(cT1_Automobile, X), ix.
+
+% cT1_Wagon isa cT1_Automobile
+ir(X, r16) :- in(cT1_Wagon, X), out(cT1_Automobile, X), pw.
+ir(X, prod(r16,R)) :- in(cT1_Wagon,X), out3(cT1_Automobile, X, R), ix.
+:- #count {X : vrs(X), in(cT1_Wagon,X), in(cT1_Automobile,X)} <= 0, pw.
+pie(r16, A, 1) :- ir(X, A), in(cT1_Wagon, X), in(cT1_Automobile, X), ix.
+c(r16, A, 1) :- vr(X, A), in(cT1_Wagon, X), in(cT1_Automobile, X), ix.
+
+% cT1_SUV isa cT1_Automobile
+ir(X, r17) :- in(cT1_SUV, X), out(cT1_Automobile, X), pw.
+ir(X, prod(r17,R)) :- in(cT1_SUV,X), out3(cT1_Automobile, X, R), ix.
+:- #count {X : vrs(X), in(cT1_SUV,X), in(cT1_Automobile,X)} <= 0, pw.
+pie(r17, A, 1) :- ir(X, A), in(cT1_SUV, X), in(cT1_Automobile, X), ix.
+c(r17, A, 1) :- vr(X, A), in(cT1_SUV, X), in(cT1_Automobile, X), ix.
+
+%% coverage
+out3(cT1_Automobile, X, r18) :- out(cT1_Sedan, X), out(cT1_Wagon, X), out(cT1_SUV, X), ix.
+out(cT1_Automobile, X) :- out(cT1_Sedan, X), out(cT1_Wagon, X), out(cT1_SUV, X), pw.
+%% sibling disjointness
+% cT1_Sedan ! cT1_Wagon
+ir(X, r19) :- in(cT1_Sedan, X), in(cT1_Wagon, X).
+:- #count {X : vrs(X), in(cT1_Sedan,X), out(cT1_Wagon,X)} <= 0, pw.
+:- #count {X : vrs(X), out(cT1_Sedan,X), in(cT1_Wagon,X)} <= 0, pw.
+pie(r19, A, 1) :- ir(X, A), in(cT1_Sedan, X), out(cT1_Wagon, X), ix.
+c(r19, A, 1) :- vr(X, A), in(cT1_Sedan, X), out(cT1_Wagon, X), ix.
+pie(r19, A, 2) :- ir(X, A), out(cT1_Sedan, X), in(cT1_Wagon, X), ix.
+c(r19, A, 2) :- vr(X, A), out(cT1_Sedan, X), in(cT1_Wagon, X), ix.
+
+% cT1_Sedan ! cT1_SUV
+ir(X, r20) :- in(cT1_Sedan, X), in(cT1_SUV, X).
+:- #count {X : vrs(X), in(cT1_Sedan,X), out(cT1_SUV,X)} <= 0, pw.
+:- #count {X : vrs(X), out(cT1_Sedan,X), in(cT1_SUV,X)} <= 0, pw.
+pie(r20, A, 1) :- ir(X, A), in(cT1_Sedan, X), out(cT1_SUV, X), ix.
+c(r20, A, 1) :- vr(X, A), in(cT1_Sedan, X), out(cT1_SUV, X), ix.
+pie(r20, A, 2) :- ir(X, A), out(cT1_Sedan, X), in(cT1_SUV, X), ix.
+c(r20, A, 2) :- vr(X, A), out(cT1_Sedan, X), in(cT1_SUV, X), ix.
+
+% cT1_Wagon ! cT1_SUV
+ir(X, r21) :- in(cT1_Wagon, X), in(cT1_SUV, X).
+:- #count {X : vrs(X), in(cT1_Wagon,X), out(cT1_SUV,X)} <= 0, pw.
+:- #count {X : vrs(X), out(cT1_Wagon,X), in(cT1_SUV,X)} <= 0, pw.
+pie(r21, A, 1) :- ir(X, A), in(cT1_Wagon, X), out(cT1_SUV, X), ix.
+c(r21, A, 1) :- vr(X, A), in(cT1_Wagon, X), out(cT1_SUV, X), ix.
+pie(r21, A, 2) :- ir(X, A), out(cT1_Wagon, X), in(cT1_SUV, X), ix.
+c(r21, A, 2) :- vr(X, A), out(cT1_Wagon, X), in(cT1_SUV, X), ix.
+
+%% ISA
+% cT1_Sedan_Audi isa cT1_Sedan
+ir(X, r22) :- in(cT1_Sedan_Audi, X), out(cT1_Sedan, X), pw.
+ir(X, prod(r22,R)) :- in(cT1_Sedan_Audi,X), out3(cT1_Sedan, X, R), ix.
+:- #count {X : vrs(X), in(cT1_Sedan_Audi,X), in(cT1_Sedan,X)} <= 0, pw.
+pie(r22, A, 1) :- ir(X, A), in(cT1_Sedan_Audi, X), in(cT1_Sedan, X), ix.
+c(r22, A, 1) :- vr(X, A), in(cT1_Sedan_Audi, X), in(cT1_Sedan, X), ix.
+
+% cT1_Sedan_BMW isa cT1_Sedan
+ir(X, r23) :- in(cT1_Sedan_BMW, X), out(cT1_Sedan, X), pw.
+ir(X, prod(r23,R)) :- in(cT1_Sedan_BMW,X), out3(cT1_Sedan, X, R), ix.
+:- #count {X : vrs(X), in(cT1_Sedan_BMW,X), in(cT1_Sedan,X)} <= 0, pw.
+pie(r23, A, 1) :- ir(X, A), in(cT1_Sedan_BMW, X), in(cT1_Sedan, X), ix.
+c(r23, A, 1) :- vr(X, A), in(cT1_Sedan_BMW, X), in(cT1_Sedan, X), ix.
+
+%% coverage
+out3(cT1_Sedan, X, r24) :- out(cT1_Sedan_Audi, X), out(cT1_Sedan_BMW, X), ix.
+out(cT1_Sedan, X) :- out(cT1_Sedan_Audi, X), out(cT1_Sedan_BMW, X), pw.
+%% sibling disjointness
+% cT1_Sedan_Audi ! cT1_Sedan_BMW
+ir(X, r25) :- in(cT1_Sedan_Audi, X), in(cT1_Sedan_BMW, X).
+:- #count {X : vrs(X), in(cT1_Sedan_Audi,X), out(cT1_Sedan_BMW,X)} <= 0, pw.
+:- #count {X : vrs(X), out(cT1_Sedan_Audi,X), in(cT1_Sedan_BMW,X)} <= 0, pw.
+pie(r25, A, 1) :- ir(X, A), in(cT1_Sedan_Audi, X), out(cT1_Sedan_BMW, X), ix.
+c(r25, A, 1) :- vr(X, A), in(cT1_Sedan_Audi, X), out(cT1_Sedan_BMW, X), ix.
+pie(r25, A, 2) :- ir(X, A), out(cT1_Sedan_Audi, X), in(cT1_Sedan_BMW, X), ix.
+c(r25, A, 2) :- vr(X, A), out(cT1_Sedan_Audi, X), in(cT1_Sedan_BMW, X), ix.
+
+%% ISA
+% cT1_Wagon_Audi isa cT1_Wagon
+ir(X, r26) :- in(cT1_Wagon_Audi, X), out(cT1_Wagon, X), pw.
+ir(X, prod(r26,R)) :- in(cT1_Wagon_Audi,X), out3(cT1_Wagon, X, R), ix.
+:- #count {X : vrs(X), in(cT1_Wagon_Audi,X), in(cT1_Wagon,X)} <= 0, pw.
+pie(r26, A, 1) :- ir(X, A), in(cT1_Wagon_Audi, X), in(cT1_Wagon, X), ix.
+c(r26, A, 1) :- vr(X, A), in(cT1_Wagon_Audi, X), in(cT1_Wagon, X), ix.
+
+% cT1_Wagon_BMW isa cT1_Wagon
+ir(X, r27) :- in(cT1_Wagon_BMW, X), out(cT1_Wagon, X), pw.
+ir(X, prod(r27,R)) :- in(cT1_Wagon_BMW,X), out3(cT1_Wagon, X, R), ix.
+:- #count {X : vrs(X), in(cT1_Wagon_BMW,X), in(cT1_Wagon,X)} <= 0, pw.
+pie(r27, A, 1) :- ir(X, A), in(cT1_Wagon_BMW, X), in(cT1_Wagon, X), ix.
+c(r27, A, 1) :- vr(X, A), in(cT1_Wagon_BMW, X), in(cT1_Wagon, X), ix.
+
+%% coverage
+out3(cT1_Wagon, X, r28) :- out(cT1_Wagon_Audi, X), out(cT1_Wagon_BMW, X), ix.
+out(cT1_Wagon, X) :- out(cT1_Wagon_Audi, X), out(cT1_Wagon_BMW, X), pw.
+%% sibling disjointness
+% cT1_Wagon_Audi ! cT1_Wagon_BMW
+ir(X, r29) :- in(cT1_Wagon_Audi, X), in(cT1_Wagon_BMW, X).
+:- #count {X : vrs(X), in(cT1_Wagon_Audi,X), out(cT1_Wagon_BMW,X)} <= 0, pw.
+:- #count {X : vrs(X), out(cT1_Wagon_Audi,X), in(cT1_Wagon_BMW,X)} <= 0, pw.
+pie(r29, A, 1) :- ir(X, A), in(cT1_Wagon_Audi, X), out(cT1_Wagon_BMW, X), ix.
+c(r29, A, 1) :- vr(X, A), in(cT1_Wagon_Audi, X), out(cT1_Wagon_BMW, X), ix.
+pie(r29, A, 2) :- ir(X, A), out(cT1_Wagon_Audi, X), in(cT1_Wagon_BMW, X), ix.
+c(r29, A, 2) :- vr(X, A), out(cT1_Wagon_Audi, X), in(cT1_Wagon_BMW, X), ix.
+
+
+%%% Articulations
+% T1.Automobile equals T2.Automobile
+ir(X, r30) :- out(cT1_Automobile,X), in(cT2_Automobile,X).
+ir(X, r30) :- in(cT1_Automobile,X), out(cT2_Automobile,X).
+ir(X, prod(r30,R)) :- out3(cT1_Automobile, X, R), in(cT2_Automobile,X), ix.
+ir(X, prod(r30,R)) :- in(cT1_Automobile,X), out3(cT2_Automobile, X, R), ix.
+:- #count {X : vrs(X), in(cT1_Automobile,X), in(cT2_Automobile,X)} <= 0, pw.
+pie(r30, A, 1) :- ir(X, A), in(cT1_Automobile, X), in(cT2_Automobile, X), ix.
+c(r30, A, 1) :- vr(X, A), in(cT1_Automobile, X), in(cT2_Automobile, X), ix.
+
+
+% T1.Sedan_BMW equals T2.Sedan_BMW
+ir(X, r31) :- out(cT1_Sedan_BMW,X), in(cT2_Sedan_BMW,X).
+ir(X, r31) :- in(cT1_Sedan_BMW,X), out(cT2_Sedan_BMW,X).
+ir(X, prod(r31,R)) :- out3(cT1_Sedan_BMW, X, R), in(cT2_Sedan_BMW,X), ix.
+ir(X, prod(r31,R)) :- in(cT1_Sedan_BMW,X), out3(cT2_Sedan_BMW, X, R), ix.
+:- #count {X : vrs(X), in(cT1_Sedan_BMW,X), in(cT2_Sedan_BMW,X)} <= 0, pw.
+pie(r31, A, 1) :- ir(X, A), in(cT1_Sedan_BMW, X), in(cT2_Sedan_BMW, X), ix.
+c(r31, A, 1) :- vr(X, A), in(cT1_Sedan_BMW, X), in(cT2_Sedan_BMW, X), ix.
+
+
+% T1.Wagon_Audi equals T2.Wagon_Audi
+ir(X, r32) :- out(cT1_Wagon_Audi,X), in(cT2_Wagon_Audi,X).
+ir(X, r32) :- in(cT1_Wagon_Audi,X), out(cT2_Wagon_Audi,X).
+ir(X, prod(r32,R)) :- out3(cT1_Wagon_Audi, X, R), in(cT2_Wagon_Audi,X), ix.
+ir(X, prod(r32,R)) :- in(cT1_Wagon_Audi,X), out3(cT2_Wagon_Audi, X, R), ix.
+:- #count {X : vrs(X), in(cT1_Wagon_Audi,X), in(cT2_Wagon_Audi,X)} <= 0, pw.
+pie(r32, A, 1) :- ir(X, A), in(cT1_Wagon_Audi, X), in(cT2_Wagon_Audi, X), ix.
+c(r32, A, 1) :- vr(X, A), in(cT1_Wagon_Audi, X), in(cT2_Wagon_Audi, X), ix.
+
+
+% T1.Wagon_BMW is_included_in T2.BMW
+:- #count {X : vrs(X), in(cT1_Wagon_BMW,X), in(cT2_BMW,X)} <= 0, pw.
+:- #count {X : vrs(X), out(cT1_Wagon_BMW,X), in(cT2_BMW,X)} <= 0, pw.
+ir(X, r33) :- in(cT1_Wagon_BMW,X), out(cT2_BMW,X), pw.
+pie(r33, A, 1) :- ir(X, A), out(cT1_Wagon_BMW, X), in(cT2_BMW, X), ix.
+c(r33, A, 1) :- vr(X, A), out(cT1_Wagon_BMW, X), in(cT2_BMW, X), ix.
+
+pie(r33, A, 2) :- ir(X, A), in(cT1_Wagon_BMW, X), in(cT2_BMW, X), ix.
+c(r33, A, 2) :- vr(X, A), in(cT1_Wagon_BMW, X), in(cT2_BMW, X), ix.
+
+
+%%% Decoding now
+:- rel(X, Y, "="), rel(X, Y, "<"), concept2(X, N1), concept2(Y, N2), pw.
+:- rel(X, Y, "="), rel(X, Y, ">"), concept2(X, N1), concept2(Y, N2), pw.
+:- rel(X, Y, "="), rel(X, Y, "><"), concept2(X, N1), concept2(Y, N2), pw.
+:- rel(X, Y, "="), rel(X, Y, "!"), concept2(X, N1), concept2(Y, N2), pw.
+:- rel(X, Y, "<"), rel(X, Y, ">"), concept2(X, N1), concept2(Y, N2), pw.
+:- rel(X, Y, "<"), rel(X, Y, "><"), concept2(X, N1), concept2(Y, N2), pw.
+:- rel(X, Y, "<"), rel(X, Y, "!"), concept2(X, N1), concept2(Y, N2), pw.
+:- rel(X, Y, ">"), rel(X, Y, "><"), concept2(X, N1), concept2(Y, N2), pw.
+:- rel(X, Y, ">"), rel(X, Y, "!"), concept2(X, N1), concept2(Y, N2), pw.
+:- rel(X, Y, "><"), rel(X, Y, "!"), concept2(X, N1), concept2(Y, N2), pw.
+:- not rel(X, Y, "="), not rel(X, Y, "<"), not rel(X, Y, ">"), not rel(X, Y, "><"), not rel(X, Y, "!"), concept2(X, N1), concept2(Y, N2), N1 < N2, not ncf(X), not ncf(Y), pw.
+
+rel(X, Y, "=") :- not hint(X, Y, 0), hint(X, Y, 1), not hint(X, Y, 2), pw.
+rel(X, Y, "<") :- not hint(X, Y, 0), hint(X, Y, 1), hint(X, Y, 2), pw.
+rel(X, Y, ">") :- hint(X, Y, 0), hint(X, Y, 1), not hint(X, Y, 2), pw.
+rel(X, Y, "><") :- hint(X, Y, 0), hint(X, Y, 1), hint(X, Y, 2), pw.
+rel(X, Y, "!") :- hint(X, Y, 0), not hint(X, Y, 1), hint(X, Y, 2), pw.
+
+
+hint(X, Y, 0) :- concept2(X, N1), concept2(Y, N2), N1 < N2, vrs(R), in(X, R), out(Y, R), not ncf(X), not ncf(Y), pw.
+hint(X, Y, 1) :- concept2(X, N1), concept2(Y, N2), N1 < N2, vrs(R), in(X, R), in(Y, R), not ncf(X), not ncf(Y), pw.
+hint(X, Y, 2) :- concept2(X, N1), concept2(Y, N2), N1 < N2, vrs(R), out(X, R), in(Y, R), not ncf(X), not ncf(Y), pw.
+
+%%% Combined concept decoding
+combined(X,1,0) :- rel(X,Y,">").
+combined(X,1,0) :- rel(X,Y,"<").
+combined(X,1,0) :- rel(X,Y,"=").
+combined(X,1,0) :- rel(X,Y,"!").
+combined(Y,1,1) :- rel(X,Y,">").
+combined(Y,1,1) :- rel(X,Y,"<").
+combined(Y,1,1) :- rel(X,Y,"=").
+combined(Y,1,1) :- rel(X,Y,"!").
+combined(Z,1,2) :- rel(X,Y,"><"), newcon(Z, X, Y, _).
+%%% unhide the overlap concepts
+combined(X,1,0) :- rel(X,Y,"><").
+combined(X,0,0) :- rel(X,Y,"><"), hide.
+%%% unhide the overlap concepts
+combined(Y,1,1) :- rel(X,Y,"><").
+combined(Y,0,1) :- rel(X,Y,"><"), hide.
+combined2(X,Y) :- combined(X,Y,Z).
+combined2(X,1) :- not combined2(X,0), con(X).
+combined2(X,2) :- combined2(X,1), not combined2(X,0), con(X).
+combined2(X,1) :- relcc(X,Y,"<").
+combined2(X,1) :- relcc(X,Y,">").
+combined2(X,1) :- relcc(X,Y,"=").
+combined2(X,1) :- relcc(X,Y,"!").
+combined2(Y,1) :- relcc(X,Y,"<").
+combined2(Y,1) :- relcc(X,Y,">").
+combined2(Y,1) :- relcc(X,Y,"="),con(Y).
+combined2(Y,1) :- relcc(X,Y,"!").
+hant(X, X, 3) :- combined2(X,1).
+hant(X, Y, 0) :- combined2(X,1), combined2(Y,1), not hant(X, Y, 3), vrs(R), in(X, R), out(Y, R).
+hant(X, Y, 1) :- combined2(X,1), combined2(Y,1), not hant(X, Y, 3), vrs(R), in(X, R),  in(Y, R).
+hant(X, Y, 2) :- combined2(X,1), combined2(Y,1), not hant(X, Y, 3), vrs(R), out(X, R), in(Y, R).
+relcc(X, Y, "=") :- X<Y, not hant(X, Y, 0), hant(X, Y, 1), not hant(X, Y, 2), pw.
+relcc(X, Y, "<") :- X<Y, not hant(X, Y, 0), hant(X, Y, 1), hant(X, Y, 2), pw.
+relcc(X, Y, ">") :- X<Y, hant(X, Y, 0), hant(X, Y, 1), not hant(X, Y, 2), pw.
+relcc(X, Y, "><") :- X<Y, hant(X, Y, 0), hant(X, Y, 1), hant(X, Y, 2), pw.
+relcc(X, Y, "!") :- X<Y, hant(X, Y, 0), not hant(X, Y, 1), hant(X, Y, 2), pw.
+%combined2(Z,1) :- relcc(X,Y,"><"), and(X, Y, Z).
+%%%% unhide the overlap concepts
+%combined2(X,1) :- relcc(X,Y,"><"), and(X, Y, Z).
+%combined2(X,0) :- relcc(X,Y,"><"), and(X, Y, Z), hide.
+%%%% unhide the overlap concepts
+%combined2(Y,1) :- relcc(X,Y,"><"), and(X, Y, Z).
+%combined2(Y,0) :- relcc(X,Y,"><"), and(X, Y, Z), hide.
+%combined2(Z,1) :- relcc(X,Y,"><"), minus(X, Y, Z).
+%%%% unhide the overlap concepts
+%combined2(X,1) :- relcc(X,Y,"><"), minus(X, Y, Z).
+%combined2(X,0) :- relcc(X,Y,"><"), minus(X, Y, Z), hide.
+%%%% unhide the overlap concepts
+%combined2(Y,1) :- relcc(X,Y,"><"), minus(X, Y, Z).
+%combined2(Y,0) :- relcc(X,Y,"><"), minus(X, Y, Z), hide.
+%combined2(Z,1) :- relcc(X,Y,"><"), minus(Y, X, Z).
+%%%% unhide the overlap concepts
+%combined2(X,1) :- relcc(X,Y,"><"), minus(Y, X, Z).
+%combined2(X,0) :- relcc(X,Y,"><"), minus(Y, X, Z), hide.
+%%%% unhide the overlap concepts
+%combined2(Y,1) :- relcc(X,Y,"><"), minus(Y, X, Z).
+%combined2(Y,0) :- relcc(X,Y,"><"), minus(Y, X, Z), hide.
+relout(X, Y, Z) :- relcc(X, Y, Z), combined2(X, 2), combined2(Y, 2).
+
+%%% combined concept
+newcon(cT1_Wagon_not_cT2_SUV_BMW, cT1_Wagon, cT2_SUV_BMW, 0).
+newcon(cT1_Wagon__cT2_SUV_BMW, cT1_Wagon, cT2_SUV_BMW, 1).
+newcon(not_cT1_Wagon__cT2_SUV_BMW, cT1_Wagon, cT2_SUV_BMW, 2).
+newcon(cT1_Wagon_not_cT2_BMW, cT1_Wagon, cT2_BMW, 0).
+newcon(cT1_Wagon__cT2_BMW, cT1_Wagon, cT2_BMW, 1).
+newcon(not_cT1_Wagon__cT2_BMW, cT1_Wagon, cT2_BMW, 2).
+newcon(cT1_Wagon_not_cT2_Audi, cT1_Wagon, cT2_Audi, 0).
+newcon(cT1_Wagon__cT2_Audi, cT1_Wagon, cT2_Audi, 1).
+newcon(not_cT1_Wagon__cT2_Audi, cT1_Wagon, cT2_Audi, 2).
+newcon(cT1_SUV_not_cT2_SUV_BMW, cT1_SUV, cT2_SUV_BMW, 0).
+newcon(cT1_SUV__cT2_SUV_BMW, cT1_SUV, cT2_SUV_BMW, 1).
+newcon(not_cT1_SUV__cT2_SUV_BMW, cT1_SUV, cT2_SUV_BMW, 2).
+newcon(cT1_SUV_not_cT2_BMW, cT1_SUV, cT2_BMW, 0).
+newcon(cT1_SUV__cT2_BMW, cT1_SUV, cT2_BMW, 1).
+newcon(not_cT1_SUV__cT2_BMW, cT1_SUV, cT2_BMW, 2).
+newcon(cT1_SUV_not_cT2_Sedan_Audi, cT1_SUV, cT2_Sedan_Audi, 0).
+newcon(cT1_SUV__cT2_Sedan_Audi, cT1_SUV, cT2_Sedan_Audi, 1).
+newcon(not_cT1_SUV__cT2_Sedan_Audi, cT1_SUV, cT2_Sedan_Audi, 2).
+newcon(cT1_SUV_not_cT2_SUV_Audi, cT1_SUV, cT2_SUV_Audi, 0).
+newcon(cT1_SUV__cT2_SUV_Audi, cT1_SUV, cT2_SUV_Audi, 1).
+newcon(not_cT1_SUV__cT2_SUV_Audi, cT1_SUV, cT2_SUV_Audi, 2).
+newcon(cT1_SUV_not_cT2_Audi, cT1_SUV, cT2_Audi, 0).
+newcon(cT1_SUV__cT2_Audi, cT1_SUV, cT2_Audi, 1).
+newcon(not_cT1_SUV__cT2_Audi, cT1_SUV, cT2_Audi, 2).
+newcon(cT1_Sedan_not_cT2_SUV_BMW, cT1_Sedan, cT2_SUV_BMW, 0).
+newcon(cT1_Sedan__cT2_SUV_BMW, cT1_Sedan, cT2_SUV_BMW, 1).
+newcon(not_cT1_Sedan__cT2_SUV_BMW, cT1_Sedan, cT2_SUV_BMW, 2).
+newcon(cT1_Sedan_not_cT2_BMW, cT1_Sedan, cT2_BMW, 0).
+newcon(cT1_Sedan__cT2_BMW, cT1_Sedan, cT2_BMW, 1).
+newcon(not_cT1_Sedan__cT2_BMW, cT1_Sedan, cT2_BMW, 2).
+newcon(cT1_Sedan_not_cT2_Sedan_Audi, cT1_Sedan, cT2_Sedan_Audi, 0).
+newcon(cT1_Sedan__cT2_Sedan_Audi, cT1_Sedan, cT2_Sedan_Audi, 1).
+newcon(not_cT1_Sedan__cT2_Sedan_Audi, cT1_Sedan, cT2_Sedan_Audi, 2).
+newcon(cT1_Sedan_not_cT2_SUV_Audi, cT1_Sedan, cT2_SUV_Audi, 0).
+newcon(cT1_Sedan__cT2_SUV_Audi, cT1_Sedan, cT2_SUV_Audi, 1).
+newcon(not_cT1_Sedan__cT2_SUV_Audi, cT1_Sedan, cT2_SUV_Audi, 2).
+newcon(cT1_Sedan_not_cT2_Audi, cT1_Sedan, cT2_Audi, 0).
+newcon(cT1_Sedan__cT2_Audi, cT1_Sedan, cT2_Audi, 1).
+newcon(not_cT1_Sedan__cT2_Audi, cT1_Sedan, cT2_Audi, 2).
+newcon(cT1_Sedan_Audi_not_cT2_SUV_BMW, cT1_Sedan_Audi, cT2_SUV_BMW, 0).
+newcon(cT1_Sedan_Audi__cT2_SUV_BMW, cT1_Sedan_Audi, cT2_SUV_BMW, 1).
+newcon(not_cT1_Sedan_Audi__cT2_SUV_BMW, cT1_Sedan_Audi, cT2_SUV_BMW, 2).
+newcon(cT1_Sedan_Audi_not_cT2_BMW, cT1_Sedan_Audi, cT2_BMW, 0).
+newcon(cT1_Sedan_Audi__cT2_BMW, cT1_Sedan_Audi, cT2_BMW, 1).
+newcon(not_cT1_Sedan_Audi__cT2_BMW, cT1_Sedan_Audi, cT2_BMW, 2).
+newcon(cT1_Sedan_Audi_not_cT2_Sedan_Audi, cT1_Sedan_Audi, cT2_Sedan_Audi, 0).
+newcon(cT1_Sedan_Audi__cT2_Sedan_Audi, cT1_Sedan_Audi, cT2_Sedan_Audi, 1).
+newcon(not_cT1_Sedan_Audi__cT2_Sedan_Audi, cT1_Sedan_Audi, cT2_Sedan_Audi, 2).
+newcon(cT1_Sedan_Audi_not_cT2_SUV_Audi, cT1_Sedan_Audi, cT2_SUV_Audi, 0).
+newcon(cT1_Sedan_Audi__cT2_SUV_Audi, cT1_Sedan_Audi, cT2_SUV_Audi, 1).
+newcon(not_cT1_Sedan_Audi__cT2_SUV_Audi, cT1_Sedan_Audi, cT2_SUV_Audi, 2).
+newcon(cT1_Sedan_Audi_not_cT2_Audi, cT1_Sedan_Audi, cT2_Audi, 0).
+newcon(cT1_Sedan_Audi__cT2_Audi, cT1_Sedan_Audi, cT2_Audi, 1).
+newcon(not_cT1_Sedan_Audi__cT2_Audi, cT1_Sedan_Audi, cT2_Audi, 2).
+cb(X) :- newcon(X, _, _, _).
+cp(X) :- concept2(X, _).
+con(X) :- cb(X).
+con(X) :- cp(X).
+combined2(C, 0) :- newcon(C, A, B, _), not rel(A, B, "><"), not rel(B, A, "><").
+in(X, M) :- newcon(X, Y, Z, 0), in(Y, M), out(Z, M).
+out(X, M) :- newcon(X, Y, Z, 0), out(Y, M).
+out(X, M) :- newcon(X, Y, Z, 0), in(Z, M).
+%irs(M) :- newcon(X, Y, Z, 0), out(X, M), in(Y, M), out(Z, M).
+%irs(M) :- newcon(X, Y, Z, 0), in(X, M), out(Y, M).
+%irs(M) :- newcon(X, Y, Z, 0), in(X, M), in(Z, M).
+in(X, M) :- newcon(X, Y, Z, 1), in(Y, M), in(Z, M).
+out(X, M) :- newcon(X, Y, Z, 1), out(Y, M).
+out(X, M) :- newcon(X, Y, Z, 1), out(Z, M).
+%irs(M) :- newcon(X, Y, Z, 1), out(X, M), in(Y, M), in(Z, M).
+%irs(M) :- newcon(X, Y, Z, 1), in(X, M), out(Y, M).
+%irs(M) :- newcon(X, Y, Z, 1), in(X, M), out(Z, M).
+in(X, M) :- newcon(X, Y, Z, 2), out(Y, M), in(Z, M).
+out(X, M) :- newcon(X, Y, Z, 2), in(Y, M).
+out(X, M) :- newcon(X, Y, Z, 2), out(Z, M).
+%irs(M) :- newcon(X, Y, Z, 2), out(X, M), out(Y, M), in(Z, M).
+%irs(M) :- newcon(X, Y, Z, 2), in(X, M), in(Y, M).
+%irs(M) :- newcon(X, Y, Z, 2), in(X, M), out(Z, M).
+%%%% concept to combined concept
+%cnotcc(C,CC, T) :- concept2(C, T), cb(CC), in(C, M), out(CC, M), vrs(M).
+%cnotcc(C,CC, T) :- concept2(C, T), cb(CC), out(C, M), in(CC, M), vrs(M).
+%cnotcc(C,CC, T) :- concept2(C, T), cb(CC), in(CC, M), irs(M).
+%ctocc(C, CC, T) :- concept2(C, T), cb(CC), not cnotcc(C, CC, T).
+%ctocc(C, CC, 2) :- newcon(C, X, Y, 0), ctocc(X, XC, _), ctocc(Y, YC, _), minus(XC, YC, CC).
+%ctocc(C, CC, 2) :- newcon(C, X, Y, 1), ctocc(X, XC, _), ctocc(Y, YC, _), and(XC, YC, CC).
+%ctocc(C, CC, 2) :- newcon(C, X, Y, 2), ctocc(X, XC, _), ctocc(Y, YC, _), minus(YC, XC, CC).
+%
+%%% and op
+%nand(X, Y, Z) :- con(X), con(Y), con(Z), r(M), out(X, M), in(Z, M).
+%nand(X, Y, Z) :- con(X), con(Y), con(Z), r(M), out(Y, M), in(Z, M).
+%nand(X, Y, Z) :- con(X), con(Y), con(Z), r(M), in(X, M), in(Y, M), out(Z, M).
+%and(X, Y, Z) :- con(X), con(Y), con(Z), not nand(X, Y, Z).
+%
+%%% minus op
+%nminus(X, Y, Z) :- con(X), con(Y), con(Z), r(M), out(X, M), in(Z, M).
+%nminus(X, Y, Z) :- con(X), con(Y), con(Z), r(M), in(X, M), out(Y, M), out(Z, M).
+%nminus(X, Y, Z) :- con(X), con(Y), con(Z), r(M), in(X, M), in(Y, M), in(Z, M).
+%minus(X, Y, Z) :- con(X), con(Y), con(Z), not nminus(X, Y, Z).

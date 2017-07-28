@@ -1,0 +1,64 @@
+T1.Automobile,>,T2.Audi,deduced
+T1.Automobile,>,T2.BMW,deduced
+T1.Automobile,>,T2.SUV_Audi,deduced
+T1.Automobile,>,T2.SUV_BMW,deduced
+T1.Automobile,>,T2.Sedan_Audi,deduced
+T1.Automobile,>,T2.Sedan_BMW,deduced
+T1.Automobile,>,T2.Wagon_Audi,deduced
+T1.SUV,<,T2.Automobile,deduced
+T1.Sedan,<,T2.Automobile,deduced
+T1.Sedan,>,T2.Sedan_BMW,deduced
+T1.Sedan_Audi,<,T2.Automobile,deduced
+T1.Sedan_Audi,!,T2.Sedan_BMW,deduced
+T1.Sedan_BMW,<,T2.Automobile,deduced
+T1.Sedan_BMW,<,T2.BMW,deduced
+T1.Sedan_BMW,!,T2.SUV_BMW,deduced
+T1.Wagon,<,T2.Automobile,deduced
+T1.Wagon,>,T2.Wagon_Audi,deduced
+T1.Wagon_Audi,<,T2.Audi,deduced
+T1.Wagon_Audi,<,T2.Automobile,deduced
+T1.Wagon_Audi,!,T2.SUV_Audi,deduced
+T1.Wagon_Audi,!,T2.Sedan_Audi,deduced
+T1.Wagon_BMW,<,T2.Automobile,deduced
+T1.Wagon_BMW,!,T2.Wagon_Audi,deduced
+T1.SUV,{<, !, ><},T2.Audi,inferred
+T1.SUV,{<, !, ><},T2.BMW,inferred
+T1.SUV,{=, >, <, !, ><},T2.SUV_Audi,inferred
+T1.SUV,{<, !, ><},T2.SUV_BMW,inferred
+T1.SUV,{=, >, <, !, ><},T2.Sedan_Audi,inferred
+T1.SUV,!,T2.Sedan_BMW,inferred
+T1.SUV,!,T2.Wagon_Audi,inferred
+T1.Sedan,{!, ><},T2.Audi,inferred
+T1.Sedan,{<, ><},T2.BMW,inferred
+T1.Sedan,{>, !, ><},T2.SUV_Audi,inferred
+T1.Sedan,{!, ><},T2.SUV_BMW,inferred
+T1.Sedan,{>, !, ><},T2.Sedan_Audi,inferred
+T1.Sedan,!,T2.Wagon_Audi,inferred
+T1.Sedan_Audi,{<, !, ><},T2.Audi,inferred
+T1.Sedan_Audi,{<, !, ><},T2.BMW,inferred
+T1.Sedan_Audi,{=, >, <, !, ><},T2.SUV_Audi,inferred
+T1.Sedan_Audi,{<, !, ><},T2.SUV_BMW,inferred
+T1.Sedan_Audi,{=, >, <, !, ><},T2.Sedan_Audi,inferred
+T1.Sedan_Audi,!,T2.Wagon_Audi,inferred
+T1.Sedan_BMW,!,T2.Audi,inferred
+T1.Sedan_BMW,!,T2.SUV_Audi,inferred
+T1.Sedan_BMW,!,T2.Sedan_Audi,inferred
+T1.Sedan_BMW,!,T2.Wagon_Audi,inferred
+T1.Wagon,><,T2.Audi,inferred
+T1.Wagon,><,T2.BMW,inferred
+T1.Wagon,!,T2.SUV_Audi,inferred
+T1.Wagon,{>, ><},T2.SUV_BMW,inferred
+T1.Wagon,!,T2.Sedan_Audi,inferred
+T1.Wagon,!,T2.Sedan_BMW,inferred
+T1.Wagon_Audi,!,T2.BMW,inferred
+T1.Wagon_Audi,!,T2.SUV_BMW,inferred
+T1.Wagon_Audi,!,T2.Sedan_BMW,inferred
+T1.Wagon_BMW,!,T2.Audi,inferred
+T1.Wagon_BMW,!,T2.SUV_Audi,inferred
+T1.Wagon_BMW,{=, <},T2.SUV_BMW,inferred
+T1.Wagon_BMW,!,T2.Sedan_Audi,inferred
+T1.Wagon_BMW,!,T2.Sedan_BMW,inferred
+T1.Automobile,=,T2.Automobile,input
+T1.Sedan_BMW,=,T2.Sedan_BMW,input
+T1.Wagon_Audi,=,T2.Wagon_Audi,input
+T1.Wagon_BMW,<,T2.BMW,input
