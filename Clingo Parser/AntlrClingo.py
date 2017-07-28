@@ -1759,7 +1759,7 @@ def mds_graph_2(A):
 	A = A.view(dt)
 	G = nx.from_numpy_matrix(A)
 	#G = nx.relabel_nodes(G, dict(zip(range(len(G.nodes())),string.ascii_uppercase)))
-	G = nx.relabel_nodes(G, dict(zip(range(len(G.nodes())),['pw-{}'.format(i) for i in range(len(pws))])))     
+	G = nx.relabel_nodes(G, dict(zip(range(len(G.nodes())),['pw-{}'.format(i) for i in range(1, len(pws)+1)])))     
 
 	G = nx.drawing.nx_agraph.to_agraph(G)
 
@@ -1783,10 +1783,10 @@ mds_graph_2(dist_matrix)
 if len(pws) > 1:
 	out_file.write(str(dist_matrix))
 	out_file.write('\n')
-	#dbscan_clustering(dist_matrix)
-	#dbscan_clustering_plotly(dist_matrix)
-	#linkage_dendrogram(dist_matrix)
-	#dendrogram_plotly(np.array([i for i in range(len(pws))]))
+	dbscan_clustering(dist_matrix)
+	dbscan_clustering_plotly(dist_matrix)
+	linkage_dendrogram(dist_matrix)
+	dendrogram_plotly(np.array([i for i in range(len(pws))]))
 
 
 
