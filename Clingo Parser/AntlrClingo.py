@@ -1357,6 +1357,13 @@ def get_rl_id():
 	rl_id = 0 if rl_id.strip() == '' else int(rl_id)
 	return rl_id
 
+def get_rl_ids_list_dist():
+	rl_ids = raw_input('Enter a comma-separated list of relation ids you want to use in the distance calculation. Press enter to use all relations.\n')
+	rl_ids = [] if rl_ids.strip() == '' else rl_ids.split(',')
+	rl_ids = map(str.strip, rl_ids)
+	rl_ids = map(int, rl_ids)
+	return rl_ids
+
 def get_col_names():
 	col_names = raw_input('Enter the columns you want to consider (comma separated). Press return to consider all columns.\n')
 	col_names = [] if col_names.strip() == '' else col_names.split(',')
@@ -1498,12 +1505,18 @@ def compute_dist_matrix(X):
 	global dfs
 	global out_file
 
+
+	print 'Following are the parsed relation IDs and relation names:'
+	for i, rl in enumerate(relations):
+		print str(i) + ':', str(rl.relation_name)
+
+	rl_ids = get_rl_ids_list_dist()
 	dist_matrix = np.zeros((len(pws),len(pws)))
 	for i in range(1, len(pws)+1):
 		for j in range(i, len(pws)+1):
 			#dist_matrix[i-1, j-1] = dist_matrix[j-1,i-1] = dist_sqlite(i,j)
 			#dist_matrix[i-1, j-1] = dist_matrix[j-1,i-1] = dist_panda(i,j)
-			dist_matrix[i-1, j-1] = dist_matrix[j-1,i-1] = sym_diff_dist_sqlite(i,j)
+			dist_matrix[i-1, j-1] = dist_matrix[j-1,i-1] = sym_diff_dist_sqlite(i,j, rl_ids)
 			#print 'Distance between PWs', i, 'and', j, 'is', dist_matrix[i-1,j-1]
 	if np.max(dist_matrix) != np.min(dist_matrix):
 		dist_matrix = (dist_matrix - np.min(dist_matrix))/(np.max(dist_matrix) - np.min(dist_matrix))
@@ -1513,7 +1526,7 @@ def compute_dist_matrix(X):
 
 def matplotlib_to_plotly(cmap, pl_entries):
 
-    h = 1.0/(pl_entries-1)
+    h = 1.0/(pl_entries-1) if pl_entries > 1 else 1
     pl_colorscale = []
     
     for k in range(pl_entries):
