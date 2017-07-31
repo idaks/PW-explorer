@@ -332,3 +332,12 @@ hint(X, Y, 0) :- concept2(X, N1), concept2(Y, N2), N1 < N2, vrs(R), in(X, R), ou
 hint(X, Y, 1) :- concept2(X, N1), concept2(Y, N2), N1 < N2, vrs(R), in(X, R), in(Y, R), not ncf(X), not ncf(Y), pw.
 hint(X, Y, 2) :- concept2(X, N1), concept2(Y, N2), N1 < N2, vrs(R), out(X, R), in(Y, R), not ncf(X), not ncf(Y), pw.
 
+
+comp(R) :- rel(_,_,R).
+
+ans(R, N)  :-  comp(R), #count { X,Y : rel(X,Y, R) } = N.
+
+ans(N) :- ans("><",N).
+
+% ans("=", N)  :-  #count { X,Y : rel(X,Y, "=") } = N. 
+% ans("><", N) :-  #count { X,Y : rel(X,Y, "><") } = N. 
