@@ -1345,6 +1345,34 @@ def sym_diff_dist_sqlite(pw_id_1, pw_id_2, rls_to_use = []):
 	return dist
 
 
+#How complex are these complex world relatively
+def complexity_analysis(pws_to_consider = [] ,rls_to_use = []):
+
+	if pws_to_consider == []:
+		pws_to_consider = [j for j in range(1, expected_pws+1)]
+	if rls_to_use == []:
+		rls_to_use = [i for i in range(len(relations))]
+
+	complexities = np.zeros(len(pws_to_consider))
+
+	#Do some computations
+
+	for j, rl_id in enumerate(rls_to_use):
+
+		uni = unique_tuples_sqlite(rl_id = rl_id, pws_to_consider = pws_to_consider, do_print = False)
+
+		for i, pw_id in enumerate(pws_to_consider):
+			#number of tuples
+			complexities[i] += num_tuples_sqlite(rl_id, pw_id, False)
+			#number of unique tuples
+			complexities[i] += len(filter(lambda x: x[1] == pw_id, uni))
+	
+	if np.max(complexities) != np.min(complexities):
+		complexities = (complexities - np.min(complexities))/(np.max(complexities) - np.min(complexities))
+
+	return complexities
+
+
 
 ###########################################################################################
 
