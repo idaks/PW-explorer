@@ -1,0 +1,87 @@
+Number of Models: 7
+relout_3
+     pw               x1                x2   x3
+0     1            cT1_a             cT2_A  "="
+1     1            cT1_b             cT2_A  "<"
+2     1            cT1_c             cT2_A  "<"
+3     1            cT1_b             cT2_C  "="
+4     1            cT1_a             cT2_C  ">"
+5     1            cT2_A             cT2_C  ">"
+6     1            cT1_c             cT2_C  "!"
+7     1            cT2_B             cT2_C  "!"
+8     1            cT1_c             cT2_B  "="
+9     1            cT1_a             cT2_B  ">"
+10    1            cT2_A             cT2_B  ">"
+11    1            cT1_b             cT2_B  "!"
+12    1            cT1_a             cT1_c  ">"
+13    1            cT1_b             cT1_c  "!"
+14    1            cT1_a             cT1_b  ">"
+15    2            cT1_a             cT2_A  "="
+16    2  cT1_b_not_cT2_B             cT2_A  "<"
+17    2     cT1_b__cT2_B             cT2_A  "<"
+18    2            cT1_b             cT2_A  "<"
+19    2            cT1_c             cT2_A  "<"
+20    2  cT1_b_not_cT2_B             cT2_C  "="
+21    2            cT1_b             cT2_C  ">"
+22    2            cT1_a             cT2_C  ">"
+23    2            cT2_A             cT2_C  ">"
+24    2     cT1_b__cT2_B             cT2_C  "!"
+25    2            cT1_c             cT2_C  "!"
+26    2            cT2_B             cT2_C  "!"
+27    2            cT1_a             cT2_B  ">"
+28    2            cT2_A             cT2_B  ">"
+29    2  cT1_b_not_cT2_B             cT2_B  "!"
+..   ..              ...               ...  ...
+297   6            cT1_a   cT1_c_not_cT2_B  ">"
+298   6            cT1_c   cT1_c_not_cT2_B  ">"
+299   6     cT1_c__cT2_B   cT1_c_not_cT2_B  "!"
+300   6            cT1_b   cT1_c_not_cT2_B  "!"
+301   6            cT1_a      cT1_c__cT2_B  ">"
+302   6            cT1_c      cT1_c__cT2_B  ">"
+303   6            cT1_b      cT1_c__cT2_B  "!"
+304   6            cT1_b  not_cT1_c__cT2_B  "="
+305   6            cT1_a  not_cT1_c__cT2_B  ">"
+306   6            cT2_A  not_cT1_c__cT2_B  ">"
+307   6            cT2_B  not_cT1_c__cT2_B  ">"
+308   6  cT1_c_not_cT2_B  not_cT1_c__cT2_B  "!"
+309   6     cT1_c__cT2_B  not_cT1_c__cT2_B  "!"
+310   6            cT1_c  not_cT1_c__cT2_B  "!"
+311   6            cT2_C  not_cT1_c__cT2_B  "!"
+312   7            cT1_a             cT2_A  "="
+313   7            cT1_b             cT2_A  "<"
+314   7            cT1_c             cT2_A  "<"
+315   7            cT1_c             cT2_C  "="
+316   7            cT1_a             cT2_C  ">"
+317   7            cT2_A             cT2_C  ">"
+318   7            cT1_b             cT2_C  "!"
+319   7            cT2_B             cT2_C  "!"
+320   7            cT1_b             cT2_B  "="
+321   7            cT1_a             cT2_B  ">"
+322   7            cT2_A             cT2_B  ">"
+323   7            cT1_c             cT2_B  "!"
+324   7            cT1_a             cT1_c  ">"
+325   7            cT1_b             cT1_c  "!"
+326   7            cT1_a             cT1_b  ">"
+
+[327 rows x 4 columns]
+
+Successfully exported to csv
+Successfully exported to sql
+Successfully exported to msg
+Sqlite Schema:
+CREATE TABLE "relout_3" (
+"index" INTEGER,
+  "pw" INTEGER,
+  "x1" TEXT,
+  "x2" TEXT,
+  "x3" TEXT
+)
+[[ 0.    0.25  1.    0.25  0.25  0.25  0.  ]
+ [ 0.25  0.    0.75  0.    0.    0.    0.25]
+ [ 1.    0.75  0.    0.75  0.75  0.75  1.  ]
+ [ 0.25  0.    0.75  0.    0.    0.    0.25]
+ [ 0.25  0.    0.75  0.    0.    0.    0.25]
+ [ 0.25  0.    0.75  0.    0.    0.    0.25]
+ [ 0.    0.25  1.    0.25  0.25  0.25  0.  ]]
+Cluster Labels: [0 0 1 0 0 0 0]
+Cluster Labels: [0 0 1 0 0 0 0]
