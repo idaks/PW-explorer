@@ -1923,9 +1923,11 @@ if len(pws) > 1:
 	linkage_dendrogram(dist_matrix)
 	dendrogram_plotly(np.array([i for i in range(len(pws))]))
 
-print 'Complexity Analysis:'
+out_file.write('Complexity Analysis:\n')
+print 'Complexity Analysis'
 complexities = complexity_analysis()
-print 'Euler Complexity Analysis:'
+out_file.write('Euler Complexity Analysis:\n')
+print 'Euler Complexity Analysis'
 complexities_euler = euler_complexity_analysis(get_rl_id(), get_col_name())
 
 
