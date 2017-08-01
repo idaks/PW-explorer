@@ -67,7 +67,6 @@ relout_3
 
 Successfully exported to csv
 Successfully exported to sql
-Successfully exported to msg
 Sqlite Schema:
 CREATE TABLE "relout_3" (
 "index" INTEGER,
@@ -76,6 +75,8 @@ CREATE TABLE "relout_3" (
   "x2" TEXT,
   "x3" TEXT
 )
+PWs:         [3, 2, 4, 5, 6, 1, 7]
+Complexities:[1.0, 0.11616161616161616, 0.11616161616161616, 0.11616161616161616, 0.11616161616161616, 0.0, 0.0]
 [[ 0.    0.25  1.    0.25  0.25  0.25  0.  ]
  [ 0.25  0.    0.75  0.    0.    0.    0.25]
  [ 1.    0.75  0.    0.75  0.75  0.75  1.  ]

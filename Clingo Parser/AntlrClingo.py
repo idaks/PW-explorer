@@ -1373,7 +1373,18 @@ def euler_overlap_diff_dist(pw_id_1, pw_id_2, rl_id = None):
 
 
 #How complex are these complex world relatively
-def complexity_analysis(pws_to_consider = [] ,rls_to_use = []):
+def complexity_analysis(pws_to_consider = [] ,rls_to_use = [], do_print = True):
+
+	global pws 
+	global relations 
+	global expected_pws 
+	global curr_pw
+	global curr_rl 
+	global curr_rl_data 
+	global n_rls
+	global dfs
+	global out_file 
+	global conn
 
 	if pws_to_consider == []:
 		pws_to_consider = [j for j in range(1, expected_pws+1)]
@@ -1396,6 +1407,15 @@ def complexity_analysis(pws_to_consider = [] ,rls_to_use = []):
 	
 	if np.max(complexities) != np.min(complexities):
 		complexities = (complexities - np.min(complexities))/(np.max(complexities) - np.min(complexities))
+
+	if do_print:
+
+		paired_pw_compl = zip(pws_to_consider, complexities)
+		paired_pw_compl = sorted(paired_pw_compl, key = lambda x: x[1], reverse = True)
+
+		out_file.write('PWs:         ' + str([x[0] for x in paired_pw_compl]) + '\n')
+		out_file.write('Complexities:' + str([x[1] for x in paired_pw_compl]) + '\n')
+
 
 	return complexities
 
@@ -1548,6 +1568,8 @@ while query_db in ['y', 'yes', '1', 1]:
 
 ###########################################################################################
 
+dist_matrix = None
+
 def compute_dist_matrix(X):
 
 	global pws 
@@ -1559,6 +1581,10 @@ def compute_dist_matrix(X):
 	global n_rls
 	global dfs
 	global out_file
+	global dist_matrix
+
+	if dist_matrix is not None:
+		return dist_matrix
 
 
 	print 'Following are the parsed relation IDs and relation names:'
@@ -1847,6 +1873,7 @@ def mds_graph_2(A):
 dist_matrix = compute_dist_matrix(None)
 #mds_graph(dist_matrix)
 mds_graph_2(dist_matrix)
+complexities = complexity_analysis()
 
 
 

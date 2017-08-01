@@ -1,6 +1,3 @@
-clingo version 5.2.0
-Reading from tap2x2_pw.clingo ...
-Solving...
 Answer: 1
 ans(4)
 Answer: 2
