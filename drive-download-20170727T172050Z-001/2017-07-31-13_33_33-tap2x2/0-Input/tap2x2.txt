@@ -1,0 +1,11 @@
+taxonomy T1 Source
+(a b c)
+
+taxonomy T2 Target
+(A B C)
+
+articulations T1 T2
+[T1.a equals T2.A]
+
+
+

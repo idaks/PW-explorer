@@ -1,0 +1,9 @@
+T1.a,>,T2.B,deduced
+T1.a,>,T2.C,deduced
+T1.b,<,T2.A,deduced
+T1.c,<,T2.A,deduced
+T1.b,{=, >, <, !, ><},T2.B,inferred
+T1.b,{=, >, <, !, ><},T2.C,inferred
+T1.c,{=, >, <, !, ><},T2.B,inferred
+T1.c,{=, >, <, !, ><},T2.C,inferred
+T1.a,=,T2.A,input

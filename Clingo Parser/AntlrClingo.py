@@ -1344,6 +1344,33 @@ def sym_diff_dist_sqlite(pw_id_1, pw_id_2, rls_to_use = []):
 		
 	return dist
 
+def euler_overlap_diff_dist(pw_id_1, pw_id_2, rl_id = None):
+
+	global pws 
+	global relations 
+	global expected_pws 
+	global curr_pw
+	global curr_rl 
+	global curr_rl_data 
+	global n_rls
+	global dfs
+	global out_file 
+	global conn
+
+	if rl_id is None:
+		for i, rl in enumerate(relations):
+			if rl.relation_name == 'rel_3':
+				rl_id = i
+				break
+
+	x1 = freq_sqlite(rl_id, ['x3'], ['"><"'], [pw_id_1], False)[1][0]
+	x2 = freq_sqlite(rl_id, ['x3'], ['"><"'], [pw_id_2], False)[1][0]
+
+	return abs(x1-x2)
+
+
+
+
 
 #How complex are these complex world relatively
 def complexity_analysis(pws_to_consider = [] ,rls_to_use = []):
@@ -1538,13 +1565,15 @@ def compute_dist_matrix(X):
 	for i, rl in enumerate(relations):
 		print str(i) + ':', str(rl.relation_name)
 
-	rl_ids = get_rl_ids_list_dist()
+	#rl_ids = get_rl_ids_list_dist()
+	rl_id = get_rl_id()
 	dist_matrix = np.zeros((len(pws),len(pws)))
 	for i in range(1, len(pws)+1):
 		for j in range(i, len(pws)+1):
 			#dist_matrix[i-1, j-1] = dist_matrix[j-1,i-1] = dist_sqlite(i,j)
 			#dist_matrix[i-1, j-1] = dist_matrix[j-1,i-1] = dist_panda(i,j)
-			dist_matrix[i-1, j-1] = dist_matrix[j-1,i-1] = sym_diff_dist_sqlite(i,j, rl_ids)
+			#dist_matrix[i-1, j-1] = dist_matrix[j-1,i-1] = sym_diff_dist_sqlite(i,j, rl_ids)
+			dist_matrix[i-1, j-1] = dist_matrix[j-1,i-1] = euler_overlap_diff_dist(i, j, rl_id)
 			#print 'Distance between PWs', i, 'and', j, 'is', dist_matrix[i-1,j-1]
 	if np.max(dist_matrix) != np.min(dist_matrix):
 		dist_matrix = (dist_matrix - np.min(dist_matrix))/(np.max(dist_matrix) - np.min(dist_matrix))
@@ -1831,15 +1860,6 @@ if len(pws) > 1:
 
 
 
-
-
-
-
-# dists = squareform(dist_matrix)
-# linkage_matrix = linkage(dists, "single")
-# dendrogram(linkage_matrix, labels=[str(i) for i in range(len(dist_matrix))])
-# plt.title("test")
-# plt.show()
 
 ###########################################################################################
 

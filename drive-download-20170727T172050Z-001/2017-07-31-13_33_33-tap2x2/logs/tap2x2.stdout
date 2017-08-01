@@ -1,0 +1,55 @@
+##### Executing command:
+
+/Users/Ryan/EulerX/src-el/euler2 align tap2x2.txt -r clingo 
+
+
+##### Euler version:
+
+master
+9cdb67856bf8ec996f69ea5e5bc52357a1b61e16
+
+
+##### GraphViz version:
+
+dot - graphviz version 2.36.0 (20140111.2315)
+
+
+##### DLV version:
+
+DLV [build BEN/Dec 17 2012   gcc 4.2.1 (Apple Inc. build 5666) (dot 3)]
+
+usage: dlv {FRONTEND} {OPTIONS} [filename [filename [...]]]
+
+Specify -help for more detailed usage information.
+
+
+##### Running User, Host and Date:
+User:	Ryan
+Host:	Shizhuos-MacBook-Pro.local
+Date:	2017-07-31-13:33:33
+
+
+##### Euler Outputs:
+******* You are running example tap2x2 *******
+
+Possible world 0:
+{T1.a">"T2.C, T1.a">"T2.B, T1.a"="T2.A, T1.b"="T2.C, T1.c"="T2.B, T1.c"<"T2.A, T1.b"<"T2.A, T1.c"!"T2.C, T1.b"!"T2.B}
+
+Possible world 1:
+{T1.a">"T2.C, T1.b">"T2.C, T1.a">"T2.B, T1.a"="T2.A, T1.c"<"T2.A, T1.b"<"T2.A, T1.c"<"T2.B, T1.b"><"T2.B, T1.c"!"T2.C}
+
+Possible world 2:
+{T1.a">"T2.C, T1.c">"T2.B, T1.a">"T2.B, T1.a"="T2.A, T1.c"<"T2.A, T1.b"<"T2.A, T1.b"<"T2.C, T1.c"><"T2.C, T1.b"!"T2.B}
+
+Possible world 3:
+{T1.a">"T2.C, T1.a">"T2.B, T1.a"="T2.A, T1.c"="T2.C, T1.b"="T2.B, T1.c"<"T2.A, T1.b"<"T2.A, T1.b"!"T2.C, T1.c"!"T2.B}
+
+Possible world 4:
+{T1.c">"T2.C, T1.a">"T2.C, T1.a">"T2.B, T1.a"="T2.A, T1.c"<"T2.A, T1.b"<"T2.A, T1.b"<"T2.B, T1.c"><"T2.B, T1.b"!"T2.C}
+
+Possible world 5:
+{T1.a">"T2.C, T1.a">"T2.B, T1.b">"T2.B, T1.a"="T2.A, T1.c"<"T2.A, T1.b"<"T2.A, T1.c"<"T2.C, T1.b"><"T2.C, T1.c"!"T2.B}
+
+Possible world 6:
+{T1.a">"T2.C, T1.a">"T2.B, T1.a"="T2.A, T1.c"<"T2.A, T1.b"<"T2.A, T1.c"><"T2.C, T1.b"><"T2.C, T1.c"><"T2.B, T1.b"><"T2.B}
+

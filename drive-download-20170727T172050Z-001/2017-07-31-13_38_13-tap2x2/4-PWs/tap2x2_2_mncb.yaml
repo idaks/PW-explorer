@@ -1,0 +1,75 @@
+'*NEW*.T1.b * T2.B\nT1.b \\ T2.C\nT2.B \\ T1.c':
+  concept: T1.b * T2.B\nT1.b \\ T2.C\nT2.B \\ T1.c
+  group: '*NEW*'
+'*NEW*.T1.b * T2.C\nT1.b \\ T2.B\nT2.C \\ T1.c':
+  concept: T1.b * T2.C\nT1.b \\ T2.B\nT2.C \\ T1.c
+  group: '*NEW*'
+'*NEW*.T1.c * T2.B\nT1.c \\ T2.C\nT2.B \\ T1.b':
+  concept: T1.c * T2.B\nT1.c \\ T2.C\nT2.B \\ T1.b
+  group: '*NEW*'
+'*NEW*.T1.c * T2.C\nT1.c \\ T2.B\nT2.C \\ T1.b':
+  concept: T1.c * T2.C\nT1.c \\ T2.B\nT2.C \\ T1.b
+  group: '*NEW*'
+T1.b:
+  concept: b
+  group: T1
+T1.c:
+  concept: c
+  group: T1
+T2.B:
+  concept: B
+  group: T2
+T2.C:
+  concept: C
+  group: T2
+congruent.T1.a\nT2.A:
+  concept: T1.a\nT2.A
+  group: congruent
+T1.b * T2.B\nT1.b \\ T2.C\nT2.B \\ T1.c_T1.b:
+  label: is_a (inferred)
+  s: T1.b * T2.B\nT1.b \\ T2.C\nT2.B \\ T1.c
+  t: T1.b
+T1.b * T2.B\nT1.b \\ T2.C\nT2.B \\ T1.c_T2.B:
+  label: is_a (inferred)
+  s: T1.b * T2.B\nT1.b \\ T2.C\nT2.B \\ T1.c
+  t: T2.B
+T1.b * T2.C\nT1.b \\ T2.B\nT2.C \\ T1.c_T1.b:
+  label: is_a (inferred)
+  s: T1.b * T2.C\nT1.b \\ T2.B\nT2.C \\ T1.c
+  t: T1.b
+T1.b * T2.C\nT1.b \\ T2.B\nT2.C \\ T1.c_T2.C:
+  label: is_a (inferred)
+  s: T1.b * T2.C\nT1.b \\ T2.B\nT2.C \\ T1.c
+  t: T2.C
+T1.b_T1.a\nT2.A:
+  label: is_a (input)
+  s: T1.b
+  t: T1.a\nT2.A
+T1.c * T2.B\nT1.c \\ T2.C\nT2.B \\ T1.b_T1.c:
+  label: is_a (inferred)
+  s: T1.c * T2.B\nT1.c \\ T2.C\nT2.B \\ T1.b
+  t: T1.c
+T1.c * T2.B\nT1.c \\ T2.C\nT2.B \\ T1.b_T2.B:
+  label: is_a (inferred)
+  s: T1.c * T2.B\nT1.c \\ T2.C\nT2.B \\ T1.b
+  t: T2.B
+T1.c * T2.C\nT1.c \\ T2.B\nT2.C \\ T1.b_T1.c:
+  label: is_a (inferred)
+  s: T1.c * T2.C\nT1.c \\ T2.B\nT2.C \\ T1.b
+  t: T1.c
+T1.c * T2.C\nT1.c \\ T2.B\nT2.C \\ T1.b_T2.C:
+  label: is_a (inferred)
+  s: T1.c * T2.C\nT1.c \\ T2.B\nT2.C \\ T1.b
+  t: T2.C
+T1.c_T1.a\nT2.A:
+  label: is_a (input)
+  s: T1.c
+  t: T1.a\nT2.A
+T2.B_T1.a\nT2.A:
+  label: is_a (input)
+  s: T2.B
+  t: T1.a\nT2.A
+T2.C_T1.a\nT2.A:
+  label: is_a (input)
+  s: T2.C
+  t: T1.a\nT2.A
