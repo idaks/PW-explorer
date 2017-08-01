@@ -1344,7 +1344,7 @@ def sym_diff_dist_sqlite(pw_id_1, pw_id_2, rls_to_use = []):
 		
 	return dist
 
-def euler_overlap_diff_dist(pw_id_1, pw_id_2, rl_id = None):
+def euler_overlap_diff_dist(pw_id_1, pw_id_2, rl_id, col_name):
 
 	global pws 
 	global relations 
@@ -1357,14 +1357,14 @@ def euler_overlap_diff_dist(pw_id_1, pw_id_2, rl_id = None):
 	global out_file 
 	global conn
 
-	if rl_id is None:
-		for i, rl in enumerate(relations):
-			if rl.relation_name == 'rel_3':
-				rl_id = i
-				break
+	# if rl_id is None:
+	# 	for i, rl in enumerate(relations):
+	# 		if rl.relation_name == 'rel_3':
+	# 			rl_id = i
+	# 			break
 
-	x1 = freq_sqlite(rl_id, ['x3'], ['"><"'], [pw_id_1], False)[1][0]
-	x2 = freq_sqlite(rl_id, ['x3'], ['"><"'], [pw_id_2], False)[1][0]
+	x1 = freq_sqlite(rl_id, [col_name], ['"><"'], [pw_id_1], False)[1][0]
+	x2 = freq_sqlite(rl_id, [col_name], ['"><"'], [pw_id_2], False)[1][0]
 
 	return abs(x1-x2)
 
@@ -1414,8 +1414,39 @@ def complexity_analysis(pws_to_consider = [] ,rls_to_use = [], do_print = True):
 		paired_pw_compl = sorted(paired_pw_compl, key = lambda x: x[1], reverse = True)
 
 		out_file.write('PWs:         ' + str([x[0] for x in paired_pw_compl]) + '\n')
-		out_file.write('Complexities:' + str([x[1] for x in paired_pw_compl]) + '\n')
+		out_file.write('Complexities:' + str([x[1].round(2) for x in paired_pw_compl]) + '\n')
 
+
+	return complexities
+
+def euler_complexity_analysis(rl_id, col_name, pws_to_consider = [], do_print = True):
+
+	global pws 
+	global relations 
+	global expected_pws 
+	global curr_pw
+	global curr_rl 
+	global curr_rl_data 
+	global n_rls
+	global dfs
+	global out_file 
+	global conn
+
+	if pws_to_consider == []:
+		pws_to_consider = [j for j in range(1, expected_pws+1)]
+
+	complexities = np.zeros(len(pws_to_consider))
+
+	for i, pw in enumerate(pws_to_consider):
+		complexities[i] = freq_sqlite(rl_id, [col_name], ['"><"'], [pw], False)[1][0]
+	
+	if np.max(complexities) != np.min(complexities):
+		complexities = (complexities - np.min(complexities))/(np.max(complexities) - np.min(complexities))
+	if do_print:
+		paired_pw_compl = zip(pws_to_consider, complexities)
+		paired_pw_compl = sorted(paired_pw_compl, key = lambda x: x[1], reverse = True)
+		out_file.write('PWs:         ' + str([x[0] for x in paired_pw_compl]) + '\n')
+		out_file.write('Complexities:' + str([x[1].round(2) for x in paired_pw_compl]) + '\n')
 
 	return complexities
 
@@ -1431,6 +1462,11 @@ def get_rl_id():
 	rl_id = raw_input('Enter the relation id\n')
 	rl_id = 0 if rl_id.strip() == '' else int(rl_id)
 	return rl_id
+
+def get_col_name():
+	col_name = raw_input('Enter the column name\n')
+	col_name = 'x1' if col_name.strip() == '' else str(col_name)
+	return col_name
 
 def get_rl_ids_list_dist():
 	rl_ids = raw_input('Enter a comma-separated list of relation ids you want to use in the distance calculation. Press enter to use all relations.\n')
@@ -1586,20 +1622,21 @@ def compute_dist_matrix(X):
 	if dist_matrix is not None:
 		return dist_matrix
 
-
+	print 'Distance Calculation:'
 	print 'Following are the parsed relation IDs and relation names:'
 	for i, rl in enumerate(relations):
 		print str(i) + ':', str(rl.relation_name)
 
 	#rl_ids = get_rl_ids_list_dist()
 	rl_id = get_rl_id()
+	col_name = get_col_name()
 	dist_matrix = np.zeros((len(pws),len(pws)))
 	for i in range(1, len(pws)+1):
 		for j in range(i, len(pws)+1):
 			#dist_matrix[i-1, j-1] = dist_matrix[j-1,i-1] = dist_sqlite(i,j)
 			#dist_matrix[i-1, j-1] = dist_matrix[j-1,i-1] = dist_panda(i,j)
 			#dist_matrix[i-1, j-1] = dist_matrix[j-1,i-1] = sym_diff_dist_sqlite(i,j, rl_ids)
-			dist_matrix[i-1, j-1] = dist_matrix[j-1,i-1] = euler_overlap_diff_dist(i, j, rl_id)
+			dist_matrix[i-1, j-1] = dist_matrix[j-1,i-1] = euler_overlap_diff_dist(i, j, rl_id, col_name)
 			#print 'Distance between PWs', i, 'and', j, 'is', dist_matrix[i-1,j-1]
 	if np.max(dist_matrix) != np.min(dist_matrix):
 		dist_matrix = (dist_matrix - np.min(dist_matrix))/(np.max(dist_matrix) - np.min(dist_matrix))
@@ -1873,7 +1910,8 @@ def mds_graph_2(A):
 dist_matrix = compute_dist_matrix(None)
 #mds_graph(dist_matrix)
 mds_graph_2(dist_matrix)
-complexities = complexity_analysis()
+
+
 
 
 
@@ -1885,7 +1923,10 @@ if len(pws) > 1:
 	linkage_dendrogram(dist_matrix)
 	dendrogram_plotly(np.array([i for i in range(len(pws))]))
 
-
+print 'Complexity Analysis:'
+complexities = complexity_analysis()
+print 'Euler Complexity Analysis:'
+complexities_euler = euler_complexity_analysis(get_rl_id(), get_col_name())
 
 
 ###########################################################################################
