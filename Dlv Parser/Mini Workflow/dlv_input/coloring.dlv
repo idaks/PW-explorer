@@ -1,0 +1,14 @@
+node(X) :- arc(X,_).
+node(Y) :- arc(_,Y).
+color(X,red) v color(X,green) v color(X,blue) :- node(X).
+
+arc(france,belgium).
+arc(france,luxembourg).
+arc(france,germany).
+arc(luxembourg,germany).
+arc(luxembourg,belgium).
+arc(netherlands,belgium).
+arc(germany,belgium).
+arc(germany,netherlands).
+arc(germany,denmark).
+
