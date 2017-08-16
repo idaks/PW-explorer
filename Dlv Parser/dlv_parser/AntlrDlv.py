@@ -13,6 +13,8 @@ from sets import Set
 import argparse
 import sqlite3
 import errno  
+import logging
+import traceback
 
 #make a directory if it doesn't already exist
 def mkdir_p(path):
@@ -128,7 +130,6 @@ def parseDlvToPws():
     lexer = DlvLexer(input)
     stream = CommonTokenStream(lexer)
     parser = DlvParser(stream)
-    #tree = parser.atom_vals()
     tree = parser.dlvOutput()
     printer = DlvPrintListener()
     walker = ParseTreeWalker()
@@ -137,6 +138,12 @@ def getProjectName(fileName):
     filePath = args.fileName.split("/")
     fileCoreName = filePath[len(filePath)-1].split(".")[0]
     return fileCoreName
+def removeFileIfExist(filename):
+    try:
+        os.remove(filename)
+    except OSError:
+        pass
+
 def pandasToOutputFiles():
     #TODO: change project name to project folder/file
     project_name = getProjectName(args.fileName)
@@ -146,11 +153,33 @@ def pandasToOutputFiles():
     if args.sql:
         output_folder = str(output_dir + 'sql_exports/' + str(project_name))
         mkdir_p(output_folder)
-        print(output_folder)
-        conn = sqlite3.connect(output_folder + '/' + str(project_name) + ".db")
-        for rsl_type, df in dfs.iteritems():
-            df.to_sql(str(rsl_type[0]), conn, if_exists = 'replace')
-        conn.close()
+        removeFileIfExist(output_folder + '/' + str(project_name) + ".db")
+        try:
+            conn = sqlite3.connect(output_folder + '/' + str(project_name) + ".db")
+            c = conn.cursor()
+            sql_create_meta_table = \
+                """CREATE TABLE IF NOT EXISTS meta (
+                    relation_name TEXT NOT NULL, 
+                    pw_num INTEGER,
+                    field_num INTEGER)
+                """
+            c.execute(sql_create_meta_table)
+            for rsl_type, df in dfs.iteritems():
+                col_num_wo_pw = len(df.columns)-1
+                col_name = str(rsl_type[0]) + "_" + str(col_num_wo_pw)
+                pws_num = len(df.pw.unique())
+                df.to_sql(col_name, conn, index=False, if_exists = 'replace')
+                insert_meta = \
+                    """
+                    INSERT INTO meta(relation_name, pw_num, field_num)
+                    VALUES (?, ?, ?)
+                    """
+                c.execute(insert_meta, (col_name, pws_num, col_num_wo_pw))
+                conn.commit()
+
+            conn.close()
+        except sqlite3.Error:
+            logging.error(traceback.format_exc()) 
     if args.csv:
         output_folder = str(output_dir + 'csv_exports/' + str(project_name))
         mkdir_p(output_folder)
