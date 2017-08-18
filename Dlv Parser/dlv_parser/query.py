@@ -64,6 +64,28 @@ class SqlQuery:
 
         return ik
         """
+    #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#
+
+    #2: Union
+
+    def union_sqlite(self, relation):
+        self.c.execute("SELECT * FROM META WHERE relation_name=?", (relation,))
+        meta = self.c.fetchone()
+        relation_name = meta[0]
+        pw_num = meta[1]
+        field_num = meta[2]
+
+        # list of pws number
+        pws_to_consider = [j for j in range(1, pw_num +1)]
+        #"x1, x2, ..."
+        col_names = ', '.join(["x"+str(i) for i in range(1, field_num+1)])
+        query_union = ''
+        for j in pws_to_consider[:-1]:
+            query_union += 'select ' + col_names + ' from ' + relation_name + ' where pw = ' + str(j) + ' UNION '
+        query_union += 'select ' + col_names + ' from ' + relation_name + ' where pw = ' + str(pws_to_consider[-1]) + ';'
+        self.c.execute(query_union)
+        print (self.c.fetchall())
+
     def displaySchema(self):
         for row in self.conn.execute("SELECT * FROM sqlite_master WHERE type='table' ORDER BY name;"):
             print row[4]
@@ -80,6 +102,8 @@ def handler_sql():
         sqlQuery = SqlQuery(args.sql[0])
         if args.intersection:
             sqlQuery.intersection_sqlite(args.intersection[0])
+        if args.union:
+            sqlQuery.union_sqlite(args.union[0])
         if args.display:
             sqlQuery.displaySchema()
         if args.query:
@@ -96,6 +120,7 @@ def argParser():
     parser_sql.add_argument('sql', nargs = 1, help='Input SQLite database location')
     parser_sql.add_argument('-d', '--display', action='store_true', help='Display Schema')
     parser_sql.add_argument('--intersection', nargs = 1, help='intersection relation name')
+    parser_sql.add_argument('--union', nargs = 1, help='union relation name')
     parser_sql.add_argument('-query', nargs = 1, help='query input')
     parser_sql.add_argument('-o', '--output', nargs = 1, help='Output file location')
     parser_sql.set_defaults(func=handler_sql)
