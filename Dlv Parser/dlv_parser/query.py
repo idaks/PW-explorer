@@ -1,5 +1,7 @@
+#!/usr/bin/env python2.7
 import sys, os
 from sys import argv
+import AntlrDlv as dlv
 import pandas as pd
 import numpy as np
 import inspect
@@ -70,9 +72,9 @@ class SqlQuery:
         for row in self.conn.execute(q):
             print row
 
-def main():
+def handler_sql():
     # TODO only output query result
-    if args.o:
+    if args.output:
         sys.stdout = open(args.o[0], 'w')
     if args.sql:
         sqlQuery = SqlQuery(args.sql[0])
@@ -82,23 +84,34 @@ def main():
             sqlQuery.displaySchema()
         if args.query:
             sqlQuery.query(args.query[0])
-            
-    """
+
+def handler_csv():
     if args.csv:
         pass
-    """
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Dlv parse to other data formats.')
+def argParser():
+    parser = argparse.ArgumentParser(description='Possible world query explorer.')
     subparsers = parser.add_subparsers(help='sub-command help')
+    #sql subparser
     parser_sql = subparsers.add_parser('sqlQuery', help='sqlQuery help')
     parser_sql.add_argument('sql', nargs = 1, help='Input SQLite database location')
     parser_sql.add_argument('-d', '--display', action='store_true', help='Display Schema')
     parser_sql.add_argument('--intersection', nargs = 1, help='intersection relation name')
     parser_sql.add_argument('-query', nargs = 1, help='query input')
-    parser_sql.add_argument('-o', nargs = 1, help='Output file location')
+    parser_sql.add_argument('-o', '--output', nargs = 1, help='Output file location')
+    parser_sql.set_defaults(func=handler_sql)
     
+    # pandas subparser
     parser_csv = subparsers.add_parser('pandasQuery', help='pandasQuery help')
     parser_csv.add_argument('csv', nargs = 1, help='Input csv file location')
-    #parser.add_argument("")
+    parser_csv.set_defaults(func=handler_csv)
+    
+    return parser
+def init(arguments):
+    global args
+    parser = argParser()
+    args = parser.parse_args(arguments)
+    args.func()
+if __name__ == '__main__':
+    parser = argParser()
     args = parser.parse_args()
-    main()
+    args.func()

@@ -144,42 +144,48 @@ def removeFileIfExist(filename):
     except OSError:
         pass
 
+def createDabatase(project_name, output_folder):
+    removeFileIfExist(output_folder + '/' + str(project_name) + ".db")
+    try:
+        conn = sqlite3.connect(output_folder + '/' + str(project_name) + ".db")
+        c = conn.cursor()
+        sql_create_meta_table = \
+            """CREATE TABLE IF NOT EXISTS meta (
+                relation_name TEXT NOT NULL, 
+                pw_num INTEGER,
+                field_num INTEGER)
+            """
+        c.execute(sql_create_meta_table)
+        for rsl_type, df in dfs.iteritems():
+            col_num_wo_pw = len(df.columns)-1
+            col_name = str(rsl_type[0]) + "_" + str(col_num_wo_pw)
+            pws_num = len(df.pw.unique())
+            df.to_sql(col_name, conn, index=False, if_exists = 'replace')
+            insert_meta = \
+                """
+                INSERT INTO meta(relation_name, pw_num, field_num)
+                VALUES (?, ?, ?)
+                """
+            c.execute(insert_meta, (col_name, pws_num, col_num_wo_pw))
+            conn.commit()
+
+        conn.close()
+    except sqlite3.Error:
+        logging.error(traceback.format_exc()) 
+
 def pandasToOutputFiles():
     #TODO: change project name to project folder/file
     project_name = getProjectName(args.fileName)
-    output_dir = os.path.dirname(os.path.realpath(__file__)) + '/../Mini Workflow/parser_output/'
+    if args.output:
+        output_dir = args.output[0]
+    else:
+        output_dir = os.path.dirname(os.path.realpath(__file__)) + '/../Mini Workflow/parser_output/'
     conn = None
 
     if args.sql:
         output_folder = str(output_dir + 'sql_exports/' + str(project_name))
         mkdir_p(output_folder)
-        removeFileIfExist(output_folder + '/' + str(project_name) + ".db")
-        try:
-            conn = sqlite3.connect(output_folder + '/' + str(project_name) + ".db")
-            c = conn.cursor()
-            sql_create_meta_table = \
-                """CREATE TABLE IF NOT EXISTS meta (
-                    relation_name TEXT NOT NULL, 
-                    pw_num INTEGER,
-                    field_num INTEGER)
-                """
-            c.execute(sql_create_meta_table)
-            for rsl_type, df in dfs.iteritems():
-                col_num_wo_pw = len(df.columns)-1
-                col_name = str(rsl_type[0]) + "_" + str(col_num_wo_pw)
-                pws_num = len(df.pw.unique())
-                df.to_sql(col_name, conn, index=False, if_exists = 'replace')
-                insert_meta = \
-                    """
-                    INSERT INTO meta(relation_name, pw_num, field_num)
-                    VALUES (?, ?, ?)
-                    """
-                c.execute(insert_meta, (col_name, pws_num, col_num_wo_pw))
-                conn.commit()
-
-            conn.close()
-        except sqlite3.Error:
-            logging.error(traceback.format_exc()) 
+        createDabatase(project_name, output_folder)
     if args.csv:
         output_folder = str(output_dir + 'csv_exports/' + str(project_name))
         mkdir_p(output_folder)
@@ -207,14 +213,26 @@ def main():
     loadIntoPandas(possibleWorlds)
     pandasToOutputFiles()
 
-if __name__ == '__main__':
+def argParser():
     parser = argparse.ArgumentParser(description='Dlv parse to other data formats.')
     parser.add_argument('fileName', help='ASP file location')
+    parser.add_argument('-o', '--output', nargs = 1, help='Specify project output folder')
 
-    parser.add_argument('--sql', action='store_true', help='Output SQLite database')
-    parser.add_argument('--csv', action='store_true', help='Output csv format')
-    parser.add_argument('--hdf', action='store_true', help='Output hdf format')
-    parser.add_argument('--msg', action='store_true', help='Output msg format')
-    parser.add_argument('--pkl', action='store_true', help='Output pkl format')
+    parser.add_argument('-sql', action='store_true', help='Output SQLite database')
+    parser.add_argument('-csv', action='store_true', help='Output csv format')
+    parser.add_argument('-hdf', action='store_true', help='Output hdf format')
+    parser.add_argument('-msg', action='store_true', help='Output msg format')
+    parser.add_argument('-pkl', action='store_true', help='Output pkl format')
+    return parser
+
+def init(arguments):
+    global args
+    parser = argParser()
+    args = parser.parse_args(arguments)
+    main()
+if __name__ == '__main__':
+    parser = argParser()
     args = parser.parse_args()
     main()
+
+
