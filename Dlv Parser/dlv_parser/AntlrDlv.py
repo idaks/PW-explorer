@@ -78,7 +78,7 @@ class DlvPrintListener(DlvListener):
         self.curr_pw = PossibleWorld() 
 #        print("curr_pw.pw_id", self.curr_pw.pw_id)
 
-    def enterAtom(self, ctx):
+    def enterAtom_name(self, ctx):
         self.curr_rel = Relation(ctx.TEXT().getText())
 
     def enterVal(self, ctx):
@@ -115,6 +115,7 @@ def loadIntoPandas(possibleWorlds):
     # insert value from possibleWorlds to the dataframe
     for pw in possibleWorlds:
         for rel in pw.rls:
+            rls = (rel.relation_name, rel.arrity)
             dfs[rls].append([pw.pw_id]+rel.vals)
 
     # 2D array to dataframe

@@ -7,13 +7,15 @@ options {
 dlvOutput : solution* ;
 solution : '{' atoms '}' ;
 
-atoms : ( atom atom_vals (',' atom atom_vals)* ) ;
+atoms : ( atom (',' atom)* ) ;
+
+atom : atom_name atom_vals? ;
 
 atom_vals : '(' val (',' val)* ')' ;
 
 val : TEXT ;
-atom: TEXT ;
+atom_name : TEXT ;
 
     //Lexer Rules:
-TEXT: [a-zA-Z0-9_]+ ;
+TEXT: [a-zA-Z0-9!"#$%&'*+-./:;<=>?@^_`|~]+ ;
 WS : [ \t\r\n]+ -> skip;

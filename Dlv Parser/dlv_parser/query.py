@@ -91,21 +91,47 @@ class SqlQuery:
             print row[4]
 
     def query(self,q):
+        #TODO: decide the output format of query. pandas or tuple
         for row in self.conn.execute(q):
             print row
 
+    def queryFile(self, filename):
+        #TODO: decide the output format of query. pandas or tuple
+        # Open and read the file as a single buffer
+        if os.path.exists(filename):
+            with open(filename, 'r') as fd:
+                sqlFile = fd.read()
+        else:
+            logging.error("location \"" + filename + "\" doesn't exist")
+            exit()
+
+        # all SQL commands (split on ';')
+        sqlCommands = sqlFile.split(';')
+
+        # Execute every command from the input file
+        for command in sqlCommands:
+            # This will skip and report errors
+            # For example, if the tables do not yet exist, this will skip over
+            # the DROP TABLE commands
+            try:
+                for row in self.conn.execute(command):
+                    print row
+            except OperationalError, msg:
+                print "Command skipped: ", msg
 def handler_sql():
     # TODO only output query result
     if args.output:
         sys.stdout = open(args.o[0], 'w')
-    if args.sql:
-        sqlQuery = SqlQuery(args.sql[0])
+    if args.database:
+        sqlQuery = SqlQuery(args.database[0])
         if args.intersection:
             sqlQuery.intersection_sqlite(args.intersection[0])
         if args.union:
             sqlQuery.union_sqlite(args.union[0])
         if args.display:
             sqlQuery.displaySchema()
+        if args.file:
+            sqlQuery.queryFile(args.file[0])
         if args.query:
             sqlQuery.query(args.query[0])
 
@@ -117,10 +143,11 @@ def argParser():
     subparsers = parser.add_subparsers(help='sub-command help')
     #sql subparser
     parser_sql = subparsers.add_parser('sqlQuery', help='sqlQuery help')
-    parser_sql.add_argument('sql', nargs = 1, help='Input SQLite database location')
+    parser_sql.add_argument('database', nargs = 1, help='Input SQLite database location')
     parser_sql.add_argument('-d', '--display', action='store_true', help='Display Schema')
     parser_sql.add_argument('--intersection', nargs = 1, help='intersection relation name')
     parser_sql.add_argument('--union', nargs = 1, help='union relation name')
+    parser_sql.add_argument('-f', '--file', nargs = 1, help='Run SQLite query from the input file')
     parser_sql.add_argument('-query', nargs = 1, help='query input')
     parser_sql.add_argument('-o', '--output', nargs = 1, help='Output file location')
     parser_sql.set_defaults(func=handler_sql)

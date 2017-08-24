@@ -31,6 +31,15 @@ class DlvListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by DlvParser#atom.
+    def enterAtom(self, ctx):
+        pass
+
+    # Exit a parse tree produced by DlvParser#atom.
+    def exitAtom(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by DlvParser#atom_vals.
     def enterAtom_vals(self, ctx):
         pass
@@ -49,12 +58,12 @@ class DlvListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by DlvParser#atom.
-    def enterAtom(self, ctx):
+    # Enter a parse tree produced by DlvParser#atom_name.
+    def enterAtom_name(self, ctx):
         pass
 
-    # Exit a parse tree produced by DlvParser#atom.
-    def exitAtom(self, ctx):
+    # Exit a parse tree produced by DlvParser#atom_name.
+    def exitAtom_name(self, ctx):
         pass
 
 
