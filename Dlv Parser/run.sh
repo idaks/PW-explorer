@@ -18,6 +18,7 @@ python dlv_parser/AntlrDlv.py Mini\ Workflow/dlv_output/coloring.asp -sql -csv
 # TEST_SWITCH
 echo "region_switch"
 # output ASP file
+TEST_FOLDER="../iConference/2017-05-31-16:53:02-CEN-NDC-regions/1-ASP-input-code"
 $DLV -silent $TEST_FOLDER/CEN-NDC-regions_pw.dlv $TEST_FOLDER/CEN-NDC-regions_ixswitch.dlv $TEST_FOLDER/CEN-NDC-regions_pwswitch.dlv -filter=rel > Mini\ Workflow/dlv_output/region_switch.asp
 # parse the ASP file and output files in other common format
 python dlv_parser/AntlrDlv.py Mini\ Workflow/dlv_output/region_switch.asp -sql -csv
