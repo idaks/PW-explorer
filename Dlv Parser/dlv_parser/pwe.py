@@ -22,6 +22,8 @@ def handler_sql():
         arguments.extend(['--union', args.union[0]])
     if args.display:
         arguments.append('-d')
+    if args.file:
+        arguments.extend(['-f', args.file[0]])
     if args.query:
         arguments.extend(['-query', args.query[0]])
     query.init(arguments)
@@ -46,6 +48,7 @@ def argParser():
     parser_sql.add_argument('-d', '--display', action='store_true', help='Display Schema')
     parser_sql.add_argument('--intersection', nargs = 1, help='intersection relation name')
     parser_sql.add_argument('--union', nargs = 1, help='union relation name')
+    parser_sql.add_argument('-f', '--file', nargs = 1, help='Run SQLite query from the input file')
     parser_sql.add_argument('-query', nargs = 1, help='query input')
     parser_sql.add_argument('-o', '--output', nargs = 1, help='Output file location')
     parser_sql.set_defaults(func=handler_sql)

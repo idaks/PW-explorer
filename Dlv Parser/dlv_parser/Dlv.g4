@@ -17,5 +17,5 @@ val : TEXT ;
 atom_name : TEXT ;
 
     //Lexer Rules:
-TEXT: [a-zA-Z0-9!"#$%&'*+-./:;<=>?@^_`|~]+ ;
+TEXT: [a-zA-Z0-9!"#$%&'*+\-./:;<=>?@^_`|~]+ ;
 WS : [ \t\r\n]+ -> skip;
