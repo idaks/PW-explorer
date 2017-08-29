@@ -7,6 +7,7 @@ PROJECT_NAMES=(2017-05-31-16:47:24-CEN-NDC-regions 2017-05-31-16:47:53-CEN-NDC-r
 for PROJECT_NAME in ${PROJECT_NAMES[*]}
 do
     echo $PROJECT_NAME
+    echo "#possible world, #overlapped regions"
     # output ASP file
     TEST_FOLDER="../iConference/$PROJECT_NAME/1-ASP-input-code"
     $DLV -silent $TEST_FOLDER/CEN-NDC-regions_pw.dlv $TEST_FOLDER/CEN-NDC-regions_ixswitch.dlv $TEST_FOLDER/CEN-NDC-regions_pwswitch.dlv -filter=rel > Mini\ Workflow/dlv_output/$PROJECT_NAME.asp
