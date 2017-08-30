@@ -1,0 +1,14 @@
+Answer: 1
+food_price_amount(chocolate_ice_cream,20,5) food_price_amount(chocolate_cake,50,0) food_price_amount(cola,30,0) food_price_amount(pineapple_cheesecake,80,0)
+Optimization: 100
+Answer: 2
+food_price_amount(chocolate_ice_cream,20,3) food_price_amount(cola,30,1) food_price_amount(chocolate_cake,50,0) food_price_amount(pineapple_cheesecake,80,0)
+Optimization: 90
+OPTIMUM FOUND
+
+Models       : 2
+  Optimum    : yes
+Optimization : 90
+Calls        : 1
+Time         : 0.006s (Solving: 0.00s 1st Model: 0.00s Unsat: 0.00s)
+CPU Time     : 0.004s
