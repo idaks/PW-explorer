@@ -52,18 +52,20 @@ class SqlQuery:
         for j in pws_to_consider[:-1]:
             query_intersection += 'select ' + col_names + ' from ' + relation_name + ' where pw = ' + str(j) + ' intersect '
         query_intersection += 'select ' + col_names + ' from ' + relation_name + ' where pw = ' + str(pws_to_consider[-1]) + ';'
-        self.c.execute(query_intersection)
-        print (self.c.fetchall())
-        """
-        if do_print:
-            out_file.write("Intersection for the relation" + str(relations[rl_id].relation_name) + "on features" + col_names + "for PWs" + str(', '.join(map(str, pws_to_consider))) + '\n')
-            if len(ik) > 0:
-                out_file.write(str(ik) + '\n')
-            else:
-                out_file.write("NULL\n")
-
-        return ik
-        """
+        # run sql query with pandas
+        try:
+            # run with sqlite3
+            #for row in self.conn.execute(command):
+            #    print row
+            # run with pandas
+            df = pd.read_sql_query(query_intersection, self.conn)
+            pd.set_option('display.max_rows', len(df))
+            print(df.to_csv(index=False))
+        except :
+            pass
+        # run sql query with sqlite3
+        #self.c.execute(query_intersection)
+        #print (self.c.fetchall())
     #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#
 
     #2: Union
@@ -83,17 +85,47 @@ class SqlQuery:
         for j in pws_to_consider[:-1]:
             query_union += 'select ' + col_names + ' from ' + relation_name + ' where pw = ' + str(j) + ' UNION '
         query_union += 'select ' + col_names + ' from ' + relation_name + ' where pw = ' + str(pws_to_consider[-1]) + ';'
-        self.c.execute(query_union)
-        print (self.c.fetchall())
+        # run sql query with pandas
+        try:
+            # run with sqlite3
+            #for row in self.conn.execute(command):
+            #    print row
+            # run with pandas
+            df = pd.read_sql_query(query_union, self.conn)
+            pd.set_option('display.max_rows', len(df))
+            print(df.to_csv(index=False))
+        except :
+            pass
+        # run sql query with sqlite3
+        #self.c.execute(query_union)
+        #print (self.c.fetchall())
 
     def displaySchema(self):
         for row in self.conn.execute("SELECT * FROM sqlite_master WHERE type='table' ORDER BY name;"):
             print row[4]
 
     def query(self,q):
-        #TODO: decide the output format of query. pandas or tuple
-        for row in self.conn.execute(q):
-            print row
+        # all SQL commands (split on ';')
+        q = q.translate(None, "\r\n")
+        sqlCommands = q.split(';')
+
+        # Execute every command from the input file
+        for command in sqlCommands:
+            if len(command) == 0:
+                continue
+            # This will skip and report errors
+            # For example, if the tables do not yet exist, this will skip over
+            # the DROP TABLE commands
+            try:
+                # run with sqlite3
+                #for row in self.conn.execute(command):
+                #    print row
+                # run with pandas
+                df = pd.read_sql_query(command, self.conn)
+                pd.set_option('display.max_rows', len(df))
+                print(df.to_csv(index=False))
+            except :
+                print "Command skipped: "+command
 
     def queryFile(self, filename):
         #TODO: decide the output format of query. pandas or tuple
@@ -104,20 +136,8 @@ class SqlQuery:
         else:
             logging.error("location \"" + filename + "\" doesn't exist")
             exit()
+        self.query(sqlFile)
 
-        # all SQL commands (split on ';')
-        sqlCommands = sqlFile.split(';')
-
-        # Execute every command from the input file
-        for command in sqlCommands:
-            # This will skip and report errors
-            # For example, if the tables do not yet exist, this will skip over
-            # the DROP TABLE commands
-            try:
-                for row in self.conn.execute(command):
-                    print row
-            except OperationalError, msg:
-                print "Command skipped: ", msg
 def handler_sql():
     # TODO only output query result
     if args.output:
