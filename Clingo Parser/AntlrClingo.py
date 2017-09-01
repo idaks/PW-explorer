@@ -1627,16 +1627,16 @@ def compute_dist_matrix(X):
 	for i, rl in enumerate(relations):
 		print str(i) + ':', str(rl.relation_name)
 
-	rl_ids = get_rl_ids_list_dist()
-	#rl_id = get_rl_id()
+	#rl_ids = get_rl_ids_list_dist()
+	rl_id = get_rl_id()
 	col_name = get_col_name()
 	dist_matrix = np.zeros((len(pws),len(pws)))
 	for i in range(1, len(pws)+1):
 		for j in range(i, len(pws)+1):
 			#dist_matrix[i-1, j-1] = dist_matrix[j-1,i-1] = dist_sqlite(i,j)
 			#dist_matrix[i-1, j-1] = dist_matrix[j-1,i-1] = dist_panda(i,j)
-			dist_matrix[i-1, j-1] = dist_matrix[j-1,i-1] = sym_diff_dist_sqlite(i,j, rl_ids)
-			#dist_matrix[i-1, j-1] = dist_matrix[j-1,i-1] = euler_overlap_diff_dist(i, j, rl_id, col_name)
+			#dist_matrix[i-1, j-1] = dist_matrix[j-1,i-1] = sym_diff_dist_sqlite(i,j, rl_ids)
+			dist_matrix[i-1, j-1] = dist_matrix[j-1,i-1] = euler_overlap_diff_dist(i, j, rl_id, col_name)
 			#print 'Distance between PWs', i, 'and', j, 'is', dist_matrix[i-1,j-1]
 	if np.max(dist_matrix) != np.min(dist_matrix):
 		dist_matrix = (dist_matrix - np.min(dist_matrix))/(np.max(dist_matrix) - np.min(dist_matrix))

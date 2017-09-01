@@ -1,0 +1,90 @@
+Number of Models: 5
+rel_3
+     pw              x1              x2    x3
+0     1       cCEN_West        cNDC_USA   "<"
+1     1    cCEN_Midwest        cNDC_USA   "<"
+2     1      cCEN_South        cNDC_USA   "<"
+3     1        cCEN_USA        cNDC_USA   "="
+4     1    cCEN_Midwest    cNDC_Midwest   "="
+5     1        cCEN_USA       cNDC_West   ">"
+6     1        cCEN_USA  cNDC_Southeast   ">"
+7     1        cCEN_USA    cNDC_Midwest   ">"
+8     1        cCEN_USA  cNDC_Southwest   ">"
+9     1       cCEN_West       cNDC_West   ">"
+10    1      cCEN_South  cNDC_Southeast   ">"
+11    1       cCEN_West  cNDC_Southwest  "><"
+12    1      cCEN_South  cNDC_Southwest  "><"
+13    1       cCEN_West  cNDC_Southeast   "!"
+14    1       cCEN_West    cNDC_Midwest   "!"
+15    1    cCEN_Midwest       cNDC_West   "!"
+16    1    cCEN_Midwest  cNDC_Southeast   "!"
+17    1    cCEN_Midwest  cNDC_Southwest   "!"
+18    1      cCEN_South       cNDC_West   "!"
+19    1      cCEN_South    cNDC_Midwest   "!"
+20    1  cCEN_Northeast        cNDC_USA   "<"
+21    1  cCEN_Northeast  cNDC_Southwest   "<"
+22    1        cCEN_USA  cNDC_Northeast   ">"
+23    1      cCEN_South  cNDC_Northeast   ">"
+24    1       cCEN_West  cNDC_Northeast   "!"
+25    1  cCEN_Northeast  cNDC_Northeast   "!"
+26    1  cCEN_Northeast       cNDC_West   "!"
+27    1  cCEN_Northeast  cNDC_Southeast   "!"
+28    1  cCEN_Northeast    cNDC_Midwest   "!"
+29    1    cCEN_Midwest  cNDC_Northeast   "!"
+..   ..             ...             ...   ...
+120   5       cCEN_West        cNDC_USA   "<"
+121   5    cCEN_Midwest        cNDC_USA   "<"
+122   5      cCEN_South        cNDC_USA   "<"
+123   5        cCEN_USA        cNDC_USA   "="
+124   5    cCEN_Midwest    cNDC_Midwest   "="
+125   5        cCEN_USA       cNDC_West   ">"
+126   5        cCEN_USA  cNDC_Southeast   ">"
+127   5        cCEN_USA    cNDC_Midwest   ">"
+128   5        cCEN_USA  cNDC_Southwest   ">"
+129   5       cCEN_West       cNDC_West   ">"
+130   5      cCEN_South  cNDC_Southeast   ">"
+131   5       cCEN_West  cNDC_Southwest  "><"
+132   5      cCEN_South  cNDC_Southwest  "><"
+133   5       cCEN_West  cNDC_Southeast   "!"
+134   5       cCEN_West    cNDC_Midwest   "!"
+135   5    cCEN_Midwest       cNDC_West   "!"
+136   5    cCEN_Midwest  cNDC_Southeast   "!"
+137   5    cCEN_Midwest  cNDC_Southwest   "!"
+138   5      cCEN_South       cNDC_West   "!"
+139   5      cCEN_South    cNDC_Midwest   "!"
+140   5  cCEN_Northeast        cNDC_USA   "<"
+141   5        cCEN_USA  cNDC_Northeast   ">"
+142   5  cCEN_Northeast  cNDC_Northeast  "><"
+143   5  cCEN_Northeast  cNDC_Southwest  "><"
+144   5      cCEN_South  cNDC_Northeast  "><"
+145   5       cCEN_West  cNDC_Northeast   "!"
+146   5  cCEN_Northeast       cNDC_West   "!"
+147   5  cCEN_Northeast  cNDC_Southeast   "!"
+148   5  cCEN_Northeast    cNDC_Midwest   "!"
+149   5    cCEN_Midwest  cNDC_Northeast   "!"
+
+[150 rows x 4 columns]
+
+Successfully exported to csv
+Successfully exported to sql
+Sqlite Schema:
+CREATE TABLE "rel_3" (
+"index" INTEGER,
+  "pw" INTEGER,
+  "x1" TEXT,
+  "x2" TEXT,
+  "x3" TEXT
+)
+[[ 0.          1.          1.          1.          1.        ]
+ [ 1.          0.          0.66666667  0.66666667  1.        ]
+ [ 1.          0.66666667  0.          1.          0.66666667]
+ [ 1.          0.66666667  1.          0.          0.66666667]
+ [ 1.          1.          0.66666667  0.66666667  0.        ]]
+Cluster Labels: [0 1 2 3 4]
+Cluster Labels: [0 1 2 3 4]
+Complexity Analysis:
+PWs:         [1, 2, 3, 4, 5]
+Complexities:[1.0, 0.0, 0.0, 0.0, 0.0]
+Euler Complexity Analysis:
+PWs:         [1, 2, 3, 4, 5]
+Complexities:[0.0, 0.0, 0.0, 0.0, 0.0]
