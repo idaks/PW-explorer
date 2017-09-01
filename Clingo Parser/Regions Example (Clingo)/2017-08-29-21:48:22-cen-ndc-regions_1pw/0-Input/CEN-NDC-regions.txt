@@ -1,0 +1,21 @@
+# Taxonomy-1: NSF BD Hubs http://www.nsf.gov/pubs/2015/nsf15562/nsf15562.htm
+# Taxonomy 2: http://www.nationaldiversitycouncil.org/wp-content/uploads/2011/12/us_regions.jpg
+#
+
+taxonomy CEN Census_Regions
+(USA Northeast Midwest South West)
+
+taxonomy NDC National_Diversity_Council
+(USA Midwest Northeast Southeast Southwest West)
+
+articulations CEN NDC
+[CEN.USA equals NDC.USA]
+[CEN.West includes NDC.West]
+[CEN.West disjoint NDC.Northeast]
+[CEN.South overlaps NDC.Southwest]
+[CEN.South includes NDC.Southeast]
+[CEN.Midwest equals NDC.Midwest]
+[CEN.Northeast is_included_in NDC.Northeast]
+
+
+
