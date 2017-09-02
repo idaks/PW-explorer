@@ -15,12 +15,12 @@ from helper import lineno, isfloat, mkdir_p, PossibleWorld, Relation
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-p", "--project_name", type = str, help = "provide session/project name used while parsing")
-parser.add_argument("-s", "--schema", action = "store_true", help= "generate sql schemas")
-parser.add_argument("-sql", action = "store_true", help = "include if you want to export a sql db")
-parser.add_argument("-csv", action = "store_true", help = "include if you want to export in csv")
-parser.add_argument("-h5", action = "store_true", help = "include if you want to export in hdf5 format")
-parser.add_argument("-msg", action = "store_true", help = "include if you want to export in msgpack format")
-parser.add_argument("-pkl", action = "store_true", help = "include if you want to export in pickle format")
+parser.add_argument("-s", "--schema", action = "store_true", help= "generate sql schemas", default = False)
+parser.add_argument("-sql", action = "store_true", help = "include if you want to export a sql db", default = False)
+parser.add_argument("-csv", action = "store_true", help = "include if you want to export in csv", default = False)
+parser.add_argument("-h5", action = "store_true", help = "include if you want to export in hdf5 format", default = False)
+parser.add_argument("-msg", action = "store_true", help = "include if you want to export in msgpack format", default = False)
+parser.add_argument("-pkl", action = "store_true", help = "include if you want to export in pickle format", default = False)
 args = parser.parse_args()
 
 project_name = ''
