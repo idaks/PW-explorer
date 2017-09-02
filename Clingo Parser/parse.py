@@ -6,45 +6,16 @@ from ClingoParser import ClingoParser
 from ClingoListener import ClingoListener
 import pandas as pd
 import numpy as np
-import inspect
+
 from antlr4.tree.Trees import Trees
 import os
-import errno
+
 import string
 import argparse
 import pickle
+from helper import lineno, isfloat, mkdir_p, PossibleWorld, Relation
 
-###################################################################
 
-#to help debug
-def lineno():
-    """Returns the current line number in our program."""
-    return inspect.currentframe().f_back.f_lineno
-
-###################################################################
-
-###################################################################
-
-#helper funcs
-#returns true if a value can be typecasted as a float, else false
-def isfloat(value):
-  try:
-    float(value)
-    return True
-  except ValueError:
-    return False
-
-#make a directory if it doesn't already exist
-def mkdir_p(path):
-    try:
-        os.makedirs(path)
-    except OSError as exc:  # Python >2.5
-        if exc.errno == errno.EEXIST and os.path.isdir(path):
-            pass
-        else:
-            raise
-
-###################################################################
 
 #global variables to use throughout the parsing process and further
 
@@ -67,38 +38,6 @@ out_file = None
 # global n_rls
 # global dfs
 # global out_file
-
-###################################################################
-
-#Class to store details and solution relating to every possible world
-
-class PossibleWorld:
-	n_pws = 1
-	def __init__(self, num_relations):
-		self.rls = [[] for i in range(num_relations)]
-		self.pw_id = PossibleWorld.n_pws
-		PossibleWorld.n_pws += 1
-		self.pw_soln = 0
-
-
-	def add_relation(self, relation_id, relation_data):
-		if relation_id >= len(self.rls):
-			self.rls.append([])
-		self.rls[relation_id].append(relation_data)
-
-###################################################################
-
-###################################################################
-
-#Class to store description of each relation found in the clingo output
-
-class Relation:
-	def __init__(self, relation_name):
-		self.relation_name = relation_name
-		self.arrity = 0
-		self.r_id = 0
-
-###################################################################
 
 ######################################################################################
 
@@ -160,7 +99,6 @@ class AntlrClingoListener(ClingoListener):
 		if ctx.OPTIMUM_FOUND() is not None:
 			if ctx.OPTIMUM_FOUND().getText() == 'UNSATISFIABLE':
 				print "The problem is unsatisfiable"
-				out_file.write("The problem is unsatisfiable\n")
 
 	def enterSolution(self, ctx):
 
@@ -300,13 +238,10 @@ class AntlrClingoListener(ClingoListener):
 		optimum_found = ctx.TEXT().getText()
 		if optimum_found == 'yes':
 			print 'Optimum Solution was found'
-			out_file.write('Optimum Solution was found\n')
 		elif optimum_found == 'no':
 			print 'Optimum Solution was not found'
-			out_file.write('Optimum Solution was not found\n')
 		else:
 			print 'Unexpected Output:', optimum_found
-			out_file.write(str('Unexpected Output: ' +  str(optimum_found) + '\n'))
 
 	def enterOptimization(self, ctx):
 
@@ -323,7 +258,6 @@ class AntlrClingoListener(ClingoListener):
 		#print lineno()
 		opt_soln = ctx.TEXT().getText()
 		print 'Optimized Solution is', opt_soln
-		out_file.write('Optimized Solution is ' + str(opt_soln) + '\n')
 
 	def enterModels(self, ctx):
 
@@ -341,7 +275,6 @@ class AntlrClingoListener(ClingoListener):
 		num_models = ctx.TEXT().getText()
 		num_models = int(num_models)
 		print "Number of Models:", num_models
-		out_file.write("Number of Models: " + str(num_models) + '\n')
 		expected_pws = num_models
 
 	def exitClingoOutput(self,ctx):
@@ -376,7 +309,7 @@ args = parser.parse_args()
 fname = args.fname
 project_name = args.project_name
 
-out_file = open('Mini Workflow/parser_output/{}.txt'.format(project_name), 'w+')
+#out_file = open('Mini Workflow/parser_output/{}.txt'.format(project_name), 'w+')
 input = FileStream(fname)
 lexer = ClingoLexer(input)
 
@@ -402,12 +335,14 @@ with open('Mini Workflow/temp_pickle_data/' + str(project_name) + '/relations.pk
 with open('Mini Workflow/temp_pickle_data/' + str(project_name) + '/pws.pkl', 'wb') as f:
 	pickle.dump(pws, f)
 
-with open('Mini Workflow/temp_pickle_data/' + 'current_project' + '/dfs.pkl', 'wb') as f:
-	pickle.dump(dfs, f)
-with open('Mini Workflow/temp_pickle_data/' + 'current_project' + '/relations.pkl', 'wb') as f:
-	pickle.dump(relations, f)
-with open('Mini Workflow/temp_pickle_data/' + 'current_project' + '/pws.pkl', 'wb') as f:
-	pickle.dump(pws, f)
+# with open('Mini Workflow/temp_pickle_data/' + 'current_project' + '/dfs.pkl', 'wb') as f:
+# 	pickle.dump(dfs, f)
+# with open('Mini Workflow/temp_pickle_data/' + 'current_project' + '/relations.pkl', 'wb') as f:
+# 	pickle.dump(relations, f)
+# with open('Mini Workflow/temp_pickle_data/' + 'current_project' + '/pws.pkl', 'wb') as f:
+# 	pickle.dump(pws, f)
+with open('Mini Workflow/temp_pickle_data/' + 'current_project' + '/curr_proj_name.pkl', 'wb') as f:
+	pickle.dump(project_name, f)
 
 
-out_file.close()
+#out_file.close()
