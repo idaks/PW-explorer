@@ -302,12 +302,18 @@ class AntlrClingoListener(ClingoListener):
 #script, fname, project_name = argv
 
 parser = argparse.ArgumentParser()
-parser.add_argument("fname", type = str, help = "provide the preprocessed clingo output .txt file to parse")
+parser.add_argument("-f", "--fname", type = str, help = "provide the preprocessed clingo output .txt file to parse. Need not provide one if it already exists in the clingo_output folder as $project_name.txt")
 parser.add_argument("project_name", type = str, help = "provide a suitable session/project name to reference these results in future scripts")
 args = parser.parse_args()
 
 fname = args.fname
 project_name = args.project_name
+
+if fname == None:
+	fname = 'Mini Workflow/clingo_output/' + str(project_name) + '.txt'
+if not os.path.exists(fname):
+	print "No file by the name {}.txt exists in the clingo_output folder. Please recheck the project name.".format(project_name)
+	exit(1)
 
 #out_file = open('Mini Workflow/parser_output/{}.txt'.format(project_name), 'w+')
 input = FileStream(fname)
