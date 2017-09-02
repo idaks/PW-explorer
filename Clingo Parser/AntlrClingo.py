@@ -69,6 +69,7 @@ curr_rl = None
 curr_rl_data = None
 n_rls = 0
 dfs = []
+out_file = None
 
 # global pws 
 # global relations 
@@ -169,6 +170,7 @@ def loadIntoPandas():
 class AntlrClingoListener(ClingoListener):
 
 	def enterClingoOutput(self, ctx):
+		global out_file
 		if ctx.OPTIMUM_FOUND() is not None:
 			if ctx.OPTIMUM_FOUND().getText() == 'UNSATISFIABLE':
 				print "The problem is unsatisfiable"
