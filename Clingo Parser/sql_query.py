@@ -21,8 +21,8 @@ group.add_argument("-num_tuples", action = 'store_true', default = False, help =
 group.add_argument("-difference", choices = ('one-way', 'symmetric'), help = "provide either relation name or relation_id using the -rel_name or -rel_id flag respectively, columns to consider using the -cols flag and the two possible world ids using the -pws flag.")
 group.add_argument("-redundant_column", action = 'store_true', default = False, help = "provide either relation name or relation_id using the -rel_name or -rel_id flag respectively, columns to consider using the -cols flag and possible worlds to consider using the -pws flag.")
 group.add_argument("-unique_tuples", action = 'store_true', default = False, help = "provide either relation name or relation_id using the -rel_name or -rel_id flag respectively, columns to consider using the -cols flag and possible worlds to consider using the -pws flag.")
-group.add_argument("-custom", nargs = 1, type = str, help = "provide the query enclosed in "".")
-group.add_argument("-custom_file", nargs = 1, type = str, help = "provide the .sql file containing the query.")
+group.add_argument("-custom", type = str, help = "provide the query enclosed in '' .")
+group.add_argument("-custom_file", type = str, help = "provide the .sql file containing the query.")
 group.add_argument("-show_relations", action = 'store_true', default = False, help = "to get a list of relations and corresponding relation ids.")
 
 parser.add_argument("-rel_name", type = str, help = "provide the relation name to query. Note that if both rel_id and rel_name are provided, rel_name is disregarded.")
@@ -358,7 +358,7 @@ def unique_tuples_sqlite(rl_id = 0, col_names = [], pws_to_consider = [j for j i
 			unique_tuples.append((relevant_tuples.ix[i], unique_pw))
 
 			if do_print:
-				print 'The unique tuple ' + str(tuple(relevant_tuples.ix[i])) + ' occurs only in PW ' + unique_pw
+				print 'The unique tuple ' + str(tuple(relevant_tuples.ix[i])) + ' occurs only in PW ' + str(unique_pw)
 
 	return unique_tuples
 
@@ -486,7 +486,7 @@ elif args.redundant_column:
 
 	soln = None
 	try:
-		soln = redundant_column_sqlite(r_id, args.cols, args.vals, args.pws, True)
+		soln = redundant_column_sqlite(r_id, args.cols, args.pws, True)
 	except Exception, e:
 		print "Query failed. Please check the provided arguments to make sure they are valid."
 		print "Error: ", str(e)
@@ -504,7 +504,7 @@ elif args.unique_tuples:
 
 	soln = None
 	try:
-		soln = unique_tuples_sqlite(r_id, args.cols, args.vals, args.pws, True)
+		soln = unique_tuples_sqlite(r_id, args.cols, args.pws, True)
 	except Exception, e:
 		print "Query failed. Please check the provided arguments to make sure they are valid."
 		print "Error: ", str(e)
@@ -540,8 +540,10 @@ elif args.custom_file is not None:
 
 	sqlQueries = f.split(';')
 	soln = []
-
+	#print sqlQueries
 	for q in sqlQueries:
+		if q.strip() == '':
+			continue
 		try:
 			soln.append(pd.read_sql_query(q, conn))
 			print str(soln[-1])
