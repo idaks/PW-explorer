@@ -25,8 +25,8 @@ group.add_argument("-custom", nargs = 1, type = str, help = "provide the query e
 group.add_argument("-custom_file", nargs = 1, type = str, help = "provide the .sql file containing the query.")
 group.add_argument("-show_relations", action = 'store_true', default = False, help = "to get a list of relations and corresponding relation ids.")
 
-parser.add_argument("-rel_name", type = str, nargs = 1, help = "provide the relation name to query. Note that if both rel_id and rel_name are provided, rel_name is disregarded.")
-parser.add_argument("-rel_id", type = int, nargs = 1, help = "provide the relation id of the relation to query. To view relation ids, use -show_relations")
+parser.add_argument("-rel_name", type = str, help = "provide the relation name to query. Note that if both rel_id and rel_name are provided, rel_name is disregarded.")
+parser.add_argument("-rel_id", type = int, help = "provide the relation id of the relation to query. To view relation ids, use -show_relations")
 parser.add_argument("-cols", type = str, nargs = '*', default = [], help = "provide the columns of the selected relations to consider for the chosen query. If you want to consider all the columns, do not include this flag.")
 parser.add_argument("-pws", type = int, nargs = '*', default = [], help = "provide the possible world ids of the possible world to consider for this query. If you want to consider all the possible worlds, do not include this flag. Please note that difference query requires exactly 2 arguments for this flag.") 
 parser.add_argument("-vals", nargs = '*', default = [], type = str, help = "provide the values for the freq query in the same order as the mentioned columns. If you want to query all possible tuples, do not include this flag.")
@@ -97,6 +97,35 @@ def rel_id_from_rel_name(rel_name):
 
 	return None
 
+def union_panda(rl_id = 0, col_names = [], pws_to_consider = [j for j in range(1, expected_pws+1)], do_print = True):
+
+	global relations 
+	global expected_pws 
+	global dfs
+	global conn
+	global pws
+
+	if pws_to_consider == []:
+		pws_to_consider = [j for j in range(1, expected_pws+1)]
+
+	if col_names == []:
+		col_names = list(dfs[rl_id])[1:]
+
+	df = dfs[rl_id]
+	s1 = df[df.pw == pws_to_consider[0]]
+	for j in pws_to_consider[1:]:
+		s1 = pd.merge(s1, df[df.pw == j], how = 'outer', on = col_names)
+	s1 = s1[col_names]
+
+	if do_print:
+		print "Intersection for the relation", str(relations[rl_id].relation_name), "on features", str(', '.join(map(str,col_names))), "for PWs", str(', '.join(map(str, pws_to_consider)))
+		if len(s1) > 0:
+			out_file.write(str(s1) + '\n')
+		else:
+			out_file.write("NULL\n")
+
+	return s1
+
 #1: Intersection
 def intersection_sqlite(rl_id = 0, col_names = [], pws_to_consider = [j for j in range(1, expected_pws+1)], do_print = True):
 
@@ -119,7 +148,7 @@ def intersection_sqlite(rl_id = 0, col_names = [], pws_to_consider = [j for j in
 	query_intersection += 'select ' + col_names + ' from ' + str(relations[rl_id].relation_name) + ' where pw = ' + str(pws_to_consider[-1]) + ';'
 	ik = pd.read_sql_query(query_intersection, conn)
 	if do_print:
-		print "Intersection for the relation" + str(relations[rl_id].relation_name) + "on features" + col_names + "for PWs" + str(', '.join(map(str, pws_to_consider)))
+		print "Intersection for the relation " + str(relations[rl_id].relation_name) + " on features " + col_names + " for PWs " + str(', '.join(map(str, pws_to_consider)))
 		if len(ik) > 0:
 			print str(ik)
 		else:
@@ -149,7 +178,7 @@ def union_sqlite(rl_id = 0, col_names = [], pws_to_consider = [j for j in range(
 	query_union += 'select ' + col_names + ' from ' + str(relations[rl_id].relation_name) + ' where pw = ' + str(pws_to_consider[-1]) + ';'
 	ik = pd.read_sql_query(query_union, conn)
 	if do_print:
-		print "Union for the relation", str(relations[rl_id].relation_name), "on features", col_names, "for PWs", str(', '.join(map(str, pws_to_consider)))
+		print "Union for the relation ", str(relations[rl_id].relation_name), " on features ", col_names, " for PWs ", str(', '.join(map(str, pws_to_consider)))
 		if len(ik) > 0:
 			print str(ik)
 		else:
@@ -195,7 +224,7 @@ def freq_sqlite(rl_id = 0, col_names = [], values = [], pws_to_consider = [j for
 		#print query
 		ik = pd.read_sql_query(query, conn)
 		if do_print:
-			print "Frequency of tuple" + str(tuple(all_tuples.ix[j])) + 'of the relation' + str(relations[rl_id].relation_name) + 'for attributes' + str(', '.join(map(str,col_names))) + 'in PWs' + str(', '.join(map(str,pws_to_consider))) + "is:" + str(ik.ix[0][0])
+			print "Frequency of tuple " + str(tuple(all_tuples.ix[j])) + ' of the relation ' + str(relations[rl_id].relation_name) + ' for attributes ' + str(', '.join(map(str,col_names))) + ' in PWs ' + str(', '.join(map(str,pws_to_consider))) + " is: " + str(ik.ix[0][0])
 		freqs.append(ik.ix[0][0])
 
 	return all_tuples, freqs
@@ -213,7 +242,7 @@ def num_tuples_sqlite(rl_id, pw_id, do_print = True):
 	c = pd.read_sql_query(query, conn)
 
 	if do_print:
-		print "There exist" + str(c.ix[0][0]) + "tuples of relation" + str(relations[rl_id].relation_name) + "in PW" + str(pw_id)
+		print "There exist " + str(c.ix[0][0]) + " tuples of relation " + str(relations[rl_id].relation_name) + " in PW " + str(pw_id)
 	return c.ix[0][0]
 
 #5: Difference Query
@@ -293,7 +322,7 @@ def redundant_column_sqlite(rl_id = 0, col_names = [], pws_to_consider = [j for 
 		if int(k.ix[0][0]) <= 1:
 			redundant_across_pws.append((pws_to_consider, rl_id, ft))
 			if do_print:
-				print 'Column' + str(ft) + 'is redundant in relation' + str(relations[rl_id].relation_name) + 'for PWs' + str(', '.join(map(str,pws_to_consider)))
+				print 'Column ' + str(ft) + ' is redundant in relation ' + str(relations[rl_id].relation_name) + ' for PWs ' + str(', '.join(map(str,pws_to_consider)))
 
 	return redundant_pw_specific, redundant_across_pws
 
@@ -329,12 +358,13 @@ def unique_tuples_sqlite(rl_id = 0, col_names = [], pws_to_consider = [j for j i
 			unique_tuples.append((relevant_tuples.ix[i], unique_pw))
 
 			if do_print:
-				out_file.write('The unique tuple' + str(tuple(relevant_tuples.ix[i])) + 'occurs only in PW' + unique_pw + '\n')
+				print 'The unique tuple ' + str(tuple(relevant_tuples.ix[i])) + ' occurs only in PW ' + unique_pw
 
 	return unique_tuples
 
 
-
+#print "pws: ", args.pws
+#print "cols: ", args.cols
 
 if args.intersection:
 
@@ -431,14 +461,14 @@ elif args.difference is not None:
 
 	if args.difference == 'one-way':
 		try:
-			soln = difference_sqlite(r_id, args.pw[0], args.pw[1], args.cols, True)
+			soln = difference_sqlite(r_id, args.pws[0], args.pws[1], args.cols, True)
 		except Exception, e:
 			print "Query failed. Please check the provided arguments to make sure they are valid."
 			print "Error: ", str(e)
 			exit(1)
 	elif args.difference == 'symmetric':
 		try:
-			soln = difference_both_ways_sqlite(r_id, args.pw[0], args.pw[1], args.cols, True)
+			soln = difference_both_ways_sqlite(r_id, args.pws[0], args.pws[1], args.cols, True)
 		except Exception, e:
 			print "Query failed. Please check the provided arguments to make sure they are valid."
 			print "Error: ", str(e)
