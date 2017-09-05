@@ -10,6 +10,7 @@ do
     echo $PROJECT_NAME
     # output ASP file
     PROJECT_FOLDER="../iConference/$PROJECT_NAME/1-ASP-input-code"
+    MIR_FILE="../iConference/$PROJECT_NAME/3-MIR/CEN-NDC-regions_mir.csv"
     $DLV -silent $PROJECT_FOLDER/CEN-NDC-regions_pw.dlv $PROJECT_FOLDER/CEN-NDC-regions_ixswitch.dlv $PROJECT_FOLDER/CEN-NDC-regions_pwswitch.dlv -filter=rel > Mini\ Workflow/dlv_output/$PROJECT_NAME.asp
     # parse the ASP file and output files in other common format
     dlv_parser/pwe export Mini\ Workflow/dlv_output/$PROJECT_NAME.asp -sql -csv
@@ -19,4 +20,6 @@ do
     dlv_parser/pwe sqlQuery Mini\ Workflow/parser_output/sql_exports/$PROJECT_NAME/$PROJECT_NAME.db -f $QUERY_FOLDER/subset.sql
     echo "#possible world, #all not equal relations"
     dlv_parser/pwe sqlQuery Mini\ Workflow/parser_output/sql_exports/$PROJECT_NAME/$PROJECT_NAME.db -f $QUERY_FOLDER/allNotEqualRelationCount.sql
+    echo "Unambiguous relations from csv file"
+    python ../iConference/csvQuery.py $MIR_FILE
 done

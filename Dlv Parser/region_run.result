@@ -12,6 +12,27 @@ pw,COUNT(x3)
 pw,COUNT(x3)
 1,15
 
+Unambiguous relations from csv file
+number of SUBSET from DEDUCED: 5
+       left rel          right    infer
+6   CEN.USA   >    NDC.Midwest  deduced
+7   CEN.USA   >  NDC.Northeast  deduced
+8   CEN.USA   >  NDC.Southeast  deduced
+9   CEN.USA   >  NDC.Southwest  deduced
+10  CEN.USA   >       NDC.West  deduced
+number of SUBSET from INFERRED: 4
+             left rel    right     infer
+12    CEN.Midwest   <  NDC.USA  inferred
+15  CEN.Northeast   <  NDC.USA  inferred
+18      CEN.South   <  NDC.USA  inferred
+22       CEN.West   <  NDC.USA  inferred
+number of OVERLAP from INFERRED: 2
+         left rel          right     infer
+17  CEN.South  ><  NDC.Northeast  inferred
+21   CEN.West  ><  NDC.Southwest  inferred
+number of OVERLAP from INPUT: 1
+         left rel          right  infer
+26  CEN.South  ><  NDC.Southwest  input
 2017-05-31-16:47:53-CEN-NDC-regions
 #possible world, #overlapped regions
 pw,COUNT(x3)
@@ -112,6 +133,23 @@ pw,COUNT(x3)
 8,16
 9,16
 
+Unambiguous relations from csv file
+number of SUBSET from DEDUCED: 3
+      left rel          right    infer
+6  CEN.USA   >    NDC.Midwest  deduced
+7  CEN.USA   >  NDC.Southeast  deduced
+8  CEN.USA   >       NDC.West  deduced
+number of SUBSET from INFERRED: 2
+             left rel    right     infer
+10    CEN.Midwest   <  NDC.USA  inferred
+13  CEN.Northeast   <  NDC.USA  inferred
+number of OVERLAP from INFERRED: 0
+Empty DataFrame
+Columns: [left, rel, right, infer]
+Index: []
+number of OVERLAP from INPUT: 1
+         left rel          right  infer
+27  CEN.South  ><  NDC.Southwest  input
 2017-05-31-16:49:19-CEN-NDC-regions
 #possible world, #overlapped regions
 pw,COUNT(x3)
@@ -131,6 +169,26 @@ pw,COUNT(x3)
 3,15
 1,16
 
+Unambiguous relations from csv file
+number of SUBSET from DEDUCED: 5
+       left rel          right    infer
+6   CEN.USA   >    NDC.Midwest  deduced
+7   CEN.USA   >  NDC.Northeast  deduced
+8   CEN.USA   >  NDC.Southeast  deduced
+9   CEN.USA   >  NDC.Southwest  deduced
+10  CEN.USA   >       NDC.West  deduced
+number of SUBSET from INFERRED: 4
+             left rel    right     infer
+12    CEN.Midwest   <  NDC.USA  inferred
+15  CEN.Northeast   <  NDC.USA  inferred
+18      CEN.South   <  NDC.USA  inferred
+22       CEN.West   <  NDC.USA  inferred
+number of OVERLAP from INFERRED: 1
+         left rel          right     infer
+17  CEN.South  ><  NDC.Northeast  inferred
+number of OVERLAP from INPUT: 1
+         left rel          right  infer
+27  CEN.South  ><  NDC.Southwest  input
 2017-05-31-16:50:20-CEN-NDC-regions
 #possible world, #overlapped regions
 pw,COUNT(x3)
@@ -150,6 +208,26 @@ pw,COUNT(x3)
 3,15
 1,16
 
+Unambiguous relations from csv file
+number of SUBSET from DEDUCED: 5
+       left rel          right    infer
+6   CEN.USA   >    NDC.Midwest  deduced
+7   CEN.USA   >  NDC.Northeast  deduced
+8   CEN.USA   >  NDC.Southeast  deduced
+9   CEN.USA   >  NDC.Southwest  deduced
+10  CEN.USA   >       NDC.West  deduced
+number of SUBSET from INFERRED: 4
+             left rel    right     infer
+12    CEN.Midwest   <  NDC.USA  inferred
+15  CEN.Northeast   <  NDC.USA  inferred
+18      CEN.South   <  NDC.USA  inferred
+23       CEN.West   <  NDC.USA  inferred
+number of OVERLAP from INFERRED: 1
+        left rel          right     infer
+22  CEN.West  ><  NDC.Southwest  inferred
+number of OVERLAP from INPUT: 1
+         left rel          right  infer
+27  CEN.South  ><  NDC.Southwest  input
 2017-05-31-16:51:01-CEN-NDC-regions
 #possible world, #overlapped regions
 pw,COUNT(x3)
@@ -166,6 +244,27 @@ pw,COUNT(x3)
 2,14
 1,15
 
+Unambiguous relations from csv file
+number of SUBSET from DEDUCED: 5
+       left rel          right    infer
+6   CEN.USA   >    NDC.Midwest  deduced
+7   CEN.USA   >  NDC.Northeast  deduced
+8   CEN.USA   >  NDC.Southeast  deduced
+9   CEN.USA   >  NDC.Southwest  deduced
+10  CEN.USA   >       NDC.West  deduced
+number of SUBSET from INFERRED: 4
+             left rel    right     infer
+12    CEN.Midwest   <  NDC.USA  inferred
+15  CEN.Northeast   <  NDC.USA  inferred
+19      CEN.South   <  NDC.USA  inferred
+23       CEN.West   <  NDC.USA  inferred
+number of OVERLAP from INFERRED: 1
+         left rel          right     infer
+17  CEN.South  ><  NDC.Northeast  inferred
+number of OVERLAP from INPUT: 0
+Empty DataFrame
+Columns: [left, rel, right, infer]
+Index: []
 2017-05-31-16:51:38-CEN-NDC-regions
 #possible world, #overlapped regions
 pw,COUNT(x3)
@@ -185,6 +284,27 @@ pw,COUNT(x3)
 3,15
 1,16
 
+Unambiguous relations from csv file
+number of SUBSET from DEDUCED: 5
+       left rel          right    infer
+6   CEN.USA   >    NDC.Midwest  deduced
+7   CEN.USA   >  NDC.Northeast  deduced
+8   CEN.USA   >  NDC.Southeast  deduced
+9   CEN.USA   >  NDC.Southwest  deduced
+10  CEN.USA   >       NDC.West  deduced
+number of SUBSET from INFERRED: 4
+             left rel    right     infer
+12    CEN.Midwest   <  NDC.USA  inferred
+15  CEN.Northeast   <  NDC.USA  inferred
+19      CEN.South   <  NDC.USA  inferred
+23       CEN.West   <  NDC.USA  inferred
+number of OVERLAP from INFERRED: 2
+         left rel          right     infer
+17  CEN.South  ><  NDC.Northeast  inferred
+22   CEN.West  ><  NDC.Southwest  inferred
+number of OVERLAP from INPUT: 1
+         left rel          right  infer
+26  CEN.South  ><  NDC.Southwest  input
 2017-05-31-16:52:17-CEN-NDC-regions
 #possible world, #overlapped regions
 pw,COUNT(x3)
@@ -348,6 +468,27 @@ pw,COUNT(x3)
 43,19
 27,20
 
+Unambiguous relations from csv file
+number of SUBSET from DEDUCED: 5
+      left rel          right    infer
+0  CEN.USA   >    NDC.Midwest  deduced
+1  CEN.USA   >  NDC.Northeast  deduced
+2  CEN.USA   >  NDC.Southeast  deduced
+3  CEN.USA   >  NDC.Southwest  deduced
+4  CEN.USA   >       NDC.West  deduced
+number of SUBSET from INFERRED: 4
+             left rel    right     infer
+9     CEN.Midwest   <  NDC.USA  inferred
+14  CEN.Northeast   <  NDC.USA  inferred
+18      CEN.South   <  NDC.USA  inferred
+23       CEN.West   <  NDC.USA  inferred
+number of OVERLAP from INFERRED: 0
+Empty DataFrame
+Columns: [left, rel, right, infer]
+Index: []
+number of OVERLAP from INPUT: 1
+         left rel          right  infer
+26  CEN.South  ><  NDC.Southwest  input
 2017-05-31-16:53:02-CEN-NDC-regions
 #possible world, #overlapped regions
 pw,COUNT(x3)
@@ -373,3 +514,23 @@ pw,COUNT(x3)
 5,15
 1,16
 
+Unambiguous relations from csv file
+number of SUBSET from DEDUCED: 5
+       left rel          right    infer
+6   CEN.USA   >    NDC.Midwest  deduced
+7   CEN.USA   >  NDC.Northeast  deduced
+8   CEN.USA   >  NDC.Southeast  deduced
+9   CEN.USA   >  NDC.Southwest  deduced
+10  CEN.USA   >       NDC.West  deduced
+number of SUBSET from INFERRED: 4
+             left rel    right     infer
+12    CEN.Midwest   <  NDC.USA  inferred
+16  CEN.Northeast   <  NDC.USA  inferred
+19      CEN.South   <  NDC.USA  inferred
+23       CEN.West   <  NDC.USA  inferred
+number of OVERLAP from INFERRED: 1
+        left rel          right     infer
+22  CEN.West  ><  NDC.Southwest  inferred
+number of OVERLAP from INPUT: 1
+         left rel          right  infer
+26  CEN.South  ><  NDC.Southwest  input
