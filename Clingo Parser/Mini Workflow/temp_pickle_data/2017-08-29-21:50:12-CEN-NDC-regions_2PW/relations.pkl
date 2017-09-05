@@ -1,0 +1,16 @@
+(lp0
+(ihelper
+Relation
+p1
+(dp2
+S'arrity'
+p3
+I3
+sS'relation_name'
+p4
+S'rel_3'
+p5
+sS'r_id'
+p6
+I0
+sba.

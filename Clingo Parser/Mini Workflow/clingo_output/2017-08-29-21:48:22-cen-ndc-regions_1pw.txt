@@ -1,0 +1,8 @@
+Answer: 1
+rel(cCEN_West,cNDC_USA,"<") rel(cCEN_Northeast,cNDC_Northeast,"<") rel(cCEN_Northeast,cNDC_USA,"<") rel(cCEN_Midwest,cNDC_USA,"<") rel(cCEN_South,cNDC_USA,"<") rel(cCEN_USA,cNDC_USA,"=") rel(cCEN_Midwest,cNDC_Midwest,"=") rel(cCEN_USA,cNDC_Northeast,">") rel(cCEN_USA,cNDC_West,">") rel(cCEN_USA,cNDC_Southeast,">") rel(cCEN_USA,cNDC_Midwest,">") rel(cCEN_USA,cNDC_Southwest,">") rel(cCEN_West,cNDC_West,">") rel(cCEN_South,cNDC_Southeast,">") rel(cCEN_West,cNDC_Southwest,"><") rel(cCEN_South,cNDC_Northeast,"><") rel(cCEN_South,cNDC_Southwest,"><") rel(cCEN_West,cNDC_Northeast,"!") rel(cCEN_West,cNDC_Southeast,"!") rel(cCEN_West,cNDC_Midwest,"!") rel(cCEN_Northeast,cNDC_West,"!") rel(cCEN_Northeast,cNDC_Southeast,"!") rel(cCEN_Northeast,cNDC_Midwest,"!") rel(cCEN_Northeast,cNDC_Southwest,"!") rel(cCEN_Midwest,cNDC_Northeast,"!") rel(cCEN_Midwest,cNDC_West,"!") rel(cCEN_Midwest,cNDC_Southeast,"!") rel(cCEN_Midwest,cNDC_Southwest,"!") rel(cCEN_South,cNDC_West,"!") rel(cCEN_South,cNDC_Midwest,"!")
+SATISFIABLE
+
+Models       : 1
+Calls        : 1
+Time         : 0.036s (Solving: 0.00s 1st Model: 0.00s Unsat: 0.00s)
+CPU Time     : 0.028s
