@@ -1,0 +1,124 @@
+##### Executing command:
+
+/Users/jessicacheng/EulerX/src-el/euler2 align CEN-NDC-regions.txt -r clingo 
+
+
+##### Euler version:
+
+master
+49e63e6a27be97ab30832180a47d214494388e15
+
+
+##### GraphViz version:
+
+dot - graphviz version 2.36.0 (20140111.2315)
+
+
+##### DLV version:
+
+DLV [build BEN/Dec 17 2012   gcc 4.2.1 (Apple Inc. build 5666) (dot 3)]
+
+usage: dlv {FRONTEND} {OPTIONS} [filename [filename [...]]]
+
+Specify -help for more detailed usage information.
+
+
+##### Running User, Host and Date:
+User:	jessicacheng
+Host:	JessicatekiMacBook-Air.local
+Date:	2017-08-29-21:48:50
+
+
+##### Euler Outputs:
+******* You are running example CEN-NDC-regions *******
+
+Possible world 0:
+{CEN.Northeast"<"NDC.USA, CEN.Midwest"<"NDC.USA, CEN.Midwest"="NDC.Midwest, CEN.USA">"NDC.West, CEN.USA">"NDC.Southeast, CEN.USA">"NDC.Midwest, CEN.South">"NDC.Southeast, CEN.West"!"NDC.Northeast, CEN.West"!"NDC.Southeast, CEN.West"!"NDC.Midwest, CEN.Northeast"!"NDC.West, CEN.Northeast"!"NDC.Southeast, CEN.Northeast"!"NDC.Midwest, CEN.Northeast"!"NDC.Southwest, CEN.Midwest"!"NDC.Northeast, CEN.Midwest"!"NDC.West, CEN.Midwest"!"NDC.Southeast, CEN.Midwest"!"NDC.Southwest, CEN.South"!"NDC.West, CEN.South"!"NDC.Midwest, CEN.West"<"NDC.USA, CEN.Northeast"<"NDC.Northeast, CEN.South"<"NDC.USA, CEN.USA"="NDC.USA, CEN.USA">"NDC.Northeast, CEN.USA">"NDC.Southwest, CEN.West">"NDC.West, CEN.West"><"NDC.Southwest, CEN.South"><"NDC.Northeast, CEN.South"><"NDC.Southwest}
+
+Possible world 1:
+{CEN.Northeast"<"NDC.USA, CEN.Midwest"<"NDC.USA, CEN.Midwest"="NDC.Midwest, CEN.USA">"NDC.West, CEN.USA">"NDC.Southeast, CEN.USA">"NDC.Midwest, CEN.South">"NDC.Southeast, CEN.West"!"NDC.Northeast, CEN.West"!"NDC.Southeast, CEN.West"!"NDC.Midwest, CEN.Northeast"!"NDC.West, CEN.Northeast"!"NDC.Southeast, CEN.Northeast"!"NDC.Midwest, CEN.Northeast"!"NDC.Southwest, CEN.Midwest"!"NDC.Northeast, CEN.Midwest"!"NDC.West, CEN.Midwest"!"NDC.Southeast, CEN.Midwest"!"NDC.Southwest, CEN.South"!"NDC.West, CEN.South"!"NDC.Midwest, CEN.USA"<"NDC.USA, CEN.West"<"NDC.USA, CEN.Northeast"<"NDC.Northeast, CEN.South"<"NDC.USA, CEN.USA">"NDC.Northeast, CEN.West">"NDC.West, CEN.USA"><"NDC.Southwest, CEN.West"><"NDC.Southwest, CEN.South"><"NDC.Northeast, CEN.South"><"NDC.Southwest}
+
+Possible world 2:
+{CEN.Northeast"<"NDC.USA, CEN.Midwest"<"NDC.USA, CEN.Midwest"="NDC.Midwest, CEN.USA">"NDC.West, CEN.USA">"NDC.Southeast, CEN.USA">"NDC.Midwest, CEN.South">"NDC.Southeast, CEN.West"!"NDC.Northeast, CEN.West"!"NDC.Southeast, CEN.West"!"NDC.Midwest, CEN.Northeast"!"NDC.West, CEN.Northeast"!"NDC.Southeast, CEN.Northeast"!"NDC.Midwest, CEN.Northeast"!"NDC.Southwest, CEN.Midwest"!"NDC.Northeast, CEN.Midwest"!"NDC.West, CEN.Midwest"!"NDC.Southeast, CEN.Midwest"!"NDC.Southwest, CEN.South"!"NDC.West, CEN.South"!"NDC.Midwest, CEN.USA"<"NDC.USA, CEN.West"<"NDC.USA, CEN.Northeast"<"NDC.Northeast, CEN.South"<"NDC.USA, CEN.USA">"NDC.Southwest, CEN.West">"NDC.West, CEN.USA"><"NDC.Northeast, CEN.West"><"NDC.Southwest, CEN.South"><"NDC.Southwest, CEN.South"!"NDC.Northeast}
+
+Possible world 3:
+{CEN.Northeast"<"NDC.USA, CEN.Midwest"<"NDC.USA, CEN.Midwest"="NDC.Midwest, CEN.USA">"NDC.West, CEN.USA">"NDC.Southeast, CEN.USA">"NDC.Midwest, CEN.South">"NDC.Southeast, CEN.West"!"NDC.Northeast, CEN.West"!"NDC.Southeast, CEN.West"!"NDC.Midwest, CEN.Northeast"!"NDC.West, CEN.Northeast"!"NDC.Southeast, CEN.Northeast"!"NDC.Midwest, CEN.Northeast"!"NDC.Southwest, CEN.Midwest"!"NDC.Northeast, CEN.Midwest"!"NDC.West, CEN.Midwest"!"NDC.Southeast, CEN.Midwest"!"NDC.Southwest, CEN.South"!"NDC.West, CEN.South"!"NDC.Midwest, CEN.USA"<"NDC.USA, CEN.West"<"NDC.USA, CEN.Northeast"<"NDC.Northeast, CEN.South"<"NDC.USA, CEN.USA">"NDC.Southwest, CEN.West">"NDC.West, CEN.USA"><"NDC.Northeast, CEN.West"><"NDC.Southwest, CEN.South"><"NDC.Northeast, CEN.South"><"NDC.Southwest}
+
+Possible world 4:
+{CEN.Northeast"<"NDC.USA, CEN.Midwest"<"NDC.USA, CEN.Midwest"="NDC.Midwest, CEN.USA">"NDC.West, CEN.USA">"NDC.Southeast, CEN.USA">"NDC.Midwest, CEN.South">"NDC.Southeast, CEN.West"!"NDC.Northeast, CEN.West"!"NDC.Southeast, CEN.West"!"NDC.Midwest, CEN.Northeast"!"NDC.West, CEN.Northeast"!"NDC.Southeast, CEN.Northeast"!"NDC.Midwest, CEN.Northeast"!"NDC.Southwest, CEN.Midwest"!"NDC.Northeast, CEN.Midwest"!"NDC.West, CEN.Midwest"!"NDC.Southeast, CEN.Midwest"!"NDC.Southwest, CEN.South"!"NDC.West, CEN.South"!"NDC.Midwest, CEN.USA"<"NDC.USA, CEN.West"<"NDC.USA, CEN.Northeast"<"NDC.Northeast, CEN.South"<"NDC.USA, CEN.West">"NDC.West, CEN.USA"><"NDC.Northeast, CEN.USA"><"NDC.Southwest, CEN.West"><"NDC.Southwest, CEN.South"><"NDC.Southwest, CEN.South"!"NDC.Northeast}
+
+Possible world 5:
+{CEN.Northeast"<"NDC.USA, CEN.Midwest"<"NDC.USA, CEN.Midwest"="NDC.Midwest, CEN.USA">"NDC.West, CEN.USA">"NDC.Southeast, CEN.USA">"NDC.Midwest, CEN.South">"NDC.Southeast, CEN.West"!"NDC.Northeast, CEN.West"!"NDC.Southeast, CEN.West"!"NDC.Midwest, CEN.Northeast"!"NDC.West, CEN.Northeast"!"NDC.Southeast, CEN.Northeast"!"NDC.Midwest, CEN.Northeast"!"NDC.Southwest, CEN.Midwest"!"NDC.Northeast, CEN.Midwest"!"NDC.West, CEN.Midwest"!"NDC.Southeast, CEN.Midwest"!"NDC.Southwest, CEN.South"!"NDC.West, CEN.South"!"NDC.Midwest, CEN.USA"<"NDC.USA, CEN.West"<"NDC.USA, CEN.Northeast"<"NDC.Northeast, CEN.South"<"NDC.USA, CEN.West">"NDC.West, CEN.USA"><"NDC.Northeast, CEN.USA"><"NDC.Southwest, CEN.West"><"NDC.Southwest, CEN.South"><"NDC.Northeast, CEN.South"><"NDC.Southwest}
+
+Possible world 6:
+{CEN.Northeast"<"NDC.USA, CEN.Midwest"<"NDC.USA, CEN.Midwest"="NDC.Midwest, CEN.USA">"NDC.West, CEN.USA">"NDC.Southeast, CEN.USA">"NDC.Midwest, CEN.South">"NDC.Southeast, CEN.West"!"NDC.Northeast, CEN.West"!"NDC.Southeast, CEN.West"!"NDC.Midwest, CEN.Northeast"!"NDC.West, CEN.Northeast"!"NDC.Southeast, CEN.Northeast"!"NDC.Midwest, CEN.Northeast"!"NDC.Southwest, CEN.Midwest"!"NDC.Northeast, CEN.Midwest"!"NDC.West, CEN.Midwest"!"NDC.Southeast, CEN.Midwest"!"NDC.Southwest, CEN.South"!"NDC.West, CEN.South"!"NDC.Midwest, CEN.West"<"NDC.USA, CEN.Northeast"<"NDC.Northeast, CEN.USA">"NDC.Northeast, CEN.USA">"NDC.USA, CEN.USA">"NDC.Southwest, CEN.West">"NDC.West, CEN.West"><"NDC.Southwest, CEN.South"><"NDC.Northeast, CEN.South"><"NDC.USA, CEN.South"><"NDC.Southwest}
+
+Possible world 7:
+{CEN.Northeast"<"NDC.USA, CEN.Midwest"<"NDC.USA, CEN.Midwest"="NDC.Midwest, CEN.USA">"NDC.West, CEN.USA">"NDC.Southeast, CEN.USA">"NDC.Midwest, CEN.South">"NDC.Southeast, CEN.West"!"NDC.Northeast, CEN.West"!"NDC.Southeast, CEN.West"!"NDC.Midwest, CEN.Northeast"!"NDC.West, CEN.Northeast"!"NDC.Southeast, CEN.Northeast"!"NDC.Midwest, CEN.Northeast"!"NDC.Southwest, CEN.Midwest"!"NDC.Northeast, CEN.Midwest"!"NDC.West, CEN.Midwest"!"NDC.Southeast, CEN.Midwest"!"NDC.Southwest, CEN.South"!"NDC.West, CEN.South"!"NDC.Midwest, CEN.Northeast"<"NDC.Northeast, CEN.South"<"NDC.USA, CEN.USA">"NDC.Northeast, CEN.USA">"NDC.USA, CEN.USA">"NDC.Southwest, CEN.West">"NDC.West, CEN.West"><"NDC.USA, CEN.West"><"NDC.Southwest, CEN.South"><"NDC.Northeast, CEN.South"><"NDC.Southwest}
+
+Possible world 8:
+{CEN.Northeast"<"NDC.USA, CEN.Midwest"<"NDC.USA, CEN.Midwest"="NDC.Midwest, CEN.USA">"NDC.West, CEN.USA">"NDC.Southeast, CEN.USA">"NDC.Midwest, CEN.South">"NDC.Southeast, CEN.West"!"NDC.Northeast, CEN.West"!"NDC.Southeast, CEN.West"!"NDC.Midwest, CEN.Northeast"!"NDC.West, CEN.Northeast"!"NDC.Southeast, CEN.Northeast"!"NDC.Midwest, CEN.Northeast"!"NDC.Southwest, CEN.Midwest"!"NDC.Northeast, CEN.Midwest"!"NDC.West, CEN.Midwest"!"NDC.Southeast, CEN.Midwest"!"NDC.Southwest, CEN.South"!"NDC.West, CEN.South"!"NDC.Midwest, CEN.Northeast"<"NDC.Northeast, CEN.USA">"NDC.Northeast, CEN.USA">"NDC.USA, CEN.USA">"NDC.Southwest, CEN.West">"NDC.West, CEN.West"><"NDC.USA, CEN.West"><"NDC.Southwest, CEN.South"><"NDC.Northeast, CEN.South"><"NDC.USA, CEN.South"><"NDC.Southwest}
+
+Possible world 9:
+{CEN.Northeast"<"NDC.USA, CEN.Midwest"<"NDC.USA, CEN.Midwest"="NDC.Midwest, CEN.USA">"NDC.West, CEN.USA">"NDC.Southeast, CEN.USA">"NDC.Midwest, CEN.South">"NDC.Southeast, CEN.West"!"NDC.Northeast, CEN.West"!"NDC.Southeast, CEN.West"!"NDC.Midwest, CEN.Northeast"!"NDC.West, CEN.Northeast"!"NDC.Southeast, CEN.Northeast"!"NDC.Midwest, CEN.Northeast"!"NDC.Southwest, CEN.Midwest"!"NDC.Northeast, CEN.Midwest"!"NDC.West, CEN.Midwest"!"NDC.Southeast, CEN.Midwest"!"NDC.Southwest, CEN.South"!"NDC.West, CEN.South"!"NDC.Midwest, CEN.Northeast"<"NDC.Northeast, CEN.South"<"NDC.USA, CEN.USA">"NDC.Northeast, CEN.West">"NDC.West, CEN.USA"><"NDC.USA, CEN.USA"><"NDC.Southwest, CEN.West"><"NDC.USA, CEN.South"><"NDC.Northeast, CEN.South"><"NDC.Southwest, CEN.West"!"NDC.Southwest}
+
+Possible world 10:
+{CEN.Northeast"<"NDC.USA, CEN.Midwest"<"NDC.USA, CEN.Midwest"="NDC.Midwest, CEN.USA">"NDC.West, CEN.USA">"NDC.Southeast, CEN.USA">"NDC.Midwest, CEN.South">"NDC.Southeast, CEN.West"!"NDC.Northeast, CEN.West"!"NDC.Southeast, CEN.West"!"NDC.Midwest, CEN.Northeast"!"NDC.West, CEN.Northeast"!"NDC.Southeast, CEN.Northeast"!"NDC.Midwest, CEN.Northeast"!"NDC.Southwest, CEN.Midwest"!"NDC.Northeast, CEN.Midwest"!"NDC.West, CEN.Midwest"!"NDC.Southeast, CEN.Midwest"!"NDC.Southwest, CEN.South"!"NDC.West, CEN.South"!"NDC.Midwest, CEN.Northeast"<"NDC.Northeast, CEN.USA">"NDC.Northeast, CEN.West">"NDC.West, CEN.USA"><"NDC.USA, CEN.USA"><"NDC.Southwest, CEN.West"><"NDC.USA, CEN.South"><"NDC.Northeast, CEN.South"><"NDC.USA, CEN.South"><"NDC.Southwest, CEN.West"!"NDC.Southwest}
+
+Possible world 11:
+{CEN.Northeast"<"NDC.USA, CEN.Midwest"<"NDC.USA, CEN.Midwest"="NDC.Midwest, CEN.USA">"NDC.West, CEN.USA">"NDC.Southeast, CEN.USA">"NDC.Midwest, CEN.South">"NDC.Southeast, CEN.West"!"NDC.Northeast, CEN.West"!"NDC.Southeast, CEN.West"!"NDC.Midwest, CEN.Northeast"!"NDC.West, CEN.Northeast"!"NDC.Southeast, CEN.Northeast"!"NDC.Midwest, CEN.Northeast"!"NDC.Southwest, CEN.Midwest"!"NDC.Northeast, CEN.Midwest"!"NDC.West, CEN.Midwest"!"NDC.Southeast, CEN.Midwest"!"NDC.Southwest, CEN.South"!"NDC.West, CEN.South"!"NDC.Midwest, CEN.Northeast"<"NDC.Northeast, CEN.South"<"NDC.USA, CEN.West">"NDC.West, CEN.USA"><"NDC.Northeast, CEN.USA"><"NDC.USA, CEN.USA"><"NDC.Southwest, CEN.West"><"NDC.USA, CEN.South"><"NDC.Southwest, CEN.West"!"NDC.Southwest, CEN.South"!"NDC.Northeast}
+
+Possible world 12:
+{CEN.Northeast"<"NDC.USA, CEN.Midwest"<"NDC.USA, CEN.Midwest"="NDC.Midwest, CEN.USA">"NDC.West, CEN.USA">"NDC.Southeast, CEN.USA">"NDC.Midwest, CEN.South">"NDC.Southeast, CEN.West"!"NDC.Northeast, CEN.West"!"NDC.Southeast, CEN.West"!"NDC.Midwest, CEN.Northeast"!"NDC.West, CEN.Northeast"!"NDC.Southeast, CEN.Northeast"!"NDC.Midwest, CEN.Northeast"!"NDC.Southwest, CEN.Midwest"!"NDC.Northeast, CEN.Midwest"!"NDC.West, CEN.Midwest"!"NDC.Southeast, CEN.Midwest"!"NDC.Southwest, CEN.South"!"NDC.West, CEN.South"!"NDC.Midwest, CEN.Northeast"<"NDC.Northeast, CEN.West">"NDC.West, CEN.USA"><"NDC.Northeast, CEN.USA"><"NDC.USA, CEN.USA"><"NDC.Southwest, CEN.West"><"NDC.USA, CEN.South"><"NDC.USA, CEN.South"><"NDC.Southwest, CEN.West"!"NDC.Southwest, CEN.South"!"NDC.Northeast}
+
+Possible world 13:
+{CEN.Northeast"<"NDC.USA, CEN.Midwest"<"NDC.USA, CEN.Midwest"="NDC.Midwest, CEN.USA">"NDC.West, CEN.USA">"NDC.Southeast, CEN.USA">"NDC.Midwest, CEN.South">"NDC.Southeast, CEN.West"!"NDC.Northeast, CEN.West"!"NDC.Southeast, CEN.West"!"NDC.Midwest, CEN.Northeast"!"NDC.West, CEN.Northeast"!"NDC.Southeast, CEN.Northeast"!"NDC.Midwest, CEN.Northeast"!"NDC.Southwest, CEN.Midwest"!"NDC.Northeast, CEN.Midwest"!"NDC.West, CEN.Midwest"!"NDC.Southeast, CEN.Midwest"!"NDC.Southwest, CEN.South"!"NDC.West, CEN.South"!"NDC.Midwest, CEN.Northeast"<"NDC.Northeast, CEN.South"<"NDC.USA, CEN.West">"NDC.West, CEN.USA"><"NDC.Northeast, CEN.USA"><"NDC.USA, CEN.USA"><"NDC.Southwest, CEN.West"><"NDC.USA, CEN.South"><"NDC.Northeast, CEN.South"><"NDC.Southwest, CEN.West"!"NDC.Southwest}
+
+Possible world 14:
+{CEN.Northeast"<"NDC.USA, CEN.Midwest"<"NDC.USA, CEN.Midwest"="NDC.Midwest, CEN.USA">"NDC.West, CEN.USA">"NDC.Southeast, CEN.USA">"NDC.Midwest, CEN.South">"NDC.Southeast, CEN.West"!"NDC.Northeast, CEN.West"!"NDC.Southeast, CEN.West"!"NDC.Midwest, CEN.Northeast"!"NDC.West, CEN.Northeast"!"NDC.Southeast, CEN.Northeast"!"NDC.Midwest, CEN.Northeast"!"NDC.Southwest, CEN.Midwest"!"NDC.Northeast, CEN.Midwest"!"NDC.West, CEN.Midwest"!"NDC.Southeast, CEN.Midwest"!"NDC.Southwest, CEN.South"!"NDC.West, CEN.South"!"NDC.Midwest, CEN.Northeast"<"NDC.Northeast, CEN.West">"NDC.West, CEN.USA"><"NDC.Northeast, CEN.USA"><"NDC.USA, CEN.USA"><"NDC.Southwest, CEN.West"><"NDC.USA, CEN.South"><"NDC.Northeast, CEN.South"><"NDC.USA, CEN.South"><"NDC.Southwest, CEN.West"!"NDC.Southwest}
+
+Possible world 15:
+{CEN.Northeast"<"NDC.USA, CEN.Midwest"<"NDC.USA, CEN.Midwest"="NDC.Midwest, CEN.USA">"NDC.West, CEN.USA">"NDC.Southeast, CEN.USA">"NDC.Midwest, CEN.South">"NDC.Southeast, CEN.West"!"NDC.Northeast, CEN.West"!"NDC.Southeast, CEN.West"!"NDC.Midwest, CEN.Northeast"!"NDC.West, CEN.Northeast"!"NDC.Southeast, CEN.Northeast"!"NDC.Midwest, CEN.Northeast"!"NDC.Southwest, CEN.Midwest"!"NDC.Northeast, CEN.Midwest"!"NDC.West, CEN.Midwest"!"NDC.Southeast, CEN.Midwest"!"NDC.Southwest, CEN.South"!"NDC.West, CEN.South"!"NDC.Midwest, CEN.West"<"NDC.USA, CEN.Northeast"<"NDC.Northeast, CEN.USA">"NDC.Southwest, CEN.West">"NDC.West, CEN.USA"><"NDC.Northeast, CEN.USA"><"NDC.USA, CEN.West"><"NDC.Southwest, CEN.South"><"NDC.USA, CEN.South"><"NDC.Southwest, CEN.South"!"NDC.Northeast}
+
+Possible world 16:
+{CEN.Northeast"<"NDC.USA, CEN.Midwest"<"NDC.USA, CEN.Midwest"="NDC.Midwest, CEN.USA">"NDC.West, CEN.USA">"NDC.Southeast, CEN.USA">"NDC.Midwest, CEN.South">"NDC.Southeast, CEN.West"!"NDC.Northeast, CEN.West"!"NDC.Southeast, CEN.West"!"NDC.Midwest, CEN.Northeast"!"NDC.West, CEN.Northeast"!"NDC.Southeast, CEN.Northeast"!"NDC.Midwest, CEN.Northeast"!"NDC.Southwest, CEN.Midwest"!"NDC.Northeast, CEN.Midwest"!"NDC.West, CEN.Midwest"!"NDC.Southeast, CEN.Midwest"!"NDC.Southwest, CEN.South"!"NDC.West, CEN.South"!"NDC.Midwest, CEN.West"<"NDC.USA, CEN.Northeast"<"NDC.Northeast, CEN.USA">"NDC.Southwest, CEN.West">"NDC.West, CEN.USA"><"NDC.Northeast, CEN.USA"><"NDC.USA, CEN.West"><"NDC.Southwest, CEN.South"><"NDC.Northeast, CEN.South"><"NDC.USA, CEN.South"><"NDC.Southwest}
+
+Possible world 17:
+{CEN.Northeast"<"NDC.USA, CEN.Midwest"<"NDC.USA, CEN.Midwest"="NDC.Midwest, CEN.USA">"NDC.West, CEN.USA">"NDC.Southeast, CEN.USA">"NDC.Midwest, CEN.South">"NDC.Southeast, CEN.West"!"NDC.Northeast, CEN.West"!"NDC.Southeast, CEN.West"!"NDC.Midwest, CEN.Northeast"!"NDC.West, CEN.Northeast"!"NDC.Southeast, CEN.Northeast"!"NDC.Midwest, CEN.Northeast"!"NDC.Southwest, CEN.Midwest"!"NDC.Northeast, CEN.Midwest"!"NDC.West, CEN.Midwest"!"NDC.Southeast, CEN.Midwest"!"NDC.Southwest, CEN.South"!"NDC.West, CEN.South"!"NDC.Midwest, CEN.Northeast"<"NDC.Northeast, CEN.South"<"NDC.USA, CEN.USA">"NDC.Southwest, CEN.West">"NDC.West, CEN.USA"><"NDC.Northeast, CEN.USA"><"NDC.USA, CEN.West"><"NDC.USA, CEN.West"><"NDC.Southwest, CEN.South"><"NDC.Southwest, CEN.South"!"NDC.Northeast}
+
+Possible world 18:
+{CEN.Northeast"<"NDC.USA, CEN.Midwest"<"NDC.USA, CEN.Midwest"="NDC.Midwest, CEN.USA">"NDC.West, CEN.USA">"NDC.Southeast, CEN.USA">"NDC.Midwest, CEN.South">"NDC.Southeast, CEN.West"!"NDC.Northeast, CEN.West"!"NDC.Southeast, CEN.West"!"NDC.Midwest, CEN.Northeast"!"NDC.West, CEN.Northeast"!"NDC.Southeast, CEN.Northeast"!"NDC.Midwest, CEN.Northeast"!"NDC.Southwest, CEN.Midwest"!"NDC.Northeast, CEN.Midwest"!"NDC.West, CEN.Midwest"!"NDC.Southeast, CEN.Midwest"!"NDC.Southwest, CEN.South"!"NDC.West, CEN.South"!"NDC.Midwest, CEN.Northeast"<"NDC.Northeast, CEN.USA">"NDC.Southwest, CEN.West">"NDC.West, CEN.USA"><"NDC.Northeast, CEN.USA"><"NDC.USA, CEN.West"><"NDC.USA, CEN.West"><"NDC.Southwest, CEN.South"><"NDC.USA, CEN.South"><"NDC.Southwest, CEN.South"!"NDC.Northeast}
+
+Possible world 19:
+{CEN.Northeast"<"NDC.USA, CEN.Midwest"<"NDC.USA, CEN.Midwest"="NDC.Midwest, CEN.USA">"NDC.West, CEN.USA">"NDC.Southeast, CEN.USA">"NDC.Midwest, CEN.South">"NDC.Southeast, CEN.West"!"NDC.Northeast, CEN.West"!"NDC.Southeast, CEN.West"!"NDC.Midwest, CEN.Northeast"!"NDC.West, CEN.Northeast"!"NDC.Southeast, CEN.Northeast"!"NDC.Midwest, CEN.Northeast"!"NDC.Southwest, CEN.Midwest"!"NDC.Northeast, CEN.Midwest"!"NDC.West, CEN.Midwest"!"NDC.Southeast, CEN.Midwest"!"NDC.Southwest, CEN.South"!"NDC.West, CEN.South"!"NDC.Midwest, CEN.Northeast"<"NDC.Northeast, CEN.South"<"NDC.USA, CEN.USA">"NDC.Southwest, CEN.West">"NDC.West, CEN.USA"><"NDC.Northeast, CEN.USA"><"NDC.USA, CEN.West"><"NDC.USA, CEN.West"><"NDC.Southwest, CEN.South"><"NDC.Northeast, CEN.South"><"NDC.Southwest}
+
+Possible world 20:
+{CEN.Northeast"<"NDC.USA, CEN.Midwest"<"NDC.USA, CEN.Midwest"="NDC.Midwest, CEN.USA">"NDC.West, CEN.USA">"NDC.Southeast, CEN.USA">"NDC.Midwest, CEN.South">"NDC.Southeast, CEN.West"!"NDC.Northeast, CEN.West"!"NDC.Southeast, CEN.West"!"NDC.Midwest, CEN.Northeast"!"NDC.West, CEN.Northeast"!"NDC.Southeast, CEN.Northeast"!"NDC.Midwest, CEN.Northeast"!"NDC.Southwest, CEN.Midwest"!"NDC.Northeast, CEN.Midwest"!"NDC.West, CEN.Midwest"!"NDC.Southeast, CEN.Midwest"!"NDC.Southwest, CEN.South"!"NDC.West, CEN.South"!"NDC.Midwest, CEN.Northeast"<"NDC.Northeast, CEN.USA">"NDC.Southwest, CEN.West">"NDC.West, CEN.USA"><"NDC.Northeast, CEN.USA"><"NDC.USA, CEN.West"><"NDC.USA, CEN.West"><"NDC.Southwest, CEN.South"><"NDC.Northeast, CEN.South"><"NDC.USA, CEN.South"><"NDC.Southwest}
+
+Possible world 21:
+{CEN.Northeast"<"NDC.USA, CEN.Midwest"<"NDC.USA, CEN.Midwest"="NDC.Midwest, CEN.USA">"NDC.West, CEN.USA">"NDC.Southeast, CEN.USA">"NDC.Midwest, CEN.South">"NDC.Southeast, CEN.West"!"NDC.Northeast, CEN.West"!"NDC.Southeast, CEN.West"!"NDC.Midwest, CEN.Northeast"!"NDC.West, CEN.Northeast"!"NDC.Southeast, CEN.Northeast"!"NDC.Midwest, CEN.Northeast"!"NDC.Southwest, CEN.Midwest"!"NDC.Northeast, CEN.Midwest"!"NDC.West, CEN.Midwest"!"NDC.Southeast, CEN.Midwest"!"NDC.Southwest, CEN.South"!"NDC.West, CEN.South"!"NDC.Midwest, CEN.West"<"NDC.USA, CEN.Northeast"<"NDC.Northeast, CEN.USA">"NDC.Northeast, CEN.West">"NDC.West, CEN.USA"><"NDC.USA, CEN.USA"><"NDC.Southwest, CEN.West"><"NDC.Southwest, CEN.South"><"NDC.Northeast, CEN.South"><"NDC.USA, CEN.South"><"NDC.Southwest}
+
+Possible world 22:
+{CEN.Northeast"<"NDC.USA, CEN.Midwest"<"NDC.USA, CEN.Midwest"="NDC.Midwest, CEN.USA">"NDC.West, CEN.USA">"NDC.Southeast, CEN.USA">"NDC.Midwest, CEN.South">"NDC.Southeast, CEN.West"!"NDC.Northeast, CEN.West"!"NDC.Southeast, CEN.West"!"NDC.Midwest, CEN.Northeast"!"NDC.West, CEN.Northeast"!"NDC.Southeast, CEN.Northeast"!"NDC.Midwest, CEN.Northeast"!"NDC.Southwest, CEN.Midwest"!"NDC.Northeast, CEN.Midwest"!"NDC.West, CEN.Midwest"!"NDC.Southeast, CEN.Midwest"!"NDC.Southwest, CEN.South"!"NDC.West, CEN.South"!"NDC.Midwest, CEN.West"<"NDC.USA, CEN.Northeast"<"NDC.Northeast, CEN.West">"NDC.West, CEN.USA"><"NDC.Northeast, CEN.USA"><"NDC.USA, CEN.USA"><"NDC.Southwest, CEN.West"><"NDC.Southwest, CEN.South"><"NDC.USA, CEN.South"><"NDC.Southwest, CEN.South"!"NDC.Northeast}
+
+Possible world 23:
+{CEN.Northeast"<"NDC.USA, CEN.Midwest"<"NDC.USA, CEN.Midwest"="NDC.Midwest, CEN.USA">"NDC.West, CEN.USA">"NDC.Southeast, CEN.USA">"NDC.Midwest, CEN.South">"NDC.Southeast, CEN.West"!"NDC.Northeast, CEN.West"!"NDC.Southeast, CEN.West"!"NDC.Midwest, CEN.Northeast"!"NDC.West, CEN.Northeast"!"NDC.Southeast, CEN.Northeast"!"NDC.Midwest, CEN.Northeast"!"NDC.Southwest, CEN.Midwest"!"NDC.Northeast, CEN.Midwest"!"NDC.West, CEN.Midwest"!"NDC.Southeast, CEN.Midwest"!"NDC.Southwest, CEN.South"!"NDC.West, CEN.South"!"NDC.Midwest, CEN.West"<"NDC.USA, CEN.Northeast"<"NDC.Northeast, CEN.West">"NDC.West, CEN.USA"><"NDC.Northeast, CEN.USA"><"NDC.USA, CEN.USA"><"NDC.Southwest, CEN.West"><"NDC.Southwest, CEN.South"><"NDC.Northeast, CEN.South"><"NDC.USA, CEN.South"><"NDC.Southwest}
+
+Possible world 24:
+{CEN.Northeast"<"NDC.USA, CEN.Midwest"<"NDC.USA, CEN.Midwest"="NDC.Midwest, CEN.USA">"NDC.West, CEN.USA">"NDC.Southeast, CEN.USA">"NDC.Midwest, CEN.South">"NDC.Southeast, CEN.West"!"NDC.Northeast, CEN.West"!"NDC.Southeast, CEN.West"!"NDC.Midwest, CEN.Northeast"!"NDC.West, CEN.Northeast"!"NDC.Southeast, CEN.Northeast"!"NDC.Midwest, CEN.Northeast"!"NDC.Southwest, CEN.Midwest"!"NDC.Northeast, CEN.Midwest"!"NDC.West, CEN.Midwest"!"NDC.Southeast, CEN.Midwest"!"NDC.Southwest, CEN.South"!"NDC.West, CEN.South"!"NDC.Midwest, CEN.Northeast"<"NDC.Northeast, CEN.South"<"NDC.USA, CEN.USA">"NDC.Northeast, CEN.West">"NDC.West, CEN.USA"><"NDC.USA, CEN.USA"><"NDC.Southwest, CEN.West"><"NDC.USA, CEN.West"><"NDC.Southwest, CEN.South"><"NDC.Northeast, CEN.South"><"NDC.Southwest}
+
+Possible world 25:
+{CEN.Northeast"<"NDC.USA, CEN.Midwest"<"NDC.USA, CEN.Midwest"="NDC.Midwest, CEN.USA">"NDC.West, CEN.USA">"NDC.Southeast, CEN.USA">"NDC.Midwest, CEN.South">"NDC.Southeast, CEN.West"!"NDC.Northeast, CEN.West"!"NDC.Southeast, CEN.West"!"NDC.Midwest, CEN.Northeast"!"NDC.West, CEN.Northeast"!"NDC.Southeast, CEN.Northeast"!"NDC.Midwest, CEN.Northeast"!"NDC.Southwest, CEN.Midwest"!"NDC.Northeast, CEN.Midwest"!"NDC.West, CEN.Midwest"!"NDC.Southeast, CEN.Midwest"!"NDC.Southwest, CEN.South"!"NDC.West, CEN.South"!"NDC.Midwest, CEN.Northeast"<"NDC.Northeast, CEN.USA">"NDC.Northeast, CEN.West">"NDC.West, CEN.USA"><"NDC.USA, CEN.USA"><"NDC.Southwest, CEN.West"><"NDC.USA, CEN.West"><"NDC.Southwest, CEN.South"><"NDC.Northeast, CEN.South"><"NDC.USA, CEN.South"><"NDC.Southwest}
+
+Possible world 26:
+{CEN.Northeast"<"NDC.USA, CEN.Midwest"<"NDC.USA, CEN.Midwest"="NDC.Midwest, CEN.USA">"NDC.West, CEN.USA">"NDC.Southeast, CEN.USA">"NDC.Midwest, CEN.South">"NDC.Southeast, CEN.West"!"NDC.Northeast, CEN.West"!"NDC.Southeast, CEN.West"!"NDC.Midwest, CEN.Northeast"!"NDC.West, CEN.Northeast"!"NDC.Southeast, CEN.Northeast"!"NDC.Midwest, CEN.Northeast"!"NDC.Southwest, CEN.Midwest"!"NDC.Northeast, CEN.Midwest"!"NDC.West, CEN.Midwest"!"NDC.Southeast, CEN.Midwest"!"NDC.Southwest, CEN.South"!"NDC.West, CEN.South"!"NDC.Midwest, CEN.Northeast"<"NDC.Northeast, CEN.South"<"NDC.USA, CEN.West">"NDC.West, CEN.USA"><"NDC.Northeast, CEN.USA"><"NDC.USA, CEN.USA"><"NDC.Southwest, CEN.West"><"NDC.USA, CEN.West"><"NDC.Southwest, CEN.South"><"NDC.Southwest, CEN.South"!"NDC.Northeast}
+
+Possible world 27:
+{CEN.Northeast"<"NDC.USA, CEN.Midwest"<"NDC.USA, CEN.Midwest"="NDC.Midwest, CEN.USA">"NDC.West, CEN.USA">"NDC.Southeast, CEN.USA">"NDC.Midwest, CEN.South">"NDC.Southeast, CEN.West"!"NDC.Northeast, CEN.West"!"NDC.Southeast, CEN.West"!"NDC.Midwest, CEN.Northeast"!"NDC.West, CEN.Northeast"!"NDC.Southeast, CEN.Northeast"!"NDC.Midwest, CEN.Northeast"!"NDC.Southwest, CEN.Midwest"!"NDC.Northeast, CEN.Midwest"!"NDC.West, CEN.Midwest"!"NDC.Southeast, CEN.Midwest"!"NDC.Southwest, CEN.South"!"NDC.West, CEN.South"!"NDC.Midwest, CEN.Northeast"<"NDC.Northeast, CEN.West">"NDC.West, CEN.USA"><"NDC.Northeast, CEN.USA"><"NDC.USA, CEN.USA"><"NDC.Southwest, CEN.West"><"NDC.USA, CEN.West"><"NDC.Southwest, CEN.South"><"NDC.USA, CEN.South"><"NDC.Southwest, CEN.South"!"NDC.Northeast}
+
+Possible world 28:
+{CEN.Northeast"<"NDC.USA, CEN.Midwest"<"NDC.USA, CEN.Midwest"="NDC.Midwest, CEN.USA">"NDC.West, CEN.USA">"NDC.Southeast, CEN.USA">"NDC.Midwest, CEN.South">"NDC.Southeast, CEN.West"!"NDC.Northeast, CEN.West"!"NDC.Southeast, CEN.West"!"NDC.Midwest, CEN.Northeast"!"NDC.West, CEN.Northeast"!"NDC.Southeast, CEN.Northeast"!"NDC.Midwest, CEN.Northeast"!"NDC.Southwest, CEN.Midwest"!"NDC.Northeast, CEN.Midwest"!"NDC.West, CEN.Midwest"!"NDC.Southeast, CEN.Midwest"!"NDC.Southwest, CEN.South"!"NDC.West, CEN.South"!"NDC.Midwest, CEN.Northeast"<"NDC.Northeast, CEN.South"<"NDC.USA, CEN.West">"NDC.West, CEN.USA"><"NDC.Northeast, CEN.USA"><"NDC.USA, CEN.USA"><"NDC.Southwest, CEN.West"><"NDC.USA, CEN.West"><"NDC.Southwest, CEN.South"><"NDC.Northeast, CEN.South"><"NDC.Southwest}
+
+Possible world 29:
+{CEN.Northeast"<"NDC.USA, CEN.Midwest"<"NDC.USA, CEN.Midwest"="NDC.Midwest, CEN.USA">"NDC.West, CEN.USA">"NDC.Southeast, CEN.USA">"NDC.Midwest, CEN.South">"NDC.Southeast, CEN.West"!"NDC.Northeast, CEN.West"!"NDC.Southeast, CEN.West"!"NDC.Midwest, CEN.Northeast"!"NDC.West, CEN.Northeast"!"NDC.Southeast, CEN.Northeast"!"NDC.Midwest, CEN.Northeast"!"NDC.Southwest, CEN.Midwest"!"NDC.Northeast, CEN.Midwest"!"NDC.West, CEN.Midwest"!"NDC.Southeast, CEN.Midwest"!"NDC.Southwest, CEN.South"!"NDC.West, CEN.South"!"NDC.Midwest, CEN.Northeast"<"NDC.Northeast, CEN.West">"NDC.West, CEN.USA"><"NDC.Northeast, CEN.USA"><"NDC.USA, CEN.USA"><"NDC.Southwest, CEN.West"><"NDC.USA, CEN.West"><"NDC.Southwest, CEN.South"><"NDC.Northeast, CEN.South"><"NDC.USA, CEN.South"><"NDC.Southwest}
+

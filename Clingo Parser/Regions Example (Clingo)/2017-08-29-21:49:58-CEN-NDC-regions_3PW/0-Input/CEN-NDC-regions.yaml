@@ -1,0 +1,93 @@
+CEN.Midwest:
+  concept: Midwest
+  group: CEN
+CEN.Northeast:
+  concept: Northeast
+  group: CEN
+CEN.South:
+  concept: South
+  group: CEN
+CEN.USA:
+  concept: USA
+  group: CEN
+CEN.West:
+  concept: West
+  group: CEN
+NDC.Midwest:
+  concept: Midwest
+  group: NDC
+NDC.Northeast:
+  concept: Northeast
+  group: NDC
+NDC.Southeast:
+  concept: Southeast
+  group: NDC
+NDC.Southwest:
+  concept: Southwest
+  group: NDC
+NDC.USA:
+  concept: USA
+  group: NDC
+NDC.West:
+  concept: West
+  group: NDC
+CEN.Midwest_CEN.USA:
+  label: isa
+  s: CEN.Midwest
+  t: CEN.USA
+CEN.Midwest_NDC.Midwest:
+  label: '='
+  s: CEN.Midwest
+  t: NDC.Midwest
+CEN.Northeast_CEN.USA:
+  label: isa
+  s: CEN.Northeast
+  t: CEN.USA
+CEN.Northeast_NDC.Northeast:
+  label: <
+  s: CEN.Northeast
+  t: NDC.Northeast
+CEN.South_CEN.USA:
+  label: isa
+  s: CEN.South
+  t: CEN.USA
+CEN.South_NDC.Southeast:
+  label: '>'
+  s: CEN.South
+  t: NDC.Southeast
+CEN.South_NDC.Southwest:
+  label: o
+  s: CEN.South
+  t: NDC.Southwest
+CEN.USA_NDC.USA:
+  label: '='
+  s: CEN.USA
+  t: NDC.USA
+CEN.West_CEN.USA:
+  label: isa
+  s: CEN.West
+  t: CEN.USA
+CEN.West_NDC.West:
+  label: '>'
+  s: CEN.West
+  t: NDC.West
+NDC.Midwest_NDC.USA:
+  label: isa
+  s: NDC.Midwest
+  t: NDC.USA
+NDC.Northeast_NDC.USA:
+  label: isa
+  s: NDC.Northeast
+  t: NDC.USA
+NDC.Southeast_NDC.USA:
+  label: isa
+  s: NDC.Southeast
+  t: NDC.USA
+NDC.Southwest_NDC.USA:
+  label: isa
+  s: NDC.Southwest
+  t: NDC.USA
+NDC.West_NDC.USA:
+  label: isa
+  s: NDC.West
+  t: NDC.USA

@@ -1,0 +1,82 @@
+CEN.Midwest:
+  concept: Midwest
+  group: CEN
+CEN.Northeast:
+  concept: Northeast
+  group: CEN
+CEN.South:
+  concept: South
+  group: CEN
+CEN.West:
+  concept: West
+  group: CEN
+NDC.Midwest:
+  concept: Midwest
+  group: NDC
+NDC.Northeast:
+  concept: Northeast
+  group: NDC
+NDC.Southeast:
+  concept: Southeast
+  group: NDC
+NDC.Southwest:
+  concept: Southwest
+  group: NDC
+NDC.West:
+  concept: West
+  group: NDC
+congruent.CEN.USA\nNDC.USA:
+  concept: CEN.USA\nNDC.USA
+  group: congruent
+CEN.Midwest_CEN.USA\nNDC.USA:
+  label: is_a (input)
+  s: CEN.Midwest
+  t: CEN.USA\nNDC.USA
+CEN.Midwest_NDC.Southwest:
+  label: overlaps (inferred)
+  s: CEN.Midwest
+  t: NDC.Southwest
+CEN.Northeast_NDC.Northeast:
+  label: is_a (input)
+  s: CEN.Northeast
+  t: NDC.Northeast
+CEN.South_CEN.USA\nNDC.USA:
+  label: is_a (input)
+  s: CEN.South
+  t: CEN.USA\nNDC.USA
+CEN.South_NDC.Northeast:
+  label: overlaps (inferred)
+  s: CEN.South
+  t: NDC.Northeast
+CEN.South_NDC.Southwest:
+  label: overlaps (input)
+  s: CEN.South
+  t: NDC.Southwest
+CEN.West_CEN.USA\nNDC.USA:
+  label: is_a (input)
+  s: CEN.West
+  t: CEN.USA\nNDC.USA
+CEN.West_NDC.Southwest:
+  label: overlaps (inferred)
+  s: CEN.West
+  t: NDC.Southwest
+NDC.Midwest_CEN.Midwest:
+  label: is_a (inferred)
+  s: NDC.Midwest
+  t: CEN.Midwest
+NDC.Northeast_CEN.USA\nNDC.USA:
+  label: is_a (input)
+  s: NDC.Northeast
+  t: CEN.USA\nNDC.USA
+NDC.Southeast_CEN.South:
+  label: is_a (input)
+  s: NDC.Southeast
+  t: CEN.South
+NDC.Southwest_CEN.USA\nNDC.USA:
+  label: is_a (input)
+  s: NDC.Southwest
+  t: CEN.USA\nNDC.USA
+NDC.West_CEN.West:
+  label: is_a (input)
+  s: NDC.West
+  t: CEN.West

@@ -1,12 +1,13 @@
-# Generated from PW-explorer/Clingo Parser/Clingo.g4 by ANTLR 4.5.3
+# Generated from Clingo.g4 by ANTLR 4.7
 # encoding: utf-8
 from __future__ import print_function
 from antlr4 import *
 from io import StringIO
+import sys
 
 def serializedATN():
     with StringIO() as buf:
-        buf.write(u"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3")
+        buf.write(u"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3")
         buf.write(u"\17d\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
         buf.write(u"\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4\f\t\f\3\2\7\2\32")
         buf.write(u"\n\2\f\2\16\2\35\13\2\3\2\5\2 \n\2\3\2\3\2\3\3\3\3\3")
@@ -16,28 +17,28 @@ def serializedATN():
         buf.write(u"\7\3\7\3\7\5\7L\n\7\3\b\3\b\3\b\3\b\3\t\3\t\3\t\3\t\3")
         buf.write(u"\n\3\n\3\n\3\n\3\13\6\13[\n\13\r\13\16\13\\\3\f\6\f`")
         buf.write(u"\n\f\r\f\16\fa\3\f\2\2\r\2\4\6\b\n\f\16\20\22\24\26\2")
-        buf.write(u"\3\5\2\5\6\b\b\16\16c\2\33\3\2\2\2\4#\3\2\2\2\6\62\3")
-        buf.write(u"\2\2\2\b:\3\2\2\2\n<\3\2\2\2\fG\3\2\2\2\16M\3\2\2\2\20")
-        buf.write(u"Q\3\2\2\2\22U\3\2\2\2\24Z\3\2\2\2\26_\3\2\2\2\30\32\5")
-        buf.write(u"\4\3\2\31\30\3\2\2\2\32\35\3\2\2\2\33\31\3\2\2\2\33\34")
-        buf.write(u"\3\2\2\2\34\37\3\2\2\2\35\33\3\2\2\2\36 \7\r\2\2\37\36")
-        buf.write(u"\3\2\2\2\37 \3\2\2\2 !\3\2\2\2!\"\5\n\6\2\"\3\3\2\2\2")
-        buf.write(u"#$\7\3\2\2$(\7\16\2\2%\'\5\6\4\2&%\3\2\2\2\'*\3\2\2\2")
-        buf.write(u"(&\3\2\2\2()\3\2\2\2),\3\2\2\2*(\3\2\2\2+-\7\4\2\2,+")
-        buf.write(u"\3\2\2\2,-\3\2\2\2-/\3\2\2\2.\60\7\16\2\2/.\3\2\2\2/")
-        buf.write(u"\60\3\2\2\2\60\5\3\2\2\2\61\63\7\16\2\2\62\61\3\2\2\2")
-        buf.write(u"\63\64\3\2\2\2\64\62\3\2\2\2\64\65\3\2\2\2\65\66\3\2")
-        buf.write(u"\2\2\66\67\7\5\2\2\678\5\b\5\289\7\6\2\29\7\3\2\2\2:")
-        buf.write(u";\7\16\2\2;\t\3\2\2\2<>\5\f\7\2=?\5\16\b\2>=\3\2\2\2")
-        buf.write(u">?\3\2\2\2?A\3\2\2\2@B\5\20\t\2A@\3\2\2\2AB\3\2\2\2B")
-        buf.write(u"C\3\2\2\2CD\5\22\n\2DE\5\24\13\2EF\5\26\f\2F\13\3\2\2")
-        buf.write(u"\2GH\7\7\2\2HI\7\b\2\2IK\7\16\2\2JL\7\t\2\2KJ\3\2\2\2")
-        buf.write(u"KL\3\2\2\2L\r\3\2\2\2MN\7\n\2\2NO\7\b\2\2OP\7\16\2\2")
-        buf.write(u"P\17\3\2\2\2QR\7\13\2\2RS\7\b\2\2ST\7\16\2\2T\21\3\2")
-        buf.write(u"\2\2UV\7\f\2\2VW\7\b\2\2WX\7\16\2\2X\23\3\2\2\2Y[\t\2")
-        buf.write(u"\2\2ZY\3\2\2\2[\\\3\2\2\2\\Z\3\2\2\2\\]\3\2\2\2]\25\3")
-        buf.write(u"\2\2\2^`\t\2\2\2_^\3\2\2\2`a\3\2\2\2a_\3\2\2\2ab\3\2")
-        buf.write(u"\2\2b\27\3\2\2\2\r\33\37(,/\64>AK\\a")
+        buf.write(u"\3\5\2\5\6\b\b\16\16\2c\2\33\3\2\2\2\4#\3\2\2\2\6\62")
+        buf.write(u"\3\2\2\2\b:\3\2\2\2\n<\3\2\2\2\fG\3\2\2\2\16M\3\2\2\2")
+        buf.write(u"\20Q\3\2\2\2\22U\3\2\2\2\24Z\3\2\2\2\26_\3\2\2\2\30\32")
+        buf.write(u"\5\4\3\2\31\30\3\2\2\2\32\35\3\2\2\2\33\31\3\2\2\2\33")
+        buf.write(u"\34\3\2\2\2\34\37\3\2\2\2\35\33\3\2\2\2\36 \7\r\2\2\37")
+        buf.write(u"\36\3\2\2\2\37 \3\2\2\2 !\3\2\2\2!\"\5\n\6\2\"\3\3\2")
+        buf.write(u"\2\2#$\7\3\2\2$(\7\16\2\2%\'\5\6\4\2&%\3\2\2\2\'*\3\2")
+        buf.write(u"\2\2(&\3\2\2\2()\3\2\2\2),\3\2\2\2*(\3\2\2\2+-\7\4\2")
+        buf.write(u"\2,+\3\2\2\2,-\3\2\2\2-/\3\2\2\2.\60\7\16\2\2/.\3\2\2")
+        buf.write(u"\2/\60\3\2\2\2\60\5\3\2\2\2\61\63\7\16\2\2\62\61\3\2")
+        buf.write(u"\2\2\63\64\3\2\2\2\64\62\3\2\2\2\64\65\3\2\2\2\65\66")
+        buf.write(u"\3\2\2\2\66\67\7\5\2\2\678\5\b\5\289\7\6\2\29\7\3\2\2")
+        buf.write(u"\2:;\7\16\2\2;\t\3\2\2\2<>\5\f\7\2=?\5\16\b\2>=\3\2\2")
+        buf.write(u"\2>?\3\2\2\2?A\3\2\2\2@B\5\20\t\2A@\3\2\2\2AB\3\2\2\2")
+        buf.write(u"BC\3\2\2\2CD\5\22\n\2DE\5\24\13\2EF\5\26\f\2F\13\3\2")
+        buf.write(u"\2\2GH\7\7\2\2HI\7\b\2\2IK\7\16\2\2JL\7\t\2\2KJ\3\2\2")
+        buf.write(u"\2KL\3\2\2\2L\r\3\2\2\2MN\7\n\2\2NO\7\b\2\2OP\7\16\2")
+        buf.write(u"\2P\17\3\2\2\2QR\7\13\2\2RS\7\b\2\2ST\7\16\2\2T\21\3")
+        buf.write(u"\2\2\2UV\7\f\2\2VW\7\b\2\2WX\7\16\2\2X\23\3\2\2\2Y[\t")
+        buf.write(u"\2\2\2ZY\3\2\2\2[\\\3\2\2\2\\Z\3\2\2\2\\]\3\2\2\2]\25")
+        buf.write(u"\3\2\2\2^`\t\2\2\2_^\3\2\2\2`a\3\2\2\2a_\3\2\2\2ab\3")
+        buf.write(u"\2\2\2b\27\3\2\2\2\r\33\37(,/\64>AK\\a")
         return buf.getvalue()
 
 
@@ -91,9 +92,9 @@ class ClingoParser ( Parser ):
     TEXT=12
     WHITESPACE=13
 
-    def __init__(self, input):
-        super(ClingoParser, self).__init__(input)
-        self.checkVersion("4.5.3")
+    def __init__(self, input, output=sys.stdout):
+        super(ClingoParser, self).__init__(input, output=output)
+        self.checkVersion("4.7")
         self._interp = ParserATNSimulator(self, self.atn, self.decisionsToDFA, self.sharedContextCache)
         self._predicates = None
 
@@ -151,6 +152,7 @@ class ClingoParser ( Parser ):
                 _la = self._input.LA(1)
 
             self.state = 29
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==ClingoParser.OPTIMUM_FOUND:
                 self.state = 28
@@ -223,6 +225,7 @@ class ClingoParser ( Parser ):
                 _alt = self._interp.adaptivePredict(self._input,2,self._ctx)
 
             self.state = 42
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==ClingoParser.T__1:
                 self.state = 41
@@ -230,6 +233,7 @@ class ClingoParser ( Parser ):
 
 
             self.state = 45
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==ClingoParser.TEXT:
                 self.state = 44
@@ -400,6 +404,7 @@ class ClingoParser ( Parser ):
             self.state = 58
             self.models()
             self.state = 60
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==ClingoParser.T__7:
                 self.state = 59
@@ -407,6 +412,7 @@ class ClingoParser ( Parser ):
 
 
             self.state = 63
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==ClingoParser.T__8:
                 self.state = 62
@@ -464,6 +470,7 @@ class ClingoParser ( Parser ):
             self.state = 71
             self.match(ClingoParser.TEXT)
             self.state = 73
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==ClingoParser.T__6:
                 self.state = 72
@@ -650,6 +657,7 @@ class ClingoParser ( Parser ):
                     if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ClingoParser.T__2) | (1 << ClingoParser.T__3) | (1 << ClingoParser.T__5) | (1 << ClingoParser.TEXT))) != 0)):
                         self._errHandler.recoverInline(self)
                     else:
+                        self._errHandler.reportMatch(self)
                         self.consume()
 
                 else:
@@ -708,6 +716,7 @@ class ClingoParser ( Parser ):
                 if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ClingoParser.T__2) | (1 << ClingoParser.T__3) | (1 << ClingoParser.T__5) | (1 << ClingoParser.TEXT))) != 0)):
                     self._errHandler.recoverInline(self)
                 else:
+                    self._errHandler.reportMatch(self)
                     self.consume()
                 self.state = 95 
                 self._errHandler.sync(self)

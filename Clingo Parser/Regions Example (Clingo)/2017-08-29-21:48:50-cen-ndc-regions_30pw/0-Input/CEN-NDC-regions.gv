@@ -1,0 +1,63 @@
+digraph{
+rankdir=LR
+node[shape=circle style=filled fillcolor="#FFFFFF"] 
+node[shape=box style=filled fillcolor="#CCFFCC" fontname="helvetica"] 
+"CEN.South"
+"CEN.Midwest"
+"CEN.USA"
+"CEN.West"
+"CEN.Northeast"
+node[shape=circle style=filled fillcolor="#FFFFFF"] 
+node[shape=note style=filled fillcolor="#FFFFCC" fontname="helvetica"] 
+"NDC.Northeast"
+"NDC.Midwest"
+"NDC.Southwest"
+"NDC.Southeast"
+"NDC.USA"
+"NDC.West"
+edge[style=solid color="#000000" constraint=true penwidth=1 dir=forward]
+edge[style=solid color="#000000" constraint=true penwidth=1 dir=forward]
+"CEN.USA" -> "CEN.West" [dir=back]
+"CEN.USA" -> "CEN.Northeast" [dir=back]
+"CEN.USA" -> "CEN.Midwest" [dir=back]
+"CEN.USA" -> "CEN.South" [dir=back]
+edge[style=solid color="#000000" constraint=true penwidth=1 dir=forward]
+edge[style=solid color="#000000" constraint=true penwidth=1 dir=forward]
+"NDC.West" -> "NDC.USA"
+"NDC.Southwest" -> "NDC.USA"
+"NDC.Midwest" -> "NDC.USA"
+"NDC.Southeast" -> "NDC.USA"
+"NDC.Northeast" -> "NDC.USA"
+edge[style=solid color="#000000" constraint=true penwidth=1 dir=forward]
+edge[style=dashed color="#AA00FF" constraint=true penwidth=2 dir=both]
+"CEN.Midwest" -> "NDC.Midwest" [label="="]
+"CEN.Northeast" -> "NDC.Northeast" [label="<"]
+"CEN.South" -> "NDC.Southwest" [label="o"]
+"CEN.South" -> "NDC.Southeast" [label=">"]
+"CEN.West" -> "NDC.Northeast" [label="!"]
+"CEN.West" -> "NDC.West" [label=">"]
+node[shape=box] 
+{rank=source Legend [fillcolor= white margin=0 label=< 
+ <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4"> 
+<TR> <TD COLSPAN="2"><font face="Arial Black"> Nodes</font></TD> </TR> 
+<TR> 
+ <TD bgcolor="#CCFFCC" fontname="helvetica">CEN</TD> 
+ <TD>5</TD> 
+ </TR> 
+<TR> 
+ <TD bgcolor="#FFFFCC" fontname="helvetica">NDC</TD> 
+ <TD>6</TD> 
+ </TR> 
+<TR> <TD COLSPAN="2"><font face = "Arial Black"> Edges </font></TD> </TR> 
+<TR> 
+ <TD><font color ="#000000">is_a (CEN)</font></TD><TD>4</TD>
+</TR>
+<TR> 
+ <TD><font color ="#000000">is_a (NDC)</font></TD><TD>5</TD>
+</TR>
+<TR> 
+ <TD><font color ="#AA00FF">articulations</font></TD><TD>6</TD>
+</TR>
+</TABLE> 
+ >] } 
+}
