@@ -1,0 +1,331 @@
+PW 1:
+Congruent: 1
+Overlaps (inferred): 2
+is_a (input): 7
+Overlaps (input): 1
+is_a (inferred): 2
+
+PW 2:
+Congruent: 1
+Overlaps (inferred): 1
+is_a (inferred): 2
+is_a (input): 7
+Overlaps (input): 1
+
+PW 3:
+Congruent: 1
+Overlaps (inferred): 2
+is_a (inferred): 2
+is_a (input): 7
+Overlaps (input): 1
+
+PW 4:
+Congruent: 1
+is_a (inferred): 1
+is_a (input): 8
+Overlaps (input): 1
+Overlaps (inferred): 3
+
+PW 5:
+Congruent: 1
+is_a (inferred): 1
+is_a (input): 8
+Overlaps (input): 1
+Overlaps (inferred): 4
+
+PW 6:
+Congruent: 1
+Overlaps (inferred): 1
+is_a (input): 7
+Overlaps (input): 1
+is_a (inferred): 2
+
+PW 7:
+Congruent: 1
+Overlaps (inferred): 2
+is_a (input): 7
+Overlaps (input): 1
+is_a (inferred): 2
+
+PW 8:
+Congruent: 1
+is_a (inferred): 2
+is_a (input): 7
+Overlaps (input): 1
+Overlaps (inferred): 1
+
+PW 9:
+Congruent: 1
+Overlaps (inferred): 2
+is_a (inferred): 2
+is_a (input): 7
+Overlaps (input): 1
+
+PW 10:
+Congruent: 1
+is_a (inferred): 1
+is_a (input): 8
+Overlaps (input): 1
+Overlaps (inferred): 3
+
+PW 11:
+Congruent: 1
+is_a (inferred): 1
+is_a (input): 8
+Overlaps (input): 1
+Overlaps (inferred): 4
+
+PW 12:
+Congruent: 1
+Overlaps (inferred): 3
+is_a (input): 8
+Overlaps (input): 1
+is_a (inferred): 1
+
+PW 13:
+Congruent: 1
+Overlaps (inferred): 4
+is_a (input): 8
+Overlaps (input): 1
+is_a (inferred): 1
+
+PW 14:
+Congruent: 1
+Overlaps (inferred): 2
+is_a (inferred): 1
+is_a (input): 8
+Overlaps (input): 1
+
+PW 15:
+Congruent: 1
+Overlaps (inferred): 3
+is_a (inferred): 1
+is_a (input): 8
+Overlaps (input): 1
+
+PW 16:
+Congruent: 1
+Overlaps (inferred): 3
+is_a (inferred): 1
+is_a (input): 8
+Overlaps (input): 1
+
+PW 17:
+Congruent: 1
+Overlaps (inferred): 4
+is_a (inferred): 1
+is_a (input): 8
+Overlaps (input): 1
+
+PW 18:
+Congruent: 1
+is_a (input): 9
+Overlaps (input): 1
+Overlaps (inferred): 4
+
+PW 19:
+Congruent: 1
+is_a (input): 9
+Overlaps (input): 1
+Overlaps (inferred): 5
+
+PW 20:
+Congruent: 1
+is_a (input): 9
+Overlaps (input): 1
+Overlaps (inferred): 5
+
+PW 21:
+Congruent: 1
+is_a (input): 9
+Overlaps (input): 1
+Overlaps (inferred): 6
+
+PW 22:
+Congruent: 2
+is_a (input): 8
+Overlaps (input): 1
+Overlaps (inferred): 2
+
+PW 23:
+Congruent: 1
+Overlaps (inferred): 3
+is_a (input): 8
+Overlaps (input): 1
+is_a (inferred): 1
+
+PW 24:
+Congruent: 1
+Overlaps (inferred): 3
+is_a (input): 8
+Overlaps (input): 1
+is_a (inferred): 1
+
+PW 25:
+Congruent: 1
+Overlaps (inferred): 4
+is_a (input): 8
+Overlaps (input): 1
+is_a (inferred): 1
+
+PW 26:
+Congruent: 1
+Overlaps (inferred): 3
+is_a (input): 8
+Overlaps (input): 1
+is_a (inferred): 1
+
+PW 27:
+Congruent: 1
+is_a (input): 9
+Overlaps (input): 1
+Overlaps (inferred): 5
+
+PW 28:
+Congruent: 1
+is_a (input): 9
+Overlaps (input): 1
+Overlaps (inferred): 4
+
+PW 29:
+Congruent: 1
+is_a (input): 9
+Overlaps (input): 1
+Overlaps (inferred): 5
+
+PW 30:
+Congruent: 1
+is_a (input): 9
+Overlaps (input): 1
+Overlaps (inferred): 5
+
+PW 31:
+Congruent: 1
+is_a (input): 9
+Overlaps (input): 1
+Overlaps (inferred): 6
+
+PW 32:
+Congruent: 1
+Overlaps (inferred): 2
+is_a (input): 8
+Overlaps (input): 1
+is_a (inferred): 1
+
+PW 33:
+Congruent: 1
+Overlaps (inferred): 3
+is_a (input): 8
+Overlaps (input): 1
+is_a (inferred): 1
+
+PW 34:
+Congruent: 1
+is_a (input): 9
+Overlaps (input): 1
+Overlaps (inferred): 4
+
+PW 35:
+Congruent: 1
+is_a (input): 9
+Overlaps (input): 1
+Overlaps (inferred): 5
+
+PW 36:
+Congruent: 1
+is_a (input): 9
+Overlaps (input): 1
+Overlaps (inferred): 4
+
+PW 37:
+Congruent: 1
+is_a (input): 9
+Overlaps (input): 1
+Overlaps (inferred): 5
+
+PW 38:
+Congruent: 1
+is_a (input): 9
+Overlaps (input): 1
+Overlaps (inferred): 5
+
+PW 39:
+Congruent: 1
+is_a (input): 9
+Overlaps (input): 1
+Overlaps (inferred): 6
+
+PW 40:
+Congruent: 1
+Overlaps (inferred): 3
+is_a (input): 8
+Overlaps (input): 1
+is_a (inferred): 1
+
+PW 41:
+Congruent: 1
+Overlaps (inferred): 4
+is_a (input): 8
+Overlaps (input): 1
+is_a (inferred): 1
+
+PW 42:
+Congruent: 1
+is_a (input): 9
+Overlaps (input): 1
+Overlaps (inferred): 5
+
+PW 43:
+Congruent: 1
+is_a (input): 9
+Overlaps (input): 1
+Overlaps (inferred): 6
+
+PW 44:
+Congruent: 1
+is_a (input): 9
+Overlaps (input): 1
+Overlaps (inferred): 4
+
+PW 45:
+Congruent: 1
+is_a (input): 9
+Overlaps (input): 1
+Overlaps (inferred): 5
+
+PW 46:
+Congruent: 1
+is_a (input): 9
+Overlaps (input): 1
+Overlaps (inferred): 5
+
+PW 47:
+Congruent: 1
+is_a (input): 9
+Overlaps (input): 1
+Overlaps (inferred): 6
+
+PW 48:
+Congruent: 1
+is_a (input): 9
+Overlaps (input): 1
+Overlaps (inferred): 5
+
+PW 49:
+Congruent: 1
+is_a (input): 9
+Overlaps (input): 1
+Overlaps (inferred): 6
+
+PW 50:
+Congruent: 1
+is_a (input): 9
+Overlaps (input): 1
+Overlaps (inferred): 6
+
+PW 51:
+Congruent: 1
+is_a (input): 9
+Overlaps (input): 1
+Overlaps (inferred): 7
+

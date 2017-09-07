@@ -1,0 +1,6 @@
+PW 1:
+Congruent: 2
+is_a (input): 8
+Overlaps (input): 1
+Overlaps (inferred): 2
+
