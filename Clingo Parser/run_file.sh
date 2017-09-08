@@ -7,7 +7,7 @@ cp $1 Mini\ Workflow/clingo_input/$2.lp4
 
 echo "Copying Done"
 
-clingo -n ${3:-0} -W none Mini\ Workflow/clingo_input/$2.lp4 > Mini\ Workflow/clingo_output/$2.txt
+clingo -n ${3:-0} Mini\ Workflow/clingo_input/$2.lp4 > Mini\ Workflow/clingo_output/$2.txt
 
 echo "Clingo Ouput Done"
 
