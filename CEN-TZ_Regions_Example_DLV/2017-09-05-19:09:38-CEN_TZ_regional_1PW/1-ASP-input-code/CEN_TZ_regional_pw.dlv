@@ -1,0 +1,396 @@
+%%% Max Number of Euler Regions
+#maxint=24.
+
+%%% Euler Regions
+r(M):- #int(M),M>=1,M<=#maxint.
+
+%%% Concepts
+tax(tCEN,0).
+concept2(A, B) :- concept(A,B,_).
+concept(cCEN_West,0,0).
+concept(cCEN_Northeast,0,1).
+concept(cCEN_Midwest,0,2).
+concept(cCEN_South,0,3).
+concept2(cCEN_USA,0).
+tax(tTZ,1).
+concept2(A, B) :- concept(A,B,_).
+concept(cTZ_Mountain,1,0).
+concept(cTZ_Central,1,1).
+concept(cTZ_Pacific,1,2).
+concept2(cTZ_USA,1).
+concept(cTZ_Eastern,1,3).
+
+%%% Euler Bit
+bit(M, 0, V):-r(M),M1=M/1, #mod(M1,5,V).
+bit(M, 1, V):-r(M),M1=M/5, #mod(M1,5,V).
+
+
+%%% Meaning of regions
+in(X, M) :- r(M),concept(X,T,N),N1=N+1,bit(M,T,N1).
+out(X, M) :- r(M),concept(X,T,N),N1=N+1,not bit(M,T,N1).
+in(X, M) :- r(M),concept2(X,_),not out(X, M).
+out(X, M) :- out3(X, M, _), ix.
+irs(M) :- in(X, M), out(X, M), r(M), concept2(X,_).
+
+%%% Constraints of regions.
+irs(X) :- ir(X, _).
+vrs(X) :- vr(X, _).
+vr(X, X) :- not irs(X), r(X).
+ir(X, X) :- not vrs(X), r(X), pw.
+ie(prod(A,B)) :- vr(X, A), ir(X, B), ix.
+:- vrs(X), irs(X), pw.
+
+%%% Inconsistency Explanation.
+ie(s(R, A, Y)) :- pie(R, A, Y), not cc(R, Y), ix.
+cc(R, Y) :- c(R, _, Y), ix.
+
+%%% Parent-Child relations
+%% ISA
+% cCEN_Midwest isa cCEN_USA
+ir(X, r0) :- in(cCEN_Midwest, X), out(cCEN_USA, X), pw.
+ir(X, prod(r0,R)) :- in(cCEN_Midwest,X), out3(cCEN_USA, X, R), ix.
+:- #count {X : vrs(X), in(cCEN_Midwest,X), in(cCEN_USA,X)} <= 0, pw.
+pie(r0, A, 1) :- ir(X, A), in(cCEN_Midwest, X), in(cCEN_USA, X), ix.
+c(r0, A, 1) :- vr(X, A), in(cCEN_Midwest, X), in(cCEN_USA, X), ix.
+
+% cCEN_South isa cCEN_USA
+ir(X, r1) :- in(cCEN_South, X), out(cCEN_USA, X), pw.
+ir(X, prod(r1,R)) :- in(cCEN_South,X), out3(cCEN_USA, X, R), ix.
+:- #count {X : vrs(X), in(cCEN_South,X), in(cCEN_USA,X)} <= 0, pw.
+pie(r1, A, 1) :- ir(X, A), in(cCEN_South, X), in(cCEN_USA, X), ix.
+c(r1, A, 1) :- vr(X, A), in(cCEN_South, X), in(cCEN_USA, X), ix.
+
+% cCEN_West isa cCEN_USA
+ir(X, r2) :- in(cCEN_West, X), out(cCEN_USA, X), pw.
+ir(X, prod(r2,R)) :- in(cCEN_West,X), out3(cCEN_USA, X, R), ix.
+:- #count {X : vrs(X), in(cCEN_West,X), in(cCEN_USA,X)} <= 0, pw.
+pie(r2, A, 1) :- ir(X, A), in(cCEN_West, X), in(cCEN_USA, X), ix.
+c(r2, A, 1) :- vr(X, A), in(cCEN_West, X), in(cCEN_USA, X), ix.
+
+% cCEN_Northeast isa cCEN_USA
+ir(X, r3) :- in(cCEN_Northeast, X), out(cCEN_USA, X), pw.
+ir(X, prod(r3,R)) :- in(cCEN_Northeast,X), out3(cCEN_USA, X, R), ix.
+:- #count {X : vrs(X), in(cCEN_Northeast,X), in(cCEN_USA,X)} <= 0, pw.
+pie(r3, A, 1) :- ir(X, A), in(cCEN_Northeast, X), in(cCEN_USA, X), ix.
+c(r3, A, 1) :- vr(X, A), in(cCEN_Northeast, X), in(cCEN_USA, X), ix.
+
+%% coverage
+out3(cCEN_USA, X, r4) :- out(cCEN_Midwest, X), out(cCEN_South, X), out(cCEN_West, X), out(cCEN_Northeast, X), ix.
+out(cCEN_USA, X) :- out(cCEN_Midwest, X), out(cCEN_South, X), out(cCEN_West, X), out(cCEN_Northeast, X), pw.
+%% sibling disjointness
+% cCEN_Midwest ! cCEN_South
+ir(X, r5) :- in(cCEN_Midwest, X), in(cCEN_South, X).
+:- #count {X : vrs(X), in(cCEN_Midwest,X), out(cCEN_South,X)} <= 0, pw.
+:- #count {X : vrs(X), out(cCEN_Midwest,X), in(cCEN_South,X)} <= 0, pw.
+pie(r5, A, 1) :- ir(X, A), in(cCEN_Midwest, X), out(cCEN_South, X), ix.
+c(r5, A, 1) :- vr(X, A), in(cCEN_Midwest, X), out(cCEN_South, X), ix.
+pie(r5, A, 2) :- ir(X, A), out(cCEN_Midwest, X), in(cCEN_South, X), ix.
+c(r5, A, 2) :- vr(X, A), out(cCEN_Midwest, X), in(cCEN_South, X), ix.
+
+% cCEN_Midwest ! cCEN_West
+ir(X, r6) :- in(cCEN_Midwest, X), in(cCEN_West, X).
+:- #count {X : vrs(X), in(cCEN_Midwest,X), out(cCEN_West,X)} <= 0, pw.
+:- #count {X : vrs(X), out(cCEN_Midwest,X), in(cCEN_West,X)} <= 0, pw.
+pie(r6, A, 1) :- ir(X, A), in(cCEN_Midwest, X), out(cCEN_West, X), ix.
+c(r6, A, 1) :- vr(X, A), in(cCEN_Midwest, X), out(cCEN_West, X), ix.
+pie(r6, A, 2) :- ir(X, A), out(cCEN_Midwest, X), in(cCEN_West, X), ix.
+c(r6, A, 2) :- vr(X, A), out(cCEN_Midwest, X), in(cCEN_West, X), ix.
+
+% cCEN_Midwest ! cCEN_Northeast
+ir(X, r7) :- in(cCEN_Midwest, X), in(cCEN_Northeast, X).
+:- #count {X : vrs(X), in(cCEN_Midwest,X), out(cCEN_Northeast,X)} <= 0, pw.
+:- #count {X : vrs(X), out(cCEN_Midwest,X), in(cCEN_Northeast,X)} <= 0, pw.
+pie(r7, A, 1) :- ir(X, A), in(cCEN_Midwest, X), out(cCEN_Northeast, X), ix.
+c(r7, A, 1) :- vr(X, A), in(cCEN_Midwest, X), out(cCEN_Northeast, X), ix.
+pie(r7, A, 2) :- ir(X, A), out(cCEN_Midwest, X), in(cCEN_Northeast, X), ix.
+c(r7, A, 2) :- vr(X, A), out(cCEN_Midwest, X), in(cCEN_Northeast, X), ix.
+
+% cCEN_South ! cCEN_West
+ir(X, r8) :- in(cCEN_South, X), in(cCEN_West, X).
+:- #count {X : vrs(X), in(cCEN_South,X), out(cCEN_West,X)} <= 0, pw.
+:- #count {X : vrs(X), out(cCEN_South,X), in(cCEN_West,X)} <= 0, pw.
+pie(r8, A, 1) :- ir(X, A), in(cCEN_South, X), out(cCEN_West, X), ix.
+c(r8, A, 1) :- vr(X, A), in(cCEN_South, X), out(cCEN_West, X), ix.
+pie(r8, A, 2) :- ir(X, A), out(cCEN_South, X), in(cCEN_West, X), ix.
+c(r8, A, 2) :- vr(X, A), out(cCEN_South, X), in(cCEN_West, X), ix.
+
+% cCEN_South ! cCEN_Northeast
+ir(X, r9) :- in(cCEN_South, X), in(cCEN_Northeast, X).
+:- #count {X : vrs(X), in(cCEN_South,X), out(cCEN_Northeast,X)} <= 0, pw.
+:- #count {X : vrs(X), out(cCEN_South,X), in(cCEN_Northeast,X)} <= 0, pw.
+pie(r9, A, 1) :- ir(X, A), in(cCEN_South, X), out(cCEN_Northeast, X), ix.
+c(r9, A, 1) :- vr(X, A), in(cCEN_South, X), out(cCEN_Northeast, X), ix.
+pie(r9, A, 2) :- ir(X, A), out(cCEN_South, X), in(cCEN_Northeast, X), ix.
+c(r9, A, 2) :- vr(X, A), out(cCEN_South, X), in(cCEN_Northeast, X), ix.
+
+% cCEN_West ! cCEN_Northeast
+ir(X, r10) :- in(cCEN_West, X), in(cCEN_Northeast, X).
+:- #count {X : vrs(X), in(cCEN_West,X), out(cCEN_Northeast,X)} <= 0, pw.
+:- #count {X : vrs(X), out(cCEN_West,X), in(cCEN_Northeast,X)} <= 0, pw.
+pie(r10, A, 1) :- ir(X, A), in(cCEN_West, X), out(cCEN_Northeast, X), ix.
+c(r10, A, 1) :- vr(X, A), in(cCEN_West, X), out(cCEN_Northeast, X), ix.
+pie(r10, A, 2) :- ir(X, A), out(cCEN_West, X), in(cCEN_Northeast, X), ix.
+c(r10, A, 2) :- vr(X, A), out(cCEN_West, X), in(cCEN_Northeast, X), ix.
+
+%% ISA
+% cTZ_Pacific isa cTZ_USA
+ir(X, r11) :- in(cTZ_Pacific, X), out(cTZ_USA, X), pw.
+ir(X, prod(r11,R)) :- in(cTZ_Pacific,X), out3(cTZ_USA, X, R), ix.
+:- #count {X : vrs(X), in(cTZ_Pacific,X), in(cTZ_USA,X)} <= 0, pw.
+pie(r11, A, 1) :- ir(X, A), in(cTZ_Pacific, X), in(cTZ_USA, X), ix.
+c(r11, A, 1) :- vr(X, A), in(cTZ_Pacific, X), in(cTZ_USA, X), ix.
+
+% cTZ_Mountain isa cTZ_USA
+ir(X, r12) :- in(cTZ_Mountain, X), out(cTZ_USA, X), pw.
+ir(X, prod(r12,R)) :- in(cTZ_Mountain,X), out3(cTZ_USA, X, R), ix.
+:- #count {X : vrs(X), in(cTZ_Mountain,X), in(cTZ_USA,X)} <= 0, pw.
+pie(r12, A, 1) :- ir(X, A), in(cTZ_Mountain, X), in(cTZ_USA, X), ix.
+c(r12, A, 1) :- vr(X, A), in(cTZ_Mountain, X), in(cTZ_USA, X), ix.
+
+% cTZ_Central isa cTZ_USA
+ir(X, r13) :- in(cTZ_Central, X), out(cTZ_USA, X), pw.
+ir(X, prod(r13,R)) :- in(cTZ_Central,X), out3(cTZ_USA, X, R), ix.
+:- #count {X : vrs(X), in(cTZ_Central,X), in(cTZ_USA,X)} <= 0, pw.
+pie(r13, A, 1) :- ir(X, A), in(cTZ_Central, X), in(cTZ_USA, X), ix.
+c(r13, A, 1) :- vr(X, A), in(cTZ_Central, X), in(cTZ_USA, X), ix.
+
+% cTZ_Eastern isa cTZ_USA
+ir(X, r14) :- in(cTZ_Eastern, X), out(cTZ_USA, X), pw.
+ir(X, prod(r14,R)) :- in(cTZ_Eastern,X), out3(cTZ_USA, X, R), ix.
+:- #count {X : vrs(X), in(cTZ_Eastern,X), in(cTZ_USA,X)} <= 0, pw.
+pie(r14, A, 1) :- ir(X, A), in(cTZ_Eastern, X), in(cTZ_USA, X), ix.
+c(r14, A, 1) :- vr(X, A), in(cTZ_Eastern, X), in(cTZ_USA, X), ix.
+
+%% coverage
+out3(cTZ_USA, X, r15) :- out(cTZ_Pacific, X), out(cTZ_Mountain, X), out(cTZ_Central, X), out(cTZ_Eastern, X), ix.
+out(cTZ_USA, X) :- out(cTZ_Pacific, X), out(cTZ_Mountain, X), out(cTZ_Central, X), out(cTZ_Eastern, X), pw.
+%% sibling disjointness
+% cTZ_Pacific ! cTZ_Mountain
+ir(X, r16) :- in(cTZ_Pacific, X), in(cTZ_Mountain, X).
+:- #count {X : vrs(X), in(cTZ_Pacific,X), out(cTZ_Mountain,X)} <= 0, pw.
+:- #count {X : vrs(X), out(cTZ_Pacific,X), in(cTZ_Mountain,X)} <= 0, pw.
+pie(r16, A, 1) :- ir(X, A), in(cTZ_Pacific, X), out(cTZ_Mountain, X), ix.
+c(r16, A, 1) :- vr(X, A), in(cTZ_Pacific, X), out(cTZ_Mountain, X), ix.
+pie(r16, A, 2) :- ir(X, A), out(cTZ_Pacific, X), in(cTZ_Mountain, X), ix.
+c(r16, A, 2) :- vr(X, A), out(cTZ_Pacific, X), in(cTZ_Mountain, X), ix.
+
+% cTZ_Pacific ! cTZ_Central
+ir(X, r17) :- in(cTZ_Pacific, X), in(cTZ_Central, X).
+:- #count {X : vrs(X), in(cTZ_Pacific,X), out(cTZ_Central,X)} <= 0, pw.
+:- #count {X : vrs(X), out(cTZ_Pacific,X), in(cTZ_Central,X)} <= 0, pw.
+pie(r17, A, 1) :- ir(X, A), in(cTZ_Pacific, X), out(cTZ_Central, X), ix.
+c(r17, A, 1) :- vr(X, A), in(cTZ_Pacific, X), out(cTZ_Central, X), ix.
+pie(r17, A, 2) :- ir(X, A), out(cTZ_Pacific, X), in(cTZ_Central, X), ix.
+c(r17, A, 2) :- vr(X, A), out(cTZ_Pacific, X), in(cTZ_Central, X), ix.
+
+% cTZ_Pacific ! cTZ_Eastern
+ir(X, r18) :- in(cTZ_Pacific, X), in(cTZ_Eastern, X).
+:- #count {X : vrs(X), in(cTZ_Pacific,X), out(cTZ_Eastern,X)} <= 0, pw.
+:- #count {X : vrs(X), out(cTZ_Pacific,X), in(cTZ_Eastern,X)} <= 0, pw.
+pie(r18, A, 1) :- ir(X, A), in(cTZ_Pacific, X), out(cTZ_Eastern, X), ix.
+c(r18, A, 1) :- vr(X, A), in(cTZ_Pacific, X), out(cTZ_Eastern, X), ix.
+pie(r18, A, 2) :- ir(X, A), out(cTZ_Pacific, X), in(cTZ_Eastern, X), ix.
+c(r18, A, 2) :- vr(X, A), out(cTZ_Pacific, X), in(cTZ_Eastern, X), ix.
+
+% cTZ_Mountain ! cTZ_Central
+ir(X, r19) :- in(cTZ_Mountain, X), in(cTZ_Central, X).
+:- #count {X : vrs(X), in(cTZ_Mountain,X), out(cTZ_Central,X)} <= 0, pw.
+:- #count {X : vrs(X), out(cTZ_Mountain,X), in(cTZ_Central,X)} <= 0, pw.
+pie(r19, A, 1) :- ir(X, A), in(cTZ_Mountain, X), out(cTZ_Central, X), ix.
+c(r19, A, 1) :- vr(X, A), in(cTZ_Mountain, X), out(cTZ_Central, X), ix.
+pie(r19, A, 2) :- ir(X, A), out(cTZ_Mountain, X), in(cTZ_Central, X), ix.
+c(r19, A, 2) :- vr(X, A), out(cTZ_Mountain, X), in(cTZ_Central, X), ix.
+
+% cTZ_Mountain ! cTZ_Eastern
+ir(X, r20) :- in(cTZ_Mountain, X), in(cTZ_Eastern, X).
+:- #count {X : vrs(X), in(cTZ_Mountain,X), out(cTZ_Eastern,X)} <= 0, pw.
+:- #count {X : vrs(X), out(cTZ_Mountain,X), in(cTZ_Eastern,X)} <= 0, pw.
+pie(r20, A, 1) :- ir(X, A), in(cTZ_Mountain, X), out(cTZ_Eastern, X), ix.
+c(r20, A, 1) :- vr(X, A), in(cTZ_Mountain, X), out(cTZ_Eastern, X), ix.
+pie(r20, A, 2) :- ir(X, A), out(cTZ_Mountain, X), in(cTZ_Eastern, X), ix.
+c(r20, A, 2) :- vr(X, A), out(cTZ_Mountain, X), in(cTZ_Eastern, X), ix.
+
+% cTZ_Central ! cTZ_Eastern
+ir(X, r21) :- in(cTZ_Central, X), in(cTZ_Eastern, X).
+:- #count {X : vrs(X), in(cTZ_Central,X), out(cTZ_Eastern,X)} <= 0, pw.
+:- #count {X : vrs(X), out(cTZ_Central,X), in(cTZ_Eastern,X)} <= 0, pw.
+pie(r21, A, 1) :- ir(X, A), in(cTZ_Central, X), out(cTZ_Eastern, X), ix.
+c(r21, A, 1) :- vr(X, A), in(cTZ_Central, X), out(cTZ_Eastern, X), ix.
+pie(r21, A, 2) :- ir(X, A), out(cTZ_Central, X), in(cTZ_Eastern, X), ix.
+c(r21, A, 2) :- vr(X, A), out(cTZ_Central, X), in(cTZ_Eastern, X), ix.
+
+
+%%% Articulations
+% CEN.Midwest disjoint TZ.Pacific
+:- #count {X : vrs(X), in(cCEN_Midwest,X), out(cTZ_Pacific,X)} <= 0, pw.
+:- #count {X : vrs(X), out(cCEN_Midwest,X), in(cTZ_Pacific,X)} <= 0, pw.
+pie(r22, A, 1) :- ir(X, A), out(cCEN_Midwest, X), in(cTZ_Pacific, X), ix.
+c(r22, A, 1) :- vr(X, A), out(cCEN_Midwest, X), in(cTZ_Pacific, X), ix.
+
+pie(r22, A, 2) :- ir(X, A), in(cCEN_Midwest, X), out(cTZ_Pacific, X), ix.
+c(r22, A, 2) :- vr(X, A), in(cCEN_Midwest, X), out(cTZ_Pacific, X), ix.
+
+ir(X, r22) :- in(cCEN_Midwest,X), in(cTZ_Pacific,X).
+
+% CEN.Midwest overlaps TZ.Eastern
+:- #count {X : vrs(X), in(cCEN_Midwest,X), in(cTZ_Eastern,X)} <= 0, pw.
+:- #count {X : vrs(X), out(cCEN_Midwest,X), in(cTZ_Eastern,X)} <= 0, pw.
+:- #count {X : vrs(X), in(cCEN_Midwest,X), out(cTZ_Eastern,X)} <= 0, pw.
+pie(r23, A, 1) :- ir(X, A), out(cCEN_Midwest, X), in(cTZ_Eastern, X), ix.
+c(r23, A, 1) :- vr(X, A), out(cCEN_Midwest, X), in(cTZ_Eastern, X), ix.
+
+pie(r23, A, 2) :- ir(X, A), in(cCEN_Midwest, X), out(cTZ_Eastern, X), ix.
+c(r23, A, 2) :- vr(X, A), in(cCEN_Midwest, X), out(cTZ_Eastern, X), ix.
+
+pie(r23, A, 3) :- ir(X, A), in(cCEN_Midwest, X), in(cTZ_Eastern, X), ix.
+c(r23, A, 3) :- vr(X, A), in(cCEN_Midwest, X), in(cTZ_Eastern, X), ix.
+
+
+% CEN.Midwest overlaps TZ.Mountain
+:- #count {X : vrs(X), in(cCEN_Midwest,X), in(cTZ_Mountain,X)} <= 0, pw.
+:- #count {X : vrs(X), out(cCEN_Midwest,X), in(cTZ_Mountain,X)} <= 0, pw.
+:- #count {X : vrs(X), in(cCEN_Midwest,X), out(cTZ_Mountain,X)} <= 0, pw.
+pie(r24, A, 1) :- ir(X, A), out(cCEN_Midwest, X), in(cTZ_Mountain, X), ix.
+c(r24, A, 1) :- vr(X, A), out(cCEN_Midwest, X), in(cTZ_Mountain, X), ix.
+
+pie(r24, A, 2) :- ir(X, A), in(cCEN_Midwest, X), out(cTZ_Mountain, X), ix.
+c(r24, A, 2) :- vr(X, A), in(cCEN_Midwest, X), out(cTZ_Mountain, X), ix.
+
+pie(r24, A, 3) :- ir(X, A), in(cCEN_Midwest, X), in(cTZ_Mountain, X), ix.
+c(r24, A, 3) :- vr(X, A), in(cCEN_Midwest, X), in(cTZ_Mountain, X), ix.
+
+
+% CEN.Northeast is_included_in TZ.Eastern
+:- #count {X : vrs(X), in(cCEN_Northeast,X), in(cTZ_Eastern,X)} <= 0, pw.
+:- #count {X : vrs(X), out(cCEN_Northeast,X), in(cTZ_Eastern,X)} <= 0, pw.
+ir(X, r25) :- in(cCEN_Northeast,X), out(cTZ_Eastern,X), pw.
+pie(r25, A, 1) :- ir(X, A), out(cCEN_Northeast, X), in(cTZ_Eastern, X), ix.
+c(r25, A, 1) :- vr(X, A), out(cCEN_Northeast, X), in(cTZ_Eastern, X), ix.
+
+pie(r25, A, 2) :- ir(X, A), in(cCEN_Northeast, X), in(cTZ_Eastern, X), ix.
+c(r25, A, 2) :- vr(X, A), in(cCEN_Northeast, X), in(cTZ_Eastern, X), ix.
+
+
+% CEN.South disjoint TZ.Pacific
+:- #count {X : vrs(X), in(cCEN_South,X), out(cTZ_Pacific,X)} <= 0, pw.
+:- #count {X : vrs(X), out(cCEN_South,X), in(cTZ_Pacific,X)} <= 0, pw.
+pie(r26, A, 1) :- ir(X, A), out(cCEN_South, X), in(cTZ_Pacific, X), ix.
+c(r26, A, 1) :- vr(X, A), out(cCEN_South, X), in(cTZ_Pacific, X), ix.
+
+pie(r26, A, 2) :- ir(X, A), in(cCEN_South, X), out(cTZ_Pacific, X), ix.
+c(r26, A, 2) :- vr(X, A), in(cCEN_South, X), out(cTZ_Pacific, X), ix.
+
+ir(X, r26) :- in(cCEN_South,X), in(cTZ_Pacific,X).
+
+% CEN.South overlaps TZ.Central
+:- #count {X : vrs(X), in(cCEN_South,X), in(cTZ_Central,X)} <= 0, pw.
+:- #count {X : vrs(X), out(cCEN_South,X), in(cTZ_Central,X)} <= 0, pw.
+:- #count {X : vrs(X), in(cCEN_South,X), out(cTZ_Central,X)} <= 0, pw.
+pie(r27, A, 1) :- ir(X, A), out(cCEN_South, X), in(cTZ_Central, X), ix.
+c(r27, A, 1) :- vr(X, A), out(cCEN_South, X), in(cTZ_Central, X), ix.
+
+pie(r27, A, 2) :- ir(X, A), in(cCEN_South, X), out(cTZ_Central, X), ix.
+c(r27, A, 2) :- vr(X, A), in(cCEN_South, X), out(cTZ_Central, X), ix.
+
+pie(r27, A, 3) :- ir(X, A), in(cCEN_South, X), in(cTZ_Central, X), ix.
+c(r27, A, 3) :- vr(X, A), in(cCEN_South, X), in(cTZ_Central, X), ix.
+
+
+% CEN.South overlaps TZ.Eastern
+:- #count {X : vrs(X), in(cCEN_South,X), in(cTZ_Eastern,X)} <= 0, pw.
+:- #count {X : vrs(X), out(cCEN_South,X), in(cTZ_Eastern,X)} <= 0, pw.
+:- #count {X : vrs(X), in(cCEN_South,X), out(cTZ_Eastern,X)} <= 0, pw.
+pie(r28, A, 1) :- ir(X, A), out(cCEN_South, X), in(cTZ_Eastern, X), ix.
+c(r28, A, 1) :- vr(X, A), out(cCEN_South, X), in(cTZ_Eastern, X), ix.
+
+pie(r28, A, 2) :- ir(X, A), in(cCEN_South, X), out(cTZ_Eastern, X), ix.
+c(r28, A, 2) :- vr(X, A), in(cCEN_South, X), out(cTZ_Eastern, X), ix.
+
+pie(r28, A, 3) :- ir(X, A), in(cCEN_South, X), in(cTZ_Eastern, X), ix.
+c(r28, A, 3) :- vr(X, A), in(cCEN_South, X), in(cTZ_Eastern, X), ix.
+
+
+% CEN.South overlaps TZ.Mountain
+:- #count {X : vrs(X), in(cCEN_South,X), in(cTZ_Mountain,X)} <= 0, pw.
+:- #count {X : vrs(X), out(cCEN_South,X), in(cTZ_Mountain,X)} <= 0, pw.
+:- #count {X : vrs(X), in(cCEN_South,X), out(cTZ_Mountain,X)} <= 0, pw.
+pie(r29, A, 1) :- ir(X, A), out(cCEN_South, X), in(cTZ_Mountain, X), ix.
+c(r29, A, 1) :- vr(X, A), out(cCEN_South, X), in(cTZ_Mountain, X), ix.
+
+pie(r29, A, 2) :- ir(X, A), in(cCEN_South, X), out(cTZ_Mountain, X), ix.
+c(r29, A, 2) :- vr(X, A), in(cCEN_South, X), out(cTZ_Mountain, X), ix.
+
+pie(r29, A, 3) :- ir(X, A), in(cCEN_South, X), in(cTZ_Mountain, X), ix.
+c(r29, A, 3) :- vr(X, A), in(cCEN_South, X), in(cTZ_Mountain, X), ix.
+
+
+% CEN.USA equals TZ.USA
+ir(X, r30) :- out(cCEN_USA,X), in(cTZ_USA,X).
+ir(X, r30) :- in(cCEN_USA,X), out(cTZ_USA,X).
+ir(X, prod(r30,R)) :- out3(cCEN_USA, X, R), in(cTZ_USA,X), ix.
+ir(X, prod(r30,R)) :- in(cCEN_USA,X), out3(cTZ_USA, X, R), ix.
+:- #count {X : vrs(X), in(cCEN_USA,X), in(cTZ_USA,X)} <= 0, pw.
+pie(r30, A, 1) :- ir(X, A), in(cCEN_USA, X), in(cTZ_USA, X), ix.
+c(r30, A, 1) :- vr(X, A), in(cCEN_USA, X), in(cTZ_USA, X), ix.
+
+
+% CEN.West disjoint TZ.Central
+:- #count {X : vrs(X), in(cCEN_West,X), out(cTZ_Central,X)} <= 0, pw.
+:- #count {X : vrs(X), out(cCEN_West,X), in(cTZ_Central,X)} <= 0, pw.
+pie(r31, A, 1) :- ir(X, A), out(cCEN_West, X), in(cTZ_Central, X), ix.
+c(r31, A, 1) :- vr(X, A), out(cCEN_West, X), in(cTZ_Central, X), ix.
+
+pie(r31, A, 2) :- ir(X, A), in(cCEN_West, X), out(cTZ_Central, X), ix.
+c(r31, A, 2) :- vr(X, A), in(cCEN_West, X), out(cTZ_Central, X), ix.
+
+ir(X, r31) :- in(cCEN_West,X), in(cTZ_Central,X).
+
+% CEN.West disjoint TZ.Eastern
+:- #count {X : vrs(X), in(cCEN_West,X), out(cTZ_Eastern,X)} <= 0, pw.
+:- #count {X : vrs(X), out(cCEN_West,X), in(cTZ_Eastern,X)} <= 0, pw.
+pie(r32, A, 1) :- ir(X, A), out(cCEN_West, X), in(cTZ_Eastern, X), ix.
+c(r32, A, 1) :- vr(X, A), out(cCEN_West, X), in(cTZ_Eastern, X), ix.
+
+pie(r32, A, 2) :- ir(X, A), in(cCEN_West, X), out(cTZ_Eastern, X), ix.
+c(r32, A, 2) :- vr(X, A), in(cCEN_West, X), out(cTZ_Eastern, X), ix.
+
+ir(X, r32) :- in(cCEN_West,X), in(cTZ_Eastern,X).
+
+% CEN.West overlaps TZ.Mountain
+:- #count {X : vrs(X), in(cCEN_West,X), in(cTZ_Mountain,X)} <= 0, pw.
+:- #count {X : vrs(X), out(cCEN_West,X), in(cTZ_Mountain,X)} <= 0, pw.
+:- #count {X : vrs(X), in(cCEN_West,X), out(cTZ_Mountain,X)} <= 0, pw.
+pie(r33, A, 1) :- ir(X, A), out(cCEN_West, X), in(cTZ_Mountain, X), ix.
+c(r33, A, 1) :- vr(X, A), out(cCEN_West, X), in(cTZ_Mountain, X), ix.
+
+pie(r33, A, 2) :- ir(X, A), in(cCEN_West, X), out(cTZ_Mountain, X), ix.
+c(r33, A, 2) :- vr(X, A), in(cCEN_West, X), out(cTZ_Mountain, X), ix.
+
+pie(r33, A, 3) :- ir(X, A), in(cCEN_West, X), in(cTZ_Mountain, X), ix.
+c(r33, A, 3) :- vr(X, A), in(cCEN_West, X), in(cTZ_Mountain, X), ix.
+
+
+%%% Decoding now
+:- rel(X, Y, "="), rel(X, Y, "<"), concept2(X, N1), concept2(Y, N2), pw.
+:- rel(X, Y, "="), rel(X, Y, ">"), concept2(X, N1), concept2(Y, N2), pw.
+:- rel(X, Y, "="), rel(X, Y, "><"), concept2(X, N1), concept2(Y, N2), pw.
+:- rel(X, Y, "="), rel(X, Y, "!"), concept2(X, N1), concept2(Y, N2), pw.
+:- rel(X, Y, "<"), rel(X, Y, ">"), concept2(X, N1), concept2(Y, N2), pw.
+:- rel(X, Y, "<"), rel(X, Y, "><"), concept2(X, N1), concept2(Y, N2), pw.
+:- rel(X, Y, "<"), rel(X, Y, "!"), concept2(X, N1), concept2(Y, N2), pw.
+:- rel(X, Y, ">"), rel(X, Y, "><"), concept2(X, N1), concept2(Y, N2), pw.
+:- rel(X, Y, ">"), rel(X, Y, "!"), concept2(X, N1), concept2(Y, N2), pw.
+:- rel(X, Y, "><"), rel(X, Y, "!"), concept2(X, N1), concept2(Y, N2), pw.
+:- not rel(X, Y, "="), not rel(X, Y, "<"), not rel(X, Y, ">"), not rel(X, Y, "><"), not rel(X, Y, "!"), concept2(X, N1), concept2(Y, N2), N1 < N2, not ncf(X), not ncf(Y), pw.
+
+rel(X, Y, "=") :- not hint(X, Y, 0), hint(X, Y, 1), not hint(X, Y, 2), pw.
+rel(X, Y, "<") :- not hint(X, Y, 0), hint(X, Y, 1), hint(X, Y, 2), pw.
+rel(X, Y, ">") :- hint(X, Y, 0), hint(X, Y, 1), not hint(X, Y, 2), pw.
+rel(X, Y, "><") :- hint(X, Y, 0), hint(X, Y, 1), hint(X, Y, 2), pw.
+rel(X, Y, "!") :- hint(X, Y, 0), not hint(X, Y, 1), hint(X, Y, 2), pw.
+
+
+hint(X, Y, 0) :- concept2(X, N1), concept2(Y, N2), N1 < N2, vrs(R), in(X, R), out(Y, R), not ncf(X), not ncf(Y), pw.
+hint(X, Y, 1) :- concept2(X, N1), concept2(Y, N2), N1 < N2, vrs(R), in(X, R), in(Y, R), not ncf(X), not ncf(Y), pw.
+hint(X, Y, 2) :- concept2(X, N1), concept2(Y, N2), N1 < N2, vrs(R), out(X, R), in(Y, R), not ncf(X), not ncf(Y), pw.
+

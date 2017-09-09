@@ -1,0 +1,66 @@
+digraph{
+rankdir=RL
+node[shape=box style=filled fillcolor="#CCFFCC" fontname="helvetica"] 
+"CEN.Midwest"
+"CEN.South"
+"CEN.Northeast"
+"CEN.West"
+node[shape=box style="filled,rounded" fillcolor="#EEEEEE" fontname="helvetica"] 
+"CEN.USA\nTZ.USA"
+node[shape=note style=filled fillcolor="#FFFFCC" fontname="helvetica"] 
+"TZ.Eastern"
+"TZ.Pacific"
+"TZ.Central"
+"TZ.Mountain"
+edge[arrowhead=normal style=solid color="#FF0000" constraint=true penwidth=1]
+"TZ.Pacific" -> "CEN.West"
+edge[arrowhead=normal style=dotted color="#000000" constraint=true penwidth=1]
+edge[arrowhead=normal style=solid color="#000000" constraint=true penwidth=1]
+"CEN.South" -> "CEN.USA\nTZ.USA"
+"CEN.Midwest" -> "CEN.USA\nTZ.USA"
+"TZ.Eastern" -> "CEN.USA\nTZ.USA"
+"TZ.Central" -> "CEN.USA\nTZ.USA"
+"CEN.Northeast" -> "TZ.Eastern"
+"CEN.West" -> "CEN.USA\nTZ.USA"
+"TZ.Mountain" -> "CEN.USA\nTZ.USA"
+edge[arrowhead=none style=dotted color="#0000FF" constraint=false penwidth=1]
+"CEN.South" -> "TZ.Mountain"
+"CEN.West" -> "TZ.Mountain"
+"CEN.Midwest" -> "TZ.Mountain"
+"CEN.South" -> "TZ.Central"
+"CEN.Midwest" -> "TZ.Eastern"
+"CEN.South" -> "TZ.Eastern"
+edge[arrowhead=none style=dashed color="#FF0000" constraint=false penwidth=1]
+"CEN.Midwest" -> "TZ.Central"
+node[shape=box] 
+{rank=source Legend [fillcolor= white margin=0 label=< 
+ <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4"> 
+<TR> <TD COLSPAN="2"><font face="Arial Black"> Nodes</font></TD> </TR> 
+<TR> 
+ <TD bgcolor="#CCFFCC" fontname="helvetica">CEN</TD> 
+ <TD>4</TD> 
+ </TR> 
+<TR> 
+ <TD bgcolor="#EEEEEE" fontname="helvetica">congruent</TD> 
+ <TD>1</TD> 
+ </TR> 
+<TR> 
+ <TD bgcolor="#FFFFCC" fontname="helvetica">TZ</TD> 
+ <TD>4</TD> 
+ </TR> 
+<TR> <TD COLSPAN="2"><font face = "Arial Black"> Edges </font></TD> </TR> 
+<TR> 
+ <TD><font color ="#FF0000">is_a (inferred)</font></TD><TD>1</TD>
+</TR>
+<TR> 
+ <TD><font color ="#000000">is_a (input)</font></TD><TD>7</TD>
+</TR>
+<TR> 
+ <TD><font color ="#0000FF">overlaps (input)</font></TD><TD>6</TD>
+</TR>
+<TR> 
+ <TD><font color ="#FF0000">overlaps (inferred)</font></TD><TD>1</TD>
+</TR>
+</TABLE> 
+ >] } 
+}

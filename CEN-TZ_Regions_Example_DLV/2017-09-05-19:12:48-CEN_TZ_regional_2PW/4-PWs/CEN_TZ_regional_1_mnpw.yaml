@@ -1,0 +1,87 @@
+CEN.Midwest:
+  concept: Midwest
+  group: CEN
+CEN.Northeast:
+  concept: Northeast
+  group: CEN
+CEN.South:
+  concept: South
+  group: CEN
+CEN.West:
+  concept: West
+  group: CEN
+TZ.Central:
+  concept: Central
+  group: TZ
+TZ.Eastern:
+  concept: Eastern
+  group: TZ
+TZ.Mountain:
+  concept: Mountain
+  group: TZ
+TZ.Pacific:
+  concept: Pacific
+  group: TZ
+congruent.CEN.USA\nTZ.USA:
+  concept: CEN.USA\nTZ.USA
+  group: congruent
+CEN.Midwest_CEN.USA\nTZ.USA:
+  label: is_a (input)
+  s: CEN.Midwest
+  t: CEN.USA\nTZ.USA
+CEN.Midwest_TZ.Central:
+  label: overlaps (inferred)
+  s: CEN.Midwest
+  t: TZ.Central
+CEN.Midwest_TZ.Eastern:
+  label: overlaps (input)
+  s: CEN.Midwest
+  t: TZ.Eastern
+CEN.Midwest_TZ.Mountain:
+  label: overlaps (input)
+  s: CEN.Midwest
+  t: TZ.Mountain
+CEN.Northeast_TZ.Eastern:
+  label: is_a (input)
+  s: CEN.Northeast
+  t: TZ.Eastern
+CEN.South_CEN.USA\nTZ.USA:
+  label: is_a (input)
+  s: CEN.South
+  t: CEN.USA\nTZ.USA
+CEN.South_TZ.Central:
+  label: overlaps (input)
+  s: CEN.South
+  t: TZ.Central
+CEN.South_TZ.Eastern:
+  label: overlaps (input)
+  s: CEN.South
+  t: TZ.Eastern
+CEN.South_TZ.Mountain:
+  label: overlaps (input)
+  s: CEN.South
+  t: TZ.Mountain
+CEN.West_CEN.USA\nTZ.USA:
+  label: is_a (input)
+  s: CEN.West
+  t: CEN.USA\nTZ.USA
+CEN.West_TZ.Mountain:
+  label: overlaps (input)
+  s: CEN.West
+  t: TZ.Mountain
+TZ.Central_CEN.USA\nTZ.USA:
+  label: is_a (input)
+  s: TZ.Central
+  t: CEN.USA\nTZ.USA
+TZ.Eastern_CEN.USA\nTZ.USA:
+  label: is_a (input)
+  s: TZ.Eastern
+  t: CEN.USA\nTZ.USA
+TZ.Mountain_CEN.USA\nTZ.USA:
+  label: is_a (input)
+  s: TZ.Mountain
+  t: CEN.USA\nTZ.USA
+TZ.Pacific_CEN.West:
+  label: is_a (inferred)
+  s: TZ.Pacific
+  t: CEN.West

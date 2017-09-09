@@ -1,0 +1,3 @@
+
+Possible world 0:
+{CEN.West"!"TZ.Central, CEN.South"!"TZ.Pacific, CEN.Northeast"!"TZ.Pacific, CEN.Northeast"!"TZ.Central, CEN.Northeast"!"TZ.Mountain, CEN.West"!"TZ.Eastern, CEN.Midwest"!"TZ.Pacific, CEN.South"><"TZ.Eastern, CEN.South"><"TZ.Central, CEN.Midwest"><"TZ.Mountain, CEN.Midwest"><"TZ.Central, CEN.Midwest"><"TZ.Eastern, CEN.South"><"TZ.Mountain, CEN.West"><"TZ.Mountain, CEN.USA">"TZ.Eastern, CEN.USA">"TZ.Pacific, CEN.USA">"TZ.Central, CEN.USA">"TZ.Mountain, CEN.West">"TZ.Pacific, CEN.South"<"TZ.USA, CEN.West"<"TZ.USA, CEN.Northeast"<"TZ.USA, CEN.Northeast"<"TZ.Eastern, CEN.Midwest"<"TZ.USA, CEN.USA"="TZ.USA}

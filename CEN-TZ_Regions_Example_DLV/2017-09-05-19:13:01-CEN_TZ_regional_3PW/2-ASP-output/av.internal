@@ -1,0 +1,11 @@
+firstTName = 'CEN'
+secondTName = 'TZ'
+thirdTName = ''
+fourthTName = ''
+fifthTName = ''
+allRcgEdgesDict = {}
+numOfPws = 3
+avFlag = False
+allRcgNodesDict = {'congruent.CEN.USA\\nTZ.USA': {'concept': 'CEN.USA\\nTZ.USA', 'group': 'congruent'}, 'CEN.Midwest': {'concept': 'Midwest', 'group': 'CEN'}, 'CEN.South': {'concept': 'South', 'group': 'CEN'}, 'CEN.West': {'concept': 'West', 'group': 'CEN'}, 'CEN.Northeast': {'concept': 'Northeast', 'group': 'CEN'}, 'TZ.Mountain': {'concept': 'Mountain', 'group': 'TZ'}, 'TZ.Central': {'concept': 'Central', 'group': 'TZ'}, 'TZ.Eastern': {'concept': 'Eastern', 'group': 'TZ'}, 'TZ.Pacific': {'concept': 'Pacific', 'group': 'TZ'}}
+trlist = [['CEN.Northeast', 'TZ.Eastern', 0], ['TZ.Pacific', 'CEN.West', 1], ['CEN.Midwest', 'CEN.USA\\nTZ.USA', 0], ['CEN.South', 'CEN.USA\\nTZ.USA', 0], ['CEN.West', 'CEN.USA\\nTZ.USA', 0], ['TZ.Mountain', 'CEN.USA\\nTZ.USA', 0], ['TZ.Central', 'CEN.USA\\nTZ.USA', 0], ['TZ.Eastern', 'CEN.USA\\nTZ.USA', 0], ['CEN.Northeast', 'CEN.USA\\nTZ.USA', 2], ['TZ.Pacific', 'CEN.USA\\nTZ.USA', 2], ['CEN.Northeast', 'TZ.Eastern', 0], ['TZ.Central', 'CEN.South', 1], ['TZ.Pacific', 'CEN.West', 1], ['CEN.Midwest', 'CEN.USA\\nTZ.USA', 0], ['CEN.South', 'CEN.USA\\nTZ.USA', 0], ['CEN.West', 'CEN.USA\\nTZ.USA', 0], ['TZ.Mountain', 'CEN.USA\\nTZ.USA', 0], ['TZ.Eastern', 'CEN.USA\\nTZ.USA', 0], ['CEN.Northeast', 'CEN.USA\\nTZ.USA', 2], ['TZ.Central', 'CEN.USA\\nTZ.USA', 2], ['TZ.Pacific', 'CEN.USA\\nTZ.USA', 2], ['CEN.Northeast', 'TZ.Eastern', 0], ['TZ.Pacific', 'CEN.West', 1], ['TZ.Central', 'CEN.Midwest', 1], ['CEN.Midwest', 'CEN.USA\\nTZ.USA', 0], ['CEN.South', 'CEN.USA\\nTZ.USA', 0], ['CEN.West', 'CEN.USA\\nTZ.USA', 0], ['TZ.Mountain', 'CEN.USA\\nTZ.USA', 0], ['TZ.Eastern', 'CEN.USA\\nTZ.USA', 0], ['CEN.Northeast', 'CEN.USA\\nTZ.USA', 2], ['TZ.Pacific', 'CEN.USA\\nTZ.USA', 2], ['TZ.Central', 'CEN.USA\\nTZ.USA', 2]]
+avFlag = True

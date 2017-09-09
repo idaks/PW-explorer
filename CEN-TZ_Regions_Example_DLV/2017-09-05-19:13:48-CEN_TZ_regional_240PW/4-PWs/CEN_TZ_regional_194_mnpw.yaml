@@ -1,0 +1,122 @@
+CEN.Midwest:
+  concept: Midwest
+  group: CEN
+CEN.Northeast:
+  concept: Northeast
+  group: CEN
+CEN.South:
+  concept: South
+  group: CEN
+CEN.USA:
+  concept: USA
+  group: CEN
+CEN.West:
+  concept: West
+  group: CEN
+TZ.Central:
+  concept: Central
+  group: TZ
+TZ.Eastern:
+  concept: Eastern
+  group: TZ
+TZ.Mountain:
+  concept: Mountain
+  group: TZ
+TZ.Pacific:
+  concept: Pacific
+  group: TZ
+TZ.USA:
+  concept: USA
+  group: TZ
+CEN.Midwest_CEN.USA:
+  label: is_a (input)
+  s: CEN.Midwest
+  t: CEN.USA
+CEN.Midwest_TZ.Central:
+  label: overlaps (inferred)
+  s: CEN.Midwest
+  t: TZ.Central
+CEN.Midwest_TZ.Eastern:
+  label: overlaps (input)
+  s: CEN.Midwest
+  t: TZ.Eastern
+CEN.Midwest_TZ.Mountain:
+  label: overlaps (input)
+  s: CEN.Midwest
+  t: TZ.Mountain
+CEN.Midwest_TZ.USA:
+  label: overlaps (inferred)
+  s: CEN.Midwest
+  t: TZ.USA
+CEN.Northeast_CEN.USA:
+  label: is_a (input)
+  s: CEN.Northeast
+  t: CEN.USA
+CEN.Northeast_TZ.Eastern:
+  label: is_a (input)
+  s: CEN.Northeast
+  t: TZ.Eastern
+CEN.South_CEN.USA:
+  label: is_a (input)
+  s: CEN.South
+  t: CEN.USA
+CEN.South_TZ.Central:
+  label: overlaps (input)
+  s: CEN.South
+  t: TZ.Central
+CEN.South_TZ.Eastern:
+  label: overlaps (input)
+  s: CEN.South
+  t: TZ.Eastern
+CEN.South_TZ.Mountain:
+  label: overlaps (input)
+  s: CEN.South
+  t: TZ.Mountain
+CEN.South_TZ.USA:
+  label: overlaps (inferred)
+  s: CEN.South
+  t: TZ.USA
+CEN.USA_TZ.Central:
+  label: overlaps (inferred)
+  s: CEN.USA
+  t: TZ.Central
+CEN.USA_TZ.Eastern:
+  label: overlaps (inferred)
+  s: CEN.USA
+  t: TZ.Eastern
+CEN.USA_TZ.USA:
+  label: overlaps (inferred)
+  s: CEN.USA
+  t: TZ.USA
+CEN.West_CEN.USA:
+  label: is_a (input)
+  s: CEN.West
+  t: CEN.USA
+CEN.West_TZ.Mountain:
+  label: overlaps (input)
+  s: CEN.West
+  t: TZ.Mountain
+CEN.West_TZ.USA:
+  label: overlaps (inferred)
+  s: CEN.West
+  t: TZ.USA
+TZ.Central_TZ.USA:
+  label: is_a (input)
+  s: TZ.Central
+  t: TZ.USA
+TZ.Eastern_TZ.USA:
+  label: is_a (input)
+  s: TZ.Eastern
+  t: TZ.USA
+TZ.Mountain_CEN.USA:
+  label: is_a (inferred)
+  s: TZ.Mountain
+  t: CEN.USA
+TZ.Mountain_TZ.USA:
+  label: is_a (input)
+  s: TZ.Mountain
+  t: TZ.USA
+TZ.Pacific_TZ.USA:
+  label: is_a (input)
+  s: TZ.Pacific
+  t: TZ.USA

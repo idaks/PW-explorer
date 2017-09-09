@@ -1,0 +1,11 @@
+firstTName = '1950'
+secondTName = '1948'
+thirdTName = ''
+fourthTName = ''
+fifthTName = ''
+allRcgEdgesDict = {}
+numOfPws = 1
+avFlag = False
+allRcgNodesDict = {'congruent.1950.A_virginicus_var_virginicus\\n1948.A_virginicus_var_virginicus': {'concept': '1950.A_virginicus_var_virginicus\\n1948.A_virginicus_var_virginicus', 'group': 'congruent'}, '1950.A_virginicus': {'concept': 'A_virginicus', 'group': '1950'}, 'congruent.1950.Andropogon\\n1948.Andropogon': {'concept': '1950.Andropogon\\n1948.Andropogon', 'group': 'congruent'}, 'congruent.1950.A_virginicus_var_glaucopsis\\n1948.A_virginicus_var_glaucopsis': {'concept': '1950.A_virginicus_var_glaucopsis\\n1948.A_virginicus_var_glaucopsis', 'group': 'congruent'}, '1950.A_glomeratus': {'concept': 'A_glomeratus', 'group': '1950'}, 'congruent.1950.A_capillipes\\n1948.A_capillipes': {'concept': '1950.A_capillipes\\n1948.A_capillipes', 'group': 'congruent'}, '1948.A_virginicus': {'concept': 'A_virginicus', 'group': '1948'}, '1950.A_virginicus_var_hirsutior': {'concept': 'A_virginicus_var_hirsutior', 'group': '1950'}, '1948.A_glomeratus': {'concept': 'A_glomeratus', 'group': '1948'}, '1948.A_virginicus_var_tenuispatheus': {'concept': 'A_virginicus_var_tenuispatheus', 'group': '1948'}}
+trlist = [['1950.A_virginicus_var_hirsutior', '1950.A_virginicus', 0], ['1948.A_virginicus_var_tenuispatheus', '1948.A_virginicus', 0], ['1948.A_virginicus_var_tenuispatheus', '1950.A_glomeratus', 0], ['1950.A_virginicus_var_hirsutior', '1948.A_glomeratus', 1], ['1950.A_virginicus_var_glaucopsis\\n1948.A_virginicus_var_glaucopsis', '1950.A_virginicus', 0], ['1950.A_virginicus_var_glaucopsis\\n1948.A_virginicus_var_glaucopsis', '1948.A_virginicus', 0], ['1950.A_virginicus_var_virginicus\\n1948.A_virginicus_var_virginicus', '1950.A_virginicus', 0], ['1950.A_virginicus_var_virginicus\\n1948.A_virginicus_var_virginicus', '1948.A_virginicus', 0], ['1950.A_glomeratus', '1950.Andropogon\\n1948.Andropogon', 0], ['1950.A_virginicus', '1950.Andropogon\\n1948.Andropogon', 0], ['1948.A_glomeratus', '1950.Andropogon\\n1948.Andropogon', 0], ['1948.A_virginicus', '1950.Andropogon\\n1948.Andropogon', 0], ['1950.A_capillipes\\n1948.A_capillipes', '1950.Andropogon\\n1948.Andropogon', 0]]
+avFlag = True

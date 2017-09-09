@@ -1,0 +1,67 @@
+digraph{
+rankdir=LR
+node[shape=circle style=filled fillcolor="#FFFFFF"] 
+node[shape=box style=filled fillcolor="#CCFFCC" fontname="helvetica"] 
+"CEN.Northeast"
+"CEN.Midwest"
+"CEN.South"
+"CEN.USA"
+"CEN.West"
+node[shape=circle style=filled fillcolor="#FFFFFF"] 
+node[shape=note style=filled fillcolor="#FFFFCC" fontname="helvetica"] 
+"TZ.USA"
+"TZ.Eastern"
+"TZ.Mountain"
+"TZ.Pacific"
+"TZ.Central"
+edge[style=solid color="#000000" constraint=true penwidth=1 dir=forward]
+edge[style=solid color="#000000" constraint=true penwidth=1 dir=forward]
+"CEN.USA" -> "CEN.Midwest" [dir=back]
+"CEN.USA" -> "CEN.West" [dir=back]
+"CEN.USA" -> "CEN.Northeast" [dir=back]
+"CEN.USA" -> "CEN.South" [dir=back]
+edge[style=solid color="#000000" constraint=true penwidth=1 dir=forward]
+edge[style=solid color="#000000" constraint=true penwidth=1 dir=forward]
+"TZ.Pacific" -> "TZ.USA"
+"TZ.Eastern" -> "TZ.USA"
+"TZ.Mountain" -> "TZ.USA"
+"TZ.Central" -> "TZ.USA"
+edge[style=solid color="#000000" constraint=true penwidth=1 dir=forward]
+edge[style=dashed color="#AA00FF" constraint=true penwidth=2 dir=both]
+"CEN.West" -> "TZ.Eastern" [label="!"]
+"CEN.West" -> "TZ.Mountain" [label="o"]
+"CEN.West" -> "TZ.Central" [label="!"]
+"CEN.South" -> "TZ.Mountain" [label="o"]
+"CEN.Northeast" -> "TZ.Eastern" [label="<"]
+"CEN.Midwest" -> "TZ.Mountain" [label="o"]
+"CEN.South" -> "TZ.Pacific" [label="!"]
+"CEN.South" -> "TZ.Central" [label="o"]
+"CEN.Midwest" -> "TZ.Pacific" [label="!"]
+"CEN.Midwest" -> "TZ.Eastern" [label="o"]
+"CEN.USA" -> "TZ.USA" [label="="]
+"CEN.South" -> "TZ.Eastern" [label="o"]
+node[shape=box] 
+{rank=source Legend [fillcolor= white margin=0 label=< 
+ <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4"> 
+<TR> <TD COLSPAN="2"><font face="Arial Black"> Nodes</font></TD> </TR> 
+<TR> 
+ <TD bgcolor="#CCFFCC" fontname="helvetica">CEN</TD> 
+ <TD>5</TD> 
+ </TR> 
+<TR> 
+ <TD bgcolor="#FFFFCC" fontname="helvetica">TZ</TD> 
+ <TD>5</TD> 
+ </TR> 
+<TR> <TD COLSPAN="2"><font face = "Arial Black"> Edges </font></TD> </TR> 
+<TR> 
+ <TD><font color ="#000000">is_a (CEN)</font></TD><TD>4</TD>
+</TR>
+<TR> 
+ <TD><font color ="#000000">is_a (TZ)</font></TD><TD>4</TD>
+</TR>
+<TR> 
+ <TD><font color ="#AA00FF">articulations</font></TD><TD>12</TD>
+</TR>
+</TABLE> 
+ >] } 
+}

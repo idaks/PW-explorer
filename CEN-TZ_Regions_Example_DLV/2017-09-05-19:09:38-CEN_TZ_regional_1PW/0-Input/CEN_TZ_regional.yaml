@@ -1,0 +1,110 @@
+CEN.Midwest:
+  concept: Midwest
+  group: CEN
+CEN.Northeast:
+  concept: Northeast
+  group: CEN
+CEN.South:
+  concept: South
+  group: CEN
+CEN.USA:
+  concept: USA
+  group: CEN
+CEN.West:
+  concept: West
+  group: CEN
+TZ.Central:
+  concept: Central
+  group: TZ
+TZ.Eastern:
+  concept: Eastern
+  group: TZ
+TZ.Mountain:
+  concept: Mountain
+  group: TZ
+TZ.Pacific:
+  concept: Pacific
+  group: TZ
+TZ.USA:
+  concept: USA
+  group: TZ
+CEN.Midwest_CEN.USA:
+  label: isa
+  s: CEN.Midwest
+  t: CEN.USA
+CEN.Midwest_TZ.Eastern:
+  label: o
+  s: CEN.Midwest
+  t: TZ.Eastern
+CEN.Midwest_TZ.Mountain:
+  label: o
+  s: CEN.Midwest
+  t: TZ.Mountain
+CEN.Midwest_TZ.Pacific:
+  label: '!'
+  s: CEN.Midwest
+  t: TZ.Pacific
+CEN.Northeast_CEN.USA:
+  label: isa
+  s: CEN.Northeast
+  t: CEN.USA
+CEN.Northeast_TZ.Eastern:
+  label: <
+  s: CEN.Northeast
+  t: TZ.Eastern
+CEN.South_CEN.USA:
+  label: isa
+  s: CEN.South
+  t: CEN.USA
+CEN.South_TZ.Central:
+  label: o
+  s: CEN.South
+  t: TZ.Central
+CEN.South_TZ.Eastern:
+  label: o
+  s: CEN.South
+  t: TZ.Eastern
+CEN.South_TZ.Mountain:
+  label: o
+  s: CEN.South
+  t: TZ.Mountain
+CEN.South_TZ.Pacific:
+  label: '!'
+  s: CEN.South
+  t: TZ.Pacific
+CEN.USA_TZ.USA:
+  label: '='
+  s: CEN.USA
+  t: TZ.USA
+CEN.West_CEN.USA:
+  label: isa
+  s: CEN.West
+  t: CEN.USA
+CEN.West_TZ.Central:
+  label: '!'
+  s: CEN.West
+  t: TZ.Central
+CEN.West_TZ.Eastern:
+  label: '!'
+  s: CEN.West
+  t: TZ.Eastern
+CEN.West_TZ.Mountain:
+  label: o
+  s: CEN.West
+  t: TZ.Mountain
+TZ.Central_TZ.USA:
+  label: isa
+  s: TZ.Central
+  t: TZ.USA
+TZ.Eastern_TZ.USA:
+  label: isa
+  s: TZ.Eastern
+  t: TZ.USA
+TZ.Mountain_TZ.USA:
+  label: isa
+  s: TZ.Mountain
+  t: TZ.USA
+TZ.Pacific_TZ.USA:
+  label: isa
+  s: TZ.Pacific
+  t: TZ.USA

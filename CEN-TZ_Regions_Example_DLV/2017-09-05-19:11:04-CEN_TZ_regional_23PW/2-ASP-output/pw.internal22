@@ -1,0 +1,13 @@
+from sets import Set
+fileName = 'CEN_TZ_regional_22_mnpw'
+pwIndex = 22
+eq = {'CEN.USA': Set(['TZ.USA']), 'TZ.USA': Set(['CEN.USA'])}
+firstTName = 'CEN'
+secondTName = 'TZ'
+thirdTName = ''
+fourthTName = ''
+fifthTName = ''
+eqConLi = []
+tr = [['CEN.Midwest', 'CEN.USA', 0], ['CEN.South', 'CEN.USA', 0], ['CEN.West', 'CEN.USA', 0], ['CEN.Northeast', 'CEN.USA', 0], ['TZ.Pacific', 'TZ.USA', 0], ['TZ.Mountain', 'TZ.USA', 0], ['TZ.Central', 'TZ.USA', 0], ['TZ.Eastern', 'TZ.USA', 0], ['TZ.Eastern', 'CEN.USA', 1], ['TZ.Pacific', 'CEN.USA', 1], ['TZ.Central', 'CEN.USA', 1], ['TZ.Mountain', 'CEN.USA', 1], ['TZ.Pacific', 'CEN.West', 1], ['CEN.South', 'TZ.USA', 1], ['CEN.Northeast', 'TZ.Mountain', 1], ['CEN.West', 'TZ.USA', 1], ['CEN.Northeast', 'TZ.USA', 1], ['CEN.Midwest', 'TZ.USA', 1]]
+mir = {'TZ.Central,TZ.Eastern': 1, 'TZ.USA,CEN.West': 8, 'CEN.Midwest,CEN.South': 1, 'TZ.Eastern,TZ.Central': 1, 'CEN.USA,TZ.Mountain': 8, 'CEN.Midwest,CEN.West': 1, 'CEN.Northeast,CEN.South': 1, 'CEN.South,TZ.Mountain': 16, 'CEN.USA,CEN.Midwest': 8, 'TZ.USA,TZ.Pacific': 8, 'CEN.Midwest,TZ.Central': 16, 'CEN.USA,TZ.Central': 8, 'TZ.Central,TZ.Mountain': 1, 'CEN.South,CEN.West': 1, 'CEN.West,TZ.Central': 1, 'CEN.Northeast,CEN.West': 1, 'TZ.Central,TZ.Pacific': 1, 'TZ.Pacific,TZ.Mountain': 1, 'CEN.USA,TZ.Eastern': 8, 'CEN.USA,CEN.West': 8, 'CEN.Midwest,CEN.Northeast': 1, 'CEN.South,TZ.Eastern': 16, 'TZ.Eastern,TZ.Mountain': 1, 'CEN.USA,TZ.Pacific': 8, 'TZ.USA,TZ.Eastern': 8, 'TZ.Pacific,TZ.Central': 1, 'CEN.Midwest,TZ.Pacific': 1, 'TZ.Mountain,TZ.Pacific': 1, 'TZ.Pacific,TZ.Eastern': 1, 'TZ.USA,TZ.Mountain': 8, 'CEN.Northeast,TZ.Mountain': 2, 'CEN.West,TZ.Mountain': 16, 'CEN.Midwest,TZ.Mountain': 16, 'CEN.Northeast,TZ.Pacific': 1, 'CEN.Northeast,CEN.Midwest': 1, 'TZ.USA,TZ.Central': 8, 'TZ.USA,CEN.Midwest': 8, 'TZ.Mountain,TZ.Eastern': 1, 'CEN.South,TZ.Central': 16, 'CEN.West,TZ.USA': 2, 'CEN.USA,CEN.Northeast': 8, 'TZ.Eastern,TZ.Pacific': 1, 'CEN.West,CEN.South': 1, 'CEN.West,TZ.Pacific': 8, 'CEN.Northeast,TZ.USA': 2, 'CEN.West,TZ.Eastern': 1, 'CEN.West,CEN.Northeast': 1, 'CEN.South,TZ.USA': 2, 'CEN.West,CEN.Midwest': 1, 'CEN.Northeast,TZ.Central': 1, 'TZ.Mountain,TZ.Central': 1, 'TZ.USA,CEN.Northeast': 8, 'CEN.Midwest,TZ.Eastern': 16, 'TZ.USA,CEN.South': 8, 'CEN.USA,TZ.USA': 4, 'CEN.Northeast,TZ.Eastern': 1, 'CEN.USA,CEN.South': 8, 'CEN.South,TZ.Pacific': 1, 'CEN.Midwest,TZ.USA': 2, 'CEN.South,CEN.Northeast': 1, 'CEN.South,CEN.Midwest': 1}
+inputoverlaps = [['CEN.Midwest', 'TZ.Eastern'], ['CEN.Midwest', 'TZ.Mountain'], ['CEN.South', 'TZ.Central'], ['CEN.South', 'TZ.Eastern'], ['CEN.South', 'TZ.Mountain'], ['CEN.West', 'TZ.Mountain']]

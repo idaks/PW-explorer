@@ -1,0 +1,49 @@
+1950.A_capillipes,!,1948.A_glomeratus,deduced
+1950.A_capillipes,!,1948.A_virginicus,deduced
+1950.A_capillipes,<,1948.Andropogon,deduced
+1950.A_glomeratus,!,1948.A_capillipes,deduced
+1950.A_glomeratus,<,1948.Andropogon,deduced
+1950.A_virginicus,!,1948.A_capillipes,deduced
+1950.A_virginicus,>,1948.A_virginicus_var_glaucopsis,deduced
+1950.A_virginicus,>,1948.A_virginicus_var_virginicus,deduced
+1950.A_virginicus,<,1948.Andropogon,deduced
+1950.A_virginicus_var_glaucopsis,<,1948.A_virginicus,deduced
+1950.A_virginicus_var_glaucopsis,!,1948.A_virginicus_var_tenuispatheus,deduced
+1950.A_virginicus_var_glaucopsis,!,1948.A_virginicus_var_virginicus,deduced
+1950.A_virginicus_var_glaucopsis,<,1948.Andropogon,deduced
+1950.A_virginicus_var_hirsutior,!,1948.A_virginicus_var_glaucopsis,deduced
+1950.A_virginicus_var_hirsutior,!,1948.A_virginicus_var_virginicus,deduced
+1950.A_virginicus_var_hirsutior,<,1948.Andropogon,deduced
+1950.A_virginicus_var_virginicus,<,1948.A_virginicus,deduced
+1950.A_virginicus_var_virginicus,!,1948.A_virginicus_var_glaucopsis,deduced
+1950.A_virginicus_var_virginicus,!,1948.A_virginicus_var_tenuispatheus,deduced
+1950.A_virginicus_var_virginicus,<,1948.Andropogon,deduced
+1950.Andropogon,>,1948.A_capillipes,deduced
+1950.Andropogon,>,1948.A_glomeratus,deduced
+1950.Andropogon,>,1948.A_virginicus,deduced
+1950.Andropogon,>,1948.A_virginicus_var_glaucopsis,deduced
+1950.Andropogon,>,1948.A_virginicus_var_tenuispatheus,deduced
+1950.Andropogon,>,1948.A_virginicus_var_virginicus,deduced
+1950.A_capillipes,!,1948.A_virginicus_var_glaucopsis,inferred
+1950.A_capillipes,!,1948.A_virginicus_var_tenuispatheus,inferred
+1950.A_capillipes,!,1948.A_virginicus_var_virginicus,inferred
+1950.A_glomeratus,{=, >, <, !, ><},1948.A_glomeratus,inferred
+1950.A_glomeratus,{<, !, ><},1948.A_virginicus,inferred
+1950.A_glomeratus,!,1948.A_virginicus_var_glaucopsis,inferred
+1950.A_glomeratus,{=, >, <, !, ><},1948.A_virginicus_var_tenuispatheus,inferred
+1950.A_glomeratus,!,1948.A_virginicus_var_virginicus,inferred
+1950.A_virginicus,{>, !, ><},1948.A_glomeratus,inferred
+1950.A_virginicus,{=, >, <, ><},1948.A_virginicus,inferred
+1950.A_virginicus,{>, !, ><},1948.A_virginicus_var_tenuispatheus,inferred
+1950.A_virginicus_var_glaucopsis,!,1948.A_capillipes,inferred
+1950.A_virginicus_var_glaucopsis,!,1948.A_glomeratus,inferred
+1950.A_virginicus_var_hirsutior,!,1948.A_capillipes,inferred
+1950.A_virginicus_var_hirsutior,{=, >, <, !, ><},1948.A_glomeratus,inferred
+1950.A_virginicus_var_hirsutior,{<, !, ><},1948.A_virginicus,inferred
+1950.A_virginicus_var_hirsutior,{=, >, <, !, ><},1948.A_virginicus_var_tenuispatheus,inferred
+1950.A_virginicus_var_virginicus,!,1948.A_capillipes,inferred
+1950.A_virginicus_var_virginicus,!,1948.A_glomeratus,inferred
+1950.A_capillipes,=,1948.A_capillipes,input
+1950.A_virginicus_var_glaucopsis,=,1948.A_virginicus_var_glaucopsis,input
+1950.A_virginicus_var_virginicus,=,1948.A_virginicus_var_virginicus,input
+1950.Andropogon,=,1948.Andropogon,input

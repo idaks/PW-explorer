@@ -1,0 +1,105 @@
+1948.A_glomeratus:
+  concept: A_glomeratus
+  group: '1948'
+1948.A_virginicus:
+  concept: A_virginicus
+  group: '1948'
+1948.A_virginicus_var_tenuispatheus:
+  concept: A_virginicus_var_tenuispatheus
+  group: '1948'
+1948.Andropogon:
+  concept: Andropogon
+  group: '1948'
+1950.A_glomeratus:
+  concept: A_glomeratus
+  group: '1950'
+1950.A_virginicus:
+  concept: A_virginicus
+  group: '1950'
+1950.A_virginicus_var_hirsutior:
+  concept: A_virginicus_var_hirsutior
+  group: '1950'
+1950.Andropogon:
+  concept: Andropogon
+  group: '1950'
+congruent.1950.A_capillipes\n1948.A_capillipes:
+  concept: 1950.A_capillipes\n1948.A_capillipes
+  group: congruent
+congruent.1950.A_virginicus_var_glaucopsis\n1948.A_virginicus_var_glaucopsis:
+  concept: 1950.A_virginicus_var_glaucopsis\n1948.A_virginicus_var_glaucopsis
+  group: congruent
+congruent.1950.A_virginicus_var_virginicus\n1948.A_virginicus_var_virginicus:
+  concept: 1950.A_virginicus_var_virginicus\n1948.A_virginicus_var_virginicus
+  group: congruent
+1948.A_glomeratus_1948.Andropogon:
+  label: is_a (input)
+  s: 1948.A_glomeratus
+  t: 1948.Andropogon
+1948.A_glomeratus_1950.A_virginicus:
+  label: overlaps (inferred)
+  s: 1948.A_glomeratus
+  t: 1950.A_virginicus
+1948.A_glomeratus_1950.Andropogon:
+  label: overlaps (inferred)
+  s: 1948.A_glomeratus
+  t: 1950.Andropogon
+1948.A_virginicus_1948.Andropogon:
+  label: is_a (input)
+  s: 1948.A_virginicus
+  t: 1948.Andropogon
+1948.A_virginicus_1950.A_virginicus:
+  label: overlaps (inferred)
+  s: 1948.A_virginicus
+  t: 1950.A_virginicus
+1948.A_virginicus_1950.Andropogon:
+  label: overlaps (inferred)
+  s: 1948.A_virginicus
+  t: 1950.Andropogon
+1948.A_virginicus_var_tenuispatheus_1948.A_virginicus:
+  label: is_a (input)
+  s: 1948.A_virginicus_var_tenuispatheus
+  t: 1948.A_virginicus
+1950.A_capillipes\n1948.A_capillipes_1950.Andropogon:
+  label: is_a (input)
+  s: 1950.A_capillipes\n1948.A_capillipes
+  t: 1950.Andropogon
+1950.A_glomeratus_1948.A_glomeratus:
+  label: is_a (inferred)
+  s: 1950.A_glomeratus
+  t: 1948.A_glomeratus
+1950.A_glomeratus_1950.Andropogon:
+  label: is_a (input)
+  s: 1950.A_glomeratus
+  t: 1950.Andropogon
+1950.A_virginicus_1950.Andropogon:
+  label: is_a (input)
+  s: 1950.A_virginicus
+  t: 1950.Andropogon
+1950.A_virginicus_var_glaucopsis\n1948.A_virginicus_var_glaucopsis_1948.A_virginicus:
+  label: is_a (input)
+  s: 1950.A_virginicus_var_glaucopsis\n1948.A_virginicus_var_glaucopsis
+  t: 1948.A_virginicus
+1950.A_virginicus_var_glaucopsis\n1948.A_virginicus_var_glaucopsis_1950.A_virginicus:
+  label: is_a (input)
+  s: 1950.A_virginicus_var_glaucopsis\n1948.A_virginicus_var_glaucopsis
+  t: 1950.A_virginicus
+1950.A_virginicus_var_hirsutior_1948.A_glomeratus:
+  label: is_a (input)
+  s: 1950.A_virginicus_var_hirsutior
+  t: 1948.A_glomeratus
+1950.A_virginicus_var_hirsutior_1950.A_virginicus:
+  label: is_a (input)
+  s: 1950.A_virginicus_var_hirsutior
+  t: 1950.A_virginicus
+1950.A_virginicus_var_virginicus\n1948.A_virginicus_var_virginicus_1948.A_virginicus:
+  label: is_a (input)
+  s: 1950.A_virginicus_var_virginicus\n1948.A_virginicus_var_virginicus
+  t: 1948.A_virginicus
+1950.A_virginicus_var_virginicus\n1948.A_virginicus_var_virginicus_1950.A_virginicus:
+  label: is_a (input)
+  s: 1950.A_virginicus_var_virginicus\n1948.A_virginicus_var_virginicus
+  t: 1950.A_virginicus
+1950.Andropogon_1948.Andropogon:
+  label: is_a (inferred)
+  s: 1950.Andropogon
+  t: 1948.Andropogon

@@ -1,0 +1,40 @@
+##### Executing command:
+
+/Users/jessicacheng/EulerX/src-el/euler2 align CEN_TZ_regional.txt 
+
+
+##### Euler version:
+
+master
+49e63e6a27be97ab30832180a47d214494388e15
+
+
+##### GraphViz version:
+
+dot - graphviz version 2.36.0 (20140111.2315)
+
+
+##### DLV version:
+
+DLV [build BEN/Dec 17 2012   gcc 4.2.1 (Apple Inc. build 5666) (dot 3)]
+
+usage: dlv {FRONTEND} {OPTIONS} [filename [filename [...]]]
+
+Specify -help for more detailed usage information.
+
+
+##### Running User, Host and Date:
+User:	jessicacheng
+Host:	JessicatekiMacBook-Air.local
+Date:	2017-09-05-19:12:48
+
+
+##### Euler Outputs:
+******* You are running example CEN_TZ_regional *******
+
+Possible world 0:
+{CEN.West"!"TZ.Central, CEN.Northeast"!"TZ.Pacific, CEN.Northeast"!"TZ.Central, CEN.Northeast"!"TZ.Mountain, CEN.West"!"TZ.Eastern, CEN.Midwest"!"TZ.Pacific, CEN.South"><"TZ.Eastern, CEN.South"><"TZ.Pacific, CEN.South"><"TZ.Central, CEN.West"><"TZ.Pacific, CEN.Midwest"><"TZ.Mountain, CEN.Midwest"><"TZ.Central, CEN.Midwest"><"TZ.Eastern, CEN.South"><"TZ.Mountain, CEN.West"><"TZ.Mountain, CEN.USA">"TZ.Eastern, CEN.USA">"TZ.Pacific, CEN.USA">"TZ.Central, CEN.USA">"TZ.Mountain, CEN.South"<"TZ.USA, CEN.West"<"TZ.USA, CEN.Northeast"<"TZ.USA, CEN.Northeast"<"TZ.Eastern, CEN.Midwest"<"TZ.USA, CEN.USA"="TZ.USA}
+
+Possible world 1:
+{CEN.West"!"TZ.Central, CEN.South"!"TZ.Pacific, CEN.Northeast"!"TZ.Pacific, CEN.Northeast"!"TZ.Central, CEN.Northeast"!"TZ.Mountain, CEN.West"!"TZ.Eastern, CEN.Midwest"!"TZ.Pacific, CEN.South"><"TZ.Eastern, CEN.South"><"TZ.Central, CEN.Midwest"><"TZ.Mountain, CEN.Midwest"><"TZ.Central, CEN.Midwest"><"TZ.Eastern, CEN.South"><"TZ.Mountain, CEN.West"><"TZ.Mountain, CEN.USA">"TZ.Eastern, CEN.USA">"TZ.Pacific, CEN.USA">"TZ.Central, CEN.USA">"TZ.Mountain, CEN.West">"TZ.Pacific, CEN.South"<"TZ.USA, CEN.West"<"TZ.USA, CEN.Northeast"<"TZ.USA, CEN.Northeast"<"TZ.Eastern, CEN.Midwest"<"TZ.USA, CEN.USA"="TZ.USA}
+

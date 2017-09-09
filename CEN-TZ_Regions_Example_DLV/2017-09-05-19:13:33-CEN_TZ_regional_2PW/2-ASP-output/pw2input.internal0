@@ -1,0 +1,2 @@
+tr = [['CEN.Northeast', 'TZ.Eastern', 0], ['TZ.Pacific', 'CEN.West', 1], ['CEN.Midwest', 'CEN.USA\\nTZ.USA', 0], ['CEN.South', 'CEN.USA\\nTZ.USA', 0], ['CEN.West', 'CEN.USA\\nTZ.USA', 0], ['TZ.Mountain', 'CEN.USA\\nTZ.USA', 0], ['TZ.Central', 'CEN.USA\\nTZ.USA', 0], ['TZ.Eastern', 'CEN.USA\\nTZ.USA', 0], ['CEN.Northeast', 'CEN.USA\\nTZ.USA', 2], ['TZ.Pacific', 'CEN.USA\\nTZ.USA', 2]]
+pwIndex = 0
