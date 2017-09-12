@@ -1,0 +1,17 @@
+# Franz et al. 2015. Names Are Not Good Enough: Reasoning over Taxonomic Change in the Andropogon Complex. Semantic Web Journal. swj623 / 624-1834
+# Figure 4C
+# T1 = Blomquist (1948); T2 = Hitchcock & Chase (1950)
+# Euler/X command - alignment: euler -i figure4C.txt -e mnpw --rcgo
+# 
+taxonomy 1950 HitchcockChase
+(Andropogon A_capillipes A_glomeratus A_virginicus)
+(A_virginicus A_virginicus_var_glaucopsis A_virginicus_var_hirsutior A_virginicus_var_virginicus)
+taxonomy 1948 Blomquist
+(Andropogon A_capillipes A_glomeratus A_virginicus)
+(A_virginicus A_virginicus_var_glaucopsis A_virginicus_var_tenuispatheus A_virginicus_var_virginicus)
+articulation 1950-1948 HitchcockChase-Blomquist
+#[1950.Andropogon equals 1948.Andropogon]
+[1950.A_capillipes equals 1948.A_capillipes]
+[1950.A_virginicus_var_hirsutior is_included_in 1948.A_glomeratus]
+[1950.A_virginicus_var_virginicus equals 1948.A_virginicus_var_virginicus]
+[1950.A_virginicus_var_glaucopsis equals 1948.A_virginicus_var_glaucopsis]
