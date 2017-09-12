@@ -1,0 +1,105 @@
+digraph{
+rankdir=RL
+node[shape=box style=filled fillcolor="#CCFFCC" fontname="helvetica"] 
+"CEN.USA"
+"CEN.West"
+"CEN.Northeast\nNDC.Northeast \\ CEN.South"
+"CEN.South"
+node[shape=box style="filled,rounded" fillcolor="#EEEEEE" fontname="helvetica"] 
+"CEN.Midwest\nNDC.Midwest"
+node[shape=note style=filled fillcolor="#FFFFCC" fontname="helvetica"] 
+"NDC.West\nCEN.West * NDC.USA"
+"NDC.USA"
+"NDC.Southeast"
+"NDC.Southwest"
+"NDC.Northeast"
+node[shape=box style="filled,rounded,bold" fillcolor="#FFE0D8" fontname="helvetica"] 
+"NDC.USA \\ CEN.South"
+"NDC.USA \\ CEN.West"
+"CEN.South \\ NDC.Southwest"
+"CEN.South * NDC.Southwest\nCEN.USA * NDC.Southwest"
+"CEN.USA \\ NDC.USA"
+"CEN.South \\ NDC.USA"
+"CEN.USA \\ NDC.Southwest"
+"CEN.USA * NDC.USA"
+"NDC.Southwest \\ CEN.South\nNDC.Southwest \\ CEN.USA\nNDC.USA \\ CEN.USA"
+"CEN.South * NDC.USA"
+"CEN.South \\ NDC.Northeast"
+"CEN.South * NDC.Northeast"
+"CEN.West \\ NDC.USA"
+edge[arrowhead=normal style=dotted color="#000000" constraint=true penwidth=1]
+edge[arrowhead=normal style=solid color="#FF0000" constraint=true penwidth=1]
+"CEN.South \\ NDC.Southwest" -> "CEN.USA \\ NDC.Southwest"
+"NDC.Northeast" -> "CEN.USA \\ NDC.Southwest"
+"NDC.West\nCEN.West * NDC.USA" -> "NDC.USA \\ CEN.South"
+"CEN.USA * NDC.USA" -> "NDC.USA"
+"CEN.Midwest\nNDC.Midwest" -> "CEN.USA \\ NDC.Southwest"
+"CEN.South * NDC.USA" -> "CEN.USA * NDC.USA"
+"CEN.Northeast\nNDC.Northeast \\ CEN.South" -> "NDC.USA \\ CEN.South"
+"CEN.West" -> "CEN.USA \\ NDC.Southwest"
+"NDC.Southeast" -> "CEN.South * NDC.USA"
+"CEN.South * NDC.Northeast" -> "CEN.South * NDC.USA"
+"CEN.USA \\ NDC.Southwest" -> "CEN.USA"
+"CEN.USA * NDC.USA" -> "CEN.USA"
+"CEN.South * NDC.Southwest\nCEN.USA * NDC.Southwest" -> "NDC.Southwest"
+"CEN.West \\ NDC.USA" -> "CEN.West"
+"NDC.Northeast" -> "CEN.USA * NDC.USA"
+"CEN.Midwest\nNDC.Midwest" -> "CEN.USA * NDC.USA"
+"NDC.Southeast" -> "CEN.South \\ NDC.Northeast"
+"CEN.South \\ NDC.USA" -> "CEN.South \\ NDC.Southwest"
+"CEN.USA \\ NDC.USA" -> "CEN.USA \\ NDC.Southwest"
+"CEN.South \\ NDC.USA" -> "CEN.USA \\ NDC.USA"
+"CEN.South * NDC.USA" -> "NDC.USA \\ CEN.West"
+"NDC.Southwest \\ CEN.South\nNDC.Southwest \\ CEN.USA\nNDC.USA \\ CEN.USA" -> "NDC.USA \\ CEN.South"
+"CEN.South \\ NDC.Northeast" -> "CEN.South"
+"NDC.Southeast" -> "CEN.South \\ NDC.Southwest"
+"CEN.West \\ NDC.USA" -> "CEN.USA \\ NDC.USA"
+"CEN.South * NDC.Southwest\nCEN.USA * NDC.Southwest" -> "CEN.South * NDC.USA"
+"CEN.Midwest\nNDC.Midwest" -> "NDC.USA \\ CEN.South"
+"NDC.Southwest \\ CEN.South\nNDC.Southwest \\ CEN.USA\nNDC.USA \\ CEN.USA" -> "NDC.Southwest"
+"NDC.USA \\ CEN.South" -> "NDC.USA"
+"CEN.South * NDC.USA" -> "CEN.South"
+"CEN.South \\ NDC.Southwest" -> "CEN.South"
+"CEN.South \\ NDC.USA" -> "CEN.South \\ NDC.Northeast"
+"NDC.USA \\ CEN.West" -> "NDC.USA"
+"NDC.West\nCEN.West * NDC.USA" -> "CEN.USA * NDC.USA"
+"NDC.Northeast" -> "NDC.USA \\ CEN.West"
+"CEN.South * NDC.Northeast" -> "CEN.South \\ NDC.Southwest"
+"NDC.Southwest" -> "NDC.USA \\ CEN.West"
+"CEN.South * NDC.Northeast" -> "NDC.Northeast"
+"CEN.Midwest\nNDC.Midwest" -> "NDC.USA \\ CEN.West"
+"CEN.South * NDC.Southwest\nCEN.USA * NDC.Southwest" -> "CEN.South \\ NDC.Northeast"
+edge[arrowhead=normal style=solid color="#000000" constraint=true penwidth=1]
+"NDC.West\nCEN.West * NDC.USA" -> "CEN.West"
+"CEN.South" -> "CEN.USA"
+"CEN.Northeast\nNDC.Northeast \\ CEN.South" -> "NDC.Northeast"
+node[shape=box] 
+{rank=source Legend [fillcolor= white margin=0 label=< 
+ <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4"> 
+<TR> <TD COLSPAN="2"><font face="Arial Black"> Nodes</font></TD> </TR> 
+<TR> 
+ <TD bgcolor="#CCFFCC" fontname="helvetica">CEN</TD> 
+ <TD>4</TD> 
+ </TR> 
+<TR> 
+ <TD bgcolor="#EEEEEE" fontname="helvetica">congruent</TD> 
+ <TD>1</TD> 
+ </TR> 
+<TR> 
+ <TD bgcolor="#FFFFCC" fontname="helvetica">NDC</TD> 
+ <TD>5</TD> 
+ </TR> 
+<TR> 
+ <TD bgcolor="#FFE0D8" fontname="helvetica">*NEW*</TD> 
+ <TD>13</TD> 
+ </TR> 
+<TR> <TD COLSPAN="2"><font face = "Arial Black"> Edges </font></TD> </TR> 
+<TR> 
+ <TD><font color ="#FF0000">is_a (inferred)</font></TD><TD>40</TD>
+</TR>
+<TR> 
+ <TD><font color ="#000000">is_a (input)</font></TD><TD>3</TD>
+</TR>
+</TABLE> 
+ >] } 
+}

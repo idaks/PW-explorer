@@ -1,0 +1,176 @@
+digraph{
+rankdir=RL
+node[shape=box style=filled fillcolor="#CCFFCC" fontname="helvetica"] 
+"CEN.Northeast"
+"CEN.South"
+"CEN.Midwest"
+"CEN.USA"
+"CEN.West"
+node[shape=note style=filled fillcolor="#FFFFCC" fontname="helvetica"] 
+"TZ.USA"
+"TZ.Eastern"
+"TZ.Central"
+"TZ.Mountain"
+"TZ.Pacific"
+node[shape=box style="filled,rounded,bold" fillcolor="#FFE0D8" fontname="helvetica"] 
+"CEN.South * TZ.Eastern"
+"CEN.USA * TZ.Central"
+"CEN.South \\ TZ.Eastern"
+"CEN.South * TZ.Central"
+"CEN.West \\ TZ.Mountain\nCEN.West \\ TZ.USA"
+"CEN.South * TZ.Mountain"
+"CEN.Midwest \\ TZ.Mountain"
+"CEN.Midwest * TZ.Eastern"
+"CEN.Midwest * TZ.Central"
+"CEN.Midwest * TZ.Mountain"
+"TZ.Mountain \\ CEN.West"
+"CEN.Midwest \\ TZ.Central"
+"CEN.USA \\ TZ.Mountain"
+"TZ.Mountain \\ CEN.Midwest"
+"CEN.South \\ TZ.Mountain"
+"CEN.West * TZ.Mountain\nCEN.West * TZ.USA"
+"TZ.Mountain \\ CEN.South"
+"CEN.South \\ TZ.Central"
+"CEN.USA \\ TZ.USA"
+"TZ.Eastern \\ CEN.South"
+"CEN.Midwest * TZ.USA"
+"TZ.Central \\ CEN.South"
+"TZ.USA \\ CEN.USA"
+"TZ.Central \\ CEN.Midwest"
+"CEN.USA * TZ.Mountain"
+"TZ.Central \\ CEN.USA"
+"TZ.USA \\ CEN.West"
+"TZ.USA \\ CEN.Midwest"
+"CEN.USA * TZ.USA"
+"TZ.Mountain \\ CEN.USA"
+"CEN.USA \\ TZ.Central"
+"CEN.Midwest \\ TZ.USA"
+"TZ.Eastern \\ CEN.Midwest"
+"CEN.Midwest \\ TZ.Eastern"
+edge[arrowhead=normal style=dotted color="#000000" constraint=true penwidth=1]
+edge[arrowhead=normal style=solid color="#FF0000" constraint=true penwidth=1]
+"CEN.South * TZ.Central" -> "CEN.South \\ TZ.Mountain"
+"CEN.Midwest * TZ.Eastern" -> "CEN.Midwest \\ TZ.Central"
+"CEN.Midwest * TZ.Mountain" -> "TZ.Mountain \\ CEN.South"
+"CEN.South" -> "CEN.USA * TZ.USA"
+"TZ.Eastern" -> "TZ.USA \\ CEN.West"
+"CEN.USA * TZ.Mountain" -> "TZ.Mountain"
+"TZ.Mountain \\ CEN.West" -> "TZ.USA \\ CEN.West"
+"TZ.Central \\ CEN.Midwest" -> "TZ.USA \\ CEN.Midwest"
+"CEN.South * TZ.Central" -> "CEN.USA * TZ.Central"
+"CEN.Midwest * TZ.Mountain" -> "CEN.USA * TZ.Mountain"
+"CEN.Midwest \\ TZ.USA" -> "CEN.Midwest \\ TZ.Eastern"
+"CEN.Midwest * TZ.Central" -> "TZ.Central \\ CEN.South"
+"CEN.South" -> "TZ.USA \\ CEN.West"
+"CEN.Midwest * TZ.Eastern" -> "TZ.Eastern \\ CEN.South"
+"TZ.Central \\ CEN.Midwest" -> "TZ.Central"
+"CEN.Midwest * TZ.Central" -> "CEN.Midwest * TZ.USA"
+"TZ.Central \\ CEN.USA" -> "TZ.USA \\ CEN.USA"
+"CEN.South * TZ.Eastern" -> "TZ.Eastern \\ CEN.Midwest"
+"CEN.USA * TZ.Central" -> "CEN.USA * TZ.USA"
+"CEN.USA * TZ.USA" -> "TZ.USA"
+"CEN.Midwest \\ TZ.Eastern" -> "CEN.Midwest"
+"TZ.USA \\ CEN.USA" -> "TZ.USA \\ CEN.West"
+"TZ.Central" -> "TZ.USA \\ CEN.West"
+"CEN.West * TZ.Mountain\nCEN.West * TZ.USA" -> "TZ.Mountain \\ CEN.South"
+"CEN.South \\ TZ.Mountain" -> "CEN.South"
+"CEN.West \\ TZ.Mountain\nCEN.West \\ TZ.USA" -> "CEN.USA \\ TZ.USA"
+"CEN.South \\ TZ.Central" -> "CEN.USA \\ TZ.Central"
+"CEN.Midwest * TZ.USA" -> "CEN.USA * TZ.USA"
+"CEN.West \\ TZ.Mountain\nCEN.West \\ TZ.USA" -> "CEN.West"
+"CEN.Midwest \\ TZ.USA" -> "CEN.USA \\ TZ.USA"
+"CEN.West * TZ.Mountain\nCEN.West * TZ.USA" -> "CEN.West"
+"CEN.USA * TZ.Mountain" -> "CEN.USA \\ TZ.Central"
+"CEN.South" -> "TZ.USA \\ CEN.Midwest"
+"CEN.South * TZ.Mountain" -> "TZ.Mountain \\ CEN.West"
+"TZ.Eastern \\ CEN.South" -> "TZ.Eastern"
+"CEN.USA \\ TZ.Mountain" -> "CEN.USA"
+"CEN.Midwest * TZ.Eastern" -> "CEN.Midwest * TZ.USA"
+"CEN.Midwest * TZ.Central" -> "CEN.USA * TZ.Central"
+"TZ.Eastern" -> "CEN.USA \\ TZ.Mountain"
+"CEN.USA * TZ.Central" -> "CEN.USA \\ TZ.Mountain"
+"CEN.Midwest * TZ.Mountain" -> "CEN.Midwest \\ TZ.Eastern"
+"CEN.Midwest * TZ.Mountain" -> "TZ.Mountain \\ CEN.West"
+"CEN.Midwest \\ TZ.Central" -> "CEN.USA \\ TZ.Central"
+"TZ.Central \\ CEN.USA" -> "TZ.Central \\ CEN.South"
+"TZ.Mountain \\ CEN.South" -> "TZ.Mountain"
+"TZ.USA \\ CEN.Midwest" -> "TZ.USA"
+"TZ.Mountain \\ CEN.Midwest" -> "TZ.USA \\ CEN.Midwest"
+"TZ.Mountain \\ CEN.USA" -> "TZ.Mountain \\ CEN.South"
+"CEN.Midwest * TZ.Mountain" -> "CEN.Midwest * TZ.USA"
+"CEN.South \\ TZ.Central" -> "CEN.South"
+"CEN.USA \\ TZ.USA" -> "CEN.USA \\ TZ.Central"
+"CEN.West * TZ.Mountain\nCEN.West * TZ.USA" -> "TZ.Mountain \\ CEN.Midwest"
+"TZ.Mountain \\ CEN.USA" -> "TZ.Mountain \\ CEN.West"
+"CEN.South * TZ.Eastern" -> "CEN.South \\ TZ.Mountain"
+"CEN.USA * TZ.Central" -> "TZ.Central"
+"CEN.Midwest \\ TZ.Central" -> "CEN.Midwest"
+"CEN.Midwest * TZ.Central" -> "CEN.Midwest \\ TZ.Eastern"
+"CEN.Midwest * TZ.USA" -> "CEN.Midwest"
+"CEN.Midwest * TZ.Eastern" -> "CEN.Midwest \\ TZ.Mountain"
+"TZ.Eastern \\ CEN.Midwest" -> "TZ.Eastern"
+"CEN.USA * TZ.Mountain" -> "CEN.USA * TZ.USA"
+"CEN.West" -> "CEN.USA \\ TZ.Central"
+"TZ.USA \\ CEN.West" -> "TZ.USA"
+"TZ.Eastern" -> "CEN.USA \\ TZ.Central"
+"TZ.Eastern" -> "CEN.USA * TZ.USA"
+"CEN.Midwest \\ TZ.Mountain" -> "CEN.Midwest"
+"CEN.Midwest * TZ.Central" -> "CEN.Midwest \\ TZ.Mountain"
+"CEN.South * TZ.Mountain" -> "CEN.USA * TZ.Mountain"
+"TZ.Mountain \\ CEN.West" -> "TZ.Mountain"
+"TZ.Mountain \\ CEN.USA" -> "TZ.Mountain \\ CEN.Midwest"
+"TZ.Eastern \\ CEN.Midwest" -> "TZ.USA \\ CEN.Midwest"
+"TZ.Central \\ CEN.USA" -> "TZ.Central \\ CEN.Midwest"
+"CEN.South * TZ.Mountain" -> "TZ.Mountain \\ CEN.Midwest"
+"CEN.Northeast" -> "TZ.Eastern \\ CEN.South"
+"CEN.South * TZ.Central" -> "TZ.Central \\ CEN.Midwest"
+"TZ.USA \\ CEN.USA" -> "TZ.USA \\ CEN.Midwest"
+"CEN.Midwest \\ TZ.USA" -> "CEN.Midwest \\ TZ.Mountain"
+"CEN.Midwest \\ TZ.USA" -> "CEN.Midwest \\ TZ.Central"
+"CEN.Midwest * TZ.USA" -> "TZ.USA \\ CEN.West"
+"CEN.West * TZ.Mountain\nCEN.West * TZ.USA" -> "CEN.USA * TZ.Mountain"
+"CEN.South \\ TZ.Eastern" -> "CEN.South"
+"CEN.Midwest \\ TZ.Mountain" -> "CEN.USA \\ TZ.Mountain"
+"CEN.Northeast" -> "TZ.Eastern \\ CEN.Midwest"
+"CEN.USA * TZ.USA" -> "CEN.USA"
+"TZ.Pacific" -> "TZ.USA \\ CEN.USA"
+"CEN.South * TZ.Eastern" -> "CEN.South \\ TZ.Central"
+"CEN.USA \\ TZ.USA" -> "CEN.USA \\ TZ.Mountain"
+"CEN.Midwest * TZ.Mountain" -> "CEN.Midwest \\ TZ.Central"
+"CEN.South \\ TZ.Mountain" -> "CEN.USA \\ TZ.Mountain"
+"CEN.South * TZ.Central" -> "CEN.South \\ TZ.Eastern"
+"CEN.South * TZ.Mountain" -> "CEN.South \\ TZ.Central"
+"TZ.Central \\ CEN.South" -> "TZ.Central"
+"TZ.Mountain \\ CEN.Midwest" -> "TZ.Mountain"
+"CEN.USA \\ TZ.Central" -> "CEN.USA"
+"TZ.Mountain \\ CEN.USA" -> "TZ.USA \\ CEN.USA"
+"CEN.South * TZ.Mountain" -> "CEN.South \\ TZ.Eastern"
+edge[arrowhead=normal style=solid color="#000000" constraint=true penwidth=1]
+"TZ.Mountain" -> "TZ.USA"
+"CEN.Midwest" -> "CEN.USA"
+node[shape=box] 
+{rank=source Legend [fillcolor= white margin=0 label=< 
+ <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4"> 
+<TR> <TD COLSPAN="2"><font face="Arial Black"> Nodes</font></TD> </TR> 
+<TR> 
+ <TD bgcolor="#CCFFCC" fontname="helvetica">CEN</TD> 
+ <TD>5</TD> 
+ </TR> 
+<TR> 
+ <TD bgcolor="#FFFFCC" fontname="helvetica">TZ</TD> 
+ <TD>5</TD> 
+ </TR> 
+<TR> 
+ <TD bgcolor="#FFE0D8" fontname="helvetica">*NEW*</TD> 
+ <TD>34</TD> 
+ </TR> 
+<TR> <TD COLSPAN="2"><font face = "Arial Black"> Edges </font></TD> </TR> 
+<TR> 
+ <TD><font color ="#FF0000">is_a (inferred)</font></TD><TD>96</TD>
+</TR>
+<TR> 
+ <TD><font color ="#000000">is_a (input)</font></TD><TD>2</TD>
+</TR>
+</TABLE> 
+ >] } 
+}

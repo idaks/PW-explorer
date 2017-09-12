@@ -1,0 +1,3 @@
+pws = [{'CEN.West,TZ.USA': 2, 'CEN.South,TZ.Mountain': 16, 'CEN.Midwest,TZ.Central': 16, 'CEN.USA,TZ.Central': 8, 'CEN.Northeast,TZ.Pacific': 1, 'CEN.Midwest,TZ.USA': 2, 'CEN.USA,TZ.Eastern': 8, 'CEN.South,TZ.Eastern': 16, 'CEN.Midwest,TZ.Pacific': 1, 'CEN.Northeast,TZ.Mountain': 1, 'CEN.West,TZ.Mountain': 16, 'CEN.Midwest,TZ.Mountain': 16, 'CEN.West,TZ.Central': 1, 'CEN.USA,TZ.USA': 4, 'CEN.West,TZ.Pacific': 8, 'CEN.South,TZ.Central': 16, 'CEN.USA,TZ.Mountain': 8, 'CEN.USA,TZ.Pacific': 8, 'CEN.Northeast,TZ.USA': 2, 'CEN.West,TZ.Eastern': 1, 'CEN.South,TZ.USA': 2, 'CEN.Northeast,TZ.Central': 1, 'CEN.Midwest,TZ.Eastern': 16, 'CEN.Northeast,TZ.Eastern': 2, 'CEN.South,TZ.Pacific': 1}]
+npw = 1
+cvFlag = False

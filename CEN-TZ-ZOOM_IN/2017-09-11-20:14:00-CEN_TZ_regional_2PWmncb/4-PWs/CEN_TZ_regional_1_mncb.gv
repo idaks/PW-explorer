@@ -1,0 +1,92 @@
+digraph{
+rankdir=RL
+node[shape=box style=filled fillcolor="#CCFFCC" fontname="helvetica"] 
+"CEN.Midwest"
+"CEN.West"
+"CEN.South"
+"CEN.Northeast\nTZ.Eastern \\ CEN.Midwest"
+node[shape=box style="filled,rounded" fillcolor="#EEEEEE" fontname="helvetica"] 
+"CEN.USA\nTZ.USA"
+node[shape=note style=filled fillcolor="#FFFFCC" fontname="helvetica"] 
+"TZ.Eastern"
+"TZ.Central"
+"TZ.Pacific\nCEN.West \\ TZ.Mountain"
+"TZ.Mountain"
+node[shape=box style="filled,rounded,bold" fillcolor="#FFE0D8" fontname="helvetica"] 
+"CEN.Midwest * TZ.Central\nTZ.Central \\ CEN.South"
+"CEN.Midwest * TZ.Mountain"
+"TZ.Mountain \\ CEN.West"
+"TZ.Mountain \\ CEN.South"
+"CEN.Midwest \\ TZ.Central"
+"CEN.Midwest * TZ.Eastern"
+"TZ.Mountain \\ CEN.Midwest"
+"CEN.South * TZ.Central\nCEN.South \\ TZ.Mountain\nTZ.Central \\ CEN.Midwest"
+"CEN.West * TZ.Mountain"
+"CEN.Midwest \\ TZ.Mountain"
+"CEN.South * TZ.Mountain\nCEN.South \\ TZ.Central"
+"CEN.Midwest \\ TZ.Eastern"
+edge[arrowhead=normal style=dotted color="#000000" constraint=true penwidth=1]
+edge[arrowhead=normal style=solid color="#FF0000" constraint=true penwidth=1]
+"CEN.Midwest * TZ.Mountain" -> "TZ.Mountain \\ CEN.West"
+"TZ.Mountain \\ CEN.West" -> "TZ.Mountain"
+"CEN.Midwest * TZ.Eastern" -> "CEN.Midwest \\ TZ.Central"
+"CEN.Midwest * TZ.Mountain" -> "TZ.Mountain \\ CEN.South"
+"CEN.South * TZ.Mountain\nCEN.South \\ TZ.Central" -> "CEN.South"
+"CEN.South * TZ.Mountain\nCEN.South \\ TZ.Central" -> "TZ.Mountain \\ CEN.West"
+"TZ.Mountain \\ CEN.South" -> "TZ.Mountain"
+"CEN.West * TZ.Mountain" -> "CEN.West"
+"CEN.Midwest \\ TZ.Eastern" -> "CEN.Midwest"
+"CEN.West * TZ.Mountain" -> "TZ.Mountain \\ CEN.South"
+"CEN.Midwest * TZ.Central\nTZ.Central \\ CEN.South" -> "CEN.Midwest \\ TZ.Mountain"
+"CEN.Midwest * TZ.Eastern" -> "TZ.Eastern"
+"CEN.Midwest \\ TZ.Central" -> "CEN.Midwest"
+"CEN.West * TZ.Mountain" -> "TZ.Mountain \\ CEN.Midwest"
+"CEN.Midwest * TZ.Mountain" -> "CEN.Midwest \\ TZ.Central"
+"CEN.South * TZ.Mountain\nCEN.South \\ TZ.Central" -> "TZ.Mountain \\ CEN.Midwest"
+"TZ.Pacific\nCEN.West \\ TZ.Mountain" -> "CEN.West"
+"CEN.Midwest * TZ.Eastern" -> "CEN.Midwest \\ TZ.Mountain"
+"CEN.Midwest * TZ.Central\nTZ.Central \\ CEN.South" -> "CEN.Midwest \\ TZ.Eastern"
+"CEN.South * TZ.Central\nCEN.South \\ TZ.Mountain\nTZ.Central \\ CEN.Midwest" -> "TZ.Central"
+"CEN.South * TZ.Central\nCEN.South \\ TZ.Mountain\nTZ.Central \\ CEN.Midwest" -> "CEN.South"
+"CEN.Midwest * TZ.Central\nTZ.Central \\ CEN.South" -> "TZ.Central"
+"TZ.Mountain \\ CEN.Midwest" -> "TZ.Mountain"
+"CEN.Midwest \\ TZ.Mountain" -> "CEN.Midwest"
+"CEN.Midwest * TZ.Mountain" -> "CEN.Midwest \\ TZ.Eastern"
+edge[arrowhead=normal style=solid color="#000000" constraint=true penwidth=1]
+"CEN.South" -> "CEN.USA\nTZ.USA"
+"CEN.Northeast\nTZ.Eastern \\ CEN.Midwest" -> "TZ.Eastern"
+"TZ.Central" -> "CEN.USA\nTZ.USA"
+"TZ.Mountain" -> "CEN.USA\nTZ.USA"
+"CEN.Midwest" -> "CEN.USA\nTZ.USA"
+"CEN.West" -> "CEN.USA\nTZ.USA"
+"TZ.Eastern" -> "CEN.USA\nTZ.USA"
+node[shape=box] 
+{rank=source Legend [fillcolor= white margin=0 label=< 
+ <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4"> 
+<TR> <TD COLSPAN="2"><font face="Arial Black"> Nodes</font></TD> </TR> 
+<TR> 
+ <TD bgcolor="#CCFFCC" fontname="helvetica">CEN</TD> 
+ <TD>4</TD> 
+ </TR> 
+<TR> 
+ <TD bgcolor="#EEEEEE" fontname="helvetica">congruent</TD> 
+ <TD>1</TD> 
+ </TR> 
+<TR> 
+ <TD bgcolor="#FFFFCC" fontname="helvetica">TZ</TD> 
+ <TD>4</TD> 
+ </TR> 
+<TR> 
+ <TD bgcolor="#FFE0D8" fontname="helvetica">*NEW*</TD> 
+ <TD>12</TD> 
+ </TR> 
+<TR> <TD COLSPAN="2"><font face = "Arial Black"> Edges </font></TD> </TR> 
+<TR> 
+ <TD><font color ="#FF0000">is_a (inferred)</font></TD><TD>25</TD>
+</TR>
+<TR> 
+ <TD><font color ="#000000">is_a (input)</font></TD><TD>7</TD>
+</TR>
+</TABLE> 
+ >] } 
+}

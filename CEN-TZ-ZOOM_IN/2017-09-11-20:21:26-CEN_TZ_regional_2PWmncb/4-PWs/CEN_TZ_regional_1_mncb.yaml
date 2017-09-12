@@ -1,0 +1,253 @@
+'*NEW*.CEN.Midwest * TZ.Central\nTZ.Central \\ CEN.South':
+  concept: CEN.Midwest * TZ.Central\nTZ.Central \\ CEN.South
+  group: '*NEW*'
+'*NEW*.CEN.Midwest * TZ.Eastern':
+  concept: CEN.Midwest * TZ.Eastern
+  group: '*NEW*'
+'*NEW*.CEN.Midwest * TZ.Mountain':
+  concept: CEN.Midwest * TZ.Mountain
+  group: '*NEW*'
+'*NEW*.CEN.Midwest \\ TZ.Central':
+  concept: CEN.Midwest \\ TZ.Central
+  group: '*NEW*'
+'*NEW*.CEN.Midwest \\ TZ.Eastern':
+  concept: CEN.Midwest \\ TZ.Eastern
+  group: '*NEW*'
+'*NEW*.CEN.Midwest \\ TZ.Mountain':
+  concept: CEN.Midwest \\ TZ.Mountain
+  group: '*NEW*'
+'*NEW*.CEN.South * TZ.Central\nTZ.Central \\ CEN.Midwest':
+  concept: CEN.South * TZ.Central\nTZ.Central \\ CEN.Midwest
+  group: '*NEW*'
+'*NEW*.CEN.South * TZ.Eastern':
+  concept: CEN.South * TZ.Eastern
+  group: '*NEW*'
+'*NEW*.CEN.South * TZ.Mountain':
+  concept: CEN.South * TZ.Mountain
+  group: '*NEW*'
+'*NEW*.CEN.South \\ TZ.Central':
+  concept: CEN.South \\ TZ.Central
+  group: '*NEW*'
+'*NEW*.CEN.South \\ TZ.Eastern':
+  concept: CEN.South \\ TZ.Eastern
+  group: '*NEW*'
+'*NEW*.CEN.South \\ TZ.Mountain':
+  concept: CEN.South \\ TZ.Mountain
+  group: '*NEW*'
+'*NEW*.CEN.West * TZ.Mountain':
+  concept: CEN.West * TZ.Mountain
+  group: '*NEW*'
+'*NEW*.TZ.Eastern \\ CEN.Midwest':
+  concept: TZ.Eastern \\ CEN.Midwest
+  group: '*NEW*'
+'*NEW*.TZ.Eastern \\ CEN.South':
+  concept: TZ.Eastern \\ CEN.South
+  group: '*NEW*'
+'*NEW*.TZ.Mountain \\ CEN.Midwest':
+  concept: TZ.Mountain \\ CEN.Midwest
+  group: '*NEW*'
+'*NEW*.TZ.Mountain \\ CEN.South':
+  concept: TZ.Mountain \\ CEN.South
+  group: '*NEW*'
+'*NEW*.TZ.Mountain \\ CEN.West':
+  concept: TZ.Mountain \\ CEN.West
+  group: '*NEW*'
+CEN.Midwest:
+  concept: Midwest
+  group: CEN
+CEN.Northeast:
+  concept: Northeast
+  group: CEN
+CEN.South:
+  concept: South
+  group: CEN
+CEN.West:
+  concept: West
+  group: CEN
+TZ.Central:
+  concept: Central
+  group: TZ
+TZ.Eastern:
+  concept: Eastern
+  group: TZ
+TZ.Mountain:
+  concept: Mountain
+  group: TZ
+TZ.TZ.Pacific\nCEN.West \\ TZ.Mountain:
+  concept: TZ.Pacific\nCEN.West \\ TZ.Mountain
+  group: TZ
+congruent.CEN.USA\nTZ.USA:
+  concept: CEN.USA\nTZ.USA
+  group: congruent
+CEN.Midwest * TZ.Central\nTZ.Central \\ CEN.South_CEN.Midwest \\ TZ.Eastern:
+  label: is_a (inferred)
+  s: CEN.Midwest * TZ.Central\nTZ.Central \\ CEN.South
+  t: CEN.Midwest \\ TZ.Eastern
+CEN.Midwest * TZ.Central\nTZ.Central \\ CEN.South_CEN.Midwest \\ TZ.Mountain:
+  label: is_a (inferred)
+  s: CEN.Midwest * TZ.Central\nTZ.Central \\ CEN.South
+  t: CEN.Midwest \\ TZ.Mountain
+CEN.Midwest * TZ.Central\nTZ.Central \\ CEN.South_TZ.Central:
+  label: is_a (inferred)
+  s: CEN.Midwest * TZ.Central\nTZ.Central \\ CEN.South
+  t: TZ.Central
+CEN.Midwest * TZ.Eastern_CEN.Midwest \\ TZ.Central:
+  label: is_a (inferred)
+  s: CEN.Midwest * TZ.Eastern
+  t: CEN.Midwest \\ TZ.Central
+CEN.Midwest * TZ.Eastern_CEN.Midwest \\ TZ.Mountain:
+  label: is_a (inferred)
+  s: CEN.Midwest * TZ.Eastern
+  t: CEN.Midwest \\ TZ.Mountain
+CEN.Midwest * TZ.Eastern_TZ.Eastern \\ CEN.South:
+  label: is_a (inferred)
+  s: CEN.Midwest * TZ.Eastern
+  t: TZ.Eastern \\ CEN.South
+CEN.Midwest * TZ.Mountain_CEN.Midwest \\ TZ.Central:
+  label: is_a (inferred)
+  s: CEN.Midwest * TZ.Mountain
+  t: CEN.Midwest \\ TZ.Central
+CEN.Midwest * TZ.Mountain_CEN.Midwest \\ TZ.Eastern:
+  label: is_a (inferred)
+  s: CEN.Midwest * TZ.Mountain
+  t: CEN.Midwest \\ TZ.Eastern
+CEN.Midwest * TZ.Mountain_TZ.Mountain \\ CEN.South:
+  label: is_a (inferred)
+  s: CEN.Midwest * TZ.Mountain
+  t: TZ.Mountain \\ CEN.South
+CEN.Midwest * TZ.Mountain_TZ.Mountain \\ CEN.West:
+  label: is_a (inferred)
+  s: CEN.Midwest * TZ.Mountain
+  t: TZ.Mountain \\ CEN.West
+CEN.Midwest \\ TZ.Central_CEN.Midwest:
+  label: is_a (inferred)
+  s: CEN.Midwest \\ TZ.Central
+  t: CEN.Midwest
+CEN.Midwest \\ TZ.Eastern_CEN.Midwest:
+  label: is_a (inferred)
+  s: CEN.Midwest \\ TZ.Eastern
+  t: CEN.Midwest
+CEN.Midwest \\ TZ.Mountain_CEN.Midwest:
+  label: is_a (inferred)
+  s: CEN.Midwest \\ TZ.Mountain
+  t: CEN.Midwest
+CEN.Midwest_CEN.USA\nTZ.USA:
+  label: is_a (input)
+  s: CEN.Midwest
+  t: CEN.USA\nTZ.USA
+CEN.Northeast_TZ.Eastern \\ CEN.Midwest:
+  label: is_a (inferred)
+  s: CEN.Northeast
+  t: TZ.Eastern \\ CEN.Midwest
+CEN.Northeast_TZ.Eastern \\ CEN.South:
+  label: is_a (inferred)
+  s: CEN.Northeast
+  t: TZ.Eastern \\ CEN.South
+CEN.South * TZ.Central\nTZ.Central \\ CEN.Midwest_CEN.South \\ TZ.Eastern:
+  label: is_a (inferred)
+  s: CEN.South * TZ.Central\nTZ.Central \\ CEN.Midwest
+  t: CEN.South \\ TZ.Eastern
+CEN.South * TZ.Central\nTZ.Central \\ CEN.Midwest_CEN.South \\ TZ.Mountain:
+  label: is_a (inferred)
+  s: CEN.South * TZ.Central\nTZ.Central \\ CEN.Midwest
+  t: CEN.South \\ TZ.Mountain
+CEN.South * TZ.Central\nTZ.Central \\ CEN.Midwest_TZ.Central:
+  label: is_a (inferred)
+  s: CEN.South * TZ.Central\nTZ.Central \\ CEN.Midwest
+  t: TZ.Central
+CEN.South * TZ.Eastern_CEN.South \\ TZ.Central:
+  label: is_a (inferred)
+  s: CEN.South * TZ.Eastern
+  t: CEN.South \\ TZ.Central
+CEN.South * TZ.Eastern_CEN.South \\ TZ.Mountain:
+  label: is_a (inferred)
+  s: CEN.South * TZ.Eastern
+  t: CEN.South \\ TZ.Mountain
+CEN.South * TZ.Eastern_TZ.Eastern \\ CEN.Midwest:
+  label: is_a (inferred)
+  s: CEN.South * TZ.Eastern
+  t: TZ.Eastern \\ CEN.Midwest
+CEN.South * TZ.Mountain_CEN.South \\ TZ.Central:
+  label: is_a (inferred)
+  s: CEN.South * TZ.Mountain
+  t: CEN.South \\ TZ.Central
+CEN.South * TZ.Mountain_CEN.South \\ TZ.Eastern:
+  label: is_a (inferred)
+  s: CEN.South * TZ.Mountain
+  t: CEN.South \\ TZ.Eastern
+CEN.South * TZ.Mountain_TZ.Mountain \\ CEN.Midwest:
+  label: is_a (inferred)
+  s: CEN.South * TZ.Mountain
+  t: TZ.Mountain \\ CEN.Midwest
+CEN.South * TZ.Mountain_TZ.Mountain \\ CEN.West:
+  label: is_a (inferred)
+  s: CEN.South * TZ.Mountain
+  t: TZ.Mountain \\ CEN.West
+CEN.South \\ TZ.Central_CEN.South:
+  label: is_a (inferred)
+  s: CEN.South \\ TZ.Central
+  t: CEN.South
+CEN.South \\ TZ.Eastern_CEN.South:
+  label: is_a (inferred)
+  s: CEN.South \\ TZ.Eastern
+  t: CEN.South
+CEN.South \\ TZ.Mountain_CEN.South:
+  label: is_a (inferred)
+  s: CEN.South \\ TZ.Mountain
+  t: CEN.South
+CEN.South_CEN.USA\nTZ.USA:
+  label: is_a (input)
+  s: CEN.South
+  t: CEN.USA\nTZ.USA
+CEN.West * TZ.Mountain_CEN.West:
+  label: is_a (inferred)
+  s: CEN.West * TZ.Mountain
+  t: CEN.West
+CEN.West * TZ.Mountain_TZ.Mountain \\ CEN.Midwest:
+  label: is_a (inferred)
+  s: CEN.West * TZ.Mountain
+  t: TZ.Mountain \\ CEN.Midwest
+CEN.West * TZ.Mountain_TZ.Mountain \\ CEN.South:
+  label: is_a (inferred)
+  s: CEN.West * TZ.Mountain
+  t: TZ.Mountain \\ CEN.South
+CEN.West_CEN.USA\nTZ.USA:
+  label: is_a (input)
+  s: CEN.West
+  t: CEN.USA\nTZ.USA
+TZ.Central_CEN.USA\nTZ.USA:
+  label: is_a (input)
+  s: TZ.Central
+  t: CEN.USA\nTZ.USA
+TZ.Eastern \\ CEN.Midwest_TZ.Eastern:
+  label: is_a (inferred)
+  s: TZ.Eastern \\ CEN.Midwest
+  t: TZ.Eastern
+TZ.Eastern \\ CEN.South_TZ.Eastern:
+  label: is_a (inferred)
+  s: TZ.Eastern \\ CEN.South
+  t: TZ.Eastern
+TZ.Eastern_CEN.USA\nTZ.USA:
+  label: is_a (input)
+  s: TZ.Eastern
+  t: CEN.USA\nTZ.USA
+TZ.Mountain \\ CEN.Midwest_TZ.Mountain:
+  label: is_a (inferred)
+  s: TZ.Mountain \\ CEN.Midwest
+  t: TZ.Mountain
+TZ.Mountain \\ CEN.South_TZ.Mountain:
+  label: is_a (inferred)
+  s: TZ.Mountain \\ CEN.South
+  t: TZ.Mountain
+TZ.Mountain \\ CEN.West_TZ.Mountain:
+  label: is_a (inferred)
+  s: TZ.Mountain \\ CEN.West
+  t: TZ.Mountain
+TZ.Mountain_CEN.USA\nTZ.USA:
+  label: is_a (input)
+  s: TZ.Mountain
+  t: CEN.USA\nTZ.USA
+TZ.Pacific\nCEN.West \\ TZ.Mountain_CEN.West:
+  label: is_a (inferred)
+  s: TZ.Pacific\nCEN.West \\ TZ.Mountain
+  t: CEN.West

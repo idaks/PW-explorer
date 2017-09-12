@@ -1,0 +1,228 @@
+'*NEW*.CEN.South * NDC.Southwest\nNDC.Southwest \\ CEN.West':
+  concept: CEN.South * NDC.Southwest\nNDC.Southwest \\ CEN.West
+  group: '*NEW*'
+'*NEW*.CEN.South * NDC.USA':
+  concept: CEN.South * NDC.USA
+  group: '*NEW*'
+'*NEW*.CEN.South \\ NDC.Southwest':
+  concept: CEN.South \\ NDC.Southwest
+  group: '*NEW*'
+'*NEW*.CEN.South \\ NDC.USA':
+  concept: CEN.South \\ NDC.USA
+  group: '*NEW*'
+'*NEW*.CEN.USA * NDC.USA':
+  concept: CEN.USA * NDC.USA
+  group: '*NEW*'
+'*NEW*.CEN.USA \\ NDC.Northeast':
+  concept: CEN.USA \\ NDC.Northeast
+  group: '*NEW*'
+'*NEW*.CEN.USA \\ NDC.USA':
+  concept: CEN.USA \\ NDC.USA
+  group: '*NEW*'
+'*NEW*.CEN.West * NDC.Southwest\nNDC.Southwest \\ CEN.South':
+  concept: CEN.West * NDC.Southwest\nNDC.Southwest \\ CEN.South
+  group: '*NEW*'
+'*NEW*.CEN.West * NDC.USA':
+  concept: CEN.West * NDC.USA
+  group: '*NEW*'
+'*NEW*.CEN.West \\ NDC.Southwest':
+  concept: CEN.West \\ NDC.Southwest
+  group: '*NEW*'
+'*NEW*.CEN.West \\ NDC.USA':
+  concept: CEN.West \\ NDC.USA
+  group: '*NEW*'
+'*NEW*.NDC.Northeast \\ CEN.USA\nNDC.USA \\ CEN.USA':
+  concept: NDC.Northeast \\ CEN.USA\nNDC.USA \\ CEN.USA
+  group: '*NEW*'
+'*NEW*.NDC.USA \\ CEN.South':
+  concept: NDC.USA \\ CEN.South
+  group: '*NEW*'
+'*NEW*.NDC.USA \\ CEN.West':
+  concept: NDC.USA \\ CEN.West
+  group: '*NEW*'
+CEN.CEN.Northeast\nCEN.USA * NDC.Northeast:
+  concept: CEN.Northeast\nCEN.USA * NDC.Northeast
+  group: CEN
+CEN.South:
+  concept: South
+  group: CEN
+CEN.USA:
+  concept: USA
+  group: CEN
+CEN.West:
+  concept: West
+  group: CEN
+NDC.Northeast:
+  concept: Northeast
+  group: NDC
+NDC.Southeast:
+  concept: Southeast
+  group: NDC
+NDC.Southwest:
+  concept: Southwest
+  group: NDC
+NDC.USA:
+  concept: USA
+  group: NDC
+NDC.West:
+  concept: West
+  group: NDC
+congruent.CEN.Midwest\nNDC.Midwest:
+  concept: CEN.Midwest\nNDC.Midwest
+  group: congruent
+CEN.Midwest\nNDC.Midwest_CEN.USA * NDC.USA:
+  label: is_a (inferred)
+  s: CEN.Midwest\nNDC.Midwest
+  t: CEN.USA * NDC.USA
+CEN.Midwest\nNDC.Midwest_CEN.USA \\ NDC.Northeast:
+  label: is_a (inferred)
+  s: CEN.Midwest\nNDC.Midwest
+  t: CEN.USA \\ NDC.Northeast
+CEN.Midwest\nNDC.Midwest_NDC.USA \\ CEN.South:
+  label: is_a (inferred)
+  s: CEN.Midwest\nNDC.Midwest
+  t: NDC.USA \\ CEN.South
+CEN.Midwest\nNDC.Midwest_NDC.USA \\ CEN.West:
+  label: is_a (inferred)
+  s: CEN.Midwest\nNDC.Midwest
+  t: NDC.USA \\ CEN.West
+CEN.Northeast\nCEN.USA * NDC.Northeast_CEN.USA * NDC.USA:
+  label: is_a (inferred)
+  s: CEN.Northeast\nCEN.USA * NDC.Northeast
+  t: CEN.USA * NDC.USA
+CEN.Northeast\nCEN.USA * NDC.Northeast_NDC.Northeast:
+  label: is_a (input)
+  s: CEN.Northeast\nCEN.USA * NDC.Northeast
+  t: NDC.Northeast
+CEN.South * NDC.Southwest\nNDC.Southwest \\ CEN.West_CEN.South * NDC.USA:
+  label: is_a (inferred)
+  s: CEN.South * NDC.Southwest\nNDC.Southwest \\ CEN.West
+  t: CEN.South * NDC.USA
+CEN.South * NDC.Southwest\nNDC.Southwest \\ CEN.West_NDC.Southwest:
+  label: is_a (inferred)
+  s: CEN.South * NDC.Southwest\nNDC.Southwest \\ CEN.West
+  t: NDC.Southwest
+CEN.South * NDC.USA_CEN.South:
+  label: is_a (inferred)
+  s: CEN.South * NDC.USA
+  t: CEN.South
+CEN.South * NDC.USA_CEN.USA * NDC.USA:
+  label: is_a (inferred)
+  s: CEN.South * NDC.USA
+  t: CEN.USA * NDC.USA
+CEN.South * NDC.USA_NDC.USA \\ CEN.West:
+  label: is_a (inferred)
+  s: CEN.South * NDC.USA
+  t: NDC.USA \\ CEN.West
+CEN.South \\ NDC.Southwest_CEN.South:
+  label: is_a (inferred)
+  s: CEN.South \\ NDC.Southwest
+  t: CEN.South
+CEN.South \\ NDC.USA_CEN.South \\ NDC.Southwest:
+  label: is_a (inferred)
+  s: CEN.South \\ NDC.USA
+  t: CEN.South \\ NDC.Southwest
+CEN.South \\ NDC.USA_CEN.USA \\ NDC.USA:
+  label: is_a (inferred)
+  s: CEN.South \\ NDC.USA
+  t: CEN.USA \\ NDC.USA
+CEN.South_CEN.USA \\ NDC.Northeast:
+  label: is_a (inferred)
+  s: CEN.South
+  t: CEN.USA \\ NDC.Northeast
+CEN.USA * NDC.USA_CEN.USA:
+  label: is_a (inferred)
+  s: CEN.USA * NDC.USA
+  t: CEN.USA
+CEN.USA * NDC.USA_NDC.USA:
+  label: is_a (inferred)
+  s: CEN.USA * NDC.USA
+  t: NDC.USA
+CEN.USA \\ NDC.Northeast_CEN.USA:
+  label: is_a (inferred)
+  s: CEN.USA \\ NDC.Northeast
+  t: CEN.USA
+CEN.USA \\ NDC.USA_CEN.USA \\ NDC.Northeast:
+  label: is_a (inferred)
+  s: CEN.USA \\ NDC.USA
+  t: CEN.USA \\ NDC.Northeast
+CEN.West * NDC.Southwest\nNDC.Southwest \\ CEN.South_CEN.West * NDC.USA:
+  label: is_a (inferred)
+  s: CEN.West * NDC.Southwest\nNDC.Southwest \\ CEN.South
+  t: CEN.West * NDC.USA
+CEN.West * NDC.Southwest\nNDC.Southwest \\ CEN.South_NDC.Southwest:
+  label: is_a (inferred)
+  s: CEN.West * NDC.Southwest\nNDC.Southwest \\ CEN.South
+  t: NDC.Southwest
+CEN.West * NDC.USA_CEN.USA * NDC.USA:
+  label: is_a (inferred)
+  s: CEN.West * NDC.USA
+  t: CEN.USA * NDC.USA
+CEN.West * NDC.USA_CEN.West:
+  label: is_a (inferred)
+  s: CEN.West * NDC.USA
+  t: CEN.West
+CEN.West * NDC.USA_NDC.USA \\ CEN.South:
+  label: is_a (inferred)
+  s: CEN.West * NDC.USA
+  t: NDC.USA \\ CEN.South
+CEN.West \\ NDC.Southwest_CEN.West:
+  label: is_a (inferred)
+  s: CEN.West \\ NDC.Southwest
+  t: CEN.West
+CEN.West \\ NDC.USA_CEN.USA \\ NDC.USA:
+  label: is_a (inferred)
+  s: CEN.West \\ NDC.USA
+  t: CEN.USA \\ NDC.USA
+CEN.West \\ NDC.USA_CEN.West \\ NDC.Southwest:
+  label: is_a (inferred)
+  s: CEN.West \\ NDC.USA
+  t: CEN.West \\ NDC.Southwest
+CEN.West_CEN.USA \\ NDC.Northeast:
+  label: is_a (inferred)
+  s: CEN.West
+  t: CEN.USA \\ NDC.Northeast
+NDC.Northeast \\ CEN.USA\nNDC.USA \\ CEN.USA_NDC.Northeast:
+  label: is_a (inferred)
+  s: NDC.Northeast \\ CEN.USA\nNDC.USA \\ CEN.USA
+  t: NDC.Northeast
+NDC.Northeast_NDC.USA \\ CEN.South:
+  label: is_a (inferred)
+  s: NDC.Northeast
+  t: NDC.USA \\ CEN.South
+NDC.Northeast_NDC.USA \\ CEN.West:
+  label: is_a (inferred)
+  s: NDC.Northeast
+  t: NDC.USA \\ CEN.West
+NDC.Southeast_CEN.South * NDC.USA:
+  label: is_a (inferred)
+  s: NDC.Southeast
+  t: CEN.South * NDC.USA
+NDC.Southeast_CEN.South \\ NDC.Southwest:
+  label: is_a (inferred)
+  s: NDC.Southeast
+  t: CEN.South \\ NDC.Southwest
+NDC.Southwest_CEN.USA * NDC.USA:
+  label: is_a (inferred)
+  s: NDC.Southwest
+  t: CEN.USA * NDC.USA
+NDC.Southwest_CEN.USA \\ NDC.Northeast:
+  label: is_a (inferred)
+  s: NDC.Southwest
+  t: CEN.USA \\ NDC.Northeast
+NDC.USA \\ CEN.South_NDC.USA:
+  label: is_a (inferred)
+  s: NDC.USA \\ CEN.South
+  t: NDC.USA
+NDC.USA \\ CEN.West_NDC.USA:
+  label: is_a (inferred)
+  s: NDC.USA \\ CEN.West
+  t: NDC.USA
+NDC.West_CEN.West * NDC.USA:
+  label: is_a (inferred)
+  s: NDC.West
+  t: CEN.West * NDC.USA
+NDC.West_CEN.West \\ NDC.Southwest:
+  label: is_a (inferred)
+  s: NDC.West
+  t: CEN.West \\ NDC.Southwest

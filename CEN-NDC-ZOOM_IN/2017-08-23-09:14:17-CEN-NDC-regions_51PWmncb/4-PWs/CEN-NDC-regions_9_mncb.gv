@@ -1,0 +1,82 @@
+digraph{
+rankdir=RL
+node[shape=box style=filled fillcolor="#CCFFCC" fontname="helvetica"] 
+"CEN.Midwest"
+"CEN.West"
+"CEN.Northeast\nNDC.Northeast \\ CEN.Midwest"
+"CEN.South"
+node[shape=note style=filled fillcolor="#FFFFCC" fontname="helvetica"] 
+"NDC.West\nCEN.West \\ NDC.Midwest"
+"NDC.Midwest"
+"NDC.Southwest"
+"NDC.Southeast\nCEN.South \\ NDC.Southwest"
+"NDC.Northeast"
+node[shape=box style="filled,rounded" fillcolor="#EEEEEE" fontname="helvetica"] 
+"CEN.USA\nNDC.USA"
+node[shape=box style="filled,rounded,bold" fillcolor="#FFE0D8" fontname="helvetica"] 
+"CEN.West * NDC.Midwest\nNDC.Midwest \\ CEN.Midwest"
+"CEN.South * NDC.Southwest\nNDC.Southwest \\ CEN.Midwest"
+"CEN.Midwest \\ NDC.Midwest"
+"CEN.Midwest \\ NDC.Southwest"
+"CEN.Midwest * NDC.Northeast"
+"CEN.Midwest * NDC.Midwest\nNDC.Midwest \\ CEN.West"
+"CEN.Midwest \\ NDC.Northeast"
+"CEN.Midwest * NDC.Southwest\nNDC.Southwest \\ CEN.South"
+edge[arrowhead=normal style=dotted color="#000000" constraint=true penwidth=1]
+edge[arrowhead=normal style=solid color="#FF0000" constraint=true penwidth=1]
+"CEN.West * NDC.Midwest\nNDC.Midwest \\ CEN.Midwest" -> "CEN.West"
+"CEN.Midwest * NDC.Midwest\nNDC.Midwest \\ CEN.West" -> "CEN.Midwest \\ NDC.Northeast"
+"CEN.Midwest * NDC.Northeast" -> "CEN.Midwest \\ NDC.Southwest"
+"CEN.Midwest \\ NDC.Northeast" -> "CEN.Midwest"
+"CEN.Midwest * NDC.Northeast" -> "CEN.Midwest \\ NDC.Midwest"
+"CEN.South * NDC.Southwest\nNDC.Southwest \\ CEN.Midwest" -> "NDC.Southwest"
+"CEN.Midwest * NDC.Southwest\nNDC.Southwest \\ CEN.South" -> "CEN.Midwest \\ NDC.Northeast"
+"CEN.Midwest \\ NDC.Southwest" -> "CEN.Midwest"
+"CEN.Midwest * NDC.Midwest\nNDC.Midwest \\ CEN.West" -> "CEN.Midwest \\ NDC.Southwest"
+"CEN.Midwest * NDC.Southwest\nNDC.Southwest \\ CEN.South" -> "NDC.Southwest"
+"CEN.Midwest * NDC.Midwest\nNDC.Midwest \\ CEN.West" -> "NDC.Midwest"
+"CEN.West * NDC.Midwest\nNDC.Midwest \\ CEN.Midwest" -> "NDC.Midwest"
+"CEN.Midwest * NDC.Southwest\nNDC.Southwest \\ CEN.South" -> "CEN.Midwest \\ NDC.Midwest"
+"CEN.Midwest * NDC.Northeast" -> "NDC.Northeast"
+"CEN.South * NDC.Southwest\nNDC.Southwest \\ CEN.Midwest" -> "CEN.South"
+"CEN.Midwest \\ NDC.Midwest" -> "CEN.Midwest"
+edge[arrowhead=normal style=solid color="#000000" constraint=true penwidth=1]
+"NDC.Southeast\nCEN.South \\ NDC.Southwest" -> "CEN.South"
+"NDC.West\nCEN.West \\ NDC.Midwest" -> "CEN.West"
+"CEN.Midwest" -> "CEN.USA\nNDC.USA"
+"CEN.Northeast\nNDC.Northeast \\ CEN.Midwest" -> "NDC.Northeast"
+"NDC.Northeast" -> "CEN.USA\nNDC.USA"
+"NDC.Midwest" -> "CEN.USA\nNDC.USA"
+"NDC.Southwest" -> "CEN.USA\nNDC.USA"
+"CEN.West" -> "CEN.USA\nNDC.USA"
+"CEN.South" -> "CEN.USA\nNDC.USA"
+node[shape=box] 
+{rank=source Legend [fillcolor= white margin=0 label=< 
+ <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4"> 
+<TR> <TD COLSPAN="2"><font face="Arial Black"> Nodes</font></TD> </TR> 
+<TR> 
+ <TD bgcolor="#CCFFCC" fontname="helvetica">CEN</TD> 
+ <TD>4</TD> 
+ </TR> 
+<TR> 
+ <TD bgcolor="#FFFFCC" fontname="helvetica">NDC</TD> 
+ <TD>5</TD> 
+ </TR> 
+<TR> 
+ <TD bgcolor="#EEEEEE" fontname="helvetica">congruent</TD> 
+ <TD>1</TD> 
+ </TR> 
+<TR> 
+ <TD bgcolor="#FFE0D8" fontname="helvetica">*NEW*</TD> 
+ <TD>8</TD> 
+ </TR> 
+<TR> <TD COLSPAN="2"><font face = "Arial Black"> Edges </font></TD> </TR> 
+<TR> 
+ <TD><font color ="#FF0000">is_a (inferred)</font></TD><TD>16</TD>
+</TR>
+<TR> 
+ <TD><font color ="#000000">is_a (input)</font></TD><TD>9</TD>
+</TR>
+</TABLE> 
+ >] } 
+}

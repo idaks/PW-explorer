@@ -5,13 +5,13 @@ import numpy as np
 import pandas as pd
 
 script, folder_loc, project_name = argv
-n_PWs = int(folder_loc[folder_loc.rfind('_')+1:-2]) #folder_loc.rfind('/')
+n_PWs = int(folder_loc[folder_loc.rfind('_')+1:folder_loc.rfind('PW')])#-6]) #folder_loc.rfind('/')
 #n_PWs = 1
 table = pd.DataFrame([0 for i in range(n_PWs)])
 
 for i in range(n_PWs):
     data_loaded = None
-    with open("{}/4-PWs/{}_{}_mnpw.yaml".format(folder_loc, project_name, i), 'r') as stream:
+    with open("{}/4-PWs/{}_{}_{}.yaml".format(folder_loc, project_name, i, 'mncb'), 'r') as stream:
         data_loaded = yaml.load(stream)
     for key, subdict in data_loaded.items():
         if 'group' in subdict:

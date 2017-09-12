@@ -1,0 +1,25 @@
+CEN.Midwest,{!, ><},TZ.Central,inferred
+CEN.Midwest,{<, ><},TZ.USA,inferred
+CEN.Northeast,!,TZ.Central,inferred
+CEN.Northeast,!,TZ.Mountain,inferred
+CEN.Northeast,!,TZ.Pacific,inferred
+CEN.Northeast,<,TZ.USA,inferred
+CEN.South,{<, ><},TZ.USA,inferred
+CEN.USA,{>, ><},TZ.Central,inferred
+CEN.USA,{>, ><},TZ.Eastern,inferred
+CEN.USA,{>, ><},TZ.Mountain,inferred
+CEN.USA,{>, !, ><},TZ.Pacific,inferred
+CEN.USA,{=, >, <, ><},TZ.USA,inferred
+CEN.West,{>, !, ><},TZ.Pacific,inferred
+CEN.West,{<, ><},TZ.USA,inferred
+CEN.Midwest,><,TZ.Eastern,input
+CEN.Midwest,><,TZ.Mountain,input
+CEN.Midwest,!,TZ.Pacific,input
+CEN.Northeast,<,TZ.Eastern,input
+CEN.South,><,TZ.Central,input
+CEN.South,><,TZ.Eastern,input
+CEN.South,><,TZ.Mountain,input
+CEN.South,!,TZ.Pacific,input
+CEN.West,!,TZ.Central,input
+CEN.West,!,TZ.Eastern,input
+CEN.West,><,TZ.Mountain,input
