@@ -15,7 +15,7 @@ parser.add_argument("-p", "--project_name", type = str, help = "provide session/
 group = parser.add_mutually_exclusive_group()
 group.add_argument("-symmetric_difference", action = 'store_true', default = False, help = "this option measures distance by measuring the size of the symmetric difference set of two PWs. Use either the -rel_ids or -rel_names flag to specify the relations to use in this calculation.")
 group.add_argument("-euler_num_overlaps_diff", action = 'store_true', default = False, help = "use this if working with an euler result. This measures the distance as the absolute difference in the number of overlaps ("><") in two PWs. Provide the relation name or relation id to use using the -rel_name or rel_id flag respectively. Provide the column name to use using the -col flag.")
-group.add_argument("-custom_dist_func", type = str, help = "provide the .py file containing your custom distance function. The function signature should be dist(pw_id_1, pw_id_2, dfs = None, pws = None, relations = None, conn = None) where the latter four arguments refer to the data acquired from parsing the ASP solutions and the connection to the generated sqlite database respectively. The function should return a floating point number. You can use the functions in sql_funcs.py to design these dist functions")
+group.add_argument("-custom_dist_func", type = str, help = "provide the .py file containing your custom distance function. The function signature should be dist(pw_id_1, pw_id_2, dfs = None, pws = None, relations = None, conn = None) where the latter four arguments refer to the data acquired from parsing the ASP solutions and the connection to the generated sqlite database respectively. The function should return a floating point number. Ensure that the file is in the same directory as this script. You can use the functions in sql_funcs.py to design these dist functions")
 group.add_argument("-show_relations", action = 'store_true', default = False, help = "to get a list of relations and corresponding relation ids.")
 
 parser.add_argument("-rel_names", nargs = '*', default = [], type = str, help = "provide the relation names to use in the distance calculation. Note that if both rel_ids and rel_names are provided, rel_names is disregarded.")
@@ -133,6 +133,7 @@ def euler_overlap_diff_dist(pw_id_1, pw_id_2, rl_id, col_name):
 
 dist_func_to_use = None
 
+
 if args.symmetric_difference:
 
 	arg_ids = args.rel_ids
@@ -140,6 +141,120 @@ if args.symmetric_difference:
 	if arg_ids is [] and args.rel_names is not []:
 		for i in args.rel_names:
 			arg_ids.append(rel_id_from_rel_name(i))
+	if args.pws is [] None and args.calc_dist_matrix == False:
+		print "Include atleast one of -pws or -calc_dist_matrix flags."
+		exit(0)
+
+	if len(args.pws) == 2:
+		pw1 = args.pws[0]
+		pw2 = args.pws[1]
+		print "Distance between PWs {} and {} is {}".format(pw1, pw2, sym_diff_dist_sqlite(pw1, pw2, arg_ids))
+	
+	dist_matrix = None
+
+	if args.calc_dist_matrix:
+		dist_matrix = np.zeros((len(pws),len(pws)))
+	
+		for i in range(1, len(pws)+1):
+			for j in range(i, len(pws)+1):
+				dist_matrix[i-1, j-1] = dist_matrix[j-1,i-1] = sym_diff_dist_sqlite(i,j, arg_ids)
+		
+		if np.max(dist_matrix) != np.min(dist_matrix):
+			dist_matrix = (dist_matrix - np.min(dist_matrix))/(np.max(dist_matrix) - np.min(dist_matrix))
+
+		mkdir_p('Mini Workflow/temp_pickle_data/' + str(project_name))
+		with open('Mini Workflow/temp_pickle_data/' + str(project_name) + '/dist_matrix.pkl', 'wb') as f:
+			pickle.dump(dist_matrix, f)
+
+elif args.euler_num_overlaps_diff:
+
+	if args.rel_name is None and args.rel_id is None:
+		print "Please include either the -rel_name or -rel_id flag along with the appropriate argument."
+		exit(0)
+
+	r_id = args.rel_id
+	if r_id is None:
+		r_id = rel_id_from_rel_name(args.rel_name)
+	
+	if args.col is None:
+		print "-col is required"
+		exit(0)
+	
+	if args.pws is [] None and args.calc_dist_matrix == False:
+		print "Include atleast one of -pws or -calc_dist_matrix flags."
+		exit(0)
+
+	if len(args.pws) == 2:
+		pw1 = args.pws[0]
+		pw2 = args.pws[1]
+		print "Distance between PWs {} and {} is {}".format(pw1, pw2, euler_overlap_diff_dist(pw1, pw2, r_id, args.col))
+	
+	dist_matrix = None
+
+	if args.calc_dist_matrix:
+		dist_matrix = np.zeros((len(pws),len(pws)))
+	
+		for i in range(1, len(pws)+1):
+			for j in range(i, len(pws)+1):
+				dist_matrix[i-1, j-1] = dist_matrix[j-1,i-1] = euler_overlap_diff_dist(i, j, r_id, args.col)
+		
+		if np.max(dist_matrix) != np.min(dist_matrix):
+			dist_matrix = (dist_matrix - np.min(dist_matrix))/(np.max(dist_matrix) - np.min(dist_matrix))
+
+		mkdir_p('Mini Workflow/temp_pickle_data/' + str(project_name))
+		with open('Mini Workflow/temp_pickle_data/' + str(project_name) + '/dist_matrix.pkl', 'wb') as f:
+			pickle.dump(dist_matrix, f)
+
+elif args.show_relations:
+
+	print 'Following are the parsed relation IDs and relation names:'
+	for i, rl in enumerate(relations):
+		print str(i) + ':', str(rl.relation_name)
+
+elif args.custom_dist_func:
+
+	try:
+		a=importlib.import_module(args.custom_dist_func)
+		dist_func = a.dist
+	except Exception, e:
+		print "Error importing from the given file"
+		print "Error: ", str(e)
+		exit(1)
+	
+	if args.pws is [] None and args.calc_dist_matrix == False:
+		print "Include atleast one of -pws or -calc_dist_matrix flags."
+		exit(0)
+
+	
+	if len(args.pws) == 2:
+		pw1 = args.pws[0]
+		pw2 = args.pws[1]
+		print "Distance between PWs {} and {} is {}".format(pw1, pw2, dist_func(pw1, pw2, dfs, pws, relations, conn))
+	
+	if args.calc_dist_matrix:
+		dist_matrix = np.zeros((len(pws),len(pws)))
+	
+		for i in range(1, len(pws)+1):
+			for j in range(i, len(pws)+1):
+				dist_matrix[i-1, j-1] = dist_matrix[j-1,i-1] = dist_func(i, j, dfs, pws, relations, conn)
+		
+		if np.max(dist_matrix) != np.min(dist_matrix):
+			dist_matrix = (dist_matrix - np.min(dist_matrix))/(np.max(dist_matrix) - np.min(dist_matrix))
+
+		mkdir_p('Mini Workflow/temp_pickle_data/' + str(project_name))
+		with open('Mini Workflow/temp_pickle_data/' + str(project_name) + '/dist_matrix.pkl', 'wb') as f:
+			pickle.dump(dist_matrix, f)
+
+
+
+	
+
+	
+
+
+
+
+
 	
 
 
