@@ -45,7 +45,7 @@ def union_panda(dfs, pws, relations, rl_id = 0, col_names = [], pws_to_consider 
 #1: Intersection
 def intersection_sqlite(dfs, pws, relations, conn, rl_id = 0, col_names = [], pws_to_consider = [], do_print = True):
 
-	 expected_pws = len(pws)
+	expected_pws = len(pws)
 
 	if pws_to_consider == []:
 		pws_to_consider = [j for j in range(1, expected_pws+1)]
@@ -71,7 +71,7 @@ def intersection_sqlite(dfs, pws, relations, conn, rl_id = 0, col_names = [], pw
 #2: Union
 def union_sqlite(dfs, pws, relations, conn, rl_id = 0, col_names = [], pws_to_consider = [], do_print = True):
 
-	 expected_pws = len(pws)
+	expected_pws = len(pws)
 
 	if pws_to_consider == []:
 		pws_to_consider = [j for j in range(1, expected_pws+1)]
@@ -183,7 +183,7 @@ def difference_both_ways_sqlite(dfs, relations, conn, rl_id, pw_id_1, pw_id_2, c
 #6: Redundant Column Query
 def redundant_column_sqlite(dfs, pws, relations, conn, rl_id = 0, col_names = [], pws_to_consider = [], do_print = True):
 
-	 expected_pws = len(pws)
+	expected_pws = len(pws)
 
 	if pws_to_consider == []:
 		pws_to_consider = [j for j in range(1, expected_pws+1)]

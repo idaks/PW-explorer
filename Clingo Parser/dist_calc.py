@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 import os
 import string
+import sqlite3
 import argparse
 import pickle
 import importlib
@@ -14,8 +15,8 @@ parser = argparse.ArgumentParser()
 parser.add_argument("-p", "--project_name", type = str, help = "provide session/project name used while parsing")
 group = parser.add_mutually_exclusive_group()
 group.add_argument("-symmetric_difference", action = 'store_true', default = False, help = "this option measures distance by measuring the size of the symmetric difference set of two PWs. Use either the -rel_ids or -rel_names flag to specify the relations to use in this calculation.")
-group.add_argument("-euler_num_overlaps_diff", action = 'store_true', default = False, help = "use this if working with an euler result. This measures the distance as the absolute difference in the number of overlaps ("><") in two PWs. Provide the relation name or relation id to use using the -rel_name or rel_id flag respectively. Provide the column name to use using the -col flag.")
-group.add_argument("-custom_dist_func", type = str, help = "provide the .py file containing your custom distance function. The function signature should be dist(pw_id_1, pw_id_2, dfs = None, pws = None, relations = None, conn = None) where the latter four arguments refer to the data acquired from parsing the ASP solutions and the connection to the generated sqlite database respectively. The function should return a floating point number. Ensure that the file is in the same directory as this script. You can use the functions in sql_funcs.py to design these dist functions")
+group.add_argument("-euler_num_overlaps_diff", action = 'store_true', default = False, help = "use this if working with an euler result. This measures the distance as the absolute difference in the number of overlaps (""><"") in two PWs. Provide the relation name or relation id to use using the -rel_name or rel_id flag respectively. Provide the column name to use using the -col flag.")
+group.add_argument("-custom_dist_func", type = str, help = "provide the .py file (without the .py) containing your custom distance function. The function signature should be dist(pw_id_1, pw_id_2, dfs = None, pws = None, relations = None, conn = None) where the latter four arguments refer to the data acquired from parsing the ASP solutions and the connection to the generated sqlite database respectively. The function should return a floating point number. Ensure that the file is in the same directory as this script. You can use the functions in sql_funcs.py to design these dist functions")
 group.add_argument("-show_relations", action = 'store_true', default = False, help = "to get a list of relations and corresponding relation ids.")
 
 parser.add_argument("-rel_names", nargs = '*', default = [], type = str, help = "provide the relation names to use in the distance calculation. Note that if both rel_ids and rel_names are provided, rel_names is disregarded.")
@@ -75,6 +76,22 @@ except sqlite3.Error:
 	exit(1)
 
 expected_pws = len(pws)
+
+def rel_id_from_rel_name(rel_name):
+
+	global relations 
+	global expected_pws 
+	global dfs
+	global conn
+	global pws 
+
+	for i, rel in enumerate(relations):
+		if rel.relation_name == rel_name:
+			if i != rel.r_id:
+				print "Relations not in order"
+			return rel.r_id
+
+	return None
 
 
 def sym_diff_dist_sqlite(pw_id_1, pw_id_2, rls_to_use = []):
@@ -141,11 +158,11 @@ if args.symmetric_difference:
 	if arg_ids is [] and args.rel_names is not []:
 		for i in args.rel_names:
 			arg_ids.append(rel_id_from_rel_name(i))
-	if args.pws is [] None and args.calc_dist_matrix == False:
+	if args.pws is None and args.calc_dist_matrix == False:
 		print "Include atleast one of -pws or -calc_dist_matrix flags."
 		exit(0)
 
-	if len(args.pws) == 2:
+	if args.pws is not None and len(args.pws) == 2:
 		pw1 = args.pws[0]
 		pw2 = args.pws[1]
 		print "Distance between PWs {} and {} is {}".format(pw1, pw2, sym_diff_dist_sqlite(pw1, pw2, arg_ids))
@@ -180,11 +197,11 @@ elif args.euler_num_overlaps_diff:
 		print "-col is required"
 		exit(0)
 	
-	if args.pws is [] None and args.calc_dist_matrix == False:
+	if args.pws is None and args.calc_dist_matrix == False:
 		print "Include atleast one of -pws or -calc_dist_matrix flags."
 		exit(0)
 
-	if len(args.pws) == 2:
+	if args.pws is not None and len(args.pws) == 2:
 		pw1 = args.pws[0]
 		pw2 = args.pws[1]
 		print "Distance between PWs {} and {} is {}".format(pw1, pw2, euler_overlap_diff_dist(pw1, pw2, r_id, args.col))
@@ -221,12 +238,12 @@ elif args.custom_dist_func:
 		print "Error: ", str(e)
 		exit(1)
 	
-	if args.pws is [] None and args.calc_dist_matrix == False:
+	if args.pws is None and args.calc_dist_matrix == False:
 		print "Include atleast one of -pws or -calc_dist_matrix flags."
 		exit(0)
 
 	
-	if len(args.pws) == 2:
+	if args.pws is not None and len(args.pws) == 2:
 		pw1 = args.pws[0]
 		pw2 = args.pws[1]
 		print "Distance between PWs {} and {} is {}".format(pw1, pw2, dist_func(pw1, pw2, dfs, pws, relations, conn))
