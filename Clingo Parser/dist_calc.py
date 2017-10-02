@@ -263,8 +263,8 @@ elif args.custom_dist_func:
 			pickle.dump(dist_matrix, f)
 
 
-
-	
+conn.commit()
+conn.close()
 
 	
 

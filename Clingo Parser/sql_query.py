@@ -554,8 +554,8 @@ elif args.custom_file is not None:
 			print "Error: ", str(e)
 			exit(1)
 
-
-
+conn.commit()
+conn.close()
 
 
 
