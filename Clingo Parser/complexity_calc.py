@@ -21,12 +21,10 @@ group.add_argument("-show_relations", action = 'store_true', default = False, he
 
 parser.add_argument("-rel_name", type = str, help = "provide the relation name to use in the distance calculation. Note that if both rel_id and rel_name are provided, rel_name is disregarded.")
 parser.add_argument("-rel_id", type = int, help = "provide the relation id of the relation to use in the distance calculation. To view relation ids, use -show_relations")
-parser.add_argument("-col", type = str, help = "provide the column to use for the distance calculation, required with the euler_complexity_analysis function")
+parser.add_argument("-col", type = str, help = "provide the column to use for the complexity analysis, required with the euler_complexity_analysis function")
 parser.add_argument("-pws", type = int, default = [], nargs = '*', help = "provide the possible world ids of the possible world to calculate the complexity for. Calculates for all PWs if not used.")
 
 args = parser.parse_args()
-
-
 
 project_name = ''
 if args.project_name == None:
@@ -120,14 +118,68 @@ def euler_complexity_analysis(rl_id, col_name, pws_to_consider = [], do_print = 
 	return complexities
 
 
+if args.show_relations:
 
+	print 'Following are the parsed relation IDs and relation names:'
+	for i, rl in enumerate(relations):
+		print str(i) + ':', str(rl.relation_name)
 
+elif args.euler_complexity_analysis:
 
+	if args.rel_name is None and args.rel_id is None:
+		print "Please include either the -rel_name or -rel_id flag along with the appropriate argument."
+		exit(0)
 
+	r_id = args.rel_id
+	if r_id is None:
+		r_id = rel_id_from_rel_name(args.rel_name)
+	
+	if args.col is None:
+		print "-col is required"
+		exit(0)
 
+	pws_to_consider = args.pws
+	if pws_to_consider == []:
+		pws_to_consider = [j for j in range(1, expected_pws+1)]
 
+	try:
+		euler_complexity_analysis(r_id, args.col, pws_to_consider)
+	except Exception, e:
+		print "Error running the euler_complexity_analysis. Recheck your inputs."
+		print "Error: ", str(e)
+		exit(1)
 
+elif args.custom_complexity_func:
 
+	try:
+		a=importlib.import_module(args.custom_dist_func)
+		comp_func = a.complexity
+	except Exception, e:
+		print "Error importing from the given file"
+		print "Error: ", str(e)
+		exit(1)
+
+	pws_to_consider = args.pws
+	if pws_to_consider == []:
+		pws_to_consider = [j for j in range(1, expected_pws+1)]
+
+	complexities = np.zeros(len(pws_to_consider))
+
+	try:
+		for i, pw in enumerate(pws_to_consider):
+			complexities[i] = comp_func(pw, dfs, pws, relations, conn)
+	except Exception, e:
+		print "Error running the given function. Recheck your inputs."
+		print "Error: ", str(e)
+		exit(1)	
+
+	if np.max(complexities) != np.min(complexities):
+		complexities = (complexities - np.min(complexities))/(np.max(complexities) - np.min(complexities))
+	if do_print:
+		paired_pw_compl = zip(pws_to_consider, complexities)
+		paired_pw_compl = sorted(paired_pw_compl, key = lambda x: x[1], reverse = True)
+		print 'PWs:         ', str([x[0] for x in paired_pw_compl])
+		print 'Complexities:', str([x[1].round(2) for x in paired_pw_compl])
 
 
 conn.commit()
