@@ -19,7 +19,8 @@
                                   number of solutions to generate using clingo,
                                   optional, generates all by default
  ```
-                                  
+
+
 3. parse.py : Parses the clingo output and fills up the relational databases. Puts them in a pkl file so they can be exported to other formats and used by other scripts directly.
  ```
             usage: parse.py [-h] [-f FNAME] project_name
