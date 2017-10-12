@@ -179,6 +179,9 @@ if args.symmetric_difference:
 		if np.max(dist_matrix) != np.min(dist_matrix):
 			dist_matrix = (dist_matrix - np.min(dist_matrix))/(np.max(dist_matrix) - np.min(dist_matrix))
 
+		print "Distance Matrix:"
+		print str(dist_matrix)
+
 		mkdir_p('Mini Workflow/temp_pickle_data/' + str(project_name))
 		with open('Mini Workflow/temp_pickle_data/' + str(project_name) + '/dist_matrix.pkl', 'wb') as f:
 			pickle.dump(dist_matrix, f)
@@ -217,6 +220,9 @@ elif args.euler_num_overlaps_diff:
 		
 		if np.max(dist_matrix) != np.min(dist_matrix):
 			dist_matrix = (dist_matrix - np.min(dist_matrix))/(np.max(dist_matrix) - np.min(dist_matrix))
+
+		print "Distance Matrix:"
+		print str(dist_matrix)
 
 		mkdir_p('Mini Workflow/temp_pickle_data/' + str(project_name))
 		with open('Mini Workflow/temp_pickle_data/' + str(project_name) + '/dist_matrix.pkl', 'wb') as f:
@@ -257,6 +263,9 @@ elif args.custom_dist_func:
 		
 		if np.max(dist_matrix) != np.min(dist_matrix):
 			dist_matrix = (dist_matrix - np.min(dist_matrix))/(np.max(dist_matrix) - np.min(dist_matrix))
+
+		print "Distance Matrix:"
+		print str(dist_matrix)
 
 		mkdir_p('Mini Workflow/temp_pickle_data/' + str(project_name))
 		with open('Mini Workflow/temp_pickle_data/' + str(project_name) + '/dist_matrix.pkl', 'wb') as f:

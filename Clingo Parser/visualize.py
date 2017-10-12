@@ -69,6 +69,13 @@ except sqlite3.Error:
 
 expected_pws = len(pws)
 
+dist_matrix = None
+try:
+	with open('Mini Workflow/temp_pickle_data/' + str(project_name) + '/dist_matrix.pkl', 'rb') as input_file:
+		dist_matrix = pickle.load(input_file)
+except IOError:
+	print "Could not find the project, check project/session name entered. Ensure you have run the dist_calc script and computed a distance matrix."
+	exit(1)
 
 def rel_id_from_rel_name(rel_name):
 
@@ -86,3 +93,42 @@ def rel_id_from_rel_name(rel_name):
 
 	return None
 
+
+def mds_graph_2(A):
+
+	global pws 
+	global relations 
+	global expected_pws 
+	global curr_pw
+	global curr_rl 
+	global curr_rl_data 
+	global n_rls
+	global dfs
+	global out_file
+
+	dt = [('len', float)]
+	A = A*len(A)/5
+	A = A.view(dt)
+	G = nx.from_numpy_matrix(A)
+	#G = nx.relabel_nodes(G, dict(zip(range(len(G.nodes())),string.ascii_uppercase)))
+	G = nx.relabel_nodes(G, dict(zip(range(len(G.nodes())),['pw-{}'.format(i) for i in range(1, len(pws)+1)])))     
+
+	G = nx.drawing.nx_agraph.to_agraph(G)
+
+	G.node_attr.update(color="red", style="filled")
+	G.edge_attr.update(color=None, width="0.1")
+	#G.edge_attr.update(color="blue", width="0.1")
+
+	mkdir_p('Mini Workflow/parser_output/clustering_output/' + str(project_name))
+	G.draw('Mini Workflow/parser_output/clustering_output/' + str(project_name) + '/' + str(project_name) + '_networkx_out.png', format='png', prog='neato')
+
+
+
+
+
+
+
+
+
+conn.commit()
+conn.close()	
