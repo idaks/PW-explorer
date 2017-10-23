@@ -328,6 +328,7 @@ optional arguments:
 10. visualisation.py : Creates the visualisations. No modularity currently. Will add soon.
 ```
 dependencies: pandas numpy sqlite3 pickle argparse importlib sklearn matplotlib scipy networkx
+
 additional dependencies (optional): mpld3 plotly
 
 usage: visualize.py [-h] [-p PROJECT_NAME]
