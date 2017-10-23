@@ -230,16 +230,22 @@ def linkage_dendrogram(dist_matrix):
 	global expected_pws
 	global dfs
 
+	#print str(dist_matrix)
+	#print dist_matrix.shape
+
 	X = squareform(dist_matrix)
-	Z = linkage(X, 'ward')
+
+	#print X
+	#print X.shape
+	# Z = linkage(X, method='ward', metric='euclidean')
 	
-	plt.title('Hierarchical Clustering Dendrogram (Ward)')
-	plt.xlabel('sample index')
-	plt.ylabel('distance')
-	dendrogram(Z, leaf_rotation=90., leaf_font_size=8.)
-	#mpld3.show()
-	plt.savefig('Mini Workflow/parser_output/clustering_output/' + str(project_name) + '/' + str(project_name) + '_ward_dendrogram.png')
-	plt.figure()
+	# plt.title('Hierarchical Clustering Dendrogram (Ward)')
+	# plt.xlabel('sample index')
+	# plt.ylabel('distance')
+	# dendrogram(Z, leaf_rotation=90., leaf_font_size=8.)
+	# #mpld3.show()
+	# plt.savefig('Mini Workflow/parser_output/clustering_output/' + str(project_name) + '/' + str(project_name) + '_ward_dendrogram.png')
+	# plt.figure()
 	
 	linkage_matrix = linkage(X, "single")
 	dendrogram(linkage_matrix, labels=[str(i) for i in range(len(dist_matrix))])
@@ -266,17 +272,17 @@ def linkage_dendrogram(dist_matrix):
 	plt.savefig('Mini Workflow/parser_output/clustering_output/' + str(project_name) + '/' + str(project_name) + '_weighted_dendrogram.png')
 	plt.figure()
 
-	linkage_matrix = linkage(X, "centroid")
-	dendrogram(linkage_matrix, labels=[str(i) for i in range(len(dist_matrix))])
-	plt.title("Dendrogram (Centroid)")
-	plt.savefig('Mini Workflow/parser_output/clustering_output/' + str(project_name) + '/' + str(project_name) + '_centroid_dendrogram.png')
-	plt.figure()
+	# linkage_matrix = linkage(X, "centroid")
+	# dendrogram(linkage_matrix, labels=[str(i) for i in range(len(dist_matrix))])
+	# plt.title("Dendrogram (Centroid)")
+	# plt.savefig('Mini Workflow/parser_output/clustering_output/' + str(project_name) + '/' + str(project_name) + '_centroid_dendrogram.png')
+	# plt.figure()
 
-	linkage_matrix = linkage(X, "median")
-	dendrogram(linkage_matrix, labels=[str(i) for i in range(len(dist_matrix))])
-	plt.title("Dendrogram (Median)")
-	plt.savefig('Mini Workflow/parser_output/clustering_output/' + str(project_name) + '/' + str(project_name) + '_median_dendrogram.png')
-	plt.figure()
+	# linkage_matrix = linkage(X, "median")
+	# dendrogram(linkage_matrix, labels=[str(i) for i in range(len(dist_matrix))])
+	# plt.title("Dendrogram (Median)")
+	# plt.savefig('Mini Workflow/parser_output/clustering_output/' + str(project_name) + '/' + str(project_name) + '_median_dendrogram.png')
+	# plt.figure()
 
 	print 'Dendrograms saved to:', ('Mini Workflow/parser_output/clustering_output/' + str(project_name))
 
@@ -319,9 +325,9 @@ def mds_graph_2(A):
 mds_graph_2(dist_matrix)
 if len(pws) > 1:
 	dbscan_clustering(dist_matrix)
-	dbscan_clustering_plotly(dist_matrix)
+	#dbscan_clustering_plotly(dist_matrix)
 	linkage_dendrogram(dist_matrix)
-	dendrogram_plotly(np.array([i for i in range(len(pws))]))
+	#dendrogram_plotly(np.array([i for i in range(len(pws))]))
 
 
 
