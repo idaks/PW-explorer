@@ -548,6 +548,6 @@ Cluster Labels: [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
 Clustering Output saved to: Mini Workflow/parser_output/clustering_output/cen_ndc_example
 Dendrograms saved to: Mini Workflow/parser_output/clustering_output/cen_ndc_example
 ```
-![Alt text](Clingo Parser/Mini Workflow/parser_output/clustering_output/cen_ndc_example/cen_ndc_example_networkx_out.png?raw=true "NetworkX")
+![NetworkX Output](https://github.com/idaks/PW-explorer/blob/master/Clingo%20Parser/Mini%20Workflow/parser_output/clustering_output/cen_ndc_example/cen_ndc_example_networkx_out.png)
 
  
