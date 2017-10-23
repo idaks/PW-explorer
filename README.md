@@ -7,9 +7,14 @@ generate clingo outputs -> parse -> export to formats such as sql -> query using
 ### Scripts Used:
  
  1. helper.py : Contains basic definitions used by all other scripts
+ ```
+ dependencies: all built into python natively
+ ```
  
  2. clingo_out.py : Produces the clingo output. Takes in clingo files, project/session name and number of solutions to produce (optional).
  ```
+dependencies: argparse subprocess32 
+
 usage: clingo_out.py [-h] [-n NUM_SOLUTIONS] fnames [fnames ...] project_name
 
 positional arguments:
@@ -27,6 +32,8 @@ optional arguments:
 
 3. parse.py : Parses the clingo output and fills up the relational databases. Puts them in a pkl file so they can be exported to other formats and used by other scripts directly.
  ```
+dependencies: antlr pandas numpy argparse pickle
+
 usage: parse.py [-h] [-f FNAME] project_name
 
 positional arguments:
@@ -44,7 +51,9 @@ optional arguments:
                                   
  4. export.py: To export the parsed data into various formats.
  ```
- usage: export.py [-h] [-p PROJECT_NAME] [-s] [-sql] [-csv] [-h5] [-msg] [-pkl]
+dependencies: pandas numpy sqlite3 pickle argparse 
+ 
+usage: export.py [-h] [-p PROJECT_NAME] [-s] [-sql] [-csv] [-h5] [-msg] [-pkl]
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -60,6 +69,8 @@ optional arguments:
   
 5. sql_query.py: Run sql queries on the extracted sqlite database.
 ```
+dependencies: pandas numpy sqlite3 pickle argparse
+
 usage: sql_query.py [-h] [-p PROJECT_NAME]
                     [-intersection | -union | -freq | -num_tuples | -difference {one-way,symmetric} | -redundant_column | -unique_tuples | -custom CUSTOM | -custom_file CUSTOM_FILE | -show_relations]
                     [-rel_name REL_NAME] [-rel_id REL_ID]
@@ -127,9 +138,14 @@ optional arguments:
  ```
  
  6. sql_funcs.py : Built in Sql functions from PW Explorer such as intersection and union. These however can be used independently and used to create your own distance and complexity calculation metrics.
+```
+dependencies: pandas numpy sqlite3
+```
  
  7. pd_query.py : Runs the queries on the pandas database. Similar to sql_query.py.
  ```
+dependencies: pandas numpy pickle argparse 
+ 
 usage: pd_query.py [-h] [-p PROJECT_NAME]
                   [-intersection | -union | -freq | -num_tuples | -difference {one-way,symmetric} | -redundant_column | -unique_tuples | -custom CUSTOM | -show_relations]
                   [-rel_name REL_NAME] [-rel_id REL_ID]
@@ -198,6 +214,8 @@ optional arguments:
  
  8. dist_calc.py : Distance calculation script. Can create a whole distance matrix, or just get distance between any two PWs. Can also supply your own distance function.
 ```
+dependencies: pandas numpy sqlite3 pickle argparse importlib
+
 usage: dist_calc.py [-h] [-p PROJECT_NAME]
                     [-symmetric_difference | -euler_num_overlaps_diff | -custom_dist_func CUSTOM_DIST_FUNC | -show_relations]
                     [-rel_names [REL_NAMES [REL_NAMES ...]]]
@@ -260,6 +278,8 @@ optional arguments:
  
  9. complexity_calc.py : Complexity calculation script. Supports user defined complexity metrics.
 ```
+dependencies: pandas numpy sqlite3 pickle argparse importlib
+
 usage: complexity_calc.py [-h] [-p PROJECT_NAME]
                           [-euler_complexity_analysis | -custom_complexity_func CUSTOM_COMPLEXITY_FUNC | -show_relations]
                           [-rel_name REL_NAME] [-rel_id REL_ID] [-col COL]
@@ -307,6 +327,9 @@ optional arguments:
 
 10. visualisation.py : Creates the visualisations. No modularity currently. Will add soon.
 ```
+dependencies: pandas numpy sqlite3 pickle argparse importlib sklearn matplotlib scipy networkx
+additional dependencies (optional): mpld3 plotly
+
 usage: visualize.py [-h] [-p PROJECT_NAME]
 
 optional arguments:
