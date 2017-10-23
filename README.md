@@ -1,6 +1,6 @@
 # PW-explorer
 
-### General Worfflow:
+### General Workflow:
 
 generate clingo outputs -> parse -> export to formats such as sql -> query using sql/pandas -> distance calculation -> complexity analysis -> visualize your results
 
@@ -314,5 +314,8 @@ optional arguments:
   -p PROJECT_NAME, --project_name PROJECT_NAME
                         provide session/project name used while parsing
 ```
+
+### Example:
+
 
  
