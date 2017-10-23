@@ -1,6 +1,10 @@
 # PW-explorer
 
- Scripts Used:
+### General Worfflow:
+
+generate clingo outputs -> parse -> export to formats such as sql -> query using sql/pandas -> distance calculation -> complexity analysis -> visualize your results
+
+### Scripts Used:
  
  1. helper.py : Contains basic definitions used by all other scripts
  
