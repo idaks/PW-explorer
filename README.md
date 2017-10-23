@@ -2,7 +2,20 @@
 
 ### General Workflow:
 
-generate clingo outputs -> parse -> export to formats such as sql -> query using sql/pandas -> distance calculation -> complexity analysis -> visualize your results
+```                                           generate clingo outputs 
+                                                       ⏬
+                                                      parse 
+                                                       ⏬
+                                          export to formats such as sql
+                                                       ⏬
+                                             query using sql/pandas
+                                                       ⏬
+                                               distance calculation 
+                                                       ⏬
+                                                complexity analysis
+                                                       ⏬
+                                               visualize your results
+```
 
 ### Scripts Used:
  
