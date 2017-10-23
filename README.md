@@ -317,5 +317,13 @@ optional arguments:
 
 ### Example:
 
+###### Run with sh ./example_run.sh
+
+1. ```python clingo_out.py Clingo\ Examples/CEN-NDC-regions_pw.lp4 Clingo\ Examples/CEN-NDC-regions_pwswitch.lp4 cen_ndc_example```
+Output:
+```
+Copied files into the clingo_input folder
+Preprocessed clingo output written to clingo_output/cen_ndc_example.txt
+```
 
  
