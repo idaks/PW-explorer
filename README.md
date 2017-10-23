@@ -2,7 +2,8 @@
 
 ### General Workflow:
 
-```                                           generate clingo outputs 
+```                                           
+                                            generate clingo outputs 
                                                        ⏬
                                                       parse 
                                                        ⏬
