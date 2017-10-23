@@ -301,5 +301,14 @@ optional arguments:
                         PWs if not used.
 ```
 
-10. visualisation.py : Still in works
+10. visualisation.py : Creates the visualisations. No modularity currently. Will add soon.
+```
+usage: visualize.py [-h] [-p PROJECT_NAME]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -p PROJECT_NAME, --project_name PROJECT_NAME
+                        provide session/project name used while parsing
+```
+
  
