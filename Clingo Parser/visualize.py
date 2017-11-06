@@ -11,25 +11,25 @@ import importlib
 from helper import lineno, isfloat, mkdir_p, PossibleWorld, Relation
 from sql_funcs import rel_id_from_rel_name, union_panda, intersection_sqlite, union_sqlite, freq_sqlite, num_tuples_sqlite, difference_sqlite, difference_both_ways_sqlite, redundant_column_sqlite, unique_tuples_sqlite
 
-from sklearn.cluster import DBSCAN
+
 import matplotlib.pyplot as plt
-from scipy.cluster.hierarchy import dendrogram, linkage
-from scipy.spatial.distance import squareform
-from scipy.cluster.hierarchy import cophenet
-from scipy.spatial.distance import pdist
-import mpld3
-import plotly.plotly as py
-import plotly.graph_objs as go
-import plotly.figure_factory as ff
-import networkx as nx
+
+
+#from scipy.cluster.hierarchy import cophenet
+#from scipy.spatial.distance import pdist
+
+
+# import mpld3
+# import plotly.plotly as py
+# import plotly.graph_objs as go
+# import plotly.figure_factory as ff
+
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-p", "--project_name", type = str, help = "provide session/project name used while parsing")
-
-
-
-
-
+parser.add_argument("-mds", action = 'store_true', default = False, help = "produce a Multidimensional Scaling Graph Output using the Neato Program")
+parser.add_argument("-clustering", action = 'store_true', default = False, help = "use DBScan Algorithm to cluster the Possible Worlds")
+parser.add_argument("-dendrogram", action = 'store_true', default = False, help = "create various dendrograms using scipy")
 args = parser.parse_args()
 
 project_name = ''
@@ -322,11 +322,19 @@ def mds_graph_2(A):
 	G.draw('Mini Workflow/parser_output/clustering_output/' + str(project_name) + '/' + str(project_name) + '_networkx_out.png', format='png', prog='neato')
 	print 'MDS Neato Graph saved to:', ('Mini Workflow/parser_output/clustering_output/' + str(project_name))
 
-mds_graph_2(dist_matrix)
+if args.mds:
+	import networkx as nx
+	mds_graph_2(dist_matrix)
 if len(pws) > 1:
-	dbscan_clustering(dist_matrix)
+	if args.clustering:
+		from sklearn.cluster import DBSCAN
+		dbscan_clustering(dist_matrix)
 	#dbscan_clustering_plotly(dist_matrix)
-	linkage_dendrogram(dist_matrix)
+	if args.dendrogram:
+		from scipy.spatial.distance import squareform
+		from scipy.cluster.hierarchy import dendrogram, linkage
+
+		linkage_dendrogram(dist_matrix)
 	#dendrogram_plotly(np.array([i for i in range(len(pws))]))
 
 
