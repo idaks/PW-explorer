@@ -18,7 +18,7 @@ python dist_calc.py -euler_num_overlaps_diff -rel_name rel_3 -col x3 -calc_dist_
 
 python complexity_calc.py -euler_complexity_analysis -rel_name rel_3 -col x3
 
-python visualize.py
+python visualize.py -mds -dendrogram -clustering
 
 
 #Expected Output:
