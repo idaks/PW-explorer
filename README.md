@@ -345,12 +345,16 @@ dependencies: pandas numpy sqlite3 pickle argparse importlib sklearn matplotlib 
 
 additional dependencies (optional): mpld3 plotly
 
-usage: visualize.py [-h] [-p PROJECT_NAME]
+usage: visualize.py [-h] [-p PROJECT_NAME] [-mds] [-clustering] [-dendrogram]
 
 optional arguments:
   -h, --help            show this help message and exit
   -p PROJECT_NAME, --project_name PROJECT_NAME
                         provide session/project name used while parsing
+  -mds                  produce a Multidimensional Scaling Graph Output using
+                        the Neato Program
+  -clustering           use DBScan Algorithm to cluster the Possible Worlds
+  -dendrogram           create various dendrograms using scipy
 ```
 
 ### Example:
@@ -539,7 +543,7 @@ PWs:          [30, 15, 21, 24, 26, 28, 29, 11, 13, 14, 17, 19, 20, 22, 23, 25, 2
 Complexities: [1.0, 0.80000000000000004, 0.80000000000000004, 0.80000000000000004, 0.80000000000000004, 0.80000000000000004, 0.80000000000000004, 0.59999999999999998, 0.59999999999999998, 0.59999999999999998, 0.59999999999999998, 0.59999999999999998, 0.59999999999999998, 0.59999999999999998, 0.59999999999999998, 0.59999999999999998, 0.59999999999999998, 0.40000000000000002, 0.40000000000000002, 0.40000000000000002, 0.40000000000000002, 0.40000000000000002, 0.40000000000000002, 0.20000000000000001, 0.20000000000000001, 0.20000000000000001, 0.20000000000000001, 0.20000000000000001, 0.0, 0.0]
 ```
 
-10. ```python visualize.py```
+10. ```python visualize.py -mds -dendrogram -clustering```
 
 Output:
 ```
