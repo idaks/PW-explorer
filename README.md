@@ -1,4 +1,4 @@
-# PW-explorer
+# An Extensible Possible Worlds Explorer for Answer Set Programming
 
 ### General Workflow:
 
