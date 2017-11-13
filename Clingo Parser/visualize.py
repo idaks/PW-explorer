@@ -311,7 +311,7 @@ def mds_graph_2(A):
 	A = A.view(dt)
 	G = nx.from_numpy_matrix(A)
 	#G = nx.relabel_nodes(G, dict(zip(range(len(G.nodes())),string.ascii_uppercase)))
-	G = nx.relabel_nodes(G, dict(zip(range(len(G.nodes())),['pw-{}'.format(i) for i in range(1, len(pws)+1)])))     
+	G = nx.relabel_nodes(G, dict(zip(range(len(G.nodes())),['pw-{}'.format(i) for i in range(0, len(pws))])))     
 
 	G = nx.drawing.nx_agraph.to_agraph(G)
 
