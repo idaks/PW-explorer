@@ -217,6 +217,9 @@ def redundant_column_sqlite(dfs, pws, relations, conn, rl_id = 0, col_names = []
 #7: Tuples occuring in exactly one PW:
 def unique_tuples_sqlite(dfs, pws, relations, conn, rl_id = 0, col_names = [], pws_to_consider = [], do_print = True):
 
+	"""
+	Used to ouput the unique tuples in a given solution set. These are the unique tuples (attributes) in the selected possible worlds and the selected columns in the relation.
+	"""
 	 
 	expected_pws = len(pws)
 

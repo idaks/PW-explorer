@@ -1,3 +1,3 @@
-S'magnificent_7'
+S'nqueens'
 p0
 .

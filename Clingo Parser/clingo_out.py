@@ -5,6 +5,10 @@ import string
 import os
 import subprocess32 as subprocess
 
+"""
+This script is used to run clingo on given clingo files, preprocess the output and then save it to the appropriate location.
+"""
+
 parser = argparse.ArgumentParser()
 parser.add_argument("fnames", type = str, help = "provide the clingo files", nargs= '+')
 parser.add_argument("project_name", type = str, help = 'provide a suitable session/project name to reference these results in future scripts')
