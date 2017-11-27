@@ -22,6 +22,7 @@ python complexity_calc.py -euler_complexity_analysis -rel_name rel_3 -col x3
 
 python visualize.py -mds -dendrogram -clustering
 
+python visualize.py -custom_visualisation_func test_vis
 
 #Expected Output:
 
@@ -307,3 +308,5 @@ python visualize.py -mds -dendrogram -clustering
 # Cluster Labels: [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
 # Clustering Output saved to: Mini Workflow/parser_output/clustering_output/cen_ndc_example
 # Dendrograms saved to: Mini Workflow/parser_output/clustering_output/cen_ndc_example
+#Length of each relation:
+#900
