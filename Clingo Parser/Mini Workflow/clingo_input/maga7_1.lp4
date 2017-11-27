@@ -1,0 +1,14 @@
+pw.
+
+% comp(R) :- rel(_,_,R).
+
+% ans(R, N)  :-  comp(R), #count { X,Y : rel(X,Y, R) } = N.
+
+% ans(N) :- ans("><",N).
+
+
+%ans(N)  :-  #count { X,Y : rel(X,Y, "><") } = N.
+
+
+
+%#show ans/1.
