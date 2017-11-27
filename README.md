@@ -717,3 +717,10 @@ Dendrograms saved to: Mini Workflow/parser_output/clustering_output/cen_ndc_exam
 
 ![Dendrogram (Weighted)](https://github.com/idaks/PW-explorer/blob/master/Clingo%20Parser/Mini%20Workflow/parser_output/clustering_output/cen_ndc_example/cen_ndc_example_weighted_dendrogram.png "Dendrogram (Weighted)")
  
+12. ```python visualize.py -custom_visualisation_func test_vis```
+
+Output:
+```
+Length of each relation:
+900
+```
