@@ -65,6 +65,7 @@ python visualize.py -mds -dendrogram -clustering
 # 23       cCEN_West  cNDC_Southwest  "><"
 # 24       cCEN_West        cNDC_USA   "<"
 # 25       cCEN_West       cNDC_West   ">"
+#Distance Matrix:
 # [[ 1.          0.96551724  0.93103448  0.89655172  0.86206897  0.82758621
 #    0.79310345  0.75862069  0.72413793  0.68965517  0.65517241  0.62068966
 #    0.5862069   0.55172414  0.51724138  0.48275862  0.44827586  0.4137931
