@@ -9,6 +9,17 @@ from helper import lineno, isfloat, mkdir_p, PossibleWorld, Relation
 
 def rel_id_from_rel_name(rel_name, relations):
 
+	"""
+	Arguments: 
+	1. rel_name: name of the relation
+	2. relations: list of Relation objects
+
+	Returns:
+	Relation ID (r_id) of the Relation object with the given relation name.
+
+	Description:
+	Given a list of Relation objects and a relation name, returns the relation id of the Relation object with the given relation name.
+	"""
 	for i, rel in enumerate(relations):
 		if rel.relation_name == rel_name:
 			if i != rel.r_id:
@@ -18,6 +29,20 @@ def rel_id_from_rel_name(rel_name, relations):
 	return None
 
 def union_panda(dfs, pws, relations, rl_id = 0, col_names = [], pws_to_consider = [], do_print = True):
+
+	"""
+	Arguments:
+	1. dfs: List of Panda DataFrame Objects
+	2. pws: List of the PossibleWorld Objects
+	3. relations: List of Relation Objects
+	4. rl_id: (Optional, default = 0) The Relation ID of the relation over which the union is to be done.
+	5. col_names: (Optional, defaults to all the columns) A list columns in the given relation over which to perform the union operation.
+	6. pws_to_consider: (Optional, defualts to all the PWs) A list of PW IDs of the Possible Worlds over which to perform the union operation.
+	7. do_print: (Optional, defaults to True) Boolean flag whether or not to print the result of the union.
+
+	Returns:
+	A Panda DataFrame with the Union of the given PWs on the provided relation on the given list of columns.
+	"""
 
 	expected_pws = len(pws)
 
@@ -34,7 +59,7 @@ def union_panda(dfs, pws, relations, rl_id = 0, col_names = [], pws_to_consider 
 	s1 = s1[col_names]
 
 	if do_print:
-		print "Intersection for the relation", str(relations[rl_id].relation_name), "on features", str(', '.join(map(str,col_names))), "for PWs", str(', '.join(map(str, pws_to_consider)))
+		print "Union for the relation", str(relations[rl_id].relation_name), "on features", str(', '.join(map(str,col_names))), "for PWs", str(', '.join(map(str, pws_to_consider)))
 		if len(s1) > 0:
 			out_file.write(str(s1) + '\n')
 		else:

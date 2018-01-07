@@ -18,16 +18,17 @@ def lineno():
 ###################################################################
 
 #helper funcs
-#returns true if a value can be typecasted as a float, else false
+
 def isfloat(value):
+  """returns true if a value can be typecasted as a float, else false"""
   try:
     float(value)
     return True
   except ValueError:
     return False
 
-#make a directory if it doesn't already exist
 def mkdir_p(path):
+    """make a directory if it doesn't already exist"""
     try:
         os.makedirs(path)
     except OSError as exc:  # Python >2.5
