@@ -1,5 +1,23 @@
 # An Extensible Possible Worlds Explorer for Answer Set Programming
 
+### To Get Started (using virtualenv):
+
+In the PW-Explorer directory:
+
+1. ```pip2.7 install virtualenv```
+
+2. ```virtualenv -p /usr/bin/python2.7 .env```
+
+3. ```source .env/bin/activate```
+
+4. ```pip install -r requirements.txt```
+
+To deactivate the virtualenv after you're done working:
+
+5. ```deactivate```
+
+Repeat Step 3 to resume work and Step 5 to exit the virtualenv again.
+
 ### General Workflow:
 
 ```                                           
