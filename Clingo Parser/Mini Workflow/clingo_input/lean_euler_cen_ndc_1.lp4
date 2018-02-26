@@ -1,0 +1,17 @@
+bl(cCEN_USA, cCEN_Northeast).
+bl(cCEN_USA, cCEN_Midwest).
+bl(cCEN_USA, cCEN_South).
+bl(cCEN_USA, cCEN_West).
+
+bl(nNDC_USA, nNDC_Midwest).
+bl(nNDC_USA, nNDC_Northeast).
+bl(nNDC_USA, nNDC_Southeast).
+bl(nNDC_USA, nNDC_Southwest).
+bl(nNDC_USA, nNDC_West).
+
+eq(cCEN_USA, nNDC_USA).
+pi(cCEN_West, nNDC_West).
+dr(cCEN_West, nNDC_Northeast).
+po(cCEN_South, nNDC_Southwest).
+eq(cCEN_Midwest, nNDC_Midwest).
+pp(cCEN_Northeast, nNDC_Northeast).
