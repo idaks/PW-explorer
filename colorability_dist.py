@@ -17,7 +17,7 @@ def get_pattern(sequence):
 			pattern_dict[element] = count_unique
 			count_unique += 1
 
-	return pattern
+	return pattern, count_unique
 
 #check if two patterns are the same (cyclically equivalent)
 def compare_patterns(s1, s2):
@@ -84,10 +84,10 @@ def is_sublist(l, s):
 
 def dist(s1, s2):
 
-	pattern_s1 = get_pattern(s1)
-	pattern_s2 = get_pattern(s2)
+	pattern_s1, unique_s1 = get_pattern(s1)
+	pattern_s2, unique_s2 = get_pattern(s2)
 
-	return compare_patterns(pattern_s1, pattern_s2)
+	return 0 if compare_patterns(pattern_s1, pattern_s2) else (unique_s1 - unique_s2)**2
 
 
 # script, sequence = argv
