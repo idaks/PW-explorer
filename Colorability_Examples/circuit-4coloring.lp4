@@ -1,0 +1,35 @@
+% PROBLEM 
+% Color a circuit of n vertices with 4 colors, such that neighbors have different colors
+% To obtain all solutions: $ clingo circuit.lp4 -n0 
+
+% PWs depending on n = 2,3,4,5,6,... is 12,24,84,240,732, ...
+% See also: 
+% * https://oeis.org/A226493 => Closed walks of length n in K_4 graph.
+% * https://oeis.org/A218034 => Number of ways to seat 4 types of people in n labeled seats around a
+%   circle such that no two adjacent people are of the same type.
+% * 4CT context: [steinberger2009unavoidable] considers circuit 
+
+% Number n of vertices v(X) of the circuit
+% Override default e.g. with 7: $ clingo circuit.lp4 -n0 -c n=7
+#const n = 6.
+v(1..n).
+
+% The neighborhood relation is a circuit:
+n(I,I+1) :- v(I), I < n. % Build a chain .. 
+n(n,1).                  % .. and close the circuit
+n(Y,X) :- n(X,Y).        % symmetric closure of n/2 (not really needed here)
+
+% Let there be 4 colors (no need to make this a parameter)
+colors(r;g;b;y).
+
+% Assign exactly one color to each vertice: 
+1 {col(X, C) : colors(C) } 1 :- v(X). 
+
+% Two neighbors X and Y cannot have the same color:
+:- col(X, C), col(Y, C), n(X,Y).
+
+
+#show col/2.
+#show C: v(X),col(X,C).
+
+
