@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 from sys import argv
+from sql_funcs import rel_id_from_rel_name
 
 #get the underlying pattern in the form of a list of ints
 def get_pattern(sequence):
@@ -82,12 +83,47 @@ def is_sublist(l, s):
 	return is_a_subset
 
 
-def dist(s1, s2):
+def dist_helper(s1, s2):
 
 	pattern_s1, unique_s1 = get_pattern(s1)
 	pattern_s2, unique_s2 = get_pattern(s2)
 
-	return 0 if compare_patterns(pattern_s1, pattern_s2) else (unique_s1 - unique_s2)**2
+	dist_ = 0 if compare_patterns(pattern_s1, pattern_s2) else 1
+	# if dist_ != 0:
+	# 	if unique_s1 == unique_s2:
+	# 		dist_ = 1
+	# 	else:
+	# 		dist_ = 2 * abs(unique_s1 - unique_s2)
+
+
+	return dist_
+
+def get_colors_list(df, id):
+
+	idx = list(map(int, list(df[df.pw == id].x1)))
+	clrs = list(df[df.pw == id].x2)
+
+	ordered_clrs = [x for _,x in sorted(zip(idx, clrs))]
+	return ordered_clrs
+
+def dist(pw_id_1, pw_id_2, dfs = None, pws = None, relations = None, conn = None):
+
+	if dfs is None or relations is None:
+		print "None objects passed in."
+		return -1
+
+	if pw_id_1 == pw_id_2:
+		return 0
+
+	col_rel_id = rel_id_from_rel_name('col_2', relations)
+	df = dfs[col_rel_id]
+
+	s1 = get_colors_list(df, pw_id_1)
+	s2 = get_colors_list(df, pw_id_2)
+
+	return dist_helper(s1, s2)
+
+
 
 
 # script, sequence = argv

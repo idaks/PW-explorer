@@ -11,7 +11,7 @@
 
 % Number n of vertices v(X) of the circuit
 % Override default e.g. with 7: $ clingo circuit.lp4 -n0 -c n=7
-#const n = 5.
+#const n = 4.
 v(1..n).
 
 % The neighborhood relation is a circuit:
