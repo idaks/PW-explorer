@@ -1,0 +1,1470 @@
+Answer: 1
+col(6,g) col(1,b) col(2,g) col(3,r) col(4,g) col(5,r)
+Answer: 2
+col(6,g) col(1,y) col(2,g) col(3,r) col(4,g) col(5,r)
+Answer: 3
+col(6,b) col(1,y) col(2,g) col(3,r) col(4,g) col(5,r)
+Answer: 4
+col(1,b) col(6,y) col(2,g) col(3,r) col(4,g) col(5,r)
+Answer: 5
+col(1,g) col(6,y) col(2,b) col(3,r) col(4,g) col(5,r)
+Answer: 6
+col(6,g) col(1,y) col(2,b) col(3,r) col(4,g) col(5,r)
+Answer: 7
+col(1,g) col(6,b) col(2,b) col(3,r) col(4,g) col(5,r)
+Answer: 8
+col(6,b) col(1,y) col(2,b) col(3,r) col(4,g) col(5,r)
+Answer: 9
+col(6,g) col(1,b) col(2,y) col(3,r) col(4,g) col(5,r)
+Answer: 10
+col(1,g) col(6,y) col(2,y) col(3,r) col(4,g) col(5,r)
+Answer: 11
+col(1,b) col(6,y) col(2,y) col(3,r) col(4,g) col(5,r)
+Answer: 12
+col(1,g) col(6,b) col(2,y) col(3,r) col(4,g) col(5,r)
+Answer: 13
+col(1,g) col(6,b) col(2,r) col(3,b) col(4,g) col(5,r)
+Answer: 14
+col(1,g) col(6,y) col(2,r) col(3,b) col(4,g) col(5,r)
+Answer: 15
+col(1,g) col(6,b) col(2,y) col(3,b) col(4,g) col(5,r)
+Answer: 16
+col(1,g) col(6,y) col(2,y) col(3,b) col(4,g) col(5,r)
+Answer: 17
+col(6,g) col(1,y) col(2,r) col(3,b) col(4,g) col(5,r)
+Answer: 18
+col(6,b) col(1,y) col(2,r) col(3,b) col(4,g) col(5,r)
+Answer: 19
+col(6,g) col(1,y) col(2,g) col(3,b) col(4,g) col(5,r)
+Answer: 20
+col(6,b) col(1,y) col(2,g) col(3,b) col(4,g) col(5,r)
+Answer: 21
+col(6,g) col(1,b) col(2,g) col(3,b) col(4,g) col(5,r)
+Answer: 22
+col(1,b) col(6,y) col(2,g) col(3,b) col(4,g) col(5,r)
+Answer: 23
+col(6,g) col(1,b) col(2,y) col(3,b) col(4,g) col(5,r)
+Answer: 24
+col(1,b) col(6,y) col(2,y) col(3,b) col(4,g) col(5,r)
+Answer: 25
+col(6,g) col(1,b) col(2,r) col(3,b) col(4,g) col(5,r)
+Answer: 26
+col(1,b) col(6,y) col(2,r) col(3,b) col(4,g) col(5,r)
+Answer: 27
+col(6,g) col(1,y) col(2,g) col(3,y) col(4,g) col(5,r)
+Answer: 28
+col(6,g) col(1,y) col(2,r) col(3,y) col(4,g) col(5,r)
+Answer: 29
+col(6,g) col(1,y) col(2,b) col(3,y) col(4,g) col(5,r)
+Answer: 30
+col(6,g) col(1,b) col(2,g) col(3,y) col(4,g) col(5,r)
+Answer: 31
+col(6,g) col(1,b) col(2,r) col(3,y) col(4,g) col(5,r)
+Answer: 32
+col(6,b) col(1,y) col(2,g) col(3,y) col(4,g) col(5,r)
+Answer: 33
+col(1,g) col(6,b) col(2,b) col(3,y) col(4,g) col(5,r)
+Answer: 34
+col(6,b) col(1,y) col(2,b) col(3,y) col(4,g) col(5,r)
+Answer: 35
+col(1,g) col(6,b) col(2,r) col(3,y) col(4,g) col(5,r)
+Answer: 36
+col(6,b) col(1,y) col(2,r) col(3,y) col(4,g) col(5,r)
+Answer: 37
+col(1,g) col(6,y) col(2,r) col(3,y) col(4,g) col(5,r)
+Answer: 38
+col(1,g) col(6,y) col(2,b) col(3,y) col(4,g) col(5,r)
+Answer: 39
+col(1,b) col(6,y) col(2,g) col(3,y) col(4,g) col(5,r)
+Answer: 40
+col(1,b) col(6,y) col(2,r) col(3,y) col(4,g) col(5,r)
+Answer: 41
+col(1,g) col(6,y) col(2,y) col(3,g) col(4,b) col(5,r)
+Answer: 42
+col(1,g) col(6,y) col(2,y) col(3,r) col(4,b) col(5,r)
+Answer: 43
+col(6,g) col(1,y) col(2,g) col(3,y) col(4,b) col(5,r)
+Answer: 44
+col(6,g) col(1,y) col(2,g) col(3,r) col(4,b) col(5,r)
+Answer: 45
+col(1,g) col(6,b) col(2,y) col(3,g) col(4,b) col(5,r)
+Answer: 46
+col(6,b) col(1,y) col(2,g) col(3,y) col(4,b) col(5,r)
+Answer: 47
+col(1,g) col(6,b) col(2,y) col(3,r) col(4,b) col(5,r)
+Answer: 48
+col(6,b) col(1,y) col(2,g) col(3,r) col(4,b) col(5,r)
+Answer: 49
+col(6,g) col(1,b) col(2,g) col(3,y) col(4,b) col(5,r)
+Answer: 50
+col(6,g) col(1,b) col(2,y) col(3,g) col(4,b) col(5,r)
+Answer: 51
+col(6,g) col(1,b) col(2,g) col(3,r) col(4,b) col(5,r)
+Answer: 52
+col(6,g) col(1,b) col(2,y) col(3,r) col(4,b) col(5,r)
+Answer: 53
+col(1,b) col(6,y) col(2,g) col(3,y) col(4,b) col(5,r)
+Answer: 54
+col(1,b) col(6,y) col(2,g) col(3,r) col(4,b) col(5,r)
+Answer: 55
+col(1,b) col(6,y) col(2,y) col(3,g) col(4,b) col(5,r)
+Answer: 56
+col(1,b) col(6,y) col(2,y) col(3,r) col(4,b) col(5,r)
+Answer: 57
+col(1,g) col(6,b) col(2,b) col(3,g) col(4,b) col(5,r)
+Answer: 58
+col(1,g) col(6,b) col(2,b) col(3,y) col(4,b) col(5,r)
+Answer: 59
+col(6,g) col(1,y) col(2,b) col(3,g) col(4,b) col(5,r)
+Answer: 60
+col(6,b) col(1,y) col(2,b) col(3,g) col(4,b) col(5,r)
+Answer: 61
+col(6,g) col(1,y) col(2,b) col(3,y) col(4,b) col(5,r)
+Answer: 62
+col(6,b) col(1,y) col(2,b) col(3,y) col(4,b) col(5,r)
+Answer: 63
+col(1,g) col(6,y) col(2,b) col(3,g) col(4,b) col(5,r)
+Answer: 64
+col(1,g) col(6,y) col(2,b) col(3,y) col(4,b) col(5,r)
+Answer: 65
+col(6,g) col(1,y) col(2,b) col(3,r) col(4,b) col(5,r)
+Answer: 66
+col(1,g) col(6,y) col(2,b) col(3,r) col(4,b) col(5,r)
+Answer: 67
+col(1,g) col(6,b) col(2,b) col(3,r) col(4,b) col(5,r)
+Answer: 68
+col(6,b) col(1,y) col(2,b) col(3,r) col(4,b) col(5,r)
+Answer: 69
+col(6,g) col(1,b) col(2,r) col(3,g) col(4,b) col(5,r)
+Answer: 70
+col(6,g) col(1,b) col(2,r) col(3,y) col(4,b) col(5,r)
+Answer: 71
+col(1,g) col(6,b) col(2,r) col(3,g) col(4,b) col(5,r)
+Answer: 72
+col(1,g) col(6,b) col(2,r) col(3,y) col(4,b) col(5,r)
+Answer: 73
+col(1,g) col(6,y) col(2,r) col(3,g) col(4,b) col(5,r)
+Answer: 74
+col(1,b) col(6,y) col(2,r) col(3,g) col(4,b) col(5,r)
+Answer: 75
+col(1,g) col(6,y) col(2,r) col(3,y) col(4,b) col(5,r)
+Answer: 76
+col(1,b) col(6,y) col(2,r) col(3,y) col(4,b) col(5,r)
+Answer: 77
+col(6,g) col(1,y) col(2,r) col(3,g) col(4,b) col(5,r)
+Answer: 78
+col(6,g) col(1,y) col(2,r) col(3,y) col(4,b) col(5,r)
+Answer: 79
+col(6,b) col(1,y) col(2,r) col(3,g) col(4,b) col(5,r)
+Answer: 80
+col(6,b) col(1,y) col(2,r) col(3,y) col(4,b) col(5,r)
+Answer: 81
+col(1,g) col(6,b) col(2,r) col(3,g) col(4,y) col(5,r)
+Answer: 82
+col(1,g) col(6,b) col(2,b) col(3,g) col(4,y) col(5,r)
+Answer: 83
+col(1,g) col(6,b) col(2,r) col(3,b) col(4,y) col(5,r)
+Answer: 84
+col(1,g) col(6,b) col(2,b) col(3,r) col(4,y) col(5,r)
+Answer: 85
+col(1,g) col(6,b) col(2,y) col(3,g) col(4,y) col(5,r)
+Answer: 86
+col(1,g) col(6,b) col(2,y) col(3,b) col(4,y) col(5,r)
+Answer: 87
+col(1,g) col(6,b) col(2,y) col(3,r) col(4,y) col(5,r)
+Answer: 88
+col(6,g) col(1,y) col(2,r) col(3,g) col(4,y) col(5,r)
+Answer: 89
+col(6,g) col(1,y) col(2,g) col(3,r) col(4,y) col(5,r)
+Answer: 90
+col(6,b) col(1,y) col(2,r) col(3,g) col(4,y) col(5,r)
+Answer: 91
+col(6,b) col(1,y) col(2,g) col(3,r) col(4,y) col(5,r)
+Answer: 92
+col(6,g) col(1,y) col(2,b) col(3,g) col(4,y) col(5,r)
+Answer: 93
+col(6,b) col(1,y) col(2,b) col(3,g) col(4,y) col(5,r)
+Answer: 94
+col(6,g) col(1,y) col(2,b) col(3,r) col(4,y) col(5,r)
+Answer: 95
+col(6,b) col(1,y) col(2,b) col(3,r) col(4,y) col(5,r)
+Answer: 96
+col(6,g) col(1,y) col(2,g) col(3,b) col(4,y) col(5,r)
+Answer: 97
+col(6,g) col(1,y) col(2,r) col(3,b) col(4,y) col(5,r)
+Answer: 98
+col(6,b) col(1,y) col(2,g) col(3,b) col(4,y) col(5,r)
+Answer: 99
+col(6,b) col(1,y) col(2,r) col(3,b) col(4,y) col(5,r)
+Answer: 100
+col(1,g) col(6,y) col(2,y) col(3,g) col(4,y) col(5,r)
+Answer: 101
+col(1,g) col(6,y) col(2,y) col(3,b) col(4,y) col(5,r)
+Answer: 102
+col(1,g) col(6,y) col(2,b) col(3,g) col(4,y) col(5,r)
+Answer: 103
+col(1,g) col(6,y) col(2,y) col(3,r) col(4,y) col(5,r)
+Answer: 104
+col(1,g) col(6,y) col(2,b) col(3,r) col(4,y) col(5,r)
+Answer: 105
+col(1,g) col(6,y) col(2,r) col(3,g) col(4,y) col(5,r)
+Answer: 106
+col(1,g) col(6,y) col(2,r) col(3,b) col(4,y) col(5,r)
+Answer: 107
+col(6,g) col(1,b) col(2,y) col(3,g) col(4,y) col(5,r)
+Answer: 108
+col(1,b) col(6,y) col(2,y) col(3,g) col(4,y) col(5,r)
+Answer: 109
+col(6,g) col(1,b) col(2,r) col(3,g) col(4,y) col(5,r)
+Answer: 110
+col(1,b) col(6,y) col(2,r) col(3,g) col(4,y) col(5,r)
+Answer: 111
+col(6,g) col(1,b) col(2,g) col(3,r) col(4,y) col(5,r)
+Answer: 112
+col(6,g) col(1,b) col(2,y) col(3,r) col(4,y) col(5,r)
+Answer: 113
+col(1,b) col(6,y) col(2,g) col(3,r) col(4,y) col(5,r)
+Answer: 114
+col(1,b) col(6,y) col(2,y) col(3,r) col(4,y) col(5,r)
+Answer: 115
+col(6,g) col(1,b) col(2,g) col(3,b) col(4,y) col(5,r)
+Answer: 116
+col(6,g) col(1,b) col(2,r) col(3,b) col(4,y) col(5,r)
+Answer: 117
+col(1,b) col(6,y) col(2,g) col(3,b) col(4,y) col(5,r)
+Answer: 118
+col(1,b) col(6,y) col(2,r) col(3,b) col(4,y) col(5,r)
+Answer: 119
+col(6,g) col(1,b) col(2,y) col(3,b) col(4,y) col(5,r)
+Answer: 120
+col(1,b) col(6,y) col(2,y) col(3,b) col(4,y) col(5,r)
+Answer: 121
+col(6,r) col(1,b) col(2,g) col(3,y) col(4,b) col(5,g)
+Answer: 122
+col(6,r) col(1,b) col(2,g) col(3,y) col(4,r) col(5,g)
+Answer: 123
+col(6,r) col(1,g) col(2,b) col(3,g) col(4,b) col(5,g)
+Answer: 124
+col(1,g) col(6,b) col(2,b) col(3,g) col(4,b) col(5,g)
+Answer: 125
+col(6,r) col(1,g) col(2,b) col(3,y) col(4,b) col(5,g)
+Answer: 126
+col(1,g) col(6,b) col(2,b) col(3,y) col(4,b) col(5,g)
+Answer: 127
+col(6,r) col(1,g) col(2,b) col(3,g) col(4,y) col(5,g)
+Answer: 128
+col(1,g) col(6,b) col(2,b) col(3,g) col(4,y) col(5,g)
+Answer: 129
+col(6,r) col(1,g) col(2,b) col(3,g) col(4,r) col(5,g)
+Answer: 130
+col(6,r) col(1,g) col(2,b) col(3,y) col(4,r) col(5,g)
+Answer: 131
+col(1,g) col(6,b) col(2,b) col(3,g) col(4,r) col(5,g)
+Answer: 132
+col(1,g) col(6,b) col(2,b) col(3,y) col(4,r) col(5,g)
+Answer: 133
+col(6,r) col(1,y) col(2,b) col(3,g) col(4,b) col(5,g)
+Answer: 134
+col(6,b) col(1,y) col(2,b) col(3,g) col(4,b) col(5,g)
+Answer: 135
+col(6,r) col(1,y) col(2,b) col(3,g) col(4,r) col(5,g)
+Answer: 136
+col(6,b) col(1,y) col(2,b) col(3,g) col(4,r) col(5,g)
+Answer: 137
+col(6,r) col(1,y) col(2,b) col(3,g) col(4,y) col(5,g)
+Answer: 138
+col(6,b) col(1,y) col(2,b) col(3,g) col(4,y) col(5,g)
+Answer: 139
+col(6,r) col(1,y) col(2,g) col(3,y) col(4,b) col(5,g)
+Answer: 140
+col(6,r) col(1,y) col(2,g) col(3,y) col(4,r) col(5,g)
+Answer: 141
+col(6,r) col(1,y) col(2,b) col(3,y) col(4,b) col(5,g)
+Answer: 142
+col(6,r) col(1,y) col(2,b) col(3,y) col(4,r) col(5,g)
+Answer: 143
+col(6,b) col(1,y) col(2,g) col(3,y) col(4,b) col(5,g)
+Answer: 144
+col(6,b) col(1,y) col(2,b) col(3,y) col(4,b) col(5,g)
+Answer: 145
+col(6,b) col(1,y) col(2,g) col(3,y) col(4,r) col(5,g)
+Answer: 146
+col(6,b) col(1,y) col(2,b) col(3,y) col(4,r) col(5,g)
+Answer: 147
+col(6,r) col(1,y) col(2,g) col(3,b) col(4,r) col(5,g)
+Answer: 148
+col(6,r) col(1,b) col(2,g) col(3,b) col(4,r) col(5,g)
+Answer: 149
+col(6,r) col(1,y) col(2,g) col(3,b) col(4,y) col(5,g)
+Answer: 150
+col(6,r) col(1,b) col(2,g) col(3,b) col(4,y) col(5,g)
+Answer: 151
+col(6,b) col(1,y) col(2,g) col(3,b) col(4,r) col(5,g)
+Answer: 152
+col(6,b) col(1,y) col(2,g) col(3,b) col(4,y) col(5,g)
+Answer: 153
+col(6,r) col(1,y) col(2,g) col(3,r) col(4,b) col(5,g)
+Answer: 154
+col(6,r) col(1,g) col(2,b) col(3,r) col(4,b) col(5,g)
+Answer: 155
+col(6,r) col(1,y) col(2,b) col(3,r) col(4,b) col(5,g)
+Answer: 156
+col(1,g) col(6,b) col(2,b) col(3,r) col(4,b) col(5,g)
+Answer: 157
+col(6,b) col(1,y) col(2,g) col(3,r) col(4,b) col(5,g)
+Answer: 158
+col(6,b) col(1,y) col(2,b) col(3,r) col(4,b) col(5,g)
+Answer: 159
+col(6,r) col(1,b) col(2,g) col(3,r) col(4,b) col(5,g)
+Answer: 160
+col(6,r) col(1,b) col(2,g) col(3,r) col(4,y) col(5,g)
+Answer: 161
+col(6,r) col(1,y) col(2,g) col(3,r) col(4,y) col(5,g)
+Answer: 162
+col(6,b) col(1,y) col(2,g) col(3,r) col(4,y) col(5,g)
+Answer: 163
+col(6,r) col(1,g) col(2,b) col(3,r) col(4,y) col(5,g)
+Answer: 164
+col(6,r) col(1,y) col(2,b) col(3,r) col(4,y) col(5,g)
+Answer: 165
+col(1,g) col(6,b) col(2,b) col(3,r) col(4,y) col(5,g)
+Answer: 166
+col(6,b) col(1,y) col(2,b) col(3,r) col(4,y) col(5,g)
+Answer: 167
+col(6,r) col(1,g) col(2,y) col(3,g) col(4,b) col(5,g)
+Answer: 168
+col(6,r) col(1,g) col(2,y) col(3,g) col(4,r) col(5,g)
+Answer: 169
+col(6,r) col(1,g) col(2,y) col(3,b) col(4,r) col(5,g)
+Answer: 170
+col(1,g) col(6,b) col(2,y) col(3,g) col(4,b) col(5,g)
+Answer: 171
+col(1,g) col(6,b) col(2,y) col(3,g) col(4,r) col(5,g)
+Answer: 172
+col(1,g) col(6,b) col(2,y) col(3,b) col(4,r) col(5,g)
+Answer: 173
+col(6,r) col(1,g) col(2,y) col(3,r) col(4,b) col(5,g)
+Answer: 174
+col(1,g) col(6,b) col(2,y) col(3,r) col(4,b) col(5,g)
+Answer: 175
+col(6,r) col(1,g) col(2,y) col(3,g) col(4,y) col(5,g)
+Answer: 176
+col(6,r) col(1,g) col(2,y) col(3,r) col(4,y) col(5,g)
+Answer: 177
+col(6,r) col(1,g) col(2,y) col(3,b) col(4,y) col(5,g)
+Answer: 178
+col(1,g) col(6,b) col(2,y) col(3,g) col(4,y) col(5,g)
+Answer: 179
+col(1,g) col(6,b) col(2,y) col(3,b) col(4,y) col(5,g)
+Answer: 180
+col(1,g) col(6,b) col(2,y) col(3,r) col(4,y) col(5,g)
+Answer: 181
+col(6,r) col(1,b) col(2,y) col(3,g) col(4,b) col(5,g)
+Answer: 182
+col(6,r) col(1,b) col(2,y) col(3,r) col(4,b) col(5,g)
+Answer: 183
+col(6,r) col(1,b) col(2,y) col(3,g) col(4,y) col(5,g)
+Answer: 184
+col(6,r) col(1,b) col(2,y) col(3,r) col(4,y) col(5,g)
+Answer: 185
+col(6,r) col(1,b) col(2,y) col(3,g) col(4,r) col(5,g)
+Answer: 186
+col(6,r) col(1,b) col(2,y) col(3,b) col(4,y) col(5,g)
+Answer: 187
+col(6,r) col(1,b) col(2,y) col(3,b) col(4,r) col(5,g)
+Answer: 188
+col(6,r) col(1,g) col(2,r) col(3,g) col(4,b) col(5,g)
+Answer: 189
+col(6,r) col(1,g) col(2,r) col(3,g) col(4,y) col(5,g)
+Answer: 190
+col(6,r) col(1,y) col(2,r) col(3,g) col(4,b) col(5,g)
+Answer: 191
+col(6,r) col(1,y) col(2,r) col(3,g) col(4,y) col(5,g)
+Answer: 192
+col(6,r) col(1,g) col(2,r) col(3,y) col(4,b) col(5,g)
+Answer: 193
+col(6,r) col(1,y) col(2,r) col(3,y) col(4,b) col(5,g)
+Answer: 194
+col(6,r) col(1,b) col(2,r) col(3,g) col(4,b) col(5,g)
+Answer: 195
+col(6,r) col(1,b) col(2,r) col(3,y) col(4,b) col(5,g)
+Answer: 196
+col(6,r) col(1,b) col(2,r) col(3,g) col(4,y) col(5,g)
+Answer: 197
+col(1,g) col(6,b) col(2,r) col(3,g) col(4,b) col(5,g)
+Answer: 198
+col(1,g) col(6,b) col(2,r) col(3,g) col(4,y) col(5,g)
+Answer: 199
+col(6,b) col(1,y) col(2,r) col(3,g) col(4,b) col(5,g)
+Answer: 200
+col(6,b) col(1,y) col(2,r) col(3,g) col(4,y) col(5,g)
+Answer: 201
+col(1,g) col(6,b) col(2,r) col(3,y) col(4,b) col(5,g)
+Answer: 202
+col(6,b) col(1,y) col(2,r) col(3,y) col(4,b) col(5,g)
+Answer: 203
+col(6,r) col(1,g) col(2,r) col(3,b) col(4,y) col(5,g)
+Answer: 204
+col(6,r) col(1,b) col(2,r) col(3,b) col(4,y) col(5,g)
+Answer: 205
+col(1,g) col(6,b) col(2,r) col(3,b) col(4,y) col(5,g)
+Answer: 206
+col(6,r) col(1,y) col(2,r) col(3,b) col(4,y) col(5,g)
+Answer: 207
+col(6,b) col(1,y) col(2,r) col(3,b) col(4,y) col(5,g)
+Answer: 208
+col(6,r) col(1,g) col(2,r) col(3,g) col(4,r) col(5,g)
+Answer: 209
+col(6,r) col(1,g) col(2,r) col(3,b) col(4,r) col(5,g)
+Answer: 210
+col(6,r) col(1,g) col(2,r) col(3,y) col(4,r) col(5,g)
+Answer: 211
+col(6,r) col(1,y) col(2,r) col(3,g) col(4,r) col(5,g)
+Answer: 212
+col(6,r) col(1,y) col(2,r) col(3,y) col(4,r) col(5,g)
+Answer: 213
+col(6,r) col(1,y) col(2,r) col(3,b) col(4,r) col(5,g)
+Answer: 214
+col(6,r) col(1,b) col(2,r) col(3,g) col(4,r) col(5,g)
+Answer: 215
+col(6,r) col(1,b) col(2,r) col(3,b) col(4,r) col(5,g)
+Answer: 216
+col(6,r) col(1,b) col(2,r) col(3,y) col(4,r) col(5,g)
+Answer: 217
+col(1,g) col(6,b) col(2,r) col(3,g) col(4,r) col(5,g)
+Answer: 218
+col(1,g) col(6,b) col(2,r) col(3,y) col(4,r) col(5,g)
+Answer: 219
+col(6,b) col(1,y) col(2,r) col(3,g) col(4,r) col(5,g)
+Answer: 220
+col(6,b) col(1,y) col(2,r) col(3,y) col(4,r) col(5,g)
+Answer: 221
+col(1,g) col(6,b) col(2,r) col(3,b) col(4,r) col(5,g)
+Answer: 222
+col(6,b) col(1,y) col(2,r) col(3,b) col(4,r) col(5,g)
+Answer: 223
+col(1,g) col(6,y) col(2,r) col(3,g) col(4,b) col(5,g)
+Answer: 224
+col(1,g) col(6,y) col(2,r) col(3,g) col(4,r) col(5,g)
+Answer: 225
+col(1,g) col(6,y) col(2,b) col(3,g) col(4,b) col(5,g)
+Answer: 226
+col(1,g) col(6,y) col(2,b) col(3,r) col(4,b) col(5,g)
+Answer: 227
+col(1,g) col(6,y) col(2,b) col(3,g) col(4,r) col(5,g)
+Answer: 228
+col(1,g) col(6,y) col(2,y) col(3,g) col(4,b) col(5,g)
+Answer: 229
+col(1,g) col(6,y) col(2,y) col(3,g) col(4,r) col(5,g)
+Answer: 230
+col(1,g) col(6,y) col(2,y) col(3,r) col(4,b) col(5,g)
+Answer: 231
+col(1,g) col(6,y) col(2,b) col(3,g) col(4,y) col(5,g)
+Answer: 232
+col(1,g) col(6,y) col(2,r) col(3,g) col(4,y) col(5,g)
+Answer: 233
+col(1,g) col(6,y) col(2,b) col(3,r) col(4,y) col(5,g)
+Answer: 234
+col(1,g) col(6,y) col(2,y) col(3,g) col(4,y) col(5,g)
+Answer: 235
+col(1,g) col(6,y) col(2,y) col(3,r) col(4,y) col(5,g)
+Answer: 236
+col(1,b) col(6,y) col(2,y) col(3,g) col(4,b) col(5,g)
+Answer: 237
+col(1,b) col(6,y) col(2,y) col(3,g) col(4,y) col(5,g)
+Answer: 238
+col(1,b) col(6,y) col(2,y) col(3,g) col(4,r) col(5,g)
+Answer: 239
+col(1,b) col(6,y) col(2,r) col(3,g) col(4,b) col(5,g)
+Answer: 240
+col(1,b) col(6,y) col(2,r) col(3,g) col(4,r) col(5,g)
+Answer: 241
+col(1,b) col(6,y) col(2,r) col(3,g) col(4,y) col(5,g)
+Answer: 242
+col(1,b) col(6,y) col(2,g) col(3,r) col(4,b) col(5,g)
+Answer: 243
+col(1,b) col(6,y) col(2,g) col(3,r) col(4,y) col(5,g)
+Answer: 244
+col(1,b) col(6,y) col(2,y) col(3,r) col(4,b) col(5,g)
+Answer: 245
+col(1,b) col(6,y) col(2,y) col(3,r) col(4,y) col(5,g)
+Answer: 246
+col(1,b) col(6,y) col(2,g) col(3,b) col(4,r) col(5,g)
+Answer: 247
+col(1,g) col(6,y) col(2,y) col(3,b) col(4,r) col(5,g)
+Answer: 248
+col(1,b) col(6,y) col(2,y) col(3,b) col(4,r) col(5,g)
+Answer: 249
+col(1,g) col(6,y) col(2,r) col(3,b) col(4,r) col(5,g)
+Answer: 250
+col(1,b) col(6,y) col(2,r) col(3,b) col(4,r) col(5,g)
+Answer: 251
+col(1,g) col(6,y) col(2,r) col(3,b) col(4,y) col(5,g)
+Answer: 252
+col(1,g) col(6,y) col(2,y) col(3,b) col(4,y) col(5,g)
+Answer: 253
+col(1,b) col(6,y) col(2,g) col(3,b) col(4,y) col(5,g)
+Answer: 254
+col(1,b) col(6,y) col(2,r) col(3,b) col(4,y) col(5,g)
+Answer: 255
+col(1,b) col(6,y) col(2,y) col(3,b) col(4,y) col(5,g)
+Answer: 256
+col(1,g) col(6,y) col(2,b) col(3,y) col(4,b) col(5,g)
+Answer: 257
+col(1,g) col(6,y) col(2,b) col(3,y) col(4,r) col(5,g)
+Answer: 258
+col(1,b) col(6,y) col(2,g) col(3,y) col(4,b) col(5,g)
+Answer: 259
+col(1,b) col(6,y) col(2,g) col(3,y) col(4,r) col(5,g)
+Answer: 260
+col(1,g) col(6,y) col(2,r) col(3,y) col(4,b) col(5,g)
+Answer: 261
+col(1,b) col(6,y) col(2,r) col(3,y) col(4,b) col(5,g)
+Answer: 262
+col(1,g) col(6,y) col(2,r) col(3,y) col(4,r) col(5,g)
+Answer: 263
+col(1,b) col(6,y) col(2,r) col(3,y) col(4,r) col(5,g)
+Answer: 264
+col(6,r) col(1,g) col(2,b) col(3,y) col(4,g) col(5,b)
+Answer: 265
+col(6,r) col(1,g) col(2,y) col(3,b) col(4,g) col(5,b)
+Answer: 266
+col(6,r) col(1,g) col(2,b) col(3,r) col(4,g) col(5,b)
+Answer: 267
+col(6,r) col(1,g) col(2,y) col(3,r) col(4,g) col(5,b)
+Answer: 268
+col(6,r) col(1,g) col(2,b) col(3,g) col(4,y) col(5,b)
+Answer: 269
+col(6,r) col(1,g) col(2,b) col(3,r) col(4,y) col(5,b)
+Answer: 270
+col(6,r) col(1,g) col(2,y) col(3,g) col(4,y) col(5,b)
+Answer: 271
+col(6,r) col(1,g) col(2,y) col(3,b) col(4,y) col(5,b)
+Answer: 272
+col(6,r) col(1,g) col(2,y) col(3,r) col(4,y) col(5,b)
+Answer: 273
+col(6,r) col(1,g) col(2,b) col(3,g) col(4,r) col(5,b)
+Answer: 274
+col(6,r) col(1,g) col(2,y) col(3,g) col(4,r) col(5,b)
+Answer: 275
+col(6,r) col(1,g) col(2,b) col(3,y) col(4,r) col(5,b)
+Answer: 276
+col(6,r) col(1,g) col(2,y) col(3,b) col(4,r) col(5,b)
+Answer: 277
+col(1,g) col(6,y) col(2,b) col(3,g) col(4,y) col(5,b)
+Answer: 278
+col(1,g) col(6,y) col(2,b) col(3,y) col(4,g) col(5,b)
+Answer: 279
+col(1,g) col(6,y) col(2,b) col(3,g) col(4,r) col(5,b)
+Answer: 280
+col(1,g) col(6,y) col(2,b) col(3,y) col(4,r) col(5,b)
+Answer: 281
+col(1,g) col(6,y) col(2,b) col(3,r) col(4,g) col(5,b)
+Answer: 282
+col(1,g) col(6,y) col(2,b) col(3,r) col(4,y) col(5,b)
+Answer: 283
+col(1,g) col(6,y) col(2,y) col(3,b) col(4,g) col(5,b)
+Answer: 284
+col(1,g) col(6,y) col(2,y) col(3,r) col(4,g) col(5,b)
+Answer: 285
+col(1,g) col(6,y) col(2,y) col(3,g) col(4,r) col(5,b)
+Answer: 286
+col(1,g) col(6,y) col(2,y) col(3,b) col(4,r) col(5,b)
+Answer: 287
+col(1,g) col(6,y) col(2,y) col(3,g) col(4,y) col(5,b)
+Answer: 288
+col(1,g) col(6,y) col(2,y) col(3,r) col(4,y) col(5,b)
+Answer: 289
+col(1,g) col(6,y) col(2,y) col(3,b) col(4,y) col(5,b)
+Answer: 290
+col(6,r) col(1,y) col(2,b) col(3,g) col(4,y) col(5,b)
+Answer: 291
+col(6,g) col(1,y) col(2,b) col(3,g) col(4,y) col(5,b)
+Answer: 292
+col(6,r) col(1,y) col(2,b) col(3,g) col(4,r) col(5,b)
+Answer: 293
+col(6,g) col(1,y) col(2,b) col(3,g) col(4,r) col(5,b)
+Answer: 294
+col(6,r) col(1,y) col(2,g) col(3,b) col(4,r) col(5,b)
+Answer: 295
+col(6,r) col(1,y) col(2,g) col(3,b) col(4,y) col(5,b)
+Answer: 296
+col(6,r) col(1,y) col(2,g) col(3,b) col(4,g) col(5,b)
+Answer: 297
+col(6,g) col(1,y) col(2,g) col(3,b) col(4,r) col(5,b)
+Answer: 298
+col(6,g) col(1,y) col(2,g) col(3,b) col(4,g) col(5,b)
+Answer: 299
+col(6,g) col(1,y) col(2,g) col(3,b) col(4,y) col(5,b)
+Answer: 300
+col(6,r) col(1,y) col(2,b) col(3,y) col(4,r) col(5,b)
+Answer: 301
+col(6,r) col(1,y) col(2,g) col(3,y) col(4,r) col(5,b)
+Answer: 302
+col(6,g) col(1,y) col(2,b) col(3,y) col(4,r) col(5,b)
+Answer: 303
+col(6,g) col(1,y) col(2,g) col(3,y) col(4,r) col(5,b)
+Answer: 304
+col(6,r) col(1,y) col(2,b) col(3,y) col(4,g) col(5,b)
+Answer: 305
+col(6,g) col(1,y) col(2,b) col(3,y) col(4,g) col(5,b)
+Answer: 306
+col(6,r) col(1,y) col(2,g) col(3,y) col(4,g) col(5,b)
+Answer: 307
+col(6,g) col(1,y) col(2,g) col(3,y) col(4,g) col(5,b)
+Answer: 308
+col(6,r) col(1,y) col(2,b) col(3,r) col(4,y) col(5,b)
+Answer: 309
+col(6,r) col(1,y) col(2,g) col(3,r) col(4,y) col(5,b)
+Answer: 310
+col(6,r) col(1,y) col(2,b) col(3,r) col(4,g) col(5,b)
+Answer: 311
+col(6,r) col(1,y) col(2,g) col(3,r) col(4,g) col(5,b)
+Answer: 312
+col(6,g) col(1,y) col(2,b) col(3,r) col(4,y) col(5,b)
+Answer: 313
+col(6,g) col(1,y) col(2,b) col(3,r) col(4,g) col(5,b)
+Answer: 314
+col(6,g) col(1,y) col(2,g) col(3,r) col(4,y) col(5,b)
+Answer: 315
+col(6,g) col(1,y) col(2,g) col(3,r) col(4,g) col(5,b)
+Answer: 316
+col(6,r) col(1,g) col(2,r) col(3,y) col(4,r) col(5,b)
+Answer: 317
+col(6,r) col(1,g) col(2,r) col(3,b) col(4,r) col(5,b)
+Answer: 318
+col(6,r) col(1,g) col(2,r) col(3,b) col(4,y) col(5,b)
+Answer: 319
+col(6,r) col(1,g) col(2,r) col(3,g) col(4,r) col(5,b)
+Answer: 320
+col(6,r) col(1,g) col(2,r) col(3,g) col(4,y) col(5,b)
+Answer: 321
+col(6,r) col(1,y) col(2,r) col(3,g) col(4,r) col(5,b)
+Answer: 322
+col(6,r) col(1,y) col(2,r) col(3,b) col(4,r) col(5,b)
+Answer: 323
+col(6,r) col(1,y) col(2,r) col(3,y) col(4,r) col(5,b)
+Answer: 324
+col(6,r) col(1,y) col(2,r) col(3,g) col(4,y) col(5,b)
+Answer: 325
+col(6,r) col(1,y) col(2,r) col(3,b) col(4,y) col(5,b)
+Answer: 326
+col(1,g) col(6,y) col(2,r) col(3,g) col(4,r) col(5,b)
+Answer: 327
+col(1,g) col(6,y) col(2,r) col(3,y) col(4,r) col(5,b)
+Answer: 328
+col(1,g) col(6,y) col(2,r) col(3,g) col(4,y) col(5,b)
+Answer: 329
+col(1,g) col(6,y) col(2,r) col(3,b) col(4,r) col(5,b)
+Answer: 330
+col(1,g) col(6,y) col(2,r) col(3,b) col(4,y) col(5,b)
+Answer: 331
+col(6,g) col(1,y) col(2,r) col(3,g) col(4,r) col(5,b)
+Answer: 332
+col(6,g) col(1,y) col(2,r) col(3,b) col(4,r) col(5,b)
+Answer: 333
+col(6,g) col(1,y) col(2,r) col(3,y) col(4,r) col(5,b)
+Answer: 334
+col(6,g) col(1,y) col(2,r) col(3,g) col(4,y) col(5,b)
+Answer: 335
+col(6,g) col(1,y) col(2,r) col(3,b) col(4,y) col(5,b)
+Answer: 336
+col(6,r) col(1,g) col(2,r) col(3,y) col(4,g) col(5,b)
+Answer: 337
+col(1,g) col(6,y) col(2,r) col(3,y) col(4,g) col(5,b)
+Answer: 338
+col(6,r) col(1,y) col(2,r) col(3,y) col(4,g) col(5,b)
+Answer: 339
+col(6,g) col(1,y) col(2,r) col(3,y) col(4,g) col(5,b)
+Answer: 340
+col(6,r) col(1,g) col(2,r) col(3,b) col(4,g) col(5,b)
+Answer: 341
+col(6,r) col(1,y) col(2,r) col(3,b) col(4,g) col(5,b)
+Answer: 342
+col(1,g) col(6,y) col(2,r) col(3,b) col(4,g) col(5,b)
+Answer: 343
+col(6,g) col(1,y) col(2,r) col(3,b) col(4,g) col(5,b)
+Answer: 344
+col(6,r) col(1,b) col(2,r) col(3,g) col(4,r) col(5,b)
+Answer: 345
+col(6,r) col(1,b) col(2,r) col(3,b) col(4,r) col(5,b)
+Answer: 346
+col(6,r) col(1,b) col(2,r) col(3,y) col(4,r) col(5,b)
+Answer: 347
+col(1,b) col(6,y) col(2,r) col(3,g) col(4,r) col(5,b)
+Answer: 348
+col(1,b) col(6,y) col(2,r) col(3,y) col(4,r) col(5,b)
+Answer: 349
+col(1,b) col(6,y) col(2,r) col(3,b) col(4,r) col(5,b)
+Answer: 350
+col(6,g) col(1,b) col(2,r) col(3,g) col(4,r) col(5,b)
+Answer: 351
+col(6,g) col(1,b) col(2,r) col(3,b) col(4,r) col(5,b)
+Answer: 352
+col(6,g) col(1,b) col(2,r) col(3,y) col(4,r) col(5,b)
+Answer: 353
+col(6,r) col(1,b) col(2,g) col(3,y) col(4,r) col(5,b)
+Answer: 354
+col(6,g) col(1,b) col(2,g) col(3,y) col(4,r) col(5,b)
+Answer: 355
+col(1,b) col(6,y) col(2,g) col(3,y) col(4,r) col(5,b)
+Answer: 356
+col(6,r) col(1,b) col(2,g) col(3,b) col(4,r) col(5,b)
+Answer: 357
+col(1,b) col(6,y) col(2,g) col(3,b) col(4,r) col(5,b)
+Answer: 358
+col(6,g) col(1,b) col(2,g) col(3,b) col(4,r) col(5,b)
+Answer: 359
+col(6,r) col(1,b) col(2,y) col(3,g) col(4,r) col(5,b)
+Answer: 360
+col(6,g) col(1,b) col(2,y) col(3,g) col(4,r) col(5,b)
+Answer: 361
+col(6,r) col(1,b) col(2,y) col(3,b) col(4,r) col(5,b)
+Answer: 362
+col(6,g) col(1,b) col(2,y) col(3,b) col(4,r) col(5,b)
+Answer: 363
+col(1,b) col(6,y) col(2,y) col(3,g) col(4,r) col(5,b)
+Answer: 364
+col(1,b) col(6,y) col(2,y) col(3,b) col(4,r) col(5,b)
+Answer: 365
+col(6,r) col(1,b) col(2,g) col(3,y) col(4,g) col(5,b)
+Answer: 366
+col(6,r) col(1,b) col(2,r) col(3,y) col(4,g) col(5,b)
+Answer: 367
+col(6,r) col(1,b) col(2,g) col(3,r) col(4,g) col(5,b)
+Answer: 368
+col(6,r) col(1,b) col(2,y) col(3,r) col(4,g) col(5,b)
+Answer: 369
+col(1,b) col(6,y) col(2,g) col(3,y) col(4,g) col(5,b)
+Answer: 370
+col(1,b) col(6,y) col(2,g) col(3,r) col(4,g) col(5,b)
+Answer: 371
+col(1,b) col(6,y) col(2,y) col(3,r) col(4,g) col(5,b)
+Answer: 372
+col(1,b) col(6,y) col(2,r) col(3,y) col(4,g) col(5,b)
+Answer: 373
+col(6,g) col(1,b) col(2,g) col(3,y) col(4,g) col(5,b)
+Answer: 374
+col(6,g) col(1,b) col(2,r) col(3,y) col(4,g) col(5,b)
+Answer: 375
+col(6,g) col(1,b) col(2,g) col(3,r) col(4,g) col(5,b)
+Answer: 376
+col(6,g) col(1,b) col(2,y) col(3,r) col(4,g) col(5,b)
+Answer: 377
+col(6,r) col(1,b) col(2,g) col(3,b) col(4,g) col(5,b)
+Answer: 378
+col(6,g) col(1,b) col(2,g) col(3,b) col(4,g) col(5,b)
+Answer: 379
+col(1,b) col(6,y) col(2,g) col(3,b) col(4,g) col(5,b)
+Answer: 380
+col(6,r) col(1,b) col(2,r) col(3,b) col(4,g) col(5,b)
+Answer: 381
+col(1,b) col(6,y) col(2,r) col(3,b) col(4,g) col(5,b)
+Answer: 382
+col(6,g) col(1,b) col(2,r) col(3,b) col(4,g) col(5,b)
+Answer: 383
+col(6,r) col(1,b) col(2,y) col(3,b) col(4,g) col(5,b)
+Answer: 384
+col(6,g) col(1,b) col(2,y) col(3,b) col(4,g) col(5,b)
+Answer: 385
+col(1,b) col(6,y) col(2,y) col(3,b) col(4,g) col(5,b)
+Answer: 386
+col(6,r) col(1,b) col(2,g) col(3,b) col(4,y) col(5,b)
+Answer: 387
+col(1,b) col(6,y) col(2,g) col(3,b) col(4,y) col(5,b)
+Answer: 388
+col(6,r) col(1,b) col(2,g) col(3,r) col(4,y) col(5,b)
+Answer: 389
+col(1,b) col(6,y) col(2,g) col(3,r) col(4,y) col(5,b)
+Answer: 390
+col(6,r) col(1,b) col(2,y) col(3,g) col(4,y) col(5,b)
+Answer: 391
+col(6,r) col(1,b) col(2,y) col(3,b) col(4,y) col(5,b)
+Answer: 392
+col(6,r) col(1,b) col(2,y) col(3,r) col(4,y) col(5,b)
+Answer: 393
+col(1,b) col(6,y) col(2,y) col(3,g) col(4,y) col(5,b)
+Answer: 394
+col(1,b) col(6,y) col(2,y) col(3,r) col(4,y) col(5,b)
+Answer: 395
+col(1,b) col(6,y) col(2,y) col(3,b) col(4,y) col(5,b)
+Answer: 396
+col(6,r) col(1,b) col(2,r) col(3,g) col(4,y) col(5,b)
+Answer: 397
+col(6,r) col(1,b) col(2,r) col(3,b) col(4,y) col(5,b)
+Answer: 398
+col(1,b) col(6,y) col(2,r) col(3,g) col(4,y) col(5,b)
+Answer: 399
+col(1,b) col(6,y) col(2,r) col(3,b) col(4,y) col(5,b)
+Answer: 400
+col(6,g) col(1,b) col(2,r) col(3,g) col(4,y) col(5,b)
+Answer: 401
+col(6,g) col(1,b) col(2,g) col(3,r) col(4,y) col(5,b)
+Answer: 402
+col(6,g) col(1,b) col(2,y) col(3,g) col(4,y) col(5,b)
+Answer: 403
+col(6,g) col(1,b) col(2,y) col(3,r) col(4,y) col(5,b)
+Answer: 404
+col(6,g) col(1,b) col(2,g) col(3,b) col(4,y) col(5,b)
+Answer: 405
+col(6,g) col(1,b) col(2,r) col(3,b) col(4,y) col(5,b)
+Answer: 406
+col(6,g) col(1,b) col(2,y) col(3,b) col(4,y) col(5,b)
+Answer: 407
+col(6,r) col(1,g) col(2,y) col(3,g) col(4,r) col(5,y)
+Answer: 408
+col(6,r) col(1,g) col(2,y) col(3,g) col(4,b) col(5,y)
+Answer: 409
+col(1,g) col(6,b) col(2,y) col(3,g) col(4,r) col(5,y)
+Answer: 410
+col(1,g) col(6,b) col(2,y) col(3,g) col(4,b) col(5,y)
+Answer: 411
+col(6,r) col(1,b) col(2,g) col(3,y) col(4,r) col(5,y)
+Answer: 412
+col(6,g) col(1,b) col(2,g) col(3,y) col(4,r) col(5,y)
+Answer: 413
+col(6,r) col(1,b) col(2,y) col(3,g) col(4,r) col(5,y)
+Answer: 414
+col(6,g) col(1,b) col(2,y) col(3,g) col(4,r) col(5,y)
+Answer: 415
+col(6,r) col(1,b) col(2,g) col(3,y) col(4,b) col(5,y)
+Answer: 416
+col(6,r) col(1,b) col(2,y) col(3,g) col(4,b) col(5,y)
+Answer: 417
+col(6,g) col(1,b) col(2,g) col(3,y) col(4,b) col(5,y)
+Answer: 418
+col(6,g) col(1,b) col(2,y) col(3,g) col(4,b) col(5,y)
+Answer: 419
+col(6,r) col(1,g) col(2,b) col(3,g) col(4,r) col(5,y)
+Answer: 420
+col(6,r) col(1,g) col(2,b) col(3,y) col(4,r) col(5,y)
+Answer: 421
+col(1,g) col(6,b) col(2,b) col(3,g) col(4,r) col(5,y)
+Answer: 422
+col(1,g) col(6,b) col(2,b) col(3,y) col(4,r) col(5,y)
+Answer: 423
+col(6,r) col(1,g) col(2,b) col(3,g) col(4,b) col(5,y)
+Answer: 424
+col(1,g) col(6,b) col(2,b) col(3,g) col(4,b) col(5,y)
+Answer: 425
+col(6,r) col(1,g) col(2,b) col(3,y) col(4,b) col(5,y)
+Answer: 426
+col(1,g) col(6,b) col(2,b) col(3,y) col(4,b) col(5,y)
+Answer: 427
+col(6,r) col(1,y) col(2,b) col(3,g) col(4,r) col(5,y)
+Answer: 428
+col(6,r) col(1,y) col(2,b) col(3,y) col(4,r) col(5,y)
+Answer: 429
+col(6,r) col(1,y) col(2,g) col(3,y) col(4,r) col(5,y)
+Answer: 430
+col(6,g) col(1,y) col(2,b) col(3,g) col(4,r) col(5,y)
+Answer: 431
+col(6,g) col(1,y) col(2,g) col(3,y) col(4,r) col(5,y)
+Answer: 432
+col(6,g) col(1,y) col(2,b) col(3,y) col(4,r) col(5,y)
+Answer: 433
+col(6,r) col(1,y) col(2,g) col(3,y) col(4,b) col(5,y)
+Answer: 434
+col(6,g) col(1,y) col(2,g) col(3,y) col(4,b) col(5,y)
+Answer: 435
+col(6,r) col(1,y) col(2,b) col(3,g) col(4,b) col(5,y)
+Answer: 436
+col(6,r) col(1,y) col(2,b) col(3,y) col(4,b) col(5,y)
+Answer: 437
+col(6,g) col(1,y) col(2,b) col(3,g) col(4,b) col(5,y)
+Answer: 438
+col(6,g) col(1,y) col(2,b) col(3,y) col(4,b) col(5,y)
+Answer: 439
+col(6,b) col(1,y) col(2,b) col(3,g) col(4,r) col(5,y)
+Answer: 440
+col(6,b) col(1,y) col(2,b) col(3,g) col(4,b) col(5,y)
+Answer: 441
+col(6,b) col(1,y) col(2,g) col(3,y) col(4,r) col(5,y)
+Answer: 442
+col(6,b) col(1,y) col(2,b) col(3,y) col(4,r) col(5,y)
+Answer: 443
+col(6,b) col(1,y) col(2,g) col(3,y) col(4,b) col(5,y)
+Answer: 444
+col(6,b) col(1,y) col(2,b) col(3,y) col(4,b) col(5,y)
+Answer: 445
+col(6,r) col(1,y) col(2,g) col(3,y) col(4,g) col(5,y)
+Answer: 446
+col(6,r) col(1,b) col(2,g) col(3,y) col(4,g) col(5,y)
+Answer: 447
+col(6,b) col(1,y) col(2,g) col(3,y) col(4,g) col(5,y)
+Answer: 448
+col(6,g) col(1,y) col(2,g) col(3,y) col(4,g) col(5,y)
+Answer: 449
+col(6,g) col(1,b) col(2,g) col(3,y) col(4,g) col(5,y)
+Answer: 450
+col(6,r) col(1,g) col(2,b) col(3,y) col(4,g) col(5,y)
+Answer: 451
+col(6,r) col(1,y) col(2,b) col(3,y) col(4,g) col(5,y)
+Answer: 452
+col(1,g) col(6,b) col(2,b) col(3,y) col(4,g) col(5,y)
+Answer: 453
+col(6,b) col(1,y) col(2,b) col(3,y) col(4,g) col(5,y)
+Answer: 454
+col(6,g) col(1,y) col(2,b) col(3,y) col(4,g) col(5,y)
+Answer: 455
+col(6,r) col(1,g) col(2,y) col(3,b) col(4,r) col(5,y)
+Answer: 456
+col(6,r) col(1,g) col(2,y) col(3,b) col(4,g) col(5,y)
+Answer: 457
+col(1,g) col(6,b) col(2,y) col(3,b) col(4,r) col(5,y)
+Answer: 458
+col(1,g) col(6,b) col(2,y) col(3,b) col(4,g) col(5,y)
+Answer: 459
+col(6,r) col(1,b) col(2,g) col(3,b) col(4,r) col(5,y)
+Answer: 460
+col(6,g) col(1,b) col(2,g) col(3,b) col(4,r) col(5,y)
+Answer: 461
+col(6,r) col(1,b) col(2,y) col(3,b) col(4,r) col(5,y)
+Answer: 462
+col(6,g) col(1,b) col(2,y) col(3,b) col(4,r) col(5,y)
+Answer: 463
+col(6,r) col(1,b) col(2,g) col(3,b) col(4,g) col(5,y)
+Answer: 464
+col(6,r) col(1,b) col(2,y) col(3,b) col(4,g) col(5,y)
+Answer: 465
+col(6,g) col(1,b) col(2,g) col(3,b) col(4,g) col(5,y)
+Answer: 466
+col(6,g) col(1,b) col(2,y) col(3,b) col(4,g) col(5,y)
+Answer: 467
+col(6,r) col(1,y) col(2,g) col(3,b) col(4,r) col(5,y)
+Answer: 468
+col(6,b) col(1,y) col(2,g) col(3,b) col(4,r) col(5,y)
+Answer: 469
+col(6,g) col(1,y) col(2,g) col(3,b) col(4,r) col(5,y)
+Answer: 470
+col(6,r) col(1,y) col(2,g) col(3,b) col(4,g) col(5,y)
+Answer: 471
+col(6,g) col(1,y) col(2,g) col(3,b) col(4,g) col(5,y)
+Answer: 472
+col(6,b) col(1,y) col(2,g) col(3,b) col(4,g) col(5,y)
+Answer: 473
+col(6,r) col(1,g) col(2,b) col(3,r) col(4,b) col(5,y)
+Answer: 474
+col(1,g) col(6,b) col(2,b) col(3,r) col(4,b) col(5,y)
+Answer: 475
+col(6,r) col(1,y) col(2,g) col(3,r) col(4,b) col(5,y)
+Answer: 476
+col(6,r) col(1,y) col(2,b) col(3,r) col(4,b) col(5,y)
+Answer: 477
+col(6,b) col(1,y) col(2,g) col(3,r) col(4,b) col(5,y)
+Answer: 478
+col(6,b) col(1,y) col(2,b) col(3,r) col(4,b) col(5,y)
+Answer: 479
+col(6,r) col(1,g) col(2,y) col(3,r) col(4,b) col(5,y)
+Answer: 480
+col(1,g) col(6,b) col(2,y) col(3,r) col(4,b) col(5,y)
+Answer: 481
+col(6,r) col(1,b) col(2,g) col(3,r) col(4,b) col(5,y)
+Answer: 482
+col(6,r) col(1,b) col(2,y) col(3,r) col(4,b) col(5,y)
+Answer: 483
+col(6,r) col(1,y) col(2,g) col(3,r) col(4,g) col(5,y)
+Answer: 484
+col(6,r) col(1,b) col(2,g) col(3,r) col(4,g) col(5,y)
+Answer: 485
+col(6,b) col(1,y) col(2,g) col(3,r) col(4,g) col(5,y)
+Answer: 486
+col(6,r) col(1,g) col(2,b) col(3,r) col(4,g) col(5,y)
+Answer: 487
+col(6,r) col(1,y) col(2,b) col(3,r) col(4,g) col(5,y)
+Answer: 488
+col(1,g) col(6,b) col(2,b) col(3,r) col(4,g) col(5,y)
+Answer: 489
+col(6,b) col(1,y) col(2,b) col(3,r) col(4,g) col(5,y)
+Answer: 490
+col(6,r) col(1,g) col(2,y) col(3,r) col(4,g) col(5,y)
+Answer: 491
+col(1,g) col(6,b) col(2,y) col(3,r) col(4,g) col(5,y)
+Answer: 492
+col(6,r) col(1,b) col(2,y) col(3,r) col(4,g) col(5,y)
+Answer: 493
+col(6,g) col(1,b) col(2,g) col(3,r) col(4,b) col(5,y)
+Answer: 494
+col(6,g) col(1,b) col(2,g) col(3,r) col(4,g) col(5,y)
+Answer: 495
+col(6,g) col(1,b) col(2,y) col(3,r) col(4,b) col(5,y)
+Answer: 496
+col(6,g) col(1,b) col(2,y) col(3,r) col(4,g) col(5,y)
+Answer: 497
+col(6,g) col(1,y) col(2,g) col(3,r) col(4,b) col(5,y)
+Answer: 498
+col(6,g) col(1,y) col(2,g) col(3,r) col(4,g) col(5,y)
+Answer: 499
+col(6,g) col(1,y) col(2,b) col(3,r) col(4,b) col(5,y)
+Answer: 500
+col(6,g) col(1,y) col(2,b) col(3,r) col(4,g) col(5,y)
+Answer: 501
+col(6,r) col(1,g) col(2,r) col(3,g) col(4,r) col(5,y)
+Answer: 502
+col(6,r) col(1,g) col(2,r) col(3,y) col(4,r) col(5,y)
+Answer: 503
+col(6,r) col(1,g) col(2,r) col(3,g) col(4,b) col(5,y)
+Answer: 504
+col(6,r) col(1,g) col(2,r) col(3,y) col(4,b) col(5,y)
+Answer: 505
+col(6,r) col(1,b) col(2,r) col(3,g) col(4,r) col(5,y)
+Answer: 506
+col(6,r) col(1,b) col(2,r) col(3,g) col(4,b) col(5,y)
+Answer: 507
+col(6,r) col(1,b) col(2,r) col(3,y) col(4,r) col(5,y)
+Answer: 508
+col(6,r) col(1,b) col(2,r) col(3,y) col(4,b) col(5,y)
+Answer: 509
+col(6,g) col(1,b) col(2,r) col(3,g) col(4,r) col(5,y)
+Answer: 510
+col(6,g) col(1,b) col(2,r) col(3,y) col(4,r) col(5,y)
+Answer: 511
+col(6,g) col(1,b) col(2,r) col(3,g) col(4,b) col(5,y)
+Answer: 512
+col(6,g) col(1,b) col(2,r) col(3,y) col(4,b) col(5,y)
+Answer: 513
+col(6,r) col(1,y) col(2,r) col(3,g) col(4,r) col(5,y)
+Answer: 514
+col(6,r) col(1,y) col(2,r) col(3,g) col(4,b) col(5,y)
+Answer: 515
+col(6,g) col(1,y) col(2,r) col(3,g) col(4,r) col(5,y)
+Answer: 516
+col(6,g) col(1,y) col(2,r) col(3,g) col(4,b) col(5,y)
+Answer: 517
+col(6,r) col(1,y) col(2,r) col(3,y) col(4,r) col(5,y)
+Answer: 518
+col(6,g) col(1,y) col(2,r) col(3,y) col(4,r) col(5,y)
+Answer: 519
+col(6,r) col(1,y) col(2,r) col(3,y) col(4,b) col(5,y)
+Answer: 520
+col(6,g) col(1,y) col(2,r) col(3,y) col(4,b) col(5,y)
+Answer: 521
+col(6,r) col(1,g) col(2,r) col(3,b) col(4,r) col(5,y)
+Answer: 522
+col(6,r) col(1,y) col(2,r) col(3,b) col(4,r) col(5,y)
+Answer: 523
+col(6,r) col(1,b) col(2,r) col(3,b) col(4,r) col(5,y)
+Answer: 524
+col(6,g) col(1,b) col(2,r) col(3,b) col(4,r) col(5,y)
+Answer: 525
+col(6,g) col(1,y) col(2,r) col(3,b) col(4,r) col(5,y)
+Answer: 526
+col(1,g) col(6,b) col(2,r) col(3,g) col(4,r) col(5,y)
+Answer: 527
+col(1,g) col(6,b) col(2,r) col(3,g) col(4,b) col(5,y)
+Answer: 528
+col(1,g) col(6,b) col(2,r) col(3,b) col(4,r) col(5,y)
+Answer: 529
+col(1,g) col(6,b) col(2,r) col(3,y) col(4,r) col(5,y)
+Answer: 530
+col(1,g) col(6,b) col(2,r) col(3,y) col(4,b) col(5,y)
+Answer: 531
+col(6,b) col(1,y) col(2,r) col(3,g) col(4,r) col(5,y)
+Answer: 532
+col(6,b) col(1,y) col(2,r) col(3,b) col(4,r) col(5,y)
+Answer: 533
+col(6,b) col(1,y) col(2,r) col(3,y) col(4,r) col(5,y)
+Answer: 534
+col(6,b) col(1,y) col(2,r) col(3,g) col(4,b) col(5,y)
+Answer: 535
+col(6,b) col(1,y) col(2,r) col(3,y) col(4,b) col(5,y)
+Answer: 536
+col(6,r) col(1,g) col(2,r) col(3,b) col(4,g) col(5,y)
+Answer: 537
+col(1,g) col(6,b) col(2,r) col(3,b) col(4,g) col(5,y)
+Answer: 538
+col(6,r) col(1,b) col(2,r) col(3,b) col(4,g) col(5,y)
+Answer: 539
+col(6,g) col(1,b) col(2,r) col(3,b) col(4,g) col(5,y)
+Answer: 540
+col(6,r) col(1,y) col(2,r) col(3,b) col(4,g) col(5,y)
+Answer: 541
+col(6,g) col(1,y) col(2,r) col(3,b) col(4,g) col(5,y)
+Answer: 542
+col(6,b) col(1,y) col(2,r) col(3,b) col(4,g) col(5,y)
+Answer: 543
+col(6,r) col(1,g) col(2,r) col(3,y) col(4,g) col(5,y)
+Answer: 544
+col(6,r) col(1,b) col(2,r) col(3,y) col(4,g) col(5,y)
+Answer: 545
+col(1,g) col(6,b) col(2,r) col(3,y) col(4,g) col(5,y)
+Answer: 546
+col(6,r) col(1,y) col(2,r) col(3,y) col(4,g) col(5,y)
+Answer: 547
+col(6,b) col(1,y) col(2,r) col(3,y) col(4,g) col(5,y)
+Answer: 548
+col(6,g) col(1,y) col(2,r) col(3,y) col(4,g) col(5,y)
+Answer: 549
+col(6,g) col(1,b) col(2,r) col(3,y) col(4,g) col(5,y)
+Answer: 550
+col(1,r) col(6,g) col(2,g) col(3,b) col(4,r) col(5,y)
+Answer: 551
+col(1,r) col(6,g) col(2,g) col(3,b) col(4,g) col(5,y)
+Answer: 552
+col(1,r) col(6,g) col(2,b) col(3,g) col(4,b) col(5,y)
+Answer: 553
+col(1,r) col(6,g) col(2,b) col(3,g) col(4,r) col(5,y)
+Answer: 554
+col(1,r) col(6,b) col(2,b) col(3,g) col(4,b) col(5,y)
+Answer: 555
+col(1,r) col(6,b) col(2,g) col(3,b) col(4,g) col(5,y)
+Answer: 556
+col(1,r) col(6,b) col(2,g) col(3,b) col(4,r) col(5,y)
+Answer: 557
+col(1,r) col(6,b) col(2,b) col(3,g) col(4,r) col(5,y)
+Answer: 558
+col(1,r) col(6,b) col(2,g) col(3,b) col(4,y) col(5,r)
+Answer: 559
+col(1,r) col(6,g) col(2,g) col(3,b) col(4,y) col(5,r)
+Answer: 560
+col(1,r) col(6,y) col(2,g) col(3,b) col(4,y) col(5,r)
+Answer: 561
+col(1,r) col(6,b) col(2,g) col(3,b) col(4,g) col(5,r)
+Answer: 562
+col(1,r) col(6,y) col(2,g) col(3,b) col(4,g) col(5,r)
+Answer: 563
+col(1,r) col(6,g) col(2,g) col(3,b) col(4,g) col(5,r)
+Answer: 564
+col(1,r) col(6,b) col(2,b) col(3,g) col(4,b) col(5,r)
+Answer: 565
+col(1,r) col(6,g) col(2,b) col(3,g) col(4,b) col(5,r)
+Answer: 566
+col(1,r) col(6,b) col(2,b) col(3,g) col(4,y) col(5,r)
+Answer: 567
+col(1,r) col(6,g) col(2,b) col(3,g) col(4,y) col(5,r)
+Answer: 568
+col(1,r) col(6,y) col(2,b) col(3,g) col(4,b) col(5,r)
+Answer: 569
+col(1,r) col(6,y) col(2,b) col(3,g) col(4,y) col(5,r)
+Answer: 570
+col(1,r) col(6,b) col(2,g) col(3,b) col(4,r) col(5,g)
+Answer: 571
+col(1,r) col(6,b) col(2,b) col(3,g) col(4,b) col(5,g)
+Answer: 572
+col(1,r) col(6,b) col(2,b) col(3,g) col(4,r) col(5,g)
+Answer: 573
+col(1,r) col(6,y) col(2,b) col(3,g) col(4,b) col(5,g)
+Answer: 574
+col(1,r) col(6,y) col(2,g) col(3,b) col(4,r) col(5,g)
+Answer: 575
+col(1,r) col(6,y) col(2,b) col(3,g) col(4,r) col(5,g)
+Answer: 576
+col(1,r) col(6,b) col(2,g) col(3,b) col(4,y) col(5,g)
+Answer: 577
+col(1,r) col(6,y) col(2,g) col(3,b) col(4,y) col(5,g)
+Answer: 578
+col(1,r) col(6,b) col(2,b) col(3,g) col(4,y) col(5,g)
+Answer: 579
+col(1,r) col(6,y) col(2,b) col(3,g) col(4,y) col(5,g)
+Answer: 580
+col(1,r) col(6,g) col(2,g) col(3,b) col(4,g) col(5,b)
+Answer: 581
+col(1,r) col(6,g) col(2,b) col(3,g) col(4,y) col(5,b)
+Answer: 582
+col(1,r) col(6,g) col(2,g) col(3,b) col(4,y) col(5,b)
+Answer: 583
+col(1,r) col(6,g) col(2,b) col(3,g) col(4,r) col(5,b)
+Answer: 584
+col(1,r) col(6,g) col(2,g) col(3,b) col(4,r) col(5,b)
+Answer: 585
+col(1,r) col(6,y) col(2,b) col(3,g) col(4,r) col(5,b)
+Answer: 586
+col(1,r) col(6,y) col(2,b) col(3,g) col(4,y) col(5,b)
+Answer: 587
+col(1,r) col(6,y) col(2,g) col(3,b) col(4,r) col(5,b)
+Answer: 588
+col(1,r) col(6,y) col(2,g) col(3,b) col(4,g) col(5,b)
+Answer: 589
+col(1,r) col(6,y) col(2,g) col(3,b) col(4,y) col(5,b)
+Answer: 590
+col(1,r) col(6,b) col(2,b) col(3,y) col(4,b) col(5,g)
+Answer: 591
+col(1,r) col(6,b) col(2,b) col(3,y) col(4,b) col(5,r)
+Answer: 592
+col(1,r) col(6,b) col(2,b) col(3,y) col(4,r) col(5,g)
+Answer: 593
+col(1,r) col(6,b) col(2,g) col(3,y) col(4,b) col(5,g)
+Answer: 594
+col(1,r) col(6,b) col(2,g) col(3,y) col(4,r) col(5,g)
+Answer: 595
+col(1,r) col(6,b) col(2,g) col(3,y) col(4,b) col(5,r)
+Answer: 596
+col(1,r) col(6,b) col(2,g) col(3,y) col(4,b) col(5,y)
+Answer: 597
+col(1,r) col(6,b) col(2,b) col(3,y) col(4,b) col(5,y)
+Answer: 598
+col(1,r) col(6,b) col(2,g) col(3,y) col(4,r) col(5,y)
+Answer: 599
+col(1,r) col(6,b) col(2,b) col(3,y) col(4,r) col(5,y)
+Answer: 600
+col(1,r) col(6,y) col(2,g) col(3,y) col(4,b) col(5,g)
+Answer: 601
+col(1,r) col(6,y) col(2,g) col(3,y) col(4,b) col(5,r)
+Answer: 602
+col(1,r) col(6,y) col(2,g) col(3,y) col(4,r) col(5,g)
+Answer: 603
+col(1,r) col(6,y) col(2,g) col(3,y) col(4,r) col(5,b)
+Answer: 604
+col(1,r) col(6,y) col(2,b) col(3,y) col(4,b) col(5,g)
+Answer: 605
+col(1,r) col(6,y) col(2,b) col(3,y) col(4,r) col(5,g)
+Answer: 606
+col(1,r) col(6,y) col(2,b) col(3,y) col(4,r) col(5,b)
+Answer: 607
+col(1,r) col(6,y) col(2,b) col(3,y) col(4,b) col(5,r)
+Answer: 608
+col(1,r) col(6,g) col(2,b) col(3,y) col(4,b) col(5,r)
+Answer: 609
+col(1,r) col(6,g) col(2,b) col(3,y) col(4,b) col(5,y)
+Answer: 610
+col(1,r) col(6,g) col(2,g) col(3,y) col(4,b) col(5,r)
+Answer: 611
+col(1,r) col(6,g) col(2,g) col(3,y) col(4,b) col(5,y)
+Answer: 612
+col(1,r) col(6,g) col(2,g) col(3,y) col(4,r) col(5,b)
+Answer: 613
+col(1,r) col(6,g) col(2,b) col(3,y) col(4,r) col(5,b)
+Answer: 614
+col(1,r) col(6,g) col(2,g) col(3,y) col(4,r) col(5,y)
+Answer: 615
+col(1,r) col(6,g) col(2,b) col(3,y) col(4,r) col(5,y)
+Answer: 616
+col(1,r) col(6,b) col(2,g) col(3,y) col(4,g) col(5,r)
+Answer: 617
+col(1,r) col(6,g) col(2,g) col(3,y) col(4,g) col(5,b)
+Answer: 618
+col(1,r) col(6,g) col(2,g) col(3,y) col(4,g) col(5,r)
+Answer: 619
+col(1,r) col(6,y) col(2,g) col(3,y) col(4,g) col(5,b)
+Answer: 620
+col(1,r) col(6,y) col(2,g) col(3,y) col(4,g) col(5,r)
+Answer: 621
+col(1,r) col(6,b) col(2,g) col(3,y) col(4,g) col(5,y)
+Answer: 622
+col(1,r) col(6,g) col(2,g) col(3,y) col(4,g) col(5,y)
+Answer: 623
+col(1,r) col(6,y) col(2,b) col(3,y) col(4,g) col(5,b)
+Answer: 624
+col(1,r) col(6,b) col(2,b) col(3,y) col(4,g) col(5,y)
+Answer: 625
+col(1,r) col(6,b) col(2,b) col(3,y) col(4,g) col(5,r)
+Answer: 626
+col(1,r) col(6,y) col(2,b) col(3,y) col(4,g) col(5,r)
+Answer: 627
+col(1,r) col(6,g) col(2,b) col(3,y) col(4,g) col(5,b)
+Answer: 628
+col(1,r) col(6,g) col(2,b) col(3,y) col(4,g) col(5,r)
+Answer: 629
+col(1,r) col(6,g) col(2,b) col(3,y) col(4,g) col(5,y)
+Answer: 630
+col(1,r) col(6,b) col(2,b) col(3,r) col(4,b) col(5,g)
+Answer: 631
+col(1,r) col(6,b) col(2,b) col(3,r) col(4,b) col(5,y)
+Answer: 632
+col(1,r) col(6,g) col(2,b) col(3,r) col(4,b) col(5,y)
+Answer: 633
+col(1,r) col(6,b) col(2,b) col(3,r) col(4,y) col(5,g)
+Answer: 634
+col(1,r) col(6,g) col(2,b) col(3,r) col(4,y) col(5,b)
+Answer: 635
+col(1,r) col(6,b) col(2,b) col(3,r) col(4,g) col(5,y)
+Answer: 636
+col(1,r) col(6,g) col(2,b) col(3,r) col(4,g) col(5,b)
+Answer: 637
+col(1,r) col(6,g) col(2,b) col(3,r) col(4,g) col(5,y)
+Answer: 638
+col(1,r) col(6,b) col(2,g) col(3,r) col(4,b) col(5,g)
+Answer: 639
+col(1,r) col(6,b) col(2,g) col(3,r) col(4,y) col(5,g)
+Answer: 640
+col(1,r) col(6,g) col(2,g) col(3,r) col(4,g) col(5,b)
+Answer: 641
+col(1,r) col(6,g) col(2,g) col(3,r) col(4,y) col(5,b)
+Answer: 642
+col(1,r) col(6,b) col(2,g) col(3,r) col(4,b) col(5,y)
+Answer: 643
+col(1,r) col(6,g) col(2,g) col(3,r) col(4,b) col(5,y)
+Answer: 644
+col(1,r) col(6,b) col(2,g) col(3,r) col(4,g) col(5,y)
+Answer: 645
+col(1,r) col(6,g) col(2,g) col(3,r) col(4,g) col(5,y)
+Answer: 646
+col(1,r) col(6,y) col(2,g) col(3,r) col(4,b) col(5,g)
+Answer: 647
+col(1,r) col(6,y) col(2,g) col(3,r) col(4,g) col(5,b)
+Answer: 648
+col(1,r) col(6,y) col(2,b) col(3,r) col(4,b) col(5,g)
+Answer: 649
+col(1,r) col(6,y) col(2,b) col(3,r) col(4,g) col(5,b)
+Answer: 650
+col(1,r) col(6,y) col(2,b) col(3,r) col(4,y) col(5,g)
+Answer: 651
+col(1,r) col(6,y) col(2,b) col(3,r) col(4,y) col(5,b)
+Answer: 652
+col(1,r) col(6,y) col(2,g) col(3,r) col(4,y) col(5,g)
+Answer: 653
+col(1,r) col(6,y) col(2,g) col(3,r) col(4,y) col(5,b)
+Answer: 654
+col(1,r) col(6,b) col(2,g) col(3,r) col(4,b) col(5,r)
+Answer: 655
+col(1,r) col(6,b) col(2,b) col(3,r) col(4,b) col(5,r)
+Answer: 656
+col(1,r) col(6,y) col(2,g) col(3,r) col(4,b) col(5,r)
+Answer: 657
+col(1,r) col(6,y) col(2,b) col(3,r) col(4,b) col(5,r)
+Answer: 658
+col(1,r) col(6,g) col(2,g) col(3,r) col(4,b) col(5,r)
+Answer: 659
+col(1,r) col(6,g) col(2,b) col(3,r) col(4,b) col(5,r)
+Answer: 660
+col(1,r) col(6,b) col(2,g) col(3,r) col(4,y) col(5,r)
+Answer: 661
+col(1,r) col(6,y) col(2,g) col(3,r) col(4,y) col(5,r)
+Answer: 662
+col(1,r) col(6,g) col(2,g) col(3,r) col(4,y) col(5,r)
+Answer: 663
+col(1,r) col(6,b) col(2,b) col(3,r) col(4,y) col(5,r)
+Answer: 664
+col(1,r) col(6,g) col(2,b) col(3,r) col(4,y) col(5,r)
+Answer: 665
+col(1,r) col(6,y) col(2,b) col(3,r) col(4,y) col(5,r)
+Answer: 666
+col(1,r) col(6,b) col(2,g) col(3,r) col(4,g) col(5,r)
+Answer: 667
+col(1,r) col(6,y) col(2,g) col(3,r) col(4,g) col(5,r)
+Answer: 668
+col(1,r) col(6,b) col(2,b) col(3,r) col(4,g) col(5,r)
+Answer: 669
+col(1,r) col(6,y) col(2,b) col(3,r) col(4,g) col(5,r)
+Answer: 670
+col(1,r) col(6,g) col(2,g) col(3,r) col(4,g) col(5,r)
+Answer: 671
+col(1,r) col(6,g) col(2,b) col(3,r) col(4,g) col(5,r)
+Answer: 672
+col(1,r) col(6,b) col(2,y) col(3,r) col(4,b) col(5,g)
+Answer: 673
+col(1,r) col(6,y) col(2,y) col(3,r) col(4,b) col(5,g)
+Answer: 674
+col(1,r) col(6,b) col(2,y) col(3,b) col(4,y) col(5,g)
+Answer: 675
+col(1,r) col(6,b) col(2,y) col(3,r) col(4,y) col(5,g)
+Answer: 676
+col(1,r) col(6,y) col(2,y) col(3,b) col(4,y) col(5,g)
+Answer: 677
+col(1,r) col(6,y) col(2,y) col(3,r) col(4,y) col(5,g)
+Answer: 678
+col(1,r) col(6,b) col(2,y) col(3,b) col(4,r) col(5,g)
+Answer: 679
+col(1,r) col(6,y) col(2,y) col(3,b) col(4,r) col(5,g)
+Answer: 680
+col(1,r) col(6,b) col(2,y) col(3,g) col(4,b) col(5,g)
+Answer: 681
+col(1,r) col(6,b) col(2,y) col(3,g) col(4,y) col(5,g)
+Answer: 682
+col(1,r) col(6,b) col(2,y) col(3,g) col(4,r) col(5,g)
+Answer: 683
+col(1,r) col(6,y) col(2,y) col(3,g) col(4,b) col(5,g)
+Answer: 684
+col(1,r) col(6,y) col(2,y) col(3,g) col(4,r) col(5,g)
+Answer: 685
+col(1,r) col(6,y) col(2,y) col(3,g) col(4,y) col(5,g)
+Answer: 686
+col(1,r) col(6,b) col(2,y) col(3,b) col(4,y) col(5,r)
+Answer: 687
+col(1,r) col(6,g) col(2,y) col(3,b) col(4,y) col(5,r)
+Answer: 688
+col(1,r) col(6,b) col(2,y) col(3,g) col(4,b) col(5,r)
+Answer: 689
+col(1,r) col(6,b) col(2,y) col(3,g) col(4,y) col(5,r)
+Answer: 690
+col(1,r) col(6,g) col(2,y) col(3,g) col(4,b) col(5,r)
+Answer: 691
+col(1,r) col(6,g) col(2,y) col(3,g) col(4,y) col(5,r)
+Answer: 692
+col(1,r) col(6,b) col(2,y) col(3,r) col(4,b) col(5,r)
+Answer: 693
+col(1,r) col(6,g) col(2,y) col(3,r) col(4,b) col(5,r)
+Answer: 694
+col(1,r) col(6,b) col(2,y) col(3,r) col(4,y) col(5,r)
+Answer: 695
+col(1,r) col(6,g) col(2,y) col(3,r) col(4,y) col(5,r)
+Answer: 696
+col(1,r) col(6,y) col(2,y) col(3,g) col(4,b) col(5,r)
+Answer: 697
+col(1,r) col(6,y) col(2,y) col(3,b) col(4,y) col(5,r)
+Answer: 698
+col(1,r) col(6,y) col(2,y) col(3,g) col(4,y) col(5,r)
+Answer: 699
+col(1,r) col(6,y) col(2,y) col(3,r) col(4,b) col(5,r)
+Answer: 700
+col(1,r) col(6,y) col(2,y) col(3,r) col(4,y) col(5,r)
+Answer: 701
+col(1,r) col(6,b) col(2,y) col(3,r) col(4,b) col(5,y)
+Answer: 702
+col(1,r) col(6,b) col(2,y) col(3,b) col(4,r) col(5,y)
+Answer: 703
+col(1,r) col(6,g) col(2,y) col(3,r) col(4,b) col(5,y)
+Answer: 704
+col(1,r) col(6,g) col(2,y) col(3,b) col(4,r) col(5,y)
+Answer: 705
+col(1,r) col(6,b) col(2,y) col(3,g) col(4,b) col(5,y)
+Answer: 706
+col(1,r) col(6,g) col(2,y) col(3,g) col(4,b) col(5,y)
+Answer: 707
+col(1,r) col(6,b) col(2,y) col(3,g) col(4,r) col(5,y)
+Answer: 708
+col(1,r) col(6,g) col(2,y) col(3,g) col(4,r) col(5,y)
+Answer: 709
+col(1,r) col(6,y) col(2,y) col(3,b) col(4,r) col(5,b)
+Answer: 710
+col(1,r) col(6,y) col(2,y) col(3,b) col(4,y) col(5,b)
+Answer: 711
+col(1,r) col(6,y) col(2,y) col(3,r) col(4,y) col(5,b)
+Answer: 712
+col(1,r) col(6,y) col(2,y) col(3,g) col(4,y) col(5,b)
+Answer: 713
+col(1,r) col(6,y) col(2,y) col(3,g) col(4,r) col(5,b)
+Answer: 714
+col(1,r) col(6,g) col(2,y) col(3,b) col(4,y) col(5,b)
+Answer: 715
+col(1,r) col(6,g) col(2,y) col(3,g) col(4,y) col(5,b)
+Answer: 716
+col(1,r) col(6,g) col(2,y) col(3,r) col(4,y) col(5,b)
+Answer: 717
+col(1,r) col(6,g) col(2,y) col(3,b) col(4,r) col(5,b)
+Answer: 718
+col(1,r) col(6,g) col(2,y) col(3,g) col(4,r) col(5,b)
+Answer: 719
+col(1,r) col(6,b) col(2,y) col(3,b) col(4,g) col(5,y)
+Answer: 720
+col(1,r) col(6,b) col(2,y) col(3,r) col(4,g) col(5,y)
+Answer: 721
+col(1,r) col(6,b) col(2,y) col(3,b) col(4,g) col(5,r)
+Answer: 722
+col(1,r) col(6,b) col(2,y) col(3,r) col(4,g) col(5,r)
+Answer: 723
+col(1,r) col(6,y) col(2,y) col(3,b) col(4,g) col(5,b)
+Answer: 724
+col(1,r) col(6,y) col(2,y) col(3,b) col(4,g) col(5,r)
+Answer: 725
+col(1,r) col(6,y) col(2,y) col(3,r) col(4,g) col(5,b)
+Answer: 726
+col(1,r) col(6,y) col(2,y) col(3,r) col(4,g) col(5,r)
+Answer: 727
+col(1,r) col(6,g) col(2,y) col(3,b) col(4,g) col(5,b)
+Answer: 728
+col(1,r) col(6,g) col(2,y) col(3,r) col(4,g) col(5,b)
+Answer: 729
+col(1,r) col(6,g) col(2,y) col(3,b) col(4,g) col(5,y)
+Answer: 730
+col(1,r) col(6,g) col(2,y) col(3,r) col(4,g) col(5,y)
+Answer: 731
+col(1,r) col(6,g) col(2,y) col(3,b) col(4,g) col(5,r)
+Answer: 732
+col(1,r) col(6,g) col(2,y) col(3,r) col(4,g) col(5,r)
+SATISFIABLE
+
+Models       : 732
+Calls        : 1
+Time         : 0.013s (Solving: 0.00s 1st Model: 0.00s Unsat: 0.00s)
+CPU Time     : 0.007s
