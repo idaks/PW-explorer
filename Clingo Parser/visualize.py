@@ -28,6 +28,7 @@ import matplotlib.pyplot as plt
 parser = argparse.ArgumentParser()
 parser.add_argument("-p", "--project_name", type = str, help = "provide session/project name used while parsing")
 parser.add_argument("-mds", action = 'store_true', default = False, help = "produce a Multidimensional Scaling Graph Output using the Neato Program. Provide a scale-down-factor for graph generation. Default factor is 5.0")
+parser.add_argument("-mds_sklearn", action = 'store_true', default = False, help = "produce a MDS graph in 2D using skelearn's MDS package.")
 parser.add_argument("-sdf", "--scale_down_factor", type = float, default = 5.0, help = "provide a scale factor for the Multidimensional Scaling Graph. Deafults to 5.0" )
 parser.add_argument("-clustering", action = 'store_true', default = False, help = "use DBScan Algorithm to cluster the Possible Worlds")
 parser.add_argument("-dendrogram", action = 'store_true', default = False, help = "create various dendrograms using scipy")
@@ -145,7 +146,10 @@ def dbscan_clustering(dist_matrix):
 	          for each in np.linspace(0, 1, len(unique_labels))]
 	
 
-	#fig, ax = plt.subplots()
+	#dist_matrix = PCA(n_components = 2).fit_transform(dist_matrix)
+
+	# plt.xlim((-5,5))
+	# plt.ylim((-5,5))
 
 	for k, col in zip(unique_labels, colors):
 	    if k == -1:
@@ -162,11 +166,8 @@ def dbscan_clustering(dist_matrix):
 	    plt.plot(xy[:, 0], xy[:, 1], 'o', markerfacecolor=tuple(col),
 	             markeredgecolor='k', markersize=6)
 
-	#labels = ['point {0}'.format(i + 1) for i in range(expected_pws)]
-	#fig.plugins = [mpld3.plugins.PointLabelTooltip(labels)]
+	
 	plt.title('Estimated number of clusters: %d' % n_clusters_)
-	#mpld3.show()
-	#plt.show()
 	mkdir_p('Mini Workflow/parser_output/clustering_output/' + str(project_name))
 	plt.savefig('Mini Workflow/parser_output/clustering_output/' + str(project_name) + '/' + str(project_name) + '.png')
 	plt.figure()
@@ -250,29 +251,33 @@ def linkage_dendrogram(dist_matrix):
 	# plt.figure()
 	
 	linkage_matrix = linkage(X, "single")
-	dendrogram(linkage_matrix, labels=[str(i) for i in range(len(dist_matrix))])
+
+	dendrogram_size = (max(25, int(np.sqrt(2*len(X))/10)), 10)
+
+	plt.figure(figsize=dendrogram_size)
+	dendrogram(linkage_matrix, labels=[str(i) for i in range(len(dist_matrix))], show_leaf_counts= True)
 	plt.title("Dendrogram (Single)")
 	#mpld3.show()
 	plt.savefig('Mini Workflow/parser_output/clustering_output/' + str(project_name) + '/' + str(project_name) + '_single_dendrogram.png')
-	plt.figure()
+	plt.figure(figsize=dendrogram_size)
 
 	linkage_matrix = linkage(X, "complete")
-	dendrogram(linkage_matrix, labels=[str(i) for i in range(len(dist_matrix))])
+	dendrogram(linkage_matrix, labels=[str(i) for i in range(len(dist_matrix))], show_leaf_counts= True)
 	plt.title("Dendrogram (Complete)")
 	plt.savefig('Mini Workflow/parser_output/clustering_output/' + str(project_name) + '/' + str(project_name) + '_complete_dendrogram.png')
-	plt.figure()
+	plt.figure(figsize=dendrogram_size)
 
 	linkage_matrix = linkage(X, "average")
-	dendrogram(linkage_matrix, labels=[str(i) for i in range(len(dist_matrix))])
+	dendrogram(linkage_matrix, labels=[str(i) for i in range(len(dist_matrix))], show_leaf_counts= True)
 	plt.title("Dendrogram (Average)")
 	plt.savefig('Mini Workflow/parser_output/clustering_output/' + str(project_name) + '/' + str(project_name) + '_average_dendrogram.png')
-	plt.figure()
+	plt.figure(figsize=dendrogram_size)
 
 	linkage_matrix = linkage(X, "weighted")
-	dendrogram(linkage_matrix, labels=[str(i) for i in range(len(dist_matrix))])
+	dendrogram(linkage_matrix, labels=[str(i) for i in range(len(dist_matrix))], show_leaf_counts= True)
 	plt.title("Dendrogram (Weighted)")
 	plt.savefig('Mini Workflow/parser_output/clustering_output/' + str(project_name) + '/' + str(project_name) + '_weighted_dendrogram.png')
-	plt.figure()
+	plt.figure(figsize=dendrogram_size)
 
 	# linkage_matrix = linkage(X, "centroid")
 	# dendrogram(linkage_matrix, labels=[str(i) for i in range(len(dist_matrix))])
@@ -325,12 +330,28 @@ def mds_graph_2(A):
 	G.draw('Mini Workflow/parser_output/clustering_output/' + str(project_name) + '/' + str(project_name) + '_networkx_out.png', format='png', prog='neato')
 	print 'MDS Neato Graph saved to:', ('Mini Workflow/parser_output/clustering_output/' + str(project_name))
 
+def mds_sklearn(A):
+
+	from sklearn.manifold import MDS
+	mds = MDS(2, dissimilarity="precomputed")
+	mds.fit(A)
+	x = mds.embedding_[:,0]
+	y = mds.embedding_[:,1]
+	plt.scatter(x,y)
+	mkdir_p('Mini Workflow/parser_output/clustering_output/' + str(project_name))
+	plt.savefig('Mini Workflow/parser_output/clustering_output/' + str(project_name) + '/' + str(project_name) + '_mds_sklearn.png')
+	plt.figure()
+
+
 if args.mds:
 	import networkx as nx
 	mds_graph_2(dist_matrix)
+if args.mds_sklearn:
+	mds_sklearn(dist_matrix)
 if len(pws) > 1:
 	if args.clustering:
 		from sklearn.cluster import DBSCAN
+		from sklearn.decomposition import PCA
 		dbscan_clustering(dist_matrix)
 	#dbscan_clustering_plotly(dist_matrix)
 	if args.dendrogram:
