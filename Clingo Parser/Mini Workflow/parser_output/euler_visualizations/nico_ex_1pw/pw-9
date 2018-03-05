@@ -1,0 +1,54 @@
+digraph {
+	graph [bgcolor="#ffffff" fontcolor=black fontsize=16 label="Taxonomy Alignment" rankdir=LR]
+	"a1950_A_capillipes
+b1948_A_capillipes" [fillcolor="#1fce0c" fontcolor=black fontname=helvetica shape=box style="filled,rounded"]
+	a1950_A_glomeratus [fillcolor="#f4bf42" fontcolor=black fontname=helvetica shape=box style=filled]
+	a1950_A_virginicus [fillcolor="#f4bf42" fontcolor=black fontname=helvetica shape=box style=filled]
+	"b1948_A_virginicus_var_glaucopsis
+a1950_A_virginicus_var_glaucopsis" [fillcolor="#1fce0c" fontcolor=black fontname=helvetica shape=box style="filled,rounded"]
+	a1950_A_virginicus_var_hirsutior [fillcolor="#f4bf42" fontcolor=black fontname=helvetica shape=box style=filled]
+	"b1948_A_virginicus_var_virginicus
+a1950_A_virginicus_var_virginicus" [fillcolor="#1fce0c" fontcolor=black fontname=helvetica shape=box style="filled,rounded"]
+	b1948_A_glomeratus [fillcolor="#6346d6" fontcolor=black fontname=helvetica shape=box style=filled]
+	b1948_A_virginicus [fillcolor="#6346d6" fontcolor=black fontname=helvetica shape=box style=filled]
+	b1948_A_virginicus_var_tenuispatheus [fillcolor="#6346d6" fontcolor=black fontname=helvetica shape=box style=filled]
+	"b1948_Andropogon
+a1950_Andropogon" [fillcolor="#1fce0c" fontcolor=black fontname=helvetica shape=box style="filled,rounded"]
+	"a1950_A_capillipes
+b1948_A_capillipes" -> "b1948_Andropogon
+a1950_Andropogon" [arrowhead=normal color=black constraint=true penwidth=1 style=solid]
+	a1950_A_glomeratus -> "b1948_Andropogon
+a1950_Andropogon" [arrowhead=normal color=black constraint=true penwidth=1 style=solid]
+	a1950_A_virginicus -> "b1948_Andropogon
+a1950_Andropogon" [arrowhead=normal color=black constraint=true penwidth=1 style=solid]
+	"b1948_A_virginicus_var_glaucopsis
+a1950_A_virginicus_var_glaucopsis" -> a1950_A_virginicus [arrowhead=normal color=black constraint=true penwidth=1 style=solid]
+	a1950_A_virginicus_var_hirsutior -> a1950_A_virginicus [arrowhead=normal color=black constraint=true penwidth=1 style=solid]
+	"b1948_A_virginicus_var_virginicus
+a1950_A_virginicus_var_virginicus" -> a1950_A_virginicus [arrowhead=normal color=black constraint=true penwidth=1 style=solid]
+	b1948_A_glomeratus -> "b1948_Andropogon
+a1950_Andropogon" [arrowhead=normal color=black constraint=true penwidth=1 style=solid]
+	b1948_A_virginicus -> "b1948_Andropogon
+a1950_Andropogon" [arrowhead=normal color=black constraint=true penwidth=1 style=solid]
+	"b1948_A_virginicus_var_glaucopsis
+a1950_A_virginicus_var_glaucopsis" -> b1948_A_virginicus [arrowhead=normal color=black constraint=true penwidth=1 style=solid]
+	b1948_A_virginicus_var_tenuispatheus -> b1948_A_virginicus [arrowhead=normal color=black constraint=true penwidth=1 style=solid]
+	"b1948_A_virginicus_var_virginicus
+a1950_A_virginicus_var_virginicus" -> b1948_A_virginicus [arrowhead=normal color=black constraint=true penwidth=1 style=solid]
+	b1948_A_virginicus_var_tenuispatheus -> a1950_A_glomeratus [arrowhead=normal color=black constraint=true penwidth=1 style=solid]
+	"b1948_A_virginicus_var_glaucopsis
+a1950_A_virginicus_var_glaucopsis" -> "b1948_Andropogon
+a1950_Andropogon" [arrowhead=normal color=black constraint=true penwidth=1 style=solid]
+	b1948_A_virginicus_var_tenuispatheus -> "b1948_Andropogon
+a1950_Andropogon" [arrowhead=normal color=black constraint=true penwidth=1 style=solid]
+	"b1948_A_virginicus_var_virginicus
+a1950_A_virginicus_var_virginicus" -> "b1948_Andropogon
+a1950_Andropogon" [arrowhead=normal color=black constraint=true penwidth=1 style=solid]
+	a1950_A_virginicus_var_hirsutior -> "b1948_Andropogon
+a1950_Andropogon" [arrowhead=normal color=black constraint=true penwidth=1 style=solid]
+	a1950_A_glomeratus -> b1948_A_glomeratus [arrowhead=none color="#ce2118" constraint=false penwidth=1 style=dotted]
+	a1950_A_virginicus -> b1948_A_glomeratus [arrowhead=none color="#ce2118" constraint=false penwidth=1 style=dotted]
+	a1950_A_virginicus_var_hirsutior -> b1948_A_glomeratus [arrowhead=none color="#ce2118" constraint=false penwidth=1 style=dotted]
+	a1950_A_glomeratus -> b1948_A_virginicus [arrowhead=none color="#ce2118" constraint=false penwidth=1 style=dotted]
+	a1950_A_virginicus -> b1948_A_virginicus [arrowhead=none color="#ce2118" constraint=false penwidth=1 style=dotted]
+}
