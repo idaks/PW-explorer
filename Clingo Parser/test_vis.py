@@ -1,6 +1,6 @@
 import numpy as np
 
-def visualize(dfs, pws, relations, conn):
+def visualize(dfs, pws, relations, conn, project_name):
 
 	expected_pws = len(pws)
 	

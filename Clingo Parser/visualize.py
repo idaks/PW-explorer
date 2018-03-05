@@ -32,7 +32,7 @@ parser.add_argument("-mds_sklearn", action = 'store_true', default = False, help
 parser.add_argument("-sdf", "--scale_down_factor", type = float, default = 5.0, help = "provide a scale factor for the Multidimensional Scaling Graph. Deafults to 5.0" )
 parser.add_argument("-clustering", action = 'store_true', default = False, help = "use DBScan Algorithm to cluster the Possible Worlds")
 parser.add_argument("-dendrogram", action = 'store_true', default = False, help = "create various dendrograms using scipy")
-parser.add_argument("-custom_visualisation_func", type = str, help = "provide the .py file (without the .py) containing your custom visualisation function. The function signature should be visualize(dfs = None, pws = None, relations = None, conn = None) where the four arguments refer to the data acquired from parsing the ASP solutions and the connection to the generated sqlite database respectively. The function should create the visualization and may or may not return anything. Ensure that the file is in the same directory as this script. You can use the functions in sql_funcs.py to design these visualisation functions")
+parser.add_argument("-custom_visualisation_func", type = str, help = "provide the .py file (without the .py) containing your custom visualisation function. The function signature should be visualize(dfs = None, pws = None, relations = None, conn = None, project_name=None) where the four arguments refer to the data acquired from parsing the ASP solutions and the connection to the generated sqlite database respectively. The function should create the visualization and may or may not return anything. Ensure that the file is in the same directory as this script. You can use the functions in sql_funcs.py to design these visualisation functions")
 args = parser.parse_args()
 
 project_name = ''
@@ -371,7 +371,7 @@ if args.custom_visualisation_func:
 		print "Error: ", str(e)
 		exit(1)
 
-	visualisation_func(dfs, pws, relations, conn)
+	visualisation_func(dfs, pws, relations, conn, project_name)
 
 
 
