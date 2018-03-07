@@ -53,7 +53,7 @@ def visualize(dfs=None, pws=None, relations=None, conn=None, project_name=None):
 		my_circle=plt.Circle((0,0), 0.7, color='white')
 		p=plt.gcf()
 		p.gca().add_artist(my_circle)
-		plt.annotate(str(label_counts[label]), xy=(0,0), ha='center', fontsize=35)
+		plt.annotate(str(label_counts[label]), xy=(0,0), ha='center', va='center', fontsize=35)
 		plt.savefig(OUTPUT_FOLDER + '/pattern' + str(label) + '.png')
 
 
