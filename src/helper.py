@@ -162,7 +162,7 @@ def load_from_temp_pickle(project_name, file_type):
                       'rb') as input_file:
                 return pickle.load(input_file)
         except IOError:
-            print "Could not find the project, check project/session name entered."
+            print("Could not find the project, check project/session name entered.")
             exit(1)
 
 
@@ -171,8 +171,8 @@ def get_sql_conn(project_name):
         conn = sqlite3.connect(get_save_folder(project_name, 'sql_export') + str(project_name) + ".db")
         return conn
     except sqlite3.Error:
-        print "Could not find the associated sqlite database. Please recheck project_name " \
-              "or make sure a sql db has been exported using export module"
+        print("Could not find the associated sqlite database. Please recheck project_name " \
+              "or make sure a sql db has been exported using export module")
         exit(1)
 
 

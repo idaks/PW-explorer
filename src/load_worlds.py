@@ -1,11 +1,11 @@
-from .Input_Parsers.Clingo_Parser.clingo_parser import parse_clingo_output
+from Input_Parsers.Clingo_Parser.clingo_parser import parse_clingo_output
 import pandas as pd
 import numpy as np
 
 import os
 import argparse
 import pickle
-from .helper import get_asp_output_folder, set_current_project_name, get_save_folder, get_file_save_name
+from helper import get_asp_output_folder, set_current_project_name, get_save_folder, get_file_save_name
 
 
 def __main__():

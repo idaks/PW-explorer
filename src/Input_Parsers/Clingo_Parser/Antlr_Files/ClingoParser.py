@@ -1,44 +1,44 @@
-# Generated from Clingo.g4 by ANTLR 4.7
+# Generated from Clingo.g4 by ANTLR 4.7.1
 # encoding: utf-8
-
 from antlr4 import *
 from io import StringIO
+from typing.io import TextIO
 import sys
 
 def serializedATN():
     with StringIO() as buf:
-        buf.write("\3\\u608b\\ua72a\\u8133\\ub9ed\\u417c\\u3be7\\u7786\\u5964\3")
-        buf.write("\17d\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
-        buf.write("\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4\f\t\f\3\2\7\2\32")
-        buf.write("\n\2\f\2\16\2\35\13\2\3\2\5\2 \n\2\3\2\3\2\3\3\3\3\3")
-        buf.write("\3\7\3\'\n\3\f\3\16\3*\13\3\3\3\5\3-\n\3\3\3\5\3\60\n")
-        buf.write("\3\3\4\6\4\63\n\4\r\4\16\4\64\3\4\3\4\3\4\3\4\3\5\3\5")
-        buf.write("\3\6\3\6\5\6?\n\6\3\6\5\6B\n\6\3\6\3\6\3\6\3\6\3\7\3")
-        buf.write("\7\3\7\3\7\5\7L\n\7\3\b\3\b\3\b\3\b\3\t\3\t\3\t\3\t\3")
-        buf.write("\n\3\n\3\n\3\n\3\13\6\13[\n\13\r\13\16\13\\\3\f\6\f`")
-        buf.write("\n\f\r\f\16\fa\3\f\2\2\r\2\4\6\b\n\f\16\20\22\24\26\2")
-        buf.write("\3\5\2\5\6\b\b\16\16\2c\2\33\3\2\2\2\4#\3\2\2\2\6\62")
-        buf.write("\3\2\2\2\b:\3\2\2\2\n<\3\2\2\2\fG\3\2\2\2\16M\3\2\2\2")
-        buf.write("\20Q\3\2\2\2\22U\3\2\2\2\24Z\3\2\2\2\26_\3\2\2\2\30\32")
-        buf.write("\5\4\3\2\31\30\3\2\2\2\32\35\3\2\2\2\33\31\3\2\2\2\33")
-        buf.write("\34\3\2\2\2\34\37\3\2\2\2\35\33\3\2\2\2\36 \7\r\2\2\37")
-        buf.write("\36\3\2\2\2\37 \3\2\2\2 !\3\2\2\2!\"\5\n\6\2\"\3\3\2")
-        buf.write("\2\2#$\7\3\2\2$(\7\16\2\2%\'\5\6\4\2&%\3\2\2\2\'*\3\2")
-        buf.write("\2\2(&\3\2\2\2()\3\2\2\2),\3\2\2\2*(\3\2\2\2+-\7\4\2")
-        buf.write("\2,+\3\2\2\2,-\3\2\2\2-/\3\2\2\2.\60\7\16\2\2/.\3\2\2")
-        buf.write("\2/\60\3\2\2\2\60\5\3\2\2\2\61\63\7\16\2\2\62\61\3\2")
-        buf.write("\2\2\63\64\3\2\2\2\64\62\3\2\2\2\64\65\3\2\2\2\65\66")
-        buf.write("\3\2\2\2\66\67\7\5\2\2\678\5\b\5\289\7\6\2\29\7\3\2\2")
-        buf.write("\2:;\7\16\2\2;\t\3\2\2\2<>\5\f\7\2=?\5\16\b\2>=\3\2\2")
-        buf.write("\2>?\3\2\2\2?A\3\2\2\2@B\5\20\t\2A@\3\2\2\2AB\3\2\2\2")
-        buf.write("BC\3\2\2\2CD\5\22\n\2DE\5\24\13\2EF\5\26\f\2F\13\3\2")
-        buf.write("\2\2GH\7\7\2\2HI\7\b\2\2IK\7\16\2\2JL\7\t\2\2KJ\3\2\2")
-        buf.write("\2KL\3\2\2\2L\r\3\2\2\2MN\7\n\2\2NO\7\b\2\2OP\7\16\2")
-        buf.write("\2P\17\3\2\2\2QR\7\13\2\2RS\7\b\2\2ST\7\16\2\2T\21\3")
-        buf.write("\2\2\2UV\7\f\2\2VW\7\b\2\2WX\7\16\2\2X\23\3\2\2\2Y[\t")
-        buf.write("\2\2\2ZY\3\2\2\2[\\\3\2\2\2\\Z\3\2\2\2\\]\3\2\2\2]\25")
-        buf.write("\3\2\2\2^`\t\2\2\2_^\3\2\2\2`a\3\2\2\2a_\3\2\2\2ab\3")
-        buf.write("\2\2\2b\27\3\2\2\2\r\33\37(,/\64>AK\\a")
+        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\17")
+        buf.write("d\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b")
+        buf.write("\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4\f\t\f\3\2\7\2\32\n\2")
+        buf.write("\f\2\16\2\35\13\2\3\2\5\2 \n\2\3\2\3\2\3\3\3\3\3\3\7\3")
+        buf.write("\'\n\3\f\3\16\3*\13\3\3\3\5\3-\n\3\3\3\5\3\60\n\3\3\4")
+        buf.write("\6\4\63\n\4\r\4\16\4\64\3\4\3\4\3\4\3\4\3\5\3\5\3\6\3")
+        buf.write("\6\5\6?\n\6\3\6\5\6B\n\6\3\6\3\6\3\6\3\6\3\7\3\7\3\7\3")
+        buf.write("\7\5\7L\n\7\3\b\3\b\3\b\3\b\3\t\3\t\3\t\3\t\3\n\3\n\3")
+        buf.write("\n\3\n\3\13\6\13[\n\13\r\13\16\13\\\3\f\6\f`\n\f\r\f\16")
+        buf.write("\fa\3\f\2\2\r\2\4\6\b\n\f\16\20\22\24\26\2\3\5\2\5\6\b")
+        buf.write("\b\16\16\2c\2\33\3\2\2\2\4#\3\2\2\2\6\62\3\2\2\2\b:\3")
+        buf.write("\2\2\2\n<\3\2\2\2\fG\3\2\2\2\16M\3\2\2\2\20Q\3\2\2\2\22")
+        buf.write("U\3\2\2\2\24Z\3\2\2\2\26_\3\2\2\2\30\32\5\4\3\2\31\30")
+        buf.write("\3\2\2\2\32\35\3\2\2\2\33\31\3\2\2\2\33\34\3\2\2\2\34")
+        buf.write("\37\3\2\2\2\35\33\3\2\2\2\36 \7\r\2\2\37\36\3\2\2\2\37")
+        buf.write(" \3\2\2\2 !\3\2\2\2!\"\5\n\6\2\"\3\3\2\2\2#$\7\3\2\2$")
+        buf.write("(\7\16\2\2%\'\5\6\4\2&%\3\2\2\2\'*\3\2\2\2(&\3\2\2\2(")
+        buf.write(")\3\2\2\2),\3\2\2\2*(\3\2\2\2+-\7\4\2\2,+\3\2\2\2,-\3")
+        buf.write("\2\2\2-/\3\2\2\2.\60\7\16\2\2/.\3\2\2\2/\60\3\2\2\2\60")
+        buf.write("\5\3\2\2\2\61\63\7\16\2\2\62\61\3\2\2\2\63\64\3\2\2\2")
+        buf.write("\64\62\3\2\2\2\64\65\3\2\2\2\65\66\3\2\2\2\66\67\7\5\2")
+        buf.write("\2\678\5\b\5\289\7\6\2\29\7\3\2\2\2:;\7\16\2\2;\t\3\2")
+        buf.write("\2\2<>\5\f\7\2=?\5\16\b\2>=\3\2\2\2>?\3\2\2\2?A\3\2\2")
+        buf.write("\2@B\5\20\t\2A@\3\2\2\2AB\3\2\2\2BC\3\2\2\2CD\5\22\n\2")
+        buf.write("DE\5\24\13\2EF\5\26\f\2F\13\3\2\2\2GH\7\7\2\2HI\7\b\2")
+        buf.write("\2IK\7\16\2\2JL\7\t\2\2KJ\3\2\2\2KL\3\2\2\2L\r\3\2\2\2")
+        buf.write("MN\7\n\2\2NO\7\b\2\2OP\7\16\2\2P\17\3\2\2\2QR\7\13\2\2")
+        buf.write("RS\7\b\2\2ST\7\16\2\2T\21\3\2\2\2UV\7\f\2\2VW\7\b\2\2")
+        buf.write("WX\7\16\2\2X\23\3\2\2\2Y[\t\2\2\2ZY\3\2\2\2[\\\3\2\2\2")
+        buf.write("\\Z\3\2\2\2\\]\3\2\2\2]\25\3\2\2\2^`\t\2\2\2_^\3\2\2\2")
+        buf.write("`a\3\2\2\2a_\3\2\2\2ab\3\2\2\2b\27\3\2\2\2\r\33\37(,/")
+        buf.write("\64>AK\\a")
         return buf.getvalue()
 
 
@@ -53,8 +53,8 @@ class ClingoParser ( Parser ):
     sharedContextCache = PredictionContextCache()
 
     literalNames = [ "<INVALID>", "'Answer:'", "'Optimization:'", "'('", 
-                     "')'", "'Models'", "':'", "'+'", "'Optimum'", 
-                     "'Optimization'", "'Calls'" ]
+                     "')'", "'Models'", "':'", "'+'", "'Optimum'", "'Optimization'", 
+                     "'Calls'" ]
 
     symbolicNames = [ "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
@@ -92,9 +92,9 @@ class ClingoParser ( Parser ):
     TEXT=12
     WHITESPACE=13
 
-    def __init__(self, input, output=sys.stdout):
-        super(ClingoParser, self).__init__(input, output=output)
-        self.checkVersion("4.7")
+    def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
+        super().__init__(input, output)
+        self.checkVersion("4.7.1")
         self._interp = ParserATNSimulator(self, self.atn, self.decisionsToDFA, self.sharedContextCache)
         self._predicates = None
 
@@ -102,15 +102,15 @@ class ClingoParser ( Parser ):
 
     class ClingoOutputContext(ParserRuleContext):
 
-        def __init__(self, parser, parent=None, invokingState=-1):
-            super(ClingoParser.ClingoOutputContext, self).__init__(parent, invokingState)
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
             self.parser = parser
 
         def summary(self):
             return self.getTypedRuleContext(ClingoParser.SummaryContext,0)
 
 
-        def solution(self, i=None):
+        def solution(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(ClingoParser.SolutionContext)
             else:
@@ -123,12 +123,12 @@ class ClingoParser ( Parser ):
         def getRuleIndex(self):
             return ClingoParser.RULE_clingoOutput
 
-        def enterRule(self, listener):
-            if hasattr(listener, "enterClingoOutput"):
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterClingoOutput" ):
                 listener.enterClingoOutput(self)
 
-        def exitRule(self, listener):
-            if hasattr(listener, "exitClingoOutput"):
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitClingoOutput" ):
                 listener.exitClingoOutput(self)
 
 
@@ -171,17 +171,17 @@ class ClingoParser ( Parser ):
 
     class SolutionContext(ParserRuleContext):
 
-        def __init__(self, parser, parent=None, invokingState=-1):
-            super(ClingoParser.SolutionContext, self).__init__(parent, invokingState)
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
             self.parser = parser
 
-        def TEXT(self, i=None):
+        def TEXT(self, i:int=None):
             if i is None:
                 return self.getTokens(ClingoParser.TEXT)
             else:
                 return self.getToken(ClingoParser.TEXT, i)
 
-        def actual_soln(self, i=None):
+        def actual_soln(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(ClingoParser.Actual_solnContext)
             else:
@@ -191,12 +191,12 @@ class ClingoParser ( Parser ):
         def getRuleIndex(self):
             return ClingoParser.RULE_solution
 
-        def enterRule(self, listener):
-            if hasattr(listener, "enterSolution"):
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSolution" ):
                 listener.enterSolution(self)
 
-        def exitRule(self, listener):
-            if hasattr(listener, "exitSolution"):
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSolution" ):
                 listener.exitSolution(self)
 
 
@@ -250,15 +250,15 @@ class ClingoParser ( Parser ):
 
     class Actual_solnContext(ParserRuleContext):
 
-        def __init__(self, parser, parent=None, invokingState=-1):
-            super(ClingoParser.Actual_solnContext, self).__init__(parent, invokingState)
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
             self.parser = parser
 
         def custom_representation_soln(self):
             return self.getTypedRuleContext(ClingoParser.Custom_representation_solnContext,0)
 
 
-        def TEXT(self, i=None):
+        def TEXT(self, i:int=None):
             if i is None:
                 return self.getTokens(ClingoParser.TEXT)
             else:
@@ -267,12 +267,12 @@ class ClingoParser ( Parser ):
         def getRuleIndex(self):
             return ClingoParser.RULE_actual_soln
 
-        def enterRule(self, listener):
-            if hasattr(listener, "enterActual_soln"):
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterActual_soln" ):
                 listener.enterActual_soln(self)
 
-        def exitRule(self, listener):
-            if hasattr(listener, "exitActual_soln"):
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitActual_soln" ):
                 listener.exitActual_soln(self)
 
 
@@ -313,8 +313,8 @@ class ClingoParser ( Parser ):
 
     class Custom_representation_solnContext(ParserRuleContext):
 
-        def __init__(self, parser, parent=None, invokingState=-1):
-            super(ClingoParser.Custom_representation_solnContext, self).__init__(parent, invokingState)
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
             self.parser = parser
 
         def TEXT(self):
@@ -323,12 +323,12 @@ class ClingoParser ( Parser ):
         def getRuleIndex(self):
             return ClingoParser.RULE_custom_representation_soln
 
-        def enterRule(self, listener):
-            if hasattr(listener, "enterCustom_representation_soln"):
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCustom_representation_soln" ):
                 listener.enterCustom_representation_soln(self)
 
-        def exitRule(self, listener):
-            if hasattr(listener, "exitCustom_representation_soln"):
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCustom_representation_soln" ):
                 listener.exitCustom_representation_soln(self)
 
 
@@ -352,8 +352,8 @@ class ClingoParser ( Parser ):
 
     class SummaryContext(ParserRuleContext):
 
-        def __init__(self, parser, parent=None, invokingState=-1):
-            super(ClingoParser.SummaryContext, self).__init__(parent, invokingState)
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
             self.parser = parser
 
         def models(self):
@@ -383,12 +383,12 @@ class ClingoParser ( Parser ):
         def getRuleIndex(self):
             return ClingoParser.RULE_summary
 
-        def enterRule(self, listener):
-            if hasattr(listener, "enterSummary"):
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSummary" ):
                 listener.enterSummary(self)
 
-        def exitRule(self, listener):
-            if hasattr(listener, "exitSummary"):
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSummary" ):
                 listener.exitSummary(self)
 
 
@@ -435,8 +435,8 @@ class ClingoParser ( Parser ):
 
     class ModelsContext(ParserRuleContext):
 
-        def __init__(self, parser, parent=None, invokingState=-1):
-            super(ClingoParser.ModelsContext, self).__init__(parent, invokingState)
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
             self.parser = parser
 
         def TEXT(self):
@@ -445,12 +445,12 @@ class ClingoParser ( Parser ):
         def getRuleIndex(self):
             return ClingoParser.RULE_models
 
-        def enterRule(self, listener):
-            if hasattr(listener, "enterModels"):
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterModels" ):
                 listener.enterModels(self)
 
-        def exitRule(self, listener):
-            if hasattr(listener, "exitModels"):
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitModels" ):
                 listener.exitModels(self)
 
 
@@ -487,8 +487,8 @@ class ClingoParser ( Parser ):
 
     class OptimumContext(ParserRuleContext):
 
-        def __init__(self, parser, parent=None, invokingState=-1):
-            super(ClingoParser.OptimumContext, self).__init__(parent, invokingState)
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
             self.parser = parser
 
         def TEXT(self):
@@ -497,12 +497,12 @@ class ClingoParser ( Parser ):
         def getRuleIndex(self):
             return ClingoParser.RULE_optimum
 
-        def enterRule(self, listener):
-            if hasattr(listener, "enterOptimum"):
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterOptimum" ):
                 listener.enterOptimum(self)
 
-        def exitRule(self, listener):
-            if hasattr(listener, "exitOptimum"):
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitOptimum" ):
                 listener.exitOptimum(self)
 
 
@@ -530,8 +530,8 @@ class ClingoParser ( Parser ):
 
     class OptimizationContext(ParserRuleContext):
 
-        def __init__(self, parser, parent=None, invokingState=-1):
-            super(ClingoParser.OptimizationContext, self).__init__(parent, invokingState)
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
             self.parser = parser
 
         def TEXT(self):
@@ -540,12 +540,12 @@ class ClingoParser ( Parser ):
         def getRuleIndex(self):
             return ClingoParser.RULE_optimization
 
-        def enterRule(self, listener):
-            if hasattr(listener, "enterOptimization"):
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterOptimization" ):
                 listener.enterOptimization(self)
 
-        def exitRule(self, listener):
-            if hasattr(listener, "exitOptimization"):
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitOptimization" ):
                 listener.exitOptimization(self)
 
 
@@ -573,8 +573,8 @@ class ClingoParser ( Parser ):
 
     class CallsContext(ParserRuleContext):
 
-        def __init__(self, parser, parent=None, invokingState=-1):
-            super(ClingoParser.CallsContext, self).__init__(parent, invokingState)
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
             self.parser = parser
 
         def TEXT(self):
@@ -583,12 +583,12 @@ class ClingoParser ( Parser ):
         def getRuleIndex(self):
             return ClingoParser.RULE_calls
 
-        def enterRule(self, listener):
-            if hasattr(listener, "enterCalls"):
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCalls" ):
                 listener.enterCalls(self)
 
-        def exitRule(self, listener):
-            if hasattr(listener, "exitCalls"):
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCalls" ):
                 listener.exitCalls(self)
 
 
@@ -616,11 +616,11 @@ class ClingoParser ( Parser ):
 
     class TimeContext(ParserRuleContext):
 
-        def __init__(self, parser, parent=None, invokingState=-1):
-            super(ClingoParser.TimeContext, self).__init__(parent, invokingState)
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
             self.parser = parser
 
-        def TEXT(self, i=None):
+        def TEXT(self, i:int=None):
             if i is None:
                 return self.getTokens(ClingoParser.TEXT)
             else:
@@ -629,12 +629,12 @@ class ClingoParser ( Parser ):
         def getRuleIndex(self):
             return ClingoParser.RULE_time
 
-        def enterRule(self, listener):
-            if hasattr(listener, "enterTime"):
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTime" ):
                 listener.enterTime(self)
 
-        def exitRule(self, listener):
-            if hasattr(listener, "exitTime"):
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTime" ):
                 listener.exitTime(self)
 
 
@@ -676,11 +676,11 @@ class ClingoParser ( Parser ):
 
     class CpuTimeContext(ParserRuleContext):
 
-        def __init__(self, parser, parent=None, invokingState=-1):
-            super(ClingoParser.CpuTimeContext, self).__init__(parent, invokingState)
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
             self.parser = parser
 
-        def TEXT(self, i=None):
+        def TEXT(self, i:int=None):
             if i is None:
                 return self.getTokens(ClingoParser.TEXT)
             else:
@@ -689,12 +689,12 @@ class ClingoParser ( Parser ):
         def getRuleIndex(self):
             return ClingoParser.RULE_cpuTime
 
-        def enterRule(self, listener):
-            if hasattr(listener, "enterCpuTime"):
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCpuTime" ):
                 listener.enterCpuTime(self)
 
-        def exitRule(self, listener):
-            if hasattr(listener, "exitCpuTime"):
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCpuTime" ):
                 listener.exitCpuTime(self)
 
 

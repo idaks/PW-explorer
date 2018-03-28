@@ -260,7 +260,7 @@ if len(pws) > 1:
 if args.custom_visualisation_func:
 
     try:
-        a = importlib.import_module(args.custom_visualisation_func)
+        a = importlib.import_module(args.custom_visualisation_func, package='Custom_Visualization_Functions')
         visualisation_func = a.visualize
     except Exception as e:
         print("Error importing from the given file")
