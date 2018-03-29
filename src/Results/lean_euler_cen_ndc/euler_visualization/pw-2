@@ -1,0 +1,36 @@
+digraph {
+	graph [bgcolor="#ffffff" fontcolor=black fontsize=16 label="Taxonomy Alignment" rankdir=LR]
+	CEN_Northeast [fillcolor="#CCFFCC" fontcolor=black fontname=helvetica shape=box style=filled]
+	"NDC_Midwest
+CEN_Midwest" [fillcolor="#EEEEEE" fontcolor=black fontname=helvetica shape=box style="filled,rounded"]
+	CEN_South [fillcolor="#CCFFCC" fontcolor=black fontname=helvetica shape=box style=filled]
+	CEN_West [fillcolor="#CCFFCC" fontcolor=black fontname=helvetica shape=box style=filled]
+	NDC_Northeast [fillcolor="#FFFFCC" fontcolor=black fontname=helvetica shape=box style=filled]
+	NDC_Southeast [fillcolor="#FFFFCC" fontcolor=black fontname=helvetica shape=box style=filled]
+	NDC_Southwest [fillcolor="#FFFFCC" fontcolor=black fontname=helvetica shape=box style=filled]
+	NDC_West [fillcolor="#FFFFCC" fontcolor=black fontname=helvetica shape=box style=filled]
+	"NDC_USA
+CEN_USA" [fillcolor="#EEEEEE" fontcolor=black fontname=helvetica shape=box style="filled,rounded"]
+	CEN_Northeast -> NDC_Northeast [arrowhead=normal color=black constraint=true penwidth=1 style=solid]
+	CEN_Northeast -> "NDC_USA
+CEN_USA" [arrowhead=normal color=black constraint=true penwidth=1 style=solid]
+	"NDC_Midwest
+CEN_Midwest" -> "NDC_USA
+CEN_USA" [arrowhead=normal color=black constraint=true penwidth=1 style=solid]
+	CEN_South -> "NDC_USA
+CEN_USA" [arrowhead=normal color=black constraint=true penwidth=1 style=solid]
+	CEN_West -> "NDC_USA
+CEN_USA" [arrowhead=normal color=black constraint=true penwidth=1 style=solid]
+	NDC_Northeast -> "NDC_USA
+CEN_USA" [arrowhead=normal color=black constraint=true penwidth=1 style=solid]
+	NDC_Southeast -> "NDC_USA
+CEN_USA" [arrowhead=normal color=black constraint=true penwidth=1 style=solid]
+	NDC_Southwest -> "NDC_USA
+CEN_USA" [arrowhead=normal color=black constraint=true penwidth=1 style=solid]
+	NDC_West -> "NDC_USA
+CEN_USA" [arrowhead=normal color=black constraint=true penwidth=1 style=solid]
+	NDC_Southeast -> CEN_South [arrowhead=normal color=black constraint=true penwidth=1 style=solid]
+	NDC_West -> CEN_West [arrowhead=normal color=black constraint=true penwidth=1 style=solid]
+	CEN_South -> NDC_Southwest [arrowhead=none color="#ce2118" constraint=false penwidth=1 style=dotted]
+	CEN_West -> NDC_Southwest [arrowhead=none color="#ce2118" constraint=false penwidth=1 style=dotted]
+}

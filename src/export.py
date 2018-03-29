@@ -1,10 +1,11 @@
+#!/usr/bin/env python3
 # EXPORT AND SCHEMA GENERATION SCRIPT:
 
 import pandas as pd
 import numpy as np
 import sqlite3
 import argparse
-from .helper import get_current_project_name, set_current_project_name, \
+from helper import get_current_project_name, set_current_project_name, \
     get_file_save_name, get_save_folder, load_from_temp_pickle
 
 
@@ -15,8 +16,10 @@ def __main__():
     parser.add_argument("-sql", action="store_true", help="include if you want to export a sql db", default=False)
     parser.add_argument("-csv", action="store_true", help="include if you want to export in csv", default=False)
     parser.add_argument("-h5", action="store_true", help="include if you want to export in hdf5 format", default=False)
-    parser.add_argument("-msg", action="store_true", help="include if you want to export in msgpack format", default=False)
-    parser.add_argument("-pkl", action="store_true", help="include if you want to export in pickle format", default=False)
+    parser.add_argument("-msg", action="store_true", help="include if you want to export in msgpack format",
+                        default=False)
+    parser.add_argument("-pkl", action="store_true", help="include if you want to export in pickle format",
+                        default=False)
     args = parser.parse_args()
 
     project_name = ''
@@ -39,21 +42,21 @@ def __main__():
     conn = None
 
     if export_to_sql:
-        conn = sqlite3.connect(get_save_folder(project_name, 'exports') + get_file_save_name(project_name, 'sql'))
+        conn = sqlite3.connect(get_save_folder(project_name, 'sql_export') + '/' + str(project_name) + '.db')
 
     for i, df in enumerate(dfs):
         if export_to_csv:
-            df.to_csv(get_save_folder(project_name, 'csv_export') + str(relations[i].relation_name) + '.csv')
+            df.to_csv(get_save_folder(project_name, 'csv_export') + '/' + str(relations[i].relation_name) + '.csv')
         if export_to_hdf:
-            df.to_hdf(get_save_folder(project_name, 'h5_export') + str(relations[i].relation_name) + '.h5',
+            df.to_hdf(get_save_folder(project_name, 'h5_export') + '/' + str(relations[i].relation_name) + '.h5',
                       str(relations[i].relation_name), mode='w')
         if export_to_sql:
             df.to_sql(str(relations[i].relation_name), conn, if_exists='replace')
         if export_to_msg:
             df.to_msgpack(
-                get_save_folder(project_name, 'msg_export') + str(relations[i].relation_name) + '.msg')
+                get_save_folder(project_name, 'msg_export') + '/' + str(relations[i].relation_name) + '.msg')
         if export_to_pkl:
-            df.to_pickle(get_save_folder(project_name, 'pkl_export') + str(relations[i].relation_name) + '.pkl')
+            df.to_pickle(get_save_folder(project_name, 'pkl_export') + '/' + str(relations[i].relation_name) + '.pkl')
 
     if export_to_csv:
         print("Successfully exported to csv")

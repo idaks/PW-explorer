@@ -1,7 +1,9 @@
+#!/usr/bin/env python3
+
 import argparse
 import os
 import subprocess as subprocess
-from helper import get_asp_input_folder, get_asp_output_folder
+from helper import get_asp_input_folder, get_asp_output_folder, set_current_project_name
 
 """
 This script is used to run clingo on given clingo files, pre-process the output and then 
@@ -54,3 +56,4 @@ temp_data.writelines('\n'.join(orig_data[start:]))
 print("Preprocessed clingo output written to {}".format(get_asp_output_folder(project_name)))
 
 temp_data.close()
+set_current_project_name(project_name)

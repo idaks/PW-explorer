@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # SQLite QUERY SCRIPT:
 
 import sys
@@ -9,7 +10,7 @@ import os
 import string
 import argparse
 import pickle
-from .helper import mkdir_p, PossibleWorld, Relation, get_current_project_name, set_current_project_name, \
+from helper import mkdir_p, PossibleWorld, Relation, get_current_project_name, set_current_project_name, \
     load_from_temp_pickle, get_sql_conn, rel_id_from_rel_name, get_save_folder, get_file_save_name
 import sql_funcs
 
@@ -204,7 +205,7 @@ if args.intersection:
 
     r_id = args.rel_id
     if r_id is None:
-        r_id = rel_id_from_rel_name(args.rel_name)
+        r_id = rel_id_from_rel_name(args.rel_name, relations)
 
     soln = None
     try:
@@ -222,7 +223,7 @@ elif args.union:
 
     r_id = args.rel_id
     if r_id is None:
-        r_id = rel_id_from_rel_name(args.rel_name)
+        r_id = rel_id_from_rel_name(args.rel_name, relations)
 
     soln = None
     try:
@@ -240,7 +241,7 @@ elif args.freq:
 
     r_id = args.rel_id
     if r_id is None:
-        r_id = rel_id_from_rel_name(args.rel_name)
+        r_id = rel_id_from_rel_name(args.rel_name, relations)
 
     soln = None
     try:
@@ -258,7 +259,7 @@ elif args.num_tuples:
 
     r_id = args.rel_id
     if r_id is None:
-        r_id = rel_id_from_rel_name(args.rel_name)
+        r_id = rel_id_from_rel_name(args.rel_name, relations)
 
     pws_to_consider = args.pws
     if pws_to_consider == []:
@@ -281,7 +282,7 @@ elif args.difference is not None:
 
     r_id = args.rel_id
     if r_id is None:
-        r_id = rel_id_from_rel_name(args.rel_name)
+        r_id = rel_id_from_rel_name(args.rel_name, relations)
 
     if len(args.pws) != 2:
         print("Please provide exactly 2 possible world ids.")
@@ -312,7 +313,7 @@ elif args.redundant_column:
 
     r_id = args.rel_id
     if r_id is None:
-        r_id = rel_id_from_rel_name(args.rel_name)
+        r_id = rel_id_from_rel_name(args.rel_name, relations)
 
     soln = None
     try:
@@ -330,7 +331,7 @@ elif args.unique_tuples:
 
     r_id = args.rel_id
     if r_id is None:
-        r_id = rel_id_from_rel_name(args.rel_name)
+        r_id = rel_id_from_rel_name(args.rel_name, relations)
 
     soln = None
     try:
@@ -386,3 +387,4 @@ elif args.custom_file is not None:
 
 conn.commit()
 conn.close()
+set_current_project_name(project_name)

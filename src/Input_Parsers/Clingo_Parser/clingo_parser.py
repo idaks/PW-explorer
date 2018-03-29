@@ -2,7 +2,7 @@ from antlr4 import *
 from .Antlr_Files.ClingoLexer import ClingoLexer
 from .Antlr_Files.ClingoParser import ClingoParser
 from .Antlr_Files.ClingoListener import ClingoListener
-from ...helper import lineno, isfloat, mkdir_p, PossibleWorld, Relation
+from .helper import lineno, isfloat, mkdir_p, PossibleWorld, Relation
 import pandas as pd
 import numpy as np
 from antlr4.tree.Trees import Trees
@@ -66,7 +66,7 @@ def loadIntoPandas():
     # print lineno()
     for n, rl in enumerate(relations):
         cls = ['pw']
-        cls.extend([str('x' + str(i)) for i in range(1, rl.arrity + 1)])
+        cls.extend([str('x' + str(i)) for i in range(1, rl.arity + 1)])
 
         rws = []  # could convert into numpy if sure it's all float/int
         for m, pw in enumerate(pws):
@@ -140,8 +140,8 @@ class AntlrClingoListener(ClingoListener):
 
         sol = ctx.TEXT().getText();
         curr_rl_data = sol.split(',')
-        curr_rl.arrity = len(curr_rl_data)
-        rl_name_mod = str(curr_rl.relation_name + '_' + str(curr_rl.arrity))
+        curr_rl.arity = len(curr_rl_data)
+        rl_name_mod = str(curr_rl.relation_name + '_' + str(curr_rl.arity))
         curr_rl.relation_name = rl_name_mod
 
     def exitCustom_representation_soln(self, ctx):
@@ -158,7 +158,7 @@ class AntlrClingoListener(ClingoListener):
 
         foundMatch = False
         for rl in relations:
-            if curr_rl.relation_name == rl.relation_name and curr_rl.arrity == rl.arrity:
+            if curr_rl.relation_name == rl.relation_name and curr_rl.arity == rl.arity:
                 curr_rl.r_id = rl.r_id
                 # print rl.r_id, lineno() ##for debugging purposes
                 foundMatch = True
@@ -166,7 +166,7 @@ class AntlrClingoListener(ClingoListener):
 
         if not foundMatch:
             newRl = Relation(curr_rl.relation_name)
-            newRl.arity = curr_rl.arrity
+            newRl.arity = curr_rl.arity
             newRl.r_id = n_rls
             # print n_rls, lineno()
             n_rls += 1

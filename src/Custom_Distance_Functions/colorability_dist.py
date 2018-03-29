@@ -3,93 +3,90 @@ from sys import argv
 from sql_funcs import rel_id_from_rel_name
 import copy
 
+
 def get_colors_list(df, id):
+    idx = list(map(int, list(df[df.pw == id].x1)))
+    clrs = list(df[df.pw == id].x2)
 
-	idx = list(map(int, list(df[df.pw == id].x1)))
-	clrs = list(df[df.pw == id].x2)
+    ordered_clrs = [x for _, x in sorted(zip(idx, clrs))]
+    return ordered_clrs
 
-	ordered_clrs = [x for _,x in sorted(zip(idx, clrs))]
-	return ordered_clrs
 
-#get the underlying pattern in the form of a list of ints
+# get the underlying pattern in the form of a list of ints
 def get_pattern(sequence):
+    pattern = []
+    pattern_dict = {}
+    count_unique = 0
 
-	pattern = []
-	pattern_dict = {}
-	count_unique = 0
+    for element in sequence:
 
-	for element in sequence:
+        if element in pattern_dict:
+            pattern.append(pattern_dict[element])
+        else:
+            pattern.append(count_unique)
+            pattern_dict[element] = count_unique
+            count_unique += 1
 
-		if element in pattern_dict:
-			pattern.append(pattern_dict[element])
-		else:
-			pattern.append(count_unique)
-			pattern_dict[element] = count_unique
-			count_unique += 1
+    return pattern, count_unique
 
-	return pattern, count_unique
 
-def compare_patterns(p1, p2, check_cyclical_equivalence = True):
+def compare_patterns(p1, p2, check_cyclical_equivalence=True):
+    if (len(p1) != len(p2)):
+        return False
 
-	if (len(p1) != len(p2)):
-		return False
+    if p1 == p2:
+        return True
 
-	if p1 == p2:
-		return True
+    if (not check_cyclical_equivalence):
+        return False
 
-	if (not check_cyclical_equivalence):
-		return False
+    n = len(p2)
+    t2 = copy.copy(p2)
 
-	n = len(p2)
-	t2 = copy.copy(p2)
+    for i in range(n - 1):
+        temp = t2.pop()
+        t2.insert(0, temp)
+        new_pattern, _ = get_pattern(t2)
+        if (new_pattern == p1):
+            return True
 
-	for i in range(n-1):
-		temp = t2.pop()
-		t2.insert(0, temp)
-		new_pattern, _ = get_pattern(t2)
-		if (new_pattern == p1):
-			return True
+    return False
 
-	return False
 
 def dist_helper(s1, s2):
+    pattern_s1, unique_s1 = get_pattern(s1)
+    pattern_s2, unique_s2 = get_pattern(s2)
 
-	pattern_s1, unique_s1 = get_pattern(s1)
-	pattern_s2, unique_s2 = get_pattern(s2)
+    # print s1, s2
 
-	#print s1, s2
+    if unique_s1 != unique_s2:
+        return 1
 
-	if unique_s1 != unique_s2:
-		return 1
+    dist_ = 0 if compare_patterns(pattern_s1, pattern_s2) else 1
+    # print dist_
 
-	dist_ = 0 if compare_patterns(pattern_s1, pattern_s2) else 1
-	#print dist_
-
-	return dist_
-
+    return dist_
 
 
-def dist(pw_id_1, pw_id_2, dfs = None, pws = None, relations = None, conn = None):
+def dist(pw_id_1, pw_id_2, dfs=None, pws=None, relations=None, conn=None):
+    if dfs is None or relations is None:
+        print("None objects passed in.")
+        return -1
 
-	if dfs is None or relations is None:
-		print("None objects passed in.")
-		return -1
+    if pw_id_1 == pw_id_2:
+        return 0
 
-	if pw_id_1 == pw_id_2:
-		return 0
+    col_rel_id = rel_id_from_rel_name('col_2', relations)
+    df = dfs[col_rel_id]
 
-	col_rel_id = rel_id_from_rel_name('col_2', relations)
-	df = dfs[col_rel_id]
+    s1 = get_colors_list(df, pw_id_1)
+    s2 = get_colors_list(df, pw_id_2)
 
-	s1 = get_colors_list(df, pw_id_1)
-	s2 = get_colors_list(df, pw_id_2)
-
-	return dist_helper(s1, s2)
-
+    return dist_helper(s1, s2)
 
 #### DOESN't WORK COMPLETELY. NEED TO GENERATE NEW PATTERN EVERY TIME. NO SHORTCUTS ########
 
-#check if two patterns are the same (cyclically equivalent)
+# check if two patterns are the same (cyclically equivalent)
 # def compare_patterns(s1, s2):
 
 # 	if s1 == s2:
@@ -97,7 +94,7 @@ def dist(pw_id_1, pw_id_2, dfs = None, pws = None, relations = None, conn = None
 
 # 	return cyclically_equivalent(s1, s2)
 
-#check if two lists are cyclically equivalent
+# check if two lists are cyclically equivalent
 # def cyclically_equivalent(s1,s2):
 
 # 	n, i, j = len(s1), 0, 0
@@ -117,7 +114,7 @@ def dist(pw_id_1, pw_id_2, dfs = None, pws = None, relations = None, conn = None
 # 	return False
 
 
-#Basically given u and v, check if u is a sublist of vv (v followed by another copy of v)
+# Basically given u and v, check if u is a sublist of vv (v followed by another copy of v)
 # def alternate_cyclically_equivalent(s1, s2):
 
 # 	if len(s1) != len(s2):
@@ -129,7 +126,7 @@ def dist(pw_id_1, pw_id_2, dfs = None, pws = None, relations = None, conn = None
 
 # 	return is_sublist(v, u)
 
-#check if s is a sublist of l
+# check if s is a sublist of l
 # def is_sublist(l, s):
 
 # 	is_a_subset = False

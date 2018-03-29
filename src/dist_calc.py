@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import pandas as pd
 import numpy as np
 import os
@@ -5,9 +7,10 @@ import sqlite3
 import argparse
 import pickle
 import importlib
-from .helper import mkdir_p, PossibleWorld, Relation, get_current_project_name, set_current_project_name, \
-    load_from_temp_pickle, get_sql_conn, rel_id_from_rel_name, get_save_folder, get_file_save_name
-from .sql_funcs import rel_id_from_rel_name, freq_sqlite, difference_both_ways_sqlite, \
+from helper import mkdir_p, PossibleWorld, Relation, get_current_project_name, set_current_project_name, \
+    load_from_temp_pickle, get_sql_conn, rel_id_from_rel_name, get_save_folder, get_file_save_name, \
+    CUSTOM_DISTANCE_FUNCTIONS_FOLDER
+from sql_funcs import rel_id_from_rel_name, freq_sqlite, difference_both_ways_sqlite, \
     redundant_column_sqlite
 
 
@@ -146,7 +149,7 @@ def __main__():
             print("Distance Matrix:")
             print(str(dist_matrix))
 
-            with open(get_save_folder(project_name, 'temp_pickle_data') +
+            with open(get_save_folder(project_name, 'temp_pickle_data') + '/' +
                       get_file_save_name(project_name, 'dist_matrix'), 'wb') as f:
                 pickle.dump(dist_matrix, f)
 
@@ -192,7 +195,7 @@ def __main__():
             print("Distance Matrix:")
             print(str(dist_matrix))
 
-            with open(get_save_folder(project_name, 'temp_pickle_data') +
+            with open(get_save_folder(project_name, 'temp_pickle_data') + '/' +
                       get_file_save_name(project_name, 'dist_matrix'), 'wb') as f:
                 pickle.dump(dist_matrix, f)
 
@@ -205,7 +208,7 @@ def __main__():
     elif args.custom_dist_func:
 
         try:
-            a = importlib.import_module(args.custom_dist_func)
+            a = importlib.import_module(CUSTOM_DISTANCE_FUNCTIONS_FOLDER + '.' + args.custom_dist_func)
             dist_func = a.dist
         except Exception as e:
             print("Error importing from the given file")
@@ -235,7 +238,7 @@ def __main__():
             print("Distance Matrix:")
             print(str(dist_matrix))
 
-            with open(get_save_folder(project_name, 'temp_pickle_data') +
+            with open(get_save_folder(project_name, 'temp_pickle_data') + '/' +
                       get_file_save_name(project_name, 'dist_matrix'), 'wb') as f:
                 pickle.dump(dist_matrix, f)
 

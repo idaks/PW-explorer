@@ -88,6 +88,8 @@ PROJECT_ASP_OUTPUT_FOLDER = 'ASP_Output/'
 PROJECT_EXPORTS_FOLDER = 'Exports/'
 PROJECT_VISUALIZATIONS_FOLDER = 'Visualizations/'
 PROJECT_TEMP_PICKLE_DATA_FOLDER = 'temp_pickle_data/'
+CUSTOM_DISTANCE_FUNCTIONS_FOLDER = 'Custom_Distance_Functions'
+CUSTOM_VISUALIZATION_FUNCTIONS_FOLDER = 'Custom_Visualization_Functions'
 
 
 def get_asp_input_folder(project_name):
@@ -158,8 +160,8 @@ def load_from_temp_pickle(project_name, file_type):
     if file_type in ['dfs', 'pws', 'relations', 'dist_matrix', 'complexities']:
 
         try:
-            with open(get_save_folder(project_name, 'temp_pickle_data') + get_file_save_name(project_name, file_type),
-                      'rb') as input_file:
+            with open(get_save_folder(project_name, 'temp_pickle_data') + '/' +
+                      get_file_save_name(project_name, file_type), 'rb') as input_file:
                 return pickle.load(input_file)
         except IOError:
             print("Could not find the project, check project/session name entered.")
@@ -168,7 +170,7 @@ def load_from_temp_pickle(project_name, file_type):
 
 def get_sql_conn(project_name):
     try:
-        conn = sqlite3.connect(get_save_folder(project_name, 'sql_export') + str(project_name) + ".db")
+        conn = sqlite3.connect(get_save_folder(project_name, 'sql_export') + '/' +str(project_name) + ".db")
         return conn
     except sqlite3.Error:
         print("Could not find the associated sqlite database. Please recheck project_name " \

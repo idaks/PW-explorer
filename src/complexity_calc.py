@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import sys
 from sys import argv
 import pandas as pd
@@ -8,9 +10,9 @@ import sqlite3
 import argparse
 import pickle
 import importlib
-from .helper import PossibleWorld, Relation, load_from_temp_pickle, get_sql_conn, get_current_project_name, \
+from helper import PossibleWorld, Relation, load_from_temp_pickle, get_sql_conn, get_current_project_name, \
     set_current_project_name, get_save_folder, rel_id_from_rel_name
-from .sql_funcs import union_panda, intersection_sqlite, union_sqlite, freq_sqlite, \
+from sql_funcs import union_panda, intersection_sqlite, union_sqlite, freq_sqlite, \
     num_tuples_sqlite, difference_sqlite, difference_both_ways_sqlite, redundant_column_sqlite, unique_tuples_sqlite
 
 parser = argparse.ArgumentParser()

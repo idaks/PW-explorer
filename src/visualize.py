@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import pandas as pd
 import numpy as np
 import os
@@ -5,8 +7,8 @@ import sqlite3
 import argparse
 import pickle
 import importlib
-from .helper import PossibleWorld, Relation, load_from_temp_pickle, get_sql_conn, get_current_project_name, \
-    set_current_project_name, get_save_folder
+from helper import PossibleWorld, Relation, load_from_temp_pickle, get_sql_conn, get_current_project_name, \
+    set_current_project_name, get_save_folder, CUSTOM_VISUALIZATION_FUNCTIONS_FOLDER
 
 import matplotlib.pyplot as plt
 
@@ -22,7 +24,7 @@ parser.add_argument("-sdf", "--scale_down_factor", type=float, default=5.0,
 parser.add_argument("-clustering", action='store_true', default=False,
                     help="use DBScan Algorithm to cluster the Possible Worlds")
 parser.add_argument("-dendrogram", action='store_true', default=False, help="create various dendrograms using scipy")
-parser.add_argument("-custom_visualisation_func", type=str,
+parser.add_argument("-custom_visualization_func", type=str,
                     help="provide the .py file (without the .py) containing your custom visualisation function. "
                          "The function signature should be visualize(dfs = None, pws = None, relations = None, "
                          "conn = None, project_name=None) where the four arguments refer to the data acquired "
@@ -109,7 +111,7 @@ def dbscan_clustering(dist_matrix):
 
     plt.title('Estimated number of clusters: %d' % n_clusters_)
     save_folder = get_save_folder(project_name, 'visualization')
-    plt.savefig(save_folder + str(project_name) + '_dbscan_clustering_.png')
+    plt.savefig(save_folder + '/' + 'dbscan_clustering_.png')
     plt.figure()
     print('Clustering Output saved to: {}'.format(save_folder))
 
@@ -183,7 +185,7 @@ def linkage_dendrogram(dist_matrix):
         plt.figure(figsize=dendrogram_size)
         dendrogram(linkage_matrix, labels=[str(i) for i in range(len(dist_matrix))], show_leaf_counts=True)
         plt.title("Dendrogram ({})".format(dist_type))
-        plt.savefig(save_folder + str(project_name) + '_{}_dendrogram.png'.format(dist_type))
+        plt.savefig(save_folder + '/' + '{}_dendrogram.png'.format(dist_type))
 
     print('Dendrograms saved to:', save_folder)
 
@@ -222,7 +224,7 @@ def mds_graph_2(A):
     # G.edge_attr.update(color="blue", width="0.1")
 
     save_folder = get_save_folder(project_name, 'visualization')
-    G.draw(save_folder + str(project_name) + '_networkx_out.png', format='png', prog='neato')
+    G.draw(save_folder + '/' + 'networkx_out.png', format='png', prog='neato')
     print('MDS Neato Graph saved to:', save_folder)
 
 
@@ -234,7 +236,7 @@ def mds_sklearn(A):
     y = mds.embedding_[:, 1]
     plt.scatter(x, y)
     save_folder = get_save_folder(project_name, 'visualization')
-    plt.savefig(save_folder + str(project_name) + '_mds_sklearn.png')
+    plt.savefig(save_folder + '/' + 'mds_sklearn.png')
     plt.figure()
 
 
@@ -257,17 +259,17 @@ if len(pws) > 1:
         linkage_dendrogram(dist_matrix)
 # dendrogram_plotly(np.array([i for i in range(len(pws))]))
 
-if args.custom_visualisation_func:
+if args.custom_visualization_func:
 
     try:
-        a = importlib.import_module(args.custom_visualisation_func, package='Custom_Visualization_Functions')
-        visualisation_func = a.visualize
+        a = importlib.import_module(CUSTOM_VISUALIZATION_FUNCTIONS_FOLDER + '.' + args.custom_visualization_func)
+        visualization_func = a.visualize
     except Exception as e:
         print("Error importing from the given file")
         print("Error: ", str(e))
         exit(1)
 
-    visualisation_func(dfs, pws, relations, conn, project_name)
+    visualization_func(dfs, pws, relations, conn, project_name)
 
 set_current_project_name(project_name)
 conn.commit()

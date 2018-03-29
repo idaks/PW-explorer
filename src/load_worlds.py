@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from Input_Parsers.Clingo_Parser.clingo_parser import parse_clingo_output
 import pandas as pd
 import numpy as np
@@ -24,7 +26,7 @@ def __main__():
     project_name = args.project_name
 
     if fname is None:
-        fname = get_asp_output_folder(project_name) + str(project_name) + '.txt'
+        fname = get_asp_output_folder(project_name) + '/' + str(project_name) + '.txt'
     if not os.path.exists(fname):
         print("No file by the name {}.txt exists in the asp_output folder. "
               "Please recheck the project name.".format(project_name))
@@ -33,11 +35,11 @@ def __main__():
     parser_to_use = None
 
     if args.clingo:
-        parser_to_use = parse_clingo_output()
+        parser_to_use = parse_clingo_output
 
     dfs, relations, pws = parser_to_use(fname)
     for data, data_type in [(dfs, 'dfs'), (relations, 'relations'), (pws, 'pws')]:
-        with open(get_save_folder(project_name, 'temp_pickle_data') +
+        with open(get_save_folder(project_name, 'temp_pickle_data') + '/' +
                   get_file_save_name(project_name, data_type), 'wb') as f:
             pickle.dump(data, f)
     set_current_project_name(project_name)

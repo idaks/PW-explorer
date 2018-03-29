@@ -1,10 +1,11 @@
+#!/usr/bin/env python3
 # Pandas QUERY SCRIPT:
 
 import pandas as pd
 import numpy as np
 import argparse
 import pickle
-from .helper import mkdir_p, PossibleWorld, Relation, get_current_project_name, set_current_project_name, \
+from helper import mkdir_p, PossibleWorld, Relation, get_current_project_name, set_current_project_name, \
     load_from_temp_pickle, get_sql_conn, rel_id_from_rel_name, get_save_folder, get_file_save_name
 
 parser = argparse.ArgumentParser()
@@ -486,3 +487,5 @@ elif args.custom is not None:
         print("Query failed. Please check the provided query to make sure it is valid.")
         print("Error: ", str(e))
         exit(1)
+
+set_current_project_name(project_name)
