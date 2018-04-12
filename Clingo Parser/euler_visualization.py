@@ -96,7 +96,6 @@ def visualize(dfs=None, pws=None, relations=None, conn=None, project_name=None):
 								break
 					break
 
-		
 		nodes_sets = list(map(list, nodes_sets))
 		NODE_COLORS = ['#CCFFCC', '#FFFFCC', '#f4bf42', '#6346d6']
 		NODE_COLORS_USED = 0
@@ -108,11 +107,8 @@ def visualize(dfs=None, pws=None, relations=None, conn=None, project_name=None):
 					new_node_style = generate_node_style(NODE_COLORS[NODE_COLORS_USED])
 					NODE_COLORS_USED += 1
 					styles['node_styles'][tax] = new_node_style
-				
 				graph.node(node_set[0], _attributes = styles['node_styles'][tax])
-			
 			else:
-				
 				graph.node("\n".join(node_set), _attributes = styles['node_styles']['node_equal'])
 
 		df = dfs[rel_id_from_rel_name('pp_2', relations)]
