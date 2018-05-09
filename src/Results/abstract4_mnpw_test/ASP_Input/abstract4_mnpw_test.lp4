@@ -1,0 +1,263 @@
+r(1..24).
+
+% Region Meanings
+in(X, M) :- r(M), concept(X, T, N), N1=N+1, bit(M, T, N1).
+out(X, M) :- r(M), concept(X, T, N), N1=N+1, not bit(M, T, N1).
+in(X, M) :- r(M), concept2(X, _), not out(X, M).
+irs(M) :- in(X, M), out(X, M), r(M), concept2(X, _).
+
+% Region Constraints
+irs(X) :- ir(X, _).
+vrs(X) :- vr(X, _).
+vr(X, X) :- not irs(X), r(X).
+ir(X, X) :- not vrs(X), r(X).
+:- vrs(X), irs(X).
+
+concept2(A, B) :- concept(A,B,_).
+
+% Taxonomy Description
+
+%  Euler Bit
+bit(M, 0, V) :- r(M), M1=M/1, V = M1 \ 5.
+
+%  Euler Bit
+bit(M, 1, V) :- r(M), M1=M/5, V = M1 \ 5.
+
+concept2("1_A", 0).
+concept("1_B", 0, 0).
+concept("1_C", 0, 1).
+concept("1_D", 0, 2).
+concept("1_E", 0, 3).
+concept2("2_A", 1).
+concept("2_B", 1, 0).
+concept("2_D", 1, 1).
+concept("2_F", 1, 2).
+concept("2_G", 1, 3).
+
+% "1_B" isa "1_A"
+ir(X, r6) :- in("1_B", X), out("1_A", X).
+:- #count {X : vrs(X), in("1_B", X), in("1_A", X)} = 0.
+
+% "1_C" isa "1_A"
+ir(X, r7) :- in("1_C", X), out("1_A", X).
+:- #count {X : vrs(X), in("1_C", X), in("1_A", X)} = 0.
+
+% "1_D" isa "1_A"
+ir(X, r8) :- in("1_D", X), out("1_A", X).
+:- #count {X : vrs(X), in("1_D", X), in("1_A", X)} = 0.
+
+% "1_E" isa "1_A"
+ir(X, r9) :- in("1_E", X), out("1_A", X).
+:- #count {X : vrs(X), in("1_E", X), in("1_A", X)} = 0.
+
+% "2_B" isa "2_A"
+ir(X, r16) :- in("2_B", X), out("2_A", X).
+:- #count {X : vrs(X), in("2_B", X), in("2_A", X)} = 0.
+
+% "2_D" isa "2_A"
+ir(X, r17) :- in("2_D", X), out("2_A", X).
+:- #count {X : vrs(X), in("2_D", X), in("2_A", X)} = 0.
+
+% "2_F" isa "2_A"
+ir(X, r18) :- in("2_F", X), out("2_A", X).
+:- #count {X : vrs(X), in("2_F", X), in("2_A", X)} = 0.
+
+% "2_G" isa "2_A"
+ir(X, r19) :- in("2_G", X), out("2_A", X).
+:- #count {X : vrs(X), in("2_G", X), in("2_A", X)} = 0.
+
+% Coverage for "1_A"
+out("1_A", X) :- out("1_B", X), out("1_C", X), out("1_D", X), out("1_E", X).
+
+% Coverage for "2_A"
+out("2_A", X) :- out("2_B", X), out("2_D", X), out("2_F", X), out("2_G", X).
+
+% "1_B" ! "1_C"
+ir(X, r0) :- in("1_B", X), in("1_C", X).
+:- #count {X : vrs(X), in("1_B", X), out("1_C", X)} = 0.
+:- #count {X : vrs(X), in("1_C", X), out("1_B", X)} = 0.
+
+% "1_B" ! "1_D"
+ir(X, r1) :- in("1_B", X), in("1_D", X).
+:- #count {X : vrs(X), in("1_B", X), out("1_D", X)} = 0.
+:- #count {X : vrs(X), in("1_D", X), out("1_B", X)} = 0.
+
+% "1_B" ! "1_E"
+ir(X, r2) :- in("1_B", X), in("1_E", X).
+:- #count {X : vrs(X), in("1_B", X), out("1_E", X)} = 0.
+:- #count {X : vrs(X), in("1_E", X), out("1_B", X)} = 0.
+
+% "1_C" ! "1_D"
+ir(X, r3) :- in("1_C", X), in("1_D", X).
+:- #count {X : vrs(X), in("1_C", X), out("1_D", X)} = 0.
+:- #count {X : vrs(X), in("1_D", X), out("1_C", X)} = 0.
+
+% "1_C" ! "1_E"
+ir(X, r4) :- in("1_C", X), in("1_E", X).
+:- #count {X : vrs(X), in("1_C", X), out("1_E", X)} = 0.
+:- #count {X : vrs(X), in("1_E", X), out("1_C", X)} = 0.
+
+% "1_D" ! "1_E"
+ir(X, r5) :- in("1_D", X), in("1_E", X).
+:- #count {X : vrs(X), in("1_D", X), out("1_E", X)} = 0.
+:- #count {X : vrs(X), in("1_E", X), out("1_D", X)} = 0.
+
+% "2_B" ! "2_D"
+ir(X, r10) :- in("2_B", X), in("2_D", X).
+:- #count {X : vrs(X), in("2_B", X), out("2_D", X)} = 0.
+:- #count {X : vrs(X), in("2_D", X), out("2_B", X)} = 0.
+
+% "2_B" ! "2_F"
+ir(X, r11) :- in("2_B", X), in("2_F", X).
+:- #count {X : vrs(X), in("2_B", X), out("2_F", X)} = 0.
+:- #count {X : vrs(X), in("2_F", X), out("2_B", X)} = 0.
+
+% "2_B" ! "2_G"
+ir(X, r12) :- in("2_B", X), in("2_G", X).
+:- #count {X : vrs(X), in("2_B", X), out("2_G", X)} = 0.
+:- #count {X : vrs(X), in("2_G", X), out("2_B", X)} = 0.
+
+% "2_D" ! "2_F"
+ir(X, r13) :- in("2_D", X), in("2_F", X).
+:- #count {X : vrs(X), in("2_D", X), out("2_F", X)} = 0.
+:- #count {X : vrs(X), in("2_F", X), out("2_D", X)} = 0.
+
+% "2_D" ! "2_G"
+ir(X, r14) :- in("2_D", X), in("2_G", X).
+:- #count {X : vrs(X), in("2_D", X), out("2_G", X)} = 0.
+:- #count {X : vrs(X), in("2_G", X), out("2_D", X)} = 0.
+
+% "2_F" ! "2_G"
+ir(X, r15) :- in("2_F", X), in("2_G", X).
+:- #count {X : vrs(X), in("2_F", X), out("2_G", X)} = 0.
+:- #count {X : vrs(X), in("2_G", X), out("2_F", X)} = 0.
+
+% Articulations
+
+% "1_A" ['<', '='] "2_A"
+:- #count {A : vrs(A), in("1_A", A), out("2_A", A)} > 0,
+   #count {B : vrs(B), in("1_A", B), in("2_A", B)} > 0,
+   #count {C : vrs(C), out("1_A", C), in("2_A", C)} > 0.
+:- #count {A : vrs(A), in("1_A", A), out("2_A", A)} > 0,
+   #count {B : vrs(B), in("1_A", B), in("2_A", B)} = 0,
+   #count {C : vrs(C), out("1_A", C), in("2_A", C)} > 0.
+:- #count {A : vrs(A), in("1_A", A), out("2_A", A)} > 0,
+   #count {B : vrs(B), in("1_A", B), in("2_A", B)} > 0,
+   #count {C : vrs(C), out("1_A", C), in("2_A", C)} = 0.
+ir(X, r20) :- in("1_A", X), out("2_A", X).
+:- #count {X : vrs(X), in("1_A", X), in("2_A", X)} = 0.
+vr(X, r20) ; ir(X, r20) :- out("1_A", X), in("2_A", X).
+
+% "1_B" ['='] "2_B"
+:- #count {A : vrs(A), in("1_B", A), out("2_B", A)} > 0,
+   #count {B : vrs(B), in("1_B", B), in("2_B", B)} > 0,
+   #count {C : vrs(C), out("1_B", C), in("2_B", C)} > 0.
+:- #count {A : vrs(A), in("1_B", A), out("2_B", A)} = 0,
+   #count {B : vrs(B), in("1_B", B), in("2_B", B)} > 0,
+   #count {C : vrs(C), out("1_B", C), in("2_B", C)} > 0.
+:- #count {A : vrs(A), in("1_B", A), out("2_B", A)} > 0,
+   #count {B : vrs(B), in("1_B", B), in("2_B", B)} = 0,
+   #count {C : vrs(C), out("1_B", C), in("2_B", C)} > 0.
+:- #count {A : vrs(A), in("1_B", A), out("2_B", A)} > 0,
+   #count {B : vrs(B), in("1_B", B), in("2_B", B)} > 0,
+   #count {C : vrs(C), out("1_B", C), in("2_B", C)} = 0.
+ir(X, r21) :- in("1_B", X), out("2_B", X).
+:- #count {X : vrs(X), in("1_B", X), in("2_B", X)} = 0.
+ir(X, r21) :- out("1_B", X), in("2_B", X).
+
+% "1_C" ['<', 'o'] "2_F"
+:- #count {A : vrs(A), in("1_C", A), out("2_F", A)} > 0,
+   #count {B : vrs(B), in("1_C", B), in("2_F", B)} = 0,
+   #count {C : vrs(C), out("1_C", C), in("2_F", C)} > 0.
+:- #count {A : vrs(A), in("1_C", A), out("2_F", A)} = 0,
+   #count {B : vrs(B), in("1_C", B), in("2_F", B)} > 0,
+   #count {C : vrs(C), out("1_C", C), in("2_F", C)} = 0.
+:- #count {A : vrs(A), in("1_C", A), out("2_F", A)} > 0,
+   #count {B : vrs(B), in("1_C", B), in("2_F", B)} > 0,
+   #count {C : vrs(C), out("1_C", C), in("2_F", C)} = 0.
+vr(X, r22) ; ir(X, r22) :- in("1_C", X), out("2_F", X).
+:- #count {X : vrs(X), in("1_C", X), in("2_F", X)} = 0.
+:- #count {X : vrs(X), out("1_C", X), in("2_F", X)} = 0.
+
+% "1_D" ['='] "2_D"
+:- #count {A : vrs(A), in("1_D", A), out("2_D", A)} > 0,
+   #count {B : vrs(B), in("1_D", B), in("2_D", B)} > 0,
+   #count {C : vrs(C), out("1_D", C), in("2_D", C)} > 0.
+:- #count {A : vrs(A), in("1_D", A), out("2_D", A)} = 0,
+   #count {B : vrs(B), in("1_D", B), in("2_D", B)} > 0,
+   #count {C : vrs(C), out("1_D", C), in("2_D", C)} > 0.
+:- #count {A : vrs(A), in("1_D", A), out("2_D", A)} > 0,
+   #count {B : vrs(B), in("1_D", B), in("2_D", B)} = 0,
+   #count {C : vrs(C), out("1_D", C), in("2_D", C)} > 0.
+:- #count {A : vrs(A), in("1_D", A), out("2_D", A)} > 0,
+   #count {B : vrs(B), in("1_D", B), in("2_D", B)} > 0,
+   #count {C : vrs(C), out("1_D", C), in("2_D", C)} = 0.
+ir(X, r23) :- in("1_D", X), out("2_D", X).
+:- #count {X : vrs(X), in("1_D", X), in("2_D", X)} = 0.
+ir(X, r23) :- out("1_D", X), in("2_D", X).
+
+% "1_E" ['=', 'o'] "2_G"
+:- #count {A : vrs(A), in("1_E", A), out("2_G", A)} = 0,
+   #count {B : vrs(B), in("1_E", B), in("2_G", B)} > 0,
+   #count {C : vrs(C), out("1_E", C), in("2_G", C)} > 0.
+:- #count {A : vrs(A), in("1_E", A), out("2_G", A)} > 0,
+   #count {B : vrs(B), in("1_E", B), in("2_G", B)} = 0,
+   #count {C : vrs(C), out("1_E", C), in("2_G", C)} > 0.
+:- #count {A : vrs(A), in("1_E", A), out("2_G", A)} > 0,
+   #count {B : vrs(B), in("1_E", B), in("2_G", B)} > 0,
+   #count {C : vrs(C), out("1_E", C), in("2_G", C)} = 0.
+vr(X, r24) ; ir(X, r24) :- in("1_E", X), out("2_G", X).
+:- #count {X : vrs(X), in("1_E", X), in("2_G", X)} = 0.
+vr(X, r24) ; ir(X, r24) :- out("1_E", X), in("2_G", X).
+
+% Decoding Rules
+:- rel(X, Y, "<"), rel(X, Y, "="), concept2(X, N1), concept2(Y, N2).
+:- rel(X, Y, "<"), rel(X, Y, "o"), concept2(X, N1), concept2(Y, N2).
+:- rel(X, Y, "<"), rel(X, Y, "!"), concept2(X, N1), concept2(Y, N2).
+:- rel(X, Y, "<"), rel(X, Y, ">"), concept2(X, N1), concept2(Y, N2).
+:- rel(X, Y, "="), rel(X, Y, "o"), concept2(X, N1), concept2(Y, N2).
+:- rel(X, Y, "="), rel(X, Y, "!"), concept2(X, N1), concept2(Y, N2).
+:- rel(X, Y, "="), rel(X, Y, ">"), concept2(X, N1), concept2(Y, N2).
+:- rel(X, Y, "o"), rel(X, Y, "!"), concept2(X, N1), concept2(Y, N2).
+:- rel(X, Y, "o"), rel(X, Y, ">"), concept2(X, N1), concept2(Y, N2).
+:- rel(X, Y, "!"), rel(X, Y, ">"), concept2(X, N1), concept2(Y, N2).
+
+:- not rel(X, Y, "<"), not rel(X, Y, "="), not rel(X, Y, "o"), not rel(X, Y, "!"), not rel(X, Y, ">"), concept2(X, N1), concept2(Y, N2), N1 < N2.
+
+rel(X, Y, "<") :- not hint(X, Y, 0), hint(X, Y, 1), hint(X, Y, 2).
+rel(X, Y, "=") :- not hint(X, Y, 0), hint(X, Y, 1), not hint(X, Y, 2).
+rel(X, Y, "o") :- hint(X, Y, 0), hint(X, Y, 1), hint(X, Y, 2).
+rel(X, Y, "!") :- hint(X, Y, 0), not hint(X, Y, 1), hint(X, Y, 2).
+rel(X, Y, ">") :- hint(X, Y, 0), hint(X, Y, 1), not hint(X, Y, 2).
+
+hint(X, Y, 0) :- concept2(X, N1), concept2(Y, N2), N1 < N2, vrs(R), in(X, R), out(Y, R).
+hint(X, Y, 1) :- concept2(X, N1), concept2(Y, N2), N1 < N2, vrs(R), in(X, R), in(Y, R).
+hint(X, Y, 2) :- concept2(X, N1), concept2(Y, N2), N1 < N2, vrs(R), out(X, R), in(Y, R).
+
+
+% Child Parent Rules for Viz
+
+bl("1_A", "1_B").
+bl("1_A", "1_C").
+bl("1_A", "1_D").
+bl("1_A", "1_E").
+bl("2_A", "2_B").
+bl("2_A", "2_D").
+bl("2_A", "2_F").
+bl("2_A", "2_G").
+
+#show rel/3.
+eq(A, B) :- rel(A, B, "=").
+po(A, B) :- rel(A, B, "o").
+dr(A, B) :- rel(A, B, "!").
+pp(A, B) :- rel(A, B, "<").
+pp(B, A) :- rel(A, B, ">").
+pp(Y,X) :- bl(X,Y).
+u(X) :- bl(_,X).
+u(X) :- bl(X,_).
+#show eq/2.
+#show po/2.
+#show pp/2.
+#show dr/2.
+#show bl/2.
+#show u/1.
