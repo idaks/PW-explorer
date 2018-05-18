@@ -121,12 +121,17 @@ def visualize(dfs=None, pws=None, relations=None, conn=None, project_name=None):
             G.add_edge(remove_quotes(row['x1']), remove_quotes(row['x2']), **styles['edge_styles']['proper_part_edge'])
 
         # Remove the redundant edges i.e. edges that go to ancestors of a parent
+        #print('pw{}'.format(pw_id))
         for node in G.nodes:
             pred = G.predecessors(node)
             succ = G.successors(node)
+            #print('node: {}'.format(node))
             for pred_ in pred:
+                #print('predecessor: {}'.format(pred_))
                 for succ_ in succ:
+                    #print('successor: {}'.format(succ_))
                     if G.has_edge(pred_, succ_):
+                        #print('removing edge {} {}'.format(pred_, succ_))
                         G.remove_edge(pred_, succ_)
 
         # Add partial overlap edges
