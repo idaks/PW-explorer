@@ -1,0 +1,78 @@
+%RCC RULES:
+
+eq(X,Y) :- eq(X,Z), eq(Z,Y).
+dr(X,Y) :- eq(X,Z), dr(Z,Y).
+pp(X,Y) :- eq(X,Z), pp(Z,Y).
+pi(X,Y) :- eq(X,Z), pi(Z,Y).
+po(X,Y) :- eq(X,Z), po(Z,Y).
+
+dr(X,Y) :- dr(X,Z), eq(Z,Y).
+1 {dr(X,Y) ; pp(X,Y) ; po(X,Y)} :- dr(X,Z), pp(Z,Y).
+1 {dr(X,Y) ; pi(X,Y) ; po(X,Y)} :- dr(X,Z), pi(Z,Y).
+1 {dr(X,Y) ; pp(X,Y) ; po(X,Y)} :- dr(X,Z), po(Z,Y).
+
+pp(X,Y) :- pp(X,Z), eq(Z,Y).
+dr(X,Y) :- pp(X,Z), dr(Z,Y).
+pp(X,Y) :- pp(X,Z), pp(Z,Y).
+dr(X,Y) ; pp(X,Y) ; po(X,Y) :- pp(X,Z), po(Z,Y).
+
+pi(X,Y) :- pi(X,Z), eq(Z,Y).
+1 {dr(X,Y) ; pi(X,Y) ; po(X,Y)} :- pi(X,Z), dr(Z,Y).
+pi(X,Y) :- pi(X,Z), pi(Z,Y).
+1 {pi(X,Y) ; po(X,Y)} :- pi(X,Z), po(Z,Y).
+
+po(X,Y) :- po(X,Z), eq(Z,Y).
+1 {dr(X,Y) ; pi(X,Y) ; po(X,Y)} :- po(X,Z), dr(Z,Y).
+1 {pp(X,Y) ; po(X,Y)} :- po(X,Z), pp(Z,Y).
+1 {dr(X,Y) ; pi(X,Y) ; po(X,Y)} :- po(X,Z), pi(Z,Y).
+
+u(X) :- dr(X,_).
+u(X) :- dr(_,X).
+u(X) :- eq(X,_).
+u(X) :- eq(_,X).
+u(X) :- po(X,_).
+u(X) :- po(_,X).
+u(X) :- pp(X,_).
+u(X) :- pp(_,X).
+u(X) :- pi(X,_).
+u(X) :- pi(_,X).
+u(X) :- bl(_,X).
+u(X) :- bl(X,_).
+
+eq(X,X) :- u(X).
+pi(X,Y) :- pp(Y,X).
+pp(X,Y) :- pi(Y,X).
+eq(X,Y) :- eq(Y,X).
+po(X,Y) :- po(Y,X).
+dr(X,Y) :- dr(Y,X).
+dr(Y,Z) :- bl(X,Y), bl(X,Z), Y != Z.
+pp(Y,X) :- bl(X,Y).
+
+1 {eq(X,Y) ; dr(X,Y) ; pp(X,Y) ; pi(X,Y) ; po(X,Y)} :- u(X), u(Y), X != Y.
+
+:- eq(X,Y), dr(X,Y).
+:- eq(X,Y), pp(X,Y).
+:- eq(X,Y), pi(X,Y).
+:- eq(X,Y), po(X,Y).
+:- dr(X,Y), pp(X,Y).
+:- dr(X,Y), pi(X,Y).
+:- dr(X,Y), po(X,Y).
+:- pp(X,Y), pi(X,Y).
+:- pp(X,Y), po(X,Y).
+:- pi(X,Y), po(X,Y).
+
+%TAXONOMY DESC RULES
+
+bl("1_A","1_B").
+bl("1_A","1_C").
+bl("1_A","1_D").
+bl("1_A","1_E").
+bl("2_A","2_B").
+bl("2_A","2_D").
+bl("2_A","2_F").
+bl("2_A","2_G").
+1 { pp("1_A","2_A") ; eq("1_A","2_A") }.
+eq("1_B","2_B").
+1 { pp("1_C","2_F") ; po("1_C","2_F") }.
+eq("1_D","2_D").
+1 { eq("1_E","2_G") ; po("1_E","2_G") }.

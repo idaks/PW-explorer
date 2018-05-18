@@ -17,4 +17,4 @@ python3 export.py -p $PROJECT_NAME -csv -sql
 python3 dist_calc.py -p $PROJECT_NAME -custom_dist_func dummy_dist_func -calc_dist_matrix
 
 #Produce the visualisations for the generated PWs. Stores these in Mini Workflow/parser_output/euler_visualizations/$PROJECT_NAME/
-python3 visualize.py -p $PROJECT_NAME -custom_visualisation_func euler_visualization_nxpd
+python3 visualize.py -p $PROJECT_NAME -custom_visualization_func euler_visualization_nxpd
