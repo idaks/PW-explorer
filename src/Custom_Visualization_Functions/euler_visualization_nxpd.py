@@ -123,8 +123,8 @@ def visualize(dfs=None, pws=None, relations=None, conn=None, project_name=None):
         # Remove the redundant edges i.e. edges that go to ancestors of a parent
         #print('pw{}'.format(pw_id))
         for node in G.nodes:
-            pred = G.predecessors(node)
-            succ = G.successors(node)
+            pred = list(G.predecessors(node))
+            succ = list(G.successors(node))
             #print('node: {}'.format(node))
             for pred_ in pred:
                 #print('predecessor: {}'.format(pred_))
