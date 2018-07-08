@@ -6,7 +6,7 @@ import subprocess as subprocess
 from helper import get_asp_input_folder, get_asp_output_folder, set_current_project_name
 
 """
-This script is used to run clingo on given clingo files, pre-process the output and then 
+This script is used to run clingo on given clingo files, pre-process the output and then
 save it to the appropriate location.
 """
 
