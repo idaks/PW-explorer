@@ -1,15 +1,9 @@
 #!/usr/bin/env python3
 
-import argparse
-import pandas as pd
-import pickle
-import numpy as np
-import os
-from helper import lineno, isfloat, mkdir_p, rel_id_from_rel_name, get_save_folder, get_file_save_name, load_from_temp_pickle, Relation, PossibleWorld
-import sqlite3
-from graphviz import Digraph
+from helper import rel_id_from_rel_name, get_save_folder
 from nxpd import draw
 import networkx as nx
+
 
 def get_styles(proj_name, pw_id):
     return {
@@ -47,7 +41,8 @@ def get_styles(proj_name, pw_id):
         }
     }
 
-#Utility functions
+# Utility functions
+
 
 def remove_quotes(x):
     if x[0] == '"':
@@ -70,6 +65,7 @@ def get_parent(node, djs):
     djs[node] = parent
     return parent
 
+
 def union(node1, node2, djs):
     node1 = get_parent(node1, djs)
     node2 = get_parent(node2, djs)
@@ -77,11 +73,13 @@ def union(node1, node2, djs):
         djs[node2] = node1
     return node1
 
+
 def setup_djs(djs):
     for child, parent in djs.items():
         djs[child] = get_parent(child, djs)
 
 # Nodes merge function
+
 
 def merge_nodes(G,nodes, new_node, attr):
     G_ = nx.contracted_nodes(G, *nodes)
@@ -92,7 +90,7 @@ def merge_nodes(G,nodes, new_node, attr):
 
 # Visualization function
 
-def visualize(dfs=None, pws=None, relations=None, conn=None, project_name=None):
+def visualize(dfs=None, pws=None, relations=None, conn=None, project_name=None, save_to_file=True):
 
     for pw_id in range(1, len(pws) + 1):
 
@@ -113,7 +111,6 @@ def visualize(dfs=None, pws=None, relations=None, conn=None, project_name=None):
                 styles['node_styles'][tax] = new_node_style
             G.add_node(node_name, **styles['node_styles'][tax])
 
-
         # Add proper part edges
         df = dfs[rel_id_from_rel_name('pp_2', relations)]
         df = df[df.pw == pw_id]
@@ -121,17 +118,16 @@ def visualize(dfs=None, pws=None, relations=None, conn=None, project_name=None):
             G.add_edge(remove_quotes(row['x1']), remove_quotes(row['x2']), **styles['edge_styles']['proper_part_edge'])
 
         # Remove the redundant edges i.e. edges that go to ancestors of a parent
-        #print('pw{}'.format(pw_id))
         for node in G.nodes:
             pred = list(G.predecessors(node))
             succ = list(G.successors(node))
-            #print('node: {}'.format(node))
+            # print('node: {}'.format(node))
             for pred_ in pred:
-                #print('predecessor: {}'.format(pred_))
+                # print('predecessor: {}'.format(pred_))
                 for succ_ in succ:
-                    #print('successor: {}'.format(succ_))
+                    # print('successor: {}'.format(succ_))
                     if G.has_edge(pred_, succ_):
-                        #print('removing edge {} {}'.format(pred_, succ_))
+                        #  print('removing edge {} {}'.format(pred_, succ_))
                         G.remove_edge(pred_, succ_)
 
         # Add partial overlap edges
@@ -173,9 +169,12 @@ def visualize(dfs=None, pws=None, relations=None, conn=None, project_name=None):
         for final_djs_ in final_djs:
             G = merge_nodes(G, final_djs_, '\n'.join(final_djs_), styles['node_styles']['node_equal'])
 
-        folder_name = get_save_folder(project_name, 'euler_visualization_nxpd')
-        draw(G, format='gv', filename='{}/pw-{}'.format(folder_name, pw_id))
-        draw(G, format='pdf', filename='{}/pw-{}.pdf'.format(folder_name, pw_id))
+        if save_to_file:
+            folder_name = get_save_folder(project_name, 'euler_visualization_nxpd')
+            draw(G, format='gv', filename='{}/pw-{}'.format(folder_name, pw_id))
+            draw(G, format='pdf', filename='{}/pw-{}.pdf'.format(folder_name, pw_id))
+
+        return G
 
 
 

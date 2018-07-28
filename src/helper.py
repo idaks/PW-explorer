@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import errno
 import inspect
 import sys
@@ -40,6 +42,17 @@ def mkdir_p(path):
             pass
         else:
             raise
+
+
+def preprocess_clingo_output(clingo_raw_output: list):
+
+    start = 0
+    for i, line in enumerate(clingo_raw_output):
+        if line.strip() == 'Solving...':
+            start = i + 1
+            break
+
+    return clingo_raw_output[start:]
 
 
 ###################################################################

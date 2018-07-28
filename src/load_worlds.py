@@ -7,7 +7,7 @@ import numpy as np
 import os
 import argparse
 import pickle
-from helper import get_asp_output_folder, set_current_project_name, get_save_folder, get_file_save_name
+from helper import get_asp_output_folder, set_current_project_name, get_save_folder, get_file_save_name, preprocess_clingo_output
 
 
 def __main__():
@@ -32,17 +32,37 @@ def __main__():
               "Please recheck the project name.".format(project_name))
         exit(1)
 
-    parser_to_use = None
+    dfs, relations, pws = parse_solution(fname, 'clingo' if args.clingo else 'dlv')
 
-    if args.clingo:
-        parser_to_use = parse_clingo_output
-
-    dfs, relations, pws = parser_to_use(fname)
     for data, data_type in [(dfs, 'dfs'), (relations, 'relations'), (pws, 'pws')]:
         with open(get_save_folder(project_name, 'temp_pickle_data') + '/' +
                   get_file_save_name(project_name, data_type), 'wb') as f:
             pickle.dump(data, f)
     set_current_project_name(project_name)
+
+def parse_solution(fname, reasoner='clingo'):
+
+    parser_to_use = None
+    if reasoner == 'clingo':
+        parser_to_use = parse_clingo_output
+    else:
+        print("Unrecognized reasoner selected")
+        exit(1)
+
+    dfs, relations, pws = parser_to_use(fname)
+    return dfs, relations, pws
+
+def load_worlds(clingo_output: list, reasoner='clingo', preprocessed: bool=True):
+
+    if not preprocessed:
+        clingo_output = preprocess_clingo_output(clingo_output)
+
+    dummy_fname = 'sjbcbshlpowieiohbcjhsbnckibubkjcnaiuhwyegvjcbwscuawhbnckbuveyrb.txt'
+    with open(dummy_fname, 'w') as f:
+        f.write('\n'.join(clingo_output))
+    dfs, relations, pws = parse_solution(dummy_fname, reasoner)
+    os.remove(dummy_fname)
+    return dfs, relations, pws
 
 
 if __name__ == '__main__':
