@@ -8,77 +8,8 @@ import pickle
 from helper import mkdir_p, PossibleWorld, Relation, get_current_project_name, set_current_project_name, \
     load_from_temp_pickle, get_sql_conn, rel_id_from_rel_name, get_save_folder, get_file_save_name
 
-parser = argparse.ArgumentParser()
-parser.add_argument("-p", "--project_name", type=str, help="provide session/project name used while parsing")
-group = parser.add_mutually_exclusive_group()
-group.add_argument("-intersection", action='store_true', default=False,
-                   help="provide either relation name or relation_id using the -rel_name or -rel_id flag respectively, "
-                        "columns to consider using the -cols flag and possible worlds to consider using the -pws flag.")
-group.add_argument("-union", action='store_true', default=False,
-                   help="provide either relation name or relation_id using the -rel_name or -rel_id flag respectively, "
-                        "columns to consider using the -cols flag and possible worlds to consider using the -pws flag.")
-group.add_argument("-freq", action='store_true', default=False,
-                   help="provide either relation name or relation_id using the -rel_name or -rel_id flag respectively, "
-                        "columns to consider using the -cols flag, possible worlds to consider using the -pws flag and "
-                        "the values for the columns (in the mentioned order) using the -vals flag (optional).")
-group.add_argument("-num_tuples", action='store_true', default=False,
-                   help="provide either relation name or relation_id using the -rel_name or -rel_id flag respectively "
-                        "and the possible world ids to count the tuples in using the -pws flag.")
-group.add_argument("-difference", choices=('one-way', 'symmetric'),
-                   help="provide either relation name or relation_id using the -rel_name or -rel_id flag respectively, "
-                        "columns to consider using the -cols flag and the two possible world ids using the -pws flag.")
-group.add_argument("-redundant_column", action='store_true', default=False,
-                   help="provide either relation name or relation_id using the -rel_name or -rel_id flag respectively, "
-                        "columns to consider using the -cols flag and possible worlds to consider using the -pws flag.")
-group.add_argument("-unique_tuples", action='store_true', default=False,
-                   help="provide either relation name or relation_id using the -rel_name or -rel_id flag respectively, "
-                        "columns to consider using the -cols flag and possible worlds to consider using the -pws flag.")
-group.add_argument("-custom", type=str,
-                   help="provide the query enclosed in '' and either relation name or relation_id using the -rel_name "
-                        "or -rel_id flag respectively.")
-group.add_argument("-show_relations", action='store_true', default=False,
-                   help="to get a list of relations and corresponding relation ids.")
 
-parser.add_argument("-rel_name", type=str,
-                    help="provide the relation name to query. Note that if both rel_id and rel_name are provided, "
-                         "rel_name is disregarded.")
-parser.add_argument("-rel_id", type=int,
-                    help="provide the relation id of the relation to query. To view relation ids, use -show_relations")
-parser.add_argument("-cols", type=str, nargs='*', default=[],
-                    help="provide the columns of the selected relations to consider for the chosen query. If you want "
-                         "to consider all the columns, do not include this flag.")
-parser.add_argument("-pws", type=int, nargs='*', default=[],
-                    help="provide the possible world ids of the possible world to consider for this query. If you want "
-                         "to consider all the possible worlds, do not include this flag. Please note that difference "
-                         "query requires exactly 2 arguments for this flag.")
-parser.add_argument("-vals", nargs='*', default=[], type=str,
-                    help="provide the values for the freq query in the same order as the mentioned columns. If you "
-                         "want to query all possible tuples, do not include this flag.")
-
-args = parser.parse_args()
-
-project_name = ''
-
-if args.project_name is None:
-    project_name = get_current_project_name()
-    if project_name is None:
-        print("Couldn't find current project. Please provide a project name.")
-        exit(1)
-else:
-    project_name = args.project_name
-
-dfs = load_from_temp_pickle(project_name, 'dfs')
-relations = load_from_temp_pickle(project_name, 'relations')
-pws = load_from_temp_pickle(project_name, 'pws')
-expected_pws = len(pws)
-
-
-def intersection_panda(rl_id=0, col_names=[], pws_to_consider=[j for j in range(1, expected_pws + 1)], do_print=True):
-    global relations
-    global expected_pws
-    global dfs
-    global conn
-    global pws
+def intersection_panda(relations, expected_pws, dfs, rl_id=0, col_names=[], pws_to_consider=[], do_print=True):
 
     if pws_to_consider == []:
         pws_to_consider = [j for j in range(1, expected_pws + 1)]
@@ -102,12 +33,7 @@ def intersection_panda(rl_id=0, col_names=[], pws_to_consider=[j for j in range(
     return s1
 
 
-def union_panda(rl_id=0, col_names=[], pws_to_consider=[j for j in range(1, expected_pws + 1)], do_print=True):
-    global relations
-    global expected_pws
-    global dfs
-    global conn
-    global pws
+def union_panda(relations, expected_pws, dfs, rl_id=0, col_names=[], pws_to_consider=[], do_print=True):
 
     if pws_to_consider == []:
         pws_to_consider = [j for j in range(1, expected_pws + 1)]
@@ -132,13 +58,7 @@ def union_panda(rl_id=0, col_names=[], pws_to_consider=[j for j in range(1, expe
     return s1
 
 
-def freq_panda(rl_id=0, col_names=[], values=[], pws_to_consider=[j for j in range(1, expected_pws + 1)],
-               do_print=True):
-    global relations
-    global expected_pws
-    global dfs
-    global conn
-    global pws
+def freq_panda(relations, expected_pws, dfs, rl_id=0, col_names=[], values=[], pws_to_consider=[], do_print=True):
 
     all_tuples = None
     freqs = []
@@ -154,7 +74,7 @@ def freq_panda(rl_id=0, col_names=[], values=[], pws_to_consider=[j for j in ran
         col_names = list(dfs[rl_id])[1:]
 
     if values == []:
-        all_tuples = union_panda(rl_id, col_names, pws_to_consider, False)
+        all_tuples = union_panda(relations, expected_pws, dfs, rl_id, col_names, pws_to_consider, False)
     else:
         k = []
         k.append(values)
@@ -179,12 +99,7 @@ def freq_panda(rl_id=0, col_names=[], values=[], pws_to_consider=[j for j in ran
     return all_tuples, freqs
 
 
-def num_tuples_panda(rl_id, pw_id, do_print=True):
-    global relations
-    global expected_pws
-    global dfs
-    global conn
-    global pws
+def num_tuples_panda(relations, dfs, rl_id, pw_id, do_print=True):
 
     df = dfs[rl_id]
     c = len(df[df.pw == pw_id])
@@ -194,12 +109,7 @@ def num_tuples_panda(rl_id, pw_id, do_print=True):
     return c
 
 
-def difference_panda(rl_id, pw_id_1, pw_id_2, col_names=[], do_print=True):
-    global relations
-    global expected_pws
-    global dfs
-    global conn
-    global pws
+def difference_panda(relations, dfs, rl_id, pw_id_1, pw_id_2, col_names=[], do_print=True):
 
     if col_names == []:
         col_names = list(dfs[rl_id])[1:]
@@ -218,18 +128,13 @@ def difference_panda(rl_id, pw_id_1, pw_id_2, col_names=[], do_print=True):
     return diff
 
 
-def difference_both_ways_panda(rl_id, pw_id_1, pw_id_2, col_names=[], do_print=True):
-    global relations
-    global expected_pws
-    global dfs
-    global conn
-    global pws
+def difference_both_ways_panda(relations, dfs, rl_id, pw_id_1, pw_id_2, col_names=[], do_print=True):
 
     if col_names == []:
         col_names = list(dfs[rl_id])[1:]
 
-    x1 = difference_panda(rl_id, pw_id_1, pw_id_2, col_names, False)
-    x2 = difference_panda(rl_id, pw_id_2, pw_id_1, col_names, False)
+    x1 = difference_panda(relations, dfs, rl_id, pw_id_1, pw_id_2, col_names, False)
+    x2 = difference_panda(relations, dfs, rl_id, pw_id_2, pw_id_1, col_names, False)
 
     diff = x1.append(x2, ignore_index=True)
 
@@ -240,13 +145,7 @@ def difference_both_ways_panda(rl_id, pw_id_1, pw_id_2, col_names=[], do_print=T
     return diff
 
 
-def redundant_column_panda(rl_id=0, col_names=[], pws_to_consider=[j for j in range(1, expected_pws + 1)],
-                           do_print=True):
-    global relations
-    global expected_pws
-    global dfs
-    global conn
-    global pws
+def redundant_column_panda(relations, expected_pws, dfs, rl_id=0, col_names=[], pws_to_consider=[], do_print=True):
 
     if pws_to_consider == []:
         pws_to_consider = [j for j in range(1, expected_pws + 1)]
@@ -281,12 +180,7 @@ def redundant_column_panda(rl_id=0, col_names=[], pws_to_consider=[j for j in ra
     return redundant_pw_specific, redundant_across_pws
 
 
-def unique_tuples_panda(rl_id=0, col_names=[], pws_to_consider=[j for j in range(1, expected_pws + 1)], do_print=True):
-    global relations
-    global expected_pws
-    global dfs
-    global conn
-    global pws
+def unique_tuples_panda(relations, expected_pws, dfs, rl_id=0, col_names=[], pws_to_consider=[], do_print=True):
 
     if pws_to_consider == []:
         pws_to_consider = [j for j in range(1, expected_pws + 1)]
@@ -294,7 +188,7 @@ def unique_tuples_panda(rl_id=0, col_names=[], pws_to_consider=[j for j in range
     if col_names == []:
         col_names = list(dfs[rl_id])[1:]
 
-    relevant_tuples, freqs = freq_panda(rl_id, col_names, [], pws_to_consider, False)
+    relevant_tuples, freqs = freq_panda(relations, expected_pws, dfs, rl_id, col_names, [], pws_to_consider, False)
     unique_tuples = []
     df = dfs[rl_id]
 
@@ -316,176 +210,244 @@ def unique_tuples_panda(rl_id=0, col_names=[], pws_to_consider=[j for j in range
 
     return unique_tuples
 
+def __main__():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-p", "--project_name", type=str, help="provide session/project name used while parsing")
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument("-intersection", action='store_true', default=False,
+                       help="provide either relation name or relation_id using the -rel_name or -rel_id flag respectively, "
+                            "columns to consider using the -cols flag and possible worlds to consider using the -pws flag.")
+    group.add_argument("-union", action='store_true', default=False,
+                       help="provide either relation name or relation_id using the -rel_name or -rel_id flag respectively, "
+                            "columns to consider using the -cols flag and possible worlds to consider using the -pws flag.")
+    group.add_argument("-freq", action='store_true', default=False,
+                       help="provide either relation name or relation_id using the -rel_name or -rel_id flag respectively, "
+                            "columns to consider using the -cols flag, possible worlds to consider using the -pws flag and "
+                            "the values for the columns (in the mentioned order) using the -vals flag (optional).")
+    group.add_argument("-num_tuples", action='store_true', default=False,
+                       help="provide either relation name or relation_id using the -rel_name or -rel_id flag respectively "
+                            "and the possible world ids to count the tuples in using the -pws flag.")
+    group.add_argument("-difference", choices=('one-way', 'symmetric'),
+                       help="provide either relation name or relation_id using the -rel_name or -rel_id flag respectively, "
+                            "columns to consider using the -cols flag and the two possible world ids using the -pws flag.")
+    group.add_argument("-redundant_column", action='store_true', default=False,
+                       help="provide either relation name or relation_id using the -rel_name or -rel_id flag respectively, "
+                            "columns to consider using the -cols flag and possible worlds to consider using the -pws flag.")
+    group.add_argument("-unique_tuples", action='store_true', default=False,
+                       help="provide either relation name or relation_id using the -rel_name or -rel_id flag respectively, "
+                            "columns to consider using the -cols flag and possible worlds to consider using the -pws flag.")
+    group.add_argument("-custom", type=str,
+                       help="provide the query enclosed in '' and either relation name or relation_id using the -rel_name "
+                            "or -rel_id flag respectively.")
+    group.add_argument("-show_relations", action='store_true', default=False,
+                       help="to get a list of relations and corresponding relation ids.")
 
-if args.intersection:
+    parser.add_argument("-rel_name", type=str,
+                        help="provide the relation name to query. Note that if both rel_id and rel_name are provided, "
+                             "rel_name is disregarded.")
+    parser.add_argument("-rel_id", type=int,
+                        help="provide the relation id of the relation to query. To view relation ids, use -show_relations")
+    parser.add_argument("-cols", type=str, nargs='*', default=[],
+                        help="provide the columns of the selected relations to consider for the chosen query. If you want "
+                             "to consider all the columns, do not include this flag.")
+    parser.add_argument("-pws", type=int, nargs='*', default=[],
+                        help="provide the possible world ids of the possible world to consider for this query. If you want "
+                             "to consider all the possible worlds, do not include this flag. Please note that difference "
+                             "query requires exactly 2 arguments for this flag.")
+    parser.add_argument("-vals", nargs='*', default=[], type=str,
+                        help="provide the values for the freq query in the same order as the mentioned columns. If you "
+                             "want to query all possible tuples, do not include this flag.")
 
-    if args.rel_name is None and args.rel_id is None:
-        print("Please include either the -rel_name or -rel_id flag along with the appropriate argument.")
-        exit(0)
+    args = parser.parse_args()
 
-    r_id = args.rel_id
-    if r_id is None:
-        r_id = rel_id_from_rel_name(args.rel_name, relations)
+    project_name = ''
 
-    soln = None
-    try:
-        soln = intersection_panda(r_id, args.cols, args.pws, True)
-    except Exception as e:
-        print("Query failed. Please check the provided arguments to make sure they are valid.")
-        print("Error: ", str(e))
-        exit(1)
-
-elif args.union:
-
-    if args.rel_name is None and args.rel_id is None:
-        print("Please include either the -rel_name or -rel_id flag along with the appropriate argument.")
-        exit(0)
-
-    r_id = args.rel_id
-    if r_id is None:
-        r_id = rel_id_from_rel_name(args.rel_name, relations)
-
-    soln = None
-    try:
-        soln = union_panda(r_id, args.cols, args.pws, True)
-    except Exception as e:
-        print("Query failed. Please check the provided arguments to make sure they are valid.")
-        print("Error: ", str(e))
-        exit(1)
-
-elif args.freq:
-
-    if args.rel_name is None and args.rel_id is None:
-        print("Please include either the -rel_name or -rel_id flag along with the appropriate argument.")
-        exit(0)
-
-    r_id = args.rel_id
-    if r_id is None:
-        r_id = rel_id_from_rel_name(args.rel_name, relations)
-
-    soln = None
-    try:
-        soln = freq_panda(r_id, args.cols, args.vals, args.pws, True)
-    except Exception as e:
-        print("Query failed. Please check the provided arguments to make sure they are valid.")
-        print("Error: ", str(e))
-        exit(1)
-
-elif args.num_tuples:
-
-    if args.rel_name is None and args.rel_id is None:
-        print("Please include either the -rel_name or -rel_id flag along with the appropriate argument.")
-        exit(0)
-
-    r_id = args.rel_id
-    if r_id is None:
-        r_id = rel_id_from_rel_name(args.rel_name, relations)
-
-    pws_to_consider = args.pws
-    if pws_to_consider == []:
-        pws_to_consider = [j for j in range(1, expected_pws + 1)]
-
-    soln = []
-    try:
-        for i in pws_to_consider:
-            soln.append(num_tuples_panda(r_id, i, True))
-    except Exception as e:
-        print("Query failed. Please check the provided arguments to make sure they are valid.")
-        print("Error: ", str(e))
-        exit(1)
-
-elif args.difference is not None:
-
-    if args.rel_name is None and args.rel_id is None:
-        print("Please include either the -rel_name or -rel_id flag along with the appropriate argument.")
-        exit(0)
-
-    r_id = args.rel_id
-    if r_id is None:
-        r_id = rel_id_from_rel_name(args.rel_name, relations)
-
-    if len(args.pws) != 2:
-        print("Please provide exactly 2 possible world ids.")
-        exit(0)
-
-    soln = None
-
-    if args.difference == 'one-way':
-        try:
-            soln = difference_panda(r_id, args.pws[0], args.pws[1], args.cols, True)
-        except Exception as e:
-            print("Query failed. Please check the provided arguments to make sure they are valid.")
-            print("Error: ", str(e))
+    if args.project_name is None:
+        project_name = get_current_project_name()
+        if project_name is None:
+            print("Couldn't find current project. Please provide a project name.")
             exit(1)
-    elif args.difference == 'symmetric':
+    else:
+        project_name = args.project_name
+
+    dfs = load_from_temp_pickle(project_name, 'dfs')
+    relations = load_from_temp_pickle(project_name, 'relations')
+    pws = load_from_temp_pickle(project_name, 'pws')
+    expected_pws = len(pws)
+
+    if args.intersection:
+
+        if args.rel_name is None and args.rel_id is None:
+            print("Please include either the -rel_name or -rel_id flag along with the appropriate argument.")
+            exit(0)
+
+        r_id = args.rel_id
+        if r_id is None:
+            r_id = rel_id_from_rel_name(args.rel_name, relations)
+
+        soln = None
         try:
-            soln = difference_both_ways_panda(r_id, args.pws[0], args.pws[1], args.cols, True)
+            soln = intersection_panda(relations, expected_pws, dfs, r_id, args.cols, args.pws, True)
         except Exception as e:
             print("Query failed. Please check the provided arguments to make sure they are valid.")
             print("Error: ", str(e))
             exit(1)
 
-elif args.redundant_column:
+    elif args.union:
 
-    if args.rel_name is None and args.rel_id is None:
-        print("Please include either the -rel_name or -rel_id flag along with the appropriate argument.")
-        exit(0)
+        if args.rel_name is None and args.rel_id is None:
+            print("Please include either the -rel_name or -rel_id flag along with the appropriate argument.")
+            exit(0)
 
-    r_id = args.rel_id
-    if r_id is None:
-        r_id = rel_id_from_rel_name(args.rel_name, relations)
+        r_id = args.rel_id
+        if r_id is None:
+            r_id = rel_id_from_rel_name(args.rel_name, relations)
 
-    soln = None
-    try:
-        soln = redundant_column_panda(r_id, args.cols, args.pws, True)
-    except Exception as e:
-        print("Query failed. Please check the provided arguments to make sure they are valid.")
-        print("Error: ", str(e))
-        exit(1)
+        soln = None
+        try:
+            soln = union_panda(relations, expected_pws, dfs, r_id, args.cols, args.pws, True)
+        except Exception as e:
+            print("Query failed. Please check the provided arguments to make sure they are valid.")
+            print("Error: ", str(e))
+            exit(1)
 
-elif args.unique_tuples:
+    elif args.freq:
 
-    if args.rel_name is None and args.rel_id is None:
-        print("Please include either the -rel_name or -rel_id flag along with the appropriate argument.")
-        exit(0)
+        if args.rel_name is None and args.rel_id is None:
+            print("Please include either the -rel_name or -rel_id flag along with the appropriate argument.")
+            exit(0)
 
-    r_id = args.rel_id
-    if r_id is None:
-        r_id = rel_id_from_rel_name(args.rel_name, relations)
+        r_id = args.rel_id
+        if r_id is None:
+            r_id = rel_id_from_rel_name(args.rel_name, relations)
 
-    soln = None
-    try:
-        soln = unique_tuples_panda(r_id, args.cols, args.pws, True)
-    except Exception as e:
-        print("Query failed. Please check the provided arguments to make sure they are valid.")
-        print("Error: ", str(e))
-        exit(1)
+        soln = None
+        try:
+            soln = freq_panda(relations, expected_pws, dfs, r_id, args.cols, args.vals, args.pws, True)
+        except Exception as e:
+            print("Query failed. Please check the provided arguments to make sure they are valid.")
+            print("Error: ", str(e))
+            exit(1)
 
-elif args.show_relations:
+    elif args.num_tuples:
 
-    print('Following are the parsed relation IDs and relation names:')
-    for i, rl in enumerate(relations):
-        print(str(i) + ':', str(rl.relation_name))
+        if args.rel_name is None and args.rel_id is None:
+            print("Please include either the -rel_name or -rel_id flag along with the appropriate argument.")
+            exit(0)
 
-elif args.custom is not None:
+        r_id = args.rel_id
+        if r_id is None:
+            r_id = rel_id_from_rel_name(args.rel_name, relations)
 
-    if args.rel_name is None and args.rel_id is None:
-        print("Please include either the -rel_name or -rel_id flag along with the appropriate argument.")
-        exit(0)
+        pws_to_consider = args.pws
+        if pws_to_consider == []:
+            pws_to_consider = [j for j in range(1, expected_pws + 1)]
 
-    r_id = args.rel_id
-    if r_id is None:
-        r_id = rel_id_from_rel_name(args.rel_name, relations)
+        soln = []
+        try:
+            for i in pws_to_consider:
+                soln.append(num_tuples_panda(relations, dfs, r_id, i, True))
+        except Exception as e:
+            print("Query failed. Please check the provided arguments to make sure they are valid.")
+            print("Error: ", str(e))
+            exit(1)
 
-    ik = None
-    try:
-        ik = dfs[r_id].query(args.custom)
-        print(str(ik))
-        if len(ik) <= 0:
-            print("NULL")
-    except Exception as e:
-        print("Query failed. Please check the provided query to make sure it is valid.")
-        print("Error: ", str(e))
-        exit(1)
+    elif args.difference is not None:
 
-set_current_project_name(project_name)
+        if args.rel_name is None and args.rel_id is None:
+            print("Please include either the -rel_name or -rel_id flag along with the appropriate argument.")
+            exit(0)
+
+        r_id = args.rel_id
+        if r_id is None:
+            r_id = rel_id_from_rel_name(args.rel_name, relations)
+
+        if len(args.pws) != 2:
+            print("Please provide exactly 2 possible world ids.")
+            exit(0)
+
+        soln = None
+
+        if args.difference == 'one-way':
+            try:
+                soln = difference_panda(relations, dfs, r_id, args.pws[0], args.pws[1], args.cols, True)
+            except Exception as e:
+                print("Query failed. Please check the provided arguments to make sure they are valid.")
+                print("Error: ", str(e))
+                exit(1)
+        elif args.difference == 'symmetric':
+            try:
+                soln = difference_both_ways_panda(relations, dfs, r_id, args.pws[0], args.pws[1], args.cols, True)
+            except Exception as e:
+                print("Query failed. Please check the provided arguments to make sure they are valid.")
+                print("Error: ", str(e))
+                exit(1)
+
+    elif args.redundant_column:
+
+        if args.rel_name is None and args.rel_id is None:
+            print("Please include either the -rel_name or -rel_id flag along with the appropriate argument.")
+            exit(0)
+
+        r_id = args.rel_id
+        if r_id is None:
+            r_id = rel_id_from_rel_name(args.rel_name, relations)
+
+        soln = None
+        try:
+            soln = redundant_column_panda(relations, expected_pws, dfs, r_id, args.cols, args.pws, True)
+        except Exception as e:
+            print("Query failed. Please check the provided arguments to make sure they are valid.")
+            print("Error: ", str(e))
+            exit(1)
+
+    elif args.unique_tuples:
+
+        if args.rel_name is None and args.rel_id is None:
+            print("Please include either the -rel_name or -rel_id flag along with the appropriate argument.")
+            exit(0)
+
+        r_id = args.rel_id
+        if r_id is None:
+            r_id = rel_id_from_rel_name(args.rel_name, relations)
+
+        soln = None
+        try:
+            soln = unique_tuples_panda(expected_pws, dfs, r_id, args.cols, args.pws, True)
+        except Exception as e:
+            print("Query failed. Please check the provided arguments to make sure they are valid.")
+            print("Error: ", str(e))
+            exit(1)
+
+    elif args.show_relations:
+
+        print('Following are the parsed relation IDs and relation names:')
+        for i, rl in enumerate(relations):
+            print(str(i) + ':', str(rl.relation_name))
+
+    elif args.custom is not None:
+
+        if args.rel_name is None and args.rel_id is None:
+            print("Please include either the -rel_name or -rel_id flag along with the appropriate argument.")
+            exit(0)
+
+        r_id = args.rel_id
+        if r_id is None:
+            r_id = rel_id_from_rel_name(args.rel_name, relations)
+
+        ik = None
+        try:
+            ik = dfs[r_id].query(args.custom)
+            print(str(ik))
+            if len(ik) <= 0:
+                print("NULL")
+        except Exception as e:
+            print("Query failed. Please check the provided query to make sure it is valid.")
+            print("Error: ", str(e))
+            exit(1)
+
+    set_current_project_name(project_name)
+
+
+if __name__ == '__main__':
+    __main__()

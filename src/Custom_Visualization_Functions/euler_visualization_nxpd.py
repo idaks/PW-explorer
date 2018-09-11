@@ -12,7 +12,7 @@ def get_styles(proj_name, pw_id):
             'fontsize': '16',
             'fontcolor': 'black',
             'bgcolor': '#ffffff',
-            'rankdir': 'LR',
+            'rankdir': 'RL',
         },
         'node_styles': {
             'node_equal': {
@@ -92,6 +92,8 @@ def merge_nodes(G,nodes, new_node, attr):
 
 def visualize(dfs=None, pws=None, relations=None, conn=None, project_name=None, save_to_file=True):
 
+    Gs = []
+
     for pw_id in range(1, len(pws) + 1):
 
         styles = get_styles(project_name, pw_id)
@@ -102,9 +104,10 @@ def visualize(dfs=None, pws=None, relations=None, conn=None, project_name=None, 
         df = df[df.pw == pw_id]
         NODE_COLORS = ['#CCFFCC', '#FFFFCC', '#f4bf42', '#6346d6']
         NODE_COLORS_USED = 0
+
         for idx, row in df.iterrows():
             node_name = remove_quotes(row['x1'])
-            tax = node_name[0].split('_')[0]
+            tax = node_name.split('_')[0]
             if tax not in styles['node_styles']:
                 new_node_style = generate_node_style(NODE_COLORS[NODE_COLORS_USED])
                 NODE_COLORS_USED += 1
@@ -169,12 +172,13 @@ def visualize(dfs=None, pws=None, relations=None, conn=None, project_name=None, 
         for final_djs_ in final_djs:
             G = merge_nodes(G, final_djs_, '\n'.join(final_djs_), styles['node_styles']['node_equal'])
 
+        Gs.append(G)
         if save_to_file:
             folder_name = get_save_folder(project_name, 'euler_visualization_nxpd')
             draw(G, format='gv', filename='{}/pw-{}'.format(folder_name, pw_id))
             draw(G, format='pdf', filename='{}/pw-{}.pdf'.format(folder_name, pw_id))
 
-        return G
+    return Gs
 
 
 

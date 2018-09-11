@@ -188,11 +188,6 @@ def mds_sklearn(A):
     plt.figure()
 
 
-def visualize():
-
-
-
-
 def __main__():
 
     parser = argparse.ArgumentParser()

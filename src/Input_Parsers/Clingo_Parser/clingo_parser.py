@@ -7,62 +7,21 @@ import pandas as pd
 import numpy as np
 from antlr4.tree.Trees import Trees
 
-# global variables to use throughout the parsing process and further
 
-pws = []
-relations = []
-expected_pws = 0
-curr_pw = None
-curr_rl = None
-curr_rl_data = None
-n_rls = 0
-dfs = []
-out_file = None
-
-# global pws
-# global relations 
-# global expected_pws 
-# global curr_pw
-# global curr_rl 
-# global curr_rl_data 
-# global n_rls
-# global dfs
-
-
-def rearrangePWSandRLS():
+def rearrangePWSandRLS(relations, pws):
     """
     Sort the possible worlds and relations by their ids
     :return: None
     """
-    global pws
-    global relations
-    global expected_pws
-    global curr_pw
-    global curr_rl
-    global curr_rl_data
-    global n_rls
-    global dfs
-    global out_file
-    # sort PWs and Rls by their ids
     relations.sort(key=lambda x: x.r_id)
     pws.sort(key=lambda x: x.pw_id)
 
 
-def loadIntoPandas():
+def loadIntoPandas(relations, pws, dfs):
     """
     Populate the Pandas DF, one for each relation
     :return: None
     """
-    global pws
-    global relations
-    global expected_pws
-    global curr_pw
-    global curr_rl
-    global curr_rl_data
-    global n_rls
-    global dfs
-    global out_file
-
     # print lineno()
     for n, rl in enumerate(relations):
         cls = ['pw']
@@ -87,139 +46,78 @@ def loadIntoPandas():
 
 class AntlrClingoListener(ClingoListener):
 
+    def __init__(self):
+        self.pws = []
+        self.relations = []
+        self.expected_pws = 0
+        self.curr_pw = None
+        self.curr_pw_id = 1
+        self.curr_rl = None
+        self.curr_rl_data = None
+        self.n_rls = 0
+        self.dfs = []
+        self.out_file = None
+
     def enterClingoOutput(self, ctx):
         if ctx.OPTIMUM_FOUND() is not None:
             if ctx.OPTIMUM_FOUND().getText() == 'UNSATISFIABLE':
                 print("The problem is unsatisfiable")
 
     def enterSolution(self, ctx):
-
-        global pws
-        global relations
-        global expected_pws
-        global curr_pw
-        global curr_rl
-        global curr_rl_data
-        global n_rls
-        global dfs
-        global out_file
-
-        curr_pw = PossibleWorld(n_rls)
+        self.curr_pw = PossibleWorld(self.n_rls, self.curr_pw_id)
         # assert curr_pw.pw_id == int(ctx.TEXT(0).getText())
         if ctx.TEXT(1) is not None:
-            curr_pw.pw_soln = float(ctx.TEXT(1).getText()) if isfloat(ctx.TEXT(1).getText()) else ctx.TEXT(1).getText()
+            self.curr_pw.pw_soln = float(ctx.TEXT(1).getText()) if isfloat(ctx.TEXT(1).getText()) else ctx.TEXT(1).getText()
 
     def enterActual_soln(self, ctx):
-
-        global pws
-        global relations
-        global expected_pws
-        global curr_pw
-        global curr_rl
-        global curr_rl_data
-        global n_rls
-        global dfs
-        global out_file
-
         i = 0
         while ctx.TEXT(i) is not None:
             i += 1
-        curr_rl = Relation(ctx.TEXT(i - 1).getText())
+        self.curr_rl = Relation(ctx.TEXT(i - 1).getText())
 
     def enterCustom_representation_soln(self, ctx):
 
-        global pws
-        global relations
-        global expected_pws
-        global curr_pw
-        global curr_rl
-        global curr_rl_data
-        global n_rls
-        global dfs
-        global out_file
-
         sol = ctx.TEXT().getText();
-        curr_rl_data = sol.split(',')
-        curr_rl.arity = len(curr_rl_data)
-        rl_name_mod = str(curr_rl.relation_name + '_' + str(curr_rl.arity))
-        curr_rl.relation_name = rl_name_mod
+        self.curr_rl_data = sol.split(',')
+        self.curr_rl.arity = len(self.curr_rl_data)
+        rl_name_mod = str(self.curr_rl.relation_name + '_' + str(self.curr_rl.arity))
+        self.curr_rl.relation_name = rl_name_mod
 
     def exitCustom_representation_soln(self, ctx):
 
-        global pws
-        global relations
-        global expected_pws
-        global curr_pw
-        global curr_rl
-        global curr_rl_data
-        global n_rls
-        global dfs
-        global out_file
-
         foundMatch = False
-        for rl in relations:
-            if curr_rl.relation_name == rl.relation_name and curr_rl.arity == rl.arity:
-                curr_rl.r_id = rl.r_id
+        for rl in self.relations:
+            if self.curr_rl.relation_name == rl.relation_name and self.curr_rl.arity == rl.arity:
+                self.curr_rl.r_id = rl.r_id
                 # print rl.r_id, lineno() ##for debugging purposes
                 foundMatch = True
                 break
 
         if not foundMatch:
-            newRl = Relation(curr_rl.relation_name)
-            newRl.arity = curr_rl.arity
-            newRl.r_id = n_rls
+            newRl = Relation(self.curr_rl.relation_name)
+            newRl.arity = self.curr_rl.arity
+            newRl.r_id = self.n_rls
             # print n_rls, lineno()
-            n_rls += 1
-            relations.append(newRl)
-            curr_rl.r_id = newRl.r_id
+            self.n_rls += 1
+            self.relations.append(newRl)
+            self.curr_rl.r_id = newRl.r_id
 
-        curr_pw.add_relation(curr_rl.r_id, curr_rl_data)
-        curr_rl = None  # could introduce bugs if passed by pointer in the upper statement, so be careful, use copy() if needed
-        curr_rl_data = None
+        self.curr_pw.add_relation(self.curr_rl.r_id, self.curr_rl_data)
+        self.curr_rl = None  # could introduce bugs if passed by pointer in the upper statement, so be careful, use copy() if needed
+        self.curr_rl_data = None
 
     def exitActual_soln(self, ctx):
-
-        global pws
-        global relations
-        global expected_pws
-        global curr_pw
-        global curr_rl
-        global curr_rl_data
-        global n_rls
-        global dfs
-        global out_file
-
         # print lineno()
-        curr_rl = None
-        curr_rl_data = None
+        self.curr_rl = None
+        self.curr_rl_data = None
 
     def exitSolution(self, ctx):
-
-        global pws
-        global relations
-        global expected_pws
-        global curr_pw
-        global curr_rl
-        global curr_rl_data
-        global n_rls
-        global dfs
-        global out_file
-
         # print lineno()
-        pws.append(curr_pw)  # again be wary, else use .copy()
-        curr_pw = None
+        self.pws.append(self.curr_pw)  # again be wary, else use .copy()
+        self.curr_pw = None
+        self.curr_pw_id += 1
 
     def enterOptimum(self, ctx):
-
-        global pws
-        global relations
-        global expected_pws
-        global curr_pw
-        global curr_rl
-        global curr_rl_data
-        global n_rls
-        global dfs
-        global out_file
 
         # print lineno()
         optimum_found = ctx.TEXT().getText()
@@ -231,69 +129,28 @@ class AntlrClingoListener(ClingoListener):
             print('Unexpected Output:', optimum_found)
 
     def enterOptimization(self, ctx):
-
-        global pws
-        global relations
-        global expected_pws
-        global curr_pw
-        global curr_rl
-        global curr_rl_data
-        global n_rls
-        global dfs
-        global out_file
-
         # print lineno()
         opt_soln = ctx.TEXT().getText()
         print('Optimized Solution is', opt_soln)
 
     def enterModels(self, ctx):
 
-        global pws
-        global relations
-        global expected_pws
-        global curr_pw
-        global curr_rl
-        global curr_rl_data
-        global n_rls
-        global dfs
-        global out_file
-
         # print lineno()
         num_models = ctx.TEXT().getText()
         num_models = int(num_models)
         print("Number of Models:", num_models)
-        expected_pws = num_models
+        self.expected_pws = num_models
 
     def exitClingoOutput(self, ctx):
 
-        global pws
-        global relations
-        global expected_pws
-        global curr_pw
-        global curr_rl
-        global curr_rl_data
-        global n_rls
-        global dfs
-        global out_file
-
         # loading into pandas DF
-        rearrangePWSandRLS()
-        loadIntoPandas()
+        rearrangePWSandRLS(self.relations, self.pws)
+        loadIntoPandas(self.relations, self.pws, self.dfs)
 
 
 ######################################################################################
 
 def parse_clingo_output(fname):
-
-    global pws
-    global relations
-    global expected_pws
-    global curr_pw
-    global curr_rl
-    global curr_rl_data
-    global n_rls
-    global dfs
-    global out_file
 
     input_ = FileStream(fname)
     lexer = ClingoLexer(input_)
@@ -310,4 +167,4 @@ def parse_clingo_output(fname):
     walker = ParseTreeWalker()
     walker.walk(pw_analyzer, tree)
 
-    return dfs, relations, pws
+    return pw_analyzer.dfs, pw_analyzer.relations, pw_analyzer.pws
