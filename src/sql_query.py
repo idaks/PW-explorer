@@ -10,7 +10,7 @@ import os
 import string
 import argparse
 import pickle
-from helper import mkdir_p, PossibleWorld, Relation, get_current_project_name, set_current_project_name, \
+from pwe_helper import mkdir_p, PossibleWorld, Relation, get_current_project_name, set_current_project_name, \
     load_from_temp_pickle, get_sql_conn, rel_id_from_rel_name, get_save_folder, get_file_save_name
 import sql_funcs
 

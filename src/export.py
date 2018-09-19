@@ -3,10 +3,68 @@
 
 import pandas as pd
 import numpy as np
+import os
 import sqlite3
 import argparse
-from helper import get_current_project_name, set_current_project_name, \
-    get_file_save_name, get_save_folder, load_from_temp_pickle
+from pwe_helper import get_current_project_name, set_current_project_name, \
+    get_save_folder, load_from_temp_pickle, mkdir_p
+
+
+def get_sqlite_schema(dfs, relations):
+
+    TEST_DB_LOCATION = os.path.abspath("test.db")
+    conn_t = sqlite3.connect(TEST_DB_LOCATION)
+    for i, df in enumerate(dfs):
+        t = df.ix[0:0]
+        t.to_sql(str(relations[i].relation_name), conn_t, if_exists='replace')
+    schema_q = conn_t.execute("SELECT * FROM sqlite_master WHERE type='table' ORDER BY name;")
+    schemas = []
+    for row in schema_q.fetchall():
+        schemas.append(row[4])
+    for i, df in enumerate(dfs):
+        conn_t.execute('DROP TABLE ' + str(relations[i].relation_name))
+    conn_t.commit()
+    conn_t.close()
+    os.remove(TEST_DB_LOCATION)
+    return schemas
+
+
+def export_to_sqlite_db(export_loc, dfs, relations, db_name):
+
+    mkdir_p(export_loc)
+    sql_db_loc = os.path.join(export_loc, '{}.{}'.format(str(db_name), 'db'))
+    sql_conn = sqlite3.connect(sql_db_loc)
+
+    for i, df in enumerate(dfs):
+        rel_name = str(relations[i].relation_name)
+        df.to_sql(rel_name, sql_conn, if_exists='replace')
+
+    sql_conn.commit()
+    sql_conn.close()
+
+    return True
+
+
+def export(export_format, export_loc, dfs, relations):
+
+    if export_format not in ['csv', 'h5', 'msg', 'pkl']:
+        return False
+
+    mkdir_p(export_loc)
+
+    for i, df in enumerate(dfs):
+        rel_name = str(relations[i].relation_name)
+        fname = os.path.join(export_loc, '{}.{}'.format(rel_name, export_format))
+        if export_format == 'csv':
+            df.to_csv(fname)
+        elif export_format == 'h5':
+            df.to_hdf(fname, mode='w')
+        elif export_format == 'msg':
+            df.to_msgpack(fname)
+        elif export_format == 'pkl':
+            df.to_pickle(fname)
+
+    return True
 
 
 def __main__():
@@ -39,65 +97,91 @@ def __main__():
 
     dfs = load_from_temp_pickle(project_name, 'dfs')
     relations = load_from_temp_pickle(project_name, 'relations')
-    conn = None
 
     if export_to_sql:
-        conn = sqlite3.connect(get_save_folder(project_name, 'sql_export') + '/' + str(project_name) + '.db')
-
-    for i, df in enumerate(dfs):
-        if export_to_csv:
-            df.to_csv(get_save_folder(project_name, 'csv_export') + '/' + str(relations[i].relation_name) + '.csv')
-        if export_to_hdf:
-            df.to_hdf(get_save_folder(project_name, 'h5_export') + '/' + str(relations[i].relation_name) + '.h5',
-                      str(relations[i].relation_name), mode='w')
-        if export_to_sql:
-            df.to_sql(str(relations[i].relation_name), conn, if_exists='replace')
-        if export_to_msg:
-            df.to_msgpack(
-                get_save_folder(project_name, 'msg_export') + '/' + str(relations[i].relation_name) + '.msg')
-        if export_to_pkl:
-            df.to_pickle(get_save_folder(project_name, 'pkl_export') + '/' + str(relations[i].relation_name) + '.pkl')
-
+        if export_to_sqlite_db(get_save_folder(project_name, 'sql_export'), dfs, relations, project_name):
+            print("Successfully exported to sql")
+        else:
+            print("SQL Export Failed")
+        # conn = sqlite3.connect(get_save_folder(project_name, 'sql_export') + '/' + str(project_name) + '.db')
     if export_to_csv:
-        print("Successfully exported to csv")
-    if export_to_sql:
-        print("Successfully exported to sql")
-    if export_to_msg:
-        print("Successfully exported to msg")
+        if export('csv', get_save_folder(project_name, 'csv_export'), dfs, relations):
+            print("Successfully exported to csv")
+        else:
+            print("CSV Export Failed")
     if export_to_hdf:
-        print("Successfully exported to hdf")
+        if export('h5', get_save_folder(project_name, 'h5_export'), dfs, relations):
+            print("Successfully exported to hdf")
+        else:
+            print("HDF Export Failed")
+    if export_to_msg:
+        if export('msg', get_save_folder(project_name, 'msg_export'), dfs, relations):
+            print("Successfully exported to msg")
+        else:
+            print("MSGPACK Export Failed")
     if export_to_pkl:
-        print("Successfully exported to pkl")
+        if export('pkl', get_save_folder(project_name, 'pkl_export'), dfs, relations):
+            print("Successfully exported to pkl")
+        else:
+            print("PICKLE Export Failed")
+
+
+    # for i, df in enumerate(dfs):
+    #     if export_to_csv:
+    #         df.to_csv(get_save_folder(project_name, 'csv_export') + '/' + str(relations[i].relation_name) + '.csv')
+    #     if export_to_hdf:
+    #         df.to_hdf(get_save_folder(project_name, 'h5_export') + '/' + str(relations[i].relation_name) + '.h5',
+    #                   str(relations[i].relation_name), mode='w')
+    #     if export_to_sql:
+    #         df.to_sql(str(relations[i].relation_name), conn, if_exists='replace')
+    #     if export_to_msg:
+    #         df.to_msgpack(
+    #             get_save_folder(project_name, 'msg_export') + '/' + str(relations[i].relation_name) + '.msg')
+    #     if export_to_pkl:
+    #         df.to_pickle(get_save_folder(project_name, 'pkl_export') + '/' + str(relations[i].relation_name) + '.pkl')
+
+    # if export_to_csv:
+    #     print("Successfully exported to csv")
+    # if export_to_sql:
+    #     print("Successfully exported to sql")
+    # if export_to_msg:
+    #     print("Successfully exported to msg")
+    # if export_to_hdf:
+    #     print("Successfully exported to hdf")
+    # if export_to_pkl:
+    #     print("Successfully exported to pkl")
 
     # creating schemas for SQLite
     # code to print schema of the tables created
     if args.schema:
-        schemas = []
-        if export_to_sql:
-            schema_q = conn.execute("SELECT * FROM sqlite_master WHERE type='table' ORDER BY name;")
-            print('Sqlite Schema:')
-            for row in schema_q.fetchall():
-                print(str(row[4]))
-                schemas.append(row[4])
-        else:
-            conn_t = sqlite3.connect("test.db")
-            for i, df in enumerate(dfs):
-                t = df.ix[0:0]
-                t.to_sql(str(relations[i].relation_name), conn_t, if_exists='replace')
-            schema_q = conn_t.execute("SELECT * FROM sqlite_master WHERE type='table' ORDER BY name;")
-            print('Sqlite Schema:')
-            for row in schema_q.fetchall():
-                print(str(row[4]))
-                schemas.append(row[4])
-            for i, df in enumerate(dfs):
-                conn_t.execute('DROP TABLE ' + str(relations[i].relation_name))
-            conn_t.commit()
-            conn_t.close()
+        # schemas = []
+        # if export_to_sql:
+        #     schema_q = conn.execute("SELECT * FROM sqlite_master WHERE type='table' ORDER BY name;")
+        #     print('Sqlite Schema:')
+        #     for row in schema_q.fetchall():
+        #         print(str(row[4]))
+        #         schemas.append(row[4])
+        # else:
+        #     conn_t = sqlite3.connect("test.db")
+        #     for i, df in enumerate(dfs):
+        #         t = df.ix[0:0]
+        #         t.to_sql(str(relations[i].relation_name), conn_t, if_exists='replace')
+        #     schema_q = conn_t.execute("SELECT * FROM sqlite_master WHERE type='table' ORDER BY name;")
+        #     print('Sqlite Schema:')
+        #     for row in schema_q.fetchall():
+        #         print(str(row[4]))
+        #         schemas.append(row[4])
+        #     for i, df in enumerate(dfs):
+        #         conn_t.execute('DROP TABLE ' + str(relations[i].relation_name))
+        #     conn_t.commit()
+        #     conn_t.close()
+        schemas = get_sqlite_schema(dfs, relations)
+        print('\n'.join(schemas))
     # this approach will take constant time since there is just one row in the exported database.
 
-    if export_to_sql:
-        conn.commit()
-        conn.close()
+    # if export_to_sql:
+    #     conn.commit()
+    #     conn.close()
 
     set_current_project_name(project_name)
 

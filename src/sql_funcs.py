@@ -5,7 +5,7 @@ import numpy as np
 import sqlite3
 import os
 import string
-from helper import lineno, isfloat, mkdir_p, PossibleWorld, Relation
+from pwe_helper import lineno, isfloat, mkdir_p, PossibleWorld, Relation
 
 
 def rel_id_from_rel_name(rel_name, relations):

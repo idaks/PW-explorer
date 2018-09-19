@@ -3,7 +3,7 @@
 import argparse
 import os
 import subprocess as subprocess
-from helper import get_asp_input_folder, get_asp_output_folder, set_current_project_name, preprocess_clingo_output
+from pwe_helper import get_asp_input_folder, get_asp_output_folder, set_current_project_name, preprocess_clingo_output
 
 """
 This script is used to run clingo on given clingo files, pre-process the output and then

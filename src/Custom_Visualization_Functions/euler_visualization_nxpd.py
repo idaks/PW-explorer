@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from helper import rel_id_from_rel_name, get_save_folder
+from pwe_helper import rel_id_from_rel_name, get_save_folder
 from nxpd import draw
 import networkx as nx
 

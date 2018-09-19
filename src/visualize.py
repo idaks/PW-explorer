@@ -7,7 +7,7 @@ import sqlite3
 import argparse
 import pickle
 import importlib
-from helper import PossibleWorld, Relation, load_from_temp_pickle, get_sql_conn, get_current_project_name, \
+from pwe_helper import PossibleWorld, Relation, load_from_temp_pickle, get_sql_conn, get_current_project_name, \
     set_current_project_name, get_save_folder, CUSTOM_VISUALIZATION_FUNCTIONS_FOLDER
 
 import matplotlib.pyplot as plt
@@ -36,9 +36,11 @@ def matplotlib_to_plotly(cmap, pl_entries):
 
 def dbscan_clustering(dist_matrix, project_name=None, save_figure=False):
 
+    fig, ax = plt.subplots()
+
     db = DBSCAN(metric='precomputed', eps=0.5, min_samples=1)
     labels = db.fit_predict(dist_matrix)
-    print('Cluster Labels:', str(labels))
+    # print('Cluster Labels:', str(labels))
 
     core_samples_mask = np.zeros_like(db.labels_, dtype=bool)
     core_samples_mask[db.core_sample_indices_] = True
@@ -63,20 +65,19 @@ def dbscan_clustering(dist_matrix, project_name=None, save_figure=False):
         class_member_mask = (labels == k)
 
         xy = dist_matrix[class_member_mask & core_samples_mask]
-        plt.plot(xy[:, 0], xy[:, 1], 'o', markerfacecolor=tuple(col),
+        ax.plot(xy[:, 0], xy[:, 1], 'o', markerfacecolor=tuple(col),
                  markeredgecolor='k', markersize=14)
 
         xy = dist_matrix[class_member_mask & ~core_samples_mask]
-        plt.plot(xy[:, 0], xy[:, 1], 'o', markerfacecolor=tuple(col),
+        ax.plot(xy[:, 0], xy[:, 1], 'o', markerfacecolor=tuple(col),
                  markeredgecolor='k', markersize=6)
 
-    plt.title('Estimated number of clusters: %d' % n_clusters_)
+    ax.title('Estimated number of clusters: %d' % n_clusters_)
     if project_name is not None and save_figure:
         save_folder = get_save_folder(project_name, 'visualization')
-        plt.savefig(save_folder + '/' + 'dbscan_clustering_.png')
+        fig.savefig(save_folder + '/' + 'dbscan_clustering_.png')
         print('Clustering Output saved to: {}'.format(save_folder))
     plt.figure()
-
 
 
 def dbscan_clustering_plotly(dist_matrix):

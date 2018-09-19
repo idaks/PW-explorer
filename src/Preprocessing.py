@@ -1,4 +1,3 @@
-import sys
 from sys import argv
 
 script, fname = argv

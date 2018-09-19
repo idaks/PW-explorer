@@ -1,12 +1,6 @@
 #!/usr/bin/env python3
 
-import argparse
-import pandas as pd
-import pickle
-import numpy as np
-import os
-from helper import lineno, isfloat, mkdir_p, rel_id_from_rel_name, get_save_folder, get_file_save_name
-import sqlite3
+from pwe_helper import rel_id_from_rel_name, get_save_folder
 from graphviz import Digraph
 
 styles = {

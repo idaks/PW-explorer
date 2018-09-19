@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-from sys import argv
-from sql_funcs import rel_id_from_rel_name
+from pwe_helper import rel_id_from_rel_name
 import copy
 
 

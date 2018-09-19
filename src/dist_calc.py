@@ -7,7 +7,7 @@ import sqlite3
 import argparse
 import pickle
 import importlib
-from helper import mkdir_p, PossibleWorld, Relation, get_current_project_name, set_current_project_name, \
+from pwe_helper import mkdir_p, PossibleWorld, Relation, get_current_project_name, set_current_project_name, \
     load_from_temp_pickle, get_sql_conn, rel_id_from_rel_name, get_save_folder, get_file_save_name, \
     CUSTOM_DISTANCE_FUNCTIONS_FOLDER
 from sql_funcs import rel_id_from_rel_name, freq_sqlite, difference_both_ways_sqlite, \

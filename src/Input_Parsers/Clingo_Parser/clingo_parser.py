@@ -2,7 +2,7 @@ from antlr4 import *
 from .Antlr_Files.ClingoLexer import ClingoLexer
 from .Antlr_Files.ClingoParser import ClingoParser
 from .Antlr_Files.ClingoListener import ClingoListener
-from .helper import lineno, isfloat, mkdir_p, PossibleWorld, Relation
+from .pwe_helper import isfloat, PossibleWorld, Relation
 import pandas as pd
 import numpy as np
 from antlr4.tree.Trees import Trees

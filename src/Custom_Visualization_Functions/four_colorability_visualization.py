@@ -2,7 +2,7 @@
 
 from sklearn.cluster import DBSCAN
 import pickle
-from helper import rel_id_from_rel_name, get_save_folder, load_from_temp_pickle
+from pwe_helper import rel_id_from_rel_name, get_save_folder, load_from_temp_pickle
 import matplotlib.pyplot as plt
 
 def get_colors_list(df, id):

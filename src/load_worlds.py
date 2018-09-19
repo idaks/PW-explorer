@@ -7,7 +7,7 @@ import numpy as np
 import os
 import argparse
 import pickle
-from helper import get_asp_output_folder, set_current_project_name, get_save_folder, get_file_save_name, preprocess_clingo_output
+from pwe_helper import get_asp_output_folder, set_current_project_name, get_save_folder, get_file_save_name, preprocess_clingo_output
 
 
 def __main__():
