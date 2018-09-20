@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 
-from Input_Parsers.Clingo_Parser.clingo_parser import parse_clingo_output
+from .Input_Parsers.Clingo_Parser.clingo_parser import parse_clingo_output
 import pandas as pd
 import numpy as np
 
 import os
 import argparse
 import pickle
-from pwe_helper import get_asp_output_folder, set_current_project_name, get_save_folder, get_file_save_name, preprocess_clingo_output
+from .pwe_helper import get_asp_output_folder, set_current_project_name, get_save_folder, get_file_save_name, \
+    preprocess_clingo_output
 
 
 def __main__():
@@ -40,6 +41,7 @@ def __main__():
             pickle.dump(data, f)
     set_current_project_name(project_name)
 
+
 def parse_solution(fname, reasoner='clingo'):
 
     parser_to_use = None
@@ -51,6 +53,7 @@ def parse_solution(fname, reasoner='clingo'):
 
     dfs, relations, pws = parser_to_use(fname)
     return dfs, relations, pws
+
 
 def load_worlds(clingo_output: list, reasoner='clingo', preprocessed: bool=True):
 

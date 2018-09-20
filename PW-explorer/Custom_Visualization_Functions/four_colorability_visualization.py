@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 
 from sklearn.cluster import DBSCAN
-import pickle
-from pwe_helper import rel_id_from_rel_name, get_save_folder, load_from_temp_pickle
+from .pwe_helper import rel_id_from_rel_name, mkdir_p
 import matplotlib.pyplot as plt
+from collections import defaultdict
+import os
+
 
 def get_colors_list(df, id):
     idx = list(map(int, list(df[df.pw == id].x1)))
@@ -12,12 +14,18 @@ def get_colors_list(df, id):
     ordered_clrs = [x for _, x in sorted(zip(idx, clrs))]
     return ordered_clrs
 
-def visualize(dfs=None, pws=None, relations=None, conn=None, project_name=None):
-    if project_name is None or relations is None or dfs is None:
-        print("None objects passed.")
-        exit(1)
 
-    dist_matrix = load_from_temp_pickle(project_name, 'dist_matrix')
+def visualize(**kwargs):
+
+    kwargs = defaultdict(lambda: None, kwargs)
+    dfs = kwargs['dfs']
+    relations = kwargs['relations']
+    save_to_folder = kwargs['save_to_folder']
+    dist_matrix = kwargs['dist_matrix']
+
+    if relations is None or dfs is None:
+        print("No objects passed.")
+        exit(1)
 
     db = DBSCAN(metric='precomputed', eps=0.5, min_samples=1)
     labels = db.fit_predict(dist_matrix)
@@ -33,18 +41,23 @@ def visualize(dfs=None, pws=None, relations=None, conn=None, project_name=None):
 
     df = dfs[rel_id_from_rel_name('col_2', relations)]
 
-    output_folder = get_save_folder(project_name, 'four_colorability_visualization')
-
+    figs = []
     for label, idx in list(unique_indices.items()):
+        fig, ax = plt.subplots()
         cols = get_colors_list(df, idx + 1)
         # print(cols)
         group_size = [1 for _ in cols]
-
-        plt.figure()
-        plt.pie(group_size, colors=cols)
-        # print(label_counts[label])
+        ax.pie(group_size, colors=cols)
         my_circle = plt.Circle((0, 0), 0.7, color='white')
-        p = plt.gcf()
+        p = ax.gcf()
         p.gca().add_artist(my_circle)
-        plt.annotate(str(label_counts[label]), xy=(0, 0), ha='center', va='center', fontsize=35)
-        plt.savefig(output_folder + '/pattern_' + str(label) + '.png')
+        ax.annotate(str(label_counts[label]), xy=(0, 0), ha='center', va='center', fontsize=35)
+        figs.append(fig)
+
+    if save_to_folder is not None:
+        output_folder = os.path.join(save_to_folder, 'four_colorability_visualization')
+        mkdir_p(output_folder)
+        for fig in figs:
+            fig.savefig(os.path.join(output_folder, 'pattern_{}.png'.format(str(label))))
+
+    return figs

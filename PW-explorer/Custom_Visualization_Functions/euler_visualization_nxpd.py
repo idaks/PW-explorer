@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
 
-from pwe_helper import rel_id_from_rel_name, get_save_folder
+from .pwe_helper import rel_id_from_rel_name, mkdir_p
 from nxpd import draw
 import networkx as nx
+import os
+from collections import defaultdict
 
 
-def get_styles(proj_name, pw_id):
+def get_styles(project_name, pw_id):
     return {
         'graph': {
-            'label': (proj_name+'_pw_'+str(pw_id)),
+            'label': '{}_pw_{}'.format(str(project_name), str(pw_id)),
             'fontsize': '16',
             'fontcolor': 'black',
             'bgcolor': '#ffffff',
@@ -90,8 +92,14 @@ def merge_nodes(G,nodes, new_node, attr):
 
 # Visualization function
 
-def visualize(dfs=None, pws=None, relations=None, conn=None, project_name=None, save_to_file=True):
+def visualize(**kwargs):
 
+    kwargs = defaultdict(lambda: None, kwargs)
+    dfs = kwargs['dfs']
+    pws = kwargs['pws']
+    relations = kwargs['relations']
+    save_to_folder = kwargs['save_to_folder']
+    project_name = kwargs['project_name']
     Gs = []
 
     for pw_id in range(1, len(pws) + 1):
@@ -173,10 +181,13 @@ def visualize(dfs=None, pws=None, relations=None, conn=None, project_name=None, 
             G = merge_nodes(G, final_djs_, '\n'.join(final_djs_), styles['node_styles']['node_equal'])
 
         Gs.append(G)
-        if save_to_file:
-            folder_name = get_save_folder(project_name, 'euler_visualization_nxpd')
-            draw(G, format='gv', filename='{}/pw-{}'.format(folder_name, pw_id))
-            draw(G, format='pdf', filename='{}/pw-{}.pdf'.format(folder_name, pw_id))
+
+    if save_to_folder is not None:
+        folder_name = os.path.join(save_to_folder, 'euler_visualization')
+        mkdir_p(folder_name)
+        for i, G in enumerate(Gs):
+            draw(G, format='gv', filename='{}/pw-{}'.format(folder_name, i+1))
+            draw(G, format='pdf', filename='{}/pw-{}.pdf'.format(folder_name, i+1))
 
     return Gs
 

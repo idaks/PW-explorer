@@ -2,34 +2,27 @@
 
 import pandas as pd
 import numpy as np
-import os
-import sqlite3
 import argparse
 import pickle
 import importlib
-from pwe_helper import mkdir_p, PossibleWorld, Relation, get_current_project_name, set_current_project_name, \
+from .pwe_helper import get_current_project_name, set_current_project_name, \
     load_from_temp_pickle, get_sql_conn, rel_id_from_rel_name, get_save_folder, get_file_save_name, \
     CUSTOM_DISTANCE_FUNCTIONS_FOLDER
-from sql_funcs import rel_id_from_rel_name, freq_sqlite, difference_both_ways_sqlite, \
-    redundant_column_sqlite
+from .pd_query import PWEQuery
 
 
-def sym_diff_dist_sqlite(pw_id_1, pw_id_2, relations, dfs, pws, conn, rls_to_use=[]):
+def sym_diff_dist(pw_id_1, pw_id_2, relations, dfs, pws, rls_to_use: list=None):
 
     if pw_id_1 == pw_id_2:
         return 0
 
-    if rls_to_use == []:
+    if not rls_to_use:
         rls_to_use = [i for i in range(len(relations))]
 
     dist = 0
     for rl_id in rls_to_use:
-
-        # rl = relations[rl_id]
-        # max_num_tuples = max(num_tuples_sqlite(relations, conn, rl_id, pw_id_1, False),
-        #                      num_tuples_sqlite(relations, conn, rl_id, pw_id_2, False))
-        redundant_cols = redundant_column_sqlite(dfs, pws, relations, conn, rl_id=rl_id,
-                                                 pws_to_consider=[pw_id_1, pw_id_2], do_print=False)[0]
+        redundant_cols = PWEQuery.redundant_column(relations=relations, expected_pws=len(pws),  dfs=dfs, rl_id=rl_id,
+                                                   pws_to_consider=[pw_id_1, pw_id_2], do_print=False)[0]
         cols_to_consider = set(list(dfs[rl_id])[1:])
         for t in redundant_cols:
             if t in cols_to_consider:
@@ -39,17 +32,19 @@ def sym_diff_dist_sqlite(pw_id_1, pw_id_2, relations, dfs, pws, conn, rls_to_use
         wt1 = 1  # TBD
         k1 = 1  # TBD
 
-        x1 = difference_both_ways_sqlite(dfs, relations, conn, rl_id, pw_id_1, pw_id_2, cols_to_consider, False)
+        x1 = PWEQuery.difference_both_ways(relations=relations, dfs=dfs,  rl_id=rl_id, pw_id_1=pw_id_1, pw_id_2=pw_id_2,
+                                           col_names=cols_to_consider, do_print=False)
         dist += wt1 * len(x1) ** k1 if x1 is not None else 0
 
     return dist
 
 
-def euler_overlap_diff_dist(pw_id_1, pw_id_2, rl_id, col_name, dfs, pws, relations, conn):
+def euler_overlap_diff_dist(pw_id_1, pw_id_2, rl_id, col_name, dfs, pws, relations):
 
-    x1 = freq_sqlite(dfs, pws, relations, conn, rl_id, [col_name], ['"><"'], [pw_id_1], False)[1][0]
-    x2 = freq_sqlite(dfs, pws, relations, conn, rl_id, [col_name], ['"><"'], [pw_id_2], False)[1][0]
-
+    x1 = PWEQuery.freq(relations=relations, expected_pws=len(pws), dfs=dfs, rl_id=rl_id, col_names=[col_name],
+                       values=['"><"'], pws_to_consider=[pw_id_1], do_print=False)[1][0]
+    x2 = PWEQuery.freq(relations=relations, expected_pws=len(pws), dfs=dfs, rl_id=rl_id, col_names=[col_name],
+                       values=['"><"'], pws_to_consider=[pw_id_2], do_print=False)[1][0]
     return abs(x1 - x2)
 
 
@@ -69,7 +64,8 @@ def __main__():
                             "Provide the column name to use using the -col flag.")
     group.add_argument("-custom_dist_func", type=str,
                        help="provide the .py file (without the .py) containing your custom distance function. The function "
-                            "signature should be dist(pw_id_1, pw_id_2, dfs = None, pws = None, relations = None, "
+                            "signature should be dist(pw_id_1, pw_id_2, **kwargs) where kwargs contains the follwing:"
+                            "dfs, pws, relations"
                             "conn = None) where the latter four arguments refer to the data acquired from parsing the "
                             "ASP solutions and the connection to the generated sqlite database respectively. The function "
                             "should return a floating point number. Ensure that the file is in the same directory as "
@@ -130,8 +126,8 @@ def __main__():
             pw1 = args.pws[0]
             pw2 = args.pws[1]
             print("Distance between PWs {} and {} is {}".format(pw1, pw2,
-                                                                sym_diff_dist_sqlite(pw1, pw2, relations, dfs,
-                                                                                     pws, conn, arg_ids)))
+                                                                sym_diff_dist(pw1, pw2, relations, dfs,
+                                                                              pws, arg_ids)))
 
         dist_matrix = None
 
@@ -141,7 +137,7 @@ def __main__():
             for i in range(1, len(pws) + 1):
                 for j in range(i, len(pws) + 1):
                     dist_matrix[i - 1, j - 1] = dist_matrix[j - 1, i - 1] = \
-                        sym_diff_dist_sqlite(i, j, relations, dfs, pws, conn, arg_ids)
+                        sym_diff_dist(i, j, relations, dfs, pws, arg_ids)
 
             if np.max(dist_matrix) != np.min(dist_matrix):
                 dist_matrix = (dist_matrix - np.min(dist_matrix)) / (np.max(dist_matrix) - np.min(dist_matrix))
@@ -177,7 +173,7 @@ def __main__():
             print(
                 "Distance between PWs {} and {} is {}".format(pw1, pw2,
                                                               euler_overlap_diff_dist(pw1, pw2, r_id, args.col,
-                                                                                      dfs, pws, relations, conn)))
+                                                                                      dfs, pws, relations)))
 
         dist_matrix = None
 
@@ -187,7 +183,7 @@ def __main__():
             for i in range(1, len(pws) + 1):
                 for j in range(i, len(pws) + 1):
                     dist_matrix[i - 1, j - 1] = dist_matrix[j - 1, i - 1] = \
-                        euler_overlap_diff_dist(i, j, r_id, args.col, dfs, pws, relations, conn)
+                        euler_overlap_diff_dist(i, j, r_id, args.col, dfs, pws, relations)
 
             if np.max(dist_matrix) != np.min(dist_matrix):
                 dist_matrix = (dist_matrix - np.min(dist_matrix)) / (np.max(dist_matrix) - np.min(dist_matrix))
@@ -215,22 +211,23 @@ def __main__():
             print("Error: ", str(e))
             exit(1)
 
-        if args.pws is None and args.calc_dist_matrix == False:
+        if args.pws is None and args.calc_dist_matrix is False:
             print("Include atleast one of -pws or -calc_dist_matrix flags.")
             exit(0)
 
         if args.pws is not None and len(args.pws) == 2:
             pw1 = args.pws[0]
             pw2 = args.pws[1]
-            print("Distance between PWs {} and {} is {}".format(pw1, pw2,
-                                                                dist_func(pw1, pw2, dfs, pws, relations, conn)))
+            print("Distance between PWs {} and {} is {}".format(pw1, pw2, dist_func(pw1, pw2, dfs=dfs, pws=pws,
+                                                                                    relations=relations)))
 
         if args.calc_dist_matrix:
             dist_matrix = np.zeros((len(pws), len(pws)))
 
             for i in range(1, len(pws) + 1):
                 for j in range(i, len(pws) + 1):
-                    dist_matrix[i - 1, j - 1] = dist_matrix[j - 1, i - 1] = dist_func(i, j, dfs, pws, relations, conn)
+                    dist_matrix[i - 1, j - 1] = dist_matrix[j - 1, i - 1] = \
+                        dist_func(i, j, dfs=dfs, pws=pws, relations=relations)
 
             if np.max(dist_matrix) != np.min(dist_matrix):
                 dist_matrix = (dist_matrix - np.min(dist_matrix)) / (np.max(dist_matrix) - np.min(dist_matrix))

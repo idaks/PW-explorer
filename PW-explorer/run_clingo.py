@@ -3,12 +3,13 @@
 import argparse
 import os
 import subprocess as subprocess
-from pwe_helper import get_asp_input_folder, get_asp_output_folder, set_current_project_name, preprocess_clingo_output
+from .pwe_helper import get_asp_input_folder, get_asp_output_folder, set_current_project_name, preprocess_clingo_output
 
 """
 This script is used to run clingo on given clingo files, pre-process the output and then
 save it to the appropriate location.
 """
+
 
 def __main__():
 
@@ -46,7 +47,8 @@ def __main__():
     temp_data.close()
     set_current_project_name(project_name)
 
-def get_clingo_output(clingo_in_fnames: list, num_solutions:int=0):
+
+def get_clingo_output(clingo_in_fnames: list, num_solutions: int=0):
 
     t = ['clingo', '-n {}'.format(num_solutions), '-Wnone']
     t.extend(clingo_in_fnames)
@@ -70,6 +72,7 @@ def run_clingo(clingo_rules: list) -> list:
     clingo_output = get_clingo_output([dummy_fname])
     os.remove(dummy_fname)
     return preprocess_clingo_output(clingo_output)
+
 
 if __name__ == '__main__':
     __main__()

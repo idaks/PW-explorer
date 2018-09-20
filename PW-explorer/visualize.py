@@ -7,7 +7,7 @@ import sqlite3
 import argparse
 import pickle
 import importlib
-from pwe_helper import PossibleWorld, Relation, load_from_temp_pickle, get_sql_conn, get_current_project_name, \
+from .pwe_helper import PossibleWorld, Relation, load_from_temp_pickle, get_sql_conn, get_current_project_name, \
     set_current_project_name, get_save_folder, CUSTOM_VISUALIZATION_FUNCTIONS_FOLDER
 
 import matplotlib.pyplot as plt
@@ -16,31 +16,15 @@ from sklearn.decomposition import PCA
 from scipy.spatial.distance import squareform
 from scipy.cluster.hierarchy import dendrogram, linkage
 import networkx as nx
+from sklearn.manifold import MDS
 
 
-# def compute_dist_matrix(X=None):
-#     global dist_matrix
-#     return dist_matrix
-
-
-def matplotlib_to_plotly(cmap, pl_entries):
-    h = 1.0 / (pl_entries - 1) if pl_entries > 1 else 1
-    pl_colorscale = []
-
-    for k in range(pl_entries):
-        C = list(map(np.uint8, np.array(cmap(k * h)[:3]) * 255))
-        pl_colorscale.append([k * h, 'rgb' + str((C[0], C[1], C[2]))])
-
-    return pl_colorscale
-
-
-def dbscan_clustering(dist_matrix, project_name=None, save_figure=False):
+def dbscan_clustering(dist_matrix, save_to_file=None):
 
     fig, ax = plt.subplots()
 
     db = DBSCAN(metric='precomputed', eps=0.5, min_samples=1)
     labels = db.fit_predict(dist_matrix)
-    # print('Cluster Labels:', str(labels))
 
     core_samples_mask = np.zeros_like(db.labels_, dtype=bool)
     core_samples_mask[db.core_sample_indices_] = True
@@ -54,112 +38,46 @@ def dbscan_clustering(dist_matrix, project_name=None, save_figure=False):
 
     # dist_matrix = PCA(n_components = 2).fit_transform(dist_matrix)
 
-    # plt.xlim((-5,5))
-    # plt.ylim((-5,5))
-
     for k, col in zip(unique_labels, colors):
         if k == -1:
             # Black used for noise.
             col = [0, 0, 0, 1]
 
         class_member_mask = (labels == k)
-
         xy = dist_matrix[class_member_mask & core_samples_mask]
-        ax.plot(xy[:, 0], xy[:, 1], 'o', markerfacecolor=tuple(col),
-                 markeredgecolor='k', markersize=14)
+        ax.plot(xy[:, 0], xy[:, 1], 'o', markerfacecolor=tuple(col), markeredgecolor='k', markersize=14)
 
         xy = dist_matrix[class_member_mask & ~core_samples_mask]
-        ax.plot(xy[:, 0], xy[:, 1], 'o', markerfacecolor=tuple(col),
-                 markeredgecolor='k', markersize=6)
+        ax.plot(xy[:, 0], xy[:, 1], 'o', markerfacecolor=tuple(col), markeredgecolor='k', markersize=6)
 
     ax.title('Estimated number of clusters: %d' % n_clusters_)
-    if project_name is not None and save_figure:
-        save_folder = get_save_folder(project_name, 'visualization')
-        fig.savefig(save_folder + '/' + 'dbscan_clustering_.png')
-        print('Clustering Output saved to: {}'.format(save_folder))
-    plt.figure()
+    if save_to_file is not None:
+        fig.savefig(save_to_file)
+    return fig, labels
 
 
-def dbscan_clustering_plotly(dist_matrix):
-
-    db = DBSCAN(metric='precomputed', eps=0.5, min_samples=1)
-    labels = db.fit_predict(dist_matrix)
-    print('Cluster Labels:', str(labels))
-
-    core_samples_mask = np.zeros_like(db.labels_, dtype=bool)
-    core_samples_mask[db.core_sample_indices_] = True
-    labels = db.labels_
-
-    # Number of clusters in labels, ignoring noise if present.
-    n_clusters_ = len(set(labels)) - (1 if -1 in labels else 0)
-    unique_labels = set(labels)
-
-    colors = matplotlib_to_plotly(plt.cm.Spectral, len(unique_labels))
-    data = []
-
-    for k, col in zip(unique_labels, colors):
-
-        if k == -1:
-            # Black used for noise.
-            col = 'black'
-        else:
-            col = col[1]
-
-        class_member_mask = (labels == k)
-
-        xy = dist_matrix[class_member_mask & core_samples_mask]
-        trace1 = go.Scatter(x=xy[:, 0], y=xy[:, 1], mode='markers',
-                            marker=dict(color=col, size=14,
-                                        line=dict(color='black', width=1)))
-
-        xy = dist_matrix[class_member_mask & ~core_samples_mask]
-        trace2 = go.Scatter(x=xy[:, 0], y=xy[:, 1], mode='markers',
-                            marker=dict(color=col, size=14,
-                                        line=dict(color='black', width=1)))
-        data.append(trace1)
-        data.append(trace2)
-
-    layout = go.Layout(showlegend=False,
-                       title='Estimated number of clusters: %d' % n_clusters_,
-                       xaxis=dict(showgrid=False, zeroline=False),
-                       yaxis=dict(showgrid=False, zeroline=False))
-    fig = go.Figure(data=data, layout=layout)
-
-    py.plot(fig)
-
-
-def linkage_dendrogram(dist_matrix, save_to_file=True, project_name=None):
+def linkage_dendrogram(dist_matrix, save_to_folder=None):
 
     X = squareform(dist_matrix)
     dendrogram_size = (max(25, int(np.sqrt(2 * len(X)) / 10)), 10)
-    if save_to_file and project_name is not None:
-        save_folder = get_save_folder(project_name, 'visualization')
+    figs = []
     for dist_type in ['single', 'complete', 'average', 'weighted']:
+        fig, ax = plt.subplots(figsize=dendrogram_size)
         linkage_matrix = linkage(X, dist_type)
-        plt.figure(figsize=dendrogram_size)
-        dendrogram(linkage_matrix, labels=[str(i) for i in range(len(dist_matrix))], show_leaf_counts=True)
-        plt.title("Dendrogram ({})".format(dist_type))
-        if save_to_file and project_name is not None:
-            plt.savefig(save_folder + '/' + '{}_dendrogram.png'.format(dist_type))
-
-    print('Dendrograms saved to:', save_folder)
-
-
-def dendrogram_plotly(dist_matrix):
-
-    pw_ids = [i for i in range(len(dist_matrix))]
-    dendro = ff.create_dendrogram(dist_matrix, labels=pw_ids, distfun=lambda _: dist_matrix)
-    dendro['layout'].update({'width': 800, 'height': 500})
-    py.plot(dendro, filename='dendrogram')
+        dendrogram(linkage_matrix, labels=[str(i) for i in range(len(dist_matrix))], show_leaf_counts=True, ax=ax)
+        ax.title("Dendrogram ({})".format(dist_type))
+        if save_to_folder is not None:
+            fig.savefig(os.path.join(save_to_folder, '{}_dendrogram.png'.format(dist_type)))
+        figs.append(fig)
+    return figs
 
 
-def mds_graph_2(pws, A, scale_down_factor, save_to_file=True, project_name=None):
+def mds_graph_2(pws, A, scale_down_factor, save_to_file=True):
 
     dt = [('len', float)]
     A = A * len(A) / scale_down_factor
     A = A.view(dt)
     G = nx.from_numpy_matrix(A)
-    # G = nx.relabel_nodes(G, dict(zip(range(len(G.nodes())),string.ascii_uppercase)))
     G = nx.relabel_nodes(G,
                          dict(list(zip(list(range(len(G.nodes()))), ['pw-{}'.format(i) for i in range(0, len(pws))]))))
 
@@ -169,24 +87,23 @@ def mds_graph_2(pws, A, scale_down_factor, save_to_file=True, project_name=None)
     G.edge_attr.update(color=None, width="0.1")
     # G.edge_attr.update(color="blue", width="0.1")
 
-    if save_to_file and project_name is not None:
-        save_folder = get_save_folder(project_name, 'visualization')
-        G.draw(save_folder + '/' + 'networkx_out.png', format='png', prog='neato')
-        print('MDS Neato Graph saved to:', save_folder)
+    if save_to_file is not None:
+        G.draw(save_to_file, format='png', prog='neato')
 
     return G
 
 
-def mds_sklearn(A):
-    from sklearn.manifold import MDS
+def mds_sklearn(A, save_to_file=None):
+
+    fig, ax = plt.subplots()
     mds = MDS(2, dissimilarity="precomputed")
     mds.fit(A)
     x = mds.embedding_[:, 0]
     y = mds.embedding_[:, 1]
-    plt.scatter(x, y)
-    save_folder = get_save_folder(project_name, 'visualization')
-    plt.savefig(save_folder + '/' + 'mds_sklearn.png')
-    plt.figure()
+    ax.scatter(x, y)
+    if save_to_file is not None:
+        fig.savefig(save_to_file)
+    return fig
 
 
 def __main__():
@@ -205,13 +122,12 @@ def __main__():
     parser.add_argument("-dendrogram", action='store_true', default=False, help="create various dendrograms using scipy")
     parser.add_argument("-custom_visualization_func", type=str,
                         help="provide the .py file (without the .py) containing your custom visualisation function. "
-                             "The function signature should be visualize(dfs = None, pws = None, relations = None, "
-                             "conn = None, project_name=None) where the four arguments refer to the data acquired "
+                             "The function signature should be visualize(**kwargs) the following arguments are provided:\n"
+                             "dfs, relations, pws, project_name, dist_matrix, save_to_folder, of which the visualization function may use any subset"
                              "from parsing the ASP solutions and the connection to the generated sqlite database "
                              "respectively. The function should create the visualization and may or may not return "
                              "anything. Ensure that the file is in the same directory as this script. You can use the "
                              "functions in sql_funcs.py to design these visualisation functions")
-
 
     args = parser.parse_args()
 
@@ -228,37 +144,36 @@ def __main__():
     relations = load_from_temp_pickle(project_name, 'relations')
     pws = load_from_temp_pickle(project_name, 'pws')
     conn = get_sql_conn(project_name)
-    # expected_pws = len(pws)
     dist_matrix = load_from_temp_pickle(project_name, 'dist_matrix')
 
     if args.mds:
-
-        mds_graph_2(dist_matrix)
+        file_to_save_to = get_save_folder(project_name, 'visualization') + '/' + 'networkx_out.png'
+        mds_graph_2(pws, dist_matrix, args.sdf, file_to_save_to)
+        print('MDS Neato Graph saved to:', file_to_save_to)
     if args.mds_sklearn:
-        mds_sklearn(dist_matrix)
+        file_to_save_to = get_save_folder(project_name, 'visualization') + '/' + 'mds_sklearn.png'
+        mds_sklearn(dist_matrix, file_to_save_to)
+        print('MDS Graph saved to: {}'.format(file_to_save_to))
     if len(pws) > 1:
         if args.clustering:
-
-
-            dbscan_clustering(dist_matrix)
-        # dbscan_clustering_plotly(dist_matrix)
+            file_to_save_to = get_save_folder(project_name, 'visualization') + '/' + 'dbscan_clustering_.png'
+            dbscan_clustering(dist_matrix, file_to_save_to)
+            print('Clustering Output saved to: {}'.format(file_to_save_to))
         if args.dendrogram:
-
-
-            linkage_dendrogram(dist_matrix)
-    # dendrogram_plotly(np.array([i for i in range(len(pws))]))
-
+            folder_to_save_to = get_save_folder(project_name, 'visualization')
+            linkage_dendrogram(dist_matrix, folder_to_save_to)
+            print('Dendrograms saved to:', folder_to_save_to)
     if args.custom_visualization_func:
-
         try:
             a = importlib.import_module(CUSTOM_VISUALIZATION_FUNCTIONS_FOLDER + '.' + args.custom_visualization_func)
             visualization_func = a.visualize
+            visualization_func(dfs=dfs, pws=pws, relations=relations, dist_matrix=dist_matrix,
+                               save_to_folder=get_save_folder(project_name, 'visualization'),
+                               project_name=project_name)
         except Exception as e:
             print("Error importing from the given file")
             print("Error: ", str(e))
             exit(1)
-
-        visualization_func(dfs, pws, relations, conn, project_name)
 
     set_current_project_name(project_name)
     conn.commit()

@@ -1,11 +1,7 @@
-import sys
-from sys import argv
 import pandas as pd
 import numpy as np
 import sqlite3
-import os
-import string
-from pwe_helper import lineno, isfloat, mkdir_p, PossibleWorld, Relation
+from .pwe_helper import lineno, isfloat, mkdir_p, PossibleWorld, Relation
 
 
 def rel_id_from_rel_name(rel_name, relations):
@@ -20,7 +16,7 @@ def rel_id_from_rel_name(rel_name, relations):
     Description:
     Given a list of Relation objects and a relation name, returns the relation id of
     the Relation object with the given relation name.
-	"""
+    """
     for i, rel in enumerate(relations):
         if rel.relation_name == rel_name:
             if i != rel.r_id:
@@ -45,13 +41,13 @@ def union_panda(dfs, pws, relations, rl_id=0, col_names=[], pws_to_consider=[], 
 
     Returns:
     A Panda DataFrame with the Union of the given PWs on the provided relation on the given list of columns.
-	"""
+    """
     expected_pws = len(pws)
 
-    if pws_to_consider == []:
+    if not pws_to_consider:
         pws_to_consider = [j for j in range(1, expected_pws + 1)]
 
-    if col_names == []:
+    if not col_names:
         col_names = list(dfs[rl_id])[1:]
 
     df = dfs[rl_id]
@@ -105,10 +101,10 @@ def intersection_sqlite(dfs, pws, relations, conn, rl_id=0, col_names=[], pws_to
 def union_sqlite(dfs, pws, relations, conn, rl_id=0, col_names=[], pws_to_consider=[], do_print=True):
     expected_pws = len(pws)
 
-    if pws_to_consider == []:
+    if not pws_to_consider:
         pws_to_consider = [j for j in range(1, expected_pws + 1)]
 
-    if col_names == []:
+    if not col_names:
         col_names = list(dfs[rl_id])[1:]
     query_union = ''
 
@@ -136,21 +132,20 @@ def freq_sqlite(dfs, pws, relations, conn, rl_id=0, col_names=[], values=[], pws
     all_tuples = None
     freqs = []
 
-    if pws_to_consider == []:
+    if not pws_to_consider:
         pws_to_consider = [j for j in range(1, expected_pws + 1)]
 
     if col_names != [] and values != [] and len(col_names) != len(values):
         print('Lengths of col_names and values don\'t match.')
         return None
 
-    if col_names == []:
+    if not col_names:
         col_names = list(dfs[rl_id])[1:]
 
-    if values == []:
+    if not values:
         all_tuples = union_panda(dfs, pws, relations, rl_id, col_names, pws_to_consider, False)
     else:
-        k = []
-        k.append(values)
+        k = [values]
         all_tuples = pd.DataFrame(k, columns=col_names)
 
     for j in range(len(all_tuples)):
@@ -184,7 +179,8 @@ def num_tuples_sqlite(relations, conn, rl_id, pw_id, do_print=True):
 
 # 5: Difference Query
 def difference_sqlite(dfs, relations, conn, rl_id, pw_id_1, pw_id_2, col_names=[], do_print=True):
-    if col_names == []:
+
+    if not col_names:
         col_names = list(dfs[rl_id])[1:]
 
     col_names = str(', '.join(map(str, col_names)))
@@ -197,15 +193,15 @@ def difference_sqlite(dfs, relations, conn, rl_id, pw_id_1, pw_id_2, col_names=[
 
     if do_print:
         print(
-            "Following is the difference between PWs {} and {} in features {} of relation {}\n".format(pw_id_1, pw_id_2,
-                                                                                                       col_names, str(
-                    relations[rl_id].relation_name)))
+            "Following is the difference between PWs {} and {} in features {} "
+            "of relation {}\n".format(pw_id_1, pw_id_2, col_names, str(relations[rl_id].relation_name)))
         print(str(diff))
     return diff
 
 
 def difference_both_ways_sqlite(dfs, relations, conn, rl_id, pw_id_1, pw_id_2, col_names=[], do_print=True):
-    if col_names == []:
+
+    if not col_names:
         col_names = list(dfs[rl_id])[1:]
 
     x1 = difference_sqlite(dfs, relations, conn, rl_id, pw_id_1, pw_id_2, col_names, False)
@@ -263,7 +259,7 @@ def unique_tuples_sqlite(dfs, pws, relations, conn, rl_id=0, col_names=[], pws_t
     """
     Used to ouput the unique tuples in a given solution set. These are the unique tuples (attributes) in the
     selected possible worlds and the selected columns in the relation.
-	"""
+    """
 
     expected_pws = len(pws)
 

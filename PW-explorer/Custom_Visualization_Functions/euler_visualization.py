@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 
-from pwe_helper import rel_id_from_rel_name, get_save_folder
+from .pwe_helper import rel_id_from_rel_name, mkdir_p
 from graphviz import Digraph
+import os
+from collections import defaultdict
 
 styles = {
     'graph': {
@@ -57,10 +59,15 @@ def find_set(ns, name):
             return i
 
 
-def visualize(dfs=None, pws=None, relations=None, conn=None, project_name=None):
+def visualize(**kwargs):
 
+    kwargs = defaultdict(lambda: None, kwargs)
+    dfs = kwargs['dfs']
+    pws = kwargs['pws']
+    relations = kwargs['relations']
+    save_to_folder = kwargs['save_to_folder']
+    graphs = []
     for pw_id in range(1, len(pws) + 1):
-
         graph = Digraph(graph_attr=styles['graph'])
         nodes_sets = []
         # Get the regions/concepts from the 'u' df
@@ -125,5 +132,12 @@ def visualize(dfs=None, pws=None, relations=None, conn=None, project_name=None):
                 graph.edge("\n".join(node1), "\n".join(node2), _attributes=styles['edge_styles']['overlap_edge'])
                 overlap_edges.append((node1, node2))
 
-        folder_name = get_save_folder(project_name, 'euler_visualization')
-        graph.render(filename='{}/pw-{}'.format(folder_name, pw_id))
+        graphs.append(graph)
+
+    if save_to_folder is not None:
+        folder_name = os.path.join(save_to_folder, 'euler_visualization')
+        mkdir_p(folder_name)
+        for i, graph in enumerate(graphs):
+            graph.render(filename='{}/pw-{}'.format(folder_name, i+1))
+
+    return graphs

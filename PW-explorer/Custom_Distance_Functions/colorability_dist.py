@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-from pwe_helper import rel_id_from_rel_name
+from .pwe_helper import rel_id_from_rel_name
 import copy
+from collections import defaultdict
 
 
 def get_colors_list(df, id):
@@ -30,13 +31,13 @@ def get_pattern(sequence):
 
 
 def compare_patterns(p1, p2, check_cyclical_equivalence=True):
-    if (len(p1) != len(p2)):
+    if len(p1) != len(p2):
         return False
 
     if p1 == p2:
         return True
 
-    if (not check_cyclical_equivalence):
+    if not check_cyclical_equivalence:
         return False
 
     n = len(p2)
@@ -46,7 +47,7 @@ def compare_patterns(p1, p2, check_cyclical_equivalence=True):
         temp = t2.pop()
         t2.insert(0, temp)
         new_pattern, _ = get_pattern(t2)
-        if (new_pattern == p1):
+        if new_pattern == p1:
             return True
 
     return False
@@ -67,7 +68,11 @@ def dist_helper(s1, s2):
     return dist_
 
 
-def dist(pw_id_1, pw_id_2, dfs=None, pws=None, relations=None, conn=None):
+def dist(pw_id_1, pw_id_2, **kwargs):
+
+    kwargs = defaultdict(lambda: None, kwargs)
+    dfs = kwargs['dfs']
+    relations = kwargs['relations']
     if dfs is None or relations is None:
         print("None objects passed in.")
         return -1
@@ -82,6 +87,7 @@ def dist(pw_id_1, pw_id_2, dfs=None, pws=None, relations=None, conn=None):
     s2 = get_colors_list(df, pw_id_2)
 
     return dist_helper(s1, s2)
+
 
 #### DOESN't WORK COMPLETELY. NEED TO GENERATE NEW PATTERN EVERY TIME. NO SHORTCUTS ########
 
