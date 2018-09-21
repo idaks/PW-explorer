@@ -66,8 +66,8 @@ def __main__():
                        help="provide the .py file (without the .py) containing your custom distance function. The function "
                             "signature should be dist(pw_id_1, pw_id_2, **kwargs) where kwargs contains the follwing:"
                             "dfs, pws, relations"
-                            "conn = None) where the latter four arguments refer to the data acquired from parsing the "
-                            "ASP solutions and the connection to the generated sqlite database respectively. The function "
+                            "where the latter three arguments refer to the data acquired from parsing the "
+                            "ASP solutions. The function "
                             "should return a floating point number. Ensure that the file is in the same directory as "
                             "this script. You can use the functions in sql_funcs.py to design these dist functions")
     group.add_argument("-show_relations", action='store_true', default=False,

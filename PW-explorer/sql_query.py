@@ -1,17 +1,13 @@
 #!/usr/bin/env python3
 # SQLite QUERY SCRIPT:
 
-import sys
-from sys import argv
 import pandas as pd
 import numpy as np
 import sqlite3
 import os
-import string
 import argparse
-import pickle
-from .pwe_helper import mkdir_p, PossibleWorld, Relation, get_current_project_name, set_current_project_name, \
-    load_from_temp_pickle, get_sql_conn, rel_id_from_rel_name, get_save_folder, get_file_save_name
+from .pwe_helper import get_current_project_name, set_current_project_name, \
+    load_from_temp_pickle, get_sql_conn, rel_id_from_rel_name
 import sql_funcs
 
 

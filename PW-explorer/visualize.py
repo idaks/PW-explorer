@@ -3,20 +3,18 @@
 import pandas as pd
 import numpy as np
 import os
-import sqlite3
 import argparse
-import pickle
 import importlib
 from .pwe_helper import PossibleWorld, Relation, load_from_temp_pickle, get_sql_conn, get_current_project_name, \
     set_current_project_name, get_save_folder, CUSTOM_VISUALIZATION_FUNCTIONS_FOLDER
 
 import matplotlib.pyplot as plt
 from sklearn.cluster import DBSCAN
-from sklearn.decomposition import PCA
 from scipy.spatial.distance import squareform
 from scipy.cluster.hierarchy import dendrogram, linkage
 import networkx as nx
 from sklearn.manifold import MDS
+# from sklearn.decomposition import PCA
 
 
 def dbscan_clustering(dist_matrix, save_to_file=None):
