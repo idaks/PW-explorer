@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from sklearn.cluster import DBSCAN
-from .pwe_helper import rel_id_from_rel_name, mkdir_p
+from pwe_helper import rel_id_from_rel_name, mkdir_p
 import matplotlib.pyplot as plt
 from collections import defaultdict
 import os
@@ -49,7 +49,7 @@ def visualize(**kwargs):
         group_size = [1 for _ in cols]
         ax.pie(group_size, colors=cols)
         my_circle = plt.Circle((0, 0), 0.7, color='white')
-        p = ax.gcf()
+        p = plt.gcf()
         p.gca().add_artist(my_circle)
         ax.annotate(str(label_counts[label]), xy=(0, 0), ha='center', va='center', fontsize=35)
         figs.append(fig)
@@ -57,7 +57,7 @@ def visualize(**kwargs):
     if save_to_folder is not None:
         output_folder = os.path.join(save_to_folder, 'four_colorability_visualization')
         mkdir_p(output_folder)
-        for fig in figs:
-            fig.savefig(os.path.join(output_folder, 'pattern_{}.png'.format(str(label))))
+        for i, fig in enumerate(figs):
+            fig.savefig(os.path.join(output_folder, 'pattern_{}.png'.format(str(i))))
 
     return figs

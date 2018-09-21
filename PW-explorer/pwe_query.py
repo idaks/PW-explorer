@@ -3,7 +3,7 @@
 
 import pandas as pd
 import argparse
-from .pwe_helper import get_current_project_name, set_current_project_name, \
+from pwe_helper import get_current_project_name, set_current_project_name, \
     load_from_temp_pickle, rel_id_from_rel_name
 
 
@@ -423,7 +423,7 @@ def __main__():
 
         soln = None
         try:
-            soln = PWEQuery.unique_tuples(expected_pws, dfs, r_id, args.cols, args.pws, True)
+            soln = PWEQuery.unique_tuples(relations, expected_pws, dfs, r_id, args.cols, args.pws, True)
         except Exception as e:
             print("Query failed. Please check the provided arguments to make sure they are valid.")
             print("Error: ", str(e))

@@ -6,7 +6,7 @@ import numpy as np
 import sqlite3
 import os
 import argparse
-from .pwe_helper import get_current_project_name, set_current_project_name, \
+from pwe_helper import get_current_project_name, set_current_project_name, \
     load_from_temp_pickle, get_sql_conn, rel_id_from_rel_name
 import sql_funcs
 
@@ -81,12 +81,7 @@ def redundant_column_sqlite(relations, expected_pws, dfs, conn, pws, rl_id=0, co
 
 
 # 7: Tuples occuring in exactly one PW:
-def unique_tuples_sqlite(rl_id=0, col_names=[], pws_to_consider=[j for j in range(1, expected_pws + 1)], do_print=True):
-    global relations
-    global expected_pws
-    global dfs
-    global conn
-    global pws
+def unique_tuples_sqlite(relations, pws, dfs, conn, rl_id=0, col_names=None, pws_to_consider=None, do_print=True):
 
     return sql_funcs.unique_tuples_sqlite(dfs, pws, relations, conn, rl_id, col_names, pws_to_consider, do_print)
 

@@ -6,7 +6,7 @@ import numpy as np
 import os
 import sqlite3
 import argparse
-from .pwe_helper import get_current_project_name, set_current_project_name, \
+from pwe_helper import get_current_project_name, set_current_project_name, \
     get_save_folder, load_from_temp_pickle, mkdir_p
 
 
@@ -59,7 +59,7 @@ def export(export_format, export_loc, dfs, relations):
         if export_format == 'csv':
             df.to_csv(fname)
         elif export_format == 'h5':
-            df.to_hdf(fname, mode='w')
+            df.to_hdf(fname, mode='w', key='df')
         elif export_format == 'msg':
             df.to_msgpack(fname)
         elif export_format == 'pkl':

@@ -19,7 +19,7 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     scripts=['PW-explorer/run_clingo.py', 'PW-explorer/load_worlds.py', 'PW-explorer/export.py',
-             'PW-explorer/dist_calc.py', 'PW-explorer/complexity_calc.py', 'PW-explorer/pd_query.py',
+             'PW-explorer/dist_calc.py', 'PW-explorer/complexity_calc.py', 'PW-explorer/pwe_query.py',
              'PW-explorer/visualize.py'
              ],
 )

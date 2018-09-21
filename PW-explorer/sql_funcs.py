@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 import sqlite3
-from .pwe_helper import lineno, isfloat, mkdir_p, PossibleWorld, Relation
+from pwe_helper import lineno, isfloat, mkdir_p, PossibleWorld, Relation
 
 
 def rel_id_from_rel_name(rel_name, relations):

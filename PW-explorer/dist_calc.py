@@ -5,10 +5,10 @@ import numpy as np
 import argparse
 import pickle
 import importlib
-from .pwe_helper import get_current_project_name, set_current_project_name, \
+from pwe_helper import get_current_project_name, set_current_project_name, \
     load_from_temp_pickle, get_sql_conn, rel_id_from_rel_name, get_save_folder, get_file_save_name, \
     CUSTOM_DISTANCE_FUNCTIONS_FOLDER
-from .pd_query import PWEQuery
+from pwe_query import PWEQuery
 
 
 def sym_diff_dist(pw_id_1, pw_id_2, relations, dfs, pws, rls_to_use: list=None):

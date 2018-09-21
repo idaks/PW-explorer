@@ -5,7 +5,7 @@ import numpy as np
 import os
 import argparse
 import importlib
-from .pwe_helper import PossibleWorld, Relation, load_from_temp_pickle, get_sql_conn, get_current_project_name, \
+from pwe_helper import PossibleWorld, Relation, load_from_temp_pickle, get_sql_conn, get_current_project_name, \
     set_current_project_name, get_save_folder, CUSTOM_VISUALIZATION_FUNCTIONS_FOLDER
 
 import matplotlib.pyplot as plt
@@ -169,9 +169,9 @@ def __main__():
                                save_to_folder=get_save_folder(project_name, 'visualization'),
                                project_name=project_name)
         except Exception as e:
-            print("Error importing from the given file")
-            print("Error: ", str(e))
-            exit(1)
+           print("Error importing from the given file")
+           print("Error: ", str(e))
+           exit(1)
 
     set_current_project_name(project_name)
     conn.commit()
