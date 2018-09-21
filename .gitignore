@@ -7,3 +7,7 @@ Euler Examples/
 Misc Scripts/
 Presentations and Papers/
 lean_euler_p2.sh
+*.ipynb_checkpoints/
+PW-explorer/Results/*
+PW-explorer/Custom_Visualization_Functions/Euler Viz NXPD.ipynb
+PW-explorer/Euler Viz NXPD-Copy1.ipynb
