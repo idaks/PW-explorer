@@ -2,3 +2,8 @@
 *.pyc
 .idea/
 .env/
+Colorability_Examples/
+Euler Examples/
+Misc Scripts/
+Presentations and Papers/
+lean_euler_p2.sh
