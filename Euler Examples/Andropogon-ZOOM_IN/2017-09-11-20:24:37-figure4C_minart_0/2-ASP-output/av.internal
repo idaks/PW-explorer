@@ -1,8 +1,0 @@
-firstTName = '1950'
-secondTName = '1948'
-thirdTName = ''
-fourthTName = ''
-fifthTName = ''
-allRcgEdgesDict = {}
-numOfPws = 17
-avFlag = False
