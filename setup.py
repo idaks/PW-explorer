@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="PW-explorer",
+    name="PW_explorer",
     version="0.0.1",
     author="Sahil Gupta",
     author_email="",
@@ -18,8 +18,8 @@ setuptools.setup(
         #"License :: OSI Approved :: Apache License, Version 2.0 (Apache-2.0)",
         "Operating System :: OS Independent",
     ],
-    scripts=['PW-explorer/run_clingo.py', 'PW-explorer/load_worlds.py', 'PW-explorer/export.py',
-             'PW-explorer/dist_calc.py', 'PW-explorer/complexity_calc.py', 'PW-explorer/pwe_query.py',
-             'PW-explorer/visualize.py'
+    scripts=['PW_explorer/run_clingo.py', 'PW_explorer/load_worlds.py', 'PW_explorer/export.py',
+             'PW_explorer/dist_calc.py', 'PW_explorer/complexity_calc.py', 'PW_explorer/pwe_query.py',
+             'PW_explorer/visualize.py'
              ],
 )
