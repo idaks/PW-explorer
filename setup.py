@@ -15,7 +15,7 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: Apache License 2.0",
+        #"License :: OSI Approved :: Apache License, Version 2.0 (Apache-2.0)",
         "Operating System :: OS Independent",
     ],
     scripts=['PW-explorer/run_clingo.py', 'PW-explorer/load_worlds.py', 'PW-explorer/export.py',
