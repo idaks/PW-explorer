@@ -4,9 +4,9 @@ import pandas as pd
 import numpy as np
 import argparse
 import importlib
-from pwe_helper import load_from_temp_pickle, get_sql_conn, get_current_project_name, set_current_project_name, \
+from PW_explorer.pwe_helper import load_from_temp_pickle, get_sql_conn, get_current_project_name, set_current_project_name, \
     rel_id_from_rel_name
-from pwe_query import PWEQuery
+from PW_explorer.pwe_query import PWEQuery
 
 
 def euler_complexity_analysis(relations, expected_pws, dfs, rl_id, col_name, pws_to_consider: list=None, do_print=True):

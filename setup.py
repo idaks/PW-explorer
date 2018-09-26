@@ -20,6 +20,6 @@ setuptools.setup(
     ],
     scripts=['PW_explorer/run_clingo.py', 'PW_explorer/load_worlds.py', 'PW_explorer/export.py',
              'PW_explorer/dist_calc.py', 'PW_explorer/complexity_calc.py', 'PW_explorer/pwe_query.py',
-             'PW_explorer/visualize.py'
+             'PW_explorer/visualize.py', 'PW_explorer/pwe_helper.py'
              ],
 )

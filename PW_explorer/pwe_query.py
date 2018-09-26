@@ -3,7 +3,7 @@
 
 import pandas as pd
 import argparse
-from pwe_helper import get_current_project_name, set_current_project_name, \
+from PW_explorer.pwe_helper import get_current_project_name, set_current_project_name, \
     load_from_temp_pickle, rel_id_from_rel_name
 
 

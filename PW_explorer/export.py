@@ -6,7 +6,7 @@ import numpy as np
 import os
 import sqlite3
 import argparse
-from pwe_helper import get_current_project_name, set_current_project_name, \
+from PW_explorer.pwe_helper import get_current_project_name, set_current_project_name, \
     get_save_folder, load_from_temp_pickle, mkdir_p
 
 

@@ -5,7 +5,7 @@ import numpy as np
 import os
 import argparse
 import importlib
-from pwe_helper import PossibleWorld, Relation, load_from_temp_pickle, get_sql_conn, get_current_project_name, \
+from PW_explorer.pwe_helper import PossibleWorld, Relation, load_from_temp_pickle, get_sql_conn, get_current_project_name, \
     set_current_project_name, get_save_folder, CUSTOM_VISUALIZATION_FUNCTIONS_FOLDER
 
 import matplotlib.pyplot as plt
