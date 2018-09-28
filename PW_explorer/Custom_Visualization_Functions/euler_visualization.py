@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from .pwe_helper import rel_id_from_rel_name, mkdir_p
+from PW_explorer.pwe_helper import rel_id_from_rel_name, mkdir_p
 from graphviz import Digraph
 import os
 from collections import defaultdict

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from sklearn.cluster import DBSCAN
-from .pwe_helper import rel_id_from_rel_name, mkdir_p
+from PW_explorer.pwe_helper import rel_id_from_rel_name, mkdir_p
 import matplotlib.pyplot as plt
 from collections import defaultdict
 import os
