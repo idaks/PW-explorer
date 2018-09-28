@@ -88,7 +88,7 @@ def __main__():
             pws_to_consider = [j for j in range(1, expected_pws + 1)]
 
         try:
-            euler_complexity_analysis(r_id, args.col, pws_to_consider)
+            euler_complexity_analysis(relations, len(pws), dfs, r_id, args.col, pws_to_consider)
         except Exception as e:
             print("Error running the euler_complexity_analysis. Recheck your inputs.")
             print("Error: ", str(e))

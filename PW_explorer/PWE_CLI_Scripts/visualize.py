@@ -9,6 +9,7 @@ from PW_explorer.pwe_helper import (
     get_save_folder,
     set_current_project_name,
     CUSTOM_VISUALIZATION_FUNCTIONS_FOLDER,
+    get_current_project_name,
 )
 from PW_explorer.visualize import *
 

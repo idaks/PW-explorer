@@ -87,7 +87,7 @@ def __main__():
 
         if arg_ids is [] and args.rel_names is not []:
             for i in args.rel_names:
-                arg_ids.append(rel_id_from_rel_name(i))
+                arg_ids.append(rel_id_from_rel_name(i, relations))
         if args.pws is None and args.calc_dist_matrix is False:
             print("Include at least one of -pws or -calc_dist_matrix flags.")
             exit(0)
@@ -127,7 +127,7 @@ def __main__():
 
         r_id = args.rel_id
         if r_id is None:
-            r_id = rel_id_from_rel_name(args.rel_name)
+            r_id = rel_id_from_rel_name(args.rel_name, relations)
 
         if args.col is None:
             print("-col is required")
