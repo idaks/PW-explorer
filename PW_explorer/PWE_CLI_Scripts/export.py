@@ -1,0 +1,79 @@
+#!/usr/bin/env python3
+
+from PW_explorer.export import *
+from PW_explorer.pwe_helper import (
+    load_from_temp_pickle,
+    set_current_project_name,
+    get_current_project_name,
+    get_save_folder,
+)
+
+import argparse
+
+
+def __main__():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-p", "--project_name", type=str, help="provide session/project name used while parsing")
+    parser.add_argument("-s", "--schema", action="store_true", help="generate sql schemas", default=False)
+    parser.add_argument("-sql", action="store_true", help="include if you want to export a sql db", default=False)
+    parser.add_argument("-csv", action="store_true", help="include if you want to export in csv", default=False)
+    parser.add_argument("-h5", action="store_true", help="include if you want to export in hdf5 format", default=False)
+    parser.add_argument("-msg", action="store_true", help="include if you want to export in msgpack format",
+                        default=False)
+    parser.add_argument("-pkl", action="store_true", help="include if you want to export in pickle format",
+                        default=False)
+    args = parser.parse_args()
+
+    project_name = ''
+    if args.project_name is None:
+        project_name = get_current_project_name()
+        if project_name is None:
+            print("Couldn't find current project. Please provide a project name.")
+            exit(1)
+    else:
+        project_name = args.project_name
+
+    export_to_sql = args.sql
+    export_to_csv = args.csv
+    export_to_hdf = args.h5
+    export_to_msg = args.msg
+    export_to_pkl = args.pkl
+
+    dfs = load_from_temp_pickle(project_name, 'dfs')
+    relations = load_from_temp_pickle(project_name, 'relations')
+
+    if export_to_sql:
+        if export_to_sqlite_db(get_save_folder(project_name, 'sql_export'), dfs, relations, project_name):
+            print("Successfully exported to sql")
+        else:
+            print("SQL Export Failed")
+    if export_to_csv:
+        if export('csv', get_save_folder(project_name, 'csv_export'), dfs, relations):
+            print("Successfully exported to csv")
+        else:
+            print("CSV Export Failed")
+    if export_to_hdf:
+        if export('h5', get_save_folder(project_name, 'h5_export'), dfs, relations):
+            print("Successfully exported to hdf")
+        else:
+            print("HDF Export Failed")
+    if export_to_msg:
+        if export('msg', get_save_folder(project_name, 'msg_export'), dfs, relations):
+            print("Successfully exported to msg")
+        else:
+            print("MSGPACK Export Failed")
+    if export_to_pkl:
+        if export('pkl', get_save_folder(project_name, 'pkl_export'), dfs, relations):
+            print("Successfully exported to pkl")
+        else:
+            print("PICKLE Export Failed")
+
+    if args.schema:
+        schemas = get_sqlite_schema(dfs, relations)
+        print('\n'.join(schemas))
+
+    set_current_project_name(project_name)
+
+
+if __name__ == '__main__':
+    __main__()

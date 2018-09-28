@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from PW_explorer.Custom_Visualization_Functions.pwe_helper import rel_id_from_rel_name, mkdir_p
+from .pwe_helper import rel_id_from_rel_name, mkdir_p
 from nxpd import draw
 import networkx as nx
 import os

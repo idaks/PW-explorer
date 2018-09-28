@@ -8,7 +8,7 @@ with open('requirements.txt', 'r') as fh:
 
 setuptools.setup(
     name="PW_explorer",
-    version="0.0.2",
+    version="0.0.3",
     author="Sahil Gupta",
     author_email="",
     description="An Extensible Possible World Explorer for Answer Set Programming",
@@ -22,8 +22,10 @@ setuptools.setup(
         "License :: OSI Approved :: Apache Software License",
         "Operating System :: OS Independent",
     ],
-    scripts=['PW_explorer/run_clingo.py', 'PW_explorer/load_worlds.py', 'PW_explorer/export.py',
-             'PW_explorer/dist_calc.py', 'PW_explorer/complexity_calc.py', 'PW_explorer/pwe_query.py',
-             'PW_explorer/visualize.py', 'PW_explorer/pwe_helper.py'
-             ],
+    # scripts=['PW_explorer/run_clingo.py', 'PW_explorer/load_worlds.py', 'PW_explorer/export.py',
+    #          'PW_explorer/dist_calc.py', 'PW_explorer/complexity_calc.py', 'PW_explorer/pwe_query.py',
+    #          'PW_explorer/visualize.py', 'PW_explorer/pwe_helper.py',
+    #          ],
+    scripts=['PW_explorer/PWE_CLI_Scripts/run_clingo.py',
+             ]
 )

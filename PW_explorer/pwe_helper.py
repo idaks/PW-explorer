@@ -87,9 +87,9 @@ class Relation:
 # File Location Constants:
 
 
-SRC_TEMP_PICKLE_LOC = 'temp_pickle_data/'
+SRC_TEMP_PICKLE_LOC = '.temp_pickle_data/'
 CURRENT_PROJECT_NAME_LOC = SRC_TEMP_PICKLE_LOC + 'current_project_name.pkl'
-PROJECT_RESULTS_LOC = 'Results/'
+PROJECT_RESULTS_LOC = 'PWE_Results/'
 PROJECT_ASP_INPUT_FOLDER = 'ASP_Input/'
 PROJECT_ASP_OUTPUT_FOLDER = 'ASP_Output/'
 PROJECT_EXPORTS_FOLDER = 'Exports/'

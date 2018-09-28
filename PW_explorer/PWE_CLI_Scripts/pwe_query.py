@@ -1,92 +1,18 @@
 #!/usr/bin/env python3
-# SQLite QUERY SCRIPT:
 
-import pandas as pd
-import numpy as np
-import sqlite3
-import os
+from PW_explorer.pwe_query import *
+from PW_explorer.pwe_helper import (
+    get_current_project_name,
+    load_from_temp_pickle,
+    rel_id_from_rel_name,
+    set_current_project_name,
+)
+
 import argparse
-from .pwe_helper import get_current_project_name, set_current_project_name, \
-    load_from_temp_pickle, get_sql_conn, rel_id_from_rel_name
-from . import sql_funcs
-
-
-def union_panda(relations, expected_pws, dfs, pws, rl_id=0, col_names=[], pws_to_consider=[], do_print=True):
-
-    if not pws_to_consider:
-        pws_to_consider = [j for j in range(1, expected_pws + 1)]
-
-    if not col_names:
-        col_names = list(dfs[rl_id])[1:]
-
-    return sql_funcs.union_panda(dfs, pws, relations, rl_id, col_names, pws_to_consider, do_print)
-
-
-# 1: Intersection
-def intersection_sqlite(relations, expected_pws, dfs, conn, pws, rl_id=0, col_names=[],
-                        pws_to_consider=[], do_print=True):
-
-    if not pws_to_consider:
-        pws_to_consider = [j for j in range(1, expected_pws + 1)]
-
-    if not col_names:
-        col_names = list(dfs[rl_id])[1:]
-    return sql_funcs.intersection_sqlite(dfs, pws, relations, conn, rl_id, col_names, pws_to_consider, do_print)
-
-
-# 2: Union
-def union_sqlite(relations, expected_pws, dfs, conn, pws, rl_id=0, col_names=[], pws_to_consider=[], do_print=True):
-
-    if not pws_to_consider:
-        pws_to_consider = [j for j in range(1, expected_pws + 1)]
-
-    if not col_names:
-        col_names = list(dfs[rl_id])[1:]
-
-    return sql_funcs.union_sqlite(dfs, pws, relations, conn, rl_id, col_names, pws_to_consider, do_print)
-
-
-# 3: Frequency of a tuple
-def freq_sqlite(relations, dfs, conn, pws, rl_id=0, col_names=[], values=[], pws_to_consider=[],
-                do_print=True):
-
-    return sql_funcs.freq_sqlite(dfs, pws, relations, conn, rl_id, col_names, values, pws_to_consider, do_print)
-
-
-# 4: Number of tuples of a relation in a PW
-def num_tuples_sqlite(relations, conn, rl_id, pw_id, do_print=True):
-
-    return sql_funcs.num_tuples_sqlite(relations, conn, rl_id, pw_id, do_print)
-
-
-# 5: Difference Query
-def difference_sqlite(relations, conn, dfs, rl_id, pw_id_1, pw_id_2, col_names=[], do_print=True):
-
-    return sql_funcs.difference_sqlite(dfs, relations, conn, rl_id, pw_id_1, pw_id_2, col_names, do_print)
-
-
-def difference_both_ways_sqlite(relations, conn, dfs, rl_id, pw_id_1, pw_id_2, col_names=[], do_print=True):
-
-    return sql_funcs.difference_both_ways_sqlite(dfs, relations, conn, rl_id, pw_id_1, pw_id_2, col_names, do_print)
-
-
-# 6: Redundant Column Query
-def redundant_column_sqlite(relations, expected_pws, dfs, conn, pws, rl_id=0, col_names=[], pws_to_consider=[],
-                            do_print=True):
-
-    if not pws_to_consider:
-        pws_to_consider = [j for j in range(1, expected_pws + 1)]
-
-    return sql_funcs.redundant_column_sqlite(dfs, pws, relations, conn, rl_id, col_names, pws_to_consider, do_print)
-
-
-# 7: Tuples occuring in exactly one PW:
-def unique_tuples_sqlite(relations, pws, dfs, conn, rl_id=0, col_names=None, pws_to_consider=None, do_print=True):
-
-    return sql_funcs.unique_tuples_sqlite(dfs, pws, relations, conn, rl_id, col_names, pws_to_consider, do_print)
 
 
 def __main__():
+
     parser = argparse.ArgumentParser()
     parser.add_argument("-p", "--project_name", type=str, help="provide session/project name used while parsing")
     group = parser.add_mutually_exclusive_group()
@@ -112,8 +38,9 @@ def __main__():
     group.add_argument("-unique_tuples", action='store_true', default=False,
                        help="provide either relation name or relation_id using the -rel_name or -rel_id flag respectively, "
                             "columns to consider using the -cols flag and possible worlds to consider using the -pws flag.")
-    group.add_argument("-custom", type=str, help="provide the query enclosed in '' .")
-    group.add_argument("-custom_file", type=str, help="provide the .sql file containing the query.")
+    group.add_argument("-custom", type=str,
+                       help="provide the query enclosed in '' and either relation name or relation_id using the -rel_name "
+                            "or -rel_id flag respectively.")
     group.add_argument("-show_relations", action='store_true', default=False,
                        help="to get a list of relations and corresponding relation ids.")
 
@@ -136,6 +63,7 @@ def __main__():
     args = parser.parse_args()
 
     project_name = ''
+
     if args.project_name is None:
         project_name = get_current_project_name()
         if project_name is None:
@@ -147,10 +75,7 @@ def __main__():
     dfs = load_from_temp_pickle(project_name, 'dfs')
     relations = load_from_temp_pickle(project_name, 'relations')
     pws = load_from_temp_pickle(project_name, 'pws')
-    conn = get_sql_conn(project_name)
     expected_pws = len(pws)
-    # print "pws: ", args.pws
-    # print "cols: ", args.cols
 
     if args.intersection:
 
@@ -164,7 +89,7 @@ def __main__():
 
         soln = None
         try:
-            soln = intersection_sqlite(r_id, args.cols, args.pws, True)
+            soln = PWEQuery.intersection(relations, expected_pws, dfs, r_id, args.cols, args.pws, True)
         except Exception as e:
             print("Query failed. Please check the provided arguments to make sure they are valid.")
             print("Error: ", str(e))
@@ -182,7 +107,7 @@ def __main__():
 
         soln = None
         try:
-            soln = union_sqlite(r_id, args.cols, args.pws, True)
+            soln = PWEQuery.union(relations, expected_pws, dfs, r_id, args.cols, args.pws, True)
         except Exception as e:
             print("Query failed. Please check the provided arguments to make sure they are valid.")
             print("Error: ", str(e))
@@ -200,7 +125,7 @@ def __main__():
 
         soln = None
         try:
-            soln = freq_sqlite(r_id, args.cols, args.vals, args.pws, True)
+            soln = PWEQuery.freq(relations, expected_pws, dfs, r_id, args.cols, args.vals, args.pws, True)
         except Exception as e:
             print("Query failed. Please check the provided arguments to make sure they are valid.")
             print("Error: ", str(e))
@@ -223,7 +148,7 @@ def __main__():
         soln = []
         try:
             for i in pws_to_consider:
-                soln.append(num_tuples_sqlite(r_id, i, True))
+                soln.append(PWEQuery.num_tuples(relations, dfs, r_id, i, True))
         except Exception as e:
             print("Query failed. Please check the provided arguments to make sure they are valid.")
             print("Error: ", str(e))
@@ -247,14 +172,14 @@ def __main__():
 
         if args.difference == 'one-way':
             try:
-                soln = difference_sqlite(r_id, args.pws[0], args.pws[1], args.cols, True)
+                soln = PWEQuery.difference(relations, dfs, r_id, args.pws[0], args.pws[1], args.cols, True)
             except Exception as e:
                 print("Query failed. Please check the provided arguments to make sure they are valid.")
                 print("Error: ", str(e))
                 exit(1)
         elif args.difference == 'symmetric':
             try:
-                soln = difference_both_ways_sqlite(r_id, args.pws[0], args.pws[1], args.cols, True)
+                soln = PWEQuery.difference_both_ways(relations, dfs, r_id, args.pws[0], args.pws[1], args.cols, True)
             except Exception as e:
                 print("Query failed. Please check the provided arguments to make sure they are valid.")
                 print("Error: ", str(e))
@@ -272,7 +197,7 @@ def __main__():
 
         soln = None
         try:
-            soln = redundant_column_sqlite(r_id, args.cols, args.pws, True)
+            soln = PWEQuery.redundant_column(relations, expected_pws, dfs, r_id, args.cols, args.pws, True)
         except Exception as e:
             print("Query failed. Please check the provided arguments to make sure they are valid.")
             print("Error: ", str(e))
@@ -290,7 +215,7 @@ def __main__():
 
         soln = None
         try:
-            soln = unique_tuples_sqlite(r_id, args.cols, args.pws, True)
+            soln = PWEQuery.unique_tuples(relations, expected_pws, dfs, r_id, args.cols, args.pws, True)
         except Exception as e:
             print("Query failed. Please check the provided arguments to make sure they are valid.")
             print("Error: ", str(e))
@@ -304,9 +229,17 @@ def __main__():
 
     elif args.custom is not None:
 
+        if args.rel_name is None and args.rel_id is None:
+            print("Please include either the -rel_name or -rel_id flag along with the appropriate argument.")
+            exit(0)
+
+        r_id = args.rel_id
+        if r_id is None:
+            r_id = rel_id_from_rel_name(args.rel_name, relations)
+
         ik = None
         try:
-            ik = pd.read_sql_query(args.custom, conn)
+            ik = dfs[r_id].query(args.custom)
             print(str(ik))
             if len(ik) <= 0:
                 print("NULL")
@@ -315,33 +248,6 @@ def __main__():
             print("Error: ", str(e))
             exit(1)
 
-    elif args.custom_file is not None:
-
-        if not os.path.exists(args.custom_file):
-            print("No file by the name {} exists. Please recheck the .sql file location".format(args.custom_file))
-            exit(1)
-
-        f = open(args.custom_file, 'r')
-        f = f.read()
-
-        sqlQueries = f.split(';')
-        soln = []
-        # print sqlQueries
-        for q in sqlQueries:
-            if q.strip() == '':
-                continue
-            try:
-                soln.append(pd.read_sql_query(q, conn))
-                print(str(soln[-1]))
-                if len(soln[-1]) <= 0:
-                    print("NULL")
-            except Exception as e:
-                print("Query failed. Please check the provided query to make sure it is valid.")
-                print("Error: ", str(e))
-                exit(1)
-
-    conn.commit()
-    conn.close()
     set_current_project_name(project_name)
 
 
