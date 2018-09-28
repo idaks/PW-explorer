@@ -97,7 +97,7 @@ def __main__():
     elif args.custom_complexity_func:
 
         try:
-            a = importlib.import_module(args.custom_dist_func)
+            a = importlib.import_module(args.custom_complexity_func)
             comp_func = a.complexity
         except Exception as e:
             print("Error importing from the given file")
