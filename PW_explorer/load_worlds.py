@@ -26,6 +26,7 @@ def load_worlds(clingo_output: list, reasoner='clingo', preprocessed: bool=True)
     if not preprocessed:
         clingo_output = preprocess_clingo_output(clingo_output)
 
+    # TODO Add functionality to generate random file name
     dummy_fname = 'sjbcbshlpowieiohbcjhsbnckibubkjcnaiuhwyegvjcbwscuawhbnckbuveyrb.txt'
     with open(dummy_fname, 'w') as f:
         f.write('\n'.join(clingo_output))
