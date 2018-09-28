@@ -4,11 +4,9 @@
 
 1. Install clingo. PW_explorer has been tested with clingo version: 5.2.1
 
-2. ```pip3 install venv```
+2. ```python3 -m venv /path/to/new/virtual/environment```
 
-2. ```venv TEST_ENV```
-
-3. ```source TEST_ENV/bin/activate```
+3. ```source /path/to/new/virtual/environment/bin/activate```
 
 4. ```python3 -m pip install --index-url https://test.pypi.org/simple/ PW_explorer```
 
