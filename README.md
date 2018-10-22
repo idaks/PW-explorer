@@ -6,7 +6,7 @@
 
 2. Make sure the packages graphviz>=0.8.2 and pygraphviz>=1.5 are installed. These are required to be able to use the visualization functionality. You can find instructions to install pygraphviz [here](http://pygraphviz.github.io/documentation/pygraphviz-1.3.1/install.html).
 
-These commands usually work as well [StackOverflow Reference](https://stackoverflow.com/questions/40528048/pip-install-pygraphviz-no-package-libcgraph-found):
+These commands usually work as well ([StackOverflow Reference])(https://stackoverflow.com/questions/40528048/pip-install-pygraphviz-no-package-libcgraph-found):
 
   a. apt-get install python-dev graphviz libgraphviz-dev pkg-config
   b. pip3 install pygraphviz
