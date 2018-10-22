@@ -9,8 +9,11 @@
 These commands usually work as well:
 
   a. apt-get install python-dev graphviz libgraphviz-dev pkg-config
+  
   b. pip3 install pygraphviz
+  
   (Might need to run them using sudo)
+  
   [StackOverflow Reference](https://stackoverflow.com/questions/40528048/pip-install-pygraphviz-no-package-libcgraph-found)
 
 3. ```python3 -m venv /path/to/new/virtual/environment```
