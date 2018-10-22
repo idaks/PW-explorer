@@ -4,17 +4,19 @@
 
 1. Install clingo. PW_explorer has been tested with clingo version: 5.2.1
 
-2. ```python3 -m venv /path/to/new/virtual/environment```
+2. Make sure the packages graphviz>=0.8.2 and pygraphviz>=1.5 are installed. These are required to be able to use the visualization functionality. You can find instructions to install pygraphviz [here](http://pygraphviz.github.io/documentation/pygraphviz-1.3.1/install.html).
 
-3. ```source /path/to/new/virtual/environment/bin/activate```
+3. ```python3 -m venv /path/to/new/virtual/environment```
 
-4. ```python3 -m pip install --index-url https://test.pypi.org/simple/ PW_explorer```
+4. ```source /path/to/new/virtual/environment/bin/activate```
+
+5. ```python3 -m pip install PW_explorer```
 
 To deactivate the virtualenv after you're done working:
 
-5. ```deactivate```
+6. ```deactivate```
 
-Repeat Step 3 to resume work and Step 5 to exit the virtualenv again.
+Repeat Step 4 to resume work and Step 6 to exit the virtualenv again.
 
 Installing PW_explorer will install all the modules within PW_explorer along with all their dependencies. It will also install the following Command Line Tools in /usr/bin/ :
 
