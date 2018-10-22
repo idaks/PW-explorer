@@ -84,7 +84,9 @@ def setup_djs(djs):
 
 
 def merge_nodes(G,nodes, new_node, attr):
-    G_ = nx.contracted_nodes(G, *nodes)
+    G_ = G
+    for i in range(1, len(nodes)):
+        G_ = nx.contracted_nodes(G_, nodes[0], nodes[i], self_loops=False)  # Only works for two nodes at a time apparently
     G__ = nx.relabel.relabel_nodes(G_, {nodes[0] : new_node})
     G__.nodes[new_node].update(attr)
     return G__
@@ -179,6 +181,8 @@ def visualize(**kwargs):
         # Merge equivalent nodes
         for final_djs_ in final_djs:
             G = merge_nodes(G, final_djs_, '\n'.join(final_djs_), styles['node_styles']['node_equal'])
+
+        # TODO Merged nodes may have redundant edges (direct edges to successors of parent)
 
         Gs.append(G)
 

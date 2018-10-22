@@ -31,9 +31,10 @@ def loadIntoPandas(relations, pws, dfs):
         for m, pw in enumerate(pws):
             # print rl.r_id
             if rl.r_id < len(pw.rls):
-                rl_data_pw = pw.rls[rl.r_id].copy()
-                for i in range(len(rl_data_pw)):
-                    rl_data_pw[i].insert(0, pw.pw_id)
+                rl_data_pw = []
+                for rl_data in pw.rls[rl.r_id]:
+                    rl_data_pw.append(rl_data.copy())
+                    rl_data_pw[-1].insert(0, pw.pw_id)
                 rws.extend(rl_data_pw)
 
         df = pd.DataFrame(rws, columns=cls)
