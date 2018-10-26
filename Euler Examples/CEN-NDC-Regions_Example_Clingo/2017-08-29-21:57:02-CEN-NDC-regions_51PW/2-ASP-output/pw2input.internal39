@@ -1,2 +1,0 @@
-tr = [['NDC.West', 'CEN.West', 0], ['NDC.Southeast', 'CEN.South', 0], ['CEN.Northeast', 'NDC.Northeast', 0], ['NDC.Midwest', 'CEN.Midwest', 1], ['CEN.Midwest', 'CEN.USA\\nNDC.USA', 0], ['CEN.South', 'CEN.USA\\nNDC.USA', 0], ['CEN.West', 'CEN.USA\\nNDC.USA', 0], ['NDC.Northeast', 'CEN.USA\\nNDC.USA', 0], ['NDC.Southwest', 'CEN.USA\\nNDC.USA', 0], ['NDC.West', 'CEN.USA\\nNDC.USA', 2], ['NDC.Southeast', 'CEN.USA\\nNDC.USA', 2], ['CEN.Northeast', 'CEN.USA\\nNDC.USA', 2], ['NDC.Midwest', 'CEN.USA\\nNDC.USA', 2]]
-pwIndex = 39

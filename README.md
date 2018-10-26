@@ -1,22 +1,44 @@
 # An Extensible Possible Worlds Explorer for Answer Set Programming
 
-### To Get Started (using virtualenv):
+### To Get Started (using venv):
 
-In the PW-Explorer directory:
+1. Install clingo. PW_explorer has been tested with clingo version: 5.2.1
 
-1. ```pip2.7 install virtualenv```
+2. Make sure the packages graphviz>=0.8.2 and pygraphviz>=1.5 are installed. These are required to be able to use the visualization functionality. You can find instructions to install pygraphviz [here](http://pygraphviz.github.io/documentation/pygraphviz-1.3.1/install.html).
 
-2. ```virtualenv -p /usr/bin/python2.7 .env```
+These commands usually work as well:
 
-3. ```source .env/bin/activate```
+  a. ```apt-get install python-dev graphviz libgraphviz-dev pkg-config```
+  
+  b. ```pip3 install pygraphviz```
+  
+  (Might need to run them using sudo)
+  
+  [StackOverflow Reference](https://stackoverflow.com/questions/40528048/pip-install-pygraphviz-no-package-libcgraph-found)
 
-4. ```pip install -r requirements.txt```
+3. ```python3 -m venv /path/to/new/virtual/environment```
+
+4. ```source /path/to/new/virtual/environment/bin/activate```
+
+5. ```python3 -m pip install PW_explorer```
 
 To deactivate the virtualenv after you're done working:
 
-5. ```deactivate```
+6. ```deactivate```
 
-Repeat Step 3 to resume work and Step 5 to exit the virtualenv again.
+Repeat Step 4 to resume work and Step 6 to exit the virtualenv again.
+
+Installing PW_explorer will install all the modules within PW_explorer along with all their dependencies. It will also install the following Command Line Tools in /usr/bin/ :
+
+1. run_clingo
+2. load_worlds
+3. dist_calc
+4. complexity_calc
+5. visualize
+6. pwe_export
+7. pwe_query
+
+The above CLI tools leverage the installed PW_explorer modules.
 
 ### General Workflow:
 
@@ -36,37 +58,32 @@ Repeat Step 3 to resume work and Step 5 to exit the virtualenv again.
                                                visualize your results
 ```
 
-### Scripts Used:
+### CLI Scripts Used:
  
- 1. helper.py : Contains basic definitions used by all other scripts
- ```
- dependencies: all built into python natively
- ```
- 
- 2. clingo_out.py : Produces the clingo output. Takes in clingo files, project/session name and number of solutions to produce (optional).
+1. run_clingo : Produces the clingo output. Takes in clingo files, project/session name and number of solutions to produce (optional).
  ```
 dependencies: argparse subprocess32 
 
-usage: clingo_out.py [-h] [-n NUM_SOLUTIONS] fnames [fnames ...] project_name
+usage: run_clingo [-h] [-n NUM_SOLUTIONS] fnames [fnames ...] project_name
 
 positional arguments:
-  fnames                provide the clingo files
-  project_name          provide a suitable session/project name to reference
+  fnames                provide the clingo files
+  project_name          provide a suitable session/project name to reference
                         these results in future scripts
 
 optional arguments:
-  -h, --help            show this help message and exit
+  -h, --help            show this help message and exit
   -n NUM_SOLUTIONS, --num_solutions NUM_SOLUTIONS
                         number of solutions to generate using clingo,
                         optional, generates all by default
  ```
 
 
-3. parse.py : Parses the clingo output and fills up the relational databases. Puts them in a pkl file so they can be exported to other formats and used by other scripts directly.
+2. load_worlds : Parses the clingo output and fills up the relational databases. Puts them in a pkl file so they can be exported to other formats and used by other scripts directly.
  ```
-dependencies: antlr pandas numpy argparse pickle
+dependencies: argparse pickle
 
-usage: parse.py [-h] [-f FNAME] project_name
+usage: load_worlds [-h] [-f FNAME] [-clingo | -dlv] project_name
 
 positional arguments:
   project_name          provide a suitable session/project name to reference
@@ -77,15 +94,18 @@ optional arguments:
   -f FNAME, --fname FNAME
                         provide the preprocessed clingo output .txt file to
                         parse. Need not provide one if it already exists in
-                        the clingo_output folder as $project_name.txt
+                        the asp_output folder as $project_name.txt
+  -clingo
+  -dlv
+
 ```
                       
                                   
- 4. export.py: To export the parsed data into various formats.
+ 3. pwe_export: To export the parsed data into various formats.
  ```
 dependencies: pandas numpy sqlite3 pickle argparse 
  
-usage: export.py [-h] [-p PROJECT_NAME] [-s] [-sql] [-csv] [-h5] [-msg] [-pkl]
+usage: export [-h] [-p PROJECT_NAME] [-s] [-sql] [-csv] [-h5] [-msg] [-pkl]
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -99,15 +119,16 @@ optional arguments:
   -pkl                  include if you want to export in pickle format
   ```
   
-5. sql_query.py: Run sql queries on the extracted sqlite database.
-```
-dependencies: pandas numpy sqlite3 pickle argparse
-
-usage: sql_query.py [-h] [-p PROJECT_NAME]
-                    [-intersection | -union | -freq | -num_tuples | -difference {one-way,symmetric} | -redundant_column | -unique_tuples | -custom CUSTOM | -custom_file CUSTOM_FILE | -show_relations]
-                    [-rel_name REL_NAME] [-rel_id REL_ID]
-                    [-cols [COLS [COLS ...]]] [-pws [PWS [PWS ...]]]
-                    [-vals [VALS [VALS ...]]]
+ 
+ 4. pwe_query : Runs the queries on the possible worlds.
+ ```
+dependencies: argparse
+ 
+usage: pwe_query [-h] [-p PROJECT_NAME]
+                 [-intersection | -union | -freq | -num_tuples | -difference {one-way,symmetric} | -redundant_column | -unique_tuples | -custom CUSTOM | -show_relations]
+                 [-rel_name REL_NAME] [-rel_id REL_ID]
+                 [-cols [COLS [COLS ...]]] [-pws [PWS [PWS ...]]]
+                 [-vals [VALS [VALS ...]]]
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -144,9 +165,9 @@ optional arguments:
                         -rel_name or -rel_id flag respectively, columns to
                         consider using the -cols flag and possible worlds to
                         consider using the -pws flag.
-  -custom CUSTOM        provide the query enclosed in '' .
-  -custom_file CUSTOM_FILE
-                        provide the .sql file containing the query.
+  -custom CUSTOM        provide the query enclosed in '' and either relation
+                        name or relation_id using the -rel_name or -rel_id
+                        flag respectively.
   -show_relations       to get a list of relations and corresponding relation
                         ids.
   -rel_name REL_NAME    provide the relation name to query. Note that if both
@@ -169,91 +190,16 @@ optional arguments:
                         all possible tuples, do not include this flag.
  ```
  
- 6. sql_funcs.py : Built in Sql functions from PW Explorer such as intersection and union. These however can be used independently and used to create your own distance and complexity calculation metrics.
+5. dist_calc : Distance calculation script. Can create a whole distance matrix, or just get distance between any two PWs. Can also supply your own distance function.
 ```
-dependencies: pandas numpy sqlite3
-```
- 
- 7. pd_query.py : Runs the queries on the pandas database. Similar to sql_query.py.
- ```
-dependencies: pandas numpy pickle argparse 
- 
-usage: pd_query.py [-h] [-p PROJECT_NAME]
-                  [-intersection | -union | -freq | -num_tuples | -difference {one-way,symmetric} | -redundant_column | -unique_tuples | -custom CUSTOM | -show_relations]
-                  [-rel_name REL_NAME] [-rel_id REL_ID]
-                  [-cols [COLS [COLS ...]]] [-pws [PWS [PWS ...]]]
-                  [-vals [VALS [VALS ...]]]
+dependencies: pandas numpy pickle argparse importlib
 
-optional arguments:
- -h, --help            show this help message and exit
- -p PROJECT_NAME, --project_name PROJECT_NAME
-                       provide session/project name used while parsing
- -intersection         provide either relation name or relation_id using the
-                       -rel_name or -rel_id flag respectively, columns to
-                       consider using the -cols flag and possible worlds to
-                       consider using the -pws flag.
- -union                provide either relation name or relation_id using the
-                       -rel_name or -rel_id flag respectively, columns to
-                       consider using the -cols flag and possible worlds to
-                       consider using the -pws flag.
- -freq                 provide either relation name or relation_id using the
-                       -rel_name or -rel_id flag respectively, columns to
-                       consider using the -cols flag, possible worlds to
-                       consider using the -pws flag and the values for the
-                       columns (in the mentioned order) using the -vals flag
-                       (optional).
- -num_tuples           provide either relation name or relation_id using the
-                       -rel_name or -rel_id flag respectively and the
-                       possible world ids to count the tuples in using the
-                       -pws flag.
- -difference {one-way,symmetric}
-                       provide either relation name or relation_id using the
-                       -rel_name or -rel_id flag respectively, columns to
-                       consider using the -cols flag and the two possible
-                       world ids using the -pws flag.
- -redundant_column     provide either relation name or relation_id using the
-                       -rel_name or -rel_id flag respectively, columns to
-                       consider using the -cols flag and possible worlds to
-                       consider using the -pws flag.
- -unique_tuples        provide either relation name or relation_id using the
-                       -rel_name or -rel_id flag respectively, columns to
-                       consider using the -cols flag and possible worlds to
-                       consider using the -pws flag.
- -custom CUSTOM        provide the query enclosed in '' and either relation
-                       name or relation_id using the -rel_name or -rel_id
-                       flag respectively.
- -show_relations       to get a list of relations and corresponding relation
-                       ids.
- -rel_name REL_NAME    provide the relation name to query. Note that if both
-                       rel_id and rel_name are provided, rel_name is
-                       disregarded.
- -rel_id REL_ID        provide the relation id of the relation to query. To
-                       view relation ids, use -show_relations
- -cols [COLS [COLS ...]]
-                       provide the columns of the selected relations to
-                       consider for the chosen query. If you want to consider
-                       all the columns, do not include this flag.
- -pws [PWS [PWS ...]]  provide the possible world ids of the possible world
-                       to consider for this query. If you want to consider
-                       all the possible worlds, do not include this flag.
-                       Please note that difference query requires exactly 2
-                       arguments for this flag.
- -vals [VALS [VALS ...]]
-                       provide the values for the freq query in the same
-                       order as the mentioned columns. If you want to query
-                       all possible tuples, do not include this flag.
- ```
- 
- 8. dist_calc.py : Distance calculation script. Can create a whole distance matrix, or just get distance between any two PWs. Can also supply your own distance function.
-```
-dependencies: pandas numpy sqlite3 pickle argparse importlib
-
-usage: dist_calc.py [-h] [-p PROJECT_NAME]
-                    [-symmetric_difference | -euler_num_overlaps_diff | -custom_dist_func CUSTOM_DIST_FUNC | -show_relations]
-                    [-rel_names [REL_NAMES [REL_NAMES ...]]]
-                    [-rel_ids [REL_IDS [REL_IDS ...]]] [-rel_name REL_NAME]
-                    [-rel_id REL_ID] [-calc_dist_matrix] [-pws PWS PWS]
-                    [-col COL]
+usage: dist_calc [-h] [-p PROJECT_NAME]
+                 [-symmetric_difference | -euler_num_overlaps_diff | -custom_dist_func CUSTOM_DIST_FUNC | -show_relations]
+                 [-rel_names [REL_NAMES [REL_NAMES ...]]]
+                 [-rel_ids [REL_IDS [REL_IDS ...]]] [-rel_name REL_NAME]
+                 [-rel_id REL_ID] [-calc_dist_matrix] [-pws PWS PWS]
+                 [-col COL]
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -274,15 +220,16 @@ optional arguments:
   -custom_dist_func CUSTOM_DIST_FUNC
                         provide the .py file (without the .py) containing your
                         custom distance function. The function signature
-                        should be dist(pw_id_1, pw_id_2, dfs = None, pws =
-                        None, relations = None, conn = None) where the latter
-                        four arguments refer to the data acquired from parsing
-                        the ASP solutions and the connection to the generated
-                        sqlite database respectively. The function should
+                        should be dist(pw_id_1, pw_id_2, **kwargs) where
+                        kwargs contains the follwing: dfs, pws, relationswhere
+                        the latter three arguments refer to the data acquired
+                        from parsing the ASP solutions. The function should
                         return a floating point number. Ensure that the file
                         is in the same directory as this script. You can use
                         the functions in sql_funcs.py to design these dist
-                        functions
+                        functions.
+                        Feature in beta. Currently the file must be present in
+                        /usr/bin/Custom_Distance_Functions/ folder.
   -show_relations       to get a list of relations and corresponding relation
                         ids.
   -rel_names [REL_NAMES [REL_NAMES ...]]
@@ -308,14 +255,14 @@ optional arguments:
                         distance metric.
  ```
  
- 9. complexity_calc.py : Complexity calculation script. Supports user defined complexity metrics.
+ 6. complexity_calc : Complexity calculation script. Supports user defined complexity metrics.
 ```
-dependencies: pandas numpy sqlite3 pickle argparse importlib
+dependencies: pandas numpy argparse importlib
 
-usage: complexity_calc.py [-h] [-p PROJECT_NAME]
-                          [-euler_complexity_analysis | -custom_complexity_func CUSTOM_COMPLEXITY_FUNC | -show_relations]
-                          [-rel_name REL_NAME] [-rel_id REL_ID] [-col COL]
-                          [-pws [PWS [PWS ...]]]
+usage: complexity_calc [-h] [-p PROJECT_NAME]
+                       [-euler_complexity_analysis | -custom_complexity_func CUSTOM_COMPLEXITY_FUNC | -show_relations]
+                       [-rel_name REL_NAME] [-rel_id REL_ID] [-col COL]
+                       [-pws [PWS [PWS ...]]]
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -341,7 +288,9 @@ optional arguments:
                         return a floating point number. Ensure that the file
                         is in the same directory as this script. You can use
                         the functions in sql_funcs.py to design these dist
-                        functions
+                        functions.
+                        Feature in beta. Currently the file must be present in
+                        /usr/bin/ folder.
   -show_relations       to get a list of relations and corresponding relation
                         ids.
   -rel_name REL_NAME    provide the relation name to use in the distance
@@ -357,388 +306,45 @@ optional arguments:
                         PWs if not used.
 ```
 
-10. visualisation.py : Creates the visualisations. No modularity currently. Will add soon.
+7. visualize : Creates the visualisations.
 ```
-dependencies: pandas numpy sqlite3 pickle argparse importlib sklearn matplotlib scipy networkx
+dependencies: argparse importlib
 
-additional dependencies (optional): mpld3 plotly
-
-usage: visualize.py [-h] [-p PROJECT_NAME] [-mds] [-clustering] [-dendrogram]
+usage: visualize [-h] [-p PROJECT_NAME] [-mds] [-mds_sklearn]
+                 [-sdf SCALE_DOWN_FACTOR] [-clustering] [-dendrogram]
+                 [-custom_visualization_func CUSTOM_VISUALIZATION_FUNC]
 
 optional arguments:
   -h, --help            show this help message and exit
   -p PROJECT_NAME, --project_name PROJECT_NAME
                         provide session/project name used while parsing
   -mds                  produce a Multidimensional Scaling Graph Output using
-                        the Neato Program
+                        the Neato Program. Provide a scale-down-factor for
+                        graph generation. Default factor is 5.0
+  -mds_sklearn          produce a MDS graph in 2D using skelearn's MDS
+                        package.
+  -sdf SCALE_DOWN_FACTOR, --scale_down_factor SCALE_DOWN_FACTOR
+                        provide a scale factor for the Multidimensional
+                        Scaling Graph. Deafults to 5.0
   -clustering           use DBScan Algorithm to cluster the Possible Worlds
   -dendrogram           create various dendrograms using scipy
+  -custom_visualization_func CUSTOM_VISUALIZATION_FUNC
+                        provide the .py file (without the .py) containing your
+                        custom visualisation function. The function signature
+                        should be visualize(**kwargs) the following arguments
+                        are provided: dfs, relations, pws, project_name,
+                        dist_matrix, save_to_folder, of which the
+                        visualization function may use any subsetfrom parsing
+                        the ASP solutions and the connection to the generated
+                        sqlite database respectively. The function should
+                        create the visualization and may or may not return
+                        anything. Ensure that the file is in the same
+                        directory as this script. You can use the functions in
+                        sql_funcs.py to design these visualisation functions.
+                        Feature in beta. Currently the file must be present in
+                        /usr/bin/Custom_Visualization_Functions/ folder.
 ```
 
 ### Example:
 
-###### Run with sh ./example_run.sh
-
-1. ```python clingo_out.py Clingo\ Examples/CEN-NDC-regions_pw.lp4 Clingo\ Examples/CEN-NDC-regions_pwswitch.lp4 cen_ndc_example```
-
-Output:
-```
-Copied files into the clingo_input folder
-Preprocessed clingo output written to clingo_output/cen_ndc_example.txt
-```
-
-2. ```python parse.py cen_ndc_example```
-
-Output:
-```
-Number of Models: 30
-```
-
-3. ```python export.py -sql -csv```
-
-Output:
-```
-Successfully exported to csv
-Successfully exported to sql
-```
-
-4. ```python sql_query.py -show_relations```
-
-Output:
-```
-Following are the parsed relation IDs and relation names:
-0: rel_3
-```
-
-5. ```python sql_query.py -unique_tuples -rel_id 0```
-
-Output:
-```
-The unique tuple (u'cCEN_USA', u'cNDC_USA', u'"="') occurs only in PW 1
-```
-
-6. ```python sql_query.py -num_tuples -pws 1 2 4 23 -rel_name rel_3```
-
-Output:
-```
-There exist 30 tuples of relation rel_3 in PW 1
-There exist 30 tuples of relation rel_3 in PW 2
-There exist 30 tuples of relation rel_3 in PW 4
-There exist 30 tuples of relation rel_3 in PW 23
-```
-
-7. ```python sql_query.py -intersection -rel_id 0 -pws 2 23 -cols x1 x2 x3```
-
-Output:
-```
-Intersection for the relation rel_3 on features x1, x2, x3 for PWs 2, 23
-                x1              x2    x3
-0     cCEN_Midwest    cNDC_Midwest   "="
-1     cCEN_Midwest  cNDC_Northeast   "!"
-2     cCEN_Midwest  cNDC_Southeast   "!"
-3     cCEN_Midwest  cNDC_Southwest   "!"
-4     cCEN_Midwest        cNDC_USA   "<"
-5     cCEN_Midwest       cNDC_West   "!"
-6   cCEN_Northeast    cNDC_Midwest   "!"
-7   cCEN_Northeast  cNDC_Northeast   "<"
-8   cCEN_Northeast  cNDC_Southeast   "!"
-9   cCEN_Northeast  cNDC_Southwest   "!"
-10  cCEN_Northeast        cNDC_USA   "<"
-11  cCEN_Northeast       cNDC_West   "!"
-12      cCEN_South    cNDC_Midwest   "!"
-13      cCEN_South  cNDC_Southeast   ">"
-14      cCEN_South  cNDC_Southwest  "><"
-15      cCEN_South       cNDC_West   "!"
-16        cCEN_USA    cNDC_Midwest   ">"
-17        cCEN_USA  cNDC_Southeast   ">"
-18        cCEN_USA  cNDC_Southwest  "><"
-19        cCEN_USA       cNDC_West   ">"
-20       cCEN_West    cNDC_Midwest   "!"
-21       cCEN_West  cNDC_Northeast   "!"
-22       cCEN_West  cNDC_Southeast   "!"
-23       cCEN_West  cNDC_Southwest  "><"
-24       cCEN_West        cNDC_USA   "<"
-25       cCEN_West       cNDC_West   ">"
-```
-
-8. ```python dist_calc.py -custom_dist_func test_dist_func -calc_dist_matrix```
-
-Output:
-```
-Distance Matrix:
-[[ 1.          0.96551724  0.93103448  0.89655172  0.86206897  0.82758621
-   0.79310345  0.75862069  0.72413793  0.68965517  0.65517241  0.62068966
-   0.5862069   0.55172414  0.51724138  0.48275862  0.44827586  0.4137931
-   0.37931034  0.34482759  0.31034483  0.27586207  0.24137931  0.20689655
-   0.17241379  0.13793103  0.10344828  0.06896552  0.03448276  0.        ]
- [ 0.96551724  1.          0.96551724  0.93103448  0.89655172  0.86206897
-   0.82758621  0.79310345  0.75862069  0.72413793  0.68965517  0.65517241
-   0.62068966  0.5862069   0.55172414  0.51724138  0.48275862  0.44827586
-   0.4137931   0.37931034  0.34482759  0.31034483  0.27586207  0.24137931
-   0.20689655  0.17241379  0.13793103  0.10344828  0.06896552  0.03448276]
- [ 0.93103448  0.96551724  1.          0.96551724  0.93103448  0.89655172
-   0.86206897  0.82758621  0.79310345  0.75862069  0.72413793  0.68965517
-   0.65517241  0.62068966  0.5862069   0.55172414  0.51724138  0.48275862
-   0.44827586  0.4137931   0.37931034  0.34482759  0.31034483  0.27586207
-   0.24137931  0.20689655  0.17241379  0.13793103  0.10344828  0.06896552]
- [ 0.89655172  0.93103448  0.96551724  1.          0.96551724  0.93103448
-   0.89655172  0.86206897  0.82758621  0.79310345  0.75862069  0.72413793
-   0.68965517  0.65517241  0.62068966  0.5862069   0.55172414  0.51724138
-   0.48275862  0.44827586  0.4137931   0.37931034  0.34482759  0.31034483
-   0.27586207  0.24137931  0.20689655  0.17241379  0.13793103  0.10344828]
- [ 0.86206897  0.89655172  0.93103448  0.96551724  1.          0.96551724
-   0.93103448  0.89655172  0.86206897  0.82758621  0.79310345  0.75862069
-   0.72413793  0.68965517  0.65517241  0.62068966  0.5862069   0.55172414
-   0.51724138  0.48275862  0.44827586  0.4137931   0.37931034  0.34482759
-   0.31034483  0.27586207  0.24137931  0.20689655  0.17241379  0.13793103]
- [ 0.82758621  0.86206897  0.89655172  0.93103448  0.96551724  1.
-   0.96551724  0.93103448  0.89655172  0.86206897  0.82758621  0.79310345
-   0.75862069  0.72413793  0.68965517  0.65517241  0.62068966  0.5862069
-   0.55172414  0.51724138  0.48275862  0.44827586  0.4137931   0.37931034
-   0.34482759  0.31034483  0.27586207  0.24137931  0.20689655  0.17241379]
- [ 0.79310345  0.82758621  0.86206897  0.89655172  0.93103448  0.96551724
-   1.          0.96551724  0.93103448  0.89655172  0.86206897  0.82758621
-   0.79310345  0.75862069  0.72413793  0.68965517  0.65517241  0.62068966
-   0.5862069   0.55172414  0.51724138  0.48275862  0.44827586  0.4137931
-   0.37931034  0.34482759  0.31034483  0.27586207  0.24137931  0.20689655]
- [ 0.75862069  0.79310345  0.82758621  0.86206897  0.89655172  0.93103448
-   0.96551724  1.          0.96551724  0.93103448  0.89655172  0.86206897
-   0.82758621  0.79310345  0.75862069  0.72413793  0.68965517  0.65517241
-   0.62068966  0.5862069   0.55172414  0.51724138  0.48275862  0.44827586
-   0.4137931   0.37931034  0.34482759  0.31034483  0.27586207  0.24137931]
- [ 0.72413793  0.75862069  0.79310345  0.82758621  0.86206897  0.89655172
-   0.93103448  0.96551724  1.          0.96551724  0.93103448  0.89655172
-   0.86206897  0.82758621  0.79310345  0.75862069  0.72413793  0.68965517
-   0.65517241  0.62068966  0.5862069   0.55172414  0.51724138  0.48275862
-   0.44827586  0.4137931   0.37931034  0.34482759  0.31034483  0.27586207]
- [ 0.68965517  0.72413793  0.75862069  0.79310345  0.82758621  0.86206897
-   0.89655172  0.93103448  0.96551724  1.          0.96551724  0.93103448
-   0.89655172  0.86206897  0.82758621  0.79310345  0.75862069  0.72413793
-   0.68965517  0.65517241  0.62068966  0.5862069   0.55172414  0.51724138
-   0.48275862  0.44827586  0.4137931   0.37931034  0.34482759  0.31034483]
- [ 0.65517241  0.68965517  0.72413793  0.75862069  0.79310345  0.82758621
-   0.86206897  0.89655172  0.93103448  0.96551724  1.          0.96551724
-   0.93103448  0.89655172  0.86206897  0.82758621  0.79310345  0.75862069
-   0.72413793  0.68965517  0.65517241  0.62068966  0.5862069   0.55172414
-   0.51724138  0.48275862  0.44827586  0.4137931   0.37931034  0.34482759]
- [ 0.62068966  0.65517241  0.68965517  0.72413793  0.75862069  0.79310345
-   0.82758621  0.86206897  0.89655172  0.93103448  0.96551724  1.
-   0.96551724  0.93103448  0.89655172  0.86206897  0.82758621  0.79310345
-   0.75862069  0.72413793  0.68965517  0.65517241  0.62068966  0.5862069
-   0.55172414  0.51724138  0.48275862  0.44827586  0.4137931   0.37931034]
- [ 0.5862069   0.62068966  0.65517241  0.68965517  0.72413793  0.75862069
-   0.79310345  0.82758621  0.86206897  0.89655172  0.93103448  0.96551724
-   1.          0.96551724  0.93103448  0.89655172  0.86206897  0.82758621
-   0.79310345  0.75862069  0.72413793  0.68965517  0.65517241  0.62068966
-   0.5862069   0.55172414  0.51724138  0.48275862  0.44827586  0.4137931 ]
- [ 0.55172414  0.5862069   0.62068966  0.65517241  0.68965517  0.72413793
-   0.75862069  0.79310345  0.82758621  0.86206897  0.89655172  0.93103448
-   0.96551724  1.          0.96551724  0.93103448  0.89655172  0.86206897
-   0.82758621  0.79310345  0.75862069  0.72413793  0.68965517  0.65517241
-   0.62068966  0.5862069   0.55172414  0.51724138  0.48275862  0.44827586]
- [ 0.51724138  0.55172414  0.5862069   0.62068966  0.65517241  0.68965517
-   0.72413793  0.75862069  0.79310345  0.82758621  0.86206897  0.89655172
-   0.93103448  0.96551724  1.          0.96551724  0.93103448  0.89655172
-   0.86206897  0.82758621  0.79310345  0.75862069  0.72413793  0.68965517
-   0.65517241  0.62068966  0.5862069   0.55172414  0.51724138  0.48275862]
- [ 0.48275862  0.51724138  0.55172414  0.5862069   0.62068966  0.65517241
-   0.68965517  0.72413793  0.75862069  0.79310345  0.82758621  0.86206897
-   0.89655172  0.93103448  0.96551724  1.          0.96551724  0.93103448
-   0.89655172  0.86206897  0.82758621  0.79310345  0.75862069  0.72413793
-   0.68965517  0.65517241  0.62068966  0.5862069   0.55172414  0.51724138]
- [ 0.44827586  0.48275862  0.51724138  0.55172414  0.5862069   0.62068966
-   0.65517241  0.68965517  0.72413793  0.75862069  0.79310345  0.82758621
-   0.86206897  0.89655172  0.93103448  0.96551724  1.          0.96551724
-   0.93103448  0.89655172  0.86206897  0.82758621  0.79310345  0.75862069
-   0.72413793  0.68965517  0.65517241  0.62068966  0.5862069   0.55172414]
- [ 0.4137931   0.44827586  0.48275862  0.51724138  0.55172414  0.5862069
-   0.62068966  0.65517241  0.68965517  0.72413793  0.75862069  0.79310345
-   0.82758621  0.86206897  0.89655172  0.93103448  0.96551724  1.
-   0.96551724  0.93103448  0.89655172  0.86206897  0.82758621  0.79310345
-   0.75862069  0.72413793  0.68965517  0.65517241  0.62068966  0.5862069 ]
- [ 0.37931034  0.4137931   0.44827586  0.48275862  0.51724138  0.55172414
-   0.5862069   0.62068966  0.65517241  0.68965517  0.72413793  0.75862069
-   0.79310345  0.82758621  0.86206897  0.89655172  0.93103448  0.96551724
-   1.          0.96551724  0.93103448  0.89655172  0.86206897  0.82758621
-   0.79310345  0.75862069  0.72413793  0.68965517  0.65517241  0.62068966]
- [ 0.34482759  0.37931034  0.4137931   0.44827586  0.48275862  0.51724138
-   0.55172414  0.5862069   0.62068966  0.65517241  0.68965517  0.72413793
-   0.75862069  0.79310345  0.82758621  0.86206897  0.89655172  0.93103448
-   0.96551724  1.          0.96551724  0.93103448  0.89655172  0.86206897
-   0.82758621  0.79310345  0.75862069  0.72413793  0.68965517  0.65517241]
- [ 0.31034483  0.34482759  0.37931034  0.4137931   0.44827586  0.48275862
-   0.51724138  0.55172414  0.5862069   0.62068966  0.65517241  0.68965517
-   0.72413793  0.75862069  0.79310345  0.82758621  0.86206897  0.89655172
-   0.93103448  0.96551724  1.          0.96551724  0.93103448  0.89655172
-   0.86206897  0.82758621  0.79310345  0.75862069  0.72413793  0.68965517]
- [ 0.27586207  0.31034483  0.34482759  0.37931034  0.4137931   0.44827586
-   0.48275862  0.51724138  0.55172414  0.5862069   0.62068966  0.65517241
-   0.68965517  0.72413793  0.75862069  0.79310345  0.82758621  0.86206897
-   0.89655172  0.93103448  0.96551724  1.          0.96551724  0.93103448
-   0.89655172  0.86206897  0.82758621  0.79310345  0.75862069  0.72413793]
- [ 0.24137931  0.27586207  0.31034483  0.34482759  0.37931034  0.4137931
-   0.44827586  0.48275862  0.51724138  0.55172414  0.5862069   0.62068966
-   0.65517241  0.68965517  0.72413793  0.75862069  0.79310345  0.82758621
-   0.86206897  0.89655172  0.93103448  0.96551724  1.          0.96551724
-   0.93103448  0.89655172  0.86206897  0.82758621  0.79310345  0.75862069]
- [ 0.20689655  0.24137931  0.27586207  0.31034483  0.34482759  0.37931034
-   0.4137931   0.44827586  0.48275862  0.51724138  0.55172414  0.5862069
-   0.62068966  0.65517241  0.68965517  0.72413793  0.75862069  0.79310345
-   0.82758621  0.86206897  0.89655172  0.93103448  0.96551724  1.
-   0.96551724  0.93103448  0.89655172  0.86206897  0.82758621  0.79310345]
- [ 0.17241379  0.20689655  0.24137931  0.27586207  0.31034483  0.34482759
-   0.37931034  0.4137931   0.44827586  0.48275862  0.51724138  0.55172414
-   0.5862069   0.62068966  0.65517241  0.68965517  0.72413793  0.75862069
-   0.79310345  0.82758621  0.86206897  0.89655172  0.93103448  0.96551724
-   1.          0.96551724  0.93103448  0.89655172  0.86206897  0.82758621]
- [ 0.13793103  0.17241379  0.20689655  0.24137931  0.27586207  0.31034483
-   0.34482759  0.37931034  0.4137931   0.44827586  0.48275862  0.51724138
-   0.55172414  0.5862069   0.62068966  0.65517241  0.68965517  0.72413793
-   0.75862069  0.79310345  0.82758621  0.86206897  0.89655172  0.93103448
-   0.96551724  1.          0.96551724  0.93103448  0.89655172  0.86206897]
- [ 0.10344828  0.13793103  0.17241379  0.20689655  0.24137931  0.27586207
-   0.31034483  0.34482759  0.37931034  0.4137931   0.44827586  0.48275862
-   0.51724138  0.55172414  0.5862069   0.62068966  0.65517241  0.68965517
-   0.72413793  0.75862069  0.79310345  0.82758621  0.86206897  0.89655172
-   0.93103448  0.96551724  1.          0.96551724  0.93103448  0.89655172]
- [ 0.06896552  0.10344828  0.13793103  0.17241379  0.20689655  0.24137931
-   0.27586207  0.31034483  0.34482759  0.37931034  0.4137931   0.44827586
-   0.48275862  0.51724138  0.55172414  0.5862069   0.62068966  0.65517241
-   0.68965517  0.72413793  0.75862069  0.79310345  0.82758621  0.86206897
-   0.89655172  0.93103448  0.96551724  1.          0.96551724  0.93103448]
- [ 0.03448276  0.06896552  0.10344828  0.13793103  0.17241379  0.20689655
-   0.24137931  0.27586207  0.31034483  0.34482759  0.37931034  0.4137931
-   0.44827586  0.48275862  0.51724138  0.55172414  0.5862069   0.62068966
-   0.65517241  0.68965517  0.72413793  0.75862069  0.79310345  0.82758621
-   0.86206897  0.89655172  0.93103448  0.96551724  1.          0.96551724]
- [ 0.          0.03448276  0.06896552  0.10344828  0.13793103  0.17241379
-   0.20689655  0.24137931  0.27586207  0.31034483  0.34482759  0.37931034
-   0.4137931   0.44827586  0.48275862  0.51724138  0.55172414  0.5862069
-   0.62068966  0.65517241  0.68965517  0.72413793  0.75862069  0.79310345
-   0.82758621  0.86206897  0.89655172  0.93103448  0.96551724  1.        ]]
-```
-
-9. ```python dist_calc.py -euler_num_overlaps_diff -rel_name rel_3 -col x3 -calc_dist_matrix```
-
-Output:
-```
-Distance Matrix:
-[[ 0.   0.2  0.   0.2  0.2  0.4  0.2  0.2  0.4  0.4  0.6  0.4  0.6  0.6
-   0.8  0.4  0.6  0.4  0.6  0.6  0.8  0.6  0.6  0.8  0.6  0.8  0.6  0.8
-   0.8  1. ]
- [ 0.2  0.   0.2  0.   0.   0.2  0.   0.   0.2  0.2  0.4  0.2  0.4  0.4
-   0.6  0.2  0.4  0.2  0.4  0.4  0.6  0.4  0.4  0.6  0.4  0.6  0.4  0.6
-   0.6  0.8]
- [ 0.   0.2  0.   0.2  0.2  0.4  0.2  0.2  0.4  0.4  0.6  0.4  0.6  0.6
-   0.8  0.4  0.6  0.4  0.6  0.6  0.8  0.6  0.6  0.8  0.6  0.8  0.6  0.8
-   0.8  1. ]
- [ 0.2  0.   0.2  0.   0.   0.2  0.   0.   0.2  0.2  0.4  0.2  0.4  0.4
-   0.6  0.2  0.4  0.2  0.4  0.4  0.6  0.4  0.4  0.6  0.4  0.6  0.4  0.6
-   0.6  0.8]
- [ 0.2  0.   0.2  0.   0.   0.2  0.   0.   0.2  0.2  0.4  0.2  0.4  0.4
-   0.6  0.2  0.4  0.2  0.4  0.4  0.6  0.4  0.4  0.6  0.4  0.6  0.4  0.6
-   0.6  0.8]
- [ 0.4  0.2  0.4  0.2  0.2  0.   0.2  0.2  0.   0.   0.2  0.   0.2  0.2
-   0.4  0.   0.2  0.   0.2  0.2  0.4  0.2  0.2  0.4  0.2  0.4  0.2  0.4
-   0.4  0.6]
- [ 0.2  0.   0.2  0.   0.   0.2  0.   0.   0.2  0.2  0.4  0.2  0.4  0.4
-   0.6  0.2  0.4  0.2  0.4  0.4  0.6  0.4  0.4  0.6  0.4  0.6  0.4  0.6
-   0.6  0.8]
- [ 0.2  0.   0.2  0.   0.   0.2  0.   0.   0.2  0.2  0.4  0.2  0.4  0.4
-   0.6  0.2  0.4  0.2  0.4  0.4  0.6  0.4  0.4  0.6  0.4  0.6  0.4  0.6
-   0.6  0.8]
- [ 0.4  0.2  0.4  0.2  0.2  0.   0.2  0.2  0.   0.   0.2  0.   0.2  0.2
-   0.4  0.   0.2  0.   0.2  0.2  0.4  0.2  0.2  0.4  0.2  0.4  0.2  0.4
-   0.4  0.6]
- [ 0.4  0.2  0.4  0.2  0.2  0.   0.2  0.2  0.   0.   0.2  0.   0.2  0.2
-   0.4  0.   0.2  0.   0.2  0.2  0.4  0.2  0.2  0.4  0.2  0.4  0.2  0.4
-   0.4  0.6]
- [ 0.6  0.4  0.6  0.4  0.4  0.2  0.4  0.4  0.2  0.2  0.   0.2  0.   0.   0.2
-   0.2  0.   0.2  0.   0.   0.2  0.   0.   0.2  0.   0.2  0.   0.2  0.2
-   0.4]
- [ 0.4  0.2  0.4  0.2  0.2  0.   0.2  0.2  0.   0.   0.2  0.   0.2  0.2
-   0.4  0.   0.2  0.   0.2  0.2  0.4  0.2  0.2  0.4  0.2  0.4  0.2  0.4
-   0.4  0.6]
- [ 0.6  0.4  0.6  0.4  0.4  0.2  0.4  0.4  0.2  0.2  0.   0.2  0.   0.   0.2
-   0.2  0.   0.2  0.   0.   0.2  0.   0.   0.2  0.   0.2  0.   0.2  0.2
-   0.4]
- [ 0.6  0.4  0.6  0.4  0.4  0.2  0.4  0.4  0.2  0.2  0.   0.2  0.   0.   0.2
-   0.2  0.   0.2  0.   0.   0.2  0.   0.   0.2  0.   0.2  0.   0.2  0.2
-   0.4]
- [ 0.8  0.6  0.8  0.6  0.6  0.4  0.6  0.6  0.4  0.4  0.2  0.4  0.2  0.2  0.
-   0.4  0.2  0.4  0.2  0.2  0.   0.2  0.2  0.   0.2  0.   0.2  0.   0.   0.2]
- [ 0.4  0.2  0.4  0.2  0.2  0.   0.2  0.2  0.   0.   0.2  0.   0.2  0.2
-   0.4  0.   0.2  0.   0.2  0.2  0.4  0.2  0.2  0.4  0.2  0.4  0.2  0.4
-   0.4  0.6]
- [ 0.6  0.4  0.6  0.4  0.4  0.2  0.4  0.4  0.2  0.2  0.   0.2  0.   0.   0.2
-   0.2  0.   0.2  0.   0.   0.2  0.   0.   0.2  0.   0.2  0.   0.2  0.2
-   0.4]
- [ 0.4  0.2  0.4  0.2  0.2  0.   0.2  0.2  0.   0.   0.2  0.   0.2  0.2
-   0.4  0.   0.2  0.   0.2  0.2  0.4  0.2  0.2  0.4  0.2  0.4  0.2  0.4
-   0.4  0.6]
- [ 0.6  0.4  0.6  0.4  0.4  0.2  0.4  0.4  0.2  0.2  0.   0.2  0.   0.   0.2
-   0.2  0.   0.2  0.   0.   0.2  0.   0.   0.2  0.   0.2  0.   0.2  0.2
-   0.4]
- [ 0.6  0.4  0.6  0.4  0.4  0.2  0.4  0.4  0.2  0.2  0.   0.2  0.   0.   0.2
-   0.2  0.   0.2  0.   0.   0.2  0.   0.   0.2  0.   0.2  0.   0.2  0.2
-   0.4]
- [ 0.8  0.6  0.8  0.6  0.6  0.4  0.6  0.6  0.4  0.4  0.2  0.4  0.2  0.2  0.
-   0.4  0.2  0.4  0.2  0.2  0.   0.2  0.2  0.   0.2  0.   0.2  0.   0.   0.2]
- [ 0.6  0.4  0.6  0.4  0.4  0.2  0.4  0.4  0.2  0.2  0.   0.2  0.   0.   0.2
-   0.2  0.   0.2  0.   0.   0.2  0.   0.   0.2  0.   0.2  0.   0.2  0.2
-   0.4]
- [ 0.6  0.4  0.6  0.4  0.4  0.2  0.4  0.4  0.2  0.2  0.   0.2  0.   0.   0.2
-   0.2  0.   0.2  0.   0.   0.2  0.   0.   0.2  0.   0.2  0.   0.2  0.2
-   0.4]
- [ 0.8  0.6  0.8  0.6  0.6  0.4  0.6  0.6  0.4  0.4  0.2  0.4  0.2  0.2  0.
-   0.4  0.2  0.4  0.2  0.2  0.   0.2  0.2  0.   0.2  0.   0.2  0.   0.   0.2]
- [ 0.6  0.4  0.6  0.4  0.4  0.2  0.4  0.4  0.2  0.2  0.   0.2  0.   0.   0.2
-   0.2  0.   0.2  0.   0.   0.2  0.   0.   0.2  0.   0.2  0.   0.2  0.2
-   0.4]
- [ 0.8  0.6  0.8  0.6  0.6  0.4  0.6  0.6  0.4  0.4  0.2  0.4  0.2  0.2  0.
-   0.4  0.2  0.4  0.2  0.2  0.   0.2  0.2  0.   0.2  0.   0.2  0.   0.   0.2]
- [ 0.6  0.4  0.6  0.4  0.4  0.2  0.4  0.4  0.2  0.2  0.   0.2  0.   0.   0.2
-   0.2  0.   0.2  0.   0.   0.2  0.   0.   0.2  0.   0.2  0.   0.2  0.2
-   0.4]
- [ 0.8  0.6  0.8  0.6  0.6  0.4  0.6  0.6  0.4  0.4  0.2  0.4  0.2  0.2  0.
-   0.4  0.2  0.4  0.2  0.2  0.   0.2  0.2  0.   0.2  0.   0.2  0.   0.   0.2]
- [ 0.8  0.6  0.8  0.6  0.6  0.4  0.6  0.6  0.4  0.4  0.2  0.4  0.2  0.2  0.
-   0.4  0.2  0.4  0.2  0.2  0.   0.2  0.2  0.   0.2  0.   0.2  0.   0.   0.2]
- [ 1.   0.8  1.   0.8  0.8  0.6  0.8  0.8  0.6  0.6  0.4  0.6  0.4  0.4
-   0.2  0.6  0.4  0.6  0.4  0.4  0.2  0.4  0.4  0.2  0.4  0.2  0.4  0.2
-   0.2  0. ]]
-```
-
-10. ```python complexity_calc.py -euler_complexity_analysis -rel_name rel_3 -col x3```
-
-Output:
-
-```
-PWs:          [30, 15, 21, 24, 26, 28, 29, 11, 13, 14, 17, 19, 20, 22, 23, 25, 27, 6, 9, 10, 12, 16, 18, 2, 4, 5, 7, 8, 1, 3]
-Complexities: [1.0, 0.80000000000000004, 0.80000000000000004, 0.80000000000000004, 0.80000000000000004, 0.80000000000000004, 0.80000000000000004, 0.59999999999999998, 0.59999999999999998, 0.59999999999999998, 0.59999999999999998, 0.59999999999999998, 0.59999999999999998, 0.59999999999999998, 0.59999999999999998, 0.59999999999999998, 0.59999999999999998, 0.40000000000000002, 0.40000000000000002, 0.40000000000000002, 0.40000000000000002, 0.40000000000000002, 0.40000000000000002, 0.20000000000000001, 0.20000000000000001, 0.20000000000000001, 0.20000000000000001, 0.20000000000000001, 0.0, 0.0]
-```
-
-11. ```python visualize.py -mds -dendrogram -clustering```
-
-Output:
-```
-MDS Neato Graph saved to: Mini Workflow/parser_output/clustering_output/cen_ndc_example
-Cluster Labels: [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
-Clustering Output saved to: Mini Workflow/parser_output/clustering_output/cen_ndc_example
-Dendrograms saved to: Mini Workflow/parser_output/clustering_output/cen_ndc_example
-```
-![NetworkX Output](https://github.com/idaks/PW-explorer/blob/master/Clingo%20Parser/Mini%20Workflow/parser_output/clustering_output/cen_ndc_example/cen_ndc_example_networkx_out.png "NetworkX Output")
-
-![Dendrogram (Average)](https://github.com/idaks/PW-explorer/blob/master/Clingo%20Parser/Mini%20Workflow/parser_output/clustering_output/cen_ndc_example/cen_ndc_example_average_dendrogram.png "Dendrogram (Average)")
-
-![Dendrogram (Complete)](https://github.com/idaks/PW-explorer/blob/master/Clingo%20Parser/Mini%20Workflow/parser_output/clustering_output/cen_ndc_example/cen_ndc_example_complete_dendrogram.png "Dendrogram (Complete)")
-
-![Dendrogram (Weighted)](https://github.com/idaks/PW-explorer/blob/master/Clingo%20Parser/Mini%20Workflow/parser_output/clustering_output/cen_ndc_example/cen_ndc_example_weighted_dendrogram.png "Dendrogram (Weighted)")
- 
-12. ```python visualize.py -custom_visualisation_func test_vis```
-
-Output:
-```
-Length of each relation:
-900
-```
+TODO: Add a LeanEuler Example (both module version and CLI)

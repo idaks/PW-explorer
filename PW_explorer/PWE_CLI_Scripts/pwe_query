@@ -1,0 +1,255 @@
+#!/usr/bin/env python3
+
+from PW_explorer.pwe_query import *
+from PW_explorer.pwe_helper import (
+    get_current_project_name,
+    load_from_temp_pickle,
+    rel_id_from_rel_name,
+    set_current_project_name,
+)
+
+import argparse
+
+
+def __main__():
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-p", "--project_name", type=str, help="provide session/project name used while parsing")
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument("-intersection", action='store_true', default=False,
+                       help="provide either relation name or relation_id using the -rel_name or -rel_id flag respectively, "
+                            "columns to consider using the -cols flag and possible worlds to consider using the -pws flag.")
+    group.add_argument("-union", action='store_true', default=False,
+                       help="provide either relation name or relation_id using the -rel_name or -rel_id flag respectively, "
+                            "columns to consider using the -cols flag and possible worlds to consider using the -pws flag.")
+    group.add_argument("-freq", action='store_true', default=False,
+                       help="provide either relation name or relation_id using the -rel_name or -rel_id flag respectively, "
+                            "columns to consider using the -cols flag, possible worlds to consider using the -pws flag and "
+                            "the values for the columns (in the mentioned order) using the -vals flag (optional).")
+    group.add_argument("-num_tuples", action='store_true', default=False,
+                       help="provide either relation name or relation_id using the -rel_name or -rel_id flag respectively "
+                            "and the possible world ids to count the tuples in using the -pws flag.")
+    group.add_argument("-difference", choices=('one-way', 'symmetric'),
+                       help="provide either relation name or relation_id using the -rel_name or -rel_id flag respectively, "
+                            "columns to consider using the -cols flag and the two possible world ids using the -pws flag.")
+    group.add_argument("-redundant_column", action='store_true', default=False,
+                       help="provide either relation name or relation_id using the -rel_name or -rel_id flag respectively, "
+                            "columns to consider using the -cols flag and possible worlds to consider using the -pws flag.")
+    group.add_argument("-unique_tuples", action='store_true', default=False,
+                       help="provide either relation name or relation_id using the -rel_name or -rel_id flag respectively, "
+                            "columns to consider using the -cols flag and possible worlds to consider using the -pws flag.")
+    group.add_argument("-custom", type=str,
+                       help="provide the query enclosed in '' and either relation name or relation_id using the -rel_name "
+                            "or -rel_id flag respectively.")
+    group.add_argument("-show_relations", action='store_true', default=False,
+                       help="to get a list of relations and corresponding relation ids.")
+
+    parser.add_argument("-rel_name", type=str,
+                        help="provide the relation name to query. Note that if both rel_id and rel_name are provided, "
+                             "rel_name is disregarded.")
+    parser.add_argument("-rel_id", type=int,
+                        help="provide the relation id of the relation to query. To view relation ids, use -show_relations")
+    parser.add_argument("-cols", type=str, nargs='*', default=[],
+                        help="provide the columns of the selected relations to consider for the chosen query. If you want "
+                             "to consider all the columns, do not include this flag.")
+    parser.add_argument("-pws", type=int, nargs='*', default=[],
+                        help="provide the possible world ids of the possible world to consider for this query. If you want "
+                             "to consider all the possible worlds, do not include this flag. Please note that difference "
+                             "query requires exactly 2 arguments for this flag.")
+    parser.add_argument("-vals", nargs='*', default=[], type=str,
+                        help="provide the values for the freq query in the same order as the mentioned columns. If you "
+                             "want to query all possible tuples, do not include this flag.")
+
+    args = parser.parse_args()
+
+    project_name = ''
+
+    if args.project_name is None:
+        project_name = get_current_project_name()
+        if project_name is None:
+            print("Couldn't find current project. Please provide a project name.")
+            exit(1)
+    else:
+        project_name = args.project_name
+
+    dfs = load_from_temp_pickle(project_name, 'dfs')
+    relations = load_from_temp_pickle(project_name, 'relations')
+    pws = load_from_temp_pickle(project_name, 'pws')
+    expected_pws = len(pws)
+
+    if args.intersection:
+
+        if args.rel_name is None and args.rel_id is None:
+            print("Please include either the -rel_name or -rel_id flag along with the appropriate argument.")
+            exit(0)
+
+        r_id = args.rel_id
+        if r_id is None:
+            r_id = rel_id_from_rel_name(args.rel_name, relations)
+
+        soln = None
+        try:
+            soln = PWEQuery.intersection(relations, expected_pws, dfs, r_id, args.cols, args.pws, True)
+        except Exception as e:
+            print("Query failed. Please check the provided arguments to make sure they are valid.")
+            print("Error: ", str(e))
+            exit(1)
+
+    elif args.union:
+
+        if args.rel_name is None and args.rel_id is None:
+            print("Please include either the -rel_name or -rel_id flag along with the appropriate argument.")
+            exit(0)
+
+        r_id = args.rel_id
+        if r_id is None:
+            r_id = rel_id_from_rel_name(args.rel_name, relations)
+
+        soln = None
+        try:
+            soln = PWEQuery.union(relations, expected_pws, dfs, r_id, args.cols, args.pws, True)
+        except Exception as e:
+            print("Query failed. Please check the provided arguments to make sure they are valid.")
+            print("Error: ", str(e))
+            exit(1)
+
+    elif args.freq:
+
+        if args.rel_name is None and args.rel_id is None:
+            print("Please include either the -rel_name or -rel_id flag along with the appropriate argument.")
+            exit(0)
+
+        r_id = args.rel_id
+        if r_id is None:
+            r_id = rel_id_from_rel_name(args.rel_name, relations)
+
+        soln = None
+        try:
+            soln = PWEQuery.freq(relations, expected_pws, dfs, r_id, args.cols, args.vals, args.pws, True)
+        except Exception as e:
+            print("Query failed. Please check the provided arguments to make sure they are valid.")
+            print("Error: ", str(e))
+            exit(1)
+
+    elif args.num_tuples:
+
+        if args.rel_name is None and args.rel_id is None:
+            print("Please include either the -rel_name or -rel_id flag along with the appropriate argument.")
+            exit(0)
+
+        r_id = args.rel_id
+        if r_id is None:
+            r_id = rel_id_from_rel_name(args.rel_name, relations)
+
+        pws_to_consider = args.pws
+        if pws_to_consider == []:
+            pws_to_consider = [j for j in range(1, expected_pws + 1)]
+
+        soln = []
+        try:
+            for i in pws_to_consider:
+                soln.append(PWEQuery.num_tuples(relations, dfs, r_id, i, True))
+        except Exception as e:
+            print("Query failed. Please check the provided arguments to make sure they are valid.")
+            print("Error: ", str(e))
+            exit(1)
+
+    elif args.difference is not None:
+
+        if args.rel_name is None and args.rel_id is None:
+            print("Please include either the -rel_name or -rel_id flag along with the appropriate argument.")
+            exit(0)
+
+        r_id = args.rel_id
+        if r_id is None:
+            r_id = rel_id_from_rel_name(args.rel_name, relations)
+
+        if len(args.pws) != 2:
+            print("Please provide exactly 2 possible world ids.")
+            exit(0)
+
+        soln = None
+
+        if args.difference == 'one-way':
+            try:
+                soln = PWEQuery.difference(relations, dfs, r_id, args.pws[0], args.pws[1], args.cols, True)
+            except Exception as e:
+                print("Query failed. Please check the provided arguments to make sure they are valid.")
+                print("Error: ", str(e))
+                exit(1)
+        elif args.difference == 'symmetric':
+            try:
+                soln = PWEQuery.difference_both_ways(relations, dfs, r_id, args.pws[0], args.pws[1], args.cols, True)
+            except Exception as e:
+                print("Query failed. Please check the provided arguments to make sure they are valid.")
+                print("Error: ", str(e))
+                exit(1)
+
+    elif args.redundant_column:
+
+        if args.rel_name is None and args.rel_id is None:
+            print("Please include either the -rel_name or -rel_id flag along with the appropriate argument.")
+            exit(0)
+
+        r_id = args.rel_id
+        if r_id is None:
+            r_id = rel_id_from_rel_name(args.rel_name, relations)
+
+        soln = None
+        try:
+            soln = PWEQuery.redundant_column(relations, expected_pws, dfs, r_id, args.cols, args.pws, True)
+        except Exception as e:
+            print("Query failed. Please check the provided arguments to make sure they are valid.")
+            print("Error: ", str(e))
+            exit(1)
+
+    elif args.unique_tuples:
+
+        if args.rel_name is None and args.rel_id is None:
+            print("Please include either the -rel_name or -rel_id flag along with the appropriate argument.")
+            exit(0)
+
+        r_id = args.rel_id
+        if r_id is None:
+            r_id = rel_id_from_rel_name(args.rel_name, relations)
+
+        soln = None
+        try:
+            soln = PWEQuery.unique_tuples(relations, expected_pws, dfs, r_id, args.cols, args.pws, True)
+        except Exception as e:
+            print("Query failed. Please check the provided arguments to make sure they are valid.")
+            print("Error: ", str(e))
+            exit(1)
+
+    elif args.show_relations:
+
+        print('Following are the parsed relation IDs and relation names:')
+        for i, rl in enumerate(relations):
+            print(str(i) + ':', str(rl.relation_name))
+
+    elif args.custom is not None:
+
+        if args.rel_name is None and args.rel_id is None:
+            print("Please include either the -rel_name or -rel_id flag along with the appropriate argument.")
+            exit(0)
+
+        r_id = args.rel_id
+        if r_id is None:
+            r_id = rel_id_from_rel_name(args.rel_name, relations)
+
+        ik = None
+        try:
+            ik = dfs[r_id].query(args.custom)
+            print(str(ik))
+            if len(ik) <= 0:
+                print("NULL")
+        except Exception as e:
+            print("Query failed. Please check the provided query to make sure it is valid.")
+            print("Error: ", str(e))
+            exit(1)
+
+    set_current_project_name(project_name)
+
+
+if __name__ == '__main__':
+    __main__()

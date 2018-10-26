@@ -1,8 +1,0 @@
-Answer: 1
-score(bill,71) score(frank,75) score(paul,78) score(jack,85) last_name(jack,clubb) job(frank,clerk) last_name(bill,sands) job(paul,caddy) last_name(paul,carter) last_name(frank,green) job(jack,maintenance_man) job(bill,cook)
-SATISFIABLE
-
-Models       : 1
-Calls        : 1
-Time         : 0.016s (Solving: 0.00s 1st Model: 0.00s Unsat: 0.00s)
-CPU Time     : 0.015s
