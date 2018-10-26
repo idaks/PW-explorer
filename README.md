@@ -8,9 +8,9 @@
 
 These commands usually work as well:
 
-  a. ```apt-get install python-dev graphviz libgraphviz-dev pkg-config```
+  a.  ```apt-get install python-dev graphviz libgraphviz-dev pkg-config```
   
-        OR
+   OR
 
       ```brew install graphviz```
   
