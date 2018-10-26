@@ -10,6 +10,10 @@ These commands usually work as well:
 
   a. ```apt-get install python-dev graphviz libgraphviz-dev pkg-config```
   
+        OR
+
+      ```brew install graphviz```
+  
   b. ```pip3 install pygraphviz```
   
   (Might need to run them using sudo)
