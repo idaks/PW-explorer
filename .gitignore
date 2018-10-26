@@ -2,6 +2,11 @@
 *.pyc
 .idea/
 .env/
+.pwe_test_env/
+PWE\ Test\ NB.ipynb
+PW_explorer.egg-info/
+dist/
+Build/
 Colorability_Examples/
 Euler Examples/
 Misc Scripts/
