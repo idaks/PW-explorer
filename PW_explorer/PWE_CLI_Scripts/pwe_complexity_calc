@@ -6,11 +6,12 @@ from PW_explorer.pwe_helper import (
     load_from_temp_pickle,
     get_sql_conn, rel_id_from_rel_name,
     set_current_project_name,
+    import_custom_module,
 )
 
 import argparse
 import numpy as np
-import importlib
+import os.path
 
 
 def __main__():
@@ -23,10 +24,12 @@ def __main__():
                             "the -rel_name or rel_id flag respectively. Provide the column name to use using the "
                             "-col flag. Calculates complexity on all PWs by default. Use the -pws flag to specify "
                             "the possible world ids if compexity of only a few are required.")
-    group.add_argument("-custom_complexity_func", type=str,
-                       help="provide the .py file (without the .py) containing your custom complexity function. The "
-                            "function signature should be complexity(pw_id, dfs = None, pws = None, relations = None, "
-                            "conn = None) where the latter four arguments refer to the data acquired from parsing the "
+    group.add_argument("-custom_complexity_func", type=str, nargs=2, default=[],
+                       help="provide the module name and the full path to the python file containing your custom "
+                            "complexity function respectively. The "
+                            "function signature should be complexity(pw_id, **kwargs) where the kwargs provided will be "
+                            "dfs, pws and relations"
+                            "where the kwargs refer to the data acquired from parsing the "
                             "ASP solutions and the connection to the generated sqlite database respectively. The function "
                             "should return a floating point number. Ensure that the file is in the same directory as this "
                             "script. You can use the functions in sql_funcs.py to design these dist functions")
@@ -97,8 +100,9 @@ def __main__():
     elif args.custom_complexity_func:
 
         try:
-            a = importlib.import_module(args.custom_complexity_func)
-            comp_func = a.complexity
+            [module_name, module_path] = args.custom_complexity_func
+            custom_complexity_mod = import_custom_module(module_name, os.path.abspath(module_path))
+            comp_func = custom_complexity_mod.complexity
         except Exception as e:
             print("Error importing from the given file")
             print("Error: ", str(e))
@@ -112,7 +116,7 @@ def __main__():
 
         try:
             for i, pw in enumerate(pws_to_consider):
-                complexities[i] = comp_func(pw, dfs, pws, relations, conn)
+                complexities[i] = comp_func(pw, dfs=dfs, pws=pws, relations=relations)
         except Exception as e:
             print("Error running the given function. Recheck your inputs.")
             print("Error: ", str(e))

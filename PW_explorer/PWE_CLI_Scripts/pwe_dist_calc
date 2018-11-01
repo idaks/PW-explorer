@@ -9,13 +9,13 @@ from PW_explorer.pwe_helper import (
     get_save_folder,
     get_file_save_name,
     set_current_project_name,
-    CUSTOM_DISTANCE_FUNCTIONS_FOLDER,
+    import_custom_module,
 )
 
 import numpy as np
 import pickle
-import importlib
 import argparse
+import os.path
 
 
 def __main__():
@@ -32,14 +32,15 @@ def __main__():
                             "absolute difference in the number of overlaps (""><"") in two PWs. Provide the relation "
                             "name or relation id to use using the -rel_name or rel_id flag respectively. "
                             "Provide the column name to use using the -col flag.")
-    group.add_argument("-custom_dist_func", type=str,
-                       help="provide the .py file (without the .py) containing your custom distance function. The function "
+    group.add_argument("-custom_dist_func", type=str, nargs=2, default=[],
+                       help="provide the module name and complete file path to the python module respectively "
+                            "The function "
                             "signature should be dist(pw_id_1, pw_id_2, **kwargs) where kwargs contains the follwing:"
                             "dfs, pws, relations"
                             "where the latter three arguments refer to the data acquired from parsing the "
                             "ASP solutions. The function "
                             "should return a floating point number. Ensure that the file is in the same directory as "
-                            "this script. You can use the functions in sql_funcs.py to design these dist functions")
+                            "this script. You can use the functions in sql_funcs.py to design these dist functions.")
     group.add_argument("-show_relations", action='store_true', default=False,
                        help="to get a list of relations and corresponding relation ids.")
 
@@ -174,8 +175,10 @@ def __main__():
     elif args.custom_dist_func:
 
         try:
-            a = importlib.import_module(CUSTOM_DISTANCE_FUNCTIONS_FOLDER + '.' + args.custom_dist_func)
-            dist_func = a.dist
+            [module_name, module_path] = args.custom_dist_func
+            custom_viz_module = import_custom_module(module_name, os.path.abspath(module_path))
+            dist_func = custom_viz_module.dist
+
         except Exception as e:
             print("Error importing from the given file")
             print("Error: ", str(e))

@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 
 import argparse
-import importlib
+import os.path
 
 from PW_explorer.pwe_helper import (
     load_from_temp_pickle,
     get_sql_conn,
     get_save_folder,
     set_current_project_name,
-    CUSTOM_VISUALIZATION_FUNCTIONS_FOLDER,
+    import_custom_module,
     get_current_project_name,
 )
 from PW_explorer.visualize import *
@@ -28,8 +28,8 @@ def __main__():
     parser.add_argument("-clustering", action='store_true', default=False,
                         help="use DBScan Algorithm to cluster the Possible Worlds")
     parser.add_argument("-dendrogram", action='store_true', default=False, help="create various dendrograms using scipy")
-    parser.add_argument("-custom_visualization_func", type=str,
-                        help="provide the .py file (without the .py) containing your custom visualisation function. "
+    parser.add_argument("-custom_visualization_func", type=str, nargs=2, default=[],
+                        help="provide the module name and path to the python file containing your custom visualisation function, in that order "
                              "The function signature should be visualize(**kwargs) the following arguments are provided:\n"
                              "dfs, relations, pws, project_name, dist_matrix, save_to_folder, of which the visualization function may use any subset"
                              "from parsing the ASP solutions and the connection to the generated sqlite database "
@@ -73,8 +73,9 @@ def __main__():
             print('Dendrograms saved to:', folder_to_save_to)
     if args.custom_visualization_func:
         try:
-            a = importlib.import_module(CUSTOM_VISUALIZATION_FUNCTIONS_FOLDER + '.' + args.custom_visualization_func)
-            visualization_func = a.visualize
+            [module_name, module_path] = args.custom_visualization_func
+            custom_visualization_mod = import_custom_module(module_name, os.path.abspath(module_path))
+            visualization_func = custom_visualization_mod.visualize
             visualization_func(dfs=dfs, pws=pws, relations=relations, dist_matrix=dist_matrix,
                                save_to_folder=get_save_folder(project_name, 'visualization'),
                                project_name=project_name)

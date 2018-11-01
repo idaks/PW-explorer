@@ -5,6 +5,7 @@ import inspect
 import os
 import pickle
 import sqlite3
+import importlib
 
 
 ###################################################################
@@ -192,3 +193,16 @@ def rel_id_from_rel_name(rel_name, relations):
                 print("Relations not in order")
             return rel.r_id
     return None
+
+
+def import_custom_module(module_name, module_path):
+    """
+    Reference: https://stackoverflow.com/questions/67631/how-to-import-a-module-given-the-full-path
+    :param module_name: Name of the module to import
+    :param module_path: Expected to be an absolute path
+    :return: custom_module
+    """
+    spec = importlib.util.spec_from_file_location(module_name, module_path)
+    custom_module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(custom_module)
+    return custom_module

@@ -188,7 +188,7 @@ def visualize(**kwargs):
 
     if save_to_folder is not None:
         folder_name = os.path.join(save_to_folder, 'euler_visualization')
-        mkdir_p(folder_name)
+        mkdir_p(os.path.abspath(folder_name))
         for i, G in enumerate(Gs):
             draw(G, format='gv', filename='{}/pw-{}'.format(folder_name, i+1))
             draw(G, format='pdf', filename='{}/pw-{}.pdf'.format(folder_name, i+1))
