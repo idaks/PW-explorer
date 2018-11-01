@@ -30,11 +30,11 @@ Repeat Step 4 to resume work and Step 6 to exit the virtualenv again.
 
 Installing PW_explorer will install all the modules within PW_explorer along with all their dependencies. It will also install the following Command Line Tools in /usr/bin/ :
 
-1. run_clingo
-2. load_worlds
-3. dist_calc
-4. complexity_calc
-5. visualize
+1. pwe_run_clingo
+2. pwe_load_worlds
+3. pwe_dist_calc
+4. pwe_complexity_calc
+5. pwe_visualize
 6. pwe_export
 7. pwe_query
 
@@ -60,11 +60,11 @@ The above CLI tools leverage the installed PW_explorer modules.
 
 ### CLI Scripts Used:
  
-1. run_clingo : Produces the clingo output. Takes in clingo files, project/session name and number of solutions to produce (optional).
+1. pwe_run_clingo : Produces the clingo output. Takes in clingo files, project/session name and number of solutions to produce (optional).
  ```
 dependencies: argparse subprocess32 
 
-usage: run_clingo [-h] [-n NUM_SOLUTIONS] fnames [fnames ...] project_name
+usage: pwe_run_clingo [-h] [-n NUM_SOLUTIONS] fnames [fnames ...] project_name
 
 positional arguments:
   fnames                provide the clingo files
@@ -79,11 +79,11 @@ optional arguments:
  ```
 
 
-2. load_worlds : Parses the clingo output and fills up the relational databases. Puts them in a pkl file so they can be exported to other formats and used by other scripts directly.
+2. pwe_load_worlds : Parses the clingo output and fills up the relational databases. Puts them in a pkl file so they can be exported to other formats and used by other scripts directly.
  ```
 dependencies: argparse pickle
 
-usage: load_worlds [-h] [-f FNAME] [-clingo | -dlv] project_name
+usage: pwe_load_worlds [-h] [-f FNAME] [-clingo | -dlv] project_name
 
 positional arguments:
   project_name          provide a suitable session/project name to reference
@@ -105,7 +105,8 @@ optional arguments:
  ```
 dependencies: pandas numpy sqlite3 pickle argparse 
  
-usage: export [-h] [-p PROJECT_NAME] [-s] [-sql] [-csv] [-h5] [-msg] [-pkl]
+usage: pwe_export [-h] [-p PROJECT_NAME] [-s] [-sql] [-csv] [-h5] [-msg]
+                  [-pkl]
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -190,16 +191,16 @@ optional arguments:
                         all possible tuples, do not include this flag.
  ```
  
-5. dist_calc : Distance calculation script. Can create a whole distance matrix, or just get distance between any two PWs. Can also supply your own distance function.
+5. pwe_dist_calc : Distance calculation script. Can create a whole distance matrix, or just get distance between any two PWs. Can also supply your own distance function.
 ```
 dependencies: pandas numpy pickle argparse importlib
 
-usage: dist_calc [-h] [-p PROJECT_NAME]
-                 [-symmetric_difference | -euler_num_overlaps_diff | -custom_dist_func CUSTOM_DIST_FUNC | -show_relations]
-                 [-rel_names [REL_NAMES [REL_NAMES ...]]]
-                 [-rel_ids [REL_IDS [REL_IDS ...]]] [-rel_name REL_NAME]
-                 [-rel_id REL_ID] [-calc_dist_matrix] [-pws PWS PWS]
-                 [-col COL]
+usage: pwe_dist_calc [-h] [-p PROJECT_NAME]
+                     [-symmetric_difference | -euler_num_overlaps_diff | -custom_dist_func CUSTOM_DIST_FUNC CUSTOM_DIST_FUNC | -show_relations]
+                     [-rel_names [REL_NAMES [REL_NAMES ...]]]
+                     [-rel_ids [REL_IDS [REL_IDS ...]]] [-rel_name REL_NAME]
+                     [-rel_id REL_ID] [-calc_dist_matrix] [-pws PWS PWS]
+                     [-col COL]
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -217,19 +218,17 @@ optional arguments:
                         relation name or relation id to use using the
                         -rel_name or rel_id flag respectively. Provide the
                         column name to use using the -col flag.
-  -custom_dist_func CUSTOM_DIST_FUNC
-                        provide the .py file (without the .py) containing your
-                        custom distance function. The function signature
+  -custom_dist_func CUSTOM_DIST_FUNC CUSTOM_DIST_FUNC
+                        provide the module name and complete file path to the
+                        python module respectively The function signature
                         should be dist(pw_id_1, pw_id_2, **kwargs) where
-                        kwargs contains the follwing: dfs, pws, relationswhere
+                        kwargs contains the follwing:dfs, pws, relationswhere
                         the latter three arguments refer to the data acquired
                         from parsing the ASP solutions. The function should
                         return a floating point number. Ensure that the file
                         is in the same directory as this script. You can use
                         the functions in sql_funcs.py to design these dist
                         functions.
-                        Feature in beta. Currently the file must be present in
-                        /usr/bin/Custom_Distance_Functions/ folder.
   -show_relations       to get a list of relations and corresponding relation
                         ids.
   -rel_names [REL_NAMES [REL_NAMES ...]]
@@ -255,14 +254,14 @@ optional arguments:
                         distance metric.
  ```
  
- 6. complexity_calc : Complexity calculation script. Supports user defined complexity metrics.
+ 6. pwe_complexity_calc : Complexity calculation script. Supports user defined complexity metrics.
 ```
 dependencies: pandas numpy argparse importlib
 
-usage: complexity_calc [-h] [-p PROJECT_NAME]
-                       [-euler_complexity_analysis | -custom_complexity_func CUSTOM_COMPLEXITY_FUNC | -show_relations]
-                       [-rel_name REL_NAME] [-rel_id REL_ID] [-col COL]
-                       [-pws [PWS [PWS ...]]]
+usage: pwe_complexity_calc [-h] [-p PROJECT_NAME]
+                           [-euler_complexity_analysis | -custom_complexity_func CUSTOM_COMPLEXITY_FUNC CUSTOM_COMPLEXITY_FUNC | -show_relations]
+                           [-rel_name REL_NAME] [-rel_id REL_ID] [-col COL]
+                           [-pws [PWS [PWS ...]]]
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -277,20 +276,18 @@ optional arguments:
                         -col flag. Calculates complexity on all PWs by
                         default. Use the -pws flag to specify the possible
                         world ids if compexity of only a few are required.
-  -custom_complexity_func CUSTOM_COMPLEXITY_FUNC
-                        provide the .py file (without the .py) containing your
-                        custom complexity function. The function signature
-                        should be complexity(pw_id, dfs = None, pws = None,
-                        relations = None, conn = None) where the latter four
-                        arguments refer to the data acquired from parsing the
-                        ASP solutions and the connection to the generated
-                        sqlite database respectively. The function should
-                        return a floating point number. Ensure that the file
-                        is in the same directory as this script. You can use
-                        the functions in sql_funcs.py to design these dist
-                        functions.
-                        Feature in beta. Currently the file must be present in
-                        /usr/bin/ folder.
+  -custom_complexity_func CUSTOM_COMPLEXITY_FUNC CUSTOM_COMPLEXITY_FUNC
+                        provide the module name and the full path to the
+                        python file containing your custom complexity function
+                        respectively. The function signature should be
+                        complexity(pw_id, **kwargs) where the kwargs provided
+                        will be dfs, pws and relationswhere the kwargs refer
+                        to the data acquired from parsing the ASP solutions
+                        and the connection to the generated sqlite database
+                        respectively. The function should return a floating
+                        point number. Ensure that the file is in the same
+                        directory as this script. You can use the functions in
+                        sql_funcs.py to design these dist functions
   -show_relations       to get a list of relations and corresponding relation
                         ids.
   -rel_name REL_NAME    provide the relation name to use in the distance
@@ -306,13 +303,13 @@ optional arguments:
                         PWs if not used.
 ```
 
-7. visualize : Creates the visualisations.
+7. pwe_visualize : Creates the visualisations.
 ```
 dependencies: argparse importlib
 
-usage: visualize [-h] [-p PROJECT_NAME] [-mds] [-mds_sklearn]
-                 [-sdf SCALE_DOWN_FACTOR] [-clustering] [-dendrogram]
-                 [-custom_visualization_func CUSTOM_VISUALIZATION_FUNC]
+usage: pwe_visualize [-h] [-p PROJECT_NAME] [-mds] [-mds_sklearn]
+                     [-sdf SCALE_DOWN_FACTOR] [-clustering] [-dendrogram]
+                     [-custom_visualization_func CUSTOM_VISUALIZATION_FUNC CUSTOM_VISUALIZATION_FUNC]
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -328,11 +325,12 @@ optional arguments:
                         Scaling Graph. Deafults to 5.0
   -clustering           use DBScan Algorithm to cluster the Possible Worlds
   -dendrogram           create various dendrograms using scipy
-  -custom_visualization_func CUSTOM_VISUALIZATION_FUNC
-                        provide the .py file (without the .py) containing your
-                        custom visualisation function. The function signature
-                        should be visualize(**kwargs) the following arguments
-                        are provided: dfs, relations, pws, project_name,
+  -custom_visualization_func CUSTOM_VISUALIZATION_FUNC CUSTOM_VISUALIZATION_FUNC
+                        provide the module name and path to the python file
+                        containing your custom visualisation function, in that
+                        order The function signature should be
+                        visualize(**kwargs) the following arguments are
+                        provided: dfs, relations, pws, project_name,
                         dist_matrix, save_to_folder, of which the
                         visualization function may use any subsetfrom parsing
                         the ASP solutions and the connection to the generated
@@ -340,11 +338,9 @@ optional arguments:
                         create the visualization and may or may not return
                         anything. Ensure that the file is in the same
                         directory as this script. You can use the functions in
-                        sql_funcs.py to design these visualisation functions.
-                        Feature in beta. Currently the file must be present in
-                        /usr/bin/Custom_Visualization_Functions/ folder.
+                        sql_funcs.py to design these visualisation functions
 ```
 
 ### Example:
 
-TODO: Add a LeanEuler Example (both module version and CLI)
+Both CLI and module tutorials coming soon!
