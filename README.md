@@ -43,13 +43,13 @@ The above CLI tools leverage the installed PW_explorer modules.
 ### General Workflow:
 
 ```                                           
-                                            generate clingo outputs 
+                                      run clingo to generate the Possible Worlds 
                                                        ⏬
-                                                      parse 
+                                    parse the output to load the Possible Worlds
                                                        ⏬
-                                          export to formats such as sql
+                             export Possible Worlds' descriptions to formats such as sql, csv
                                                        ⏬
-                                             query using sql/pandas
+                                               query using pandas
                                                        ⏬
                                                distance calculation 
                                                        ⏬
