@@ -19,13 +19,13 @@ def get_clingo_output(clingo_in_fnames: list, num_solutions: int=0):
     return cling_out_lines
 
 
-def run_clingo(clingo_rules: list) -> list:
+def run_clingo(clingo_rules: list, num_solutions: int=0) -> list:
 
     dummy_fname = 'svjsihkankjbyerhoihsyvgjnclsdihcysbfhcbygweincbsydgibwyebcsygdyc.lp4'
     with open(dummy_fname, 'w') as f:
         f.write('\n'.join(clingo_rules))
 
-    clingo_output = get_clingo_output([dummy_fname])
+    clingo_output = get_clingo_output([dummy_fname], num_solutions=num_solutions)
     os.remove(dummy_fname)
     return preprocess_clingo_output(clingo_output)
 
