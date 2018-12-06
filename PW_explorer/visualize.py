@@ -44,7 +44,7 @@ def dbscan_clustering(dist_matrix, save_to_file=None):
         xy = dist_matrix[class_member_mask & ~core_samples_mask]
         ax.plot(xy[:, 0], xy[:, 1], 'o', markerfacecolor=tuple(col), markeredgecolor='k', markersize=6)
 
-    ax.title('Estimated number of clusters: %d' % n_clusters_)
+    ax.set_title('Estimated number of clusters: %d' % n_clusters_)
     if save_to_file is not None:
         fig.savefig(save_to_file)
     return fig, labels
@@ -59,7 +59,7 @@ def linkage_dendrogram(dist_matrix, save_to_folder=None):
         fig, ax = plt.subplots(figsize=dendrogram_size)
         linkage_matrix = linkage(X, dist_type)
         dendrogram(linkage_matrix, labels=[str(i) for i in range(len(dist_matrix))], show_leaf_counts=True, ax=ax)
-        ax.title("Dendrogram ({})".format(dist_type))
+        ax.set_title("Dendrogram ({})".format(dist_type))
         if save_to_folder is not None:
             fig.savefig(os.path.join(save_to_folder, '{}_dendrogram.png'.format(dist_type)))
         figs.append(fig)
