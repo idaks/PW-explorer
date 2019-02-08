@@ -59,15 +59,15 @@ class PossibleWorld:
     """
     Class to store details and solution relating to every possible world
     """
-    def __init__(self, num_relations, pw_id):
-        self.rls = [[] for i in range(num_relations)]
+    def __init__(self, pw_id):
+        self.rls = {} #[[] for i in range(num_relations)]
         self.pw_id = pw_id
-        self.pw_soln = 0
+        self.pw_soln = None
 
-    def add_relation(self, relation_id, relation_data):
-        if relation_id >= len(self.rls):
-            self.rls.append([])
-        self.rls[relation_id].append(relation_data)
+    def add_relation(self, relation_name, relation_data):
+        if relation_name not in self.rls:
+            self.rls[relation_name] = []
+        self.rls[relation_name].append(relation_data)
 
 
 ###################################################################

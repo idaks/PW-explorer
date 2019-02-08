@@ -71,12 +71,12 @@ def visualize(**kwargs):
         graph = Digraph(graph_attr=styles['graph'])
         nodes_sets = []
         # Get the regions/concepts from the 'u' df
-        df = dfs[rel_id_from_rel_name('u_1', relations)]
+        df = dfs['u_1']
         df = df[df.pw == pw_id]
         for idx, row in df.iterrows():
             nodes_sets.append(set([row['x1']]))
 
-        df = dfs[rel_id_from_rel_name('eq_2', relations)]
+        df = dfs['eq_2']
         df = df[df.pw == pw_id]
 
         for idx, row in df.iterrows():
@@ -110,7 +110,7 @@ def visualize(**kwargs):
 
                 graph.node("\n".join(node_set), _attributes=styles['node_styles']['node_equal'])
 
-        df = dfs[rel_id_from_rel_name('pp_2', relations)]
+        df = dfs['pp_2']
         df = df[df.pw == pw_id]
 
         pp_edges = []
@@ -121,7 +121,7 @@ def visualize(**kwargs):
                 graph.edge("\n".join(node1), "\n".join(node2), _attributes=styles['edge_styles']['proper_part_edge'])
                 pp_edges.append((node1, node2))
 
-        df = dfs[rel_id_from_rel_name('po_2', relations)]
+        df = dfs['po_2']
         df = df[df.pw == pw_id]
 
         overlap_edges = []

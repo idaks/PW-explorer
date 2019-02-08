@@ -37,11 +37,10 @@ def __main__():
                        help="to get a list of relations and corresponding relation ids.")
 
     parser.add_argument("-rel_name", type=str,
-                        help="provide the relation name to use in the distance calculation. Note that if both rel_id "
-                             "and rel_name are provided, rel_name is disregarded.")
-    parser.add_argument("-rel_id", type=int,
-                        help="provide the relation id of the relation to use in the distance calculation. To view "
-                             "relation ids, use -show_relations")
+                        help="provide the relation name to use in the distance calculation.")
+    # parser.add_argument("-rel_id", type=int,
+    #                     help="provide the relation id of the relation to use in the distance calculation. To view "
+    #                          "relation ids, use -show_relations")
     parser.add_argument("-col", type=str,
                         help="provide the column to use for the complexity analysis, required with the "
                              "euler_complexity_analysis function")
@@ -74,13 +73,9 @@ def __main__():
 
     elif args.euler_complexity_analysis:
 
-        if args.rel_name is None and args.rel_id is None:
-            print("Please include either the -rel_name or -rel_id flag along with the appropriate argument.")
+        if args.rel_name is None:
+            print("Please include the -rel_name flag along with the appropriate argument.")
             exit(0)
-
-        r_id = args.rel_id
-        if r_id is None:
-            r_id = rel_id_from_rel_name(args.rel_name, relations)
 
         if args.col is None:
             print("-col is required")
@@ -91,7 +86,7 @@ def __main__():
             pws_to_consider = [j for j in range(1, expected_pws + 1)]
 
         try:
-            euler_complexity_analysis(relations, len(pws), dfs, r_id, args.col, pws_to_consider)
+            euler_complexity_analysis(len(pws), dfs, args.rel_name, args.col, pws_to_consider)
         except Exception as e:
             print("Error running the euler_complexity_analysis. Recheck your inputs.")
             print("Error: ", str(e))

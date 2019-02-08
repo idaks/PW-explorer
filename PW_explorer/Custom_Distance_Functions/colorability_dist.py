@@ -80,8 +80,8 @@ def dist(pw_id_1, pw_id_2, **kwargs):
     if pw_id_1 == pw_id_2:
         return 0
 
-    col_rel_id = rel_id_from_rel_name('col_2', relations)
-    df = dfs[col_rel_id]
+    col_rel_name = 'col_2'
+    df = dfs[col_rel_name]
 
     s1 = get_colors_list(df, pw_id_1)
     s2 = get_colors_list(df, pw_id_2)

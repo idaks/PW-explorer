@@ -45,10 +45,9 @@ def __main__():
                        help="to get a list of relations and corresponding relation ids.")
 
     parser.add_argument("-rel_name", type=str,
-                        help="provide the relation name to query. Note that if both rel_id and rel_name are provided, "
-                             "rel_name is disregarded.")
-    parser.add_argument("-rel_id", type=int,
-                        help="provide the relation id of the relation to query. To view relation ids, use -show_relations")
+                        help="provide the relation name to query.")
+    # parser.add_argument("-rel_id", type=int,
+    #                     help="provide the relation id of the relation to query. To view relation ids, use -show_relations")
     parser.add_argument("-cols", type=str, nargs='*', default=[],
                         help="provide the columns of the selected relations to consider for the chosen query. If you want "
                              "to consider all the columns, do not include this flag.")
@@ -79,17 +78,13 @@ def __main__():
 
     if args.intersection:
 
-        if args.rel_name is None and args.rel_id is None:
-            print("Please include either the -rel_name or -rel_id flag along with the appropriate argument.")
+        if args.rel_name is None:
+            print("Please include the -rel_name flag along with the appropriate argument.")
             exit(0)
-
-        r_id = args.rel_id
-        if r_id is None:
-            r_id = rel_id_from_rel_name(args.rel_name, relations)
 
         soln = None
         try:
-            soln = PWEQuery.intersection(relations, expected_pws, dfs, r_id, args.cols, args.pws, True)
+            soln = PWEQuery.intersection(expected_pws, dfs, args.rel_name, args.cols, args.pws, True)
         except Exception as e:
             print("Query failed. Please check the provided arguments to make sure they are valid.")
             print("Error: ", str(e))
@@ -97,17 +92,13 @@ def __main__():
 
     elif args.union:
 
-        if args.rel_name is None and args.rel_id is None:
-            print("Please include either the -rel_name or -rel_id flag along with the appropriate argument.")
+        if args.rel_name is None:
+            print("Please include the -rel_name flag along with the appropriate argument.")
             exit(0)
-
-        r_id = args.rel_id
-        if r_id is None:
-            r_id = rel_id_from_rel_name(args.rel_name, relations)
 
         soln = None
         try:
-            soln = PWEQuery.union(relations, expected_pws, dfs, r_id, args.cols, args.pws, True)
+            soln = PWEQuery.union(expected_pws, dfs, args.rel_name, args.cols, args.pws, True)
         except Exception as e:
             print("Query failed. Please check the provided arguments to make sure they are valid.")
             print("Error: ", str(e))
@@ -115,17 +106,14 @@ def __main__():
 
     elif args.freq:
 
-        if args.rel_name is None and args.rel_id is None:
-            print("Please include either the -rel_name or -rel_id flag along with the appropriate argument.")
+        if args.rel_name is None:
+            print("Please include the -rel_name flag along with the appropriate argument.")
             exit(0)
 
-        r_id = args.rel_id
-        if r_id is None:
-            r_id = rel_id_from_rel_name(args.rel_name, relations)
 
         soln = None
         try:
-            soln = PWEQuery.freq(relations, expected_pws, dfs, r_id, args.cols, args.vals, args.pws, True)
+            soln = PWEQuery.freq(expected_pws, dfs, args.rel_name, args.cols, args.vals, args.pws, True)
         except Exception as e:
             print("Query failed. Please check the provided arguments to make sure they are valid.")
             print("Error: ", str(e))
@@ -133,13 +121,9 @@ def __main__():
 
     elif args.num_tuples:
 
-        if args.rel_name is None and args.rel_id is None:
-            print("Please include either the -rel_name or -rel_id flag along with the appropriate argument.")
+        if args.rel_name is None:
+            print("Please include the -rel_name flag along with the appropriate argument.")
             exit(0)
-
-        r_id = args.rel_id
-        if r_id is None:
-            r_id = rel_id_from_rel_name(args.rel_name, relations)
 
         pws_to_consider = args.pws
         if pws_to_consider == []:
@@ -148,7 +132,7 @@ def __main__():
         soln = []
         try:
             for i in pws_to_consider:
-                soln.append(PWEQuery.num_tuples(relations, dfs, r_id, i, True))
+                soln.append(PWEQuery.num_tuples(dfs, args.rel_name, i, True))
         except Exception as e:
             print("Query failed. Please check the provided arguments to make sure they are valid.")
             print("Error: ", str(e))
@@ -156,13 +140,9 @@ def __main__():
 
     elif args.difference is not None:
 
-        if args.rel_name is None and args.rel_id is None:
-            print("Please include either the -rel_name or -rel_id flag along with the appropriate argument.")
+        if args.rel_name is None:
+            print("Please include the -rel_name flag along with the appropriate argument.")
             exit(0)
-
-        r_id = args.rel_id
-        if r_id is None:
-            r_id = rel_id_from_rel_name(args.rel_name, relations)
 
         if len(args.pws) != 2:
             print("Please provide exactly 2 possible world ids.")
@@ -172,14 +152,14 @@ def __main__():
 
         if args.difference == 'one-way':
             try:
-                soln = PWEQuery.difference(relations, dfs, r_id, args.pws[0], args.pws[1], args.cols, True)
+                soln = PWEQuery.difference(dfs, args.rel_name, args.pws[0], args.pws[1], args.cols, True)
             except Exception as e:
                 print("Query failed. Please check the provided arguments to make sure they are valid.")
                 print("Error: ", str(e))
                 exit(1)
         elif args.difference == 'symmetric':
             try:
-                soln = PWEQuery.difference_both_ways(relations, dfs, r_id, args.pws[0], args.pws[1], args.cols, True)
+                soln = PWEQuery.difference_both_ways(dfs, args.rel_name, args.pws[0], args.pws[1], args.cols, True)
             except Exception as e:
                 print("Query failed. Please check the provided arguments to make sure they are valid.")
                 print("Error: ", str(e))
@@ -187,17 +167,13 @@ def __main__():
 
     elif args.redundant_column:
 
-        if args.rel_name is None and args.rel_id is None:
-            print("Please include either the -rel_name or -rel_id flag along with the appropriate argument.")
+        if args.rel_name is None:
+            print("Please include the -rel_name flag along with the appropriate argument.")
             exit(0)
-
-        r_id = args.rel_id
-        if r_id is None:
-            r_id = rel_id_from_rel_name(args.rel_name, relations)
 
         soln = None
         try:
-            soln = PWEQuery.redundant_column(relations, expected_pws, dfs, r_id, args.cols, args.pws, True)
+            soln = PWEQuery.redundant_column(expected_pws, dfs, args.rel_name, args.cols, args.pws, True)
         except Exception as e:
             print("Query failed. Please check the provided arguments to make sure they are valid.")
             print("Error: ", str(e))
@@ -205,17 +181,13 @@ def __main__():
 
     elif args.unique_tuples:
 
-        if args.rel_name is None and args.rel_id is None:
-            print("Please include either the -rel_name or -rel_id flag along with the appropriate argument.")
+        if args.rel_name is None:
+            print("Please include the -rel_name flag along with the appropriate argument.")
             exit(0)
-
-        r_id = args.rel_id
-        if r_id is None:
-            r_id = rel_id_from_rel_name(args.rel_name, relations)
 
         soln = None
         try:
-            soln = PWEQuery.unique_tuples(relations, expected_pws, dfs, r_id, args.cols, args.pws, True)
+            soln = PWEQuery.unique_tuples(expected_pws, dfs, args.rel_name, args.cols, args.pws, True)
         except Exception as e:
             print("Query failed. Please check the provided arguments to make sure they are valid.")
             print("Error: ", str(e))
@@ -229,17 +201,13 @@ def __main__():
 
     elif args.custom is not None:
 
-        if args.rel_name is None and args.rel_id is None:
-            print("Please include either the -rel_name or -rel_id flag along with the appropriate argument.")
+        if args.rel_name is None:
+            print("Please include the -rel_name flag along with the appropriate argument.")
             exit(0)
-
-        r_id = args.rel_id
-        if r_id is None:
-            r_id = rel_id_from_rel_name(args.rel_name, relations)
 
         ik = None
         try:
-            ik = dfs[r_id].query(args.custom)
+            ik = dfs[args.rel_name].query(args.custom)
             print(str(ik))
             if len(ik) <= 0:
                 print("NULL")

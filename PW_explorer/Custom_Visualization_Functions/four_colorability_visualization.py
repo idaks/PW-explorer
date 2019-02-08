@@ -39,7 +39,7 @@ def visualize(**kwargs):
         else:
             label_counts[label] += 1
 
-    df = dfs[rel_id_from_rel_name('col_2', relations)]
+    df = dfs['col_2']
 
     figs = []
     for label, idx in list(unique_indices.items()):

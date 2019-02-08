@@ -45,17 +45,15 @@ def __main__():
                        help="to get a list of relations and corresponding relation ids.")
 
     parser.add_argument("-rel_names", nargs='*', default=[], type=str,
-                        help="provide the relation names to use in the distance calculation. Note that if both rel_ids "
-                             "and rel_names are provided, rel_names is disregarded.")
-    parser.add_argument("-rel_ids", nargs='*', default=[], type=int,
-                        help="provide the relation ids of the relation to use in the distance calculation. To view "
-                             "relation ids, use -show_relations")
+                        help="provide the relation names to use in the distance calculation.")
+    # parser.add_argument("-rel_ids", nargs='*', default=[], type=int,
+    #                     help="provide the relation ids of the relation to use in the distance calculation. To view "
+    #                          "relation ids, use -show_relations")
     parser.add_argument("-rel_name", type=str,
-                        help="provide the relation name to use in the distance calculation. Note that if both rel_id "
-                             "and rel_name are provided, rel_name is disregarded.")
-    parser.add_argument("-rel_id", type=int,
-                        help="provide the relation id of the relation to use in the distance calculation. To view "
-                             "relation ids, use -show_relations")
+                        help="provide the relation name to use in the distance calculation.")
+    # parser.add_argument("-rel_id", type=int,
+    #                     help="provide the relation id of the relation to use in the distance calculation. To view "
+    #                          "relation ids, use -show_relations")
     parser.add_argument("-calc_dist_matrix", action='store_true', default=False,
                         help="specify this flag to calculate the distance matrix")
     parser.add_argument("-pws", type=int, nargs=2,
@@ -84,11 +82,8 @@ def __main__():
 
     if args.symmetric_difference:
 
-        arg_ids = args.rel_ids
+        # arg_ids = args.rel_ids
 
-        if arg_ids is [] and args.rel_names is not []:
-            for i in args.rel_names:
-                arg_ids.append(rel_id_from_rel_name(i, relations))
         if args.pws is None and args.calc_dist_matrix is False:
             print("Include at least one of -pws or -calc_dist_matrix flags.")
             exit(0)
@@ -98,7 +93,7 @@ def __main__():
             pw2 = args.pws[1]
             print("Distance between PWs {} and {} is {}".format(pw1, pw2,
                                                                 sym_diff_dist(pw1, pw2, relations, dfs,
-                                                                              pws, arg_ids)))
+                                                                              pws, args.rel_names)))
 
         dist_matrix = None
 
@@ -108,7 +103,7 @@ def __main__():
             for i in range(1, len(pws) + 1):
                 for j in range(i, len(pws) + 1):
                     dist_matrix[i - 1, j - 1] = dist_matrix[j - 1, i - 1] = \
-                        sym_diff_dist(i, j, relations, dfs, pws, arg_ids)
+                        sym_diff_dist(i, j, relations, dfs, pws, args.rel_names)
 
             if np.max(dist_matrix) != np.min(dist_matrix):
                 dist_matrix = (dist_matrix - np.min(dist_matrix)) / (np.max(dist_matrix) - np.min(dist_matrix))
@@ -122,13 +117,9 @@ def __main__():
 
     elif args.euler_num_overlaps_diff:
 
-        if args.rel_name is None and args.rel_id is None:
-            print("Please include either the -rel_name or -rel_id flag along with the appropriate argument.")
+        if args.rel_name is None:
+            print("Please include either the -rel_name flag along with the appropriate argument.")
             exit(0)
-
-        r_id = args.rel_id
-        if r_id is None:
-            r_id = rel_id_from_rel_name(args.rel_name, relations)
 
         if args.col is None:
             print("-col is required")
@@ -143,7 +134,7 @@ def __main__():
             pw2 = args.pws[1]
             print(
                 "Distance between PWs {} and {} is {}".format(pw1, pw2,
-                                                              euler_overlap_diff_dist(pw1, pw2, r_id, args.col,
+                                                              euler_overlap_diff_dist(pw1, pw2, args.rel_name, args.col,
                                                                                       dfs, pws, relations)))
 
         dist_matrix = None
@@ -154,7 +145,7 @@ def __main__():
             for i in range(1, len(pws) + 1):
                 for j in range(i, len(pws) + 1):
                     dist_matrix[i - 1, j - 1] = dist_matrix[j - 1, i - 1] = \
-                        euler_overlap_diff_dist(i, j, r_id, args.col, dfs, pws, relations)
+                        euler_overlap_diff_dist(i, j, args.rel_name, args.col, dfs, pws, relations)
 
             if np.max(dist_matrix) != np.min(dist_matrix):
                 dist_matrix = (dist_matrix - np.min(dist_matrix)) / (np.max(dist_matrix) - np.min(dist_matrix))

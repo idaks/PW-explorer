@@ -110,7 +110,7 @@ def visualize(**kwargs):
         G = nx.DiGraph(**styles['graph'])
 
         # Add all the units to the graph
-        df = dfs[rel_id_from_rel_name('u_1', relations)]
+        df = dfs['u_1']
         df = df[df.pw == pw_id]
         NODE_COLORS = ['#CCFFCC', '#FFFFCC', '#f4bf42', '#6346d6']
         NODE_COLORS_USED = 0
@@ -125,7 +125,7 @@ def visualize(**kwargs):
             G.add_node(node_name, **styles['node_styles'][tax])
 
         # Add proper part edges
-        df = dfs[rel_id_from_rel_name('pp_2', relations)]
+        df = dfs['pp_2']
         df = df[df.pw == pw_id]
         for idx, row in df.iterrows():
             G.add_edge(remove_quotes(row['x1']), remove_quotes(row['x2']), **styles['edge_styles']['proper_part_edge'])
@@ -144,7 +144,7 @@ def visualize(**kwargs):
                         G.remove_edge(pred_, succ_)
 
         # Add partial overlap edges
-        df = dfs[rel_id_from_rel_name('po_2', relations)]
+        df = dfs['po_2']
         df = df[df.pw == pw_id]
 
         for idx, row in df.iterrows():
@@ -154,7 +154,7 @@ def visualize(**kwargs):
                 G.add_edge(n1, n2, **styles['edge_styles']['overlap_edge'])
 
         # Merge the equivalent nodes
-        df = dfs[rel_id_from_rel_name('eq_2', relations)]
+        df = dfs['eq_2']
         df = df[df.pw==pw_id]
 
         # Find the equivalent sets

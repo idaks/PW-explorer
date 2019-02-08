@@ -30,15 +30,15 @@ def loadIntoPandas(relations, pws, dfs):
         rws = []  # could convert into numpy if sure it's all float/int
         for m, pw in enumerate(pws):
             # print rl.r_id
-            if rl.r_id < len(pw.rls):
+            if rl.relation_name in pw.rls:
                 rl_data_pw = []
-                for rl_data in pw.rls[rl.r_id]:
+                for rl_data in pw.rls[rl.relation_name]:
                     rl_data_pw.append(rl_data.copy())
                     rl_data_pw[-1].insert(0, pw.pw_id)
                 rws.extend(rl_data_pw)
 
         df = pd.DataFrame(rws, columns=cls)
-        dfs.append(df)
+        dfs[rl.relation_name] = df
 
 
 ######################################################################################
@@ -56,7 +56,7 @@ class AntlrClingoListener(ClingoListener):
         self.curr_rl = None
         self.curr_rl_data = None
         self.n_rls = 0
-        self.dfs = []
+        self.dfs = {}
         self.out_file = None
 
     def enterClingoOutput(self, ctx):
@@ -65,7 +65,7 @@ class AntlrClingoListener(ClingoListener):
                 print("The problem is unsatisfiable")
 
     def enterSolution(self, ctx):
-        self.curr_pw = PossibleWorld(self.n_rls, self.curr_pw_id)
+        self.curr_pw = PossibleWorld(self.curr_pw_id)
         # assert curr_pw.pw_id == int(ctx.TEXT(0).getText())
         if ctx.TEXT(1) is not None:
             self.curr_pw.pw_soln = float(ctx.TEXT(1).getText()) if isfloat(ctx.TEXT(1).getText()) else ctx.TEXT(1).getText()
@@ -103,7 +103,7 @@ class AntlrClingoListener(ClingoListener):
             self.relations.append(newRl)
             self.curr_rl.r_id = newRl.r_id
 
-        self.curr_pw.add_relation(self.curr_rl.r_id, self.curr_rl_data)
+        self.curr_pw.add_relation(self.curr_rl.relation_name, self.curr_rl_data)
         self.curr_rl = None  # could introduce bugs if passed by pointer in the upper statement, so be careful, use copy() if needed
         self.curr_rl_data = None
 
