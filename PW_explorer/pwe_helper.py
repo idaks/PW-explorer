@@ -6,7 +6,7 @@ import os
 import pickle
 import sqlite3
 import importlib
-
+import re
 
 ###################################################################
 
@@ -51,6 +51,27 @@ def preprocess_clingo_output(clingo_raw_output: list):
             break
 
     return clingo_raw_output[start:]
+
+
+ATTRIBUTES_DEF_REGEX = "define\s*\w+\(\s*\w+\s*(,\s*\w+\s*)*\)"
+def parse_for_attribute_defs(clingo_rules: list):
+    attribute_defs = {}
+    pattern = re.compile(ATTRIBUTES_DEF_REGEX)
+    for i, line in enumerate(clingo_rules):
+        comment_start_idx = line.find('%')
+        if comment_start_idx != -1:
+            comment = line[comment_start_idx + 1:].strip()
+            pattern_object = pattern.search(comment)
+            if pattern_object is not None:
+                definition = comment[pattern_object.span()[0]:pattern_object.span()[1]]
+                definition = definition.split('define', maxsplit=1)[1].strip()
+                temp = definition.split('(', maxsplit=1)
+                rel_name = temp[0]
+                attrs = temp[1].rsplit(')', maxsplit=1)[0].split(',')
+                attrs = list(map(str.strip, attrs))
+                attribute_defs["{}_{}".format(rel_name, len(attrs))] = attrs
+
+    return attribute_defs
 
 
 ###################################################################
@@ -157,16 +178,17 @@ def get_save_folder(project_name, data_type):
     return os.path.abspath(relative_loc)
 
 
+PICKLE_FILE_TYPES = ['dist_matrix', 'dfs', 'relations', 'pws', 'complexities', 'attr_defs']
+
 def get_file_save_name(project_name, file_type):
 
-    if file_type in ['dist_matrix', 'dfs', 'relations', 'pws', 'complexities']:
+    if file_type in PICKLE_FILE_TYPES:
         return file_type + '.pkl'
     return None
 
 
 def load_from_temp_pickle(project_name, file_type):
-    if file_type in ['dfs', 'pws', 'relations', 'dist_matrix', 'complexities']:
-
+    if file_type in PICKLE_FILE_TYPES:
         try:
             with open(get_save_folder(project_name, 'temp_pickle_data') + '/' +
                       get_file_save_name(project_name, file_type), 'rb') as input_file:
@@ -174,6 +196,18 @@ def load_from_temp_pickle(project_name, file_type):
         except IOError:
             print("Could not find the project, check project/session name entered.")
             exit(1)
+
+
+def save_to_temp_pickle(project_name, data, file_type):
+    if file_type in PICKLE_FILE_TYPES:
+        try:
+            with open(get_save_folder(project_name, 'temp_pickle_data') + '/'
+                      + get_file_save_name(project_name, file_type), 'wb') as f:
+                pickle.dump(data, f)
+        except IOError:
+            print("Could not find the project, check project/session name entered.")
+            exit(1)
+
 
 
 def get_sql_conn(project_name):

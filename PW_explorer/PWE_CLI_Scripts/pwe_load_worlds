@@ -2,14 +2,13 @@
 
 from PW_explorer.pwe_helper import (
     get_asp_output_folder,
-    get_save_folder,
-    get_file_save_name,
     set_current_project_name,
+    save_to_temp_pickle,
+    load_from_temp_pickle
 )
 from PW_explorer.load_worlds import  *
 
 import argparse
-import pickle
 import os
 
 
@@ -36,12 +35,13 @@ def __main__():
               "Please recheck the project name.".format(project_name))
         exit(1)
 
-    dfs, relations, pws = parse_solution(fname, 'clingo' if args.clingo else 'dlv')
+    attr_defs = load_from_temp_pickle(project_name, 'attr_defs')
+
+    dfs, relations, pws = parse_solution(fname, attr_defs, 'clingo' if args.clingo else 'dlv')
 
     for data, data_type in [(dfs, 'dfs'), (relations, 'relations'), (pws, 'pws')]:
-        with open(get_save_folder(project_name, 'temp_pickle_data') + '/' +
-                  get_file_save_name(project_name, data_type), 'wb') as f:
-            pickle.dump(data, f)
+        save_to_temp_pickle(project_name, data, data_type)
+
     set_current_project_name(project_name)
 
 

@@ -8,7 +8,7 @@ with open('requirements.txt', 'r') as fh:
 
 setuptools.setup(
     name="PW_explorer",
-    version="0.0.11",
+    version="0.0.12",
     author="Sahil Gupta",
     author_email="",
     description="An Extensible Possible World Explorer for Answer Set Programming",
