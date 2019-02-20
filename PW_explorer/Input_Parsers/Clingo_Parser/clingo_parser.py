@@ -57,7 +57,6 @@ class AntlrClingoListener(ClingoListener):
         self.curr_rl_data = None
         self.n_rls = 0
         self.dfs = {}
-        self.out_file = None
 
     def enterClingoOutput(self, ctx):
         if ctx.OPTIMUM_FOUND() is not None:

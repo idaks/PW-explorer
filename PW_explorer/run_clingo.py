@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 import os
 import subprocess as subprocess
 from .pwe_helper import preprocess_clingo_output, parse_for_attribute_defs

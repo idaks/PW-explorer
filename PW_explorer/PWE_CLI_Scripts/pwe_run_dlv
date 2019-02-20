@@ -1,0 +1,58 @@
+#!/usr/bin/env python3
+
+import argparse
+import subprocess32 as subprocess
+
+from PW_explorer.run_dlv import *
+from PW_explorer.pwe_helper import get_asp_output_folder, get_asp_input_folder, \
+    set_current_project_name, save_to_temp_pickle
+
+def __main__():
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("fnames", type=str, help="provide the dlv files", nargs='+')
+    parser.add_argument("project_name", type=str,
+                        help='provide a suitable session/project name to reference these results in future scripts')
+    parser.add_argument("-n", "--num_solutions", type=int, default=0,
+                        help="number of solutions to generate using dlv, optional, generates all by default")
+    parser.add_argument("-N", "--N_Max_Int", type=int, default=10,
+                        help="Max Integer Value to provide to DLV.")
+    parser.add_argument("-wf", "--well_founded_semantics_mode", action='store_true', default=False,
+                        help="Use the -wf mode i.e. the well-founded semantics mode")
+    parser.add_argument("-other", "--other_args", type=str, nargs='*', default=[],
+                        help="Provide any other arguments to use with dlv eg. '-n=1', '-N=10', '-silent'")
+    args = parser.parse_args()
+
+    fnames = args.fnames
+    project_name = args.project_name
+
+    for fname in fnames:
+        if not os.path.exists(fname):
+            print("Could not find the file {}".format(str(fname)))
+            exit(1)
+
+    dlv_in_files = []
+
+    for i, fname in enumerate(fnames):
+        dlv_in_files.append(
+            get_asp_input_folder(project_name) + '/{}{}.lp4'.format(project_name, ('_' + str(i)) if len(fnames) > 1 else ''))
+        subprocess.check_call(['cp', fname, dlv_in_files[-1]])
+    print("Copied files into {}".format(get_asp_input_folder(project_name)))
+
+    dlv_output, attr_defs = get_dlv_output(dlv_input_fnames=dlv_in_files, num_solutions=args.num_solutions,
+                                           wfs_mode=args.well_founded_semantics_mode, dlv_max_int=args.N_Max_Int,
+                                           other_args=args.other_args)
+
+    preprocessed_dlv_output = dlv_output  # No preprocessing required since we're using the silent mode.
+    temp_data = open(get_asp_output_folder(project_name) + '/{}.txt'.format(project_name), 'w')
+    temp_data.writelines('\n'.join(preprocessed_dlv_output))
+    print("Preprocessed dlv output written to {}".format(get_asp_output_folder(project_name)))
+    temp_data.close()
+
+    save_to_temp_pickle(project_name, attr_defs, 'attr_defs')
+
+    set_current_project_name(project_name)
+
+
+if __name__ == '__main__':
+    __main__()

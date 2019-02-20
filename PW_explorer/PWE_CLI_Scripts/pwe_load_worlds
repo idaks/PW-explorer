@@ -21,8 +21,8 @@ def __main__():
     parser.add_argument("project_name", type=str,
                         help="provide a suitable session/project name to reference these results in future scripts")
     group = parser.add_mutually_exclusive_group()
-    group.add_argument("-clingo", action='store_true', default=True)
-    group.add_argument("-dlv", action='store_true', default=False)
+    group.add_argument("-clingo", "--clingo", action='store_true', default=False)
+    group.add_argument("-dlv", "--dlv", action='store_true', default=False)
     args = parser.parse_args()
 
     fname = args.fname
@@ -37,7 +37,12 @@ def __main__():
 
     attr_defs = load_from_temp_pickle(project_name, 'attr_defs')
 
-    dfs, relations, pws = parse_solution(fname, attr_defs, 'clingo' if args.clingo else 'dlv')
+    reasoner = ''
+    if args.clingo:
+        reasoner = 'clingo'
+    elif args.dlv:
+        reasoner = 'dlv'
+    dfs, relations, pws = parse_solution(fname, attr_defs, reasoner)
 
     for data, data_type in [(dfs, 'dfs'), (relations, 'relations'), (pws, 'pws')]:
         save_to_temp_pickle(project_name, data, data_type)
