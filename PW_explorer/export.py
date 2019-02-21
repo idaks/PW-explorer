@@ -43,7 +43,7 @@ def export_to_sqlite_db(export_loc, dfs, db_name):
     return True
 
 
-def export_as_asp(pws, simple_or_triples='simple', rel_facts_with_arity: bool=True, include_pw_ids: bool=True,
+def export_as_asp(pws, simple_or_triples='simple', rel_facts_with_arity: bool=False, include_pw_ids: bool=True,
                   attr_defs: dict=None, pw_ids_to_output: list=None, rels_to_output: list=None,
                   pw_ids_remapper: dict=None):
     """
@@ -52,7 +52,7 @@ def export_as_asp(pws, simple_or_triples='simple', rel_facts_with_arity: bool=Tr
     :param simple_or_triples: 'simple' or 'triples'. Defaults to 'simple' i.e. of the form rel_name(pw_id, attrs....)
     (pw_id only included if include_pw_ids is True). Triples is of the form triple(fact_id, type, value).
     :param rel_facts_with_arity: Retain original relation names i.e. that include arity information in the
-    name eg. 'node_2'. If False, then 'node' would be use. Default: True
+    name eg. 'node_2'. If False, then 'node' would be use. Default: False
     :param include_pw_ids: Whether to include a pw_id field. Default: True. Might want to set as False if only
     outputting one PW or similar cases.
     :param attr_defs: if 'simple' export type, then statements of the form
@@ -92,7 +92,7 @@ def export_as_asp(pws, simple_or_triples='simple', rel_facts_with_arity: bool=Tr
         return None
 
 
-def export_as_asp_facts(pws, rel_facts_with_arity: bool=True, attr_defs: dict=None, include_pw_ids: bool=True):
+def export_as_asp_facts(pws, rel_facts_with_arity: bool=False, attr_defs: dict=None, include_pw_ids: bool=True):
 
     # output the pws as rel_name(pw_id, attrs....) and optimization(pw_id, optimized_value)
     pw_rel_facts = []
@@ -128,7 +128,7 @@ def export_as_asp_facts(pws, rel_facts_with_arity: bool=True, attr_defs: dict=No
     return attr_def_rules + pw_rel_facts
 
 
-def export_as_asp_triples(pws, rel_facts_with_arity: bool=True, include_pw_ids: bool=True):
+def export_as_asp_triples(pws, rel_facts_with_arity: bool=False, include_pw_ids: bool=True):
 
     TRIPLES_FACT_NAME = 'triple'
     TRIPLES_RELATION_NAME_KEYWORD = 'rel'
@@ -138,7 +138,7 @@ def export_as_asp_triples(pws, rel_facts_with_arity: bool=True, include_pw_ids: 
         return '{}({},{},{}).'.format(TRIPLES_FACT_NAME, arg1, arg2, arg3)
 
     facts_counter = 0
-    facts = []
+    facts = ['% define {}'.format(create_triple('FACT_ID', 'SUBJECT', 'VALUE'))]
 
 
     for pw in pws:

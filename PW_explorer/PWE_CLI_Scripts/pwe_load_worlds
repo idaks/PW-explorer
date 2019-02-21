@@ -35,14 +35,14 @@ def __main__():
               "Please recheck the project name.".format(project_name))
         exit(1)
 
-    attr_defs = load_from_temp_pickle(project_name, 'attr_defs')
+    meta_data = load_from_temp_pickle(project_name, 'meta_data')
 
     reasoner = ''
     if args.clingo:
         reasoner = 'clingo'
     elif args.dlv:
         reasoner = 'dlv'
-    dfs, relations, pws = parse_solution(fname, attr_defs, reasoner)
+    dfs, relations, pws = parse_solution(fname, meta_data, reasoner)
 
     for data, data_type in [(dfs, 'dfs'), (relations, 'relations'), (pws, 'pws')]:
         save_to_temp_pickle(project_name, data, data_type)

@@ -15,7 +15,7 @@ def __main__():
                         help='provide a suitable session/project name to reference these results in future scripts')
     parser.add_argument("-n", "--num_solutions", type=int, default=0,
                         help="number of solutions to generate using dlv, optional, generates all by default")
-    parser.add_argument("-N", "--N_Max_Int", type=int, default=10,
+    parser.add_argument("-N", "--N_Max_Int", type=int, default=None,
                         help="Max Integer Value to provide to DLV.")
     parser.add_argument("-wf", "--well_founded_semantics_mode", action='store_true', default=False,
                         help="Use the -wf mode i.e. the well-founded semantics mode")
@@ -39,7 +39,7 @@ def __main__():
         subprocess.check_call(['cp', fname, dlv_in_files[-1]])
     print("Copied files into {}".format(get_asp_input_folder(project_name)))
 
-    dlv_output, attr_defs = get_dlv_output(dlv_input_fnames=dlv_in_files, num_solutions=args.num_solutions,
+    dlv_output, meta_data = get_dlv_output(dlv_input_fnames=dlv_in_files, num_solutions=args.num_solutions,
                                            wfs_mode=args.well_founded_semantics_mode, dlv_max_int=args.N_Max_Int,
                                            other_args=args.other_args)
 
@@ -49,7 +49,7 @@ def __main__():
     print("Preprocessed dlv output written to {}".format(get_asp_output_folder(project_name)))
     temp_data.close()
 
-    save_to_temp_pickle(project_name, attr_defs, 'attr_defs')
+    save_to_temp_pickle(project_name, meta_data, 'meta_data')
 
     set_current_project_name(project_name)
 

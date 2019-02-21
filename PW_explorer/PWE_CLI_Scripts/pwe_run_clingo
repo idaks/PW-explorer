@@ -35,7 +35,7 @@ def __main__():
         subprocess.check_call(['cp', fname, clingo_in_files[-1]])
     print("Copied files into {}".format(get_asp_input_folder(project_name)))
 
-    clingo_output, attr_defs = get_clingo_output(clingo_in_files, args.num_solutions)
+    clingo_output, meta_data = get_clingo_output(clingo_in_files, args.num_solutions)
 
     preprocessed_clingo_output = preprocess_clingo_output(clingo_output)
     temp_data = open(get_asp_output_folder(project_name) + '/{}.txt'.format(project_name), 'w')
@@ -43,7 +43,7 @@ def __main__():
     print("Preprocessed clingo output written to {}".format(get_asp_output_folder(project_name)))
     temp_data.close()
 
-    save_to_temp_pickle(project_name, attr_defs, 'attr_defs')
+    save_to_temp_pickle(project_name, meta_data, 'meta_data')
 
     set_current_project_name(project_name)
 

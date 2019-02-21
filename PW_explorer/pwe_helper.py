@@ -53,6 +53,28 @@ def preprocess_clingo_output(clingo_raw_output: list):
     return clingo_raw_output[start:]
 
 
+TEMPORAL_FIELD_DEF_REGEX="temporal\s*\w+\(\s*[_T]+\s*(,\s*[_T]+\s*)*\)"
+def parse_for_temporal_declarations(clingo_rules: list):
+    temporal_decs = {}
+    pattern = re.compile(TEMPORAL_FIELD_DEF_REGEX)
+    for i, line in enumerate(clingo_rules):
+        comment_start_idx = line.find('%')
+        if comment_start_idx != -1:
+            comment = line[comment_start_idx + 1:].strip()
+            pattern_object = pattern.search(comment)
+            if pattern_object is not None:
+                declaration = comment[pattern_object.span()[0]:pattern_object.span()[1]]
+                declaration = declaration.split('temporal', maxsplit=1)[1].strip()
+                temp = declaration.split('(', maxsplit=1)
+                rel_name = temp[0]
+                attrs = temp[1].rsplit(')', maxsplit=1)[0].split(',')
+                attrs = list(map(str.strip, attrs))
+                rel_name = "{}_{}".format(rel_name, len(attrs))
+                temporal_indices = [i for i, attr in enumerate(attrs) if attr == 'T']
+                temporal_decs[rel_name] = temporal_indices
+
+    return temporal_decs
+
 ATTRIBUTES_DEF_REGEX = "define\s*\w+\(\s*\w+\s*(,\s*\w+\s*)*\)"
 def parse_for_attribute_defs(clingo_rules: list):
     attribute_defs = {}
@@ -100,8 +122,9 @@ class Relation:
 
     def __init__(self, relation_name):
         self.relation_name = relation_name
-        self.arity = 0
-        self.r_id = 0
+        self.arity = None
+        self.r_id = None
+        self.meta_data = {}
 
 
 ###################################################################
@@ -180,7 +203,7 @@ def get_save_folder(project_name, data_type):
     return os.path.abspath(relative_loc)
 
 
-PICKLE_FILE_TYPES = ['dist_matrix', 'dfs', 'relations', 'pws', 'complexities', 'attr_defs']
+PICKLE_FILE_TYPES = ['dist_matrix', 'dfs', 'relations', 'pws', 'complexities', 'attr_defs', 'meta_data']
 
 def get_file_save_name(project_name, file_type):
 
@@ -194,7 +217,8 @@ def load_from_temp_pickle(project_name, file_type):
         try:
             with open(get_save_folder(project_name, 'temp_pickle_data') + '/' +
                       get_file_save_name(project_name, file_type), 'rb') as input_file:
-                return pickle.load(input_file)
+                f = pickle.load(input_file)
+            return f
         except IOError:
             print("Could not find the project, check project/session name entered.")
             exit(1)

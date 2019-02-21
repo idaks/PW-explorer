@@ -38,7 +38,7 @@ def __main__():
     parser.add_argument("--no-rel_facts_with_arity", dest='rel_facts_with_arity', action='store_false',
                         help="Use with -asp_simple or -asp_triples to include arity information in exported asp "
                              "relation names.")
-    parser.set_defaults(rel_facts_with_arity=True)
+    parser.set_defaults(rel_facts_with_arity=False)
     parser.add_argument("--include_pw_ids", dest='include_pw_ids', action='store_true',
                         help="Use with -asp_simple or -asp_triples to include pw_ids in exported asp "
                              "relation facts.")

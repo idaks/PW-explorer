@@ -1,6 +1,10 @@
 import os
 import subprocess as subprocess
-from .pwe_helper import preprocess_clingo_output, parse_for_attribute_defs
+from .pwe_helper import (
+    preprocess_clingo_output,
+    parse_for_attribute_defs,
+    parse_for_temporal_declarations,
+)
 
 def get_clingo_output(clingo_in_fnames: list, num_solutions: int=0):
 
@@ -10,17 +14,23 @@ def get_clingo_output(clingo_in_fnames: list, num_solutions: int=0):
     clingo_output = process_.communicate()[0]
     # clingo_output = subprocess.check_output()
     attribute_defs = {}
+    temporal_decs = {}
     for fname in clingo_in_fnames:
         with open(fname, 'r') as f:
             clingo_rules = f.read().splitlines()
             attribute_defs.update(parse_for_attribute_defs(clingo_rules))
+            temporal_decs.update(parse_for_temporal_declarations(clingo_rules))
 
     # print clingo_output
     cling_out_lines = clingo_output.splitlines()
     cling_out_lines = list(map(lambda x: str(x, 'utf-8'), cling_out_lines))
     # cling_out_lines = [l.decode('utf-8') for l in cling_out_lines]
+    meta_data = {
+        'attr_defs': attribute_defs,
+        'temporal_decs': temporal_decs,
+    }
 
-    return cling_out_lines, attribute_defs
+    return cling_out_lines, meta_data
 
 
 def run_clingo(clingo_rules: list, num_solutions: int=0):
@@ -29,8 +39,8 @@ def run_clingo(clingo_rules: list, num_solutions: int=0):
     with open(dummy_fname, 'w') as f:
         f.write('\n'.join(clingo_rules))
 
-    clingo_output, attr_defs = get_clingo_output([dummy_fname], num_solutions=num_solutions)
+    clingo_output, meta_data = get_clingo_output([dummy_fname], num_solutions=num_solutions)
     os.remove(dummy_fname)
 
-    return preprocess_clingo_output(clingo_output), attr_defs
+    return preprocess_clingo_output(clingo_output), meta_data
 
