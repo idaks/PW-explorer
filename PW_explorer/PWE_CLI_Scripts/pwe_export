@@ -6,9 +6,11 @@ from PW_explorer.pwe_helper import (
     set_current_project_name,
     get_current_project_name,
     get_save_folder,
+    save_to_txt_file,
 )
 
 import argparse
+import os
 
 
 def __main__():
@@ -22,6 +24,28 @@ def __main__():
                         default=False)
     parser.add_argument("-pkl", action="store_true", help="include if you want to export in pickle format",
                         default=False)
+    parser.add_argument("-asp_simple", action='store_true', help="Output the facts as asp simple tuples.",
+                        default=False)
+    parser.add_argument("-asp_triples", action='store_true', help="Output the facts as asp facts in form of triples",
+                        default=False)
+    parser.add_argument("-rels_to_use", type=str, nargs='*', default=[],
+                        help="To be used with -asp_simple or -asp_triples. Enlist the relation names to output")
+    parser.add_argument("-pws_to_use", type=int, nargs='*', default=[],
+                        help="To be used with -asp_simple or -asp_triples. Enlist the pw_ids to output")
+    parser.add_argument("--rel_facts_with_arity", dest='rel_facts_with_arity', action='store_true',
+                        help="Use with -asp_simple or -asp_triples to include arity information in exported asp "
+                             "relation names.")
+    parser.add_argument("--no-rel_facts_with_arity", dest='rel_facts_with_arity', action='store_false',
+                        help="Use with -asp_simple or -asp_triples to include arity information in exported asp "
+                             "relation names.")
+    parser.set_defaults(rel_facts_with_arity=True)
+    parser.add_argument("--include_pw_ids", dest='include_pw_ids', action='store_true',
+                        help="Use with -asp_simple or -asp_triples to include pw_ids in exported asp "
+                             "relation facts.")
+    parser.add_argument("--no-include_pw_ids", dest='include_pw_ids', action='store_false',
+                        help="Use with -asp_simple or -asp_triples to include pw_ids in exported asp "
+                             "relation facts.")
+    parser.set_defaults(include_pw_ids=True)
     args = parser.parse_args()
 
     project_name = ''
@@ -40,7 +64,6 @@ def __main__():
     export_to_pkl = args.pkl
 
     dfs = load_from_temp_pickle(project_name, 'dfs')
-    relations = load_from_temp_pickle(project_name, 'relations')
 
     if export_to_sql:
         if export_to_sqlite_db(get_save_folder(project_name, 'sql_export'), dfs, project_name):
@@ -71,6 +94,23 @@ def __main__():
     if args.schema:
         schemas = get_sqlite_schema(dfs)
         print('\n'.join(schemas))
+
+    if args.asp_simple:
+        pws = load_from_temp_pickle(project_name, 'pws')
+        attr_defs = load_from_temp_pickle(project_name, 'attr_defs')
+        asp_facts = export_as_asp(pws=pws, simple_or_triples='simple', rel_facts_with_arity=args.rel_facts_with_arity,
+                                  include_pw_ids=args.include_pw_ids, attr_defs=attr_defs,
+                                  pw_ids_to_output=args.pws_to_use, rels_to_output=args.rels_to_use)
+        save_to_txt_file(asp_facts, os.path.join(get_save_folder(project_name, 'asp_simple'), 'asp_simple.lp4'))
+        print("Succesfully exported as asp simple facts.")
+
+    if args.asp_triples:
+        pws = load_from_temp_pickle(project_name, 'pws')
+        asp_facts = export_as_asp(pws=pws, simple_or_triples='triples', rel_facts_with_arity=args.rel_facts_with_arity,
+                                  include_pw_ids=args.include_pw_ids, pw_ids_to_output=args.pws_to_use,
+                                  rels_to_output=args.rels_to_use)
+        save_to_txt_file(asp_facts, os.path.join(get_save_folder(project_name, 'asp_triples'), 'asp_triples.lp4'))
+        print("Successfully exported in asp triples format.")
 
     set_current_project_name(project_name)
 

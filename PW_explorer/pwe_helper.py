@@ -164,6 +164,8 @@ def get_save_folder(project_name, data_type):
         'pkl_export': PROJECT_EXPORTS_FOLDER + 'pkl/',
         'temp_pickle_data': PROJECT_TEMP_PICKLE_DATA_FOLDER,
         'visualization': PROJECT_VISUALIZATIONS_FOLDER,
+        'asp_simple': PROJECT_EXPORTS_FOLDER+'asp_simple/',
+        'asp_triples': PROJECT_EXPORTS_FOLDER+'asp_triples/',
     }
 
     relative_loc = PROJECT_RESULTS_LOC + project_name + '/'
@@ -208,6 +210,10 @@ def save_to_temp_pickle(project_name, data, file_type):
             print("Could not find the project, check project/session name entered.")
             exit(1)
 
+
+def save_to_txt_file(lines, fname):
+    with open(fname, 'w') as f:
+        f.write('\n'.join(lines))
 
 
 def get_sql_conn(project_name):
