@@ -7,6 +7,7 @@ import pickle
 import sqlite3
 import importlib
 import re
+import copy
 
 ###################################################################
 
@@ -125,6 +126,89 @@ class Relation:
         self.arity = None
         self.r_id = None
         self.meta_data = {}
+
+
+###################################################################
+
+
+def pw_slicer(dfs, pws, pws_to_use):
+    sliced_pws = list(filter(lambda x: x.pw_id in pws_to_use, pws)) if pws else None
+    sliced_dfs = {rl_name: df[df['pw'].isin(pws_to_use)] for rl_name, df in dfs.items()} if dfs else None
+    return sliced_pws, sliced_dfs
+
+
+def rel_slicer(dfs, rels, pws, rels_to_use):
+    """
+    A new copy of pws is returned (although the underlying rl details are shared).
+    """
+    sliced_dfs = {rl_name: df for rl_name, df in dfs.items() if rl_name in rels_to_use} if dfs else None
+    sliced_rels = list(filter(lambda x: x.relation_name in rels_to_use, rels)) if rels else None
+    sliced_pws = None
+    if pws:
+        sliced_pws = []
+        for pw_obj in pws:
+            new_pw_obj = PossibleWorld(pw_obj.pw_id)
+            new_pw_obj.pw_soln = pw_obj.pw_soln
+            new_pw_obj.rls = {rl_name: pw_obj.rls[rl_name] for rl_name in rels_to_use if rl_name in pw_obj.rls}
+            sliced_pws.append(new_pw_obj)
+
+    return sliced_dfs, sliced_rels, sliced_pws
+
+###################################################################
+
+###################################################################
+
+def pw_id_remapper(dfs, pws, pw_id_map: dict, dfs_inplace=False, pws_inplace=False):
+    if not pws:
+        pws = []
+    if not dfs:
+        dfs = {}
+
+    if not pws_inplace:
+        pws = copy.deepcopy(pws)
+    if not dfs_inplace:
+        dfs = {rl_name: df.copy(deep=True) for rl_name, df in dfs.items()}
+
+    for pw in pws:
+        if pw.pw_id in pw_id_map:
+            pw.pw_id = pw_id_map[pw.pw_id]
+    for rl_name, df in dfs.items():
+        df['pw'] = df['pw'].map(pw_id_map).fillna(df['pw'])
+
+    return dfs, pws
+
+
+def rel_name_remapper(dfs, pws, rels, rel_name_map, pws_inplace=False, rels_inplace=False):
+    """
+    No guarantees if map is weird i.e. if a and b are both keys in dfs (& PossibleWorld.rls) and
+    a --> b but b is not mapped to anything else. Hence, exhaustive maps are recommended.
+    Also no merges are supported, i.e. if a --> b and c --> b, that doesn't imply that there will be
+    a merging of any of the elements of dfs, pws.rls or rels.
+    """
+    if not pws:
+        pws = []
+    if not dfs:
+        dfs = {}
+    if not rels:
+        rels = []
+
+    dfs = {(rel_name_map[rl_name] if rl_name in rel_name_map else rl_name): df
+           for rl_name, df in dfs.items()}
+
+    if not pws_inplace:
+        pws = copy.deepcopy(pws)
+    if not rels_inplace:
+        rels = copy.deepcopy(rels)
+
+    for pw in pws:
+        pw.rls = {(rel_name_map[rl_name] if rl_name in rel_name_map else rl_name): facts
+                  for rl_name, facts in pw.rls.items()}
+
+    for rel in rels:
+        if rel.relation_name in rel_name_map:
+            rel.relation_name = rel_name_map[rel.relation_name]
+
+    return dfs, pws, rels
 
 
 ###################################################################

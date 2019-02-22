@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 
-from PW_explorer.export import *
+from PW_explorer.export import PWEExport
 from PW_explorer.pwe_helper import (
     load_from_temp_pickle,
     set_current_project_name,
     get_current_project_name,
     get_save_folder,
     save_to_txt_file,
+    pw_slicer,
+    rel_slicer,
 )
 
 import argparse
@@ -24,14 +26,15 @@ def __main__():
                         default=False)
     parser.add_argument("-pkl", action="store_true", help="include if you want to export in pickle format",
                         default=False)
-    parser.add_argument("-asp_simple", action='store_true', help="Output the facts as asp simple tuples.",
+    parser.add_argument("-asp_simple", action='store_true', help="Output the facts as asp simple tuples in a .lp4 file",
                         default=False)
-    parser.add_argument("-asp_triples", action='store_true', help="Output the facts as asp facts in form of triples",
-                        default=False)
+    parser.add_argument("-asp_triples", "--asp_triples", type=str, choices=['str', 'csv', 'sql', 'h5', 'msg', 'pkl'],
+                        help="Output the facts as asp facts in form of triples. Choose a valid format. 'str' "
+                             "outputs to a asp_triples.lp4 file", default=None)
     parser.add_argument("-rels_to_use", type=str, nargs='*', default=[],
-                        help="To be used with -asp_simple or -asp_triples. Enlist the relation names to output")
+                        help="Enlist the relation names to output. All are used by default.")
     parser.add_argument("-pws_to_use", type=int, nargs='*', default=[],
-                        help="To be used with -asp_simple or -asp_triples. Enlist the pw_ids to output")
+                        help="Enlist the pw_ids to output. All are used by default.")
     parser.add_argument("--rel_facts_with_arity", dest='rel_facts_with_arity', action='store_true',
                         help="Use with -asp_simple or -asp_triples to include arity information in exported asp "
                              "relation names.")
@@ -64,53 +67,71 @@ def __main__():
     export_to_pkl = args.pkl
 
     dfs = load_from_temp_pickle(project_name, 'dfs')
+    pws = load_from_temp_pickle(project_name, 'pws')
+
+    if args.pws_to_use:
+        dfs, pws = pw_slicer(dfs, pws, args.pws_to_use)
+    if args.rels_to_use:
+        dfs, _, pws = rel_slicer(dfs, None, pws, args.rels_to_use)
 
     if export_to_sql:
-        if export_to_sqlite_db(get_save_folder(project_name, 'sql_export'), dfs, project_name):
+        if PWEExport.export_to_sqlite_db(get_save_folder(project_name, 'sql_export'), dfs, project_name):
             print("Successfully exported to sql")
         else:
             print("SQL Export Failed")
     if export_to_csv:
-        if export('csv', get_save_folder(project_name, 'csv_export'), dfs):
+        if PWEExport.export('csv', get_save_folder(project_name, 'csv_export'), dfs):
             print("Successfully exported to csv")
         else:
             print("CSV Export Failed")
     if export_to_hdf:
-        if export('h5', get_save_folder(project_name, 'h5_export'), dfs):
+        if PWEExport.export('h5', get_save_folder(project_name, 'h5_export'), dfs):
             print("Successfully exported to hdf")
         else:
             print("HDF Export Failed")
     if export_to_msg:
-        if export('msg', get_save_folder(project_name, 'msg_export'), dfs):
+        if PWEExport.export('msg', get_save_folder(project_name, 'msg_export'), dfs):
             print("Successfully exported to msg")
         else:
             print("MSGPACK Export Failed")
     if export_to_pkl:
-        if export('pkl', get_save_folder(project_name, 'pkl_export'), dfs):
+        if PWEExport.export('pkl', get_save_folder(project_name, 'pkl_export'), dfs):
             print("Successfully exported to pkl")
         else:
             print("PICKLE Export Failed")
 
     if args.schema:
-        schemas = get_sqlite_schema(dfs)
+        schemas = PWEExport.get_sqlite_schema(dfs)
         print('\n'.join(schemas))
 
     if args.asp_simple:
-        pws = load_from_temp_pickle(project_name, 'pws')
         attr_defs = load_from_temp_pickle(project_name, 'attr_defs')
-        asp_facts = export_as_asp(pws=pws, simple_or_triples='simple', rel_facts_with_arity=args.rel_facts_with_arity,
-                                  include_pw_ids=args.include_pw_ids, attr_defs=attr_defs,
-                                  pw_ids_to_output=args.pws_to_use, rels_to_output=args.rels_to_use)
+        asp_facts = PWEExport.export_as_asp_facts(pws=pws, rel_facts_with_arity=args.rel_facts_with_arity,
+                                  include_pw_ids=args.include_pw_ids, attr_defs=attr_defs)
         save_to_txt_file(asp_facts, os.path.join(get_save_folder(project_name, 'asp_simple'), 'asp_simple.lp4'))
         print("Succesfully exported as asp simple facts.")
 
     if args.asp_triples:
         pws = load_from_temp_pickle(project_name, 'pws')
-        asp_facts = export_as_asp(pws=pws, simple_or_triples='triples', rel_facts_with_arity=args.rel_facts_with_arity,
-                                  include_pw_ids=args.include_pw_ids, pw_ids_to_output=args.pws_to_use,
-                                  rels_to_output=args.rels_to_use)
-        save_to_txt_file(asp_facts, os.path.join(get_save_folder(project_name, 'asp_triples'), 'asp_triples.lp4'))
-        print("Successfully exported in asp triples format.")
+        out_type = args.asp_triples
+        if out_type in ['csv', 'sql', 'h5', 'msg', 'pkl']:
+            out_type = 'db'
+        asp_facts = PWEExport.export_as_asp_triples(pws=pws, rel_facts_with_arity=args.rel_facts_with_arity,
+                                                    include_pw_ids=args.include_pw_ids, output_type=out_type)
+
+        if args.asp_triples == 'str':
+            save_to_txt_file(asp_facts, os.path.join(get_save_folder(project_name, 'asp_triples'), 'asp_triples.lp4'))
+            print("Successfully exported in asp triples format.")
+        elif args.asp_triples in ['csv', 'h5', 'msg', 'pkl']:
+            PWEExport.export(args.asp_triples, get_save_folder(project_name, 'asp_triples'), {'asp_triples': asp_facts})
+            print("Successfully exported in asp triples format.")
+        elif args.asp_triples == 'sql':
+            PWEExport.export_to_sqlite_db(get_save_folder(project_name, 'asp_triples'), {'asp_triples': asp_facts},
+                                          project_name)
+            print("Successfully exported in asp triples format.")
+        else:
+            print("Error! Unrecognized asp_triples argument.")
+
 
     set_current_project_name(project_name)
 
