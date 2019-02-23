@@ -16,6 +16,10 @@ import os
 
 
 def __main__():
+
+    ASP_TRIPLES_DB_OPTIONS = ['csv', 'sql', 'msg', 'pkl']
+    ASP_TRIPLES_OPTIONS = ['str'] + ASP_TRIPLES_DB_OPTIONS
+
     parser = argparse.ArgumentParser()
     parser.add_argument("-p", "--project_name", type=str, help="provide session/project name used while parsing")
     parser.add_argument("-s", "--schema", action="store_true", help="generate sql schemas", default=False)
@@ -28,7 +32,7 @@ def __main__():
                         default=False)
     parser.add_argument("-asp_simple", action='store_true', help="Output the facts as asp simple tuples in a .lp4 file",
                         default=False)
-    parser.add_argument("-asp_triples", "--asp_triples", type=str, choices=['str', 'csv', 'sql', 'h5', 'msg', 'pkl'],
+    parser.add_argument("-asp_triples", "--asp_triples", type=str, choices=ASP_TRIPLES_OPTIONS,
                         help="Output the facts as asp facts in form of triples. Choose a valid format. 'str' "
                              "outputs to a asp_triples.lp4 file", default=None)
     parser.add_argument("-rels_to_use", type=str, nargs='*', default=[],
@@ -105,16 +109,16 @@ def __main__():
         print('\n'.join(schemas))
 
     if args.asp_simple:
-        attr_defs = load_from_temp_pickle(project_name, 'attr_defs')
+        meta_data = load_from_temp_pickle(project_name, 'meta_data')
+        attr_defs = meta_data['attr_defs'] if 'attr_defs' in meta_data else {}
         asp_facts = PWEExport.export_as_asp_facts(pws=pws, rel_facts_with_arity=args.rel_facts_with_arity,
                                   include_pw_ids=args.include_pw_ids, attr_defs=attr_defs)
         save_to_txt_file(asp_facts, os.path.join(get_save_folder(project_name, 'asp_simple'), 'asp_simple.lp4'))
         print("Succesfully exported as asp simple facts.")
 
     if args.asp_triples:
-        pws = load_from_temp_pickle(project_name, 'pws')
         out_type = args.asp_triples
-        if out_type in ['csv', 'sql', 'h5', 'msg', 'pkl']:
+        if out_type in ASP_TRIPLES_DB_OPTIONS:
             out_type = 'db'
         asp_facts = PWEExport.export_as_asp_triples(pws=pws, rel_facts_with_arity=args.rel_facts_with_arity,
                                                     include_pw_ids=args.include_pw_ids, output_type=out_type)

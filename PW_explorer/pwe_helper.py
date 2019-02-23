@@ -134,7 +134,7 @@ class Relation:
 def pw_slicer(dfs, pws, pws_to_use):
     sliced_pws = list(filter(lambda x: x.pw_id in pws_to_use, pws)) if pws else None
     sliced_dfs = {rl_name: df[df['pw'].isin(pws_to_use)] for rl_name, df in dfs.items()} if dfs else None
-    return sliced_pws, sliced_dfs
+    return sliced_dfs, sliced_pws
 
 
 def rel_slicer(dfs, rels, pws, rels_to_use):
