@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 
-from PW_explorer.dist_calc import *
+from PW_explorer.dist_calc import PWEDistanceCalculation
 from PW_explorer.pwe_helper import (
     load_from_temp_pickle,
     get_current_project_name,
-    rel_id_from_rel_name,
     get_sql_conn,
     get_save_folder,
     get_file_save_name,
@@ -46,14 +45,8 @@ def __main__():
 
     parser.add_argument("-rel_names", nargs='*', default=[], type=str,
                         help="provide the relation names to use in the distance calculation.")
-    # parser.add_argument("-rel_ids", nargs='*', default=[], type=int,
-    #                     help="provide the relation ids of the relation to use in the distance calculation. To view "
-    #                          "relation ids, use -show_relations")
     parser.add_argument("-rel_name", type=str,
                         help="provide the relation name to use in the distance calculation.")
-    # parser.add_argument("-rel_id", type=int,
-    #                     help="provide the relation id of the relation to use in the distance calculation. To view "
-    #                          "relation ids, use -show_relations")
     parser.add_argument("-calc_dist_matrix", action='store_true', default=False,
                         help="specify this flag to calculate the distance matrix")
     parser.add_argument("-pws", type=int, nargs=2,
@@ -91,9 +84,9 @@ def __main__():
         if args.pws is not None and len(args.pws) == 2:
             pw1 = args.pws[0]
             pw2 = args.pws[1]
-            print("Distance between PWs {} and {} is {}".format(pw1, pw2,
-                                                                sym_diff_dist(pw1, pw2, relations, dfs,
-                                                                              pws, args.rel_names)))
+            print("Distance between PWs {} and {} is {}".
+                  format(pw1, pw2, PWEDistanceCalculation.sym_diff_dist(pw1, pw2, relations, dfs,
+                                                                        pws, args.rel_names)))
 
         dist_matrix = None
 
@@ -102,8 +95,9 @@ def __main__():
 
             for i in range(1, len(pws) + 1):
                 for j in range(i, len(pws) + 1):
-                    dist_matrix[i - 1, j - 1] = dist_matrix[j - 1, i - 1] = \
-                        sym_diff_dist(i, j, relations, dfs, pws, args.rel_names)
+                    dist_matrix[i - 1, j - 1] = \
+                        dist_matrix[j - 1, i - 1] = \
+                        PWEDistanceCalculation.sym_diff_dist(i, j, relations, dfs, pws, args.rel_names)
 
             if np.max(dist_matrix) != np.min(dist_matrix):
                 dist_matrix = (dist_matrix - np.min(dist_matrix)) / (np.max(dist_matrix) - np.min(dist_matrix))
@@ -133,9 +127,9 @@ def __main__():
             pw1 = args.pws[0]
             pw2 = args.pws[1]
             print(
-                "Distance between PWs {} and {} is {}".format(pw1, pw2,
-                                                              euler_overlap_diff_dist(pw1, pw2, args.rel_name, args.col,
-                                                                                      dfs, pws, relations)))
+                "Distance between PWs {} and {} is {}".
+                    format(pw1, pw2, PWEDistanceCalculation.euler_overlap_diff_dist(pw1, pw2, args.rel_name,
+                                                                                    args.col, dfs, pws)))
 
         dist_matrix = None
 
@@ -145,7 +139,7 @@ def __main__():
             for i in range(1, len(pws) + 1):
                 for j in range(i, len(pws) + 1):
                     dist_matrix[i - 1, j - 1] = dist_matrix[j - 1, i - 1] = \
-                        euler_overlap_diff_dist(i, j, args.rel_name, args.col, dfs, pws, relations)
+                        PWEDistanceCalculation.euler_overlap_diff_dist(i, j, args.rel_name, args.col, dfs, pws)
 
             if np.max(dist_matrix) != np.min(dist_matrix):
                 dist_matrix = (dist_matrix - np.min(dist_matrix)) / (np.max(dist_matrix) - np.min(dist_matrix))

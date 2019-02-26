@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 
-from PW_explorer.complexity_calc import *
+from PW_explorer.complexity_calc import PWEComplexityCalculation
 from PW_explorer.pwe_helper import (
     get_current_project_name,
     load_from_temp_pickle,
-    get_sql_conn, rel_id_from_rel_name,
+    get_sql_conn,
     set_current_project_name,
     import_custom_module,
 )
@@ -86,7 +86,9 @@ def __main__():
             pws_to_consider = [j for j in range(1, expected_pws + 1)]
 
         try:
-            euler_complexity_analysis(len(pws), dfs, args.rel_name, args.col, pws_to_consider)
+            PWEComplexityCalculation.euler_complexity_analysis(len(pws), dfs,
+                                                               args.rel_name, args.col,
+                                                               pws_to_consider)
         except Exception as e:
             print("Error running the euler_complexity_analysis. Recheck your inputs.")
             print("Error: ", str(e))

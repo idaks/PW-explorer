@@ -9,6 +9,8 @@ import importlib
 import re
 import copy
 
+import pandas as pd
+
 ###################################################################
 
 # to help debug
@@ -53,6 +55,14 @@ def preprocess_clingo_output(clingo_raw_output: list):
 
     return clingo_raw_output[start:]
 
+###################################################################
+
+META_DATA_KEYWORD = 'meta_data'
+META_DATA_TEMPORAL_DEC_KEYWORD = 'temporal_dec'
+META_DATA_ATTRIBUTE_DEF_KEYWORD = 'attr_def'
+ASP_SYNTAX_TEMPORAL_DEC_KEYWORD = 'temporal'
+ASP_SYNTAX_ATTRIBUTE_DEF_KEYWORD = 'schema'
+
 
 TEMPORAL_FIELD_DEF_REGEX="temporal\s*\w+\(\s*[_T]+\s*(,\s*[_T]+\s*)*\)"
 def parse_for_temporal_declarations(clingo_rules: list):
@@ -65,7 +75,7 @@ def parse_for_temporal_declarations(clingo_rules: list):
             pattern_object = pattern.search(comment)
             if pattern_object is not None:
                 declaration = comment[pattern_object.span()[0]:pattern_object.span()[1]]
-                declaration = declaration.split('temporal', maxsplit=1)[1].strip()
+                declaration = declaration.split(ASP_SYNTAX_TEMPORAL_DEC_KEYWORD, maxsplit=1)[1].strip()
                 temp = declaration.split('(', maxsplit=1)
                 rel_name = temp[0]
                 attrs = temp[1].rsplit(')', maxsplit=1)[0].split(',')
@@ -75,6 +85,7 @@ def parse_for_temporal_declarations(clingo_rules: list):
                 temporal_decs[rel_name] = temporal_indices
 
     return temporal_decs
+
 
 ATTRIBUTES_DEF_REGEX = "define\s*\w+\(\s*\w+\s*(,\s*\w+\s*)*\)"
 def parse_for_attribute_defs(clingo_rules: list):
@@ -130,6 +141,20 @@ class Relation:
 
 ###################################################################
 
+###################################################################
+
+def make_temporal_columns_numeric(rel_schemas, pw_rels_dfs):
+    for rel in rel_schemas:
+        rl_name = rel.relation_name
+        if META_DATA_TEMPORAL_DEC_KEYWORD in rel.meta_data:
+            for temporal_index in rel.meta_data[META_DATA_TEMPORAL_DEC_KEYWORD]:
+                col_name = pw_rels_dfs[rl_name].columns[temporal_index + 1]  # +1 is to a/c for the 'pw' column
+                pw_rels_dfs[rl_name][col_name] = pd.to_numeric(pw_rels_dfs[rl_name][col_name])
+
+###################################################################
+
+
+###################################################################
 
 def pw_slicer(dfs, pws, pws_to_use):
     sliced_pws = list(filter(lambda x: x.pw_id in pws_to_use, pws)) if pws else None

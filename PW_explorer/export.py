@@ -88,7 +88,44 @@ class PWEExport:
         return attr_def_rules + pw_rel_facts
 
     @staticmethod
-    def export_as_asp_triples(pws, rel_facts_with_arity: bool=False, include_pw_ids: bool=True, output_type='list'):
+    def export_wfs_model_as_asp_facts(dfs, rel_facts_with_arity: bool = False, attr_defs: dict = None):
+        """
+        For use with Well-Founded Semantics Model
+        :param dfs: Dictionary of Dataframes for each relation, keyed by relation name
+        :param rel_facts_with_arity: Include Arity in the Relation Names
+        :param attr_defs: if provided, then statements of the form
+        '% define rel_name(pw_id, attr1_name, attr2_name...)' will be included to aid future reparsing
+        (pw_id only included if include_pw_ids is True).
+        :return: list of asp facts as strings
+        """
+        # output the pws as rel_name(wfs_value, attrs....)
+        pw_rel_facts = []
+
+        for rl_name, df in dfs.items():
+            if not rel_facts_with_arity:
+                rl_name = rl_name.rsplit('_', maxsplit=1)[0]
+            wfs_status_keyword = list(df.columns)[0]
+            cols = list(df.columns)[1:]
+            for idx, row in df.iterrows():
+                temp = [row[wfs_status_keyword]]
+                for j, col in enumerate(cols):
+                    temp.append(row[col])
+                pw_rel_facts.append('{}({}).'.format(rl_name, ','.join(temp)))
+
+        # add attr_def rules if they are provided
+        attr_def_rules = []
+        if attr_defs is None:
+            attr_defs = {}
+        for rel_name, attrs in attr_defs.items():
+            if not rel_facts_with_arity:
+                rel_name = rel_name.rsplit('_', maxsplit=1)[0]
+            attrs = ['WFS_VALUE'] + attrs
+            attr_def_rules.append('% define {}({})'.format(rel_name, ','.join(attrs)))
+
+        return attr_def_rules + pw_rel_facts
+
+    @staticmethod
+    def export_as_asp_triples(pws, rel_facts_with_arity: bool = False, include_pw_ids: bool = True, output_type='list'):
         """
         :param pws: List of PossibleWorld Objects
         :param rel_facts_with_arity: Include Arity in the Relation Names
@@ -125,6 +162,57 @@ class PWEExport:
 
         if output_type == 'str':
             facts = [create_triple(fact[0], fact[1] ,fact[2]) for fact in facts]
+            facts.insert(0, '% define {}'.format(create_triple('FACT_ID', 'SUBJECT', 'VALUE')))
+        elif output_type == 'db':
+            facts = pd.DataFrame(data=facts, columns=['FACT_ID', 'SUBJECT', 'VALUE'])
+
+        return facts
+
+    @staticmethod
+    def export_wfs_model_as_asp_triples(dfs, attr_name_or_idx: str='idx', rel_facts_with_arity: bool = False,
+                                        output_type='list'):
+        """
+        For use with well-founded semantics model.
+        :param dfs: Dictionary of Dataframes for each relation, keyed by relation name
+        :param attr_name_or_idx: options: 'attr_name', 'idx' (Default).
+                                 'attr_name' produces triples like triple(17, NODE_ID, 1) or triple(17, x1, 1).
+                                 'idx' produces triples like triple(17, 1, 1). triple(17, 2, red).
+        :param rel_facts_with_arity: Include Arity in the Relation Names
+        :param output_type: 'str': As a list of strings that can be output into a file,
+                            'db': As a Pandas Dataframe,
+                            'list': As a list of tuples (well triples) (Default).
+                            NOTE: Defaults to 'list' even if some unrecognizable argument is passed in.
+        :return: Depending on output_type
+        """
+
+        TRIPLES_FACT_NAME = 'triple'
+        TRIPLES_RELATION_NAME_KEYWORD = 'rel'
+        TRIPLE_WFS_VALUE_KEYWORD = 'wfs_value'
+
+        def create_triple(arg1, arg2, arg3):
+            return '{}({},{},{}).'.format(TRIPLES_FACT_NAME, arg1, arg2, arg3)
+
+        facts_counter = 0
+        facts = []
+
+        for rl_name, df in dfs.items():
+            if not rel_facts_with_arity:
+                rl_name = rl_name.rsplit('_', maxsplit=1)[0]
+            wfs_status_keyword = list(df.columns)[0]
+            cols = list(df.columns)[1:]
+            for i, row in df.iterrows():
+                facts_counter += 1
+                fact_id = facts_counter
+                facts.append((fact_id, TRIPLES_RELATION_NAME_KEYWORD, rl_name))
+                facts.append((fact_id, TRIPLE_WFS_VALUE_KEYWORD, row[wfs_status_keyword]))
+                for j, col in enumerate(cols):
+                    if attr_name_or_idx == 'attr_name':
+                        facts.append((fact_id, col, row[col]))
+                    elif attr_name_or_idx == 'idx':
+                        facts.append((fact_id, j+1, row[col]))
+
+        if output_type == 'str':
+            facts = [create_triple(fact[0], fact[1], fact[2]) for fact in facts]
             facts.insert(0, '% define {}'.format(create_triple('FACT_ID', 'SUBJECT', 'VALUE')))
         elif output_type == 'db':
             facts = pd.DataFrame(data=facts, columns=['FACT_ID', 'SUBJECT', 'VALUE'])

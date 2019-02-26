@@ -9,15 +9,6 @@ import numpy as np
 import os
 
 
-def make_temporal_columns_numeric(rel_schemas, pw_rels_dfs):
-    for rel in rel_schemas:
-        rl_name = rel.relation_name
-        if 'temporal_decs' in rel.meta_data:
-            for temporal_index in rel.meta_data['temporal_decs']:
-                col_name = pw_rels_dfs[rl_name].columns[temporal_index + 1]  # +1 is to a/c for the 'pw' column
-                pw_rels_dfs[rl_name][col_name] = pd.to_numeric(pw_rels_dfs[rl_name][col_name])
-
-
 def parse_solution(fname, meta_data: dict=None, reasoner='clingo'):
 
     if not meta_data:

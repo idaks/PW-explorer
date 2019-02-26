@@ -11,7 +11,7 @@ from PW_explorer.pwe_helper import (
     import_custom_module,
     get_current_project_name,
 )
-from PW_explorer.visualize import *
+from PW_explorer.visualize import PWEVisualization
 
 
 def __main__():
@@ -56,20 +56,20 @@ def __main__():
 
     if args.mds:
         file_to_save_to = get_save_folder(project_name, 'visualization') + '/' + 'networkx_out.png'
-        mds_graph_2(pws, dist_matrix, args.sdf, file_to_save_to)
+        PWEVisualization.mds_networkx(pws, dist_matrix, args.sdf, file_to_save_to)
         print('MDS Neato Graph saved to:', file_to_save_to)
     if args.mds_sklearn:
         file_to_save_to = get_save_folder(project_name, 'visualization') + '/' + 'mds_sklearn.png'
-        mds_sklearn(dist_matrix, file_to_save_to)
+        PWEVisualization.mds_sklearn(dist_matrix, file_to_save_to)
         print('MDS Graph saved to: {}'.format(file_to_save_to))
     if len(pws) > 1:
         if args.clustering:
             file_to_save_to = get_save_folder(project_name, 'visualization') + '/' + 'dbscan_clustering_.png'
-            dbscan_clustering(dist_matrix, file_to_save_to)
+            PWEVisualization.dbscan_clustering(dist_matrix, file_to_save_to)
             print('Clustering Output saved to: {}'.format(file_to_save_to))
         if args.dendrogram:
             folder_to_save_to = get_save_folder(project_name, 'visualization')
-            linkage_dendrogram(dist_matrix, folder_to_save_to)
+            PWEVisualization.linkage_dendrogram(dist_matrix, folder_to_save_to)
             print('Dendrograms saved to:', folder_to_save_to)
     if args.custom_visualization_func:
         try:
