@@ -118,7 +118,8 @@ class AntlrDLVListener(DLV_OutListener):
         elif self.soln_type in [AntlrDLVListener.WFS_SOLN]:
             self.relations = AntlrDLVListener.create_rel_objs_from_atom_sets([self.true_set, self.undefined_set])
             self.dfs = AntlrDLVListener.load_wfs_soln_into_pandas(
-                {"TRUE": self.true_set, "UNDEFINED": self.undefined_set},
+                {AntlrDLVListener.WFS_TRUE_CATEGORY: self.true_set,
+                 AntlrDLVListener.WFS_UNDEFINED_CATEGORY: self.undefined_set},
                 self.relations)
 
     @staticmethod
