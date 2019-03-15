@@ -1,10 +1,25 @@
 # An Extensible Possible Worlds Explorer for Answer Set Programming
 
+### To get started (using Conda) -- recommended
+
+1. ```conda create -n your-pwe-env-name```
+2. Install DLV from [here](http://www.dlvsystem.com/dlv/#1) and ensure it is available in the path.
+3. ```conda install -c potassco clingo ```
+4. ```conda install -c anaconda graphviz```
+5. ```conda install -c anaconda pygraphviz```
+6. ```pip install PW_explorer```
+
+(To use PWE in Jupyter Notebooks, install Jupyter)
+
+7. ```conda install -c anaconda jupyter```
+
 ### To Get Started (using venv):
 
 1. Install clingo. PW_explorer has been tested with clingo version: 5.2.1
 
-2. Make sure the packages graphviz>=0.8.2 and pygraphviz>=1.5 are installed. These are required to be able to use the visualization functionality. You can find instructions to install pygraphviz [here](http://pygraphviz.github.io/documentation/pygraphviz-1.3.1/install.html).
+2. Install DLV.
+
+3. Make sure the packages graphviz>=0.8.2 and pygraphviz>=1.5 are installed. These are required to be able to use the visualization functionality. You can find instructions to install pygraphviz [here](http://pygraphviz.github.io/documentation/pygraphviz-1.3.1/install.html).
 
 These commands usually work as well:
 
@@ -16,17 +31,17 @@ These commands usually work as well:
   
   [StackOverflow Reference](https://stackoverflow.com/questions/40528048/pip-install-pygraphviz-no-package-libcgraph-found)
 
-3. ```python3 -m venv /path/to/new/virtual/environment```
+4. ```python3 -m venv /path/to/new/virtual/environment```
 
-4. ```source /path/to/new/virtual/environment/bin/activate```
+5. ```source /path/to/new/virtual/environment/bin/activate```
 
-5. ```python3 -m pip install PW_explorer```
+6. ```python3 -m pip install PW_explorer```
 
 To deactivate the virtualenv after you're done working:
 
-6. ```deactivate```
+7. ```deactivate```
 
-Repeat Step 4 to resume work and Step 6 to exit the virtualenv again.
+Repeat Step 5 to resume work and Step 7 to exit the virtualenv again.
 
 Installing PW_explorer will install all the modules within PW_explorer along with all their dependencies. It will also install the following Command Line Tools in /usr/bin/ :
 
@@ -57,6 +72,8 @@ The above CLI tools leverage the installed PW_explorer modules.
                                                        ⏬
                                                visualize your results
 ```
+
+#### Demos available here: https://github.com/idaks/PWE-demos
 
 ### CLI Scripts Used:
  
