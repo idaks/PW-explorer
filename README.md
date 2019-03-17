@@ -55,25 +55,12 @@ Installing PW_explorer will install all the modules within PW_explorer along wit
 
 The above CLI tools leverage the installed PW_explorer modules.
 
-### General Workflow:
+### General System Architecture:
 
-```                                           
-                                      run clingo to generate the Possible Worlds 
-                                                       ⏬
-                                    parse the output to load the Possible Worlds
-                                                       ⏬
-                             export Possible Worlds' descriptions to formats such as sql, csv
-                                                       ⏬
-                                               query using pandas
-                                                       ⏬
-                                               distance calculation 
-                                                       ⏬
-                                                complexity analysis
-                                                       ⏬
-                                               visualize your results
-```
+![PWE-UML-Diagram](https://user-images.githubusercontent.com/14302941/54492765-54b63680-4897-11e9-933b-3efc34eb7106.png)
 
-#### Demos available here: https://github.com/idaks/PWE-demos
+
+#### PWE Demos available [here](https://github.com/idaks/PWE-demos)
 
 ### CLI Scripts Used:
  
