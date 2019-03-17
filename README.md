@@ -55,6 +55,10 @@ Installing PW_explorer will install all the modules within PW_explorer along wit
 
 The above CLI tools leverage the installed PW_explorer modules.
 
+#### Launch a ASP+PWE friendly computing environment on Binder
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/idaks/PW-explorer/master)
+
 ### General System Architecture:
 
 ![PWE-UML-Diagram](https://user-images.githubusercontent.com/14302941/54492765-54b63680-4897-11e9-933b-3efc34eb7106.png)
