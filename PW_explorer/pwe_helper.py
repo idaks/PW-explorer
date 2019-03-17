@@ -87,7 +87,7 @@ def parse_for_temporal_declarations(clingo_rules: list):
     return temporal_decs
 
 
-ATTRIBUTES_DEF_REGEX = "define\s*\w+\(\s*\w+\s*(,\s*\w+\s*)*\)"
+ATTRIBUTES_DEF_REGEX = "schema\s*\w+\(\s*\w+\s*(,\s*\w+\s*)*\)"
 def parse_for_attribute_defs(clingo_rules: list):
     attribute_defs = {}
     pattern = re.compile(ATTRIBUTES_DEF_REGEX)
@@ -98,7 +98,7 @@ def parse_for_attribute_defs(clingo_rules: list):
             pattern_object = pattern.search(comment)
             if pattern_object is not None:
                 definition = comment[pattern_object.span()[0]:pattern_object.span()[1]]
-                definition = definition.split('define', maxsplit=1)[1].strip()
+                definition = definition.split('schema', maxsplit=1)[1].strip()
                 temp = definition.split('(', maxsplit=1)
                 rel_name = temp[0]
                 attrs = temp[1].rsplit(')', maxsplit=1)[0].split(',')

@@ -49,7 +49,7 @@ class PWEExport:
         :param pws: List of PossibleWorld objects
         :param rel_facts_with_arity: Include Arity in the Relation Names
         :param attr_defs: if provided, then statements of the form
-        '% define rel_name(pw_id, attr1_name, attr2_name...)' will be included to aid future reparsing
+        '% schema rel_name(pw_id, attr1_name, attr2_name...)' will be included to aid future reparsing
         (pw_id only included if include_pw_ids is True).
         :param include_pw_ids: Include PW-ID information
         :return: list of asp facts as strings
@@ -83,7 +83,7 @@ class PWEExport:
                 rel_name = rel_name.rsplit('_', maxsplit=1)[0]
             if include_pw_ids:
                 attrs = ['PW_ID'] + attrs
-            attr_def_rules.append('% define {}({})'.format(rel_name, ','.join(attrs)))
+            attr_def_rules.append('% schema {}({})'.format(rel_name, ','.join(attrs)))
 
         return attr_def_rules + pw_rel_facts
 
@@ -94,7 +94,7 @@ class PWEExport:
         :param dfs: Dictionary of Dataframes for each relation, keyed by relation name
         :param rel_facts_with_arity: Include Arity in the Relation Names
         :param attr_defs: if provided, then statements of the form
-        '% define rel_name(pw_id, attr1_name, attr2_name...)' will be included to aid future reparsing
+        '% schema rel_name(pw_id, attr1_name, attr2_name...)' will be included to aid future reparsing
         (pw_id only included if include_pw_ids is True).
         :return: list of asp facts as strings
         """
@@ -120,7 +120,7 @@ class PWEExport:
             if not rel_facts_with_arity:
                 rel_name = rel_name.rsplit('_', maxsplit=1)[0]
             attrs = ['WFS_VALUE'] + attrs
-            attr_def_rules.append('% define {}({})'.format(rel_name, ','.join(attrs)))
+            attr_def_rules.append('% schema {}({})'.format(rel_name, ','.join(attrs)))
 
         return attr_def_rules + pw_rel_facts
 
@@ -162,7 +162,7 @@ class PWEExport:
 
         if output_type == 'str':
             facts = [create_triple(fact[0], fact[1] ,fact[2]) for fact in facts]
-            facts.insert(0, '% define {}'.format(create_triple('FACT_ID', 'SUBJECT', 'VALUE')))
+            facts.insert(0, '% schema {}'.format(create_triple('FACT_ID', 'SUBJECT', 'VALUE')))
         elif output_type == 'db':
             facts = pd.DataFrame(data=facts, columns=['FACT_ID', 'SUBJECT', 'VALUE'])
 
@@ -213,7 +213,7 @@ class PWEExport:
 
         if output_type == 'str':
             facts = [create_triple(fact[0], fact[1], fact[2]) for fact in facts]
-            facts.insert(0, '% define {}'.format(create_triple('FACT_ID', 'SUBJECT', 'VALUE')))
+            facts.insert(0, '% schema {}'.format(create_triple('FACT_ID', 'SUBJECT', 'VALUE')))
         elif output_type == 'db':
             facts = pd.DataFrame(data=facts, columns=['FACT_ID', 'SUBJECT', 'VALUE'])
 

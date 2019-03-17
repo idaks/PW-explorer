@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-from PW_explorer.pwe_helper import rel_id_from_rel_name
 import copy
 from collections import defaultdict
 
