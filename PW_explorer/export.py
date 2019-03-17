@@ -222,7 +222,7 @@ class PWEExport:
     @staticmethod
     def export(export_format, export_loc, dfs):
 
-        if export_format not in ['csv', 'h5', 'msg', 'pkl']:
+        if export_format not in ['csv', 'pkl']:
             return False
 
         mkdir_p(export_loc)
@@ -231,10 +231,6 @@ class PWEExport:
             fname = os.path.join(export_loc, '{}.{}'.format(rl_name, export_format))
             if export_format == 'csv':
                 df.to_csv(fname)
-            elif export_format == 'h5':
-                df.to_hdf(fname, mode='w', key='df')
-            elif export_format == 'msg':
-                df.to_msgpack(fname)
             elif export_format == 'pkl':
                 df.to_pickle(fname)
 

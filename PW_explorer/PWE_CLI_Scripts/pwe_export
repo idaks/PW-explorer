@@ -17,7 +17,7 @@ import os
 
 def __main__():
 
-    ASP_TRIPLES_DB_OPTIONS = ['csv', 'sql', 'msg', 'pkl']
+    ASP_TRIPLES_DB_OPTIONS = ['csv', 'sql', 'pkl']
     ASP_TRIPLES_OPTIONS = ['str'] + ASP_TRIPLES_DB_OPTIONS
 
     parser = argparse.ArgumentParser()
@@ -25,9 +25,6 @@ def __main__():
     parser.add_argument("-s", "--schema", action="store_true", help="generate sql schemas", default=False)
     parser.add_argument("-sql", action="store_true", help="include if you want to export a sql db", default=False)
     parser.add_argument("-csv", action="store_true", help="include if you want to export in csv", default=False)
-    parser.add_argument("-h5", action="store_true", help="include if you want to export in hdf5 format", default=False)
-    parser.add_argument("-msg", action="store_true", help="include if you want to export in msgpack format",
-                        default=False)
     parser.add_argument("-pkl", action="store_true", help="include if you want to export in pickle format",
                         default=False)
     parser.add_argument("-asp_simple", action='store_true', help="Output the facts as asp simple tuples in a .lp4 file",
@@ -66,8 +63,6 @@ def __main__():
 
     export_to_sql = args.sql
     export_to_csv = args.csv
-    export_to_hdf = args.h5
-    export_to_msg = args.msg
     export_to_pkl = args.pkl
 
     dfs = load_from_temp_pickle(project_name, 'dfs')
@@ -88,16 +83,6 @@ def __main__():
             print("Successfully exported to csv")
         else:
             print("CSV Export Failed")
-    if export_to_hdf:
-        if PWEExport.export('h5', get_save_folder(project_name, 'h5_export'), dfs):
-            print("Successfully exported to hdf")
-        else:
-            print("HDF Export Failed")
-    if export_to_msg:
-        if PWEExport.export('msg', get_save_folder(project_name, 'msg_export'), dfs):
-            print("Successfully exported to msg")
-        else:
-            print("MSGPACK Export Failed")
     if export_to_pkl:
         if PWEExport.export('pkl', get_save_folder(project_name, 'pkl_export'), dfs):
             print("Successfully exported to pkl")
@@ -126,7 +111,7 @@ def __main__():
         if args.asp_triples == 'str':
             save_to_txt_file(asp_facts, os.path.join(get_save_folder(project_name, 'asp_triples'), 'asp_triples.lp4'))
             print("Successfully exported in asp triples format.")
-        elif args.asp_triples in ['csv', 'h5', 'msg', 'pkl']:
+        elif args.asp_triples in ['csv', 'pkl']:
             PWEExport.export(args.asp_triples, get_save_folder(project_name, 'asp_triples'), {'asp_triples': asp_facts})
             print("Successfully exported in asp triples format.")
         elif args.asp_triples == 'sql':
