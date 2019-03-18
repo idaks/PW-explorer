@@ -1,4 +1,4 @@
-from .pwe_query import PWEQuery
+from .query import PWEQuery
 
 class PWEDistanceCalculation:
 

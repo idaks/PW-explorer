@@ -2,7 +2,7 @@ from antlr4 import *
 from .Antlr_Files.DLV_OutLexer import DLV_OutLexer
 from .Antlr_Files.DLV_OutParser import DLV_OutParser
 from .Antlr_Files.DLV_OutListener import DLV_OutListener
-from ...pwe_helper import isfloat, PossibleWorld, Relation
+from ...helper import isfloat, PossibleWorld, Relation
 import pandas as pd
 import numpy as np
 from antlr4.tree.Trees import Trees

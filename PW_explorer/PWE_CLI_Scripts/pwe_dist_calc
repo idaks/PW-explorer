@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from PW_explorer.dist_calc import PWEDistanceCalculation
-from PW_explorer.pwe_helper import (
+from PW_explorer.helper import (
     load_from_temp_pickle,
     get_current_project_name,
     get_sql_conn,

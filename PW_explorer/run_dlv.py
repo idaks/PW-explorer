@@ -1,6 +1,6 @@
 import os
 import subprocess as subprocess
-from .pwe_helper import parse_for_attribute_defs, parse_for_temporal_declarations
+from .helper import parse_for_attribute_defs, parse_for_temporal_declarations
 
 def get_dlv_output(dlv_input_fnames: list, num_solutions: int=0, wfs_mode: bool=False,
                    dlv_max_int: int=None, other_args: list=None):

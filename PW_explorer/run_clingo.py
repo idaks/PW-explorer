@@ -1,6 +1,6 @@
 import os
 import subprocess as subprocess
-from .pwe_helper import (
+from .helper import (
     preprocess_clingo_output,
     parse_for_attribute_defs,
     parse_for_temporal_declarations,

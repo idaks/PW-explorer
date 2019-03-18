@@ -6,7 +6,7 @@ import numpy as np
 import sqlite3
 import os
 import argparse
-from .pwe_helper import get_current_project_name, set_current_project_name, \
+from .helper import get_current_project_name, set_current_project_name, \
     load_from_temp_pickle, get_sql_conn, rel_id_from_rel_name
 from . import sql_funcs
 

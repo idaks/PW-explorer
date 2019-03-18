@@ -4,7 +4,7 @@ import argparse
 import subprocess32 as subprocess
 
 from PW_explorer.run_dlv import *
-from PW_explorer.pwe_helper import get_asp_output_folder, get_asp_input_folder, \
+from PW_explorer.helper import get_asp_output_folder, get_asp_input_folder, \
     set_current_project_name, save_to_temp_pickle
 
 def __main__():

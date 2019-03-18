@@ -1,11 +1,21 @@
 #!/usr/bin/env python3
 
-import pandas as pd
 import numpy as np
-from .pwe_query import PWEQuery
+from .query import PWEQuery
+from .helper import pw_slicer
 
 
-class PWEComplexityCalculation:
+class PWEFeatureCalculation:
+
+    @staticmethod
+    def custom_feature_calculation(pws_rel_dfs, rel_schemas, pw_objs, func=lambda pw_dfs, rel_schemas, pw_obj: 0):
+
+        features = {}
+        for pw_obj in pw_objs:
+            pw_id = pw_obj.pw_id
+            dfs, _ = pw_slicer(pws_rel_dfs, None, [pw_id])
+            features[pw_id] = func(dfs, rel_schemas, pw_obj)
+        return features
 
     @staticmethod
     def euler_complexity_analysis(expected_pws, dfs, rl_name, col_name, pws_to_consider: list = None, do_print=True):

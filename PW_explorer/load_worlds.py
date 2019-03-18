@@ -2,7 +2,7 @@
 
 from .Input_Parsers.Clingo_Parser.clingo_parser import parse_clingo_output
 from .Input_Parsers.DLV_Parser.dlv_parser import parse_dlv_output
-from .pwe_helper import rel_id_from_rel_name
+from .helper import rel_id_from_rel_name
 import pandas as pd
 import numpy as np
 

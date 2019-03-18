@@ -1,4 +1,4 @@
-from .pwe_helper import PossibleWorld, Relation
+from .helper import PossibleWorld, Relation
 import pandas as pd
 
 

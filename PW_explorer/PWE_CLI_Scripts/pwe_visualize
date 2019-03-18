@@ -3,7 +3,7 @@
 import argparse
 import os.path
 
-from PW_explorer.pwe_helper import (
+from PW_explorer.helper import (
     load_from_temp_pickle,
     get_sql_conn,
     get_save_folder,
