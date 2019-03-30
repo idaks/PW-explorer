@@ -48,7 +48,13 @@ def parse_solution(fname, meta_data: dict=None, reasoner='clingo'):
     return dfs, relations, pws
 
 
-def load_worlds(asp_output: list, meta_data: dict=None, reasoner='clingo'):
+def load_worlds(asp_output, meta_data: dict=None, reasoner='clingo'):
+    """
+    :param asp_output: single string or a list of strings
+    :param meta_data:
+    :param reasoner:
+    :return:
+    """
 
     if not meta_data:
         meta_data = {}

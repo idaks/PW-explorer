@@ -11,13 +11,20 @@ from pygments import highlight
 class ASPRules(str):
 
     def __new__(self, descriptor):
-        if os.path.isfile(descriptor):
+
+        if isinstance(descriptor, list):
+            descriptor = list(map(lambda x: x.strip(), descriptor))
+            tmp_str = "\n".join(descriptor)
+        elif os.path.isfile(descriptor):
             with open(descriptor, 'r') as f:
                 tmp_str = f.read()
         else:
             tmp_str = descriptor
         tmp_str = tmp_str.strip()
         return super(ASPRules, self).__new__(self, tmp_str)
+
+    def tolist(self):
+        return self.splitlines()
 
     def _repr_html_(self):
         display(HTML("""

@@ -43,16 +43,20 @@ def get_dlv_output(dlv_input_fnames: list, num_solutions: int=0, wfs_mode: bool=
     return dlv_out_lines, meta_data
 
 
-def run_dlv(dlv_rules: list, num_solutions: int=0, wfs_mode: bool=False,
+def run_dlv(dlv_rules, num_solutions: int=0, wfs_mode: bool=False,
             dlv_max_int: int=None, other_args: list=None):
     """
-    :param dlv_rules: list of dlv rules as strings
+    :param dlv_rules: list of dlv rules as strings or a single string
     :param num_solutions: number of solutions to generate. Default: 0 i.e. generate all solutions
     :param wfs_mode: Use the well-founded semantics form
     :param dlv_max_int: Set the -N parameter while running dlv
     :param other_args: Other arguments to pass to dlv. Provide a list of strings eg. ['-n=1', '-N=10', '-silent']
     :return: dlv output and parsed attribute definitions
     """
+
+    if isinstance(dlv_rules, str):
+        dlv_rules = dlv_rules.splitlines()
+
     dummy_fname = 'svjsihkankjbyerhoihsyvgjnclsdihcysbfhcbygweincbsydgibwyebcsygdyc.lp4'
     with open(dummy_fname, 'w') as f:
         f.write('\n'.join(dlv_rules))

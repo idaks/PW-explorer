@@ -33,7 +33,15 @@ def get_clingo_output(clingo_in_fnames: list, num_solutions: int=0):
     return cling_out_lines, meta_data
 
 
-def run_clingo(clingo_rules: list, num_solutions: int=0):
+def run_clingo(clingo_rules, num_solutions: int=0):
+    """
+    :param clingo_rules: string or list of strings
+    :param num_solutions:
+    :return:
+    """
+
+    if isinstance(clingo_rules, str):
+        clingo_rules = clingo_rules.splitlines()
 
     dummy_fname = 'svjsihkankjbyerhoihsyvgjnclsdihcysbfhcbygweincbsydgibwyebcsygdyc.lp4'
     with open(dummy_fname, 'w') as f:
@@ -43,4 +51,3 @@ def run_clingo(clingo_rules: list, num_solutions: int=0):
     os.remove(dummy_fname)
 
     return preprocess_clingo_output(clingo_output), meta_data
-
