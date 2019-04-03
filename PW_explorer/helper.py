@@ -6,7 +6,6 @@ import os
 import pickle
 import sqlite3
 import importlib
-import re
 import copy
 
 import pandas as pd
@@ -56,56 +55,6 @@ def preprocess_clingo_output(clingo_raw_output: list):
     return clingo_raw_output[start:]
 
 ###################################################################
-
-META_DATA_KEYWORD = 'meta_data'
-META_DATA_TEMPORAL_DEC_KEYWORD = 'temporal_dec'
-META_DATA_ATTRIBUTE_DEF_KEYWORD = 'attr_def'
-ASP_SYNTAX_TEMPORAL_DEC_KEYWORD = 'temporal'
-ASP_SYNTAX_ATTRIBUTE_DEF_KEYWORD = 'schema'
-
-
-TEMPORAL_FIELD_DEF_REGEX="temporal\s*\w+\(\s*[_T]+\s*(,\s*[_T]+\s*)*\)"
-def parse_for_temporal_declarations(clingo_rules: list):
-    temporal_decs = {}
-    pattern = re.compile(TEMPORAL_FIELD_DEF_REGEX)
-    for i, line in enumerate(clingo_rules):
-        comment_start_idx = line.find('%')
-        if comment_start_idx != -1:
-            comment = line[comment_start_idx + 1:].strip()
-            pattern_object = pattern.search(comment)
-            if pattern_object is not None:
-                declaration = comment[pattern_object.span()[0]:pattern_object.span()[1]]
-                declaration = declaration.split(ASP_SYNTAX_TEMPORAL_DEC_KEYWORD, maxsplit=1)[1].strip()
-                temp = declaration.split('(', maxsplit=1)
-                rel_name = temp[0]
-                attrs = temp[1].rsplit(')', maxsplit=1)[0].split(',')
-                attrs = list(map(str.strip, attrs))
-                rel_name = "{}_{}".format(rel_name, len(attrs))
-                temporal_indices = [i for i, attr in enumerate(attrs) if attr == 'T']
-                temporal_decs[rel_name] = temporal_indices
-
-    return temporal_decs
-
-
-ATTRIBUTES_DEF_REGEX = "schema\s*\w+\(\s*\w+\s*(,\s*\w+\s*)*\)"
-def parse_for_attribute_defs(clingo_rules: list):
-    attribute_defs = {}
-    pattern = re.compile(ATTRIBUTES_DEF_REGEX)
-    for i, line in enumerate(clingo_rules):
-        comment_start_idx = line.find('%')
-        if comment_start_idx != -1:
-            comment = line[comment_start_idx + 1:].strip()
-            pattern_object = pattern.search(comment)
-            if pattern_object is not None:
-                definition = comment[pattern_object.span()[0]:pattern_object.span()[1]]
-                definition = definition.split('schema', maxsplit=1)[1].strip()
-                temp = definition.split('(', maxsplit=1)
-                rel_name = temp[0]
-                attrs = temp[1].rsplit(')', maxsplit=1)[0].split(',')
-                attrs = list(map(str.strip, attrs))
-                attribute_defs["{}_{}".format(rel_name, len(attrs))] = attrs
-
-    return attribute_defs
 
 
 ###################################################################

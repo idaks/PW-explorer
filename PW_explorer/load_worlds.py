@@ -2,7 +2,13 @@
 
 from .Input_Parsers.Clingo_Parser.clingo_parser import parse_clingo_output
 from .Input_Parsers.DLV_Parser.dlv_parser import parse_dlv_output
-from .helper import rel_id_from_rel_name
+from .helper import (
+    rel_id_from_rel_name,
+)
+from .meta_data_parser import (
+    META_DATA_ATTRIBUTE_DEF_KEYWORD,
+    META_DATA_TEMPORAL_DEC_KEYWORD,
+)
 import pandas as pd
 import numpy as np
 
@@ -24,22 +30,22 @@ def parse_solution(fname, meta_data: dict=None, reasoner='clingo', silent=False,
 
     dfs, relations, pws = parser_to_use(fname, silent=silent, print_parse_tree=print_parse_tree)
 
-    if 'attr_defs' in meta_data:
-        attr_defs = meta_data['attr_defs']
+    if META_DATA_ATTRIBUTE_DEF_KEYWORD in meta_data:
+        attr_defs = meta_data[META_DATA_ATTRIBUTE_DEF_KEYWORD]
         for rel_name, df in dfs.items():
             if rel_name in attr_defs:
                 mapper = dict(zip(list(df.columns)[1:], attr_defs[rel_name]))
                 df.rename(index=str, columns=mapper, inplace=True)
                 rel_obj = relations[rel_id_from_rel_name(rel_name=rel_name, relations=relations)]
-                rel_obj.meta_data['attr_defs'] = attr_defs[rel_name]
+                rel_obj.meta_data[META_DATA_ATTRIBUTE_DEF_KEYWORD] = attr_defs[rel_name]
 
-    if 'temporal_decs' in meta_data:
-        temporal_decs = meta_data['temporal_decs']
+    if META_DATA_TEMPORAL_DEC_KEYWORD in meta_data:
+        temporal_decs = meta_data[META_DATA_TEMPORAL_DEC_KEYWORD]
         for rl in relations:
             rl_name = rl.relation_name
             if rl_name in temporal_decs:
                 temporal_indices = temporal_decs[rl_name]
-                rl.meta_data['temporal_decs'] = temporal_indices
+                rl.meta_data[META_DATA_TEMPORAL_DEC_KEYWORD] = temporal_indices
                 for temporal_index in temporal_indices:
                     col_name = dfs[rl_name].columns[temporal_index + 1]  # To a/c for the pw column
                     dfs[rl_name][col_name] = pd.to_numeric(dfs[rl_name][col_name])

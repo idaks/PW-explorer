@@ -2,9 +2,8 @@ import os
 import subprocess as subprocess
 from .helper import (
     preprocess_clingo_output,
-    parse_for_attribute_defs,
-    parse_for_temporal_declarations,
 )
+from .meta_data_parser import parse_meta_data
 
 def get_clingo_output(clingo_in_fnames: list, num_solutions: int=0):
 
@@ -13,22 +12,30 @@ def get_clingo_output(clingo_in_fnames: list, num_solutions: int=0):
     process_ = subprocess.Popen(t, stdout=subprocess.PIPE)
     clingo_output = process_.communicate()[0]
     # clingo_output = subprocess.check_output()
-    attribute_defs = {}
-    temporal_decs = {}
+    meta_data = {}
+    #attribute_defs = {}
+    #temporal_decs = {}
     for fname in clingo_in_fnames:
         with open(fname, 'r') as f:
             clingo_rules = f.read().splitlines()
-            attribute_defs.update(parse_for_attribute_defs(clingo_rules))
-            temporal_decs.update(parse_for_temporal_declarations(clingo_rules))
+            f_meta_data = parse_meta_data(clingo_rules)
+            for md_type, md in f_meta_data.items():
+                if md_type in meta_data:
+                    meta_data[md_type].update(md)
+                else:
+                    meta_data[md_type] = md
+            #attribute_defs.update(parse_for_attribute_defs(clingo_rules))
+            #temporal_decs.update(parse_for_temporal_declarations(clingo_rules))
 
-    # print clingo_output
     cling_out_lines = clingo_output.splitlines()
     cling_out_lines = list(map(lambda x: str(x, 'utf-8'), cling_out_lines))
+
     # cling_out_lines = [l.decode('utf-8') for l in cling_out_lines]
-    meta_data = {
-        'attr_defs': attribute_defs,
-        'temporal_decs': temporal_decs,
-    }
+
+    # meta_data = {
+    #     'attr_defs': attribute_defs,
+    #     'temporal_decs': temporal_decs,
+    # }
 
     return cling_out_lines, meta_data
 

@@ -4,6 +4,10 @@ import pandas as pd
 import os
 import sqlite3
 from .helper import mkdir_p
+from .meta_data_parser import (
+    ASP_COMMENT_SYMBOL,
+    ASP_SYNTAX_ATTRIBUTE_DEF_KEYWORD,
+)
 
 
 class PWEExport:
@@ -83,7 +87,8 @@ class PWEExport:
                 rel_name = rel_name.rsplit('_', maxsplit=1)[0]
             if include_pw_ids:
                 attrs = ['PW_ID'] + attrs
-            attr_def_rules.append('% schema {}({})'.format(rel_name, ','.join(attrs)))
+            attr_def_rules.append('{} {} {}({})'.format(ASP_COMMENT_SYMBOL, ASP_SYNTAX_ATTRIBUTE_DEF_KEYWORD,
+                                                        rel_name, ','.join(attrs)))
 
         return attr_def_rules + pw_rel_facts
 
@@ -120,9 +125,12 @@ class PWEExport:
             if not rel_facts_with_arity:
                 rel_name = rel_name.rsplit('_', maxsplit=1)[0]
             attrs = ['WFS_VALUE'] + attrs
-            attr_def_rules.append('% schema {}({})'.format(rel_name, ','.join(attrs)))
+            attr_def_rules.append('{} {} {}({})'.format(ASP_COMMENT_SYMBOL, ASP_SYNTAX_ATTRIBUTE_DEF_KEYWORD,
+                                                        rel_name, ','.join(attrs)))
 
         return attr_def_rules + pw_rel_facts
+
+    ASP_TRIPLES_ATTR_NAMES = ['FACT_ID', 'SUBJECT', 'VALUE']
 
     @staticmethod
     def export_as_asp_triples(pws, rel_facts_with_arity: bool = False, include_pw_ids: bool = True, output_type='list'):
@@ -162,9 +170,10 @@ class PWEExport:
 
         if output_type == 'str':
             facts = [create_triple(fact[0], fact[1] ,fact[2]) for fact in facts]
-            facts.insert(0, '% schema {}'.format(create_triple('FACT_ID', 'SUBJECT', 'VALUE')))
+            facts.insert(0, '{} {} {}'.format(ASP_COMMENT_SYMBOL, ASP_SYNTAX_ATTRIBUTE_DEF_KEYWORD,
+                                              create_triple(*PWEExport.ASP_TRIPLES_ATTR_NAMES)))
         elif output_type == 'db':
-            facts = pd.DataFrame(data=facts, columns=['FACT_ID', 'SUBJECT', 'VALUE'])
+            facts = pd.DataFrame(data=facts, columns=PWEExport.ASP_TRIPLES_ATTR_NAMES)
 
         return facts
 
@@ -213,9 +222,10 @@ class PWEExport:
 
         if output_type == 'str':
             facts = [create_triple(fact[0], fact[1], fact[2]) for fact in facts]
-            facts.insert(0, '% schema {}'.format(create_triple('FACT_ID', 'SUBJECT', 'VALUE')))
+            facts.insert(0, '{} {} {}'.format(ASP_COMMENT_SYMBOL, ASP_SYNTAX_ATTRIBUTE_DEF_KEYWORD,
+                                              create_triple(*PWEExport.ASP_TRIPLES_ATTR_NAMES)))
         elif output_type == 'db':
-            facts = pd.DataFrame(data=facts, columns=['FACT_ID', 'SUBJECT', 'VALUE'])
+            facts = pd.DataFrame(data=facts, columns=PWEExport.ASP_TRIPLES_ATTR_NAMES)
 
         return facts
 

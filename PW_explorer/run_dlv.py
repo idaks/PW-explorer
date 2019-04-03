@@ -1,6 +1,6 @@
 import os
 import subprocess as subprocess
-from .helper import parse_for_attribute_defs, parse_for_temporal_declarations
+from .meta_data_parser import parse_meta_data
 
 def get_dlv_output(dlv_input_fnames: list, num_solutions: int=0, wfs_mode: bool=False,
                    dlv_max_int: int=None, other_args: list=None):
@@ -23,22 +23,29 @@ def get_dlv_output(dlv_input_fnames: list, num_solutions: int=0, wfs_mode: bool=
     process_ = subprocess.Popen(t, stdout=subprocess.PIPE)
     dlv_output = process_.communicate()[0]
     # dlv_output = subprocess.check_output()
-    attribute_defs = {}
-    temporal_decs = {}
+    meta_data = {}
+    #attribute_defs = {}
+    #temporal_decs = {}
     for fname in dlv_input_fnames:
         with open(fname, 'r') as f:
             dlv_rules = f.read().splitlines()
-            attribute_defs.update(parse_for_attribute_defs(dlv_rules))
-            temporal_decs.update(parse_for_temporal_declarations(dlv_rules))
+            f_meta_data = parse_meta_data(dlv_rules)
+            for md_type, md in f_meta_data.items():
+                if md_type in meta_data:
+                    meta_data[md_type].update(md)
+                else:
+                    meta_data[md_type] = md
 
     # print(dlv_output)
     dlv_out_lines = dlv_output.splitlines()
     dlv_out_lines = list(map(lambda x: str(x, 'utf-8'), dlv_out_lines))
+
     # dlv_out_lines = [l.decode('utf-8') for l in dlv_out_lines]
-    meta_data = {
-        'attr_defs': attribute_defs,
-        'temporal_decs': temporal_decs,
-    }
+
+    # meta_data = {
+    #     'attr_defs': attribute_defs,
+    #     'temporal_decs': temporal_decs,
+    # }
 
     return dlv_out_lines, meta_data
 
