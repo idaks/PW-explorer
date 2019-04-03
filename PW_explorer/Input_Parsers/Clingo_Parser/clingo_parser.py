@@ -70,20 +70,25 @@ class AntlrClingoListener(ClingoListener):
             self.curr_pw.pw_soln = float(ctx.TEXT(1).getText()) if isfloat(ctx.TEXT(1).getText()) else ctx.TEXT(1).getText()
 
     def enterActual_soln(self, ctx):
-        i = 0
-        while ctx.TEXT(i) is not None:
-            i += 1
-        self.curr_rl = Relation(ctx.TEXT(i - 1).getText())
+        # i = 0
+        # while ctx.TEXT(i) is not None:
+        #     i += 1
+        self.curr_rl = Relation(ctx.TEXT().getText())
+        # Set defaults in case this is a 0-arity relation
+        self.curr_rl_data = []
+
 
     def enterCustom_representation_soln(self, ctx):
 
         sol = ctx.TEXT().getText()
         self.curr_rl_data = sol.split(',')
+
+
+    def exitActual_soln(self, ctx):
+
         self.curr_rl.arity = len(self.curr_rl_data)
         rl_name_mod = str(self.curr_rl.relation_name + '_' + str(self.curr_rl.arity))
         self.curr_rl.relation_name = rl_name_mod
-
-    def exitCustom_representation_soln(self, ctx):
 
         foundMatch = False
         for rl in self.relations:
@@ -104,9 +109,6 @@ class AntlrClingoListener(ClingoListener):
         self.curr_rl = None  # could introduce bugs if passed by pointer in the upper statement, so be careful, use copy() if needed
         self.curr_rl_data = None
 
-    def exitActual_soln(self, ctx):
-        self.curr_rl = None
-        self.curr_rl_data = None
 
     def exitSolution(self, ctx):
         self.pws.append(self.curr_pw)  # again be wary, else use .copy()
