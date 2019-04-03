@@ -18,6 +18,9 @@ class AntlrDLVListener(DLV_OutListener):
     WFS_UNDEFINED_CATEGORY = 'undefined'
 
     def __init__(self):
+
+        self.silent = False
+
         self.pws = []
         self.relations = []
         self.dfs = {}
@@ -114,7 +117,8 @@ class AntlrDLVListener(DLV_OutListener):
         if self.soln_type in [AntlrDLVListener.OPT_SOLN, AntlrDLVListener.ASP_SOLN]:
             self.relations = AntlrDLVListener.create_rel_objs_from_pws(self.pws)
             self.dfs = AntlrDLVListener.load_pws_into_pandas(self.pws, self.relations)
-            print("Number of Models: {}".format(len(self.pws)))
+            if not self.silent:
+                print("Number of Models: {}".format(len(self.pws)))
         elif self.soln_type in [AntlrDLVListener.WFS_SOLN]:
             self.relations = AntlrDLVListener.create_rel_objs_from_atom_sets([self.true_set, self.undefined_set])
             self.dfs = AntlrDLVListener.load_wfs_soln_into_pandas(
@@ -161,7 +165,6 @@ class AntlrDLVListener(DLV_OutListener):
 
             rws = []  # could convert into numpy if sure it's all float/int
             for m, pw in enumerate(pws):
-                # print rl.r_id
                 if rl.relation_name in pw.rls:
                     rl_data_pw = []
                     for rl_data in pw.rls[rl.relation_name]:
@@ -194,7 +197,7 @@ class AntlrDLVListener(DLV_OutListener):
         return dfs
 
 
-def parse_dlv_output(fname):
+def parse_dlv_output(fname, silent=False, print_parse_tree=False):
 
     input_ = FileStream(fname)
     lexer = DLV_OutLexer(input_)
@@ -205,9 +208,10 @@ def parse_dlv_output(fname):
     stream = CommonTokenStream(lexer)
     parser = DLV_OutParser(stream)
     tree = parser.dlvOutput()
-    # Use (uncomment) the line below to see the parse tree of the given input
-    # print (Trees.toStringTree(tree, None, parser))
+    if print_parse_tree:
+        print(Trees.toStringTree(tree, None, parser))
     pw_analyzer = AntlrDLVListener()
+    pw_analyzer.silent = silent
     walker = ParseTreeWalker()
     walker.walk(pw_analyzer, tree)
 

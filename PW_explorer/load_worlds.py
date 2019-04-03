@@ -9,7 +9,7 @@ import numpy as np
 import os
 
 
-def parse_solution(fname, meta_data: dict=None, reasoner='clingo'):
+def parse_solution(fname, meta_data: dict=None, reasoner='clingo', silent=False, print_parse_tree=False):
 
     if not meta_data:
         meta_data = {}
@@ -22,7 +22,7 @@ def parse_solution(fname, meta_data: dict=None, reasoner='clingo'):
         print("Unrecognized reasoner selected")
         exit(1)
 
-    dfs, relations, pws = parser_to_use(fname)
+    dfs, relations, pws = parser_to_use(fname, silent=silent, print_parse_tree=print_parse_tree)
 
     if 'attr_defs' in meta_data:
         attr_defs = meta_data['attr_defs']
@@ -48,7 +48,7 @@ def parse_solution(fname, meta_data: dict=None, reasoner='clingo'):
     return dfs, relations, pws
 
 
-def load_worlds(asp_output, meta_data: dict=None, reasoner='clingo'):
+def load_worlds(asp_output, meta_data: dict=None, reasoner='clingo', silent=False, print_parse_tree=False):
     """
     :param asp_output: single string or a list of strings
     :param meta_data:
@@ -62,6 +62,6 @@ def load_worlds(asp_output, meta_data: dict=None, reasoner='clingo'):
     dummy_fname = 'sjbcbshlpowieiohbcjhsbnckibubkjcnaiuhwyegvjcbwscuawhbnckbuveyrb.txt'
     with open(dummy_fname, 'w') as f:
         f.write('\n'.join(asp_output))
-    dfs, relations, pws = parse_solution(dummy_fname, meta_data, reasoner)
+    dfs, relations, pws = parse_solution(dummy_fname, meta_data, reasoner, silent, print_parse_tree)
     os.remove(dummy_fname)
     return dfs, relations, pws
