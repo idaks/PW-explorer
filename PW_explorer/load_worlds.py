@@ -61,7 +61,10 @@ def load_worlds(asp_output, meta_data: dict=None, reasoner='clingo', silent=Fals
     # TODO Add functionality to generate random file name
     dummy_fname = 'sjbcbshlpowieiohbcjhsbnckibubkjcnaiuhwyegvjcbwscuawhbnckbuveyrb.txt'
     with open(dummy_fname, 'w') as f:
-        f.write('\n'.join(asp_output))
+        if isinstance(asp_output, list):
+            f.write('\n'.join(asp_output))
+        elif isinstance(asp_output, str):
+            f.write(asp_output)
     dfs, relations, pws = parse_solution(dummy_fname, meta_data, reasoner, silent, print_parse_tree)
     os.remove(dummy_fname)
     return dfs, relations, pws
