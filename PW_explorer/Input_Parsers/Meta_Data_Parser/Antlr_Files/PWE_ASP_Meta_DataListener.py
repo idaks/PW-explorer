@@ -17,15 +17,6 @@ class PWE_ASP_Meta_DataListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by PWE_ASP_Meta_DataParser#comment_line.
-    def enterComment_line(self, ctx:PWE_ASP_Meta_DataParser.Comment_lineContext):
-        pass
-
-    # Exit a parse tree produced by PWE_ASP_Meta_DataParser#comment_line.
-    def exitComment_line(self, ctx:PWE_ASP_Meta_DataParser.Comment_lineContext):
-        pass
-
-
     # Enter a parse tree produced by PWE_ASP_Meta_DataParser#comment.
     def enterComment(self, ctx:PWE_ASP_Meta_DataParser.CommentContext):
         pass

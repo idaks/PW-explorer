@@ -7,9 +7,7 @@ options {
 
 // Parser Rules
 
-aspFile: (comment_line)* ;
-
-comment_line: comment+ ;
+aspFile: (comment)* ;
 
 comment: '%'+ meta_data_comment ;
 
