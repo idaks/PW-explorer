@@ -7,17 +7,14 @@ options {
 
 // Parser Rules
 
-aspFile: (line)* ;
+aspFile: (comment_line)* ;
 
-line: (comment_line | pure_rule_line) ;
+comment_line: comment+ ;
 
-pure_rule_line: NON_COMMENT+ ;
+comment: '%'+ meta_data_comment ;
 
-comment_line: NON_COMMENT* comment+ ;
+meta_data_comment: (attr_def | temporal_dec | graphviz_styling) ;
 
-comment: '%'+ (attr_def | temporal_dec | graphviz_styling) ;
-
-// Keyword 'schema' comes from the ______ file, change as needed
 attr_def: 'schema' REL_NAME '(' ATTR_NAME (',' ATTR_NAME)* ')' '.'? ;
 
 temporal_dec: 'temporal' REL_NAME '(' TEMPORAL_ATTR_OPTIONS (',' TEMPORAL_ATTR_OPTIONS)* ')' '.'? ;

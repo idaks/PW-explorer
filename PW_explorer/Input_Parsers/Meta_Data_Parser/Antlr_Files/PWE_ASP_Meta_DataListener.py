@@ -17,24 +17,6 @@ class PWE_ASP_Meta_DataListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by PWE_ASP_Meta_DataParser#line.
-    def enterLine(self, ctx:PWE_ASP_Meta_DataParser.LineContext):
-        pass
-
-    # Exit a parse tree produced by PWE_ASP_Meta_DataParser#line.
-    def exitLine(self, ctx:PWE_ASP_Meta_DataParser.LineContext):
-        pass
-
-
-    # Enter a parse tree produced by PWE_ASP_Meta_DataParser#pure_rule_line.
-    def enterPure_rule_line(self, ctx:PWE_ASP_Meta_DataParser.Pure_rule_lineContext):
-        pass
-
-    # Exit a parse tree produced by PWE_ASP_Meta_DataParser#pure_rule_line.
-    def exitPure_rule_line(self, ctx:PWE_ASP_Meta_DataParser.Pure_rule_lineContext):
-        pass
-
-
     # Enter a parse tree produced by PWE_ASP_Meta_DataParser#comment_line.
     def enterComment_line(self, ctx:PWE_ASP_Meta_DataParser.Comment_lineContext):
         pass
@@ -50,6 +32,15 @@ class PWE_ASP_Meta_DataListener(ParseTreeListener):
 
     # Exit a parse tree produced by PWE_ASP_Meta_DataParser#comment.
     def exitComment(self, ctx:PWE_ASP_Meta_DataParser.CommentContext):
+        pass
+
+
+    # Enter a parse tree produced by PWE_ASP_Meta_DataParser#meta_data_comment.
+    def enterMeta_data_comment(self, ctx:PWE_ASP_Meta_DataParser.Meta_data_commentContext):
+        pass
+
+    # Exit a parse tree produced by PWE_ASP_Meta_DataParser#meta_data_comment.
+    def exitMeta_data_comment(self, ctx:PWE_ASP_Meta_DataParser.Meta_data_commentContext):
         pass
 
 

@@ -8,64 +8,57 @@ import sys
 def serializedATN():
     with StringIO() as buf:
         buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\33")
-        buf.write("\u00a4\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
+        buf.write("\u0098\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
         buf.write("\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4\f\t\f\4\r\t\r\4\16")
-        buf.write("\t\16\4\17\t\17\4\20\t\20\3\2\7\2\"\n\2\f\2\16\2%\13\2")
-        buf.write("\3\3\3\3\5\3)\n\3\3\4\6\4,\n\4\r\4\16\4-\3\5\7\5\61\n")
-        buf.write("\5\f\5\16\5\64\13\5\3\5\6\5\67\n\5\r\5\16\58\3\6\6\6<")
-        buf.write("\n\6\r\6\16\6=\3\6\3\6\3\6\5\6C\n\6\3\7\3\7\3\7\3\7\3")
-        buf.write("\7\3\7\7\7K\n\7\f\7\16\7N\13\7\3\7\3\7\5\7R\n\7\3\b\3")
-        buf.write("\b\3\b\3\b\6\bX\n\b\r\b\16\bY\3\b\3\b\5\b^\n\b\3\t\3\t")
-        buf.write("\3\t\3\t\5\td\n\t\3\n\3\n\6\nh\n\n\r\n\16\ni\3\n\5\nm")
-        buf.write("\n\n\3\13\3\13\3\13\3\13\3\13\3\13\7\13u\n\13\f\13\16")
-        buf.write("\13x\13\13\3\13\3\13\6\13|\n\13\r\13\16\13}\3\13\5\13")
-        buf.write("\u0081\n\13\3\f\3\f\3\f\3\f\3\f\3\f\7\f\u0089\n\f\f\f")
-        buf.write("\16\f\u008c\13\f\3\f\3\f\6\f\u0090\n\f\r\f\16\f\u0091")
-        buf.write("\3\f\5\f\u0095\n\f\3\r\3\r\3\16\3\16\3\17\3\17\3\20\3")
-        buf.write("\20\3\20\3\20\3\20\5\20\u00a2\n\20\3\20\2\2\21\2\4\6\b")
-        buf.write("\n\f\16\20\22\24\26\30\32\34\36\2\2\2\u00ab\2#\3\2\2\2")
-        buf.write("\4(\3\2\2\2\6+\3\2\2\2\b\62\3\2\2\2\n;\3\2\2\2\fD\3\2")
-        buf.write("\2\2\16S\3\2\2\2\20_\3\2\2\2\22e\3\2\2\2\24n\3\2\2\2\26")
-        buf.write("\u0082\3\2\2\2\30\u0096\3\2\2\2\32\u0098\3\2\2\2\34\u009a")
-        buf.write("\3\2\2\2\36\u009c\3\2\2\2 \"\5\4\3\2! \3\2\2\2\"%\3\2")
-        buf.write("\2\2#!\3\2\2\2#$\3\2\2\2$\3\3\2\2\2%#\3\2\2\2&)\5\b\5")
-        buf.write("\2\')\5\6\4\2(&\3\2\2\2(\'\3\2\2\2)\5\3\2\2\2*,\7\31\2")
-        buf.write("\2+*\3\2\2\2,-\3\2\2\2-+\3\2\2\2-.\3\2\2\2.\7\3\2\2\2")
-        buf.write("/\61\7\31\2\2\60/\3\2\2\2\61\64\3\2\2\2\62\60\3\2\2\2")
-        buf.write("\62\63\3\2\2\2\63\66\3\2\2\2\64\62\3\2\2\2\65\67\5\n\6")
-        buf.write("\2\66\65\3\2\2\2\678\3\2\2\28\66\3\2\2\289\3\2\2\29\t")
-        buf.write("\3\2\2\2:<\7\3\2\2;:\3\2\2\2<=\3\2\2\2=;\3\2\2\2=>\3\2")
-        buf.write("\2\2>B\3\2\2\2?C\5\f\7\2@C\5\16\b\2AC\5\20\t\2B?\3\2\2")
-        buf.write("\2B@\3\2\2\2BA\3\2\2\2C\13\3\2\2\2DE\7\4\2\2EF\7\20\2")
-        buf.write("\2FG\7\5\2\2GL\7\21\2\2HI\7\6\2\2IK\7\21\2\2JH\3\2\2\2")
-        buf.write("KN\3\2\2\2LJ\3\2\2\2LM\3\2\2\2MO\3\2\2\2NL\3\2\2\2OQ\7")
-        buf.write("\7\2\2PR\7\b\2\2QP\3\2\2\2QR\3\2\2\2R\r\3\2\2\2ST\7\t")
-        buf.write("\2\2TU\7\20\2\2UW\7\5\2\2VX\7\26\2\2WV\3\2\2\2XY\3\2\2")
-        buf.write("\2YW\3\2\2\2YZ\3\2\2\2Z[\3\2\2\2[]\7\7\2\2\\^\7\b\2\2")
-        buf.write("]\\\3\2\2\2]^\3\2\2\2^\17\3\2\2\2_c\7\n\2\2`d\5\22\n\2")
-        buf.write("ad\5\24\13\2bd\5\26\f\2c`\3\2\2\2ca\3\2\2\2cb\3\2\2\2")
-        buf.write("d\21\3\2\2\2eg\7\13\2\2fh\5\30\r\2gf\3\2\2\2hi\3\2\2\2")
-        buf.write("ig\3\2\2\2ij\3\2\2\2jl\3\2\2\2km\7\b\2\2lk\3\2\2\2lm\3")
-        buf.write("\2\2\2m\23\3\2\2\2no\7\f\2\2op\7\20\2\2pq\7\5\2\2qv\7")
-        buf.write("\27\2\2rs\7\6\2\2su\7\27\2\2tr\3\2\2\2ux\3\2\2\2vt\3\2")
-        buf.write("\2\2vw\3\2\2\2wy\3\2\2\2xv\3\2\2\2y{\7\7\2\2z|\5\32\16")
-        buf.write("\2{z\3\2\2\2|}\3\2\2\2}{\3\2\2\2}~\3\2\2\2~\u0080\3\2")
-        buf.write("\2\2\177\u0081\7\b\2\2\u0080\177\3\2\2\2\u0080\u0081\3")
-        buf.write("\2\2\2\u0081\25\3\2\2\2\u0082\u0083\7\r\2\2\u0083\u0084")
-        buf.write("\7\20\2\2\u0084\u0085\7\5\2\2\u0085\u008a\7\30\2\2\u0086")
-        buf.write("\u0087\7\6\2\2\u0087\u0089\7\30\2\2\u0088\u0086\3\2\2")
-        buf.write("\2\u0089\u008c\3\2\2\2\u008a\u0088\3\2\2\2\u008a\u008b")
-        buf.write("\3\2\2\2\u008b\u008d\3\2\2\2\u008c\u008a\3\2\2\2\u008d")
-        buf.write("\u008f\7\7\2\2\u008e\u0090\5\34\17\2\u008f\u008e\3\2\2")
-        buf.write("\2\u0090\u0091\3\2\2\2\u0091\u008f\3\2\2\2\u0091\u0092")
-        buf.write("\3\2\2\2\u0092\u0094\3\2\2\2\u0093\u0095\7\b\2\2\u0094")
-        buf.write("\u0093\3\2\2\2\u0094\u0095\3\2\2\2\u0095\27\3\2\2\2\u0096")
-        buf.write("\u0097\5\36\20\2\u0097\31\3\2\2\2\u0098\u0099\5\36\20")
-        buf.write("\2\u0099\33\3\2\2\2\u009a\u009b\5\36\20\2\u009b\35\3\2")
-        buf.write("\2\2\u009c\u009d\7\22\2\2\u009d\u00a1\7\16\2\2\u009e\u00a2")
-        buf.write("\7\24\2\2\u009f\u00a0\7\17\2\2\u00a0\u00a2\7\25\2\2\u00a1")
-        buf.write("\u009e\3\2\2\2\u00a1\u009f\3\2\2\2\u00a2\37\3\2\2\2\27")
-        buf.write("#(-\628=BLQY]cilv}\u0080\u008a\u0091\u0094\u00a1")
+        buf.write("\t\16\4\17\t\17\3\2\7\2 \n\2\f\2\16\2#\13\2\3\3\6\3&\n")
+        buf.write("\3\r\3\16\3\'\3\4\6\4+\n\4\r\4\16\4,\3\4\3\4\3\5\3\5\3")
+        buf.write("\5\5\5\64\n\5\3\6\3\6\3\6\3\6\3\6\3\6\7\6<\n\6\f\6\16")
+        buf.write("\6?\13\6\3\6\3\6\5\6C\n\6\3\7\3\7\3\7\3\7\3\7\3\7\7\7")
+        buf.write("K\n\7\f\7\16\7N\13\7\3\7\3\7\5\7R\n\7\3\b\3\b\3\b\3\b")
+        buf.write("\5\bX\n\b\3\t\3\t\6\t\\\n\t\r\t\16\t]\3\t\5\ta\n\t\3\n")
+        buf.write("\3\n\3\n\3\n\3\n\3\n\7\ni\n\n\f\n\16\nl\13\n\3\n\3\n\6")
+        buf.write("\np\n\n\r\n\16\nq\3\n\5\nu\n\n\3\13\3\13\3\13\3\13\3\13")
+        buf.write("\3\13\7\13}\n\13\f\13\16\13\u0080\13\13\3\13\3\13\6\13")
+        buf.write("\u0084\n\13\r\13\16\13\u0085\3\13\5\13\u0089\n\13\3\f")
+        buf.write("\3\f\3\r\3\r\3\16\3\16\3\17\3\17\3\17\3\17\3\17\5\17\u0096")
+        buf.write("\n\17\3\17\2\2\20\2\4\6\b\n\f\16\20\22\24\26\30\32\34")
+        buf.write("\2\2\2\u009d\2!\3\2\2\2\4%\3\2\2\2\6*\3\2\2\2\b\63\3\2")
+        buf.write("\2\2\n\65\3\2\2\2\fD\3\2\2\2\16S\3\2\2\2\20Y\3\2\2\2\22")
+        buf.write("b\3\2\2\2\24v\3\2\2\2\26\u008a\3\2\2\2\30\u008c\3\2\2")
+        buf.write("\2\32\u008e\3\2\2\2\34\u0090\3\2\2\2\36 \5\4\3\2\37\36")
+        buf.write("\3\2\2\2 #\3\2\2\2!\37\3\2\2\2!\"\3\2\2\2\"\3\3\2\2\2")
+        buf.write("#!\3\2\2\2$&\5\6\4\2%$\3\2\2\2&\'\3\2\2\2\'%\3\2\2\2\'")
+        buf.write("(\3\2\2\2(\5\3\2\2\2)+\7\3\2\2*)\3\2\2\2+,\3\2\2\2,*\3")
+        buf.write("\2\2\2,-\3\2\2\2-.\3\2\2\2./\5\b\5\2/\7\3\2\2\2\60\64")
+        buf.write("\5\n\6\2\61\64\5\f\7\2\62\64\5\16\b\2\63\60\3\2\2\2\63")
+        buf.write("\61\3\2\2\2\63\62\3\2\2\2\64\t\3\2\2\2\65\66\7\4\2\2\66")
+        buf.write("\67\7\20\2\2\678\7\5\2\28=\7\21\2\29:\7\6\2\2:<\7\21\2")
+        buf.write("\2;9\3\2\2\2<?\3\2\2\2=;\3\2\2\2=>\3\2\2\2>@\3\2\2\2?")
+        buf.write("=\3\2\2\2@B\7\7\2\2AC\7\b\2\2BA\3\2\2\2BC\3\2\2\2C\13")
+        buf.write("\3\2\2\2DE\7\t\2\2EF\7\20\2\2FG\7\5\2\2GL\7\26\2\2HI\7")
+        buf.write("\6\2\2IK\7\26\2\2JH\3\2\2\2KN\3\2\2\2LJ\3\2\2\2LM\3\2")
+        buf.write("\2\2MO\3\2\2\2NL\3\2\2\2OQ\7\7\2\2PR\7\b\2\2QP\3\2\2\2")
+        buf.write("QR\3\2\2\2R\r\3\2\2\2SW\7\n\2\2TX\5\20\t\2UX\5\22\n\2")
+        buf.write("VX\5\24\13\2WT\3\2\2\2WU\3\2\2\2WV\3\2\2\2X\17\3\2\2\2")
+        buf.write("Y[\7\13\2\2Z\\\5\26\f\2[Z\3\2\2\2\\]\3\2\2\2][\3\2\2\2")
+        buf.write("]^\3\2\2\2^`\3\2\2\2_a\7\b\2\2`_\3\2\2\2`a\3\2\2\2a\21")
+        buf.write("\3\2\2\2bc\7\f\2\2cd\7\20\2\2de\7\5\2\2ej\7\27\2\2fg\7")
+        buf.write("\6\2\2gi\7\27\2\2hf\3\2\2\2il\3\2\2\2jh\3\2\2\2jk\3\2")
+        buf.write("\2\2km\3\2\2\2lj\3\2\2\2mo\7\7\2\2np\5\30\r\2on\3\2\2")
+        buf.write("\2pq\3\2\2\2qo\3\2\2\2qr\3\2\2\2rt\3\2\2\2su\7\b\2\2t")
+        buf.write("s\3\2\2\2tu\3\2\2\2u\23\3\2\2\2vw\7\r\2\2wx\7\20\2\2x")
+        buf.write("y\7\5\2\2y~\7\30\2\2z{\7\6\2\2{}\7\30\2\2|z\3\2\2\2}\u0080")
+        buf.write("\3\2\2\2~|\3\2\2\2~\177\3\2\2\2\177\u0081\3\2\2\2\u0080")
+        buf.write("~\3\2\2\2\u0081\u0083\7\7\2\2\u0082\u0084\5\32\16\2\u0083")
+        buf.write("\u0082\3\2\2\2\u0084\u0085\3\2\2\2\u0085\u0083\3\2\2\2")
+        buf.write("\u0085\u0086\3\2\2\2\u0086\u0088\3\2\2\2\u0087\u0089\7")
+        buf.write("\b\2\2\u0088\u0087\3\2\2\2\u0088\u0089\3\2\2\2\u0089\25")
+        buf.write("\3\2\2\2\u008a\u008b\5\34\17\2\u008b\27\3\2\2\2\u008c")
+        buf.write("\u008d\5\34\17\2\u008d\31\3\2\2\2\u008e\u008f\5\34\17")
+        buf.write("\2\u008f\33\3\2\2\2\u0090\u0091\7\22\2\2\u0091\u0095\7")
+        buf.write("\16\2\2\u0092\u0096\7\24\2\2\u0093\u0094\7\17\2\2\u0094")
+        buf.write("\u0096\7\25\2\2\u0095\u0092\3\2\2\2\u0095\u0093\3\2\2")
+        buf.write("\2\u0096\35\3\2\2\2\24!\',\63=BLQW]`jqt~\u0085\u0088\u0095")
         return buf.getvalue()
 
 
@@ -93,26 +86,25 @@ class PWE_ASP_Meta_DataParser ( Parser ):
                       "TEXT" ]
 
     RULE_aspFile = 0
-    RULE_line = 1
-    RULE_pure_rule_line = 2
-    RULE_comment_line = 3
-    RULE_comment = 4
-    RULE_attr_def = 5
-    RULE_temporal_dec = 6
-    RULE_graphviz_styling = 7
-    RULE_graphviz_graph_dec = 8
-    RULE_graphviz_node_dec = 9
-    RULE_graphviz_edge_dec = 10
-    RULE_graphviz_graph_style_option = 11
-    RULE_graphviz_node_style_option = 12
-    RULE_graphviz_edge_style_option = 13
-    RULE_graphviz_style_option = 14
+    RULE_comment_line = 1
+    RULE_comment = 2
+    RULE_meta_data_comment = 3
+    RULE_attr_def = 4
+    RULE_temporal_dec = 5
+    RULE_graphviz_styling = 6
+    RULE_graphviz_graph_dec = 7
+    RULE_graphviz_node_dec = 8
+    RULE_graphviz_edge_dec = 9
+    RULE_graphviz_graph_style_option = 10
+    RULE_graphviz_node_style_option = 11
+    RULE_graphviz_edge_style_option = 12
+    RULE_graphviz_style_option = 13
 
-    ruleNames =  [ "aspFile", "line", "pure_rule_line", "comment_line", 
-                   "comment", "attr_def", "temporal_dec", "graphviz_styling", 
-                   "graphviz_graph_dec", "graphviz_node_dec", "graphviz_edge_dec", 
-                   "graphviz_graph_style_option", "graphviz_node_style_option", 
-                   "graphviz_edge_style_option", "graphviz_style_option" ]
+    ruleNames =  [ "aspFile", "comment_line", "comment", "meta_data_comment", 
+                   "attr_def", "temporal_dec", "graphviz_styling", "graphviz_graph_dec", 
+                   "graphviz_node_dec", "graphviz_edge_dec", "graphviz_graph_style_option", 
+                   "graphviz_node_style_option", "graphviz_edge_style_option", 
+                   "graphviz_style_option" ]
 
     EOF = Token.EOF
     T__0=1
@@ -155,11 +147,11 @@ class PWE_ASP_Meta_DataParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def line(self, i:int=None):
+        def comment_line(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(PWE_ASP_Meta_DataParser.LineContext)
+                return self.getTypedRuleContexts(PWE_ASP_Meta_DataParser.Comment_lineContext)
             else:
-                return self.getTypedRuleContext(PWE_ASP_Meta_DataParser.LineContext,i)
+                return self.getTypedRuleContext(PWE_ASP_Meta_DataParser.Comment_lineContext,i)
 
 
         def getRuleIndex(self):
@@ -183,125 +175,15 @@ class PWE_ASP_Meta_DataParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 33
+            self.state = 31
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==PWE_ASP_Meta_DataParser.T__0 or _la==PWE_ASP_Meta_DataParser.NON_COMMENT:
-                self.state = 30
-                self.line()
-                self.state = 35
+            while _la==PWE_ASP_Meta_DataParser.T__0:
+                self.state = 28
+                self.comment_line()
+                self.state = 33
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-
-        except RecognitionException as re:
-            localctx.exception = re
-            self._errHandler.reportError(self, re)
-            self._errHandler.recover(self, re)
-        finally:
-            self.exitRule()
-        return localctx
-
-    class LineContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
-            super().__init__(parent, invokingState)
-            self.parser = parser
-
-        def comment_line(self):
-            return self.getTypedRuleContext(PWE_ASP_Meta_DataParser.Comment_lineContext,0)
-
-
-        def pure_rule_line(self):
-            return self.getTypedRuleContext(PWE_ASP_Meta_DataParser.Pure_rule_lineContext,0)
-
-
-        def getRuleIndex(self):
-            return PWE_ASP_Meta_DataParser.RULE_line
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterLine" ):
-                listener.enterLine(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitLine" ):
-                listener.exitLine(self)
-
-
-
-
-    def line(self):
-
-        localctx = PWE_ASP_Meta_DataParser.LineContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 2, self.RULE_line)
-        try:
-            self.enterOuterAlt(localctx, 1)
-            self.state = 38
-            self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,1,self._ctx)
-            if la_ == 1:
-                self.state = 36
-                self.comment_line()
-                pass
-
-            elif la_ == 2:
-                self.state = 37
-                self.pure_rule_line()
-                pass
-
-
-        except RecognitionException as re:
-            localctx.exception = re
-            self._errHandler.reportError(self, re)
-            self._errHandler.recover(self, re)
-        finally:
-            self.exitRule()
-        return localctx
-
-    class Pure_rule_lineContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
-            super().__init__(parent, invokingState)
-            self.parser = parser
-
-        def NON_COMMENT(self, i:int=None):
-            if i is None:
-                return self.getTokens(PWE_ASP_Meta_DataParser.NON_COMMENT)
-            else:
-                return self.getToken(PWE_ASP_Meta_DataParser.NON_COMMENT, i)
-
-        def getRuleIndex(self):
-            return PWE_ASP_Meta_DataParser.RULE_pure_rule_line
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterPure_rule_line" ):
-                listener.enterPure_rule_line(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitPure_rule_line" ):
-                listener.exitPure_rule_line(self)
-
-
-
-
-    def pure_rule_line(self):
-
-        localctx = PWE_ASP_Meta_DataParser.Pure_rule_lineContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 4, self.RULE_pure_rule_line)
-        try:
-            self.enterOuterAlt(localctx, 1)
-            self.state = 41 
-            self._errHandler.sync(self)
-            _alt = 1
-            while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
-                if _alt == 1:
-                    self.state = 40
-                    self.match(PWE_ASP_Meta_DataParser.NON_COMMENT)
-
-                else:
-                    raise NoViableAltException(self)
-                self.state = 43 
-                self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,2,self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -316,12 +198,6 @@ class PWE_ASP_Meta_DataParser ( Parser ):
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
-
-        def NON_COMMENT(self, i:int=None):
-            if i is None:
-                return self.getTokens(PWE_ASP_Meta_DataParser.NON_COMMENT)
-            else:
-                return self.getToken(PWE_ASP_Meta_DataParser.NON_COMMENT, i)
 
         def comment(self, i:int=None):
             if i is None:
@@ -347,33 +223,22 @@ class PWE_ASP_Meta_DataParser ( Parser ):
     def comment_line(self):
 
         localctx = PWE_ASP_Meta_DataParser.Comment_lineContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 6, self.RULE_comment_line)
-        self._la = 0 # Token type
+        self.enterRule(localctx, 2, self.RULE_comment_line)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 48
-            self._errHandler.sync(self)
-            _la = self._input.LA(1)
-            while _la==PWE_ASP_Meta_DataParser.NON_COMMENT:
-                self.state = 45
-                self.match(PWE_ASP_Meta_DataParser.NON_COMMENT)
-                self.state = 50
-                self._errHandler.sync(self)
-                _la = self._input.LA(1)
-
-            self.state = 52 
+            self.state = 35 
             self._errHandler.sync(self)
             _alt = 1
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt == 1:
-                    self.state = 51
+                    self.state = 34
                     self.comment()
 
                 else:
                     raise NoViableAltException(self)
-                self.state = 54 
+                self.state = 37 
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,4,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input,1,self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -389,16 +254,8 @@ class PWE_ASP_Meta_DataParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def attr_def(self):
-            return self.getTypedRuleContext(PWE_ASP_Meta_DataParser.Attr_defContext,0)
-
-
-        def temporal_dec(self):
-            return self.getTypedRuleContext(PWE_ASP_Meta_DataParser.Temporal_decContext,0)
-
-
-        def graphviz_styling(self):
-            return self.getTypedRuleContext(PWE_ASP_Meta_DataParser.Graphviz_stylingContext,0)
+        def meta_data_comment(self):
+            return self.getTypedRuleContext(PWE_ASP_Meta_DataParser.Meta_data_commentContext,0)
 
 
         def getRuleIndex(self):
@@ -418,35 +275,83 @@ class PWE_ASP_Meta_DataParser ( Parser ):
     def comment(self):
 
         localctx = PWE_ASP_Meta_DataParser.CommentContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 8, self.RULE_comment)
+        self.enterRule(localctx, 4, self.RULE_comment)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 57 
+            self.state = 40 
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
-                self.state = 56
+                self.state = 39
                 self.match(PWE_ASP_Meta_DataParser.T__0)
-                self.state = 59 
+                self.state = 42 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if not (_la==PWE_ASP_Meta_DataParser.T__0):
                     break
 
-            self.state = 64
+            self.state = 44
+            self.meta_data_comment()
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+    class Meta_data_commentContext(ParserRuleContext):
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def attr_def(self):
+            return self.getTypedRuleContext(PWE_ASP_Meta_DataParser.Attr_defContext,0)
+
+
+        def temporal_dec(self):
+            return self.getTypedRuleContext(PWE_ASP_Meta_DataParser.Temporal_decContext,0)
+
+
+        def graphviz_styling(self):
+            return self.getTypedRuleContext(PWE_ASP_Meta_DataParser.Graphviz_stylingContext,0)
+
+
+        def getRuleIndex(self):
+            return PWE_ASP_Meta_DataParser.RULE_meta_data_comment
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterMeta_data_comment" ):
+                listener.enterMeta_data_comment(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitMeta_data_comment" ):
+                listener.exitMeta_data_comment(self)
+
+
+
+
+    def meta_data_comment(self):
+
+        localctx = PWE_ASP_Meta_DataParser.Meta_data_commentContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 6, self.RULE_meta_data_comment)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 49
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [PWE_ASP_Meta_DataParser.T__1]:
-                self.state = 61
+                self.state = 46
                 self.attr_def()
                 pass
             elif token in [PWE_ASP_Meta_DataParser.T__6]:
-                self.state = 62
+                self.state = 47
                 self.temporal_dec()
                 pass
             elif token in [PWE_ASP_Meta_DataParser.T__7]:
-                self.state = 63
+                self.state = 48
                 self.graphviz_styling()
                 pass
             else:
@@ -492,37 +397,37 @@ class PWE_ASP_Meta_DataParser ( Parser ):
     def attr_def(self):
 
         localctx = PWE_ASP_Meta_DataParser.Attr_defContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 10, self.RULE_attr_def)
+        self.enterRule(localctx, 8, self.RULE_attr_def)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 66
+            self.state = 51
             self.match(PWE_ASP_Meta_DataParser.T__1)
-            self.state = 67
+            self.state = 52
             self.match(PWE_ASP_Meta_DataParser.REL_NAME)
-            self.state = 68
+            self.state = 53
             self.match(PWE_ASP_Meta_DataParser.T__2)
-            self.state = 69
+            self.state = 54
             self.match(PWE_ASP_Meta_DataParser.ATTR_NAME)
-            self.state = 74
+            self.state = 59
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la==PWE_ASP_Meta_DataParser.T__3:
-                self.state = 70
+                self.state = 55
                 self.match(PWE_ASP_Meta_DataParser.T__3)
-                self.state = 71
+                self.state = 56
                 self.match(PWE_ASP_Meta_DataParser.ATTR_NAME)
-                self.state = 76
+                self.state = 61
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 77
+            self.state = 62
             self.match(PWE_ASP_Meta_DataParser.T__4)
-            self.state = 79
+            self.state = 64
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==PWE_ASP_Meta_DataParser.T__5:
-                self.state = 78
+                self.state = 63
                 self.match(PWE_ASP_Meta_DataParser.T__5)
 
 
@@ -566,35 +471,37 @@ class PWE_ASP_Meta_DataParser ( Parser ):
     def temporal_dec(self):
 
         localctx = PWE_ASP_Meta_DataParser.Temporal_decContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 12, self.RULE_temporal_dec)
+        self.enterRule(localctx, 10, self.RULE_temporal_dec)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 81
+            self.state = 66
             self.match(PWE_ASP_Meta_DataParser.T__6)
-            self.state = 82
+            self.state = 67
             self.match(PWE_ASP_Meta_DataParser.REL_NAME)
-            self.state = 83
+            self.state = 68
             self.match(PWE_ASP_Meta_DataParser.T__2)
-            self.state = 85 
+            self.state = 69
+            self.match(PWE_ASP_Meta_DataParser.TEMPORAL_ATTR_OPTIONS)
+            self.state = 74
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while True:
-                self.state = 84
+            while _la==PWE_ASP_Meta_DataParser.T__3:
+                self.state = 70
+                self.match(PWE_ASP_Meta_DataParser.T__3)
+                self.state = 71
                 self.match(PWE_ASP_Meta_DataParser.TEMPORAL_ATTR_OPTIONS)
-                self.state = 87 
+                self.state = 76
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if not (_la==PWE_ASP_Meta_DataParser.TEMPORAL_ATTR_OPTIONS):
-                    break
 
-            self.state = 89
+            self.state = 77
             self.match(PWE_ASP_Meta_DataParser.T__4)
-            self.state = 91
+            self.state = 79
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==PWE_ASP_Meta_DataParser.T__5:
-                self.state = 90
+                self.state = 78
                 self.match(PWE_ASP_Meta_DataParser.T__5)
 
 
@@ -641,24 +548,24 @@ class PWE_ASP_Meta_DataParser ( Parser ):
     def graphviz_styling(self):
 
         localctx = PWE_ASP_Meta_DataParser.Graphviz_stylingContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 14, self.RULE_graphviz_styling)
+        self.enterRule(localctx, 12, self.RULE_graphviz_styling)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 93
+            self.state = 81
             self.match(PWE_ASP_Meta_DataParser.T__7)
-            self.state = 97
+            self.state = 85
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [PWE_ASP_Meta_DataParser.T__8]:
-                self.state = 94
+                self.state = 82
                 self.graphviz_graph_dec()
                 pass
             elif token in [PWE_ASP_Meta_DataParser.T__9]:
-                self.state = 95
+                self.state = 83
                 self.graphviz_node_dec()
                 pass
             elif token in [PWE_ASP_Meta_DataParser.T__10]:
-                self.state = 96
+                self.state = 84
                 self.graphviz_edge_dec()
                 pass
             else:
@@ -702,29 +609,29 @@ class PWE_ASP_Meta_DataParser ( Parser ):
     def graphviz_graph_dec(self):
 
         localctx = PWE_ASP_Meta_DataParser.Graphviz_graph_decContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 16, self.RULE_graphviz_graph_dec)
+        self.enterRule(localctx, 14, self.RULE_graphviz_graph_dec)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 99
+            self.state = 87
             self.match(PWE_ASP_Meta_DataParser.T__8)
-            self.state = 101 
+            self.state = 89 
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
-                self.state = 100
+                self.state = 88
                 self.graphviz_graph_style_option()
-                self.state = 103 
+                self.state = 91 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if not (_la==PWE_ASP_Meta_DataParser.PROPERTY_NAME):
                     break
 
-            self.state = 106
+            self.state = 94
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==PWE_ASP_Meta_DataParser.T__5:
-                self.state = 105
+                self.state = 93
                 self.match(PWE_ASP_Meta_DataParser.T__5)
 
 
@@ -775,49 +682,49 @@ class PWE_ASP_Meta_DataParser ( Parser ):
     def graphviz_node_dec(self):
 
         localctx = PWE_ASP_Meta_DataParser.Graphviz_node_decContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 18, self.RULE_graphviz_node_dec)
+        self.enterRule(localctx, 16, self.RULE_graphviz_node_dec)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 108
+            self.state = 96
             self.match(PWE_ASP_Meta_DataParser.T__9)
-            self.state = 109
+            self.state = 97
             self.match(PWE_ASP_Meta_DataParser.REL_NAME)
-            self.state = 110
+            self.state = 98
             self.match(PWE_ASP_Meta_DataParser.T__2)
-            self.state = 111
+            self.state = 99
             self.match(PWE_ASP_Meta_DataParser.GRAPHVIZ_NODE_ATTR_OPTIONS)
-            self.state = 116
+            self.state = 104
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la==PWE_ASP_Meta_DataParser.T__3:
-                self.state = 112
+                self.state = 100
                 self.match(PWE_ASP_Meta_DataParser.T__3)
-                self.state = 113
+                self.state = 101
                 self.match(PWE_ASP_Meta_DataParser.GRAPHVIZ_NODE_ATTR_OPTIONS)
-                self.state = 118
+                self.state = 106
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 119
+            self.state = 107
             self.match(PWE_ASP_Meta_DataParser.T__4)
-            self.state = 121 
+            self.state = 109 
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
-                self.state = 120
+                self.state = 108
                 self.graphviz_node_style_option()
-                self.state = 123 
+                self.state = 111 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if not (_la==PWE_ASP_Meta_DataParser.PROPERTY_NAME):
                     break
 
-            self.state = 126
+            self.state = 114
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==PWE_ASP_Meta_DataParser.T__5:
-                self.state = 125
+                self.state = 113
                 self.match(PWE_ASP_Meta_DataParser.T__5)
 
 
@@ -868,49 +775,49 @@ class PWE_ASP_Meta_DataParser ( Parser ):
     def graphviz_edge_dec(self):
 
         localctx = PWE_ASP_Meta_DataParser.Graphviz_edge_decContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 20, self.RULE_graphviz_edge_dec)
+        self.enterRule(localctx, 18, self.RULE_graphviz_edge_dec)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 128
+            self.state = 116
             self.match(PWE_ASP_Meta_DataParser.T__10)
-            self.state = 129
+            self.state = 117
             self.match(PWE_ASP_Meta_DataParser.REL_NAME)
-            self.state = 130
+            self.state = 118
             self.match(PWE_ASP_Meta_DataParser.T__2)
-            self.state = 131
+            self.state = 119
             self.match(PWE_ASP_Meta_DataParser.GRAPHVIZ_EDGE_ATTR_OPTIONS)
-            self.state = 136
+            self.state = 124
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la==PWE_ASP_Meta_DataParser.T__3:
-                self.state = 132
+                self.state = 120
                 self.match(PWE_ASP_Meta_DataParser.T__3)
-                self.state = 133
+                self.state = 121
                 self.match(PWE_ASP_Meta_DataParser.GRAPHVIZ_EDGE_ATTR_OPTIONS)
-                self.state = 138
+                self.state = 126
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 139
+            self.state = 127
             self.match(PWE_ASP_Meta_DataParser.T__4)
-            self.state = 141 
+            self.state = 129 
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
-                self.state = 140
+                self.state = 128
                 self.graphviz_edge_style_option()
-                self.state = 143 
+                self.state = 131 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if not (_la==PWE_ASP_Meta_DataParser.PROPERTY_NAME):
                     break
 
-            self.state = 146
+            self.state = 134
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==PWE_ASP_Meta_DataParser.T__5:
-                self.state = 145
+                self.state = 133
                 self.match(PWE_ASP_Meta_DataParser.T__5)
 
 
@@ -949,10 +856,10 @@ class PWE_ASP_Meta_DataParser ( Parser ):
     def graphviz_graph_style_option(self):
 
         localctx = PWE_ASP_Meta_DataParser.Graphviz_graph_style_optionContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 22, self.RULE_graphviz_graph_style_option)
+        self.enterRule(localctx, 20, self.RULE_graphviz_graph_style_option)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 148
+            self.state = 136
             self.graphviz_style_option()
         except RecognitionException as re:
             localctx.exception = re
@@ -989,10 +896,10 @@ class PWE_ASP_Meta_DataParser ( Parser ):
     def graphviz_node_style_option(self):
 
         localctx = PWE_ASP_Meta_DataParser.Graphviz_node_style_optionContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 24, self.RULE_graphviz_node_style_option)
+        self.enterRule(localctx, 22, self.RULE_graphviz_node_style_option)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 150
+            self.state = 138
             self.graphviz_style_option()
         except RecognitionException as re:
             localctx.exception = re
@@ -1029,10 +936,10 @@ class PWE_ASP_Meta_DataParser ( Parser ):
     def graphviz_edge_style_option(self):
 
         localctx = PWE_ASP_Meta_DataParser.Graphviz_edge_style_optionContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 26, self.RULE_graphviz_edge_style_option)
+        self.enterRule(localctx, 24, self.RULE_graphviz_edge_style_option)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 152
+            self.state = 140
             self.graphviz_style_option()
         except RecognitionException as re:
             localctx.exception = re
@@ -1074,24 +981,24 @@ class PWE_ASP_Meta_DataParser ( Parser ):
     def graphviz_style_option(self):
 
         localctx = PWE_ASP_Meta_DataParser.Graphviz_style_optionContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 28, self.RULE_graphviz_style_option)
+        self.enterRule(localctx, 26, self.RULE_graphviz_style_option)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 154
+            self.state = 142
             self.match(PWE_ASP_Meta_DataParser.PROPERTY_NAME)
-            self.state = 155
+            self.state = 143
             self.match(PWE_ASP_Meta_DataParser.T__11)
-            self.state = 159
+            self.state = 147
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [PWE_ASP_Meta_DataParser.PROPERTY_VALUE]:
-                self.state = 156
+                self.state = 144
                 self.match(PWE_ASP_Meta_DataParser.PROPERTY_VALUE)
                 pass
             elif token in [PWE_ASP_Meta_DataParser.T__12]:
-                self.state = 157
+                self.state = 145
                 self.match(PWE_ASP_Meta_DataParser.T__12)
-                self.state = 158
+                self.state = 146
                 self.match(PWE_ASP_Meta_DataParser.NUMBER)
                 pass
             else:
