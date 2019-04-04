@@ -70,9 +70,6 @@ class AntlrClingoListener(ClingoListener):
             self.curr_pw.pw_soln = float(ctx.TEXT(1).getText()) if isfloat(ctx.TEXT(1).getText()) else ctx.TEXT(1).getText()
 
     def enterActual_soln(self, ctx):
-        # i = 0
-        # while ctx.TEXT(i) is not None:
-        #     i += 1
         self.curr_rl = Relation(ctx.TEXT().getText())
         # Set defaults in case this is a 0-arity relation
         self.curr_rl_data = []
