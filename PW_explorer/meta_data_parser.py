@@ -24,17 +24,17 @@ def extract_comment(comment_line):
     return comment
 
 
-def parse_for_temporal_declarations(clingo_rules: list):
+def parse_for_temporal_declarations(asp_rules: list):
     """
-    :param clingo_rules: a single \n separated string of rules or a list of rules
+    :param asp_rules: a single \n separated string of rules or a list of rules
     :return: dict mapping rel_name --> list of temporal_indices
     """
-    if isinstance(clingo_rules, str):
-        clingo_rules = clingo_rules.splitlines()
+    if isinstance(asp_rules, str):
+        asp_rules = asp_rules.splitlines()
     temporal_decs = {}
     pattern = re.compile(TEMPORAL_FIELD_DEF_REGEX)
 
-    comments = filter_comments(clingo_rules)
+    comments = filter_comments(asp_rules)
 
     for i, line in enumerate(comments):
         comment = extract_comment(line)
@@ -53,17 +53,17 @@ def parse_for_temporal_declarations(clingo_rules: list):
     return temporal_decs
 
 
-def parse_for_attribute_defs(clingo_rules: list):
+def parse_for_attribute_defs(asp_rules: list):
     """
-    :param clingo_rules: a single \n separated string of rules or a list of rules
+    :param asp_rules: a single \n separated string of rules or a list of rules
     :return: dict mapping rel_name --> list of attr_names
     """
-    if isinstance(clingo_rules, str):
-        clingo_rules = clingo_rules.splitlines()
+    if isinstance(asp_rules, str):
+        asp_rules = asp_rules.splitlines()
     attribute_defs = {}
     pattern = re.compile(ATTRIBUTES_DEF_REGEX)
 
-    comments = filter_comments(clingo_rules)
+    comments = filter_comments(asp_rules)
 
     for i, line in enumerate(comments):
         comment = extract_comment(line)
@@ -80,11 +80,11 @@ def parse_for_attribute_defs(clingo_rules: list):
     return attribute_defs
 
 
-def parse_meta_data(clingo_rules):
-    if isinstance(clingo_rules, str):
-        clingo_rules = clingo_rules.splitlines()
+def parse_meta_data(asp_rules):
+    if isinstance(asp_rules, str):
+        asp_rules = asp_rules.splitlines()
     meta_data = {
-        META_DATA_ATTRIBUTE_DEF_KEYWORD: parse_for_attribute_defs(clingo_rules),
-        META_DATA_TEMPORAL_DEC_KEYWORD: parse_for_temporal_declarations(clingo_rules),
+        META_DATA_ATTRIBUTE_DEF_KEYWORD: parse_for_attribute_defs(asp_rules),
+        META_DATA_TEMPORAL_DEC_KEYWORD: parse_for_temporal_declarations(asp_rules),
     }
     return meta_data
