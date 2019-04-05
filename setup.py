@@ -22,9 +22,4 @@ setuptools.setup(
         "License :: OSI Approved :: Apache Software License",
         "Operating System :: OS Independent",
     ],
-    scripts=['PW_explorer/PWE_CLI_Scripts/pwe_run_clingo', 'PW_explorer/PWE_CLI_Scripts/pwe_load_worlds',
-             'PW_explorer/PWE_CLI_Scripts/pwe_complexity_calc', 'PW_explorer/PWE_CLI_Scripts/pwe_dist_calc',
-             'PW_explorer/PWE_CLI_Scripts/pwe_export', 'PW_explorer/PWE_CLI_Scripts/pwe_query',
-             'PW_explorer/PWE_CLI_Scripts/pwe_visualize', 'PW_explorer/PWE_CLI_Scripts/pwe_run_dlv'
-             ]
 )
