@@ -4,7 +4,7 @@ import pandas as pd
 import os
 import sqlite3
 from .helper import mkdir_p
-from .meta_data_parser import (
+from .Input_Parsers.Meta_Data_Parser.meta_data_parser import (
     ASP_COMMENT_SYMBOL,
     ASP_SYNTAX_ATTRIBUTE_DEF_KEYWORD,
 )

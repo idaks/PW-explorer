@@ -5,13 +5,12 @@ from .Input_Parsers.DLV_Parser.dlv_parser import parse_dlv_output
 from .helper import (
     rel_id_from_rel_name,
 )
-from .meta_data_parser import (
+from .Input_Parsers.Meta_Data_Parser.meta_data_parser import (
     META_DATA_ATTRIBUTE_DEF_KEYWORD,
     META_DATA_TEMPORAL_DEC_KEYWORD,
 )
-import pandas as pd
-import numpy as np
 
+import pandas as pd
 import os
 
 

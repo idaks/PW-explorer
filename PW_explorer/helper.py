@@ -3,16 +3,13 @@
 import errno
 import inspect
 import os
-import pickle
-import sqlite3
-import importlib
 import copy
 
 import pandas as pd
 
-from .meta_data_parser import (
-    META_DATA_TEMPORAL_DEC_KEYWORD,
-)
+# from .Input_Parsers.Meta_Data_Parser.meta_data_parser import (
+#     META_DATA_TEMPORAL_DEC_KEYWORD,
+# )
 
 ###################################################################
 
@@ -103,13 +100,13 @@ class Relation:
 
 ###################################################################
 
-def make_temporal_columns_numeric(rel_schemas, pw_rels_dfs):
-    for rel in rel_schemas:
-        rl_name = rel.relation_name
-        if META_DATA_TEMPORAL_DEC_KEYWORD in rel.meta_data:
-            for temporal_index in rel.meta_data[META_DATA_TEMPORAL_DEC_KEYWORD]:
-                col_name = pw_rels_dfs[rl_name].columns[temporal_index + 1]  # +1 is to a/c for the 'pw' column
-                pw_rels_dfs[rl_name][col_name] = pd.to_numeric(pw_rels_dfs[rl_name][col_name])
+# def make_temporal_columns_numeric(rel_schemas, pw_rels_dfs):
+#     for rel in rel_schemas:
+#         rl_name = rel.relation_name
+#         if META_DATA_TEMPORAL_DEC_KEYWORD in rel.meta_data:
+#             for temporal_index in rel.meta_data[META_DATA_TEMPORAL_DEC_KEYWORD]:
+#                 col_name = pw_rels_dfs[rl_name].columns[temporal_index + 1]  # +1 is to a/c for the 'pw' column
+#                 pw_rels_dfs[rl_name][col_name] = pd.to_numeric(pw_rels_dfs[rl_name][col_name])
 
 ###################################################################
 

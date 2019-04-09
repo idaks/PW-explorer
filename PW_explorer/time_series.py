@@ -1,4 +1,4 @@
-from .meta_data_parser import META_DATA_TEMPORAL_DEC_KEYWORD
+from .Input_Parsers.Meta_Data_Parser.meta_data_parser import META_DATA_TEMPORAL_DEC_KEYWORD
 
 
 class PWETimeSeriesModule:
