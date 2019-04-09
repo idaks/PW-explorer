@@ -55,7 +55,12 @@ class PWEVisualization:
         return fig, labels
 
     @staticmethod
-    def linkage_dendrogram(dist_matrix, save_to_folder=None):
+    def linkage_dendrogram(dist_matrix, pws_used: list=None, save_to_folder=None):
+
+        if not pws_used:
+            pws_used = range(1, len(dist_matrix)+1)
+
+        pws_used = list(map(str, pws_used))
 
         X = squareform(dist_matrix)
         dendrogram_size = (max(25, int(np.sqrt(2 * len(X)) / 10)), 10)
@@ -63,7 +68,7 @@ class PWEVisualization:
         for dist_type in ['single', 'complete', 'average', 'weighted']:
             fig, ax = plt.subplots(figsize=dendrogram_size)
             linkage_matrix = linkage(X, dist_type)
-            dendrogram(linkage_matrix, labels=[str(i) for i in range(len(dist_matrix))], show_leaf_counts=True, ax=ax)
+            dendrogram(linkage_matrix, labels=pws_used, show_leaf_counts=True, ax=ax)
             ax.set_title("Dendrogram ({})".format(dist_type))
             if save_to_folder is not None:
                 fig.savefig(os.path.join(save_to_folder, '{}_dendrogram.png'.format(dist_type)))
@@ -71,15 +76,14 @@ class PWEVisualization:
         return figs
 
     @staticmethod
-    def mds_networkx(pws, A, scale_down_factor, save_to_file=True):
+    def mds_networkx(pws_used, A, scale_down_factor, save_to_file=True):
 
         dt = [('len', float)]
         A = A * len(A) / scale_down_factor
         A = A.view(dt)
         G = nx.from_numpy_matrix(A)
         G = nx.relabel_nodes(G,
-                             dict(list(zip(list(range(len(G.nodes()))), ['pw-{}'.format(i) for i in range(0, len(pws))]))))
-        # TODO: change to ['pw-{}'.format(pw.pw_id) for pw in pws]
+                             dict(list(zip(list(range(len(G.nodes()))), ['pw-{}'.format(pw) for pw in pws_used]))))
         G = nx.drawing.nx_agraph.to_agraph(G)
 
         G.node_attr.update(color="red", style="filled")
