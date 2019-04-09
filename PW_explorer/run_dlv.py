@@ -1,6 +1,6 @@
 import os
 import subprocess as subprocess
-from .meta_data_parser import parse_meta_data
+from .meta_data_parser import parse_pwe_meta_data
 
 def get_dlv_output(dlv_input_fnames: list, num_solutions: int=0, wfs_mode: bool=False,
                    dlv_max_int: int=None, other_args: list=None):
@@ -29,7 +29,7 @@ def get_dlv_output(dlv_input_fnames: list, num_solutions: int=0, wfs_mode: bool=
     for fname in dlv_input_fnames:
         with open(fname, 'r') as f:
             dlv_rules = f.read().splitlines()
-            f_meta_data = parse_meta_data(dlv_rules)
+            f_meta_data = parse_pwe_meta_data(dlv_rules)
             for md_type, md in f_meta_data.items():
                 if md_type in meta_data:
                     meta_data[md_type].update(md)

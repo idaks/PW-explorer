@@ -12,6 +12,8 @@ import networkx as nx
 from sklearn.manifold import MDS
 # from sklearn.decomposition import PCA
 
+from .Custom_Visualization_Functions.graphviz_meta_data_based_visualization import build_nx_from_metadata
+
 # TODO Add cluster heat map visualization from the 3COL example demo notebook
 
 class PWEVisualization:
@@ -102,3 +104,13 @@ class PWEVisualization:
         if save_to_file is not None:
             fig.savefig(save_to_file)
         return fig
+
+    @staticmethod
+    def graphviz_from_meta_data(pw_rel_dfs, graphviz_meta_data):
+        """
+        Assumes a sliced pw_rel_dfs has been passed in.
+        :param pw_rel_dfs:
+        :param graphviz_meta_data:
+        :return:
+        """
+        return build_nx_from_metadata(pw_rel_dfs, graphviz_meta_data)

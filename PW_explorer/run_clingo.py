@@ -3,7 +3,7 @@ import subprocess as subprocess
 from .helper import (
     preprocess_clingo_output,
 )
-from .meta_data_parser import parse_meta_data
+from .meta_data_parser import parse_pwe_meta_data
 
 def get_clingo_output(clingo_in_fnames: list, num_solutions: int=0):
 
@@ -18,7 +18,7 @@ def get_clingo_output(clingo_in_fnames: list, num_solutions: int=0):
     for fname in clingo_in_fnames:
         with open(fname, 'r') as f:
             clingo_rules = f.read().splitlines()
-            f_meta_data = parse_meta_data(clingo_rules)
+            f_meta_data = parse_pwe_meta_data(clingo_rules)
             for md_type, md in f_meta_data.items():
                 if md_type in meta_data:
                     meta_data[md_type].update(md)
