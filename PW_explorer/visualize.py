@@ -11,10 +11,9 @@ from scipy.cluster.hierarchy import dendrogram, linkage
 import networkx as nx
 from sklearn.manifold import MDS
 # from sklearn.decomposition import PCA
+import seaborn as sns
 
 from .Custom_Visualization_Functions.graphviz_meta_data_based_visualization import build_nx_from_metadata
-
-# TODO Add cluster heat map visualization from the 3COL example demo notebook
 
 class PWEVisualization:
 
@@ -114,3 +113,19 @@ class PWEVisualization:
         :return:
         """
         return build_nx_from_metadata(pw_rel_dfs, graphviz_meta_data)
+
+    @staticmethod
+    def cluster_map_viz(dist_matrix, pw_ids: list = None, cmap="mako"):
+
+        if not pw_ids:
+            pw_ids = range(1, dist_matrix.shape[0] + 1)
+
+        pw_ids_mapper_key = lambda x: pw_ids[x]
+
+        t = pd.DataFrame(dist_matrix)
+        t = t.rename(pw_ids_mapper_key, axis='index')
+        t = t.rename(pw_ids_mapper_key, axis='columns')
+        cluster_map = sns.clustermap(t, cmap=cmap)
+        fig = cluster_map.fig
+        plt.show()
+        return fig
