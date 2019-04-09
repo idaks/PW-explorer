@@ -12,6 +12,7 @@ import networkx as nx
 from sklearn.manifold import MDS
 # from sklearn.decomposition import PCA
 
+# TODO Add cluster heat map visualization from the 3COL example demo notebook
 
 class PWEVisualization:
 
@@ -77,7 +78,7 @@ class PWEVisualization:
         G = nx.from_numpy_matrix(A)
         G = nx.relabel_nodes(G,
                              dict(list(zip(list(range(len(G.nodes()))), ['pw-{}'.format(i) for i in range(0, len(pws))]))))
-
+        # TODO: change to ['pw-{}'.format(pw.pw_id) for pw in pws]
         G = nx.drawing.nx_agraph.to_agraph(G)
 
         G.node_attr.update(color="red", style="filled")

@@ -104,15 +104,6 @@ class AntlrDLVListener(DLV_OutListener):
         self.curr_pw = None
         self.curr_atom_set = {}
 
-    def exitOptimization_out(self, ctx:DLV_OutParser.Optimization_outContext):
-        pass
-
-    def exitWf_mode_out(self, ctx:DLV_OutParser.Wf_mode_outContext):
-        pass
-
-    def exitPws_out(self, ctx:DLV_OutParser.Pws_outContext):
-        pass
-
     def exitDlvOutput(self, ctx:DLV_OutParser.DlvOutputContext):
         if self.soln_type in [AntlrDLVListener.OPT_SOLN, AntlrDLVListener.ASP_SOLN]:
             self.relations = AntlrDLVListener.create_rel_objs_from_pws(self.pws)

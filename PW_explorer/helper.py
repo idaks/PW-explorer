@@ -36,6 +36,13 @@ def isfloat(value):
     except ValueError:
         return False
 
+def is_int(value):
+    """returns Tre if a value can be typecasted as an int, else Falsee"""
+    try:
+        int(value)
+        return True
+    except ValueError:
+        return False
 
 def mkdir_p(path):
     """Make a directory if it doesn't already exist"""
