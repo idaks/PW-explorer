@@ -51,9 +51,10 @@ class AntlrClingoListener(ClingoListener):
         self.expected_pws = 0
         self.curr_pw = None
         self.curr_pw_id = 1
-        self.curr_rl = None
-        self.curr_rl_data = None
-        self.n_rls = 0
+        self.curr_fact = None
+        self.curr_fact_data = None
+        self.curr_fact_depth = 0
+        self.n_facts = 0
         self.dfs = {}
         self.silent = False
 
@@ -62,55 +63,88 @@ class AntlrClingoListener(ClingoListener):
             if ctx.OPTIMUM_FOUND().getText() == 'UNSATISFIABLE':
                 if not self.silent:
                     print("The problem is unsatisfiable")
+        # print("enterClingoOutput")
 
-    def enterSolution(self, ctx):
+    def enterPw(self, ctx):
         self.curr_pw = PossibleWorld(self.curr_pw_id)
         # assert curr_pw.pw_id == int(ctx.TEXT(0).getText())
         if ctx.TEXT(1) is not None:
             self.curr_pw.pw_soln = float(ctx.TEXT(1).getText()) if isfloat(ctx.TEXT(1).getText()) else ctx.TEXT(1).getText()
+        # print("enterPw")
 
-    def enterActual_soln(self, ctx):
-        self.curr_rl = Relation(ctx.TEXT().getText())
-        # Set defaults in case this is a 0-arity relation
-        self.curr_rl_data = []
+    def enterFact(self, ctx):
+        self.curr_fact_depth += 1
+        rel_name = ctx.TEXT().getText()
+        if self.curr_fact_depth == 1:
+            self.curr_fact = Relation(rel_name)
+            # Set defaults in case this is a 0-arity relation
+            self.curr_fact_data = []
+        else:
+            tmp_ptr = self.curr_fact_data
+            for _ in range(self.curr_fact_depth-2):
+                tmp_ptr = tmp_ptr[-1]
+            tmp_ptr.append([rel_name])
+        # print("enterFact", ctx.TEXT().getText())
+
+    def enterFact_text(self, ctx:ClingoParser.Fact_textContext):
+
+        tmp_ptr = self.curr_fact_data
+        for _ in range(self.curr_fact_depth - 1):
+            tmp_ptr = tmp_ptr[-1]
+        tmp_ptr.append(ctx.TEXT().getText())
+
+        # print("enterFact_text", ctx.TEXT().getText())
+
+    def enterFact_content(self, ctx):
+
+        # sol = ctx.TEXT().getText()
+        # self.curr_fact_data = sol.split(',')
+        ## print("enterFact_content")
+        pass
+
+    def exitFact_content(self, ctx:ClingoParser.Fact_contentContext):
+        # print("exitFact_content")
+        pass
+
+    def exitFact_text(self, ctx:ClingoParser.Fact_textContext):
+        # print("exitFact_text", ctx.TEXT().getText())
+        pass
+
+    def exitFact(self, ctx):
+
+        if self.curr_fact_depth == 1:
+            self.curr_fact.arity = len(self.curr_fact_data)
+            rl_name_mod = str(self.curr_fact.relation_name + '_' + str(self.curr_fact.arity))
+            self.curr_fact.relation_name = rl_name_mod
+
+            foundMatch = False
+            for rl in self.relations:
+                if self.curr_fact.relation_name == rl.relation_name and self.curr_fact.arity == rl.arity:
+                    self.curr_fact.r_id = rl.r_id
+                    foundMatch = True
+                    break
+
+            if not foundMatch:
+                newRl = Relation(self.curr_fact.relation_name)
+                newRl.arity = self.curr_fact.arity
+                newRl.r_id = self.n_facts
+                self.n_facts += 1
+                self.relations.append(newRl)
+                self.curr_fact.r_id = newRl.r_id
+
+            self.curr_pw.add_relation(self.curr_fact.relation_name, self.curr_fact_data)
+            # print("exitFact", ctx.TEXT().getText(), self.curr_fact_data)
+            self.curr_fact = None  # could introduce bugs if passed by pointer in the upper statement, so be careful, use copy() if needed
+            self.curr_fact_data = None
+
+        self.curr_fact_depth -= 1
 
 
-    def enterCustom_representation_soln(self, ctx):
-
-        sol = ctx.TEXT().getText()
-        self.curr_rl_data = sol.split(',')
-
-
-    def exitActual_soln(self, ctx):
-
-        self.curr_rl.arity = len(self.curr_rl_data)
-        rl_name_mod = str(self.curr_rl.relation_name + '_' + str(self.curr_rl.arity))
-        self.curr_rl.relation_name = rl_name_mod
-
-        foundMatch = False
-        for rl in self.relations:
-            if self.curr_rl.relation_name == rl.relation_name and self.curr_rl.arity == rl.arity:
-                self.curr_rl.r_id = rl.r_id
-                foundMatch = True
-                break
-
-        if not foundMatch:
-            newRl = Relation(self.curr_rl.relation_name)
-            newRl.arity = self.curr_rl.arity
-            newRl.r_id = self.n_rls
-            self.n_rls += 1
-            self.relations.append(newRl)
-            self.curr_rl.r_id = newRl.r_id
-
-        self.curr_pw.add_relation(self.curr_rl.relation_name, self.curr_rl_data)
-        self.curr_rl = None  # could introduce bugs if passed by pointer in the upper statement, so be careful, use copy() if needed
-        self.curr_rl_data = None
-
-
-    def exitSolution(self, ctx):
+    def exitPw(self, ctx):
         self.pws.append(self.curr_pw)  # again be wary, else use .copy()
         self.curr_pw = None
         self.curr_pw_id += 1
+        # print("exitPw")
 
     def enterOptimum(self, ctx):
 
@@ -143,20 +177,20 @@ class AntlrClingoListener(ClingoListener):
         # loading into pandas DF
         rearrangePWSandRLS(self.relations, self.pws)
         loadIntoPandas(self.relations, self.pws, self.dfs)
+        # print("exitClingoOutput")
 
 
 ######################################################################################
 
-def parse_clingo_output(fname, silent=False, print_parse_tree=False):
+def __parse_clingo_output__(input_stream, silent=False, print_parse_tree=False):
 
-    input_ = FileStream(fname)
-    lexer = ClingoLexer(input_)
+    lexer = ClingoLexer(input_stream)
 
     # use this line to take input from the cmd line
     # lexer = ClingoLexer(StdinStream())
 
-    stream = CommonTokenStream(lexer)
-    parser = ClingoParser(stream)
+    ct_stream = CommonTokenStream(lexer)
+    parser = ClingoParser(ct_stream)
     tree = parser.clingoOutput()
     if print_parse_tree:
         print(Trees.toStringTree(tree, None, parser))
@@ -166,3 +200,16 @@ def parse_clingo_output(fname, silent=False, print_parse_tree=False):
     walker.walk(pw_analyzer, tree)
 
     return pw_analyzer.dfs, pw_analyzer.relations, pw_analyzer.pws
+
+
+def parse_clingo_output_from_file(fname, silent=False, print_parse_tree=False):
+
+    input_stream = FileStream(fname)
+    return __parse_clingo_output__(input_stream, silent, print_parse_tree)
+
+
+def parse_clingo_output_from_string(clingo_output_string, silent=False, print_parse_tree=False):
+
+    input_stream = InputStream(clingo_output_string)
+    return __parse_clingo_output__(input_stream, silent, print_parse_tree)
+

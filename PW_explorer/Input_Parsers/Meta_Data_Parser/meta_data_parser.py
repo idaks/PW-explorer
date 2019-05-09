@@ -302,16 +302,14 @@ class AntlrPWEMetaDataListener(PWE_ASP_Meta_DataListener):
         self.curr_meta_data_type = None
 
 
-def parse_meta_data(fname, silent=False, print_parse_tree=False):
-
-    input_ = FileStream(fname)
-    lexer = PWE_ASP_Meta_DataLexer(input_)
+def __parse_meta_data__(input_stream, silent=False, print_parse_tree=False):
+    lexer = PWE_ASP_Meta_DataLexer(input_stream)
 
     # use this line to take input from the cmd line
     # lexer = PWE_ASP_Meta_DataLexer(StdinStream())
 
-    stream = CommonTokenStream(lexer)
-    parser = PWE_ASP_Meta_DataParser(stream)
+    ct_stream = CommonTokenStream(lexer)
+    parser = PWE_ASP_Meta_DataParser(ct_stream)
     tree = parser.aspFile()
     if print_parse_tree:
         print(Trees.toStringTree(tree, None, parser))
@@ -321,3 +319,13 @@ def parse_meta_data(fname, silent=False, print_parse_tree=False):
     walker.walk(asp_meta_data_listener, tree)
 
     return asp_meta_data_listener.meta_data
+
+
+def parse_meta_data_from_file(fname, silent=False, print_parse_tree=False):
+    input_stream = FileStream(fname)
+    return __parse_meta_data__(input_stream, silent, print_parse_tree)
+
+
+def parse_meta_data_from_string(asp_input_string, silent=False, print_parse_tree=False):
+    input_stream = InputStream(asp_input_string)
+    return __parse_meta_data__(input_stream, silent, print_parse_tree)

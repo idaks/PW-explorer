@@ -17,30 +17,39 @@ class ClingoListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by ClingoParser#solution.
-    def enterSolution(self, ctx:ClingoParser.SolutionContext):
+    # Enter a parse tree produced by ClingoParser#pw.
+    def enterPw(self, ctx:ClingoParser.PwContext):
         pass
 
-    # Exit a parse tree produced by ClingoParser#solution.
-    def exitSolution(self, ctx:ClingoParser.SolutionContext):
-        pass
-
-
-    # Enter a parse tree produced by ClingoParser#actual_soln.
-    def enterActual_soln(self, ctx:ClingoParser.Actual_solnContext):
-        pass
-
-    # Exit a parse tree produced by ClingoParser#actual_soln.
-    def exitActual_soln(self, ctx:ClingoParser.Actual_solnContext):
+    # Exit a parse tree produced by ClingoParser#pw.
+    def exitPw(self, ctx:ClingoParser.PwContext):
         pass
 
 
-    # Enter a parse tree produced by ClingoParser#custom_representation_soln.
-    def enterCustom_representation_soln(self, ctx:ClingoParser.Custom_representation_solnContext):
+    # Enter a parse tree produced by ClingoParser#fact.
+    def enterFact(self, ctx:ClingoParser.FactContext):
         pass
 
-    # Exit a parse tree produced by ClingoParser#custom_representation_soln.
-    def exitCustom_representation_soln(self, ctx:ClingoParser.Custom_representation_solnContext):
+    # Exit a parse tree produced by ClingoParser#fact.
+    def exitFact(self, ctx:ClingoParser.FactContext):
+        pass
+
+
+    # Enter a parse tree produced by ClingoParser#fact_content.
+    def enterFact_content(self, ctx:ClingoParser.Fact_contentContext):
+        pass
+
+    # Exit a parse tree produced by ClingoParser#fact_content.
+    def exitFact_content(self, ctx:ClingoParser.Fact_contentContext):
+        pass
+
+
+    # Enter a parse tree produced by ClingoParser#fact_text.
+    def enterFact_text(self, ctx:ClingoParser.Fact_textContext):
+        pass
+
+    # Exit a parse tree produced by ClingoParser#fact_text.
+    def exitFact_text(self, ctx:ClingoParser.Fact_textContext):
         pass
 
 

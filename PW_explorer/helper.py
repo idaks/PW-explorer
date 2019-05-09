@@ -195,8 +195,16 @@ def rel_name_remapper(dfs, pws, rels, rel_name_map, pws_inplace=False, rels_inpl
 
 ###################################################################
 
+def turn_list_into_str(l):
+    if len(l) > 1:
+        l_ = [turn_list_into_str(l1) for l1 in l[1:]]
+        return "{}({})".format(l[0], ",".join(l_))
+    elif len(l) == 1:
+        return "{}".format(l[0])
+    else:
+        return ""
 
-
+###################################################################
 
 def rel_id_from_rel_name(rel_name, relations):
     for i, rel in enumerate(relations):

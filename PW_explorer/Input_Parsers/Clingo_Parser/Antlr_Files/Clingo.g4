@@ -6,13 +6,16 @@ options {
 
 							//Parser Rules:
 
-clingoOutput: (solution)* OPTIMUM_FOUND? summary ;
+clingoOutput: (pw)* OPTIMUM_FOUND? summary ;
 
-solution: 'Answer:' TEXT (actual_soln)* 'Optimization:'? TEXT? ;
+pw: 'Answer:' TEXT (fact)* 'Optimization:'? TEXT? ;
 
-actual_soln: TEXT ('(' custom_representation_soln ')')? ;
+fact: TEXT ('(' fact_content ')')? ;
 
-custom_representation_soln: TEXT ;
+// custom_representation_soln: TEXT ;
+fact_content: ((fact_text|fact) ',')* (fact_text|fact) ;
+
+fact_text: TEXT ;
 
 summary: models optimum? optimization? calls time cpuTime ;
 
@@ -33,6 +36,7 @@ cpuTime: (TEXT | '(' | ')' | ':')+ ;
 
 OPTIMUM_FOUND: 'OPTIMUM FOUND' | 'UNSATISFIABLE' | 'SATISFIABLE' ; 
 
-TEXT: [a-zA-Z0-9\\_.,/:\-<>"!=]+ ;
+//TEXT: [a-zA-Z0-9\\_.,/:\-<>"!=]+ ;
+TEXT: [a-zA-Z0-9\\_./:\-<>"!=]+ ;
 
 WHITESPACE : ( '\t' | ' ' | '\r' | '\n'| '\u000C' )+ -> skip ;

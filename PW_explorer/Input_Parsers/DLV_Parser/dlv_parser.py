@@ -188,16 +188,15 @@ class AntlrDLVListener(DLV_OutListener):
         return dfs
 
 
-def parse_dlv_output(fname, silent=False, print_parse_tree=False):
+def __parse_dlv_output__(input_stream, silent=False, print_parse_tree=False):
 
-    input_ = FileStream(fname)
-    lexer = DLV_OutLexer(input_)
+    lexer = DLV_OutLexer(input_stream)
 
     # use this line to take input from the cmd line
     # lexer = DLV_OutLexer(StdinStream())
 
-    stream = CommonTokenStream(lexer)
-    parser = DLV_OutParser(stream)
+    ct_stream = CommonTokenStream(lexer)
+    parser = DLV_OutParser(ct_stream)
     tree = parser.dlvOutput()
     if print_parse_tree:
         print(Trees.toStringTree(tree, None, parser))
@@ -207,3 +206,13 @@ def parse_dlv_output(fname, silent=False, print_parse_tree=False):
     walker.walk(pw_analyzer, tree)
 
     return pw_analyzer.dfs, pw_analyzer.relations, pw_analyzer.pws
+
+
+def parse_dlv_output_from_file(fname, silent=False, print_parse_tree=False):
+    input_stream = FileStream(fname)
+    return __parse_dlv_output__(input_stream, silent, print_parse_tree)
+
+
+def parse_dlv_output_from_string(dlv_output_string, silent=False, print_parse_tree=False):
+    input_stream = InputStream(dlv_output_string)
+    return __parse_dlv_output__(input_stream, silent, print_parse_tree)
