@@ -3,17 +3,25 @@
 ### To get started (using Conda) -- recommended
 
 1. ```conda create -n your-pwe-env-name```
-2. Install DLV from [here](http://www.dlvsystem.com/dlv/#1) and ensure it is available in the path.
-3. ```conda install -c potassco clingo ```
-4. ```conda install -c anaconda graphviz```
-5. ```conda install -c anaconda pygraphviz```
-6. ```pip install PW_explorer```
+2. Activate the environment created above using 
+
+    ```conda activate your-pwe-env-name``` or ```source activate your-pwe-env-name```  (depending on the version of conda).
+3. Install DLV from [here](http://www.dlvsystem.com/dlv/#1) and ensure it is available in the path.
+4. ```conda install -c potassco clingo ```
+5. ```conda install -c anaconda graphviz```
+6. ```conda install -c anaconda pygraphviz```
+7. ```pip install PW_explorer```
 
 (To use PWE in Jupyter Notebooks, install Jupyter)
 
-7. ```conda install -c anaconda jupyter```
+8. ```conda install -c anaconda jupyter```
+9. Install [PWE-NB-Extension](https://github.com/idaks/PWE-NB-Extension) to activate Notebook-specific functionality like in-line editing, etc. using:
 
-### To Get Started (using venv):
+    ```pip install PWE_NB_Extension```
+    
+   Load the extension in the notebook using ```%load_ext PWE_NB_Extension```
+
+### Alternatively, to get started (using venv):
 
 1. Install clingo. PW_explorer has been tested with clingo version: 5.2.1
 
