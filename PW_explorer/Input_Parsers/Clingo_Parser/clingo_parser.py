@@ -70,7 +70,6 @@ class AntlrClingoListener(ClingoListener):
         # assert curr_pw.pw_id == int(ctx.TEXT(0).getText())
         if ctx.TEXT(1) is not None:
             self.curr_pw.pw_soln = float(ctx.TEXT(1).getText()) if isfloat(ctx.TEXT(1).getText()) else ctx.TEXT(1).getText()
-        # print("enterPw")
 
     def enterFact(self, ctx):
         self.curr_fact_depth += 1
@@ -84,7 +83,6 @@ class AntlrClingoListener(ClingoListener):
             for _ in range(self.curr_fact_depth-2):
                 tmp_ptr = tmp_ptr[-1]
             tmp_ptr.append([rel_name])
-        # print("enterFact", ctx.TEXT().getText())
 
     def enterFact_text(self, ctx:ClingoParser.Fact_textContext):
 
@@ -92,23 +90,6 @@ class AntlrClingoListener(ClingoListener):
         for _ in range(self.curr_fact_depth - 1):
             tmp_ptr = tmp_ptr[-1]
         tmp_ptr.append(ctx.TEXT().getText())
-
-        # print("enterFact_text", ctx.TEXT().getText())
-
-    def enterFact_content(self, ctx):
-
-        # sol = ctx.TEXT().getText()
-        # self.curr_fact_data = sol.split(',')
-        ## print("enterFact_content")
-        pass
-
-    def exitFact_content(self, ctx:ClingoParser.Fact_contentContext):
-        # print("exitFact_content")
-        pass
-
-    def exitFact_text(self, ctx:ClingoParser.Fact_textContext):
-        # print("exitFact_text", ctx.TEXT().getText())
-        pass
 
     def exitFact(self, ctx):
 
@@ -133,7 +114,6 @@ class AntlrClingoListener(ClingoListener):
                 self.curr_fact.r_id = newRl.r_id
 
             self.curr_pw.add_relation(self.curr_fact.relation_name, self.curr_fact_data)
-            # print("exitFact", ctx.TEXT().getText(), self.curr_fact_data)
             self.curr_fact = None  # could introduce bugs if passed by pointer in the upper statement, so be careful, use copy() if needed
             self.curr_fact_data = None
 
@@ -144,7 +124,6 @@ class AntlrClingoListener(ClingoListener):
         self.pws.append(self.curr_pw)  # again be wary, else use .copy()
         self.curr_pw = None
         self.curr_pw_id += 1
-        # print("exitPw")
 
     def enterOptimum(self, ctx):
 
@@ -177,7 +156,6 @@ class AntlrClingoListener(ClingoListener):
         # loading into pandas DF
         rearrangePWSandRLS(self.relations, self.pws)
         loadIntoPandas(self.relations, self.pws, self.dfs)
-        # print("exitClingoOutput")
 
 
 ######################################################################################

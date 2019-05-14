@@ -25,7 +25,6 @@ undefined_part: 'Undefined:' atom_set;
 
 atom_set: '{' ((atom ',')* atom)? '}';
 
-// atom: TEXT+ ('(' TEXT ')')? ;
 atom: TEXT ('(' atom_content ')')? ;
 
 atom_content: ((atom_text|atom) ',')* (atom_text|atom) ;
@@ -35,7 +34,6 @@ atom_text: TEXT ;
 
 // Lexer Rules
 
-// TEXT: [a-zA-Z0-9\\_.,/:\-<>"!=]+ ;
 TEXT: [a-zA-Z0-9\\_./:\-<>"!=]+ ;
 
 WHITESPACE : ( '\t' | ' ' | '\r' | '\n'| '\u000C' )+ -> skip ;
