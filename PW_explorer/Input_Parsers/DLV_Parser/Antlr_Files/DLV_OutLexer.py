@@ -1,4 +1,4 @@
-# Generated from DLV_Out.g4 by ANTLR 4.7.1
+# Generated from PW_explorer/Input_Parsers/DLV_Parser/Antlr_Files/DLV_Out.g4 by ANTLR 4.7.1
 from antlr4 import *
 from io import StringIO
 from typing.io import TextIO
@@ -17,7 +17,7 @@ def serializedATN():
         buf.write("\7\3\7\3\7\3\7\3\7\3\7\3\b\3\b\3\t\3\t\3\n\3\n\3\13\3")
         buf.write("\13\3\f\3\f\3\r\6\rc\n\r\r\r\16\rd\3\16\6\16h\n\16\r\16")
         buf.write("\16\16i\3\16\3\16\2\2\17\3\3\5\4\7\5\t\6\13\7\r\b\17\t")
-        buf.write("\21\n\23\13\25\f\27\r\31\16\33\17\3\2\4\t\2#$.<>@C\\^")
+        buf.write("\21\n\23\13\25\f\27\r\31\16\33\17\3\2\4\t\2#$/<>@C\\^")
         buf.write("^aac|\5\2\13\f\16\17\"\"\2n\2\3\3\2\2\2\2\5\3\2\2\2\2")
         buf.write("\7\3\2\2\2\2\t\3\2\2\2\2\13\3\2\2\2\2\r\3\2\2\2\2\17\3")
         buf.write("\2\2\2\2\21\3\2\2\2\2\23\3\2\2\2\2\25\3\2\2\2\2\27\3\2")

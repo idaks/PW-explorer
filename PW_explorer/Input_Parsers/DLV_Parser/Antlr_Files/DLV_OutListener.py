@@ -1,4 +1,4 @@
-# Generated from DLV_Out.g4 by ANTLR 4.7.1
+# Generated from PW_explorer/Input_Parsers/DLV_Parser/Antlr_Files/DLV_Out.g4 by ANTLR 4.7.1
 from antlr4 import *
 if __name__ is not None and "." in __name__:
     from .DLV_OutParser import DLV_OutParser
@@ -95,6 +95,24 @@ class DLV_OutListener(ParseTreeListener):
 
     # Exit a parse tree produced by DLV_OutParser#atom.
     def exitAtom(self, ctx:DLV_OutParser.AtomContext):
+        pass
+
+
+    # Enter a parse tree produced by DLV_OutParser#atom_content.
+    def enterAtom_content(self, ctx:DLV_OutParser.Atom_contentContext):
+        pass
+
+    # Exit a parse tree produced by DLV_OutParser#atom_content.
+    def exitAtom_content(self, ctx:DLV_OutParser.Atom_contentContext):
+        pass
+
+
+    # Enter a parse tree produced by DLV_OutParser#atom_text.
+    def enterAtom_text(self, ctx:DLV_OutParser.Atom_textContext):
+        pass
+
+    # Exit a parse tree produced by DLV_OutParser#atom_text.
+    def exitAtom_text(self, ctx:DLV_OutParser.Atom_textContext):
         pass
 
 

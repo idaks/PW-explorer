@@ -12,7 +12,6 @@ pw: 'Answer:' TEXT (fact)* 'Optimization:'? TEXT? ;
 
 fact: TEXT ('(' fact_content ')')? ;
 
-// custom_representation_soln: TEXT ;
 fact_content: ((fact_text|fact) ',')* (fact_text|fact) ;
 
 fact_text: TEXT ;
@@ -36,7 +35,6 @@ cpuTime: (TEXT | '(' | ')' | ':')+ ;
 
 OPTIMUM_FOUND: 'OPTIMUM FOUND' | 'UNSATISFIABLE' | 'SATISFIABLE' ; 
 
-//TEXT: [a-zA-Z0-9\\_.,/:\-<>"!=]+ ;
 TEXT: [a-zA-Z0-9\\_./:\-<>"!=]+ ;
 
 WHITESPACE : ( '\t' | ' ' | '\r' | '\n'| '\u000C' )+ -> skip ;

@@ -26,6 +26,9 @@ class AntlrDLVListener(DLV_OutListener):
         self.dfs = {}
 
         self.curr_atom_set = {}
+        self.curr_atom = None
+        self.curr_atom_depth = 0
+        self.curr_atom_data = None
 
         self.soln_type = None
 
@@ -68,15 +71,37 @@ class AntlrDLVListener(DLV_OutListener):
         self.curr_atom_set = {}
 
     def enterAtom(self, ctx:DLV_OutParser.AtomContext):
-        atom_name = ctx.TEXT(0).getText()
-        attrs = []
-        if ctx.TEXT(1) is not None:
-            attrs = ctx.TEXT(1).getText().split(',')
-        arity = len(attrs)
-        rl_name = "{}_{}".format(atom_name, arity)
-        if rl_name not in self.curr_atom_set:
-            self.curr_atom_set[rl_name] = []
-        self.curr_atom_set[rl_name].append(attrs)
+        self.curr_atom_depth += 1
+        rel_name = ctx.TEXT().getText()
+        if self.curr_atom_depth == 1:
+            self.curr_atom = Relation(rel_name)
+            # Set defaults in case this is a 0-arity relation
+            self.curr_atom_data = []
+        else:
+            tmp_ptr = self.curr_atom_data
+            for _ in range(self.curr_atom_depth - 2):
+                tmp_ptr = tmp_ptr[-1]
+            tmp_ptr.append([rel_name])
+
+    # print("enterFact", ctx.TEXT().getText())
+
+    def enterAtom_text(self, ctx:DLV_OutParser.Atom_textContext):
+        tmp_ptr = self.curr_atom_data
+        for _ in range(self.curr_atom_depth - 1):
+            tmp_ptr = tmp_ptr[-1]
+        tmp_ptr.append(ctx.TEXT().getText())
+
+    def exitAtom(self, ctx:DLV_OutParser.AtomContext):
+
+        if self.curr_atom_depth == 1:
+            self.curr_atom.arity = len(self.curr_atom_data)
+            rl_name = str(self.curr_atom.relation_name + '_' + str(self.curr_atom.arity))
+            self.curr_atom.relation_name = rl_name
+            if rl_name not in self.curr_atom_set:
+                self.curr_atom_set[rl_name] = []
+            self.curr_atom_set[rl_name].append(self.curr_atom_data)
+
+        self.curr_atom_depth -= 1
 
     def exitUndefined_part(self, ctx:DLV_OutParser.Undefined_partContext):
         self.undefined_set = self.curr_atom_set
