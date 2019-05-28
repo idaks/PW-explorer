@@ -3,7 +3,10 @@
 import pandas as pd
 import os
 import sqlite3
-from .helper import mkdir_p
+from .helper import (
+    mkdir_p,
+    turn_list_into_str,
+)
 from .Input_Parsers.Meta_Data_Parser.meta_data_parser import (
     ASP_COMMENT_SYMBOL,
     ASP_SYNTAX_ATTRIBUTE_DEF_KEYWORD,
@@ -70,6 +73,7 @@ class PWEExport:
                 if not rel_facts_with_arity:
                     rl_name = rl_name.rsplit('_', maxsplit=1)[0]
                 for rl_fact in rl_facts:
+                    rl_fact = list(map(lambda x: turn_list_into_str(x) if isinstance(x, list) else x, rl_fact))
                     temp = []
                     if include_pw_ids:
                         temp.append(pw.pw_id)
@@ -114,7 +118,10 @@ class PWEExport:
             for idx, row in df.iterrows():
                 temp = [row[wfs_status_keyword]]
                 for j, col in enumerate(cols):
-                    temp.append(row[col])
+                    fact_attr = row[col]
+                    if isinstance(fact_attr, list):
+                        fact_attr = turn_list_into_str(fact_attr)
+                    temp.append(fact_attr)
                 pw_rel_facts.append('{}({}).'.format(rl_name, ','.join(temp)))
 
         # add attr_def rules if they are provided
@@ -160,6 +167,7 @@ class PWEExport:
                 if not rel_facts_with_arity:
                     rl_name = rl_name.rsplit('_', maxsplit=1)[0]
                 for rl_fact in rl_facts:
+                    rl_fact = list(map(lambda x: turn_list_into_str(x) if isinstance(x, list) else x, rl_fact))
                     facts_counter += 1
                     fact_id = facts_counter
                     facts.append((fact_id, TRIPLES_RELATION_NAME_KEYWORD, rl_name))
@@ -215,10 +223,13 @@ class PWEExport:
                 facts.append((fact_id, TRIPLES_RELATION_NAME_KEYWORD, rl_name))
                 facts.append((fact_id, TRIPLE_WFS_VALUE_KEYWORD, row[wfs_status_keyword]))
                 for j, col in enumerate(cols):
+                    fact_attr = row[col]
+                    if isinstance(fact_attr, list):
+                        fact_attr = turn_list_into_str(fact_attr)
                     if attr_name_or_idx == 'attr_name':
-                        facts.append((fact_id, col, row[col]))
+                        facts.append((fact_id, col, fact_attr))
                     elif attr_name_or_idx == 'idx':
-                        facts.append((fact_id, j+1, row[col]))
+                        facts.append((fact_id, j+1, fact_attr))
 
         if output_type == 'str':
             facts = [create_triple(fact[0], fact[1], fact[2]) for fact in facts]
