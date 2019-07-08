@@ -62,6 +62,16 @@ def preprocess_clingo_output(clingo_raw_output: list):
 
     return clingo_raw_output[start:]
 
+
+def preprocess_telingo_output(clingo_raw_output: list):
+    # TODO Take another look at this to ensure correctness
+    start = 0
+    for i, line in enumerate(clingo_raw_output):
+        if line.strip() == 'Solving...':
+            start = i + 1
+
+    return clingo_raw_output[start:]
+
 ###################################################################
 
 

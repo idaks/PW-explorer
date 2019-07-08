@@ -5,10 +5,16 @@ from .helper import (
 )
 from .meta_data_parser import parse_pwe_meta_data
 
-def get_clingo_output(clingo_in_fnames: list, num_solutions: int=0):
+def get_clingo_output(clingo_in_fnames: list, num_solutions: int=0, show_warnings=False, other_args: list=None):
 
-    t = ['clingo', '-n {}'.format(num_solutions), '-Wnone']
+    t = ['clingo', '-n {}'.format(num_solutions)]
+    # TODO The thing below won't do much if warnings are sent to stderr which I suspect they are.
+    # TODO Also need to shift preprocessing burden to load_world instead
+    if not show_warnings:
+        t.append('-Wnone')
     t.extend(clingo_in_fnames)
+    if other_args:
+        t.extend(other_args)
     process_ = subprocess.Popen(t, stdout=subprocess.PIPE)
     clingo_output = process_.communicate()[0]
     # clingo_output = subprocess.check_output()
@@ -40,10 +46,12 @@ def get_clingo_output(clingo_in_fnames: list, num_solutions: int=0):
     return cling_out_lines, meta_data
 
 
-def run_clingo(clingo_rules, num_solutions: int=0):
+def run_clingo(clingo_rules, num_solutions: int=0, show_warnings=False, other_args: list=None):
     """
     :param clingo_rules: string or list of strings
     :param num_solutions:
+    :param show_warnings: Default: False
+    :param other_args: Other arguments to pass to dlv. Provide a list of strings eg. ['-n=1', '-N=10', '-silent']
     :return:
     """
 
@@ -54,7 +62,8 @@ def run_clingo(clingo_rules, num_solutions: int=0):
     with open(dummy_fname, 'w') as f:
         f.write('\n'.join(clingo_rules))
 
-    clingo_output, meta_data = get_clingo_output([dummy_fname], num_solutions=num_solutions)
+    clingo_output, meta_data = get_clingo_output([dummy_fname], num_solutions=num_solutions,
+                                                 show_warnings=show_warnings, other_args=other_args)
     os.remove(dummy_fname)
 
     return preprocess_clingo_output(clingo_output), meta_data

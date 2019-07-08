@@ -6,6 +6,10 @@ from .Input_Parsers.DLV_Parser.dlv_parser import (
     parse_dlv_output_from_file,
     parse_dlv_output_from_string,
 )
+from .Input_Parsers.Telingo_Parser.telingo_parser import (
+    parse_telingo_output_from_file,
+    parse_telingo_output_from_string,
+)
 from .helper import (
     rel_id_from_rel_name,
     turn_list_into_str,
@@ -37,11 +41,14 @@ def parse_solution(data, file_or_string='string', meta_data: dict=None, reasoner
         meta_data = {}
 
     reasoner_parser_map = {}
+    # reasoner_output_preprocessor_map = {}
 
     if file_or_string == 'string':
-        reasoner_parser_map = {'clingo': parse_clingo_output_from_string, 'dlv': parse_dlv_output_from_string}
+        reasoner_parser_map = {'clingo': parse_clingo_output_from_string, 'dlv': parse_dlv_output_from_string,
+                               'telingo': parse_telingo_output_from_string}
     elif file_or_string == 'file':
-        reasoner_parser_map = {'clingo': parse_clingo_output_from_file, 'dlv': parse_dlv_output_from_file}
+        reasoner_parser_map = {'clingo': parse_clingo_output_from_file, 'dlv': parse_dlv_output_from_file,
+                               'telingo': parse_telingo_output_from_file}
     else:
         print("Unrecognized argument to 'file_or_string' argument.")
         exit(1)
@@ -54,6 +61,12 @@ def parse_solution(data, file_or_string='string', meta_data: dict=None, reasoner
         exit(1)
 
     dfs, relations, pws = parser_to_use(data, silent=silent, print_parse_tree=print_parse_tree)
+
+    if reasoner == 'telingo':
+        # TODO Fix Meta-Data
+        # TODO Add the first column as a temporal column for every relation
+        # TODO Shift all col indices by 1
+        pass
 
     if META_DATA_ATTRIBUTE_DEF_KEYWORD in meta_data:
         attr_defs = meta_data[META_DATA_ATTRIBUTE_DEF_KEYWORD]
